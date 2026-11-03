@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface PublicInquiryRepository extends JpaRepository<PublicInquiry, Long> {
+    List<PublicInquiry> findByEmailOrderByIdDesc(String email);
     List<PublicInquiry> findByEmailOrderByCreatedAtDesc(String email);
 }

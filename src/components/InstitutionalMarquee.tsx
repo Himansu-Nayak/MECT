@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Award, Building, Landmark, School, CheckCircle2 } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import {
+  ShieldCheck,
+  Award,
+  Building,
+  Landmark,
+  School,
+  CheckCircle2,
+} from "lucide-react";
 
 export function InstitutionalMarquee() {
   const endorsements = [
@@ -38,15 +46,20 @@ export function InstitutionalMarquee() {
   ];
 
   return (
-    <section className="bg-[#051E12] border-y border-[#C5A059]/25 py-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-3 flex items-center justify-between">
-        <span className="text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
-          Institutional Standards & Public Guarantees
-        </span>
-        <span className="text-[11px] text-white/50 hidden sm:inline">
-          Chartered Philanthropic Framework for Higher Education in Odisha
-        </span>
-      </div>
+    <section
+      className="bg-[#051E12] border-y border-[#C5A059]/25 py-6 overflow-hidden"
+      aria-label="Institutional Standards and Public Guarantees"
+    >
+      <Container size="default" className="mb-3">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
+            Institutional Standards & Public Guarantees
+          </span>
+          <span className="text-[11px] text-white/50 hidden sm:inline">
+            Chartered Philanthropic Framework for Higher Education in Odisha
+          </span>
+        </div>
+      </Container>
 
       <div className="relative w-full overflow-hidden flex items-center">
         {/* Continuous Marquee Ribbon */}
@@ -58,8 +71,8 @@ export function InstitutionalMarquee() {
                 key={idx}
                 className="inline-flex items-center gap-3 px-5 py-3 rounded-xs bg-[#0B3B24]/60 border border-[#C5A059]/30 hover:border-[#C5A059] transition-colors"
               >
-                <div className="w-8 h-8 rounded-full bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A]">
-                  <Icon className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0">
+                  <Icon className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <div className="text-left">
                   <span className="text-xs font-bold text-white block font-serif">

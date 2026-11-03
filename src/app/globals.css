@@ -8,12 +8,14 @@
     --color-gold: #C5A059;
     --color-gold-light: #E4C88A;
     --color-gold-muted: #9E7D3B;
+    --color-gold-contrast: #7A5E24;
     --color-ivory: #FDFBF7;
     --color-ivory-warm: #F4EFE6;
     --color-sand: #EDE6D8;
     --color-charcoal: #1C2421;
     --color-slate-text: #4A5568;
     --color-border-subtle: rgba(11, 59, 36, 0.12);
+    --color-border-gold: rgba(197, 160, 89, 0.3);
   }
 
   html {
@@ -30,8 +32,9 @@
   }
 
   .font-serif,
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: "Georgia", "Cambria", "Times New Roman", Times, serif;
+    letter-spacing: -0.015em;
   }
 
   ::selection {
@@ -40,6 +43,28 @@
   }
 }
 
+/* Accessibility Skip Link */
+.skip-to-content {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: #072617;
+  color: #E4C88A;
+  border: 2px solid #C5A059;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* Institutional Utilities */
 @utility text-forest {
   color: #0B3B24;
 }
@@ -48,12 +73,20 @@
   color: #072617;
 }
 
+@utility text-forest-light {
+  color: #165B38;
+}
+
 @utility text-gold {
   color: #C5A059;
 }
 
 @utility text-gold-light {
   color: #E4C88A;
+}
+
+@utility text-gold-contrast {
+  color: #7A5E24;
 }
 
 @utility bg-forest {
@@ -76,6 +109,10 @@
   background-color: #F4EFE6;
 }
 
+@utility bg-sand {
+  background-color: #EDE6D8;
+}
+
 @utility bg-gold {
   background-color: #C5A059;
 }
@@ -88,6 +125,11 @@
   border-color: rgba(197, 160, 89, 0.25);
 }
 
+@utility border-gold-contrast {
+  border-color: rgba(122, 94, 36, 0.35);
+}
+
+/* Accessible Focus States */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -97,6 +139,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+/* Animations */
 @keyframes marquee {
   0% {
     transform: translateX(0%);

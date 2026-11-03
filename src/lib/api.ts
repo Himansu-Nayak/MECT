@@ -15,7 +15,13 @@ export interface CreateVolunteerPayload {
   email: string;
   phone: string;
   roleInterest: string;
+  district?: string;
+  availability?: string;
+  qualification?: string;
+  engagementMode?: string;
   backgroundNotes?: string;
+  consentDeclared?: boolean;
+  consentVersion?: string;
 }
 
 export interface ApiResponse<T> {

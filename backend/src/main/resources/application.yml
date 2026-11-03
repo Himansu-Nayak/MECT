@@ -7,6 +7,11 @@ spring:
   application:
     name: mahavir-trust-backend
 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mahavir_trust_dev}
     username: ${DB_USERNAME:${DB_USER:mahavir_app}}
@@ -25,6 +30,8 @@ spring:
       hibernate:
         format_sql: false
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
 
   flyway:
     enabled: true
@@ -43,3 +50,7 @@ management:
 app:
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://127.0.0.1:3000}
+  jwt:
+    secret: ${JWT_SECRET:mahavir-trust-institutional-secret-key-must-be-at-least-256-bits-long-2026}
+    access-token-validity-seconds: ${JWT_ACCESS_VALIDITY:900}
+    refresh-token-validity-seconds: ${JWT_REFRESH_VALIDITY:604800}
