@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -15,6 +14,8 @@ import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
 import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
+import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
+import { TRUST_CONFIG } from "@/lib/config";
 import {
   GraduationCap,
   Award,
@@ -33,8 +34,36 @@ import {
   Mail,
   Send,
   Landmark,
+  Shield,
+  FileCheck,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
+
+const ODISHA_DISTRICTS_LIST = [
+  "Khordha (Bhubaneswar)",
+  "Cuttack",
+  "Ganjam (Berhampur)",
+  "Sambalpur",
+  "Balasore",
+  "Puri",
+  "Mayurbhanj (Baripada)",
+  "Sundargarh (Rourkela)",
+  "Bhadrak",
+  "Jajpur",
+  "Kalahandi",
+  "Koraput",
+  "Bolangir",
+  "Dhenkanal",
+  "Angul",
+  "Other Odisha District",
+];
+
+const ENABLEMENT_ICON_MAP = {
+  Users,
+  BookOpen,
+  Compass,
+  HeartHandshake,
+};
 
 export default function HomePage() {
   // Public Secretariat Inquiry State
@@ -46,7 +75,7 @@ export default function HomePage() {
     name: "",
     email: "",
     phone: "",
-    district: "",
+    district: "Khordha (Bhubaneswar)",
     category: "Scholarship Guidance",
     message: "",
   });
@@ -58,13 +87,13 @@ export default function HomePage() {
 
     try {
       const response = await submitInquiry({
-        fullName: inquiryData.name,
-        email: inquiryData.email,
-        phone: inquiryData.phone,
-        category: `${inquiryData.category} (${inquiryData.district || "Odisha"})`,
-        message:
-          inquiryData.message ||
-          `General inquiry submitted from ${inquiryData.district || "Odisha"} regarding ${inquiryData.category}.`,
+        fullName: inquiryData.name.trim(),
+        email: inquiryData.email.trim(),
+        phone: inquiryData.phone.trim(),
+        category: inquiryData.category,
+        message: inquiryData.message.trim()
+          ? `[District: ${inquiryData.district}]\n\n${inquiryData.message.trim()}`
+          : `General inquiry submitted from ${inquiryData.district} regarding ${inquiryData.category}.`,
       });
       setInquiryReferenceId(response.referenceId || null);
       setInquirySubmitted(true);
@@ -91,6 +120,8 @@ export default function HomePage() {
     name: "",
     email: "",
     phone: "",
+    district: "Khordha (Bhubaneswar)",
+    qualification: "",
     role: "Academic & Career Mentorship",
     notes: "",
   });
@@ -101,18 +132,22 @@ export default function HomePage() {
     setVolError(null);
 
     if (!volConsent) {
-      setVolError("Mandatory consent required before submitting registration.");
+      setVolError("Mandatory consent declaration is required before submitting registration.");
       setVolIsSubmitting(false);
       return;
     }
 
     try {
       const response = await submitVolunteerRegistration({
-        fullName: volData.name,
-        email: volData.email,
-        phone: volData.phone,
+        fullName: volData.name.trim(),
+        email: volData.email.trim(),
+        phone: volData.phone.trim(),
+        district: volData.district,
+        qualification: volData.qualification.trim() || "Unspecified",
         roleInterest: volData.role,
-        backgroundNotes: volData.notes || "Registered via Homepage Community Desk.",
+        backgroundNotes:
+          volData.notes.trim() ||
+          `Volunteer registration via Homepage Desk for ${volData.role} in ${volData.district}.`,
         consentDeclared: true,
         consentVersion: "v2.3",
       });
@@ -131,9 +166,9 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION: Institutional Prestige & Grand Narrative */}
+      {/* 1. HERO SECTION: Institutional Prestige & Factual Mission */}
       <section className="relative overflow-hidden bg-[#072617] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30">
-        {/* Architectural background pattern & ambient lighting */}
+        {/* Subtle geometric lighting */}
         <div
           className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
           aria-hidden="true"
@@ -156,105 +191,100 @@ export default function HomePage() {
                 size="md"
                 icon={<Sparkles className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
               >
-                Philanthropic Education & Merit Mission • Odisha, India
+                {HOMEPAGE_CONTENT.hero.badge}
               </Badge>
             </div>
 
-            {/* Grand Headline */}
+            {/* Grand Editorial Headline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12]">
-              Empowering Odisha’s Next Generation of Scholars & Leaders.
+              {HOMEPAGE_CONTENT.hero.headline}
             </h1>
 
             {/* Subtext */}
             <p className="text-base sm:text-lg text-white/85 leading-relaxed font-sans max-w-3xl mx-auto">
-              MAHAVIR TRUST is dedicated to establishing direct-to-college tuition grants, 1-on-1 academic mentorship, and community study hubs so that no deserving student in Odisha is held back by financial hardship.
+              {HOMEPAGE_CONTENT.hero.subtext}
             </p>
 
-            {/* Dual Primary Call to Actions */}
+            {/* Structured Dual CTAs (One Primary + One Secondary) */}
             <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-              <Link href="#programs">
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
                 <Button variant="gold" size="lg" className="shadow-md">
-                  <span>Explore Scholarship Schemes</span>
+                  <span>{HOMEPAGE_CONTENT.hero.ctas.primary.text}</span>
                   <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Button>
               </Link>
-              <Link href="#eligibility-calculator">
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
                 <Button variant="dark-outline" size="lg" className="font-semibold">
                   <Award className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>Check Scholar Eligibility</span>
-                </Button>
-              </Link>
-              <Link href="/governance">
-                <Button
-                  variant="ghost"
-                  size="lg"
-                  className="text-white hover:text-[#E4C88A] hover:bg-white/5"
-                >
-                  <span>Fiduciary Charter</span>
-                  <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
+                  <span>{HOMEPAGE_CONTENT.hero.ctas.secondary.text}</span>
                 </Button>
               </Link>
             </div>
 
-            {/* Statutory Compliance Indicator */}
-            <p className="text-[11px] text-white/60 italic pt-2">
-              Non-profit public charitable trust in Odisha. Strict 100% direct-to-college disbursement policy with zero cash intermediaries.
-            </p>
+            {/* Quiet Governance Link & Notice */}
+            <div className="pt-2 space-y-1">
+              <p className="text-xs text-white/75 font-sans">
+                Operating under transparent public trust deed standards. Review our{" "}
+                <Link
+                  href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
+                  className="text-[#E4C88A] underline hover:text-white transition-colors font-medium"
+                >
+                  Fiduciary Charter &amp; Governance Code
+                </Link>
+                .
+              </p>
+              <p className="text-[11px] text-white/55 italic">
+                {HOMEPAGE_CONTENT.hero.notice}
+              </p>
+            </div>
           </div>
 
-          {/* Key Metrics Bar */}
+          {/* Statutorily Grounded Metric Cards */}
           <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="space-y-1 border-r border-white/10 last:border-r-0 pr-4">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">30</span>
-              <p className="text-xs uppercase font-bold tracking-wider text-white/90">Districts Covered</p>
-              <p className="text-[11px] text-white/60">Statewide mandate across Odisha</p>
-            </div>
-            <div className="space-y-1 border-r border-white/10 last:border-r-0 pr-4">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">100%</span>
-              <p className="text-xs uppercase font-bold tracking-wider text-white/90">Direct Disbursals</p>
-              <p className="text-[11px] text-white/60">Direct to college bursar accounts</p>
-            </div>
-            <div className="space-y-1 border-r border-white/10 last:border-r-0 pr-4">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">4</span>
-              <p className="text-xs uppercase font-bold tracking-wider text-white/90">Core Pillars</p>
-              <p className="text-[11px] text-white/60">Tuition, Mentors, Hubs & Guidance</p>
-            </div>
-            <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">Sec. 12A/80G</span>
-              <p className="text-xs uppercase font-bold tracking-wider text-white/90">Fiduciary Standard</p>
-              <p className="text-[11px] text-white/60">Certified statutory annual audit</p>
-            </div>
+            {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
+              <div
+                key={idx}
+                className="space-y-1 border-r border-white/10 last:border-r-0 pr-4 last:pr-0"
+              >
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">
+                  {metric.value}
+                </span>
+                <p className="text-xs uppercase font-bold tracking-wider text-white/90">
+                  {metric.label}
+                </p>
+                <p className="text-[11px] text-white/60 font-sans">
+                  {metric.subtext}
+                </p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* 2. INSTITUTIONAL ACCREDITATION & ETHICS MARQUEE */}
+      {/* 2. INSTITUTIONAL STANDARDS MARQUEE */}
       <InstitutionalMarquee />
 
-      {/* 3. INTERACTIVE SCHOLAR ELIGIBILITY CALCULATOR */}
-      <EligibilityCalculator />
-
-      {/* 4. INSTITUTIONAL INTRODUCTION & FOUNDATIONAL HERITAGE */}
+      {/* 3. ABOUT STEWARDSHIP & THREE CORE PILLARS */}
       <section id="about" className="py-20 md:py-28 bg-[#FDFBF7]">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-              <Badge variant="forest">Stewardship & Purpose</Badge>
+              <Badge variant="forest">Stewardship &amp; Purpose</Badge>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24] tracking-tight leading-snug">
-                Founded on the Uncompromising Belief that Higher Education is a Universal Right.
+                Founded on the Conviction that Higher Education is a Universal Human Right.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MAHAVIR TRUST was conceived to serve aspirational youth from economically disadvantaged families across Odisha. We believe that true institutional philanthropy is measured by scholars enabled to complete their degrees with dignity and self-reliance.
+                MAHAVIR TRUST was conceived to empower aspirational youth from economically disadvantaged families across Odisha. We believe that true institutional philanthropy is measured by scholars enabled to complete their degrees with dignity and financial security.
               </p>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Our operations combine direct college tuition grants with persistent 1-to-1 faculty mentorship, opening verified pathways into engineering, pure sciences, commerce, and public civil services.
+                Our model combines direct college tuition grants with persistent 1-to-1 faculty mentorship, creating verified pathways into engineering, pure sciences, commerce, and public administrative services.
               </p>
 
               <div className="pt-2 flex flex-wrap gap-4">
                 <Link href="/about">
                   <Button variant="secondary" size="md">
-                    <span>Read Our Foundational Heritage</span>
+                    <span>Read Our Heritage</span>
                     <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Button>
                 </Link>
@@ -267,17 +297,22 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: 4 Foundation Pillars Grid */}
+            {/* Right: Pillars Grid */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {TRUST_CONFIG.pillars.map((pillar) => (
+              {HOMEPAGE_CONTENT.pillars.map((pillar) => (
                 <Card
-                  key={pillar.title}
+                  key={pillar.number}
                   variant="elevated"
                   className="space-y-3 p-6 border-[#0B3B24]/12 hover:border-[#C5A059] transition-all duration-300"
                 >
-                  <Badge variant="contrast-gold" size="sm">
-                    {pillar.tag}
-                  </Badge>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif font-bold text-2xl text-[#C5A059]">
+                      {pillar.number}
+                    </span>
+                    <Badge variant="contrast-gold" size="sm">
+                      {pillar.tag}
+                    </Badge>
+                  </div>
                   <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     {pillar.title}
                   </h3>
@@ -291,63 +326,16 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 5. INTERACTIVE SCHEME EXPLORER */}
+      {/* 4. PROPOSED INITIATIVES & SCHEMES EXPLORER */}
       <SchemeExplorer />
 
-      {/* 6. DIRECT-TO-COLLEGE DISBURSAL GUARANTEE (Fiduciary Flowchart) */}
+      {/* 5. INTERACTIVE SCHOLAR SCHEME MATCHING CALCULATOR */}
+      <EligibilityCalculator />
+
+      {/* 6. TRANSPARENCY: DIRECT-TO-COLLEGE DISBURSAL STANDARD */}
       <DirectDisbursalFlowchart />
 
-      {/* 7. STRATEGIC MISSION & THREE PILLARS OF TRANSFORMATION */}
-      <section id="mission" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
-        <Container size="default" className="space-y-14">
-          <SectionHeader
-            badge="Strategic Framework"
-            title="Three Strategic Pillars of Transformation"
-            subtitle="Targeted, auditable educational interventions designed to address foundational barriers faced by students across Odisha."
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card variant="elevated" className="p-8 space-y-4 bg-white border-[#0B3B24]/12">
-              <div className="w-12 h-12 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center">
-                <GraduationCap className="w-6 h-6" aria-hidden="true" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
-                1. Higher Education Grants
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Directly tackling post-secondary dropout rates. The Trust disburses degree tuition fee support straight to accredited colleges on behalf of verified meritorious scholars.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-8 space-y-4 bg-white border-[#0B3B24]/12">
-              <div className="w-12 h-12 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center">
-                <Compass className="w-6 h-6" aria-hidden="true" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
-                2. Academic Mentorship
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Financial support alone is incomplete without sustained guidance. Our model links students with university professors and industry leaders for structured career navigation.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-8 space-y-4 bg-white border-[#0B3B24]/12">
-              <div className="w-12 h-12 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center">
-                <School className="w-6 h-6" aria-hidden="true" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
-                3. Rural Learning Hubs
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Establishing community study points (Project Samarth) equipped with solar-backed power, high-speed study desks, and standard competitive entrance reference texts.
-              </p>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      {/* 8. FROM THE SECRETARIAT DESK: Institutional Vision & Quality Benchmark */}
+      {/* 7. FROM THE SECRETARIAT DESK: Institutional Vision & Fiduciary Safeguards */}
       <section className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default">
           <div className="bg-[#0B3B24] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
@@ -361,15 +349,15 @@ export default function HomePage() {
               <div className="lg:col-span-8 space-y-4">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#072617] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
                   <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
-                  <span>From The Secretariat Desk</span>
+                  <span>{HOMEPAGE_CONTENT.secretariat.badge}</span>
                 </div>
 
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                  “A Guarantee that Academic Excellence Transcends Economic Hardship.”
+                  {HOMEPAGE_CONTENT.secretariat.quote}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-sans">
-                  The Mahavir Trust was established on the fundamental premise that talent is ubiquitous, but opportunity is unevenly distributed. By instituting direct-to-college disbursements, impartial scrutiny committees, and continuous academic mentorship, we are laying the groundwork for a transparent, durable institution that will serve students across Odisha for generations.
+                  {HOMEPAGE_CONTENT.secretariat.paragraph}
                 </p>
 
                 <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-[#E4C88A]">
@@ -378,9 +366,9 @@ export default function HomePage() {
                     Fiduciary Board of Trustees
                   </span>
                   <span className="text-white/40" aria-hidden="true">•</span>
-                  <span>Bhubaneswar Secretariat</span>
+                  <span>Bhubaneswar Administrative Office</span>
                   <span className="text-white/40" aria-hidden="true">•</span>
-                  <span>Non-Profit Public Charitable Charter</span>
+                  <span>Indian Trusts Act Framework</span>
                 </div>
               </div>
 
@@ -390,14 +378,14 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h4 className="font-serif text-base font-bold text-white">
-                    Mahavir Trust Secretariat
+                    {HOMEPAGE_CONTENT.secretariat.officeTitle}
                   </h4>
                   <p className="text-[11px] text-[#E4C88A] font-semibold">
-                    Office of Public Disbursals & Compliance
+                    {HOMEPAGE_CONTENT.secretariat.officeSubtitle}
                   </p>
                 </div>
                 <p className="text-[10px] text-white/70 italic leading-snug">
-                  Established under the Indian Trusts Act framework. Statutory registration details will be gazetted upon regulatory formalisation.
+                  {HOMEPAGE_CONTENT.secretariat.statutoryNote}
                 </p>
                 <Link href="#contact-desk" className="w-full pt-1">
                   <Button variant="gold" size="sm" className="w-full justify-center text-xs">
@@ -410,7 +398,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 9. STUDENT SUPPORT & ENABLEMENT BEYOND FINANCIAL GRANTS */}
+      {/* 8. STUDENT SUPPORT & ENABLEMENT BEYOND FINANCIAL GRANTS */}
       <section id="support" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-14">
           <SectionHeader
@@ -421,56 +409,36 @@ export default function HomePage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card variant="elevated" className="p-6 space-y-3 bg-white border-[#0B3B24]/12">
-              <Users className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                1-on-1 Mentorship
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Scholars are paired with university faculty and professionals for monthly academic guidance throughout their degree.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-6 space-y-3 bg-white border-[#0B3B24]/12">
-              <BookOpen className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                Textbook & Reference Sets
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Annual allocations covering expensive engineering, medical, and graduate degree textbooks and digital journal access.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-6 space-y-3 bg-white border-[#0B3B24]/12">
-              <Compass className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                Career Readiness
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Practical workshops on resume writing, communication, and mock corporate placement interviews.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-6 space-y-3 bg-white border-[#0B3B24]/12">
-              <HeartHandshake className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                Community Service Ethos
-              </h3>
-              <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                Scholars are encouraged to contribute 2 hours weekly tutoring younger school pupils in their home villages.
-              </p>
-            </Card>
+            {HOMEPAGE_CONTENT.enablement.map((item, idx) => {
+              const IconComp =
+                ENABLEMENT_ICON_MAP[item.iconName as keyof typeof ENABLEMENT_ICON_MAP] || Users;
+              return (
+                <Card
+                  key={idx}
+                  variant="elevated"
+                  className="p-6 space-y-3 bg-white border-[#0B3B24]/12"
+                >
+                  <IconComp className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
+                  <h3 className="font-serif text-base font-bold text-[#0B3B24]">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                    {item.description}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* 10. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
+      {/* 9. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
       <section id="impact" className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Geographic Scope"
             title="Odisha State Outreach Vision"
-            subtitle="Targeting students from rural and semi-urban institutions across all 30 districts of Odisha."
+            subtitle="Targeting scholars from rural and semi-urban educational institutions across all 30 districts of Odisha."
             align="center"
           />
 
@@ -500,8 +468,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 11. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
-      <section id="participate" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
+      {/* 10. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
+      <section id="participate" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10 scroll-mt-16">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content */}
@@ -521,7 +489,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-[#0B3B24]">
-                      Academic & Professional Mentors
+                      Academic &amp; Professional Mentors
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
                       Dedicate 2 hours monthly to guide an undergraduate scholar in your discipline with entrance exams or career paths.
@@ -535,7 +503,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-[#0B3B24]">
-                      College & University Affiliations
+                      College &amp; University Affiliations
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
                       Degree colleges in Odisha can coordinate with our desk for student grant endorsements and fee verification.
@@ -562,7 +530,7 @@ export default function HomePage() {
             {/* Right: Volunteer Form */}
             <div className="lg:col-span-6 bg-[#F4EFE6] p-8 sm:p-10 rounded-xs border border-[#0B3B24]/15 shadow-sm">
               <h3 className="font-serif text-2xl font-bold text-[#0B3B24] mb-1">
-                Register as a Mentor or Volunteer [Proposed Initiative]
+                Volunteer &amp; Mentor Registry [Proposed Initiative]
               </h3>
               <p className="text-xs text-[#4A5568] mb-6 font-sans">
                 Submit your academic or professional background to connect with our Secretariat Coordinator.
@@ -592,6 +560,8 @@ export default function HomePage() {
                         name: "",
                         email: "",
                         phone: "",
+                        district: "Khordha (Bhubaneswar)",
+                        qualification: "",
                         role: "Academic & Career Mentorship",
                         notes: "",
                       });
@@ -642,6 +612,23 @@ export default function HomePage() {
                     />
                   </div>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <Select
+                      id="vol-district"
+                      label="Home District (Odisha) *"
+                      value={volData.district}
+                      onChange={(e) => setVolData({ ...volData, district: e.target.value })}
+                      options={ODISHA_DISTRICTS_LIST.map((d) => ({ value: d, label: d }))}
+                    />
+                    <Input
+                      id="vol-qualification"
+                      label="Highest Qualification"
+                      value={volData.qualification}
+                      onChange={(e) => setVolData({ ...volData, qualification: e.target.value })}
+                      placeholder="e.g. M.Tech, Ph.D, B.Ed"
+                    />
+                  </div>
+
                   <Select
                     id="vol-role"
                     label="Area of Participation *"
@@ -689,7 +676,7 @@ export default function HomePage() {
                       htmlFor="vol-consent-homepage"
                       className="text-[11px] text-[#4A5568] leading-tight select-none font-sans"
                     >
-                      I agree to the draft voluntary service principles and student safeguarding guidelines (subject to trustee ratification). For comprehensive proposed tracks and district scoping, view our{" "}
+                      I voluntarily declare my intent to participate in academic mentorship or community volunteering in accordance with draft safeguarding and ethical conduct guidelines. For comprehensive tracks, review our{" "}
                       <Link
                         href="/volunteer"
                         className="text-[#072617] font-semibold underline hover:text-[#C5A059]"
@@ -715,13 +702,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 12. PUBLIC SECRETARIAT INQUIRY DESK */}
-      <section id="contact-desk" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
+      {/* 11. PUBLIC SECRETARIAT INQUIRY DESK */}
+      <section id="contact-desk" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10 scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Direct Public Access"
-            title="Secretariat Inquiry & Scholar Guidance Desk"
-            subtitle="Connect directly with our administration regarding upcoming scholarship schedules, eligibility documentation, or institutional affiliations."
+            title="Secretariat Inquiry &amp; Scholar Guidance Desk"
+            subtitle="Connect directly with our administration regarding proposed scholarship schemes, eligibility documentation, or institutional affiliations."
             align="center"
             className="mb-12"
           />
@@ -739,7 +726,7 @@ export default function HomePage() {
                   </p>
                 )}
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed max-w-md mx-auto font-sans">
-                  Thank you for reaching out to MAHAVIR TRUST. Our Secretariat Coordinator has logged your query and will dispatch an official advisory via email within 2 business days.
+                  Thank you for reaching out to MAHAVIR TRUST. Our Secretariat Coordinator has logged your query and will review your submission accordingly.
                 </p>
                 <Button
                   variant="gold"
@@ -750,7 +737,7 @@ export default function HomePage() {
                       name: "",
                       email: "",
                       phone: "",
-                      district: "",
+                      district: "Khordha (Bhubaneswar)",
                       category: "Scholarship Guidance",
                       message: "",
                     });
@@ -803,13 +790,12 @@ export default function HomePage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Input
+                  <Select
                     id="inquiry-district"
                     label="Home District (Odisha) *"
-                    required
                     value={inquiryData.district}
                     onChange={(e) => setInquiryData({ ...inquiryData, district: e.target.value })}
-                    placeholder="e.g. Khordha, Cuttack"
+                    options={ODISHA_DISTRICTS_LIST.map((d) => ({ value: d, label: d }))}
                   />
                   <Select
                     id="inquiry-category"
@@ -857,7 +843,7 @@ export default function HomePage() {
                 </Button>
 
                 <p className="text-[11px] text-[#4A5568] text-center italic font-sans">
-                  Zero processing fees. Protected by automated rate limiting and institutional duplicate prevention.
+                  Zero processing fees. Protected by institutional security standards and rate limiting.
                 </p>
               </form>
             )}
@@ -865,8 +851,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 13. PHILANTHROPIC COMMITMENT & DONOR CALL TO ACTION */}
-      <section id="donate" className="py-20 bg-[#072617] text-[#EDE6D8] border-t border-[#C5A059]/20">
+      {/* 12. PHILANTHROPIC COMMITMENT & DONOR CALL TO ACTION */}
+      <section id="donate" className="py-20 bg-[#072617] text-[#EDE6D8] border-t border-[#C5A059]/20 scroll-mt-16">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <Badge variant="gold-dark">Philanthropic Commitment</Badge>
@@ -874,16 +860,16 @@ export default function HomePage() {
               Invest in a Scholar’s Future. Transform an Entire Family.
             </h2>
             <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans">
-              Every contribution to MAHAVIR TRUST is channeled toward verified institutional tuition fees and student enablement under our direct-to-college disbursement policy.
+              Every future grant supported by MAHAVIR TRUST is dedicated strictly toward accredited higher education tuition fees and scholar enablement under our direct-to-college disbursement policy.
             </p>
 
             <div className="p-5 rounded-xs bg-[#0B3B24]/80 border border-[#C5A059]/30 text-left max-w-xl mx-auto space-y-2">
               <div className="flex items-center gap-2 text-[#E4C88A] text-xs font-bold uppercase tracking-wider">
                 <AlertCircle className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                <span>Pre-Launch Regulatory Notice</span>
+                <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
               </div>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Online payment gateways and Section 80G tax exemption receipts will be activated strictly following formal statutory gazette notification. Pledges may be communicated directly to the Secretariat desk.
+                {HOMEPAGE_CONTENT.donorNotice.description}
               </p>
             </div>
 

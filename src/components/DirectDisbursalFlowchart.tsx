@@ -70,13 +70,13 @@ export function DirectDisbursalFlowchart() {
             variant="gold-dark"
             icon={<Lock className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
           >
-            Zero-Cash Policy • Complete Transparency
+            Zero-Cash Policy • Fiduciary Integrity
           </Badge>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Direct-to-College Disbursal Guarantee
+            Direct-to-College Disbursal Standard
           </h2>
           <p className="text-sm sm:text-base text-white/80 leading-relaxed font-sans">
-            MAHAVIR TRUST strictly eliminates cash intermediaries. Every rupee granted toward tuition assistance is disbursed directly to accredited educational institutions on behalf of verified scholars.
+            MAHAVIR TRUST strictly eliminates cash intermediaries. Under our proposed governance standard, approved tuition fee grants will be disbursed directly to accredited educational institutions on behalf of verified scholars.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export function DirectDisbursalFlowchart() {
               No Intermediary Agents. Zero Processing Commissions.
             </h4>
             <p className="text-xs text-white/75 max-w-2xl leading-relaxed font-sans">
-              MAHAVIR TRUST does not authorize any commercial educational consultants, brokers, or cash collection centers. All scholarship inquiries are managed exclusively via our official Secretariat Desk.
+              MAHAVIR TRUST does not authorize commercial consultants, brokers, or cash collection agents. All scholarship inquiries and applications are managed exclusively via our official Secretariat Desk.
             </p>
           </div>
 

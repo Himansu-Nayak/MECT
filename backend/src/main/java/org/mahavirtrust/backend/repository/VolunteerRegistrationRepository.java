@@ -11,4 +11,5 @@ public interface VolunteerRegistrationRepository extends JpaRepository<Volunteer
     List<VolunteerRegistration> findByEmailOrderByIdDesc(String email);
     List<VolunteerRegistration> findByEmailOrderByCreatedAtDesc(String email);
     List<VolunteerRegistration> findByDistrict(String district);
+    long countByVerificationStatus(String verificationStatus);
 }

@@ -11,6 +11,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     | "neutral"
     | "success"
     | "warning"
+    | "danger"
     | "outline";
   size?: "sm" | "md" | "lg";
   icon?: React.ReactNode;
@@ -34,6 +35,7 @@ export function Badge({
     neutral: "bg-[#EDE6D8]/60 text-[#1C2421] border border-[#0B3B24]/15 font-medium",
     success: "bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold",
     warning: "bg-amber-50 text-amber-900 border border-amber-300 font-semibold",
+    danger: "bg-red-50 text-red-800 border border-red-300 font-semibold",
     outline: "bg-transparent text-[#0B3B24] border border-[#0B3B24]/30 font-medium",
   };
 
