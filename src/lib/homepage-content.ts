@@ -1,11 +1,9 @@
 /**
- * MAHAVIR TRUST - Homepage Specific Content Configuration
+ * MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)
+ * Master Homepage Content Configuration
  * 
- * Factual Accuracy & Institutional Credibility Guidelines:
- * - Differentiates proposed initiatives from ratified operations.
- * - Accurately states regulatory status under the Indian Trusts Act framework.
- * - Does not claim gazetted Section 12A/80G exemptions prior to statutory issuance.
- * - Replaces ambiguous coverage figures with transparent geographic mandates.
+ * Verified against 2013 Registered Trust Deed (Doc No. 40311302194),
+ * Income Tax Section 12A/80G Form 10AC, and MCA CSR-1 (CSR00081063).
  */
 
 export interface MetricCard {
@@ -24,46 +22,50 @@ export interface PillarCard {
 export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
-    badge: "Public Charitable Educational Initiative • Odisha, India",
-    headline: "Empowering Odisha’s Deserving Scholars Through Fiduciary Educational Grants.",
+    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
+    headline: "Empowering Odisha Through Education, Rural Skilling & Fiduciary Philanthropy.",
     subtext:
-      "Mahaveer Educational & Charitable Trust (MECT) is established to advance higher education access across Odisha through a strict direct-to-college tuition grant model, academic mentorship, and community study facilities.",
+      "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable registered public charitable trust dedicated to higher education access, rural women's vocational tailoring, safe drinking water, and community welfare across Odisha.",
     notice:
-      "Public charitable trust initiative under Indian Trusts Act framework. Direct-to-college institutional remissions with zero cash intermediaries.",
+      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A & 80G certified (50% Tax Exemption for Donors). MCA CSR-1 Reg: CSR00081063.",
     metrics: [
       {
-        value: "30 Districts",
-        label: "Statewide Mandate",
-        subtext: "Phased cluster outreach across Odisha",
+        value: "12+ Years",
+        label: "Civic Service",
+        subtext: "Registered Trust Deed (2013, Balangir)",
       },
       {
-        value: "100% Direct",
-        label: "College Disbursal",
-        subtext: "Remitted directly to institution bursars",
+        value: "350+",
+        label: "Students Supported",
+        subtext: "Free remedial coaching & study support",
       },
       {
-        value: "0 Cash",
-        label: "Intermediaries",
-        subtext: "Zero cash handling & no commercial agents",
+        value: "120+",
+        label: "Women Skilled",
+        subtext: "Certified tailoring & livelihood tooling",
       },
       {
-        value: "Annual Audit",
-        label: "Fiduciary Standard",
-        subtext: "Independent Chartered Accountant scrutiny",
+        value: "10,000+",
+        label: "Citizens Reached",
+        subtext: "Jal Seva drinking water & emergency relief",
       },
     ] as MetricCard[],
     ctas: {
       primary: {
-        text: "Explore Proposed Schemes",
-        href: "#programs",
+        text: "Donate with 80G Tax Benefit",
+        href: "/donate",
       },
       secondary: {
-        text: "Check Matching Criteria",
-        href: "#eligibility-calculator",
+        text: "Explore Civic Programmes",
+        href: "/programmes",
       },
       governance: {
-        text: "Fiduciary Charter",
+        text: "Fiduciary Charter & Board",
         href: "/governance",
+      },
+      csr: {
+        text: "Corporate CSR Gateway",
+        href: "/csr-partnerships",
       },
     },
   },
@@ -71,33 +73,33 @@ export const HOMEPAGE_CONTENT = {
   // Marquee endorsements & standards
   standards: [
     {
-      title: "Statewide Scope",
-      subtitle: "Phased Outreach Across Odisha",
+      title: "12+ Years Heritage",
+      subtitle: "Registered Trust Deed (2013, Balangir)",
       iconName: "Landmark",
     },
     {
-      title: "Direct Disbursement",
-      subtitle: "Accredited College Accounts",
-      iconName: "Building",
-    },
-    {
-      title: "Fiduciary Stewardship",
-      subtitle: "Indian Trusts Act Framework",
+      title: "Section 80G Certified",
+      subtitle: "50% Income Tax Exemption for Donors",
       iconName: "ShieldCheck",
     },
     {
-      title: "Need-Cum-Merit",
-      subtitle: "Auditable Blind-Appraisal Criteria",
+      title: "MCA CSR-1 Approved",
+      subtitle: "Schedule VII Eligible (CSR00081063)",
+      iconName: "Building2",
+    },
+    {
+      title: "NITI Aayog Darpan",
+      subtitle: "Unique ID: OR/2024/0466491",
       iconName: "Award",
     },
     {
-      title: "Institutional Liaison",
-      subtitle: "Government & Aided Degree Colleges",
+      title: "Direct College Disbursal",
+      subtitle: "100% Zero Cash Intermediary Policy",
       iconName: "School",
     },
     {
-      title: "Zero Intermediaries",
-      subtitle: "Strict Anti-Commission Policy",
+      title: "Honorary Fiduciary Board",
+      subtitle: "Non-Remunerative Governance (Clause XVI)",
       iconName: "CheckCircle2",
     },
   ],
@@ -106,37 +108,44 @@ export const HOMEPAGE_CONTENT = {
   pillars: [
     {
       number: "01",
-      title: "Higher Education Tuition Grants",
-      tag: "Flagship Support",
+      title: "Remedial Rural Education",
+      tag: "Shiksha Setu",
       description:
-        "Tackling post-secondary dropouts by covering certified tuition fees directly through RTGS/NEFT to accredited degree colleges in Odisha on behalf of verified scholars.",
+        "Free tuition, exam coaching, and scholastic books for 350+ underserved tribal and rural students in Balangir and Puintala blocks to bridge secondary dropout rates.",
     },
     {
       number: "02",
-      title: "Academic & Career Mentorship",
-      tag: "Sustained Guidance",
+      title: "Women's Vocational Livelihood",
+      tag: "Swavalamban",
       description:
-        "Pairing enrolled scholars with university educators and experienced professionals for structured monthly career planning and competitive examination guidance.",
+        "Comprehensive 6-month tailoring, embroidery, and handicraft training empowering 120+ rural women toward financial self-reliance and self-help group entrepreneurship.",
     },
     {
       number: "03",
-      title: "Project Samarth Community Study Hubs",
-      tag: "Learning Spaces",
+      title: "Jal Seva Safe Drinking Water",
+      tag: "Jal & Arogya",
       description:
-        "Establishing quiet, solar-backed community study points in cluster districts equipped with high-yield competitive entrance reference texts.",
+        "Installation of clean drinking water points, summer hydration kiosks, and community sanitation camps serving over 10,000 citizens during peak summer months.",
+    },
+    {
+      number: "04",
+      title: "Jan Ahar Destitute Nutrition",
+      tag: "Annadaan",
+      description:
+        "Subsidized and free nutritious meal distribution for impoverished patients and attendants at Balangir District Hospital and destitute daily wage earners.",
     },
   ] as PillarCard[],
 
-  // From the Secretariat Desk
+  // From the Managing Trustee's Desk
   secretariat: {
-    badge: "From The Secretariat Desk",
-    quote: "“A Commitment That Merit and Aspiration Shall Never Be Barred by Economic Hardship.”",
+    badge: "From The Managing Trustee's Desk",
+    quote: "“A 12-Year Commitment That Educational Dignity & Civic Welfare Shall Reach the Grassroots of Odisha.”",
     paragraph:
-      "MAHAVIR TRUST was conceived on the principle that educational opportunity must be universally accessible to every deserving student in Odisha. By formalising objective blind appraisal, direct college bursar disbursements, and transparent audit trails, our framework is designed to provide enduring, auditable stewardship.",
-    officeTitle: "Secretariat Administration",
-    officeSubtitle: "Public Coordination & Grant Scrutiny Desk",
+      "Mahaveer Educational & Charitable Trust was founded in 2013 with a resolute conviction: genuine social transformation requires lasting institutional empowerment, not transient charity. Whether through direct remedial tutoring in rural Balangir, equipping women with sewing machines and tailoring trade certificates, or ensuring clean drinking water, our mission remains grounded in transparency, non-remunerative service, and auditable accountability.",
+    officeTitle: "Er. Japabandhu Kampa",
+    officeSubtitle: "Settler Founder & Permanent Managing Trustee",
     statutoryNote:
-      "Formulated under public charitable trust deed principles. Statutory exemption credentials (Sec. 12A/80G) will be gazetted upon regulatory formalisation.",
+      "Registered under Indian Trusts Act (Deed No. 40311302194, Balangir). 12A URN: AADTM5474FE20231 • 80G URN: AADTM5474FF20241 • MCA CSR-1: CSR00081063.",
   },
 
   // Beyond financial grants enablement
@@ -169,9 +178,8 @@ export const HOMEPAGE_CONTENT = {
 
   // Donor notice
   donorNotice: {
-    title: "Pre-Launch Statutory Notice",
+    title: "Section 80G Tax Exemption Notice",
     description:
-      "Online monetary payment gateways and Section 80G tax deduction receipts will be activated strictly following formal statutory gazette notification. At present, institutional inquiries and voluntary pledge declarations may be communicated to our Secretariat.",
+      "All monetary contributions to Mahaveer Educational & Charitable Trust are eligible for a 50% deduction on taxable income under Section 80G of the Income Tax Act, 1961 (Order URN: AADTM5474FF20241, issued by IT Dept CPC). Direct bank RTGS/NEFT transfers are acknowledged with stamped official tax certificates.",
   },
 };
-

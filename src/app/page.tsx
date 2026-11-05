@@ -36,10 +36,16 @@ import {
   Landmark,
   Shield,
   FileCheck,
+  Heart,
+  Briefcase,
+  Scissors,
+  Droplets,
+  Utensils,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
 
 const ODISHA_DISTRICTS_LIST = [
+  "Balangir",
   "Khordha (Bhubaneswar)",
   "Cuttack",
   "Ganjam (Berhampur)",
@@ -52,7 +58,6 @@ const ODISHA_DISTRICTS_LIST = [
   "Jajpur",
   "Kalahandi",
   "Koraput",
-  "Bolangir",
   "Dhenkanal",
   "Angul",
   "Other Odisha District",
@@ -65,6 +70,13 @@ const ENABLEMENT_ICON_MAP = {
   HeartHandshake,
 };
 
+const PILLAR_ICON_MAP: Record<string, React.ElementType> = {
+  "01": GraduationCap,
+  "02": Scissors,
+  "03": Droplets,
+  "04": Utensils,
+};
+
 export default function HomePage() {
   // Public Secretariat Inquiry State
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
@@ -75,7 +87,7 @@ export default function HomePage() {
     name: "",
     email: "",
     phone: "",
-    district: "Khordha (Bhubaneswar)",
+    district: "Balangir",
     category: "Scholarship Guidance",
     message: "",
   });
@@ -120,7 +132,7 @@ export default function HomePage() {
     name: "",
     email: "",
     phone: "",
-    district: "Khordha (Bhubaneswar)",
+    district: "Balangir",
     qualification: "",
     role: "Academic & Career Mentorship",
     notes: "",
@@ -149,7 +161,7 @@ export default function HomePage() {
           volData.notes.trim() ||
           `Volunteer registration via Homepage Desk for ${volData.role} in ${volData.district}.`,
         consentDeclared: true,
-        consentVersion: "v2.3",
+        consentVersion: "v2.6",
       });
       setVolReferenceId(response.referenceId || null);
       setVolSubmitted(true);
@@ -166,9 +178,9 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION: Institutional Prestige & Factual Mission */}
-      <section className="relative overflow-hidden bg-[#072617] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30">
-        {/* Subtle geometric lighting */}
+      {/* 1. HERO SECTION: Institutional Prestige & Factual 12-Year Mission */}
+      <section className="relative overflow-hidden bg-[#0A192F] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
+        {/* Subtle geometric grid background */}
         <div
           className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
           aria-hidden="true"
@@ -178,14 +190,14 @@ export default function HomePage() {
           aria-hidden="true"
         />
         <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#165B38]/30 rounded-full blur-3xl pointer-events-none"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#1E3A8A]/30 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <Container size="default">
           <div className="max-w-4xl mx-auto text-center space-y-7">
-            {/* Mission Badge */}
-            <div className="flex justify-center">
+            {/* Mission & Verification Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
               <Badge
                 variant="gold-dark"
                 size="md"
@@ -193,6 +205,10 @@ export default function HomePage() {
               >
                 {HOMEPAGE_CONTENT.hero.badge}
               </Badge>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xs bg-[#15803D]/20 text-[#86EFAC] text-xs font-semibold border border-[#15803D]/40">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#86EFAC]" aria-hidden="true" />
+                <span>80G Tax Exempt (50% Deduction)</span>
+              </span>
             </div>
 
             {/* Grand Editorial Headline */}
@@ -205,12 +221,18 @@ export default function HomePage() {
               {HOMEPAGE_CONTENT.hero.subtext}
             </p>
 
-            {/* Structured Dual CTAs (One Primary + One Secondary) */}
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+            {/* Structured Action Buttons */}
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
               <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
-                <Button variant="gold" size="lg" className="shadow-md">
+                <Button variant="gold" size="lg" className="shadow-lg font-bold">
+                  <Heart className="w-4 h-4 mr-1.5 fill-current" aria-hidden="true" />
                   <span>{HOMEPAGE_CONTENT.hero.ctas.primary.text}</span>
-                  <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
+                </Button>
+              </Link>
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
+                <Button variant="dark-outline" size="lg" className="font-semibold !border-[#C5A059]/60 !text-[#E4C88A] hover:!bg-[#C5A059]/10">
+                  <Briefcase className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
+                  <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
                 </Button>
               </Link>
               <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
@@ -224,7 +246,7 @@ export default function HomePage() {
             {/* Quiet Governance Link & Notice */}
             <div className="pt-2 space-y-1">
               <p className="text-xs text-white/75 font-sans">
-                Operating under transparent public trust deed standards. Review our{" "}
+                Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
                 <Link
                   href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
                   className="text-[#E4C88A] underline hover:text-white transition-colors font-medium"
@@ -233,7 +255,7 @@ export default function HomePage() {
                 </Link>
                 .
               </p>
-              <p className="text-[11px] text-white/55 italic">
+              <p className="text-[11px] text-white/55">
                 {HOMEPAGE_CONTENT.hero.notice}
               </p>
             </div>
@@ -249,7 +271,7 @@ export default function HomePage() {
                 <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">
                   {metric.value}
                 </span>
-                <p className="text-xs uppercase font-bold tracking-wider text-white/90">
+                <p className="text-xs uppercase font-bold tracking-wider text-white/90 font-sans">
                   {metric.label}
                 </p>
                 <p className="text-[11px] text-white/60 font-sans">
@@ -261,84 +283,87 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 2. INSTITUTIONAL STANDARDS MARQUEE */}
+      {/* 2. INSTITUTIONAL ACCREDITATION MARQUEE */}
       <InstitutionalMarquee />
 
-      {/* 3. ABOUT STEWARDSHIP & THREE CORE PILLARS */}
-      <section id="about" className="py-20 md:py-28 bg-[#FDFBF7]">
+      {/* 3. FOUR CORE MISSION PILLARS */}
+      <section id="programs" className="py-20 md:py-28 bg-[#FDFBF7]">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-              <Badge variant="forest">Stewardship &amp; Purpose</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24] tracking-tight leading-snug">
-                Founded on the Conviction that Higher Education is a Universal Human Right.
+              <Badge variant="forest">Grassroots Impact &amp; Purpose</Badge>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] tracking-tight leading-snug">
+                12 Years of Ground-Level Transformation Across Odisha.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MAHAVIR TRUST was conceived to empower aspirational youth from economically disadvantaged families across Odisha. We believe that true institutional philanthropy is measured by scholars enabled to complete their degrees with dignity and financial security.
+                Mahaveer Educational &amp; Charitable Trust was conceived in 2013 to advance educational access and community self-reliance. Over the past decade, our operations have bridged higher secondary dropout gaps for rural youth, equipped women with tailoring machines and trade certificates, and provided emergency water and food relief.
               </p>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Our model combines direct college tuition grants with persistent 1-to-1 faculty mentorship, creating verified pathways into engineering, pure sciences, commerce, and public administrative services.
+                Every programme operates under a transparent, auditable zero-cash policy with 100% direct disbursals and honorary non-remunerative trustee stewardship.
               </p>
 
-              <div className="pt-2 flex flex-wrap gap-4">
+              <div className="pt-2 flex flex-wrap gap-3.5">
                 <Link href="/about">
                   <Button variant="secondary" size="md">
-                    <span>Read Our Heritage</span>
+                    <span>12-Year Heritage</span>
                     <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Button>
                 </Link>
-                <Link href="/governance">
+                <Link href="/statutory-disclosures">
                   <Button variant="outline" size="md">
-                    <span>Fiduciary Charter</span>
-                    <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
+                    <ShieldCheck className="w-4 h-4 mr-1 text-[#C5A059]" aria-hidden="true" />
+                    <span>Statutory Vault</span>
                   </Button>
                 </Link>
               </div>
             </div>
 
-            {/* Right: Pillars Grid */}
+            {/* Right: Pillars Grid (4 Core Pillars) */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {HOMEPAGE_CONTENT.pillars.map((pillar) => (
-                <Card
-                  key={pillar.number}
-                  variant="elevated"
-                  className="space-y-3 p-6 border-[#0B3B24]/12 hover:border-[#C5A059] transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-serif font-bold text-2xl text-[#C5A059]">
-                      {pillar.number}
-                    </span>
-                    <Badge variant="contrast-gold" size="sm">
-                      {pillar.tag}
-                    </Badge>
-                  </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                    {pillar.description}
-                  </p>
-                </Card>
-              ))}
+              {HOMEPAGE_CONTENT.pillars.map((pillar) => {
+                const IconComponent = PILLAR_ICON_MAP[pillar.number] || Award;
+                return (
+                  <Card
+                    key={pillar.number}
+                    variant="elevated"
+                    className="space-y-3 p-6 border-[#0A192F]/12 hover:border-[#C5A059] transition-all duration-300 bg-white shadow-xs"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="w-9 h-9 rounded-xs bg-[#0A192F]/5 border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059]">
+                        <IconComponent className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+                      </div>
+                      <Badge variant="contrast-gold" size="sm">
+                        {pillar.tag}
+                      </Badge>
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                      {pillar.description}
+                    </p>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 4. PROPOSED INITIATIVES & SCHEMES EXPLORER */}
+      {/* 4. SCHEME EXPLORER */}
       <SchemeExplorer />
 
-      {/* 5. INTERACTIVE SCHOLAR SCHEME MATCHING CALCULATOR */}
+      {/* 5. INTERACTIVE ELIGIBILITY CALCULATOR */}
       <EligibilityCalculator />
 
-      {/* 6. TRANSPARENCY: DIRECT-TO-COLLEGE DISBURSAL STANDARD */}
+      {/* 6. TRANSPARENCY: DIRECT DISBURSAL STANDARD */}
       <DirectDisbursalFlowchart />
 
-      {/* 7. FROM THE SECRETARIAT DESK: Institutional Vision & Fiduciary Safeguards */}
-      <section className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
+      {/* 7. FROM THE MANAGING TRUSTEE'S DESK */}
+      <section className="py-20 bg-[#F4EFE6] border-b border-[#0A192F]/10">
         <Container size="default">
-          <div className="bg-[#0B3B24] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
+          <div className="bg-[#0A192F] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
             {/* Ambient gold glow */}
             <div
               className="absolute top-0 right-0 w-80 h-80 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none"
@@ -347,7 +372,7 @@ export default function HomePage() {
 
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#072617] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#0F172A] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
                   <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
                   <span>{HOMEPAGE_CONTENT.secretariat.badge}</span>
                 </div>
@@ -360,21 +385,23 @@ export default function HomePage() {
                   {HOMEPAGE_CONTENT.secretariat.paragraph}
                 </p>
 
-                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-[#E4C88A]">
+                <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#E4C88A]">
                   <span className="flex items-center gap-1.5 font-serif font-bold">
                     <ShieldCheck className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    Fiduciary Board of Trustees
+                    Honorary Board of Trustees
                   </span>
                   <span className="text-white/40" aria-hidden="true">•</span>
-                  <span>Bhubaneswar Administrative Office</span>
+                  <span>Registered Office: Balangir</span>
                   <span className="text-white/40" aria-hidden="true">•</span>
-                  <span>Indian Trusts Act Framework</span>
+                  <span>Corporate Secretariat: Bhubaneswar</span>
+                  <span className="text-white/40" aria-hidden="true">•</span>
+                  <span>Indian Trusts Act, 1882</span>
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#072617] rounded-xs border border-[#C5A059]/40 text-center space-y-3.5 shadow-md">
-                <div className="w-14 h-14 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] shadow-inner">
-                  <GraduationCap className="w-7 h-7" aria-hidden="true" />
+              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#0F172A] rounded-xs border border-[#C5A059]/40 text-center space-y-3.5 shadow-md">
+                <div className="w-14 h-14 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] shadow-inner font-serif font-bold text-xl">
+                  JK
                 </div>
                 <div>
                   <h4 className="font-serif text-base font-bold text-white">
@@ -387,9 +414,9 @@ export default function HomePage() {
                 <p className="text-[10px] text-white/70 italic leading-snug">
                   {HOMEPAGE_CONTENT.secretariat.statutoryNote}
                 </p>
-                <Link href="#contact-desk" className="w-full pt-1">
+                <Link href="/governance" className="w-full pt-1">
                   <Button variant="gold" size="sm" className="w-full justify-center text-xs">
-                    Connect with Secretariat Desk
+                    View Fiduciary Charter
                   </Button>
                 </Link>
               </div>
@@ -398,8 +425,62 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 8. STUDENT SUPPORT & ENABLEMENT BEYOND FINANCIAL GRANTS */}
-      <section id="support" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
+      {/* 8. CORPORATE CSR PARTNERSHIP HUB (SCHEDULE VII) */}
+      <section id="csr" className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+        <Container size="default">
+          <div className="bg-gradient-to-br from-[#0A192F] to-[#1E3A8A] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8 space-y-4">
+                <Badge variant="gold-dark" size="sm">
+                  MCA CSR-1 Registration: CSR00081063
+                </Badge>
+                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+                  Turnkey Corporate Social Responsibility (CSR) Partnerships in Odisha
+                </h2>
+                <p className="text-sm text-white/85 leading-relaxed font-sans">
+                  Mahaveer Educational &amp; Charitable Trust is fully certified under Section 135 of the Companies Act, 2013 and Ministry of Corporate Affairs norms. We partner with public and private sector enterprises to design, implement, and audit impactful CSR initiatives across Schedule VII focus areas:
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-white/90 pt-1 font-sans">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <span>Promoting Education &amp; Remedial Coaching</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <span>Women's Vocational Livelihood Training</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <span>Safe Drinking Water &amp; Sanitation (Jal Seva)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <span>Independent Audits &amp; Utilization Certificates</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
+                <Link href="/csr-partnerships" className="w-full">
+                  <Button variant="gold" size="lg" className="w-full justify-center shadow-md font-bold">
+                    <Briefcase className="w-4 h-4 mr-2" aria-hidden="true" />
+                    <span>CSR Gateway &amp; Proposals</span>
+                  </Button>
+                </Link>
+                <Link href="/statutory-disclosures" className="w-full">
+                  <Button variant="dark-outline" size="md" className="w-full justify-center text-xs">
+                    <FileCheck className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
+                    <span>Download CSR-1 Registration</span>
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 9. STUDENT SUPPORT BEYOND FINANCIAL GRANTS */}
+      <section id="support" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0A192F]/10">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Comprehensive Enablement"
@@ -416,10 +497,10 @@ export default function HomePage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 space-y-3 bg-white border-[#0B3B24]/12"
+                  className="p-6 space-y-3 bg-white border-[#0A192F]/12 shadow-xs"
                 >
-                  <IconComp className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-                  <h3 className="font-serif text-base font-bold text-[#0B3B24]">
+                  <IconComp className="w-6 h-6 text-[#0A192F]" aria-hidden="true" />
+                  <h3 className="font-serif text-base font-bold text-[#0A192F]">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -432,13 +513,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 9. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
-      <section id="impact" className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
+      {/* 10. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
+      <section id="impact" className="py-20 bg-[#FDFBF7] border-b border-[#0A192F]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Geographic Scope"
             title="Odisha State Outreach Vision"
-            subtitle="Targeting scholars from rural and semi-urban educational institutions across all 30 districts of Odisha."
+            subtitle="Targeting scholars, rural women, and underserved communities from educational institutions across all 30 districts of Odisha."
             align="center"
           />
 
@@ -447,7 +528,7 @@ export default function HomePage() {
               <Card
                 key={idx}
                 variant="accent"
-                className="p-8 space-y-4 bg-white flex flex-col justify-between shadow-xs"
+                className="p-8 space-y-4 bg-white flex flex-col justify-between shadow-xs border-[#0A192F]/10"
               >
                 <div className="space-y-3">
                   <Badge variant="contrast-gold" size="sm">
@@ -457,8 +538,8 @@ export default function HomePage() {
                     “{item.statement}”
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#0B3B24]/10">
-                  <p className="text-xs font-bold text-[#0B3B24]">
+                <div className="pt-4 border-t border-[#0A192F]/10">
+                  <p className="text-xs font-bold text-[#0A192F] font-sans">
                     {item.authorNote}
                   </p>
                 </div>
@@ -468,27 +549,27 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 10. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
-      <section id="participate" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10 scroll-mt-16">
+      {/* 11. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
+      <section id="participate" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0A192F]/10 scroll-mt-16">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6">
-              <Badge variant="forest">Community Participation</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24]">
+              <Badge variant="forest">Civic Mentorship &amp; Volunteering</Badge>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F]">
                 Join the Cause as a Mentor, Volunteer, or Institutional Partner.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MAHAVIR TRUST welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access in Odisha.
+                MAHAVIR TRUST welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access and rural welfare in Odisha.
               </p>
 
               <div className="space-y-4 pt-2">
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
                     <Users className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
+                    <h3 className="text-sm font-bold text-[#0A192F]">
                       Academic &amp; Professional Mentors
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
@@ -498,11 +579,11 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
                     <Building2 className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
+                    <h3 className="text-sm font-bold text-[#0A192F]">
                       College &amp; University Affiliations
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
@@ -512,12 +593,12 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
                     <BookOpen className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
-                      Project Samarth Study Hub Stewards
+                    <h3 className="text-sm font-bold text-[#0A192F]">
+                      Community Learning Hub Stewards
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
                       Assist in managing community reference book collections and study rooms in cluster districts.
@@ -528,16 +609,16 @@ export default function HomePage() {
             </div>
 
             {/* Right: Volunteer Form */}
-            <div className="lg:col-span-6 bg-[#F4EFE6] p-8 sm:p-10 rounded-xs border border-[#0B3B24]/15 shadow-sm">
-              <h3 className="font-serif text-2xl font-bold text-[#0B3B24] mb-1">
-                Volunteer &amp; Mentor Registry [Proposed Initiative]
+            <div className="lg:col-span-6 bg-white p-8 sm:p-10 rounded-xs border border-[#0A192F]/15 shadow-sm">
+              <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-1">
+                Volunteer &amp; Mentor Registry
               </h3>
               <p className="text-xs text-[#4A5568] mb-6 font-sans">
                 Submit your academic or professional background to connect with our Secretariat Coordinator.
               </p>
 
               {volSubmitted ? (
-                <div className="p-6 bg-[#0B3B24] text-white rounded-xs space-y-3 text-center animate-in fade-in">
+                <div className="p-6 bg-[#0A192F] text-white rounded-xs space-y-3 text-center animate-in fade-in">
                   <CheckCircle2 className="w-10 h-10 text-[#E4C88A] mx-auto" aria-hidden="true" />
                   <h4 className="font-serif text-xl font-bold">
                     Registration Recorded
@@ -560,7 +641,7 @@ export default function HomePage() {
                         name: "",
                         email: "",
                         phone: "",
-                        district: "Khordha (Bhubaneswar)",
+                        district: "Balangir",
                         qualification: "",
                         role: "Academic & Career Mentorship",
                         notes: "",
@@ -670,16 +751,16 @@ export default function HomePage() {
                       required
                       checked={volConsent}
                       onChange={(e) => setVolConsent(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded-xs border-[#0B3B24]/30 text-[#072617] focus:ring-[#C5A059]"
+                      className="mt-0.5 h-4 w-4 rounded-xs border-[#0A192F]/30 text-[#0A192F] focus:ring-[#C5A059]"
                     />
                     <label
                       htmlFor="vol-consent-homepage"
                       className="text-[11px] text-[#4A5568] leading-tight select-none font-sans"
                     >
-                      I voluntarily declare my intent to participate in academic mentorship or community volunteering in accordance with draft safeguarding and ethical conduct guidelines. For comprehensive tracks, review our{" "}
+                      I voluntarily declare my intent to participate in academic mentorship or community volunteering in accordance with safeguarding and ethical conduct guidelines. For comprehensive tracks, review our{" "}
                       <Link
                         href="/volunteer"
-                        className="text-[#072617] font-semibold underline hover:text-[#C5A059]"
+                        className="text-[#0A192F] font-semibold underline hover:text-[#C5A059]"
                       >
                         Volunteer Portal
                       </Link>.
@@ -702,20 +783,20 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 11. PUBLIC SECRETARIAT INQUIRY DESK */}
-      <section id="contact-desk" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10 scroll-mt-16">
+      {/* 12. PUBLIC SECRETARIAT INQUIRY DESK */}
+      <section id="contact-desk" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0A192F]/10 scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Direct Public Access"
             title="Secretariat Inquiry &amp; Scholar Guidance Desk"
-            subtitle="Connect directly with our administration regarding proposed scholarship schemes, eligibility documentation, or institutional affiliations."
+            subtitle="Connect directly with our administration regarding scholarship schemes, eligibility documentation, or institutional affiliations."
             align="center"
             className="mb-12"
           />
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-lg">
             {inquirySubmitted ? (
-              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in">
+              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
                 <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   Inquiry Successfully Registered
@@ -737,7 +818,7 @@ export default function HomePage() {
                       name: "",
                       email: "",
                       phone: "",
-                      district: "Khordha (Bhubaneswar)",
+                      district: "Balangir",
                       category: "Scholarship Guidance",
                       message: "",
                     });
@@ -851,40 +932,61 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 12. PHILANTHROPIC COMMITMENT & DONOR CALL TO ACTION */}
-      <section id="donate" className="py-20 bg-[#072617] text-[#EDE6D8] border-t border-[#C5A059]/20 scroll-mt-16">
+      {/* 13. PHILANTHROPIC COMMITMENT & SECTION 80G TAX REASSURANCE */}
+      <section id="donate" className="py-20 bg-[#0A192F] text-[#EDE6D8] border-t border-[#C5A059]/30 scroll-mt-16">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <Badge variant="gold-dark">Philanthropic Commitment</Badge>
+            <Badge variant="gold-dark">
+              50% Tax Deduction • Section 80G Certified
+            </Badge>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
               Invest in a Scholar’s Future. Transform an Entire Family.
             </h2>
             <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans">
-              Every future grant supported by MAHAVIR TRUST is dedicated strictly toward accredited higher education tuition fees and scholar enablement under our direct-to-college disbursement policy.
+              Every rupee donated to Mahaveer Educational &amp; Charitable Trust directly supports accredited higher education tuition grants, rural women's tailoring workshops, and community clean drinking water stations.
             </p>
 
-            <div className="p-5 rounded-xs bg-[#0B3B24]/80 border border-[#C5A059]/30 text-left max-w-xl mx-auto space-y-2">
+            {/* 80G Tax Exemption & Direct Bank Transfer Reassurance Box */}
+            <div className="p-6 rounded-xs bg-[#0F172A] border border-[#C5A059]/40 text-left max-w-xl mx-auto space-y-3.5 shadow-xl">
               <div className="flex items-center gap-2 text-[#E4C88A] text-xs font-bold uppercase tracking-wider">
-                <AlertCircle className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                <ShieldCheck className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
                 <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
               </div>
-              <p className="text-xs text-white/75 leading-relaxed font-sans">
+              <p className="text-xs text-white/80 leading-relaxed font-sans">
                 {HOMEPAGE_CONTENT.donorNotice.description}
               </p>
+
+              <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-3 text-xs font-sans">
+                <div>
+                  <span className="text-white/50 block text-[10px]">Bank:</span>
+                  <span className="text-white font-medium">{TRUST_CONFIG.bank.bankName}</span>
+                </div>
+                <div>
+                  <span className="text-white/50 block text-[10px]">IFSC Code:</span>
+                  <span className="text-[#E4C88A] font-mono font-bold">{TRUST_CONFIG.bank.ifsc}</span>
+                </div>
+                <div>
+                  <span className="text-white/50 block text-[10px]">Account No:</span>
+                  <span className="text-[#E4C88A] font-mono font-bold">{TRUST_CONFIG.bank.accountNumber}</span>
+                </div>
+                <div>
+                  <span className="text-white/50 block text-[10px]">80G Order URN:</span>
+                  <span className="text-white font-mono">{TRUST_CONFIG.statutory.section80GUrn}</span>
+                </div>
+              </div>
             </div>
 
             <div className="pt-4 flex flex-wrap justify-center gap-4">
-              <a
-                href={`mailto:${TRUST_CONFIG.contact.generalEmail}?subject=Donor%20Pledge%20Inquiry%20-%20Mahavir%20Trust`}
-              >
-                <Button variant="gold" size="lg">
-                  <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span>Connect with Donor Secretariat</span>
+              <Link href="/donate">
+                <Button variant="gold" size="lg" className="shadow-lg font-bold">
+                  <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
+                  <span>Donate with 80G Tax Exemption</span>
                 </Button>
-              </a>
-              <Link href="/governance">
-                <Button variant="dark-outline" size="lg">
-                  Our Fiduciary Governance
+              </Link>
+              <Link href="/statutory-disclosures">
+                <Button variant="dark-outline" size="lg" className="font-semibold">
+                  <ShieldCheck className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
+                  <span>Verify Tax Certificates</span>
                 </Button>
               </Link>
             </div>
