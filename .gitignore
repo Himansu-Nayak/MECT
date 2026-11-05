@@ -38,3 +38,12 @@ backend/target/
 backend/.flattened-pom.xml
 backend/*.log
 backend/.env
+
+# AI Engine & Local Training Assets
+mect-ai-engine/.env
+mect-ai-engine/venv/
+mect-ai-engine/models/*.gguf
+mect-ai-engine/qdrant_data/
+mect-ai-engine/logs/
+ai-training/outputs/
+ai-training/.cache/

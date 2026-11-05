@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { QuickActionDock } from "@/components/QuickActionDock";
+import { HImChatbot } from "@/components/ai/HImChatbot";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mect.org.in"),
@@ -108,6 +109,7 @@ export default function RootLayout({
           {children}
         </main>
         <QuickActionDock />
+        <HImChatbot />
         <Footer />
       </body>
     </html>

@@ -1,0 +1,26 @@
+{
+  "totalCount": 1200,
+  "splitCounts": {
+    "train": 960,
+    "val": 120,
+    "test": 120
+  },
+  "languageDistribution": {
+    "en": 480,
+    "or": 420,
+    "hi": 300
+  },
+  "categoryDistribution": {
+    "regulatory_and_tax_80g": 150,
+    "direct_disbursal_zero_cash": 240,
+    "academic_schemes_proposals": 150,
+    "secretariat_and_contact": 60,
+    "privacy_and_anti_phishing": 50,
+    "unknown_handling_and_boundaries": 40,
+    "eligibility_and_free_application": 150,
+    "mentorship_and_volunteering": 90,
+    "geographic_scope_30_districts": 180,
+    "adversarial_and_jailbreak_defense": 90
+  },
+  "generatedAt": "2026-11-05T06:18:41.880Z"
+}

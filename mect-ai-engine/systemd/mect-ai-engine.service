@@ -1,0 +1,30 @@
+[Unit]
+Description=MECT HIm Independent Python AI Engine (FastAPI + llama.cpp)
+After=network.target qdrant.service
+Wants=qdrant.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/mect-ai-engine
+Environment="PATH=/opt/mect-ai-engine/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+EnvironmentFile=/opt/mect-ai-engine/.env
+ExecStart=/opt/mect-ai-engine/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8082 --workers 1 --log-level info
+Restart=always
+RestartSec=5
+
+# STRICT RESOURCE ISOLATION (Cgroup v2 Controls)
+# Max memory capped to 3.8GB so OHO TECH (ports 3000/8080) and MECT (ports 3001/8081) are guaranteed safe
+MemoryMax=3.8G
+MemoryHigh=3.2G
+CPUQuota=250%
+Nice=5
+
+# Hardening
+ProtectSystem=full
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+
