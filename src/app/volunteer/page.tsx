@@ -288,11 +288,6 @@ export default function VolunteerPage() {
           </motion.div>
         </Container>
       </section>
-              </a>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
 
       {/* 2. PHILOSOPHY SECTION: The Guidance Deficit */}
       <section className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">

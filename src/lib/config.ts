@@ -92,6 +92,7 @@ export const TRUST_CONFIG = {
       state: "Odisha",
       pin: "767001",
       country: "India",
+      phone: "+91 94371 23616",
     },
     corporateOffice: {
       title: "Corporate & Liaison Secretariat",
@@ -101,6 +102,7 @@ export const TRUST_CONFIG = {
       state: "Odisha",
       pin: "751014",
       country: "India",
+      phone: "+91 94371 23616 / +91 94373 53616",
     },
     projectOffice: {
       title: "Regional Project Office",
@@ -110,6 +112,13 @@ export const TRUST_CONFIG = {
       state: "Odisha",
       pin: "767002",
       country: "India",
+      phone: "+91 94371 23616",
+    },
+    officialEmails: {
+      general: "contact@mect.org.in",
+      alternate: "mect27072013@gmail.com",
+      scholarships: "scholarships@mect.org.in",
+      grievance: "contact@mect.org.in",
     },
     emails: {
       primary: "contact@mect.org.in",
