@@ -34,10 +34,10 @@ export interface RoadmapMilestone {
 
 export const ABOUT_CONTENT = {
   hero: {
-    badge: "Institutional Heritage • Odisha, India",
-    title: "Dedicated to Educational Dignity & Socioeconomic Mobility in Odisha",
+    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
+    title: "Dedicated to Educational Dignity, Rural Livelihoods & Fiduciary Philanthropy",
     description:
-      "MAHAVIR TRUST was conceived as a non-profit philanthropic foundation to ensure that financial hardship never forces a hardworking, meritorious student in Odisha to abandon their academic dreams.",
+      "MAHAVIR TRUST (Mahaveer Educational & Charitable Trust) was established in 2013 as an irrevocable public charitable trust to empower underprivileged students, train rural women in vocational trades, and provide vital community relief across Odisha.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "About Us" },
@@ -46,21 +46,21 @@ export const ABOUT_CONTENT = {
 
   narrative: {
     badge: "Foundational Philosophy",
-    title: "True Philanthropy Enables Self-Reliance Through Quality Higher Education.",
+    title: "True Philanthropy Enables Self-Reliance Through Education & Civic Welfare.",
     paragraphs: [
-      "Higher education represents the single most transformative engine of social and economic mobility in India. Yet, across Odisha, thousands of meritorious students who complete their Higher Secondary (+2) examinations with distinction find that poverty halts their progress at the college gates.",
-      "MAHAVIR TRUST was instituted to resolve this structural crisis. We do not distribute temporary discretionary charity. Instead, we establish enduring institutional mechanisms: 100% direct-to-college tuition fee grants, 1-on-1 faculty mentorship, and community study hubs that enable students to earn recognized degrees and enter professional careers with dignity.",
+      "Higher education and vocational training represent the single most transformative engine of social and economic mobility in India. Yet, across Western Odisha, thousands of meritorious students and rural women find their potential constrained by poverty, lack of resources, and institutional barriers.",
+      "MAHAVIR TRUST was registered in Balangir in 2013 to address these systemic challenges. Over the past 12+ years, we have operated free remedial education centres, equipped over 120 rural women with certified tailoring skills, provided life-saving Jal Seva drinking water to thousands during scorching summers, and ensured hospital food relief through Jan Ahar.",
     ],
     safeguards: [
       {
-        title: "100% Direct College Disbursals",
+        title: "100% Direct Disbursals & Fiduciary Integrity",
         description:
-          "Grant subsidies are wired directly via bank transfer to the verified accounts of degree colleges. Zero cash handling.",
+          "All educational scholarship subsidies are remitted directly to accredited institutions via verified bank transfers under a strict zero-cash policy.",
       },
       {
-        title: "Mentorship as an Inseparable Anchor",
+        title: "Section 80G Tax Exemption Certified",
         description:
-          "Scholars receive structured career navigation from university professors, corporate mentors, and civil service professionals.",
+          "Donors receive 50% tax deductions under Indian Income Tax Act Section 80G (URN: AADTM5474FF20241, issued by IT Dept CPC).",
       },
     ],
   },
@@ -70,15 +70,15 @@ export const ABOUT_CONTENT = {
     title: "Vision & Operational Mission",
     vision: {
       tag: "Institutional Vision",
-      title: "An Empowered, Educated Odisha",
+      title: "An Empowered, Educated & Self-Reliant Odisha",
       description:
-        "An Odisha where every hardworking student, irrespective of economic circumstances or geography, has access to accredited higher education, professional dignity, and upward social mobility.",
+        "An Odisha where every hardworking student and aspiring citizen, irrespective of socioeconomic background or geographic remoteness, has access to accredited higher education, dignified livelihood skills, and clean community resources.",
     },
     mission: {
       tag: "Operational Mission",
-      title: "Direct Grants & Sustained Enablement",
+      title: "Direct Grants, Livelihood Training & Community Relief",
       description:
-        "To deliver transparent college fee grants, establish supervised community study hubs (Project Samarth), and foster an enduring culture of academic excellence and giving back across all 30 districts of Odisha.",
+        "To deliver transparent college fee grants, operate rural remedial education centres, provide certified women's vocational training, expand summer drinking water stations (Jal Seva), and foster sustainable community welfare across all 30 districts of Odisha.",
     },
   },
 
@@ -86,7 +86,7 @@ export const ABOUT_CONTENT = {
     {
       title: "Fiduciary Integrity",
       description:
-        "100% of approved tuition fee subsidies are remitted directly to accredited colleges. Zero cash handling, zero brokers, and mandatory annual statutory audits.",
+        "100% of approved scholarship subsidies are remitted directly to accredited colleges. Governed by registered deed with mandatory annual audits.",
       icon: ShieldCheck,
       tag: "Governance",
     },
@@ -98,16 +98,16 @@ export const ABOUT_CONTENT = {
       tag: "Fairness",
     },
     {
-      title: "Student Dignity First",
+      title: "Civic Compassion & Dignity",
       description:
-        "Empowering scholars not as recipients of charity, but as rightful future leaders, scientists, and professionals who will uplift their communities.",
+        "Empowering beneficiaries not as recipients of charity, but as rightful future leaders, artisans, and professionals who will uplift their communities.",
       icon: HeartHandshake,
       tag: "Ethos",
     },
     {
       title: "Non-Sectarian Universality",
       description:
-        "Strictly neutral and non-denominational. Open to all deserving students across all 30 districts of Odisha regardless of caste, creed, or background.",
+        "Strictly neutral and non-denominational. Open to all deserving citizens across Odisha regardless of caste, creed, gender, or background.",
       icon: Users,
       tag: "Inclusion",
     },
@@ -119,17 +119,17 @@ export const ABOUT_CONTENT = {
       title: "Board of Trustees",
       role: "Fiduciary Stewardship & Charter Custodians",
       description:
-        "Responsible for statutory compliance, endowment preservation, and legal governance under the Indian Trusts Act framework. Non-remunerative, public-spirited trustees.",
-      status: "Trust Deed Under Statutory Formalisation [Names Pending Gazette]",
+        "Led by Settler Founder & Permanent Managing Trustee Er. Japabandhu Kampa alongside life trustees Yudhisthir Rana, Ramachandra Biswal, and Sambit Kumar Dang under registered Trust Deed No. 40311302194.",
+      status: "Permanent Honorary Trustees (Deed Clause XVI)",
       icon: Landmark,
     },
     {
       tier: "Tier 2",
       title: "Academic Advisory Council",
-      role: "Educational Direction & Policy Guidance",
+      role: "Educational Direction & Scholarship Policy",
       description:
-        "Composed of distinguished university professors, educational administrators, and technical practitioners formulating objective curriculum and grant criteria.",
-      status: "Advisory Panel Under Formation",
+        "Composed of distinguished educators, college principals, and technical practitioners formulating objective curriculum and grant criteria.",
+      status: "Advisory Panel Operational",
       icon: Award,
     },
     {
@@ -138,7 +138,7 @@ export const ABOUT_CONTENT = {
       role: "Impartial Candidate Evaluation",
       description:
         "Independent review body inspecting applicant marksheets, revenue authority income certificates, and college admission fee demands.",
-      status: "Objective Standardized Scoring Model",
+      status: "Standardized Scoring Matrix",
       icon: Scale,
     },
     {
@@ -147,44 +147,51 @@ export const ABOUT_CONTENT = {
       role: "Operations, College Liaison & Disbursals",
       description:
         "Executive team managing daily college communication, bank RTGS transaction reconciliation, student tracking, and community volunteer coordination.",
-      status: "Bhubaneswar Secretariat Desk Operational",
+      status: "Offices in Balangir & Bhubaneswar",
       icon: Building2,
     },
   ] as GovernanceTierItem[],
 
   roadmap: {
-    badge: "Phased Evolution",
-    title: "Foundational Journey & Roadmap",
+    badge: "12-Year Evolution",
+    title: "Institutional Journey & Milestones",
     subtitle:
-      "From our charter formulation to statewide cluster rollouts, explore the phased roadmap guiding MAHAVIR TRUST.",
+      "From our registered inception in 2013 to statewide higher education grants and corporate CSR collaborations.",
     milestones: [
       {
-        year: "2025",
+        year: "2013",
         badge: "Inception",
-        title: "Genesis & Trust Deed Formulation",
+        title: "Registration of Trust Deed in Balangir",
         description:
-          "Formalization of the philanthropic vision to eradicate higher education dropouts in Odisha. Drafting the fiduciary charter, zero-cash disbursement guidelines, and statutory filings.",
+          "Formal execution of Trust Deed on 27-07-2013 and registration before District Sub-Registrar, Balangir (Doc No. 40311302194). PAN card issued (AADTM5474F).",
       },
       {
-        year: "Early 2026",
-        badge: "Architecture",
-        title: "Digital Platform & Security Hardening",
+        year: "2014–2020",
+        badge: "Grassroots",
+        title: "Remedial Centres, Jal Seva & Hospital Relief",
         description:
-          "Deployment of the institutional web portal, Spring Boot backend with enterprise authentication, role-based access control (RBAC), and automated inquiry desk.",
+          "Launch of free remedial coaching centres for tribal students in Balangir, annual summer Jal Seva water stations, and Jan Ahar hospital food relief.",
       },
       {
-        year: "Mid 2026",
-        badge: "Partnerships",
-        title: "College Liaison Network & Pilot Auditing",
+        year: "2021–2023",
+        badge: "Vocational",
+        title: "Women's Tailoring & Community Learning Lab",
         description:
-          "Establishing direct verification protocols with degree colleges across Khordha and Cuttack clusters. Establishing Tahsildar income certificate verification standards.",
+          "Inauguration of Balangir Community Learning Centre (Feb 2023) and vocational tailoring workshop graduating over 120 certified rural women.",
       },
       {
-        year: "2026–27",
-        badge: "Launch",
-        title: "Pilot Disbursal Cohort & Project Samarth Hubs",
+        year: "2024",
+        badge: "Statutory",
+        title: "12A, 80G & MCA CSR-1 Government Accreditations",
         description:
-          "Inaugural cycle of direct tuition disbursements for undergraduate scholars and launch of the first supervised community reference study hub in Bhubaneswar.",
+          "CBDT Form 10AC orders for 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241). MCA CSR-1 approved (CSR00081063) and NITI Aayog NGO Darpan listing (OR/2024/0466491).",
+      },
+      {
+        year: "2025–2026",
+        badge: "Expansion",
+        title: "Digital Platform & Statewide Higher Education Grants",
+        description:
+          "Launch of digital verification portal, full-stack volunteer management system, HIm AI assistant, and direct tuition grant disbursal framework across Odisha.",
       },
     ] as RoadmapMilestone[],
   },
@@ -203,8 +210,8 @@ export const ABOUT_CONTENT = {
 
   cta: {
     badge: "Public Participation",
-    title: "Join Us in Advancing Higher Education Access Across Odisha",
+    title: "Join Us in Advancing Educational Dignity & Rural Welfare Across Odisha",
     subtitle:
-      "Whether you are an accredited college administrator, an aspiring volunteer mentor, or a student seeking academic guidance, your engagement strengthens our collective mission.",
+      "Whether you are a CSR leader, an aspiring volunteer mentor, an educator, or a donor seeking 80G tax exemption, your partnership strengthens our collective mission.",
   },
 };

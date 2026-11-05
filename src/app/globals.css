@@ -2,20 +2,40 @@
 
 @layer base {
   :root {
+    /* Primary Institutional Color Tokens */
+    --color-navy: #0A192F;
+    --color-navy-dark: #07111E;
+    --color-navy-deep: #0F172A;
+    --color-blue-imperial: #1E3A8A;
+    --color-blue-royal: #1E40AF;
+
+    /* Heritage Forest & Green Tokens */
     --color-forest: #0B3B24;
     --color-forest-dark: #072617;
     --color-forest-light: #165B38;
+    --color-green-emerald: #15803D;
+
+    /* Temple Gold & Warm Amber Tokens */
     --color-gold: #C5A059;
     --color-gold-light: #E4C88A;
     --color-gold-muted: #9E7D3B;
     --color-gold-contrast: #7A5E24;
+    --color-amber-gold: #D97706;
+    --color-amber-dark: #B45309;
+
+    /* Academic Crimson & Warning */
+    --color-crimson: #991B1B;
+    --color-crimson-dark: #7F1D1D;
+
+    /* Backgrounds & Neutrals */
     --color-ivory: #FDFBF7;
     --color-ivory-warm: #F4EFE6;
+    --color-slate-light: #F8FAFC;
     --color-sand: #EDE6D8;
     --color-charcoal: #1C2421;
     --color-slate-text: #4A5568;
     --color-border-subtle: rgba(11, 59, 36, 0.12);
-    --color-border-gold: rgba(197, 160, 89, 0.3);
+    --color-border-gold: rgba(197, 160, 89, 0.35);
   }
 
   html {
@@ -31,6 +51,7 @@
     overflow-x: hidden;
   }
 
+  /* Classical Institutional Typography */
   .font-serif,
   h1, h2, h3, h4, h5, h6 {
     font-family: "Georgia", "Cambria", "Times New Roman", Times, serif;
@@ -65,6 +86,18 @@
 }
 
 /* Institutional Utilities */
+@utility text-navy {
+  color: #0A192F;
+}
+
+@utility text-navy-deep {
+  color: #0F172A;
+}
+
+@utility text-blue-imperial {
+  color: #1E3A8A;
+}
+
 @utility text-forest {
   color: #0B3B24;
 }
@@ -89,6 +122,26 @@
   color: #7A5E24;
 }
 
+@utility text-amber-gold {
+  color: #D97706;
+}
+
+@utility text-crimson {
+  color: #991B1B;
+}
+
+@utility bg-navy {
+  background-color: #0A192F;
+}
+
+@utility bg-navy-deep {
+  background-color: #0F172A;
+}
+
+@utility bg-blue-imperial {
+  background-color: #1E3A8A;
+}
+
 @utility bg-forest {
   background-color: #0B3B24;
 }
@@ -109,12 +162,20 @@
   background-color: #F4EFE6;
 }
 
+@utility bg-slate-light {
+  background-color: #F8FAFC;
+}
+
 @utility bg-sand {
   background-color: #EDE6D8;
 }
 
 @utility bg-gold {
   background-color: #C5A059;
+}
+
+@utility bg-amber-gold {
+  background-color: #D97706;
 }
 
 @utility border-forest-subtle {
@@ -129,6 +190,10 @@
   border-color: rgba(122, 94, 36, 0.35);
 }
 
+@utility border-navy-subtle {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
 /* Accessible Focus States */
 a:focus-visible,
 button:focus-visible,
@@ -139,7 +204,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* Animations */
+/* Marquee Animation */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -151,7 +216,7 @@ select:focus-visible {
 
 .animate-marquee {
   display: inline-block;
-  animation: marquee 35s linear infinite;
+  animation: marquee 38s linear infinite;
 }
 
 .animate-marquee:hover {
