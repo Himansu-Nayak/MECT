@@ -20,86 +20,157 @@ import {
   ArrowRight,
   Receipt,
   Mail,
+  UserCheck,
+  CheckCircle2,
+  ExternalLink,
+  FileCheck,
+  Heart,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Governance & Fiduciary Charter — MAHAVIR TRUST",
+  title: "Fiduciary Governance, Board of Trustees & Statutory Charter — MECT",
   description:
-    "Institutional governance framework, code of ethics, financial oversight, conflict-of-interest policies, and statutory disclosures for MAHAVIR TRUST.",
+    "Official governance framework, registered Trust Deed No. 40311302194 (Balangir), Board of Trustees, honorary non-remuneration code, and statutory compliance for Mahaveer Educational & Charitable Trust (MECT).",
 };
 
 export default function GovernancePage() {
+  const boardOfTrustees = [
+    {
+      name: "Er. Japabandhu Kampa",
+      role: "Settler Founder & Permanent Managing Trustee",
+      deedClause: "Clause VIII & IX (Permanent Trustee)",
+      details:
+        "Settler founder of Mahaveer Educational & Charitable Trust. Authorized custodian of trust records, bank operations, and statutory compliance under the registered Trust Deed (2013, Balangir).",
+      status: "Permanent Managing Trustee",
+      icon: UserCheck,
+    },
+    {
+      name: "Yudhisthir Rana",
+      role: "Life Trustee",
+      deedClause: "Clause X (Founding Life Trustee)",
+      details:
+        "Resident of Puintala, Balangir. Fiduciary custodian overseeing community welfare, rural remedial education, and grassroots beneficiary verification across Western Odisha.",
+      status: "Life Trustee",
+      icon: UserCheck,
+    },
+    {
+      name: "Ramachandra Biswal",
+      role: "Life Trustee",
+      deedClause: "Clause X (Founding Life Trustee)",
+      details:
+        "Resident of Mahimunda, Balangir. Oversees civic outreach, seasonal Jal Seva clean drinking water relief, and public health camp logistics.",
+      status: "Life Trustee",
+      icon: UserCheck,
+    },
+    {
+      name: "Sambit Kumar Dang",
+      role: "Life Trustee",
+      deedClause: "Clause X (Founding Life Trustee)",
+      details:
+        "Resident of Rugudipara, Balangir. Coordinates vocational livelihood training, tailoring workshop administration, and student educational materials.",
+      status: "Life Trustee",
+      icon: UserCheck,
+    },
+  ];
+
+  const keyDeedClauses = [
+    {
+      clause: "Clause XVI",
+      title: "Strict Honorary & Non-Remunerative Governance",
+      description:
+        "Trustees serve purely in an honorary capacity and are legally prohibited from receiving salary, commission, sitting fees, or personal remuneration from trust funds.",
+    },
+    {
+      clause: "Clause VIII & IX",
+      title: "Permanent Tenure & Board Quorum",
+      description:
+        "The board maintains a minimum of 3 and maximum of 11 trustees. A quorum of 3 is required for all binding resolutions and biennial general audits.",
+    },
+    {
+      clause: "Clause XVII",
+      title: "Statutory Investment under Section 11(5)",
+      description:
+        "All surplus funds, endowments, and liquid reserves must be invested strictly in scheduled commercial banks or instruments recognized under Section 11(5) of the Income Tax Act.",
+    },
+    {
+      clause: "Clause XVIII",
+      title: "Irrevocable Character & Amalgamation Safeguard",
+      description:
+        "The Trust is irrevocable. In the event of dissolution, assets cannot revert to trustees and must be transferred to a charitable trust with identical educational objectives.",
+    },
+  ];
+
   const governanceCommittees = [
     {
       title: "Board of Trustees",
       scope: "Fiduciary Stewardship & Charter Custodians",
       mandate:
-        "Preserving endowment integrity, ensuring adherence to the Trust Deed, and authorizing statutory annual filings under the Indian Trusts Act.",
-      status: "Trust Deed Under Statutory Formalisation [Trustee Names Pending Gazette]",
-      composition: "Non-remunerative, public-spirited civic and educational leaders.",
+        "Preserving endowment integrity, ensuring adherence to the 2013 registered Trust Deed, and authorizing statutory annual filings under the Indian Trusts Act.",
+      status: "Regd. Deed No. 40311302194 (Balangir Sub-Registrar)",
+      composition: "Permanent Managing Trustee & Life Trustees",
       icon: Landmark,
     },
     {
       title: "Audit & Financial Scrutiny Panel",
-      scope: "Independent Accounting Oversight",
+      scope: "Independent Statutory Oversight",
       mandate:
-        "Quarterly reconciliation of direct college bank RTGS disbursements, administrative expenditures, and mandatory certified annual statutory audits by Chartered Accountants.",
-      status: "Chartered Accountant Audit Protocol Established",
-      composition: "Independent finance professionals and statutory auditors.",
+        "Quarterly reconciliation of direct institutional disbursements, expenditure ledgers, and certified annual audits by independent Chartered Accountants (Form 10B).",
+      status: "Annual Audit Protocol Active",
+      composition: "Independent Chartered Accountants & Statutory Auditors",
       icon: Scale,
     },
     {
-      title: "Academic Appraisal Committee",
+      title: "Educational Appraisal Council",
       scope: "Merit-cum-Means Selection Authority",
       mandate:
         "Autonomous evaluation of student applications against standardized scoring rubrics. Zero discretionary grant allocation permitted by individual trustees.",
-      status: "Standardized Blind-Scoring Model Active",
-      composition: "University faculty members, college principals, and senior educators.",
+      status: "Objective Blind-Scoring Model",
+      composition: "Educators, College Principals & Subject Specialists",
       icon: ShieldCheck,
     },
     {
       title: "Secretariat & Ethics Office",
       scope: "Daily Administration & Grievance Redressal",
       mandate:
-        "Managing candidate record verification, university liaison, whistleblower grievance intake, and public disclosure updates.",
-      status: "Bhubaneswar Secretariat Desk Operational",
-      composition: "Administrative officers and compliance coordinators.",
+        "Managing candidate record verification, university liaison, whistleblower grievance intake, and public disclosure updates across Balangir and Bhubaneswar offices.",
+      status: "Balangir & Bhubaneswar Offices Operational",
+      composition: "Administrative Officers & Compliance Coordinators",
       icon: Building2,
     },
   ];
 
   const institutionalDocuments = [
     {
-      title: "Draft Fiduciary Governance Charter",
-      code: "DOC-2026-FGC-DRAFT",
-      type: "PDF (Provisional)",
+      title: "Registered Trust Deed (2013)",
+      code: "DEED-40311302194",
+      type: "Registered Public Deed",
       description:
-        "Formal articles of trustee governance, committee mandates, non-remuneration clauses, and ethical guidelines under the Indian Trusts Act.",
-      version: "Draft v1.4 (Pre-Gazette Inspection)",
+        "Original registered trust deed executed before District Sub-Registrar, Balangir (Book 4, Vol 45, Doc No. 40311302194) establishing MECT's irrevocable public charitable status.",
+      version: "Legally Ratified (30-07-2013)",
     },
     {
-      title: "Direct College Disbursal & Anti-Cash Policy",
-      code: "DOC-2026-DCD-POL",
-      type: "PDF (Provisional)",
+      title: "CBDT Form 10AC Section 12A Order",
+      code: "URN-AADTM5474FE20231",
+      type: "Income Tax Order",
       description:
-        "Statutory policy enforcing 100% direct bank remittances (NEFT/RTGS) to accredited colleges. Zero cash transfers to individuals or agents.",
-      version: "Approved by Secretariat Panel",
+        "Provisional registration under Section 12A(1)(ac)(vi) of the Income Tax Act, 1961, exempting charitable trust surplus from income tax (AY 2024-25 to AY 2026-27).",
+      version: "Order Dated 29-01-2024",
     },
     {
-      title: "Academic Scrutiny & Blind-Appraisal Rubric",
-      code: "DOC-2026-ASA-RUB",
-      type: "PDF (Provisional)",
+      title: "CBDT Form 10AC Section 80G Order",
+      code: "URN-AADTM5474FF20241",
+      type: "Income Tax Order",
       description:
-        "The objective evaluation scoring matrix weighting academic merit (Class 10/+2 marks) and socioeconomic need (verified Tahsildar certificates).",
-      version: "Advisory Model 2026-27",
+        "Provisional approval under Section 80G(5)(iv) of the Income Tax Act, 1961, granting 50% tax deduction on donations made by Indian taxpayers.",
+      version: "Order Dated 29-01-2024",
     },
     {
-      title: "Whistleblower & Grievance Redressal Protocol",
-      code: "DOC-2026-WGR-PRO",
-      type: "PDF (Provisional)",
+      title: "MCA CSR-1 Registration Certificate",
+      code: "CSR-CSR00081063",
+      type: "Ministry of Corporate Affairs",
       description:
-        "Confidential reporting channels, anti-retaliation protections, and independent investigative timelines for ethical violations.",
-      version: "Compliance Standard",
+        "Official CSR registration approved by the Ministry of Corporate Affairs (ROC-Delhi, SRN-N14617237) authorizing corporate CSR allocations under Section 135.",
+      version: "Approved 09-11-2024",
     },
   ];
 
@@ -107,63 +178,182 @@ export default function GovernancePage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Stewardship & Public Trust"
-        title="Institutional Governance & Fiduciary Charter"
-        description="Public confidence is the bedrock of educational philanthropy. MAHAVIR TRUST operates under strict fiduciary boundaries, autonomous academic scrutiny, and verifiable financial oversight."
+        badge="Irrevocable Public Charitable Trust • Est. 2013"
+        title="Institutional Governance, Board of Trustees & Fiduciary Code"
+        description="Public confidence is the foundation of enduring philanthropy. Mahaveer Educational & Charitable Trust (MECT) operates under registered deed governance, non-remunerative trustee stewardship, and complete statutory transparency."
         breadcrumbs={[{ label: "About Us", href: "/about" }, { label: "Governance" }]}
         actions={
           <>
-            <Link href="#ethics">
+            <Link href="#board">
               <Button variant="gold" size="sm">
-                <span>Code of Ethics</span>
+                <span>Board of Trustees</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
               </Button>
             </Link>
-            <Link href="#documents">
+            <Link href="/statutory-disclosures">
               <Button variant="dark-outline" size="sm">
-                <span>Institutional Charters</span>
+                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" aria-hidden="true" />
+                <span>Statutory Disclosures</span>
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* 2. Statutory Compliance Notice Strip */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10" aria-label="Statutory Notice">
+      {/* 2. Statutory Credentials Quick Verification Banner */}
+      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Statutory Accreditation Strip">
         <Container size="default">
-          <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#072617] text-[#E4C88A] flex items-center justify-center shrink-0">
-                <AlertCircle className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
               </div>
               <div>
-                <Badge variant="gold" size="sm">
-                  Statutory Transparency Notice
-                </Badge>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Badge variant="forest" size="sm">
+                    Verified Public Record
+                  </Badge>
+                  <span className="text-xs text-[#0A192F] font-bold font-mono">
+                    Deed No. 40311302194 (Balangir Sub-Registrar)
+                  </span>
+                </div>
                 <p className="text-xs sm:text-sm text-[#1C2421] font-semibold mt-1 font-serif">
-                  Formal Gazette Notification & Section 12A/80G Formalisation
+                  Governed under Indian Trusts Act, 1882 • Section 12A/80G &amp; MCA CSR-1 Certified
                 </p>
                 <p className="text-xs text-[#4A5568] mt-1 leading-relaxed font-sans">
-                  {TRUST_CONFIG.legal.registrationNotice} No public funds or online donations are collected on this informational portal. Formal trustee appointment certificates will be gazetted upon regulatory formalisation.
+                  Permanent Account Number: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.pan}</strong> • Section 12A URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • MCA CSR-1: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.mcaCsrNumber}</strong>.
                 </p>
               </div>
             </div>
-            <Link href="/contact" className="shrink-0">
+            <Link href="/statutory-disclosures" className="shrink-0">
               <Button variant="secondary" size="sm">
-                <span>Contact Compliance Desk</span>
+                <span>View Certificates</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
               </Button>
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* 3. Multi-Tier Governance Architecture */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Trustee Governance Structure">
+      {/* 3. Board of Trustees Section */}
+      <section id="board" className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Board of Trustees">
         <Container size="default" className="space-y-14">
           <SectionHeader
-            badge="Structural Integrity"
-            title="Trustee Governance & Committee Architecture"
-            subtitle="Power is deliberately divided across independent committees to guarantee that no single individual or trustee holds discretionary authority over scholarship awards or financial disbursals."
+            badge="Institutional Leadership"
+            title="Board of Trustees & Fiduciary Custodians"
+            subtitle="As defined under the registered Trust Deed of 2013, MECT is governed by permanent and life trustees serving in an honorary capacity."
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {boardOfTrustees.map((trustee) => {
+              const Icon = trustee.icon;
+              return (
+                <Card
+                  key={trustee.name}
+                  variant="elevated"
+                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                >
+                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                    <Badge variant="contrast-gold" size="sm">
+                      {trustee.status}
+                    </Badge>
+                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/5 px-2.5 py-0.5 rounded-xs font-mono">
+                      {trustee.deedClause}
+                    </span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-[#C5A059]">
+                      {trustee.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .slice(0, 2)
+                        .join("")}
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                        {trustee.name}
+                      </h3>
+                      <p className="text-xs text-[#7A5E24] font-semibold font-sans mt-0.5">
+                        {trustee.role}
+                      </p>
+                      <p className="text-xs text-[#4A5568] mt-2 leading-relaxed font-sans">
+                        {trustee.details}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Honorary Governance Alert */}
+          <div className="p-6 rounded-xs bg-[#0A192F] text-white border border-[#C5A059]/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+            <div className="flex items-center gap-3">
+              <Scale className="w-8 h-8 text-[#E4C88A] shrink-0" aria-hidden="true" />
+              <div>
+                <h4 className="font-serif text-base font-bold text-white">
+                  Trust Deed Clause XVI: Prohibition of Trustee Remuneration
+                </h4>
+                <p className="text-xs text-white/80 font-sans mt-0.5">
+                  {TRUST_CONFIG.governance.honoraryClause}
+                </p>
+              </div>
+            </div>
+            <Link href="/statutory-disclosures" className="shrink-0">
+              <Button variant="gold" size="sm" className="font-bold">
+                Inspect Trust Deed Summary
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. Key Trust Deed Clauses & Fiduciary Safeguards */}
+      <section className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10" aria-label="Key Trust Deed Clauses">
+        <Container size="default" className="space-y-12">
+          <SectionHeader
+            badge="Deed Mandates"
+            title="Fundamental Clauses of the Registered Trust Deed"
+            subtitle="The registered charter executed in Balangir binds all operations to strict public benefit, asset protection, and anti-profiteering covenants."
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {keyDeedClauses.map((item, idx) => (
+              <Card
+                key={idx}
+                variant="elevated"
+                className="p-6 sm:p-7 bg-white border-[#0A192F]/12 shadow-xs space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-[#7A5E24] bg-[#7A5E24]/10 px-2 py-0.5 rounded-xs">
+                    {item.clause}
+                  </span>
+                  <Badge variant="forest" size="sm">
+                    Irrevocable Covenant
+                  </Badge>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                  {item.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. Multi-Tier Committee Architecture */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Governance Committee Architecture">
+        <Container size="default" className="space-y-14">
+          <SectionHeader
+            badge="Committee Separation"
+            title="Governance Committees & Operational Architecture"
+            subtitle="Authority is deliberately divided across independent panels to ensure that no single trustee possesses discretionary grant-making authority."
             align="center"
           />
 
@@ -174,23 +364,23 @@ export default function GovernancePage() {
                 <Card
                   key={committee.title}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
                     <Badge variant="contrast-gold" size="sm">
                       {committee.scope}
                     </Badge>
-                    <span className="text-[10px] font-semibold text-[#0B3B24] bg-[#0B3B24]/8 px-2.5 py-0.5 rounded-xs font-sans">
-                      Official Committee
+                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/8 px-2.5 py-0.5 rounded-xs font-sans">
+                      Active Committee
                     </span>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xs bg-[#072617] text-[#E4C88A] flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5" aria-hidden="true" />
+                    <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
+                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
                         {committee.title}
                       </h3>
                       <p className="text-xs text-[#4A5568] mt-1.5 leading-relaxed font-sans">
@@ -199,14 +389,14 @@ export default function GovernancePage() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#0B3B24]/10 space-y-1.5 text-[11px] font-sans">
+                  <div className="pt-3 border-t border-[#0A192F]/10 space-y-1.5 text-[11px] font-sans">
                     <div className="flex items-center justify-between">
                       <span className="text-[#4A5568] font-medium">Composition:</span>
-                      <span className="text-[#0B3B24] font-semibold">{committee.composition}</span>
+                      <span className="text-[#0A192F] font-semibold">{committee.composition}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-[#4A5568] font-medium">Statutory Status:</span>
-                      <span className="text-[#7A5E24] font-semibold italic">{committee.status}</span>
+                      <span className="text-[#7A5E24] font-semibold">{committee.status}</span>
                     </div>
                   </div>
                 </Card>
@@ -216,18 +406,13 @@ export default function GovernancePage() {
         </Container>
       </section>
 
-      {/* 4. Financial Oversight & Zero-Cash Disbursal Policy */}
-      <section className="py-20 bg-[#072617] text-[#EDE6D8] border-y border-[#C5A059]/25 relative overflow-hidden" aria-label="Financial Oversight">
-        <div
-          className="absolute inset-0 opacity-5 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
-          aria-hidden="true"
-        />
-
+      {/* 6. Financial Oversight & 100% Direct Disbursal Standard */}
+      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/25 relative overflow-hidden" aria-label="Financial Oversight">
         <Container size="default" className="relative space-y-14">
           <SectionHeader
-            badge="Rigorous Financial Safeguards"
+            badge="Fiduciary Safeguards"
             title="Financial Oversight & Direct Disbursal Standard"
-            subtitle="Every financial transaction initiated by MAHAVIR TRUST follows a multi-party verification protocol to eliminate leakage, fraud, or misuse."
+            subtitle="Every financial transaction follows a dual-authorization verification protocol to eliminate leakage, fraud, or intermediary commissions."
             align="center"
             theme="dark"
           />
@@ -236,10 +421,10 @@ export default function GovernancePage() {
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
               <Receipt className="w-8 h-8 text-[#E4C88A]" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
-                100% Direct College Remittance
+                100% Direct Bank Remittance
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Approved scholarship awards are remitted exclusively via bank RTGS/NEFT straight to the accredited college or university bursar account. Under no circumstance is cash given to students, relatives, or agents.
+                Approved scholarship subsidies are remitted exclusively via bank RTGS/NEFT straight to accredited college bursar accounts. Zero cash handling.
               </p>
             </div>
 
@@ -249,85 +434,30 @@ export default function GovernancePage() {
                 Dual-Authorization Controls
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                No single officer can disburse funds. Batch transaction lists require joint electronic authorization from the Finance Officer and the designated Managing Trustee following Scrutiny Committee approval.
+                Batch payment lists require joint authorization from the Managing Trustee and the Finance Committee following independent scrutiny approval.
               </p>
             </div>
 
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
               <FileText className="w-8 h-8 text-[#E4C88A]" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
-                Independent Annual Audits
+                Chartered Accountant Audits
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Statutory annual balance sheets and expenditure ledgers undergo certified auditing by independent Chartered Accountants. Audit reports and Form 10B filings will be published for open inspection on this portal.
+                Annual balance sheets and expenditure ledgers undergo certified auditing by independent Chartered Accountants with Form 10B compliance.
               </p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 5. Conflict of Interest & Ethics Code */}
-      <section id="ethics" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10" aria-label="Ethics and Whistleblower Policies">
+      {/* 7. Institutional Documents & Compliance Registry */}
+      <section id="documents" className="py-20 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Institutional Documents">
         <Container size="default" className="space-y-12">
           <SectionHeader
-            badge="Fiduciary Ethics"
-            title="Conflict-of-Interest & Whistleblower Policies"
-            subtitle="MAHAVIR TRUST enforces strict institutional guardrails to protect donor intent and scholar rights."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs text-[#4A5568] leading-relaxed">
-            <Card variant="elevated" className="p-7 bg-white border-[#0B3B24]/12 shadow-xs space-y-3">
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                1. Zero Remuneration for Trustees
-              </h3>
-              <p className="font-sans">
-                Members of the Board of Trustees serve purely pro bono and receive zero salary, sitting fees, or personal commissions. No trust assets may be pledged for private interests or personal commercial ventures.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-7 bg-white border-[#0B3B24]/12 shadow-xs space-y-3">
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                2. Relatives Exclusion Rule
-              </h3>
-              <p className="font-sans">
-                Trustees, advisory council members, and secretariat staff are strictly precluded from approving or sponsoring scholarship applications submitted by immediate family members or direct relatives.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-7 bg-white border-[#0B3B24]/12 shadow-xs space-y-3">
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                3. Zero Political or Sectarian Affiliation
-              </h3>
-              <p className="font-sans">
-                Grants are conferred without religious, caste, or political discrimination. The Trust does not endorse political entities, accept conditional sectarian grants, or participate in partisan campaigns.
-              </p>
-            </Card>
-
-            <Card variant="elevated" className="p-7 bg-white border-[#0B3B24]/12 shadow-xs space-y-3">
-              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                4. Confidential Whistleblower Channel
-              </h3>
-              <p className="font-sans">
-                Any student, applicant, volunteer, or citizen may submit confidential reports regarding attempted bribery, commission demands, or appraisal tampering directly to:{" "}
-                <a
-                  href="mailto:governance@mahavirtrust.org"
-                  className="text-[#0B3B24] font-bold underline hover:text-[#C5A059]"
-                >
-                  governance@mahavirtrust.org
-                </a>
-              </p>
-            </Card>
-          </div>
-        </Container>
-      </section>
-
-      {/* 6. Institutional Documents (Index & Downloads) */}
-      <section id="documents" className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10" aria-label="Institutional Documents">
-        <Container size="default" className="space-y-12">
-          <SectionHeader
-            badge="Transparency Repository"
-            title="Institutional Documents & Charters"
-            subtitle="Publicly accessible charters, policies, and draft statutory guidelines governing MAHAVIR TRUST."
+            badge="Transparency Registry"
+            title="Official Charters, Orders & Statutory Documents"
+            subtitle="Legally verified certifications and Government approval orders governing Mahaveer Educational & Charitable Trust."
             align="center"
           />
 
@@ -336,7 +466,7 @@ export default function GovernancePage() {
               <Card
                 key={doc.code}
                 variant="elevated"
-                className="p-6 bg-white border-[#0B3B24]/15 shadow-xs flex flex-col justify-between space-y-4"
+                className="p-6 bg-white border-[#0A192F]/15 shadow-xs flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between text-[10px] font-bold tracking-wider">
@@ -345,7 +475,7 @@ export default function GovernancePage() {
                       {doc.type}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
+                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
                     {doc.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -353,12 +483,12 @@ export default function GovernancePage() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-[#4A5568] italic font-sans">{doc.version}</span>
-                  <Link href="/contact?subject=Document%20Inspection%20Request">
+                <div className="pt-3 border-t border-[#0A192F]/10 flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-[#4A5568] font-semibold font-sans">{doc.version}</span>
+                  <Link href="/statutory-disclosures">
                     <Button variant="secondary" size="sm" className="gap-1.5 text-xs">
-                      <FileDown className="w-3.5 h-3.5 text-[#0B3B24]" aria-hidden="true" />
-                      <span>Request Inspection Copy</span>
+                      <FileCheck className="w-3.5 h-3.5 text-[#0A192F]" aria-hidden="true" />
+                      <span>Inspect Details</span>
                     </Button>
                   </Link>
                 </div>
