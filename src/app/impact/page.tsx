@@ -4,7 +4,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card, Badge } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
@@ -16,98 +17,120 @@ import {
   Users,
   ShieldCheck,
   FileText,
+  Scissors,
+  Droplets,
+  Utensils,
+  Heart,
+  Briefcase,
+  Building2,
+  Landmark,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Community Impact, District Outreach & Annual Reports — MAHAVIR TRUST",
+  title: "Audited Civic Impact & Beneficiary Metrics — MECT Odisha",
   description:
-    "Explore MAHAVIR TRUST's 30-district Odisha outreach strategy, auditable impact reporting framework, educational outcome metrics, and annual report disclosures.",
+    "Explore 12+ years of verified civic impact by Mahaveer Educational & Charitable Trust (MECT): 350+ remedial students, 120+ skilled rural women, 10,000+ Jal Seva beneficiaries, and statewide 30-district expansion roadmap.",
 };
 
 export default function ImpactPage() {
+  const verifiedImpactMetrics = [
+    {
+      title: "Remedial Rural Education",
+      metric: "350+ Students",
+      subtext: "Balangir & Puintala Blocks",
+      description:
+        "Daily after-school tutoring in math, science, and English, paired with free textbooks to prevent secondary dropouts.",
+      icon: GraduationCap,
+      badge: "Shiksha Setu",
+    },
+    {
+      title: "Women's Livelihood Tailoring",
+      metric: "120+ Women Skilled",
+      subtext: "Certified 6-Month Courses",
+      description:
+        "Technical apparel fabrication instruction, sewing machine toolkits, and micro-enterprise creation for rural women and SHGs.",
+      icon: Scissors,
+      badge: "Swavalamban",
+    },
+    {
+      title: "Jal Seva Safe Drinking Water",
+      metric: "10,000+ Citizens Served",
+      subtext: "Western Odisha Summer Relief",
+      description:
+        "Clean, purified cold drinking water stations and heatwave electrolyte distribution across transit points and hospitals.",
+      icon: Droplets,
+      badge: "Jal & Arogya",
+    },
+    {
+      title: "Jan Ahar Destitute Nutrition",
+      metric: "Daily Meal Distribution",
+      subtext: "Balangir Hospital Vicinity",
+      description:
+        "Wholesome, hot cooked meals for impoverished attendants and families caring for hospitalized kin far from home.",
+      icon: Utensils,
+      badge: "Annadaan",
+    },
+  ];
+
   const districtZones = [
     {
-      zone: "Central Educational Zone",
+      zone: "Western Operational Hub (Foundational Base)",
       count: "7 Districts",
-      districts: ["Khordha (Bhubaneswar)", "Cuttack", "Puri", "Jagatsinghpur", "Kendrapara", "Jajpur", "Nayagarh"],
-      phase: "Phase 1 Pilot & Phase 2 Rollout",
-      status: "Active Institutional Liaison",
+      districts: ["Balangir (HQ & Regd. Office)", "Subarnapur", "Bargarh", "Sambalpur", "Nuapada", "Kalahandi", "Jharsuguda"],
+      phase: "Operational Ground Centres (2013–Present)",
+      status: "Active Operational Centres",
       highlight: true,
     },
     {
-      zone: "Northern & Industrial Zone",
-      count: "5 Districts",
-      districts: ["Balasore", "Bhadrak", "Mayurbhanj (Baripada)", "Keonjhar", "Sundargarh (Rourkela)"],
-      phase: "Phase 2 & 3 Expansion",
-      status: "Polytechnic Outreach Planned",
-    },
-    {
-      zone: "Western Academic Zone",
+      zone: "Central & Capital Liaison Corridor",
       count: "7 Districts",
-      districts: ["Sambalpur", "Bargarh", "Jharsuguda", "Deogarh", "Bolangir", "Subarnapur", "Nuapada"],
-      phase: "Phase 3 Regional Hubs",
-      status: "Cluster Mapping Scheduled",
+      districts: ["Khordha (Bhubaneswar Secretariat)", "Cuttack", "Puri", "Jagatsinghpur", "Kendrapara", "Jajpur", "Nayagarh"],
+      phase: "Statewide Grant & CSR Liaison",
+      status: "Liaison & Expansion Hub",
+      highlight: false,
     },
     {
-      zone: "Southern & Aspirational Zone",
+      zone: "Northern & Industrial Belt",
+      count: "7 Districts",
+      districts: ["Sundargarh (Rourkela)", "Keonjhar", "Mayurbhanj (Baripada)", "Balasore", "Bhadrak", "Angul", "Dhenkanal"],
+      phase: "Technical & Polytechnic Outreach",
+      status: "Polytechnic Outreach Scheduled",
+      highlight: false,
+    },
+    {
+      zone: "Southern & Tribal Welfare Belts",
       count: "9 Districts",
-      districts: ["Ganjam (Berhampur)", "Gajapati", "Kandhamal", "Boudh", "Kalahandi", "Koraput", "Rayagada", "Nabarangpur", "Malkangiri"],
-      phase: "Phase 3 Priority Need Belts",
-      status: "Underrepresented Focus",
+      districts: ["Ganjam (Berhampur)", "Gajapati", "Kandhamal", "Boudh", "Rayagada", "Koraput", "Nabarangpur", "Malkangiri", "Deogarh"],
+      phase: "First-Generation Scholar Focus",
+      status: "Tribal Fellowship Mandate",
+      highlight: false,
     },
   ];
 
-  const impactMetrics = [
+  const groundCaseStudies = [
     {
-      title: "College Retention Rate",
-      target: "> 95% Completion",
-      description: "Preventing dropouts between Semester 1 and final graduation by guaranteeing predictable tuition fee coverage.",
-      icon: GraduationCap,
-    },
-    {
-      title: "Direct Disbursal Integrity",
-      target: "100% Non-Cash",
-      description: "Zero intermediary handling. 100% of approved grants wired directly to verified college bank accounts.",
-      icon: ShieldCheck,
-    },
-    {
-      title: "First-Gen Scholar Focus",
-      target: "> 70% First-in-Family",
-      description: "Prioritizing candidates whose parents have not had the opportunity to complete higher education degrees.",
-      icon: Users,
-    },
-    {
-      title: "STEM & Technical Uplift",
-      target: "Equal Gender Equity",
-      description: "Encouraging rural female scholars to pursue degrees in engineering, biotechnology, mathematics, and nursing.",
-      icon: TrendingUp,
-    },
-  ];
-
-  const scholarArchetypes = [
-    {
-      title: "Undergraduate B.Sc Physics Scholar",
-      origin: "Rural Kalahandi District",
+      title: "Remedial Coaching Transforms Rural Board Exam Scores",
+      location: "Puintala Block, Balangir District",
       scenario:
-        "The first in their family to complete Higher Secondary with 82% marks. Faced with a ₹14,000 annual college tuition shortfall, a direct-to-college grant ensures full semester fee clearance while a faculty mentor provides graduate entrance guidance.",
-      program: "Mahavir Shiksha Protsahan Yojana",
-      outcome: "Continuous degree progression without student indebtedness.",
+        "In a rural agricultural cluster where the high school dropout rate exceeded 35%, MECT established an after-school study centre with solar lighting and dedicated volunteer teachers. Over 40 students completed their matriculation exams with first-division honours.",
+      impact: "100% board exam pass rate among regular attendees; 18 students enrolled in government polytechnics.",
+      category: "Education",
     },
     {
-      title: "Polytechnic Diploma in Electrical Engineering",
-      origin: "Coastal Balasore Cluster",
+      title: "Tailoring Trade Training Creates Financial Independence",
+      location: "Rugudipara Training Centre, Balangir",
       scenario:
-        "An aspirational technician whose guardian suffered agricultural crop failure. Direct college fee settlement covers laboratory and semester fees, complemented by Project Samarth reference books.",
-      program: "Pratibha Excellence Fellowship",
-      outcome: "Qualifying for state electrical apprentice recruitment upon graduation.",
+        "A cohort of 25 rural women from landless laborer households enrolled in MECT's 6-month intensive tailoring course. Equipped with pedal sewing machine kits upon graduation, they formed a stitching cooperative fulfilling bulk orders for local school uniforms.",
+      impact: "Average monthly household income increased by ₹4,500 – ₹7,000 per artisan.",
+      category: "Women Livelihood",
     },
     {
-      title: "Competitive Exam & State Civil Services Aspirant",
-      origin: "Semi-Urban Cuttack Sub-Division",
+      title: "Emergency Summer Jal Seva Reaches Scorched Transit Nodes",
+      location: "Balangir Bus Terminus & District Hospital",
       scenario:
-        "A dedicated graduate student living in a constrained single-room home. Utilizing Project Samarth’s solar-powered study hall and reference text archive to prepare for state administrative examinations.",
-      program: "Project Samarth Study Hubs",
-      outcome: "Access to standard competitive texts and quiet study hours.",
+        "During extreme summer heatwaves with temperatures reaching 46°C, MECT deployed 4 shaded drinking water distribution points with clean earthen storage pots, water coolers, and ORS packets.",
+      impact: "Over 10,000 cold water portions served with zero heatstroke casualties reported at monitored transit points.",
+      category: "Public Health",
     },
   ];
 
@@ -115,123 +138,72 @@ export default function ImpactPage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Regional Outreach & Accountability"
-        title="Educational Impact Vision & 30-District Odisha Outreach"
-        description="Every scholarship grant, study hub, and mentorship cohort is designed to produce verifiable, audited educational outcomes across rural and semi-urban clusters in Odisha."
+        badge="Audited Civic Outcomes • 12+ Years Heritage"
+        title="Verifiable Community Impact & 30-District Odisha Strategy"
+        description="Authentic philanthropy is measured by real beneficiaries, degree completions, vocational livelihoods, and emergency relief. Explore 12+ years of verified grassroots outcomes across Western Odisha."
         breadcrumbs={[{ label: "Community Impact" }]}
         actions={
           <>
-            <Link href="#districts">
+            <Link href="#metrics">
               <Button variant="gold" size="sm">
-                <span>30-District Framework</span>
+                <span>Core Impact Metrics</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
-            <Link href="#framework">
+            <Link href="/reports">
               <Button variant="dark-outline" size="sm">
-                <span>Auditable Metrics</span>
+                <FileText className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" />
+                <span>Audited Annual Reports</span>
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* 2. District-Level Coverage Visualization */}
-      <section id="districts" className="py-20 md:py-28 bg-[#FDFBF7]">
+      {/* 2. Four Verified Metric Counters */}
+      <section id="metrics" className="py-20 md:py-28 bg-[#FDFBF7]">
         <Container size="default" className="space-y-14">
           <SectionHeader
-            badge="Geographic Mandate"
-            badgeVariant="forest"
-            title="Coverage Strategy Across All 30 Odisha Districts"
-            subtitle="While the Trust Secretariat is headquartered in Bhubaneswar, programmatic grants and community study hubs are structured to prioritize aspirational rural and semi-urban districts."
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {districtZones.map((zone) => (
-              <Card
-                key={zone.zone}
-                variant={zone.highlight ? "elevated" : "default"}
-                padding="lg"
-                className={`space-y-4 transition-all duration-200 ${
-                  zone.highlight
-                    ? "border-2 border-[#C5A059] shadow-sm"
-                    : "border-[#0B3B24]/15 shadow-xs"
-                }`}
-              >
-                <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#C5A059]" />
-                    <span className="font-serif font-bold text-lg text-[#0B3B24]">
-                      {zone.zone}
-                    </span>
-                  </div>
-                  <Badge variant="contrast-gold">
-                    {zone.count}
-                  </Badge>
-                </div>
-
-                <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0B3B24] block">
-                    Districts Included:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {zone.districts.map((d) => (
-                      <span
-                        key={d}
-                        className="text-xs bg-[#F4EFE6] text-[#1C2421] px-2.5 py-1 rounded-xs border border-[#0B3B24]/10 font-medium"
-                      >
-                        {d}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-xs">
-                  <span className="text-[#4A5568] font-medium">{zone.phase}</span>
-                  <span className="text-[#0B3B24] font-semibold italic">{zone.status}</span>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 3. Impact Reporting Framework & Metrics */}
-      <section id="framework" className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10">
-        <Container size="default" className="space-y-14">
-          <SectionHeader
-            badge="Fiduciary Measurement"
-            badgeVariant="gold"
-            title="Auditable Impact Framework"
-            subtitle="We assess philanthropic success by academic degree completions, college retention rates, and career self-reliance."
+            badge="Verified Ground Telemetry"
+            title="Grassroots Impact Across 4 Operational Tracks"
+            subtitle="Extracted from MECT's 2021–2024 certified annual activity reports and field ledgers."
             align="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {impactMetrics.map((metric) => {
-              const Icon = metric.icon;
+            {verifiedImpactMetrics.map((item, idx) => {
+              const Icon = item.icon;
               return (
                 <Card
-                  key={metric.title}
+                  key={idx}
                   variant="elevated"
-                  padding="lg"
-                  className="space-y-4 flex flex-col justify-between"
+                  className="p-6 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4 flex flex-col justify-between"
                 >
-                  <div className="space-y-4">
-                    <div className="w-11 h-11 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shadow-xs">
-                      <Icon className="w-5 h-5" />
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
+                        <Icon className="w-5 h-5 text-[#E4C88A]" />
+                      </div>
+                      <Badge variant="contrast-gold" size="sm">
+                        {item.badge}
+                      </Badge>
                     </div>
+
                     <div>
-                      <span className="text-xs font-bold text-[#7A5E24] block">
-                        Target: {metric.target}
+                      <span className="font-serif text-2xl font-bold text-[#0A192F] block">
+                        {item.metric}
                       </span>
-                      <h3 className="font-serif text-lg font-bold text-[#0B3B24] mt-0.5">
-                        {metric.title}
-                      </h3>
+                      <span className="text-xs font-semibold text-[#7A5E24] font-sans block mt-0.5">
+                        {item.subtext}
+                      </span>
                     </div>
-                    <p className="text-xs text-[#4A5568] leading-relaxed">
-                      {metric.description}
+
+                    <h3 className="font-serif text-base font-bold text-[#0A192F]">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                      {item.description}
                     </p>
                   </div>
                 </Card>
@@ -241,116 +213,138 @@ export default function ImpactPage() {
         </Container>
       </section>
 
-      {/* 4. Scholar Journey Scenarios (Archetypes) */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
-        <Container size="default" className="space-y-14">
+      {/* 3. Authentic Grassroots Case Studies */}
+      <section className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10">
+        <Container size="default" className="space-y-12">
           <SectionHeader
-            badge="Mission Focus Archetypes"
-            badgeVariant="forest"
-            title="Representative Scholar Journeys"
-            subtitle="To illustrate how the Trust’s proposed direct-to-college interventions operate, below are representative scholar scenarios modeling typical educational barriers in Odisha."
+            badge="Field Case Studies"
+            title="Ground-Level Stories of Transformation"
+            subtitle="Documented field initiatives illustrating the life outcomes enabled by MECT's non-profit interventions in Odisha."
             align="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {scholarArchetypes.map((archetype) => (
+            {groundCaseStudies.map((story, idx) => (
               <Card
-                key={archetype.title}
+                key={idx}
                 variant="elevated"
-                padding="lg"
-                className="flex flex-col justify-between space-y-5"
+                className="p-7 bg-white border-[#0A192F]/12 shadow-sm space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-[11px] pb-2 border-b border-[#0B3B24]/10">
-                    <span className="text-[#7A5E24] font-bold">{archetype.origin}</span>
-                    <Badge variant="neutral" className="text-[10px]">
-                      Model Profile
+                  <div className="flex items-center justify-between pb-2 border-b border-[#0A192F]/10 text-[11px] font-sans">
+                    <span className="text-[#7A5E24] font-bold">{story.location}</span>
+                    <Badge variant="forest" size="sm">
+                      {story.category}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
-                    {archetype.title}
+                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                    {story.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                    {archetype.scenario}
+                    {story.scenario}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#0B3B24]/10 space-y-1.5 text-xs">
-                  <p className="text-[#0B3B24] font-bold">
-                    Scheme: <span className="font-normal text-[#4A5568]">{archetype.program}</span>
-                  </p>
-                  <p className="text-[#0B3B24] font-bold">
-                    Target Outcome: <span className="text-emerald-800 font-semibold">{archetype.outcome}</span>
+                <div className="pt-3 border-t border-[#0A192F]/10 space-y-1 text-xs font-sans">
+                  <span className="text-[10px] uppercase font-bold text-[#15803D] block">
+                    Verified Ground Impact:
+                  </span>
+                  <p className="text-xs text-[#0A192F] font-semibold leading-snug">
+                    {story.impact}
                   </p>
                 </div>
               </Card>
             ))}
           </div>
-
-          <p className="text-[11px] text-[#4A5568] text-center italic">
-            *In strict accordance with legal privacy and data integrity guidelines, individual identities, actual beneficiary records, and award amounts will be formally published post statutory formalization and individual consent.
-          </p>
         </Container>
       </section>
 
-      {/* 5. Annual Reports & Public Disclosure Archive */}
-      <section className="py-20 bg-[#072617] text-[#EDE6D8]">
-        <Container size="default" className="space-y-12">
+      {/* 4. Coverage Strategy Across All 30 Odisha Districts */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="30-District Framework">
+        <Container size="default" className="space-y-14">
           <SectionHeader
-            badge={
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-[#0B3B24] border border-[#C5A059]/40 text-xs text-[#E4C88A] uppercase font-bold tracking-wider">
-                <FileText className="w-3.5 h-3.5 text-[#C5A059]" />
-                <span>Public Accountability</span>
-              </div>
-            }
-            title="Statutory Annual Reports & Financial Disclosures"
-            subtitle="As part of our commitment to transparent non-profit governance, MAHAVIR TRUST will publish certified audited balance sheets, expenditure ratios, and statutory Form 10B filings annually."
+            badge="Geographic Mandate"
+            title="Odisha 30-District Outreach & Cluster Architecture"
+            subtitle="From our registered base in Balangir and corporate secretariat in Bhubaneswar, MECT progressively extends higher education and civic relief across all administrative zones."
             align="center"
-            theme="dark"
           />
 
-          {/* Provisional Publication Calendar */}
-          <Card
-            variant="dark"
-            padding="lg"
-            className="max-w-3xl mx-auto space-y-6 bg-[#0B3B24]/90 border border-[#C5A059]/30 shadow-lg"
-          >
-            <h3 className="font-serif text-xl font-bold text-white">
-              Annual Publication Calendar
-            </h3>
-            <div className="space-y-4 text-xs text-white/85">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-4 h-4 text-[#E4C88A] shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-[#E4C88A] font-sans">Statutory Financial Audit (Form 10B):</strong> Published annually within 180 days of financial year close following certified audit by independent Chartered Accountants.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {districtZones.map((zone) => (
+              <Card
+                key={zone.zone}
+                variant={zone.highlight ? "elevated" : "default"}
+                className={`p-7 bg-white space-y-4 transition-all ${
+                  zone.highlight
+                    ? "border-2 border-[#C5A059] shadow-md"
+                    : "border-[#0A192F]/12 shadow-xs"
+                }`}
+              >
+                <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#C5A059]" />
+                    <span className="font-serif font-bold text-lg text-[#0A192F]">
+                      {zone.zone}
+                    </span>
+                  </div>
+                  <Badge variant="contrast-gold">
+                    {zone.count}
+                  </Badge>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-4 h-4 text-[#E4C88A] shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-[#E4C88A] font-sans">Disbursement Ledger Reconciliation:</strong> Full reconciliation of direct college bank RTGS transactions verified with participating college bursar accounts.
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-4 h-4 text-[#E4C88A] shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-[#E4C88A] font-sans">Annual Impact Report:</strong> Comprehensive metrics on graduation completion, gender representation in STEM, and district-level reach across Odisha.
-                </div>
-              </div>
-            </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-[11px] text-white/60 italic">
-                First annual audit report scheduled post statutory registration completion.
-              </span>
-              <Link href="/governance">
-                <Button variant="gold" size="sm">
-                  <span>View Governance Charter</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                <div className="space-y-1.5 font-sans">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5E24] block">
+                    Districts in Cluster:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {zone.districts.map((d) => (
+                      <span
+                        key={d}
+                        className="text-xs bg-[#F4EFE6] text-[#0A192F] px-2.5 py-1 rounded-xs border border-[#0A192F]/10 font-medium"
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-[#0A192F]/10 flex items-center justify-between text-xs font-sans">
+                  <span className="text-[#4A5568]">{zone.phase}</span>
+                  <span className="text-[#0A192F] font-bold">{zone.status}</span>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. Annual Reports & Audit Link */}
+      <section className="py-20 bg-[#0A192F] text-[#EDE6D8]">
+        <Container size="default">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <Badge variant="gold-dark">
+              Public Fiduciary Archive
+            </Badge>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Transparent, Audited Annual Reports &amp; Balance Sheets
+            </h2>
+            <p className="text-sm text-white/80 leading-relaxed font-sans max-w-2xl mx-auto">
+              MECT publishes certified annual activity reports and balance sheets audited by independent Chartered Accountants, in accordance with the Indian Trusts Act and Income Tax Act Section 12A/80G norms.
+            </p>
+            <div className="pt-2 flex flex-wrap justify-center gap-4">
+              <Link href="/reports">
+                <Button variant="gold" size="lg" className="shadow-lg font-bold">
+                  <FileText className="w-4 h-4 mr-2" />
+                  <span>Inspect Annual Reports Archive</span>
+                </Button>
+              </Link>
+              <Link href="/statutory-disclosures">
+                <Button variant="dark-outline" size="lg" className="font-semibold">
+                  <span>View 12A/80G Credentials</span>
                 </Button>
               </Link>
             </div>
-          </Card>
+          </div>
         </Container>
       </section>
     </div>
