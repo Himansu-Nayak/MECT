@@ -74,20 +74,33 @@ export default function AboutPage() {
         "alternateName": "MAHAVIR TRUST",
         "url": "https://mect.org.in",
         "logo": "https://mect.org.in/icon.png",
-        "foundingDate": "2025",
+        "foundingDate": "2013-07-27",
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": "Odisha, India",
         },
         "description":
-          "Public charitable educational trust dedicated to higher education tuition grants, merit fellowships, and community study facilities across all 30 districts of Odisha.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bhubaneswar",
-          "addressRegion": "Odisha",
-          "postalCode": "751001",
-          "addressCountry": "IN",
-        },
+          "Irrevocable public charitable trust registered in 2013 (Deed No. 40311302194), dedicated to higher education grants, rural remedial schooling, women's tailoring livelihoods, and potable drinking water relief across all 30 districts of Odisha.",
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "name": "Registered Office",
+            "streetAddress": "Near Sai Mandir, Rugudipara",
+            "addressLocality": "Balangir",
+            "addressRegion": "Odisha",
+            "postalCode": "767001",
+            "addressCountry": "IN",
+          },
+          {
+            "@type": "PostalAddress",
+            "name": "Corporate Liaison Secretariat",
+            "streetAddress": "A1, 3rd Floor, Lewis Plaza, BJB Nagar",
+            "addressLocality": "Bhubaneswar",
+            "addressRegion": "Odisha",
+            "postalCode": "751014",
+            "addressCountry": "IN",
+          },
+        ],
       },
     ],
   };
