@@ -2,7 +2,7 @@
 
 ## Checklist
 - [x] 1. Discovery: purpose, stack, folder map, scripts, env vars → Findings
-- [ ] 2. Header: logo, badges, nav links, disclaimer
+- [x] 2. Header: logo, badges, nav links, disclaimer
 - [ ] 3. Features section
 - [ ] 4. Quick Start (install, env, run frontend, run backend, run AI engine)
 - [ ] 5. Architecture: module table + a Mermaid diagram of how src, backend, mect-ai-engine and ai-training connect
@@ -112,3 +112,4 @@ MAHAVIR-TRUST/
 ## Open Questions & Placeholders
 1. **LICENSE:** No formal LICENSE file exists in the repository root. Will include `<!-- TODO: confirm license type -->` in Item 10.
 2. **Screenshots:** No UI image files exist in `public/` (only Google site verification HTML). Will insert `<!-- TODO: screenshot -->` placeholders with descriptive italic captions in Item 2/3/5 as requested.
+
