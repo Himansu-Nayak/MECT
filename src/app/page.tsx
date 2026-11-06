@@ -447,7 +447,7 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Women's Vocational Livelihood Training</span>
+                    <span>Women&apos;s Vocational Livelihood Training</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
@@ -943,7 +943,7 @@ export default function HomePage() {
               Invest in a Scholar’s Future. Transform an Entire Family.
             </h2>
             <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans">
-              Every rupee donated to Mahaveer Educational &amp; Charitable Trust directly supports accredited higher education tuition grants, rural women's tailoring workshops, and community clean drinking water stations.
+              Every rupee donated to Mahaveer Educational &amp; Charitable Trust directly supports accredited higher education tuition grants, rural women&apos;s tailoring workshops, and community clean drinking water stations.
             </p>
 
             {/* 80G Tax Exemption & Direct Bank Transfer Reassurance Box */}

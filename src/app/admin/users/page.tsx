@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { getAdminUsers, createAdminUser, updateAdminUserStatus, AdminUserSummary } from "@/lib/api";
 import { Card, Badge } from "@/components/ui/Card";
@@ -36,7 +36,7 @@ export default function AdminUsersPage() {
   const [isCreating, setIsCreating] = useState<boolean>(false);
   const [createError, setCreateError] = useState<string | null>(null);
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     if (!token) return;
     setIsLoading(true);
     setError(null);
@@ -52,10 +52,37 @@ export default function AdminUsersPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    fetchUsers();
+    let isCancelled = false;
+    if (!token) return;
+
+    getAdminUsers(token)
+      .then((data) => {
+        if (!isCancelled) {
+          setUsers(data);
+          setError(null);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!isCancelled) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to fetch administrative users.");
+          }
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [token]);
 
   const handleCreateUser = async (e: React.FormEvent) => {

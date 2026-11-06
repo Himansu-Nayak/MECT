@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { getAdminAuditLogs, AdminAuditLog } from "@/lib/api";
 import { Card, Badge } from "@/components/ui/Card";
@@ -14,7 +14,7 @@ export default function AdminAuditLogsPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     if (!token) return;
     setIsLoading(true);
     setError(null);
@@ -30,10 +30,37 @@ export default function AdminAuditLogsPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    fetchLogs();
+    let isCancelled = false;
+    if (!token) return;
+
+    getAdminAuditLogs(token)
+      .then((data) => {
+        if (!isCancelled) {
+          setLogs(data);
+          setError(null);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!isCancelled) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to fetch statutory audit trail.");
+          }
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [token]);
 
   const filtered = logs.filter((l) => {

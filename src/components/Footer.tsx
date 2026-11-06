@@ -79,7 +79,7 @@ export function Footer() {
             </Link>
 
             <p className="text-xs text-white/75 leading-relaxed max-w-sm font-sans">
-              An irrevocable public charitable trust established by registered Trust Deed on 27th July 2013 (Balangir Sub-Registrar), advancing higher education, rural women's skilling, and clean drinking water relief across Odisha.
+              An irrevocable public charitable trust established by registered Trust Deed on 27th July 2013 (Balangir Sub-Registrar), advancing higher education, rural women&apos;s skilling, and clean drinking water relief across Odisha.
             </p>
 
             <div className="pt-2 text-xs text-white/70 space-y-2.5 font-sans">
@@ -169,7 +169,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/programmes#women-empowerment" className="hover:text-white transition-colors">
-                  Women's Vocational Tailoring
+                  Women&apos;s Vocational Tailoring
                 </Link>
               </li>
               <li>

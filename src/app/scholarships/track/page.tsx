@@ -30,15 +30,9 @@ function ScholarshipTrackContent() {
 
   const [applicationNumber, setApplicationNumber] = useState<string>(initialRef);
   const [phone, setPhone] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(Boolean(initialRef));
   const [trackResult, setTrackResult] = useState<ScholarshipTrackData | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (initialRef) {
-      performTracking(initialRef);
-    }
-  }, [initialRef]);
 
   const performTracking = async (ref: string, phoneNum?: string) => {
     if (!ref.trim()) {
@@ -62,6 +56,38 @@ function ScholarshipTrackContent() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    let isCancelled = false;
+    if (initialRef && initialRef.trim()) {
+      trackScholarshipApplication(initialRef.trim())
+        .then((data) => {
+          if (!isCancelled) {
+            setTrackResult(data);
+            setError(null);
+          }
+        })
+        .catch((err: unknown) => {
+          if (!isCancelled) {
+            if (err instanceof Error) {
+              setError(err.message);
+            } else {
+              setError("Unable to locate application. Please verify the reference identifier.");
+            }
+            setTrackResult(null);
+          }
+        })
+        .finally(() => {
+          if (!isCancelled) {
+            setIsLoading(false);
+          }
+        });
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [initialRef]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();

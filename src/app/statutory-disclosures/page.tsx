@@ -314,7 +314,7 @@ export default function StatutoryDisclosuresPage() {
                 <ul className="space-y-1.5 text-xs text-white/80 font-sans">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Every donor receives a stamped, numbered receipt containing MECT's PAN and 80G URN.</span>
+                    <span>Every donor receives a stamped, numbered receipt containing MECT&apos;s PAN and 80G URN.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
@@ -457,3 +457,4 @@ export default function StatutoryDisclosuresPage() {
     </div>
   );
 }
+

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import {
   getAdminScholarships,
@@ -65,7 +65,7 @@ export default function AdminScholarshipsPage() {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [updateError, setUpdateError] = useState<string | null>(null);
 
-  const fetchScholarships = async () => {
+  const fetchScholarships = useCallback(async () => {
     if (!token) return;
     setIsLoading(true);
     setError(null);
@@ -81,10 +81,37 @@ export default function AdminScholarshipsPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [token, statusFilter, districtFilter]);
 
   useEffect(() => {
-    fetchScholarships();
+    let isCancelled = false;
+    if (!token) return;
+
+    getAdminScholarships(token, statusFilter || undefined, districtFilter || undefined)
+      .then((data) => {
+        if (!isCancelled) {
+          setScholarships(data);
+          setError(null);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!isCancelled) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to fetch scholarship records.");
+          }
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [token, statusFilter, districtFilter]);
 
   const openAppDetails = (app: ScholarshipApplicationData) => {

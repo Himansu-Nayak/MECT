@@ -9,6 +9,13 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "backend/**",
+    "scratch/**",
+    "mect-ai-engine/**",
+    "ai-training/**",
+    "**/.venv/**",
+    "**/venv/**",
+    "**/__pycache__/**",
+    "coverage/**",
   ]),
 ]);
 

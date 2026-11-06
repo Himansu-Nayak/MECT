@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { getAdminInquiries, AdminInquiry } from "@/lib/api";
 import { Card, Badge } from "@/components/ui/Card";
@@ -14,7 +14,7 @@ export default function AdminInquiriesPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const fetchInquiries = async () => {
+  const fetchInquiries = useCallback(async () => {
     if (!token) return;
     setIsLoading(true);
     setError(null);
@@ -30,10 +30,37 @@ export default function AdminInquiriesPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    fetchInquiries();
+    let isCancelled = false;
+    if (!token) return;
+
+    getAdminInquiries(token)
+      .then((data) => {
+        if (!isCancelled) {
+          setInquiries(data);
+          setError(null);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!isCancelled) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to fetch public inquiries.");
+          }
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [token]);
 
   const filtered = inquiries.filter((inq) => {

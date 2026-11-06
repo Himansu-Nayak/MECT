@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { getAdminVolunteers, updateAdminVolunteerStatus, AdminVolunteer } from "@/lib/api";
 import { Card, Badge } from "@/components/ui/Card";
@@ -34,7 +34,7 @@ export default function AdminVolunteersPage() {
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const fetchVolunteers = async () => {
+  const fetchVolunteers = useCallback(async () => {
     if (!token) return;
     setIsLoading(true);
     setError(null);
@@ -50,10 +50,37 @@ export default function AdminVolunteersPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    fetchVolunteers();
+    let isCancelled = false;
+    if (!token) return;
+
+    getAdminVolunteers(token)
+      .then((data) => {
+        if (!isCancelled) {
+          setVolunteers(data);
+          setError(null);
+        }
+      })
+      .catch((err: unknown) => {
+        if (!isCancelled) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to fetch volunteer records.");
+          }
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [token]);
 
   const handleStatusChange = async (volunteerId: number, newStatus: string) => {
