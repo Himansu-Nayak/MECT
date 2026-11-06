@@ -2,7 +2,7 @@
 
 ## Checklist
 - [x] 01 DISCOVERY-A: Map the repo: walk every top-level folder (src, public, backend, mect-ai-engine, ai-training, scratch) 3 levels deep. Identify each module's language, framework, manifest, entry point. Fill Module Map.
-- [ ] 02 DISCOVERY-B: Frontend deep-dive: list every route under src/app (or pages), layouts, key components, data fetching, AI gateway route handlers, middleware, security headers in next.config.ts, i18n, accessibility features, SEO. Fill Routes registry.
+- [x] 02 DISCOVERY-B: Frontend deep-dive: list every route under src/app (or pages), layouts, key components, data fetching, AI gateway route handlers, middleware, security headers in next.config.ts, i18n, accessibility features, SEO. Fill Routes registry.
 - [ ] 03 DISCOVERY-C: Backend deep-dive: framework, DB, migrations, auth model, every endpoint under /api/v1, config files, how to start it, default port, required env/secrets. Fill Routes/API and Env registries.
 - [ ] 04 DISCOVERY-D: AI engine + training deep-dive: model(s), serving framework, endpoints (/v1/chat/completions, /v1/health), auth via INTERNAL_AI_SECRET, hardware needs, how to run, fallback logic and exact AI_ENGINE_MODE values supported. Describe ai-training: data, scripts, outputs.
 - [ ] 05 DISCOVERY-E: Read every root .md report/spec; extract: product purpose, user roles, volunteer module scope, security findings and their resolution status, design tokens, roadmap phases. Determine what MECT stands for. Fill Findings.
@@ -80,16 +80,62 @@
 
 ---
 
-## Routes/API Registry
-*(To be populated in detail in DISCOVERY-B and DISCOVERY-C)*
+### Frontend Architecture & Capabilities (DISCOVERY-B)
+- **Framework & Config:** Next.js 16.4.3 App Router with React 19.3.0 and TypeScript 5.7.0 (`next.config.ts`). Uses Turbopack for compilation and `next build --webpack` for Webpack fallback.
+- **Security Headers (`next.config.ts`):** Enforces HSTS (`max-age=63072000; includeSubDomains; preload`), `X-Frame-Options: DENY` (clickjacking protection), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
+- **AI Gateway Route Handlers (`src/app/api/ai/`):**
+  - `POST /api/ai/chat`: Dual-routing streaming proxy with IP-based rate limiting (20 req/min/IP with Cloudflare `cf-connecting-ip` and `x-forwarded-for` extraction). Integrates resilient circuit breaker (`aiGatewayCircuitBreaker`) with 3.5s connection timeout, 60s cooldown after 3 consecutive local engine failures, and automatic streaming fallback to Groq Cloud (`createGroqChatStream`). Propagates client abort signals to prevent orphan upstream connections.
+  - `GET /api/ai/health`: Real-time health diagnostic checking local engine loopback connectivity (800ms probe) and Groq cloud API key presence.
+- **Client-Side Data Fetching (`src/lib/api.ts`):** Type-safe fetch client for public inquiries, volunteer registrations, scholarship submissions, real-time application tracking, and JWT-authenticated administrative actions.
+- **SEO & Search Console Verification:**
+  - `public/google4eacd3ee074d0174.html`: Google site verification token.
+  - `src/app/sitemap.ts`: Dynamic XML sitemap indexing all 13 primary institutional routes with prioritized weighting (0.4 to 1.0).
+  - `src/app/robots.ts`: Robot crawl directives allowing public pages while disallowing `/admin/` and `/api/`.
+  - `src/app/layout.tsx`: Comprehensive Schema.org JSON-LD `NGO` microdata embedding Trust Deed, PAN, 12A, 80G, CSR-1, NGO Darpan, and OpenGraph/Twitter cards.
+- **Accessibility & Inclusive Design:**
+  - WCAG 2.2 AA compliant skip-to-content anchor (`#main-content`).
+  - High-contrast institutional color palette: Presidential Navy (`#0A192F`) on Ivory Slate (`#FDFBF7`) / White with 15.6:1 contrast ratio.
+  - Motion sensitivity handling using `useReducedMotion()` from `motion/react`.
+  - Accessible form validation with `aria-live="assertive"`, `role="alert"`, and explicit field labels.
+- **Multilingual Support (i18n):**
+  - HIm AI Assistant natively supports English (`en`), Odia (`or`), and Hindi (`hi`).
 
-| Route / Endpoint | Method | Source File | Auth | Purpose |
+---
+
+## Routes/API Registry
+
+### Next.js Internal Routes & API Handlers
+| Route / Path | Type / Method | Source File | Auth / Access | Purpose |
 | :--- | :--- | :--- | :--- | :--- |
-| `/api/ai/chat` | `POST` | `src/app/api/ai/chat/route.ts` | Rate-limited / Public | AI Gateway chat proxy with circuit breaker |
-| `/api/ai/health` | `GET` | `src/app/api/ai/health/route.ts` | Public | AI Gateway health status & engine probe |
-| `/api/v1/auth/login` | `POST` | `backend/.../AuthController.java` | Public | Staff/Admin authentication & JWT issue |
-| `/api/v1/health` | `GET` | `backend/.../HealthController.java` | Public | Backend health probe |
-| `/api/v1/scholarships/apply` | `POST` | `backend/.../ScholarshipPublicController.java` | Public | Student scholarship application submission |
+| `/` | Page (Static) | `src/app/page.tsx` | Public | Master Institutional Homepage (Hero, 4 pillars, Trustee desk, CSR, 80G) |
+| `/about` | Page (Static) | `src/app/about/page.tsx` | Public | Institutional heritage, founding vision, 12+ years service, governance tiers |
+| `/accessibility` | Page (Static) | `src/app/accessibility/page.tsx` | Public | WCAG 2.2 AA accessibility policy and standards |
+| `/contact` | Page (Static) | `src/app/contact/page.tsx` | Public | Dual-office locator (Balangir & Bhubaneswar), official phone, 3-tier grievance desk |
+| `/csr-partnerships` | Page (Static) | `src/app/csr-partnerships/page.tsx` | Public | Corporate CSR gateway under MCA CSR-1 Reg `CSR00081063` (Schedule VII) |
+| `/donate` | Page (Static) | `src/app/donate/page.tsx` | Public | 80G 50% tax deduction calculator, Union Bank of India Balangir details, donor KYC |
+| `/faq` | Page (Static) | `src/app/faq/page.tsx` | Public | Comprehensive institutional, scholarship, and donor questions |
+| `/governance` | Page (Static) | `src/app/governance/page.tsx` | Public | Registered Trust Deed No. 40311302194, Board of Trustees, Clause XVI honorary governance |
+| `/impact` | Page (Static) | `src/app/impact/page.tsx` | Public | Ground metric counters (350+ remedial, 120+ tailoring, 10,000+ water), case studies |
+| `/privacy` | Page (Static) | `src/app/privacy/page.tsx` | Public | DPDPA data privacy policy, student record confidentiality |
+| `/programmes` | Page (Static) | `src/app/programmes/page.tsx` | Public | Deep-dive into 4 operational pillars and statewide higher education expansion |
+| `/reports` | Page (Static) | `src/app/reports/page.tsx` | Public | Audited financial statements and certified annual reports (FY 2021-22 to 2023-24) |
+| `/scholarships` | Page (Static) | `src/app/scholarships/page.tsx` | Public | Higher education tuition grant schemes overview |
+| `/scholarships/apply`| Page (Static) | `src/app/scholarships/apply/page.tsx` | Public | Multi-step student scholarship application intake |
+| `/scholarships/track`| Page (Static) | `src/app/scholarships/track/page.tsx` | Public | Live application tracking by registration number and phone |
+| `/statutory-disclosures` | Page (Static) | `src/app/statutory-disclosures/page.tsx` | Public | Public transparency vault (PAN, 12A, 80G, CSR-1, NGO Darpan, MoSJE) |
+| `/terms` | Page (Static) | `src/app/terms/page.tsx` | Public | Legal terms of service, zero-cash remittance conditions |
+| `/volunteer` | Page (Static) | `src/app/volunteer/page.tsx` | Public | 6-track volunteer registration and safeguarding declarations |
+| `/admin` | Page (Static) | `src/app/admin/page.tsx` | Protected (JWT) | Fiduciary administration portal and operational KPI dashboard |
+| `/admin/login` | Page (Static) | `src/app/admin/login/page.tsx` | Public | Administrative staff login portal |
+| `/admin/scholarships`| Page (Static) | `src/app/admin/scholarships/page.tsx` | Protected (JWT) | Student grant application scrutiny and disbursal review desk |
+| `/admin/volunteers` | Page (Static) | `src/app/admin/volunteers/page.tsx` | Protected (JWT) | Volunteer applicant verification desk |
+| `/admin/inquiries` | Page (Static) | `src/app/admin/inquiries/page.tsx` | Protected (JWT) | Public inquiry review and correspondence desk |
+| `/admin/audit-logs` | Page (Static) | `src/app/admin/audit-logs/page.tsx` | Protected (JWT) | Immutable administrative activity audit log |
+| `/admin/users` | Page (Static) | `src/app/admin/users/page.tsx` | Protected (Super Admin) | Administrative user role and access control management |
+| `/api/ai/chat` | Route (`POST`) | `src/app/api/ai/chat/route.ts` | Rate-limited (20/min) | Dual-routing AI chat stream with circuit breaker and Groq fallback |
+| `/api/ai/health` | Route (`GET`) | `src/app/api/ai/health/route.ts` | Public | AI Gateway health status & engine diagnostic probe |
+| `/sitemap.xml` | Route (`GET`) | `src/app/sitemap.ts` | Public | XML sitemap indexing 13 primary public routes |
+| `/robots.txt` | Route (`GET`) | `src/app/robots.ts` | Public | Robot exclusion standard directives |
 
 ---
 
@@ -110,3 +156,4 @@
 
 ## Run Log
 - **2026-11-06 (Run 1):** DISCOVERY-A complete. Mapped top-level folders 3 levels deep (`src/`, `backend/`, `mect-ai-engine/`, `ai-training/`, `public/`, `scratch/`). Identified languages, frameworks, manifests, and entry points. Formatted Module Map table. Initialized checklist with 18 items.
+- **2026-11-06 (Run 2):** DISCOVERY-B complete. Deep-dive into Next.js 16 frontend: mapped 25 pages, 2 AI gateway route handlers, XML sitemap, robots.txt, security headers, rate-limiting, circuit breaker, data fetching, accessibility, and SEO. Populated Routes Registry table.
