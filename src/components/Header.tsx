@@ -105,22 +105,22 @@ export function Header() {
             <Link
               href="/"
               className="flex items-center space-x-3.5 group focus-visible:outline-2 focus-visible:outline-[#C5A059]"
-              aria-label="MAHAVIR TRUST Homepage"
+              aria-label="Mahaveer Educational & Charitable Trust Homepage"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#07111E] transition-colors shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#072617] transition-colors shrink-0">
                 M
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif tracking-wider font-bold text-lg sm:text-xl text-[#0A192F] leading-tight group-hover:text-[#1E3A8A] transition-colors">
-                    MAHAVIR TRUST
+                  <span className="font-serif tracking-wider font-bold text-base sm:text-lg text-[#0B3B24] leading-tight group-hover:text-[#165B38] transition-colors">
+                    MAHAVEER EDUCATIONAL & CHARITABLE TRUST
                   </span>
                   <span className="hidden sm:inline-flex text-[9px] font-bold uppercase tracking-wider bg-[#0B3B24]/10 text-[#0B3B24] px-1.5 py-0.5 rounded-xs border border-[#0B3B24]/20">
-                    Est. 2013
+                    MECT • Est. 2013
                   </span>
                 </div>
                 <span className="text-[10px] tracking-wider uppercase font-semibold text-[#7A5E24] font-sans">
-                  Mahaveer Educational & Charitable Trust (MECT)
+                  Registered Public Charitable Trust • Balangir & Bhubaneswar, Odisha
                 </span>
               </div>
             </Link>
@@ -253,13 +253,13 @@ export function Header() {
           aria-label="Mobile Navigation Menu"
         >
           {/* Drawer Top Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#0A192F]/10">
+          <div className="flex items-center justify-between pb-4 border-b border-[#0B3B24]/10">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-lg">
+              <div className="w-9 h-9 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-lg">
                 M
               </div>
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-base text-[#0A192F]">MAHAVIR TRUST</span>
+                <span className="font-serif font-bold text-sm text-[#0B3B24]">MAHAVEER EDUCATIONAL & CHARITABLE TRUST</span>
                 <span className="text-[9px] uppercase tracking-wider text-[#7A5E24] font-semibold">
                   MECT Odisha • Est. 2013
                 </span>

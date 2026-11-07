@@ -37,7 +37,7 @@ export const ABOUT_CONTENT = {
     badge: "12+ Years of Civic Service • Est. 2013, Odisha",
     title: "Dedicated to Educational Dignity, Rural Livelihoods & Fiduciary Philanthropy",
     description:
-      "MAHAVIR TRUST (Mahaveer Educational & Charitable Trust) was established in 2013 as an irrevocable public charitable trust to empower underprivileged students, train rural women in vocational trades, and provide vital community relief across Odisha.",
+      "Mahaveer Educational & Charitable Trust (MECT) was established in 2013 as an irrevocable public charitable trust to empower underprivileged students, train rural women in vocational trades, and provide vital community relief across Odisha.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "About Us" },
@@ -49,7 +49,7 @@ export const ABOUT_CONTENT = {
     title: "True Philanthropy Enables Self-Reliance Through Education & Civic Welfare.",
     paragraphs: [
       "Higher education and vocational training represent the single most transformative engine of social and economic mobility in India. Yet, across Western Odisha, thousands of meritorious students and rural women find their potential constrained by poverty, lack of resources, and institutional barriers.",
-      "MAHAVIR TRUST was registered in Balangir in 2013 to address these systemic challenges. Over the past 12+ years, we have operated free remedial education centres, equipped over 120 rural women with certified tailoring skills, provided life-saving Jal Seva drinking water to thousands during scorching summers, and ensured hospital food relief through Jan Ahar.",
+      "Mahaveer Educational & Charitable Trust (MECT) was registered in Balangir in 2013 to address these systemic challenges. Over the past 12+ years, we have operated free remedial education centres, equipped over 120 rural women with certified tailoring skills, provided life-saving Jal Seva drinking water to thousands during scorching summers, and ensured hospital food relief through Jan Ahar.",
     ],
     safeguards: [
       {

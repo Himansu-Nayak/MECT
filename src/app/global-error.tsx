@@ -62,11 +62,11 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
               fontFamily: "Georgia, serif",
               fontSize: "26px",
               fontWeight: 700,
-              color: "#0A192F",
+              color: "#0B3B24",
               margin: "0 0 14px 0",
             }}
           >
-            MAHAVIR TRUST Portal Interrupted
+            Mahaveer Educational & Charitable Trust (MECT) Portal Interrupted
           </h1>
           <p
             style={{

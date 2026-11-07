@@ -76,7 +76,7 @@ export function DirectDisbursalFlowchart() {
             Direct-to-College Disbursal Standard
           </h2>
           <p className="text-sm sm:text-base text-white/80 leading-relaxed font-sans">
-            MAHAVIR TRUST strictly eliminates cash intermediaries. Under our proposed governance standard, approved tuition fee grants will be disbursed directly to accredited educational institutions on behalf of verified scholars.
+            Mahaveer Educational & Charitable Trust (MECT) strictly eliminates cash intermediaries. Under our proposed governance standard, approved tuition fee grants will be disbursed directly to accredited educational institutions on behalf of verified scholars.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export function DirectDisbursalFlowchart() {
               No Intermediary Agents. Zero Processing Commissions.
             </h4>
             <p className="text-xs text-white/75 max-w-2xl leading-relaxed font-sans">
-              MAHAVIR TRUST does not authorize commercial consultants, brokers, or cash collection agents. All scholarship inquiries and applications are managed exclusively via our official Secretariat Desk.
+              Mahaveer Educational & Charitable Trust (MECT) does not authorize commercial consultants, brokers, or cash collection agents. All scholarship inquiries and applications are managed exclusively via our official Secretariat Desk.
             </p>
           </div>
 

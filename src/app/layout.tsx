@@ -9,7 +9,7 @@ import { TRUST_CONFIG } from "@/lib/config";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mect.org.in"),
   title: {
-    default: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013) • Odisha",
+    default: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust (Est. 2013) • Odisha",
     template: "%s | MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
   },
   description:
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   keywords: [
     "Mahaveer Educational & Charitable Trust",
     "MECT Odisha",
-    "Mahavir Trust Balangir",
-    "Mahavir Trust Bhubaneswar",
+    "Mahaveer Educational & Charitable Trust Balangir",
+    "Mahaveer Educational & Charitable Trust Bhubaneswar",
     "80G Tax Exemption Donation Odisha",
     "MCA CSR-1 Registered Trust Odisha",
     "NITI Aayog NGO Darpan Odisha",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "MECT Board of Trustees" }],
   openGraph: {
-    title: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013)",
+    title: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust (Est. 2013)",
     description:
       "12+ years of civic service across Odisha. 12A & 80G tax-exempt charitable trust advancing higher education, rural women's tailoring livelihoods, and safe drinking water.",
     url: "https://mect.org.in",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MAHAVIR TRUST (MECT) — Fiduciary Philanthropy & Education in Odisha",
+    title: "Mahaveer Educational & Charitable Trust (MECT) — Fiduciary Philanthropy & Education in Odisha",
     description:
       "12+ years of civic service. 12A & 80G tax-exempt charitable trust advancing higher education, rural skilling, and clean water relief.",
   },
@@ -60,7 +60,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: "Mahaveer Educational & Charitable Trust",
-  alternateName: ["MAHAVIR TRUST", "MECT ODISHA", "MECT"],
+  alternateName: ["MECT", "MECT ODISHA"],
   url: "https://mect.org.in",
   description:
     "An irrevocable registered public charitable trust established on 27th July 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",

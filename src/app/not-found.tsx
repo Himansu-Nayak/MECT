@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "404 — Page Not Located | MAHAVIR TRUST",
+  title: "404 — Page Not Located | Mahaveer Educational & Charitable Trust (MECT)",
   description:
     "The requested page or institutional record could not be found within the Mahaveer Educational & Charitable Trust portal.",
   robots: {

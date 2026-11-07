@@ -560,7 +560,7 @@ export default function HomePage() {
                 Join the Cause as a Mentor, Volunteer, or Institutional Partner.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MAHAVIR TRUST welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access and rural welfare in Odisha.
+                Mahaveer Educational & Charitable Trust (MECT) welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access and rural welfare in Odisha.
               </p>
 
               <div className="space-y-4 pt-2">
@@ -807,7 +807,7 @@ export default function HomePage() {
                   </p>
                 )}
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed max-w-md mx-auto font-sans">
-                  Thank you for reaching out to MAHAVIR TRUST. Our Secretariat Coordinator has logged your query and will review your submission accordingly.
+                  Thank you for reaching out to Mahaveer Educational & Charitable Trust (MECT). Our Secretariat Coordinator has logged your query and will review your submission accordingly.
                 </p>
                 <Button
                   variant="gold"

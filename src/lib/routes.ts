@@ -51,7 +51,7 @@ export const APP_ROUTES: Record<string, AppRoute> = {
   HOME: {
     path: "/",
     label: "Home",
-    title: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013)",
+    title: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust (Est. 2013)",
     description: "Official portal of Mahaveer Educational & Charitable Trust. Advancing higher education, rural skilling, and clean water relief across Odisha.",
     category: "main",
     inNav: true,

@@ -23,9 +23,10 @@ export interface NavItem {
 
 export const TRUST_CONFIG = {
   // Official Institutional Identity
-  name: "MAHAVIR TRUST",
+  name: "Mahaveer Educational & Charitable Trust",
   legalName: "Mahaveer Educational & Charitable Trust",
   acronym: "MECT",
+  shortName: "MECT",
   motto: "Knowledge, Compassion & Self-Reliance Across Odisha",
   tagline: "Empowering Futures Through Education, Rural Skilling & Fiduciary Philanthropy",
   subtext:
