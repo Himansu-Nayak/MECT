@@ -240,6 +240,14 @@ export function Footer() {
               Architect: Himansu Nayak (HN)
             </Link>
             <span className="text-white/20">|</span>
+            <Link href="/faq" className="hover:text-white transition-colors">
+              FAQ
+            </Link>
+            <span className="text-white/20">|</span>
+            <Link href="/accessibility" className="hover:text-white transition-colors">
+              Accessibility
+            </Link>
+            <span className="text-white/20">|</span>
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>

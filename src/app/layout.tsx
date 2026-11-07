@@ -28,9 +28,6 @@ export const metadata: Metadata = {
     "Jal Seva Drinking Water Relief",
   ],
   authors: [{ name: "MECT Board of Trustees" }],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013)",
     description:
@@ -65,7 +62,6 @@ const organizationJsonLd = {
   name: "Mahaveer Educational & Charitable Trust",
   alternateName: ["MAHAVIR TRUST", "MECT ODISHA", "MECT"],
   url: "https://mect.org.in",
-  logo: "https://mect.org.in/logo.png",
   description:
     "An irrevocable registered public charitable trust established on 27th July 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
   foundingDate: "2013-07-27",

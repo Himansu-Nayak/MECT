@@ -220,8 +220,9 @@ export default function ProgrammesPage() {
               return (
                 <Card
                   key={pillar.id}
+                  id={pillar.id}
                   variant="elevated"
-                  className="p-8 sm:p-10 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
+                  className="scroll-mt-24 p-8 sm:p-10 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
                 >
                   {/* Top Bar */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#0A192F]/10 gap-3">

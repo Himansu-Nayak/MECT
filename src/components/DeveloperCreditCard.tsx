@@ -9,8 +9,9 @@ export function DeveloperCreditCard() {
 
   return (
     <section
+      id="developer-credit"
       aria-label="Website Developer & Technical Architecture Acknowledgement"
-      className="py-12 bg-[#FDFBF7] border-b border-[#0B3B24]/10"
+      className="scroll-mt-24 py-12 bg-[#FDFBF7] border-b border-[#0B3B24]/10"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-xs border border-[#C5A059]/40 bg-white p-6 sm:p-8 shadow-xs hover:border-[#C5A059] transition-colors">
