@@ -367,66 +367,240 @@ export default function HomePage() {
       {/* 2. INSTITUTIONAL ACCREDITATION MARQUEE */}
       <InstitutionalMarquee />
 
-      {/* 3. FOUR CORE MISSION PILLARS */}
-      <section id="programs" className="py-20 md:py-28 bg-[#FDFBF7]">
+      {/* 3. INSTITUTIONAL IDENTITY & CHARITABLE FOCUS AREAS */}
+      <section
+        id="focus-areas"
+        aria-labelledby="focus-areas-heading"
+        className="py-16 sm:py-20 lg:py-28 bg-[#FDFBF7] text-[#1C2421] transition-colors border-b border-[#0B3B24]/10"
+      >
         <Container size="default">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-5 space-y-6">
-              <Badge variant="forest">Grassroots Impact &amp; Purpose</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] tracking-tight leading-snug">
-                12 Years of Ground-Level Transformation Across Odisha.
-              </h2>
-              <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Mahaveer Educational &amp; Charitable Trust was conceived in 2013 to advance educational access and community self-reliance. Over the past decade, our operations have bridged higher secondary dropout gaps for rural youth, equipped women with tailoring machines and trade certificates, and provided emergency water and food relief.
-              </p>
-              <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Every programme operates under a transparent, auditable zero-cash policy with 100% direct disbursals and honorary non-remunerative trustee stewardship.
-              </p>
+          {/* Section Header */}
+          <div className="max-w-3xl mb-12 sm:mb-16 space-y-4">
+            <Badge variant="forest" size="md">
+              {HOMEPAGE_CONTENT.focusSection.eyebrow}
+            </Badge>
+            <h2
+              id="focus-areas-heading"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#072617] tracking-tight leading-[1.15]"
+            >
+              {HOMEPAGE_CONTENT.focusSection.mainHeading} <br className="hidden sm:inline" />
+              <span className="text-[#0B3B24]">{HOMEPAGE_CONTENT.focusSection.supportingHeading}</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
+              {HOMEPAGE_CONTENT.focusSection.introCopy}
+            </p>
+          </div>
 
-              <div className="pt-2 flex flex-wrap gap-3.5">
-                <Link href="/about">
-                  <Button variant="secondary" size="md">
-                    <span>12-Year Heritage</span>
-                    <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
-                  </Button>
-                </Link>
-                <Link href="/statutory-disclosures">
-                  <Button variant="outline" size="md">
-                    <ShieldCheck className="w-4 h-4 mr-1 text-[#C5A059]" aria-hidden="true" />
-                    <span>Statutory Vault</span>
-                  </Button>
+          {/* Focus Areas Asymmetric Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* CARD 01: EDUCATION (FLAGSHIP - Double-Width Spanning 2 Columns on Desktop) */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-2 group bg-white border border-[#0B3B24]/12 hover:border-[#C5A059] rounded-xs overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row">
+              <div className="w-full sm:w-1/2 relative min-h-[260px] sm:min-h-full bg-[#072617] overflow-hidden">
+                <Image
+                  src="/images/programmes/field_photo_5.jpg"
+                  alt="Secondary school students supported with scholastic materials in Odisha"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-5">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="forest" size="sm">
+                      Documented Educational Initiative
+                    </Badge>
+                    <span className="text-[11px] font-bold text-[#C5A059] font-mono tracking-wider">01</span>
+                  </div>
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#072617] tracking-tight group-hover:text-[#0B3B24] transition-colors">
+                    Grassroots Remedial Education &amp; Scholastic Guidance
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans">
+                    Documented educational initiatives include evening remedial learning support for students in Classes 6–10 across Balangir and Puintala, with academic guidance in Mathematics, Science and English, alongside study materials.
+                  </p>
+                </div>
+                <Link
+                  href="/programmes"
+                  className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+                >
+                  <span>Explore Educational Initiatives</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
                 </Link>
               </div>
             </div>
 
-            {/* Right: Pillars Grid (4 Core Pillars) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {HOMEPAGE_CONTENT.pillars.map((pillar) => {
-                const IconComponent = PILLAR_ICON_MAP[pillar.number] || Award;
-                return (
-                  <Card
-                    key={pillar.number}
-                    variant="elevated"
-                    className="space-y-3 p-6 border-[#0A192F]/12 hover:border-[#C5A059] transition-all duration-300 bg-white shadow-xs"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xs bg-[#0A192F]/5 border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059]">
-                        <IconComponent className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
-                      </div>
-                      <Badge variant="contrast-gold" size="sm">
-                        {pillar.tag}
-                      </Badge>
-                    </div>
-                    <h3 className="font-serif text-lg font-bold text-[#0A192F]">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                      {pillar.description}
-                    </p>
-                  </Card>
-                );
-              })}
+            {/* CARD 02: CHILD WELFARE */}
+            <div className="col-span-1 md:col-span-1 lg:col-span-1 group bg-white border border-[#0B3B24]/12 hover:border-[#C5A059] rounded-xs overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-48 sm:h-52 w-full bg-[#072617] overflow-hidden">
+                <Image
+                  src="/images/programmes/field_photo_8.jpg"
+                  alt="Rural children attending community learning and scholastic support sessions in Odisha"
+                  width={400}
+                  height={250}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="forest" size="sm">
+                      Integrated Educational Activity
+                    </Badge>
+                    <span className="text-[11px] font-bold text-[#C5A059] font-mono tracking-wider">02</span>
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#072617] group-hover:text-[#0B3B24] transition-colors">
+                    Child Scholastic Enablement &amp; Learning Support
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans">
+                    Documented scholastic support activities include the distribution of textbooks, slate boards and learning materials for children attending community remedial education initiatives.
+                  </p>
+                </div>
+                <Link
+                  href="/programmes"
+                  className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors pt-2 group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+
+            {/* CARD 03: WOMEN EMPOWERMENT */}
+            <div className="col-span-1 md:col-span-1 lg:col-span-1 group bg-white border border-[#0B3B24]/12 hover:border-[#C5A059] rounded-xs overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-48 sm:h-52 w-full bg-[#072617] overflow-hidden">
+                <Image
+                  src="/images/programmes/field_photo_3.jpg"
+                  alt="Women participating in vocational tailoring training in Balangir"
+                  width={400}
+                  height={250}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="forest" size="sm">
+                      Documented Vocational Initiative
+                    </Badge>
+                    <span className="text-[11px] font-bold text-[#C5A059] font-mono tracking-wider">03</span>
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#072617] group-hover:text-[#0B3B24] transition-colors">
+                    Women&apos;s Vocational Tailoring &amp; Stitching School
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans">
+                    The institutional proposal documents vocational tailoring courses in Balangir, covering sewing machine operation, garment cutting and pattern-making through six-month practical training programmes.
+                  </p>
+                </div>
+                <Link
+                  href="/programmes"
+                  className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors pt-2 group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+                >
+                  <span>View Training Details</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+
+            {/* CARD 04: JAL SEVA */}
+            <div className="col-span-1 md:col-span-1 lg:col-span-1 group bg-white border border-[#0B3B24]/12 hover:border-[#C5A059] rounded-xs p-6 sm:p-7 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xs bg-[#0B3B24]/8 border border-[#C5A059]/40 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-[#E4C88A] transition-colors">
+                    <Droplets className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <Badge variant="gold" size="sm">
+                    Seasonal Initiative
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#C5A059] font-mono tracking-wider">04</span>
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#072617] group-hover:text-[#0B3B24] transition-colors">
+                    Jal Seva: Seasonal Drinking Water Relief
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans">
+                    The Trust&apos;s documented Jal Seva initiative provided free drinking water through earthen-pot kiosks at public transit locations and other community areas in Balangir during summer months.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/programmes"
+                className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors pt-4 group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+              >
+                <span>Civic Relief Overview</span>
+                <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* CARD 05: JAN AHAR */}
+            <div className="col-span-1 md:col-span-1 lg:col-span-1 group bg-white border border-[#0B3B24]/12 hover:border-[#C5A059] rounded-xs p-6 sm:p-7 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xs bg-[#0B3B24]/8 border border-[#C5A059]/40 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-[#E4C88A] transition-colors">
+                    <Utensils className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <Badge variant="forest" size="sm">
+                    Documented Community Nutrition Initiative
+                  </Badge>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#C5A059] font-mono tracking-wider">05</span>
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#072617] group-hover:text-[#0B3B24] transition-colors">
+                    Jan Ahar: Hospital Patient Attendant Food Support
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans">
+                    The institutional proposal documents cooked meal support outside District Headquarters Hospital, Balangir, for underprivileged families accompanying hospitalized relatives. The documented arrangements included subsidized and free meal support.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/programmes"
+                className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors pt-4 group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+              >
+                <span>Healthcare Support Details</span>
+                <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* CARD 06: HISTORICAL HUMANITARIAN RELIEF (Full-Width Archival Layout Spanning 3 Columns on Desktop) */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-3 group bg-[#F4EFE6]/60 border border-[#0B3B24]/15 hover:border-[#C5A059] rounded-xs overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col md:flex-row items-center">
+              <div className="w-full md:w-1/3 relative min-h-[220px] md:min-h-[260px] self-stretch bg-[#072617] overflow-hidden">
+                <Image
+                  src="/images/programmes/field_photo_9.jpg"
+                  alt="Community members gathered during emergency relief coordination in Odisha"
+                  width={500}
+                  height={300}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="w-full md:w-2/3 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <Badge variant="neutral" size="sm">
+                      Historical Relief Archive
+                    </Badge>
+                    <span className="text-[11px] font-medium text-[#4A5568] font-sans">
+                      Documented Calamity Interventions (2019–2021)
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#072617] group-hover:text-[#0B3B24] transition-colors">
+                    Emergency Calamity Relief &amp; Community Support
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed font-sans max-w-3xl">
+                    Historical relief records document emergency dry ration and sanitization distributions during the COVID-19 lockdown period of 2020–2021, along with humanitarian relief activities associated with Cyclone Fani (2019) and Cyclone Yaas (2021).
+                  </p>
+                </div>
+                <Link
+                  href="/reports"
+                  className="inline-flex items-center text-xs sm:text-sm font-bold text-[#0B3B24] hover:text-[#C5A059] transition-colors pt-2 group/link focus-visible:outline-2 focus-visible:outline-[#C5A059] rounded-xs min-h-[48px]"
+                >
+                  <span>View Relief Records</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </div>
         </Container>

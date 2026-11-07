@@ -19,6 +19,22 @@ export interface PillarCard {
   tag: string;
 }
 
+export interface FocusAreaItem {
+  id: string;
+  number: string;
+  title: string;
+  status: string;
+  statusVariant: "forest" | "gold" | "neutral";
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  iconName?: "Droplets" | "Utensils";
+  ctaText: string;
+  ctaHref: string;
+  isFlagship?: boolean;
+  isArchive?: boolean;
+}
+
 export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
@@ -104,7 +120,97 @@ export const HOMEPAGE_CONTENT = {
     },
   ],
 
-  // Core Pillars of Transformation
+  // Institutional Focus Areas Section (Section 3)
+  focusSection: {
+    eyebrow: "INSTITUTIONAL FOCUS AREAS",
+    mainHeading: "Education as Our Foundational Mission.",
+    supportingHeading: "Dedicated Welfare for Communities Across Odisha.",
+    introCopy:
+      "Mahaveer Educational & Charitable Trust (MECT) prioritizes educational access as a foundation for individual opportunity and community progress. Alongside its educational focus, the Trust's documented charitable initiatives address women's vocational development, seasonal drinking water relief, hospital patient food support and humanitarian assistance.",
+  },
+
+  focusAreas: [
+    {
+      id: "education",
+      number: "01",
+      title: "Grassroots Remedial Education & Scholastic Guidance",
+      status: "Documented Educational Initiative",
+      statusVariant: "forest",
+      description:
+        "Documented educational initiatives include evening remedial learning support for students in Classes 6–10 across Balangir and Puintala, with academic guidance in Mathematics, Science and English, alongside study materials.",
+      image: "/images/programmes/field_photo_5.jpg",
+      imageAlt: "Secondary school students supported with scholastic materials in Odisha",
+      ctaText: "Explore Educational Initiatives",
+      ctaHref: "/programmes",
+      isFlagship: true,
+    },
+    {
+      id: "child-welfare",
+      number: "02",
+      title: "Child Scholastic Enablement & Learning Support",
+      status: "Integrated Educational Activity",
+      statusVariant: "forest",
+      description:
+        "Documented scholastic support activities include the distribution of textbooks, slate boards and learning materials for children attending community remedial education initiatives.",
+      image: "/images/programmes/field_photo_8.jpg",
+      imageAlt: "Rural children attending community learning and scholastic support sessions in Odisha",
+      ctaText: "Learn More",
+      ctaHref: "/programmes",
+    },
+    {
+      id: "women-empowerment",
+      number: "03",
+      title: "Women's Vocational Tailoring & Stitching School",
+      status: "Documented Vocational Initiative",
+      statusVariant: "forest",
+      description:
+        "The institutional proposal documents vocational tailoring courses in Balangir, covering sewing machine operation, garment cutting and pattern-making through six-month practical training programmes.",
+      image: "/images/programmes/field_photo_3.jpg",
+      imageAlt: "Women participating in vocational tailoring training in Balangir",
+      ctaText: "View Training Details",
+      ctaHref: "/programmes",
+    },
+    {
+      id: "jal-seva",
+      number: "04",
+      title: "Jal Seva: Seasonal Drinking Water Relief",
+      status: "Seasonal Initiative",
+      statusVariant: "gold",
+      description:
+        "The Trust's documented Jal Seva initiative provided free drinking water through earthen-pot kiosks at public transit locations and other community areas in Balangir during summer months.",
+      iconName: "Droplets",
+      ctaText: "Civic Relief Overview",
+      ctaHref: "/programmes",
+    },
+    {
+      id: "jan-ahar",
+      number: "05",
+      title: "Jan Ahar: Hospital Patient Attendant Food Support",
+      status: "Documented Community Nutrition Initiative",
+      statusVariant: "forest",
+      description:
+        "The institutional proposal documents cooked meal support outside District Headquarters Hospital, Balangir, for underprivileged families accompanying hospitalized relatives. The documented arrangements included subsidized and free meal support.",
+      iconName: "Utensils",
+      ctaText: "Healthcare Support Details",
+      ctaHref: "/programmes",
+    },
+    {
+      id: "historical-relief",
+      number: "06",
+      title: "Emergency Calamity Relief & Community Support",
+      status: "Historical Relief Archive",
+      statusVariant: "neutral",
+      description:
+        "Historical relief records document emergency dry ration and sanitization distributions during the COVID-19 lockdown period of 2020–2021, along with humanitarian relief activities associated with Cyclone Fani (2019) and Cyclone Yaas (2021).",
+      image: "/images/programmes/field_photo_9.jpg",
+      imageAlt: "Community members gathered during emergency relief coordination in Odisha",
+      ctaText: "View Relief Records",
+      ctaHref: "/reports",
+      isArchive: true,
+    },
+  ] as FocusAreaItem[],
+
+  // Core Pillars of Transformation (Retained for backward compatibility)
   pillars: [
     {
       number: "01",
