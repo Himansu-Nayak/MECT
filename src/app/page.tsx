@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -178,107 +179,187 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION: Institutional Prestige & Factual 12-Year Mission */}
-      <section className="relative overflow-hidden bg-[#0A192F] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
-        {/* Subtle geometric grid background */}
+      {/* 1. HERO SECTION: Institutional Prestige, Authentic Field Operations & Factual Mission */}
+      <section
+        aria-labelledby="hero-heading"
+        className="relative overflow-hidden bg-gradient-to-b from-[#072617] via-[#072617] to-[#0B3B24] text-[#EDE6D8] pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 border-b border-[#C5A059]/30 transition-colors"
+      >
+        {/* Subtle geometric grid background & warm gold ambient glows */}
         <div
-          className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
+          className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
           aria-hidden="true"
         />
         <div
-          className="absolute -top-40 -right-40 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none"
+          className="absolute -top-32 -right-32 w-96 h-96 bg-[#C5A059]/12 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
         <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#1E3A8A]/30 rounded-full blur-3xl pointer-events-none"
+          className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#0B3B24]/40 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <Container size="default">
-          <div className="max-w-4xl mx-auto text-center space-y-7">
-            {/* Mission & Verification Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <Badge
-                variant="gold-dark"
-                size="md"
-                icon={<Sparkles className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
-              >
-                {HOMEPAGE_CONTENT.hero.badge}
-              </Badge>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xs bg-[#15803D]/20 text-[#86EFAC] text-xs font-semibold border border-[#15803D]/40">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#86EFAC]" aria-hidden="true" />
-                <span>80G Tax Exempt (50% Deduction)</span>
-              </span>
-            </div>
-
-            {/* Grand Editorial Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12]">
-              {HOMEPAGE_CONTENT.hero.headline}
-            </h1>
-
-            {/* Subtext */}
-            <p className="text-base sm:text-lg text-white/85 leading-relaxed font-sans max-w-3xl mx-auto">
-              {HOMEPAGE_CONTENT.hero.subtext}
-            </p>
-
-            {/* Structured Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
-                <Button variant="gold" size="lg" className="shadow-lg font-bold">
-                  <Heart className="w-4 h-4 mr-1.5 fill-current" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.primary.text}</span>
-                </Button>
-              </Link>
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
-                <Button variant="dark-outline" size="lg" className="font-semibold !border-[#C5A059]/60 !text-[#E4C88A] hover:!bg-[#C5A059]/10">
-                  <Briefcase className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
-                </Button>
-              </Link>
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
-                <Button variant="dark-outline" size="lg" className="font-semibold">
-                  <Award className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.secondary.text}</span>
-                </Button>
-              </Link>
-            </div>
-
-            {/* Quiet Governance Link & Notice */}
-            <div className="pt-2 space-y-1">
-              <p className="text-xs text-white/75 font-sans">
-                Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
-                <Link
-                  href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
-                  className="text-[#E4C88A] underline hover:text-white transition-colors font-medium"
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Column: Institutional Mission, Narrative & Action CTAs */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              {/* Mission & Verification Badges */}
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge
+                  variant="gold-dark"
+                  size="md"
+                  icon={<Sparkles className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
                 >
-                  Fiduciary Charter &amp; Governance Code
+                  {HOMEPAGE_CONTENT.hero.badge}
+                </Badge>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-xs bg-[#0B3B24] text-[#E4C88A] text-xs font-semibold border border-[#C5A059]/40">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
+                  <span>80G &amp; 12A Certified • 50% Tax Deduction</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#0B3B24]/70 text-white/85 text-[11px] font-medium border border-white/15">
+                  <span>MCA CSR-1: CSR00081063</span>
+                </span>
+              </div>
+
+              {/* Grand Editorial Headline */}
+              <h1
+                id="hero-heading"
+                className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white tracking-tight leading-[1.14]"
+              >
+                Building Opportunities. <br className="hidden sm:inline" />
+                Empowering Communities. <br className="hidden sm:inline" />
+                <span className="text-[#E4C88A]">Creating Lasting Change.</span>
+              </h1>
+
+              {/* Subtext */}
+              <p className="text-base sm:text-lg text-white/90 leading-relaxed font-sans max-w-2xl">
+                {HOMEPAGE_CONTENT.hero.subtext}
+              </p>
+
+              {/* Structured Action Buttons */}
+              <div className="pt-2 flex flex-wrap items-center gap-3.5">
+                <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
+                  <Button variant="gold" size="lg" className="shadow-lg font-bold text-[#072617]">
+                    <span>{HOMEPAGE_CONTENT.hero.ctas.primary.text}</span>
+                    <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
+                  </Button>
                 </Link>
-                .
-              </p>
-              <p className="text-[11px] text-white/55">
-                {HOMEPAGE_CONTENT.hero.notice}
-              </p>
+                <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
+                  <Button
+                    variant="dark-outline"
+                    size="lg"
+                    className="font-semibold !border-[#C5A059]/60 !text-[#E4C88A] hover:!bg-[#C5A059]/15"
+                  >
+                    <Heart className="w-4 h-4 mr-1.5 fill-current text-[#C5A059]" aria-hidden="true" />
+                    <span>{HOMEPAGE_CONTENT.hero.ctas.secondary.text}</span>
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Governance & Corporate CSR Notice */}
+              <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-xs text-white/75 font-sans">
+                <p>
+                  Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
+                  <Link
+                    href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
+                    className="text-[#E4C88A] underline hover:text-white transition-colors font-medium"
+                  >
+                    Fiduciary Charter
+                  </Link>
+                  .
+                </p>
+                <span className="hidden sm:inline text-white/30">•</span>
+                <Link
+                  href={HOMEPAGE_CONTENT.hero.ctas.csr.href}
+                  className="text-[#E4C88A] hover:text-white underline transition-colors whitespace-nowrap font-medium"
+                >
+                  Corporate CSR Partnerships →
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Authentic Field Documentation Visual & Fiduciary Badge */}
+            <div className="lg:col-span-5">
+              <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+                {/* Framed authentic field photograph */}
+                <div className="rounded-xs overflow-hidden border-2 border-[#C5A059]/60 shadow-2xl relative bg-[#072617] group">
+                  <Image
+                    src="/images/programmes/field_photo_1.jpg"
+                    alt="MECT remedial rural education learning center in Balangir district, Odisha"
+                    width={735}
+                    height={581}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 480px"
+                    className="w-full h-auto object-cover max-h-[380px] sm:max-h-[420px] transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+
+                  {/* On-image authenticated activity pill */}
+                  <div className="absolute bottom-3 left-3 right-3 sm:right-auto bg-[#072617]/95 backdrop-blur-xs border border-[#C5A059]/50 p-2.5 sm:p-3 rounded-xs shadow-lg flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full overflow-hidden border border-[#C5A059] shrink-0 bg-[#4b1d6b] shadow-xs">
+                      <Image
+                        src="/images/mect-official-emblem.png"
+                        alt="Official MECT circular emblem"
+                        width={36}
+                        height={36}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-xs font-bold text-white tracking-wide">
+                        Rural Remedial Education Center
+                      </p>
+                      <p className="text-[10px] text-[#E4C88A] font-medium">
+                        Balangir District, Odisha • Field Documentation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Under-frame Direct Disbursal Standard Card */}
+                <div className="mt-3.5 p-3 rounded-xs bg-[#0B3B24]/75 border border-[#C5A059]/35 flex items-center justify-between text-xs text-white/90 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#86EFAC] shrink-0" aria-hidden="true" />
+                    <div>
+                      <span className="font-semibold text-[#E4C88A]">100% Direct-to-Institution</span>
+                      <span className="text-white/60 mx-1.5">•</span>
+                      <span className="text-white/80">Zero Cash Handled</span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/governance"
+                    className="text-[11px] text-[#E4C88A] hover:text-white underline shrink-0 font-medium ml-2"
+                  >
+                    Audit Rules →
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Statutorily Grounded Metric Cards */}
-          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
-              <div
-                key={idx}
-                className="space-y-1 border-r border-white/10 last:border-r-0 pr-4 last:pr-0"
-              >
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">
-                  {metric.value}
-                </span>
-                <p className="text-xs uppercase font-bold tracking-wider text-white/90 font-sans">
-                  {metric.label}
-                </p>
-                <p className="text-[11px] text-white/60 font-sans">
-                  {metric.subtext}
-                </p>
-              </div>
-            ))}
+          {/* Statutorily Grounded Metric Cards Bar */}
+          <div className="mt-12 lg:mt-16 pt-8 border-t border-[#C5A059]/25">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
+              {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
+                <div
+                  key={idx}
+                  className="space-y-1 border-r border-[#C5A059]/20 last:border-r-0 pr-3 sm:pr-4 last:pr-0"
+                >
+                  <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">
+                    {metric.value}
+                  </span>
+                  <p className="text-xs uppercase font-bold tracking-wider text-white font-sans mt-1">
+                    {metric.label}
+                  </p>
+                  <p className="text-[11px] text-white/70 font-sans mt-0.5">
+                    {metric.subtext}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Factual Citation Micro-note */}
+            <p className="text-[11px] text-center text-white/60 pt-6 font-sans">
+              * Verified through official MECT operational registers and statutory annual filings under Indian Trusts Act (Balangir Doc No. 40311302194). Income Tax 12A URN: AADTM5474FE20231 | 80G URN: AADTM5474FF20241.
+            </p>
           </div>
         </Container>
       </section>

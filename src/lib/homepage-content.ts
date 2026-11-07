@@ -23,41 +23,41 @@ export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
     badge: "12+ Years of Civic Service • Est. 2013, Odisha",
-    headline: "Empowering Odisha Through Education, Rural Skilling & Fiduciary Philanthropy.",
+    headline: "Building Opportunities. Empowering Communities. Creating Lasting Change.",
     subtext:
-      "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable registered public charitable trust dedicated to higher education access, rural women's vocational tailoring, safe drinking water, and community welfare across Odisha.",
+      "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust advancing grassroots remedial education, rural women's vocational tailoring, and potable drinking water relief across Western Odisha since 2013.",
     notice:
       "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A & 80G certified (50% Tax Exemption for Donors). MCA CSR-1 Reg: CSR00081063.",
     metrics: [
       {
-        value: "12+ Years",
-        label: "Civic Service",
-        subtext: "Registered Trust Deed (2013, Balangir)",
-      },
-      {
         value: "350+",
         label: "Students Supported",
-        subtext: "Free remedial coaching & study support",
+        subtext: "Free remedial coaching & scholastic kits",
       },
       {
         value: "120+",
         label: "Women Skilled",
-        subtext: "Certified tailoring & livelihood tooling",
+        subtext: "Certified tailoring & livelihood training",
       },
       {
         value: "10,000+",
         label: "Citizens Reached",
-        subtext: "Jal Seva drinking water & emergency relief",
+        subtext: "Jal Seva drinking water kiosks",
+      },
+      {
+        value: "100%",
+        label: "Direct Disbursals",
+        subtext: "Zero cash policy • College bank accounts",
       },
     ] as MetricCard[],
     ctas: {
       primary: {
-        text: "Donate with 80G Tax Benefit",
-        href: "/donate",
+        text: "Explore Our Programmes",
+        href: "/programmes",
       },
       secondary: {
-        text: "Explore Civic Programmes",
-        href: "/programmes",
+        text: "Support Our Mission",
+        href: "/donate",
       },
       governance: {
         text: "Fiduciary Charter & Board",
