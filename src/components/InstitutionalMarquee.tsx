@@ -28,7 +28,7 @@ export function InstitutionalMarquee() {
 
   return (
     <section
-      className="bg-[#07111E] border-y border-[#C5A059]/30 py-5 overflow-hidden transition-colors"
+      className="bg-[#072617] border-y border-[#C5A059]/30 py-5 overflow-hidden transition-colors"
       aria-label="Institutional Standards and Public Accreditations"
     >
       <Container size="default" className="mb-2.5">
@@ -51,7 +51,7 @@ export function InstitutionalMarquee() {
             return (
               <div
                 key={idx}
-                className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xs bg-[#0A192F]/80 border border-[#C5A059]/35 hover:border-[#C5A059] transition-colors shadow-xs"
+                className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xs bg-[#0B3B24]/80 border border-[#C5A059]/35 hover:border-[#C5A059] transition-colors shadow-xs"
               >
                 <div className="w-8 h-8 rounded-full bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0">
                   <IconComponent className="w-4 h-4" aria-hidden="true" />

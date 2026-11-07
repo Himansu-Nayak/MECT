@@ -18,20 +18,20 @@ export function StatutoryTicker() {
 
   return (
     <div
-      className="bg-[#0A192F] text-[#EDE6D8] border-b border-[#C5A059]/30 text-xs py-1.5 transition-colors print:hidden"
+      className="bg-[#072617] text-[#EDE6D8] border-b border-[#C5A059]/30 text-xs py-1.5 transition-colors print:hidden overflow-hidden"
       role="region"
       aria-label="Statutory Accreditation and Real-Time Institutional Desk"
     >
       <Container size="default">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 min-w-0">
           {/* Left: Ticker Badge & Scrolling Statutory Credentials */}
-          <div className="flex items-center gap-3 overflow-hidden">
-            <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#C5A059] text-[#0A192F] text-[10px] font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-3 h-3 text-[#0A192F]" aria-hidden="true" />
+          <div className="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
+            <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#C5A059] text-[#072617] text-[10px] font-bold uppercase tracking-wider">
+              <ShieldCheck className="w-3 h-3 text-[#072617]" aria-hidden="true" />
               <span>Statutory</span>
             </span>
 
-            <div className="overflow-hidden whitespace-nowrap text-xs text-white/90">
+            <div className="overflow-hidden whitespace-nowrap text-xs text-white/90 min-w-0 flex-1">
               <span className="inline-block animate-marquee font-medium">
                 {credentials.map((cred, idx) => (
                   <span key={idx} className="inline-flex items-center">
@@ -79,3 +79,4 @@ export function StatutoryTicker() {
     </div>
   );
 }
+
