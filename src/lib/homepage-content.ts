@@ -22,32 +22,32 @@ export interface PillarCard {
 export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
-    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
+    badge: "Registered Public Charitable Trust • Est. 2013, Odisha",
     headline: "Building Opportunities. Empowering Communities. Creating Lasting Change.",
     subtext:
       "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust advancing grassroots remedial education, rural women's vocational tailoring, and potable drinking water relief across Western Odisha since 2013.",
     notice:
-      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A & 80G certified (50% Tax Exemption for Donors). MCA CSR-1 Reg: CSR00081063.",
+      "Registered under Indian Trusts Act, 1882 (Reg No. 40311302194, Balangir). 12A & 80G registered (Provisional Form 10AC orders: AY 2024–25 to AY 2026–27). MCA CSR-1 Reg: CSR00081063.",
     metrics: [
       {
         value: "350+",
-        label: "Students Supported",
-        subtext: "Free remedial coaching & scholastic kits",
+        label: "Students Tutored",
+        subtext: "Proposal-reported remedial center enrollment",
       },
       {
         value: "120+",
-        label: "Women Skilled",
-        subtext: "Certified tailoring & livelihood training",
+        label: "Women Trained",
+        subtext: "Proposal-reported vocational tailoring batches",
       },
       {
-        value: "10,000+",
-        label: "Citizens Reached",
-        subtext: "Jal Seva drinking water kiosks",
+        value: "50,000+ L",
+        label: "Drinking Water Relief",
+        subtext: "Estimated potable water served across summer kiosks",
       },
       {
         value: "100%",
-        label: "Direct Disbursals",
-        subtext: "Zero cash policy • College bank accounts",
+        label: "Direct Disbursal Mandate",
+        subtext: "Policy: Direct-to-college transfers • Zero cash",
       },
     ] as MetricCard[],
     ctas: {

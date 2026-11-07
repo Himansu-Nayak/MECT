@@ -213,7 +213,7 @@ export default function HomePage() {
                 </Badge>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-xs bg-[#0B3B24] text-[#E4C88A] text-xs font-semibold border border-[#C5A059]/40">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
-                  <span>80G &amp; 12A Certified • 50% Tax Deduction</span>
+                  <span>Income Tax 12A &amp; 80G Registered (Provisional: AY 2024–27)</span>
                 </span>
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#0B3B24]/70 text-white/85 text-[11px] font-medium border border-white/15">
                   <span>MCA CSR-1: CSR00081063</span>
@@ -319,16 +319,16 @@ export default function HomePage() {
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#86EFAC] shrink-0" aria-hidden="true" />
                     <div>
-                      <span className="font-semibold text-[#E4C88A]">100% Direct-to-Institution</span>
+                      <span className="font-semibold text-[#E4C88A]">Fiduciary Governance Policy</span>
                       <span className="text-white/60 mx-1.5">•</span>
-                      <span className="text-white/80">Zero Cash Handled</span>
+                      <span className="text-white/80">Direct Institutional Remittances Only</span>
                     </div>
                   </div>
                   <Link
                     href="/governance"
                     className="text-[11px] text-[#E4C88A] hover:text-white underline shrink-0 font-medium ml-2"
                   >
-                    Audit Rules →
+                    Governance Charter →
                   </Link>
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function HomePage() {
 
             {/* Factual Citation Micro-note */}
             <p className="text-[11px] text-center text-white/60 pt-6 font-sans">
-              * Verified through official MECT operational registers and statutory annual filings under Indian Trusts Act (Balangir Doc No. 40311302194). Income Tax 12A URN: AADTM5474FE20231 | 80G URN: AADTM5474FF20241.
+              * Registered public charitable trust under Indian Trusts Act, 1882 (Balangir Doc No. 40311302194). Income Tax Section 12A URN: AADTM5474FE20231 and Section 80G URN: AADTM5474FF20241 (Provisional Form 10AC orders valid AY 2024–25 through AY 2026–27). Operational figures represent institutional proposal-reported estimates.
             </p>
           </div>
         </Container>
