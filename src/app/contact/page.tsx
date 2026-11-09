@@ -92,7 +92,7 @@ export default function ContactPage() {
         actions={
           <div className="flex flex-wrap gap-4 pt-2">
             <a href="#inquiry-form">
-              <Button variant="primary" className="!bg-[#C5A059] !text-[#0A192F] hover:!bg-[#E4C88A]">
+              <Button variant="primary" className="!bg-[#C5A059] !text-[#0B3B24] hover:!bg-[#E4C88A]">
                 Dispatch Message
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -112,7 +112,7 @@ export default function ContactPage() {
       />
 
       {/* 2. Institutional Directory & Service Level Agreements */}
-      <section id="secretariat-directory" className="py-16 md:py-24 bg-[#FDFBF7] scroll-mt-20 border-b border-[#0A192F]/10">
+      <section id="secretariat-directory" className="py-16 md:py-24 bg-[#FDFBF7] scroll-mt-20 border-b border-[#0B3B24]/10">
         <Container size="default">
           <SectionHeader
             badge="Institutional Directory"
@@ -122,14 +122,14 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Office 1: Registered Office Balangir */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0B3B24]">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Building2 className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24]">
+                  <Building2 className="w-5 h-5 text-[#0B3B24]" />
                 </div>
                 <div>
                   <Badge variant="forest" className="mb-1.5">Registered Office (Est. 2013)</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     Balangir Trust Office
                   </h3>
                 </div>
@@ -141,31 +141,31 @@ export default function ContactPage() {
                       {TRUST_CONFIG.contact.registeredOffice.state} - {TRUST_CONFIG.contact.registeredOffice.pin}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0A192F] font-semibold">
+                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0B3B24] font-semibold">
                     <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
                     <span>{TRUST_CONFIG.contact.registeredOffice.phone}</span>
                   </div>
-                  <div className="flex items-start gap-2 pt-2 border-t border-[#0A192F]/10">
-                    <Clock className="w-3.5 h-3.5 text-[#0A192F] shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2 pt-2 border-t border-[#0B3B24]/10">
+                    <Clock className="w-3.5 h-3.5 text-[#0B3B24] shrink-0 mt-0.5" />
                     <span>Mon – Sat: 10:00 AM – 5:30 PM IST</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Deed Juris:</span> Balangir Sub-Registrar (Doc No. 40311302194)
+              <div className="pt-3 border-t border-[#0B3B24]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
+                <span className="font-semibold text-[#0B3B24]">Deed Juris:</span> Balangir Sub-Registrar (Doc No. 40311302194)
               </div>
             </Card>
 
             {/* Office 2: Corporate Secretariat Bhubaneswar */}
             <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#C5A059]">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#C5A059]/15 flex items-center justify-center text-[#0A192F]">
+                <div className="w-10 h-10 rounded-xs bg-[#C5A059]/15 flex items-center justify-center text-[#0B3B24]">
                   <Building2 className="w-5 h-5 text-[#C5A059]" />
                 </div>
                 <div>
                   <Badge variant="gold" className="mb-1.5">Liaison Secretariat</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     Bhubaneswar Secretariat
                   </h3>
                 </div>
@@ -177,64 +177,64 @@ export default function ContactPage() {
                       {TRUST_CONFIG.contact.corporateOffice.state} - {TRUST_CONFIG.contact.corporateOffice.pin}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0A192F] font-semibold">
+                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0B3B24] font-semibold">
                     <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
                     <span>{TRUST_CONFIG.contact.corporateOffice.phone}</span>
                   </div>
-                  <div className="flex items-start gap-2 pt-2 border-t border-[#0A192F]/10">
-                    <Clock className="w-3.5 h-3.5 text-[#0A192F] shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2 pt-2 border-t border-[#0B3B24]/10">
+                    <Clock className="w-3.5 h-3.5 text-[#0B3B24] shrink-0 mt-0.5" />
                     <span>Mon – Fri: 10:00 AM – 5:00 PM IST</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Receipt SLA:</span> Official documents logged same business day.
+              <div className="pt-3 border-t border-[#0B3B24]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
+                <span className="font-semibold text-[#0B3B24]">Receipt SLA:</span> Official documents logged same business day.
               </div>
             </Card>
 
             {/* Office 3: Electronic Desks */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0B3B24]">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Mail className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24]">
+                  <Mail className="w-5 h-5 text-[#0B3B24]" />
                 </div>
                 <div>
-                  <Badge variant="outline" className="mb-1.5 !border-[#0A192F] !text-[#0A192F]">Electronic Communications</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <Badge variant="outline" className="mb-1.5 !border-[#0B3B24] !text-[#0B3B24]">Electronic Communications</Badge>
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     Official Desks & Lines
                   </h3>
                 </div>
                 <div className="text-xs text-[#4A5568] space-y-2.5 leading-relaxed">
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0B3B24]">
                       General Secretariat
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.general}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-[#0B3B24] font-medium hover:text-[#C5A059]"
                     >
                       {TRUST_CONFIG.contact.officialEmails.general}
                     </a>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0B3B24]">
                       Registered Trust Email
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.alternate}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-[#0B3B24] font-medium hover:text-[#C5A059]"
                     >
                       {TRUST_CONFIG.contact.officialEmails.alternate}
                     </a>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0B3B24]">
                       Scholarships & College Grants
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.scholarships}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-[#0B3B24] font-medium hover:text-[#C5A059]"
                     >
                       {TRUST_CONFIG.contact.officialEmails.scholarships}
                     </a>
@@ -242,22 +242,22 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Response SLA:</span> Electronic inquiries answered within 24–48 hours.
+              <div className="pt-3 border-t border-[#0B3B24]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
+                <span className="font-semibold text-[#0B3B24]">Response SLA:</span> Electronic inquiries answered within 24–48 hours.
               </div>
             </Card>
 
             {/* Office 4: Ombudsman */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0B3B24]">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Scale className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24]">
+                  <Scale className="w-5 h-5 text-[#0B3B24]" />
                 </div>
                 <div>
-                  <Badge variant="outline" className="mb-1.5 !border-[#0A192F] !text-[#0A192F]">
+                  <Badge variant="outline" className="mb-1.5 !border-[#0B3B24] !text-[#0B3B24]">
                     Statutory Compliance
                   </Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     Ombudsman & RTI
                   </h3>
                 </div>
@@ -266,24 +266,24 @@ export default function ContactPage() {
                     Formal grievances, audit inquiries, and RTI disclosures under independent Fiduciary Committee supervision.
                   </p>
                   <div className="pt-1">
-                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F] block">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[#0B3B24] block">
                       Grievance Redressal Desk
                     </span>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.grievance}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-[#0B3B24] font-medium hover:text-[#C5A059]"
                     >
                       {TRUST_CONFIG.contact.officialEmails.grievance}
                     </a>
                   </div>
                   <p className="text-[10px] text-[#4A5568] pt-1">
-                    Subject prefix: <code className="bg-[#0A192F]/5 px-1 py-0.5 rounded text-[#0A192F] font-mono">[GRIEVANCE]</code>
+                    Subject prefix: <code className="bg-[#0B3B24]/5 px-1 py-0.5 rounded text-[#0B3B24] font-mono">[GRIEVANCE]</code>
                   </p>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Grievance SLA:</span> 48h ack; written resolution in 7 working days.
+              <div className="pt-3 border-t border-[#0B3B24]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
+                <span className="font-semibold text-[#0B3B24]">Grievance SLA:</span> 48h ack; written resolution in 7 working days.
               </div>
             </Card>
           </div>
@@ -301,7 +301,7 @@ export default function ContactPage() {
 
           <Card variant="elevated" className="p-8 sm:p-12 bg-[#FDFBF7]">
             {formSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-5 text-center animate-in fade-in">
+              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-5 text-center animate-in fade-in">
                 <CheckCircle2 className="w-14 h-14 text-[#E4C88A] mx-auto" />
                 <h3 className="font-serif text-2xl font-bold">
                   Communication Logged with Secretariat
@@ -430,7 +430,7 @@ export default function ContactPage() {
                 </div>
 
                 <p className="text-[11px] text-[#4A5568] text-center pt-2 leading-relaxed">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#0A192F] inline mr-1 -mt-0.5" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0B3B24] inline mr-1 -mt-0.5" />
                   <strong>Statutory Guarantee:</strong> MAHAVIR TRUST never shares, sells, or monetizes inquiry data. All submissions are processed strictly for educational administration and statutory fiduciary compliance.
                 </p>
               </form>
@@ -440,7 +440,7 @@ export default function ContactPage() {
       </section>
 
       {/* 4. Statutory Grievance Redressal Protocol & Ombudsman Oversight */}
-      <section id="grievance-charter" className="py-16 md:py-24 bg-[#0A192F] text-white scroll-mt-20">
+      <section id="grievance-charter" className="py-16 md:py-24 bg-[#0B3B24] text-white scroll-mt-20">
         <Container size="default">
           <SectionHeader
             badge="Fiduciary Safeguards"
@@ -503,7 +503,7 @@ export default function ContactPage() {
           </div>
 
           {/* Anti-Fraud Notice */}
-          <div className="mt-12 p-6 sm:p-8 rounded-xs bg-[#1E3A8A]/30 border border-[#C5A059]/40 text-white/90 flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div className="mt-12 p-6 sm:p-8 rounded-xs bg-[#165B38]/30 border border-[#C5A059]/40 text-white/90 flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="w-12 h-12 rounded-xs bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0">
               <ShieldAlert className="w-7 h-7" />
             </div>
