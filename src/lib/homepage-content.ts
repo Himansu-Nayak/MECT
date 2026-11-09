@@ -22,15 +22,15 @@ export interface PillarCard {
 export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
-    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
-    headline: "Empowering Odisha Through Education, Rural Skilling & Fiduciary Philanthropy.",
+    badge: "13+ Years of Community Service • Est. 2013, Odisha",
+    headline: "Stronger communities begin with opportunity, dignity and care.",
     subtext:
-      "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable registered public charitable trust dedicated to higher education access, rural women's vocational tailoring, safe drinking water, and community welfare across Odisha.",
+      "Mahaveer Educational & Charitable Trust (MECT) is a registered charitable trust rooted in Odisha. Our work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare through practical, community-based initiatives.",
     notice:
-      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A & 80G certified (50% Tax Exemption for Donors). MCA CSR-1 Reg: CSR00081063.",
+      "Registered public charitable trust in Odisha (Trust Deed No. 40311302194). Explore our programmes, governance and statutory disclosures.",
     metrics: [
       {
-        value: "12+ Years",
+        value: "13+ Years",
         label: "Civic Service",
         subtext: "Registered Trust Deed (2013, Balangir)",
       },
@@ -52,11 +52,11 @@ export const HOMEPAGE_CONTENT = {
     ] as MetricCard[],
     ctas: {
       primary: {
-        text: "Donate with 80G Tax Benefit",
+        text: "Support Our Work",
         href: "/donate",
       },
       secondary: {
-        text: "Explore Civic Programmes",
+        text: "Explore Our Work",
         href: "/programmes",
       },
       governance: {
@@ -64,7 +64,7 @@ export const HOMEPAGE_CONTENT = {
         href: "/governance",
       },
       csr: {
-        text: "Corporate CSR Gateway",
+        text: "Partner With Us",
         href: "/csr-partnerships",
       },
     },
@@ -73,7 +73,7 @@ export const HOMEPAGE_CONTENT = {
   // Marquee endorsements & standards
   standards: [
     {
-      title: "12+ Years Heritage",
+      title: "13+ Years of Service",
       subtitle: "Registered Trust Deed (2013, Balangir)",
       iconName: "Landmark",
     },
@@ -108,40 +108,40 @@ export const HOMEPAGE_CONTENT = {
   pillars: [
     {
       number: "01",
-      title: "Remedial Rural Education",
+      title: "Education & Learning",
       tag: "Shiksha Setu",
       description:
-        "Free tuition, exam coaching, and scholastic books for 350+ underserved tribal and rural students in Balangir and Puintala blocks to bridge secondary dropout rates.",
+        "Remedial tuition, exam coaching and scholastic materials for underserved rural and tribal students in Balangir and Puintala.",
     },
     {
       number: "02",
-      title: "Women's Vocational Livelihood",
+      title: "Women Empowerment & Livelihoods",
       tag: "Swavalamban",
       description:
-        "Comprehensive 6-month tailoring, embroidery, and handicraft training empowering 120+ rural women toward financial self-reliance and self-help group entrepreneurship.",
+        "Tailoring, embroidery and handicraft training designed to strengthen women's skills, confidence and livelihood options.",
     },
     {
       number: "03",
-      title: "Jal Seva Safe Drinking Water",
+      title: "Safe Water & Sanitation",
       tag: "Jal & Arogya",
       description:
-        "Installation of clean drinking water points, summer hydration kiosks, and community sanitation camps serving over 10,000 citizens during peak summer months.",
+        "Jal Seva drinking-water points, summer hydration kiosks and community sanitation activities that support everyday wellbeing.",
     },
     {
       number: "04",
-      title: "Jan Ahar Destitute Nutrition",
+      title: "Food Security & Nutrition",
       tag: "Annadaan",
       description:
-        "Subsidized and free nutritious meal distribution for impoverished patients and attendants at Balangir District Hospital and destitute daily wage earners.",
+        "Jan Ahar food relief and nutritious meals for documented beneficiary groups, including hospital attendants and vulnerable community members.",
     },
   ] as PillarCard[],
 
   // From the Managing Trustee's Desk
   secretariat: {
     badge: "From The Managing Trustee's Desk",
-    quote: "“A 12-Year Commitment That Educational Dignity & Civic Welfare Shall Reach the Grassroots of Odisha.”",
+    quote: "“A 13+ Year Commitment to Opportunity, Livelihood and Community Wellbeing Across Odisha.”",
     paragraph:
-      "Mahaveer Educational & Charitable Trust was founded in 2013 with a resolute conviction: genuine social transformation requires lasting institutional empowerment, not transient charity. Whether through direct remedial tutoring in rural Balangir, equipping women with sewing machines and tailoring trade certificates, or ensuring clean drinking water, our mission remains grounded in transparency, non-remunerative service, and auditable accountability.",
+      "Mahaveer Educational & Charitable Trust was founded in 2013 with a belief that lasting progress is built by strengthening people and communities. Our work brings together learning support, women's vocational skills, safe-water access and food relief, guided by responsible stewardship, dignity and accountability.",
     officeTitle: "Er. Japabandhu Kampa",
     officeSubtitle: "Settler Founder & Permanent Managing Trustee",
     statutoryNote:
