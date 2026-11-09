@@ -27,7 +27,7 @@ export const TRUST_CONFIG = {
   legalName: "Mahaveer Educational & Charitable Trust",
   acronym: "MECT",
   motto: "Knowledge, Compassion & Self-Reliance Across Odisha",
-  tagline: "Empowering Futures Through Education, Rural Skilling & Fiduciary Philanthropy",
+  tagline: "Strengthening Communities Through Education, Livelihoods & Essential Support",
   subtext:
     "An irrevocable registered public charitable trust established in 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
   foundedYear: "2013",
@@ -158,12 +158,12 @@ export const TRUST_CONFIG = {
     {
       label: "About Us",
       href: "/about",
-      description: "Our 12-year heritage, mission, and leadership.",
+      description: "Our story, purpose, leadership and commitment to community development.",
       children: [
         {
           label: "Heritage & Mission",
           href: "/about",
-          description: "12+ years of civic service, foundational philosophy, and milestones.",
+          description: "Our roots, development philosophy and institutional milestones.",
         },
         {
           label: "Board of Trustees",
@@ -184,27 +184,27 @@ export const TRUST_CONFIG = {
       description: "Trust deed, honorary board charter, and fiduciary oversight.",
     },
     {
-      label: "Programmes",
+      label: "Our Work",
       href: "/programmes",
-      description: "Our core initiatives across Odisha.",
+      description: "Our community development work across education, women's livelihoods, safe water and nutrition.",
       children: [
         {
-          label: "Remedial Rural Education",
+          label: "Education & Learning",
           href: "/programmes#education",
           description: "Free tuition and coaching for tribal and underprivileged students in Balangir.",
         },
         {
-          label: "Women Vocational Tailoring",
+          label: "Women Empowerment & Livelihoods",
           href: "/programmes#women-empowerment",
           description: "Livelihood skills and self-help sewing workshops for rural women.",
         },
         {
-          label: "Safe Drinking Water (Jal Seva)",
+          label: "Safe Water & Sanitation (Jal Seva)",
           href: "/programmes#water",
           description: "Community drinking water points and summer hydration camps.",
         },
         {
-          label: "Jan Ahar Hunger Relief",
+          label: "Food Security & Nutrition (Jan Ahar)",
           href: "/programmes#hunger-relief",
           description: "Food relief for destitute patients and attendants at Balangir Hospital.",
         },
@@ -235,7 +235,12 @@ export const TRUST_CONFIG = {
     {
       label: "Get Involved",
       href: "/volunteer",
-      description: "Join as a volunteer mentor, educator, or civic supporter.",
+      description: "Support programmes, volunteer, mentor or build an institutional partnership.",
+      children: [
+        { label: "Support Our Work", href: "/donate", description: "Contribute to verified charitable programmes and community initiatives." },
+        { label: "Volunteer & Mentor", href: "/volunteer", description: "Offer professional skills, time and mentorship." },
+        { label: "Corporate & CSR Partnerships", href: "/csr-partnerships", description: "Explore accountable, programme-led institutional collaboration." },
+      ],
     },
     {
       label: "Contact",
@@ -247,30 +252,30 @@ export const TRUST_CONFIG = {
   // Core Mission Pillars (Verified from 2021-2024 Audit Records)
   pillars: [
     {
-      title: "Remedial Rural Education",
-      description: "Free scholastic tuition, entrance guidance, and study materials for 350+ underserved rural and tribal students in Balangir.",
+      title: "Education & Learning",
+      description: "Remedial tuition, exam guidance and study materials for underserved rural and tribal students in Balangir.",
       tag: "Shiksha Setu",
     },
     {
-      title: "Women's Vocational Livelihood",
-      description: "Professional tailoring, embroidery, and handicraft training empowering 120+ rural women toward financial self-reliance.",
+      title: "Women Empowerment & Livelihoods",
+      description: "Tailoring, embroidery and vocational training designed to strengthen women's skills and livelihood opportunities.",
       tag: "Swavalamban",
     },
     {
-      title: "Safe Drinking Water & Health",
-      description: "Clean water purification kiosks, summer Jal Seva stations, and community sanitation camps serving 10,000+ citizens.",
+      title: "Safe Water & Sanitation",
+      description: "Jal Seva drinking-water points, summer hydration support and community sanitation activities.",
       tag: "Jal & Arogya",
     },
     {
-      title: "Jan Ahar Destitute Nutrition",
-      description: "Nutritious cooked meals and food relief for hospital attendants, destitute families, and daily wage earners.",
+      title: "Food Security & Nutrition",
+      description: "Jan Ahar food relief and nutritious meals for documented vulnerable groups and hospital attendants.",
       tag: "Annadaan",
     },
   ],
 
   // Quantified Verified Impact Highlights
   impactHighlights: [
-    { figure: "12+", label: "Years of Civic Service", subtext: "Established by registered Trust Deed in 2013" },
+    { figure: "13+", label: "Years of Civic Service", subtext: "Established by registered Trust Deed in 2013" },
     { figure: "350+", label: "Rural Students Supported", subtext: "Free remedial coaching & scholastic books" },
     { figure: "120+", label: "Women Skilled in Tailoring", subtext: "Vocational certificates & livelihood tooling" },
     { figure: "10,000+", label: "Citizens Reached", subtext: "Jal Seva drinking water & emergency relief" },
