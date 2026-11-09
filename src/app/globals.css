@@ -3,11 +3,11 @@
 @layer base {
   :root {
     /* Primary Institutional Color Tokens */
-    --color-navy: #0A192F;
-    --color-navy-dark: #07111E;
-    --color-navy-deep: #0F172A;
-    --color-blue-imperial: #1E3A8A;
-    --color-blue-royal: #1E40AF;
+    --color-navy: #0B3B24;
+    --color-navy-dark: #072617;
+    --color-navy-deep: #072617;
+    --color-blue-imperial: #165B38;
+    --color-blue-royal: #165B38;
 
     /* Heritage Forest & Green Tokens */
     --color-forest: #0B3B24;
@@ -87,15 +87,15 @@
 
 /* Institutional Utilities */
 @utility text-navy {
-  color: #0A192F;
+  color: #0B3B24;
 }
 
 @utility text-navy-deep {
-  color: #0F172A;
+  color: #072617;
 }
 
 @utility text-blue-imperial {
-  color: #1E3A8A;
+  color: #165B38;
 }
 
 @utility text-forest {
@@ -131,15 +131,15 @@
 }
 
 @utility bg-navy {
-  background-color: #0A192F;
+  background-color: #0B3B24;
 }
 
 @utility bg-navy-deep {
-  background-color: #0F172A;
+  background-color: #072617;
 }
 
 @utility bg-blue-imperial {
-  background-color: #1E3A8A;
+  background-color: #165B38;
 }
 
 @utility bg-forest {
