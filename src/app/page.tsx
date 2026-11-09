@@ -179,7 +179,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col w-full">
       {/* 1. HERO SECTION: Institutional Prestige & Factual 12-Year Mission */}
-      <section className="relative overflow-hidden bg-[#0A192F] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
+      <section className="relative overflow-hidden bg-[#0B3B24] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
         {/* Subtle geometric grid background */}
         <div
           className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
@@ -190,7 +190,7 @@ export default function HomePage() {
           aria-hidden="true"
         />
         <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#1E3A8A]/30 rounded-full blur-3xl pointer-events-none"
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#165B38]/30 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
@@ -293,20 +293,20 @@ export default function HomePage() {
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
               <Badge variant="forest">Grassroots Impact &amp; Purpose</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] tracking-tight leading-snug">
-                12 Years of Ground-Level Transformation Across Odisha.
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24] tracking-tight leading-snug">
+                Working Across the Needs That Shape Everyday Life.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Mahaveer Educational &amp; Charitable Trust was conceived in 2013 to advance educational access and community self-reliance. Over the past decade, our operations have bridged higher secondary dropout gaps for rural youth, equipped women with tailoring machines and trade certificates, and provided emergency water and food relief.
+                MECT responds to connected community needs. Learning support can expand opportunity; vocational training can strengthen livelihood options; safe-water access and nutrition support everyday wellbeing. Our programmes are rooted in local needs and documented initiatives.
               </p>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Every programme operates under a transparent, auditable zero-cash policy with 100% direct disbursals and honorary non-remunerative trustee stewardship.
+                Across our work, we emphasise responsible stewardship, community participation and transparent use of resources. Where educational grants are provided, direct institutional disbursal supports accountability.
               </p>
 
               <div className="pt-2 flex flex-wrap gap-3.5">
                 <Link href="/about">
                   <Button variant="secondary" size="md">
-                    <span>12-Year Heritage</span>
+                    <span>Our Story</span>
                     <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Button>
                 </Link>
@@ -327,17 +327,17 @@ export default function HomePage() {
                   <Card
                     key={pillar.number}
                     variant="elevated"
-                    className="space-y-3 p-6 border-[#0A192F]/12 hover:border-[#C5A059] transition-all duration-300 bg-white shadow-xs"
+                    className="space-y-3 p-6 border-[#0B3B24]/12 hover:border-[#C5A059] transition-all duration-300 bg-white shadow-xs"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xs bg-[#0A192F]/5 border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059]">
+                      <div className="w-9 h-9 rounded-xs bg-[#0B3B24]/5 border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059]">
                         <IconComponent className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
                       </div>
                       <Badge variant="contrast-gold" size="sm">
                         {pillar.tag}
                       </Badge>
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                    <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                       {pillar.title}
                     </h3>
                     <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -361,9 +361,9 @@ export default function HomePage() {
       <DirectDisbursalFlowchart />
 
       {/* 7. FROM THE MANAGING TRUSTEE'S DESK */}
-      <section className="py-20 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default">
-          <div className="bg-[#0A192F] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
+          <div className="bg-[#0B3B24] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
             {/* Ambient gold glow */}
             <div
               className="absolute top-0 right-0 w-80 h-80 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none"
@@ -372,7 +372,7 @@ export default function HomePage() {
 
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#0F172A] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#072617] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
                   <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
                   <span>{HOMEPAGE_CONTENT.secretariat.badge}</span>
                 </div>
@@ -399,8 +399,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#0F172A] rounded-xs border border-[#C5A059]/40 text-center space-y-3.5 shadow-md">
-                <div className="w-14 h-14 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] shadow-inner font-serif font-bold text-xl">
+              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#072617] rounded-xs border border-[#C5A059]/40 text-center space-y-3.5 shadow-md">
+                <div className="w-14 h-14 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] shadow-inner font-serif font-bold text-xl">
                   JK
                 </div>
                 <div>
@@ -426,9 +426,9 @@ export default function HomePage() {
       </section>
 
       {/* 8. CORPORATE CSR PARTNERSHIP HUB (SCHEDULE VII) */}
-      <section id="csr" className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section id="csr" className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default">
-          <div className="bg-gradient-to-br from-[#0A192F] to-[#1E3A8A] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
+          <div className="bg-gradient-to-br from-[#0B3B24] to-[#165B38] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
                 <Badge variant="gold-dark" size="sm">
@@ -480,7 +480,7 @@ export default function HomePage() {
       </section>
 
       {/* 9. STUDENT SUPPORT BEYOND FINANCIAL GRANTS */}
-      <section id="support" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section id="support" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Comprehensive Enablement"
@@ -497,10 +497,10 @@ export default function HomePage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 space-y-3 bg-white border-[#0A192F]/12 shadow-xs"
+                  className="p-6 space-y-3 bg-white border-[#0B3B24]/12 shadow-xs"
                 >
-                  <IconComp className="w-6 h-6 text-[#0A192F]" aria-hidden="true" />
-                  <h3 className="font-serif text-base font-bold text-[#0A192F]">
+                  <IconComp className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
+                  <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -514,7 +514,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
-      <section id="impact" className="py-20 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section id="impact" className="py-20 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Geographic Scope"
@@ -528,7 +528,7 @@ export default function HomePage() {
               <Card
                 key={idx}
                 variant="accent"
-                className="p-8 space-y-4 bg-white flex flex-col justify-between shadow-xs border-[#0A192F]/10"
+                className="p-8 space-y-4 bg-white flex flex-col justify-between shadow-xs border-[#0B3B24]/10"
               >
                 <div className="space-y-3">
                   <Badge variant="contrast-gold" size="sm">
@@ -538,8 +538,8 @@ export default function HomePage() {
                     “{item.statement}”
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#0A192F]/10">
-                  <p className="text-xs font-bold text-[#0A192F] font-sans">
+                <div className="pt-4 border-t border-[#0B3B24]/10">
+                  <p className="text-xs font-bold text-[#0B3B24] font-sans">
                     {item.authorNote}
                   </p>
                 </div>
@@ -550,13 +550,13 @@ export default function HomePage() {
       </section>
 
       {/* 11. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
-      <section id="participate" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0A192F]/10 scroll-mt-16">
+      <section id="participate" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10 scroll-mt-16">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6">
               <Badge variant="forest">Civic Mentorship &amp; Volunteering</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F]">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24]">
                 Join the Cause as a Mentor, Volunteer, or Institutional Partner.
               </h2>
               <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
@@ -565,11 +565,11 @@ export default function HomePage() {
 
               <div className="space-y-4 pt-2">
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
                     <Users className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0A192F]">
+                    <h3 className="text-sm font-bold text-[#0B3B24]">
                       Academic &amp; Professional Mentors
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
@@ -579,11 +579,11 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
                     <Building2 className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0A192F]">
+                    <h3 className="text-sm font-bold text-[#0B3B24]">
                       College &amp; University Affiliations
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
@@ -593,11 +593,11 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
                     <BookOpen className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0A192F]">
+                    <h3 className="text-sm font-bold text-[#0B3B24]">
                       Community Learning Hub Stewards
                     </h3>
                     <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
@@ -609,8 +609,8 @@ export default function HomePage() {
             </div>
 
             {/* Right: Volunteer Form */}
-            <div className="lg:col-span-6 bg-white p-8 sm:p-10 rounded-xs border border-[#0A192F]/15 shadow-sm">
-              <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-1">
+            <div className="lg:col-span-6 bg-white p-8 sm:p-10 rounded-xs border border-[#0B3B24]/15 shadow-sm">
+              <h3 className="font-serif text-2xl font-bold text-[#0B3B24] mb-1">
                 Volunteer &amp; Mentor Registry
               </h3>
               <p className="text-xs text-[#4A5568] mb-6 font-sans">
@@ -618,7 +618,7 @@ export default function HomePage() {
               </p>
 
               {volSubmitted ? (
-                <div className="p-6 bg-[#0A192F] text-white rounded-xs space-y-3 text-center animate-in fade-in">
+                <div className="p-6 bg-[#0B3B24] text-white rounded-xs space-y-3 text-center animate-in fade-in">
                   <CheckCircle2 className="w-10 h-10 text-[#E4C88A] mx-auto" aria-hidden="true" />
                   <h4 className="font-serif text-xl font-bold">
                     Registration Recorded
@@ -751,7 +751,7 @@ export default function HomePage() {
                       required
                       checked={volConsent}
                       onChange={(e) => setVolConsent(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded-xs border-[#0A192F]/30 text-[#0A192F] focus:ring-[#C5A059]"
+                      className="mt-0.5 h-4 w-4 rounded-xs border-[#0B3B24]/30 text-[#0B3B24] focus:ring-[#C5A059]"
                     />
                     <label
                       htmlFor="vol-consent-homepage"
@@ -760,7 +760,7 @@ export default function HomePage() {
                       I voluntarily declare my intent to participate in academic mentorship or community volunteering in accordance with safeguarding and ethical conduct guidelines. For comprehensive tracks, review our{" "}
                       <Link
                         href="/volunteer"
-                        className="text-[#0A192F] font-semibold underline hover:text-[#C5A059]"
+                        className="text-[#0B3B24] font-semibold underline hover:text-[#C5A059]"
                       >
                         Volunteer Portal
                       </Link>.
@@ -784,7 +784,7 @@ export default function HomePage() {
       </section>
 
       {/* 12. PUBLIC SECRETARIAT INQUIRY DESK */}
-      <section id="contact-desk" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0A192F]/10 scroll-mt-16">
+      <section id="contact-desk" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10 scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Direct Public Access"
@@ -796,7 +796,7 @@ export default function HomePage() {
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-lg">
             {inquirySubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
+              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in">
                 <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   Inquiry Successfully Registered
@@ -933,7 +933,7 @@ export default function HomePage() {
       </section>
 
       {/* 13. PHILANTHROPIC COMMITMENT & SECTION 80G TAX REASSURANCE */}
-      <section id="donate" className="py-20 bg-[#0A192F] text-[#EDE6D8] border-t border-[#C5A059]/30 scroll-mt-16">
+      <section id="donate" className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-t border-[#C5A059]/30 scroll-mt-16">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <Badge variant="gold-dark">
@@ -947,7 +947,7 @@ export default function HomePage() {
             </p>
 
             {/* 80G Tax Exemption & Direct Bank Transfer Reassurance Box */}
-            <div className="p-6 rounded-xs bg-[#0F172A] border border-[#C5A059]/40 text-left max-w-xl mx-auto space-y-3.5 shadow-xl">
+            <div className="p-6 rounded-xs bg-[#072617] border border-[#C5A059]/40 text-left max-w-xl mx-auto space-y-3.5 shadow-xl">
               <div className="flex items-center gap-2 text-[#E4C88A] text-xs font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
                 <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
