@@ -28,9 +28,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Civic Programmes & Educational Initiatives — MECT Odisha",
+  title: "Our Work & Community Development Programmes — MECT Odisha",
   description:
-    "Explore the 4 core programmatic pillars of Mahaveer Educational & Charitable Trust (MECT): Remedial Rural Education, Women's Vocational Tailoring, Jal Seva Drinking Water, and Jan Ahar Hospital Food Relief.",
+    "Explore MECT's documented programme areas across education, women's livelihoods, safe-water access, sanitation and food and nutrition relief in Odisha.",
 };
 
 export default function ProgrammesPage() {
@@ -40,7 +40,7 @@ export default function ProgrammesPage() {
       number: "01",
       badge: "Grassroots Pillar",
       tag: "Shiksha Setu",
-      name: "Remedial Rural Education & Coaching Centres",
+      name: "Education & Learning Support",
       tagline: "Bridging Secondary Dropout Gaps for Underprivileged & Tribal Students in Balangir",
       overview:
         "Since 2014, MECT has operated free after-school remedial coaching centres across rural Balangir and Puintala blocks. These centres provide scholastic reinforcement, textbook sets, and entrance exam preparation for students from economically weaker sections, SC/ST communities, and daily-wage households.",
@@ -64,7 +64,7 @@ export default function ProgrammesPage() {
       number: "02",
       badge: "Vocational Livelihood",
       tag: "Swavalamban",
-      name: "Women's Vocational Tailoring & Livelihood Training",
+      name: "Women's Vocational Skills & Livelihood Training",
       tagline: "Empowering Rural Women Toward Financial Self-Reliance & Entrepreneurship",
       overview:
         "Operating out of our Balangir training center, MECT provides intensive 6-month certified vocational training courses in modern tailoring, garment cutting, embroidery, and craft fabrication for rural women, young widows, and Self-Help Group (SHG) members.",
@@ -88,7 +88,7 @@ export default function ProgrammesPage() {
       number: "03",
       badge: "Clean Water & Sanitation",
       tag: "Jal & Arogya",
-      name: "Jal Seva: Clean Drinking Water & Summer Hydration",
+      name: "Jal Seva: Safe Water & Summer Hydration",
       tagline: "Life-Saving Drinking Water Infrastructure During Severe Summer Heatwaves",
       overview:
         "Western Odisha experiences extreme summer heatwaves exceeding 45°C. MECT deploys annual summer Jal Seva drinking water kiosks at major rural transit intersections, bus stands, and hospital premises in Balangir, providing cold, purified water to tens of thousands of citizens.",
@@ -105,14 +105,14 @@ export default function ProgrammesPage() {
         "Conduct village water-sanitation awareness drives on waterborne disease prevention",
       ],
       icon: Droplets,
-      accentColor: "border-[#1E3A8A]",
+      accentColor: "border-[#165B38]",
     },
     {
       id: "hunger-relief",
       number: "04",
       badge: "Destitute Food Relief",
       tag: "Annadaan",
-      name: "Jan Ahar: Hospital Food Relief & Destitute Nutrition",
+      name: "Jan Ahar: Food Security & Nutrition Relief",
       tagline: "Nutritious Meals for Impoverished Patients, Hospital Attendants & Destitute Citizens",
       overview:
         "Hundreds of rural families traveling to Balangir District Headquarters Hospital for medical treatment exhaust their meager savings on travel and medicines, leaving attendants without food. MECT operates compassionate Jan Ahar meal drives providing fresh, wholesome cooked food.",
@@ -161,9 +161,9 @@ export default function ProgrammesPage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="12+ Years of Civic Action • Est. 2013"
-        title="Civic Programmes, Rural Skilling & Educational Upliftment"
-        description="Explore the four verified programmatic pillars of Mahaveer Educational & Charitable Trust (MECT) spanning remedial education, women's tailoring livelihoods, clean drinking water relief, and hospital nutrition."
+        badge="13+ Years of Community Work • Est. 2013"
+        title="Education, Livelihoods & Community Wellbeing"
+        description="Explore MECT's current programme areas: learning support, women's vocational livelihoods, safe-water and sanitation initiatives, and food and nutrition relief."
         breadcrumbs={[{ label: "Programmes" }]}
         actions={
           <>
@@ -184,12 +184,12 @@ export default function ProgrammesPage() {
       />
 
       {/* 2. Programmatic Impact Highlight Ribbon */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {TRUST_CONFIG.impactHighlights.map((item, idx) => (
-              <div key={idx} className="space-y-1 border-r border-[#0A192F]/10 last:border-r-0 pr-4 last:pr-0">
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F]">
+              <div key={idx} className="space-y-1 border-r border-[#0B3B24]/10 last:border-r-0 pr-4 last:pr-0">
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24]">
                   {item.figure}
                 </span>
                 <p className="text-xs font-bold text-[#7A5E24] uppercase tracking-wider font-sans">
@@ -209,8 +209,8 @@ export default function ProgrammesPage() {
         <Container size="default" className="space-y-16">
           <SectionHeader
             badge="Verified Core Interventions"
-            title="The Four Core Mission Pillars"
-            subtitle="Documented across our 2021–2024 annual audit records, each pillar directly addresses systemic inequalities in Western Odisha."
+            title="Four Connected Areas of Community Work"
+            subtitle="Each programme responds to a practical community need. Learn what MECT does, where it works and how people and institutions can participate."
             align="center"
           />
 
@@ -221,10 +221,10 @@ export default function ProgrammesPage() {
                 <Card
                   key={pillar.id}
                   variant="elevated"
-                  className="p-8 sm:p-10 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
+                  className="p-8 sm:p-10 bg-white border-[#0B3B24]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
                 >
                   {/* Top Bar */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#0A192F]/10 gap-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#0B3B24]/10 gap-3">
                     <div className="flex items-center gap-3">
                       <span className="font-serif text-3xl font-bold text-[#7A5E24]">
                         {pillar.number}
@@ -232,7 +232,7 @@ export default function ProgrammesPage() {
                       <Badge variant="contrast-gold">
                         {pillar.tag}
                       </Badge>
-                      <span className="text-xs text-[#0A192F] font-bold font-sans">
+                      <span className="text-xs text-[#0B3B24] font-bold font-sans">
                         {pillar.badge}
                       </span>
                     </div>
@@ -244,11 +244,11 @@ export default function ProgrammesPage() {
 
                   {/* Header */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 shadow-xs border border-[#C5A059]/40">
+                    <div className="w-12 h-12 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0 shadow-xs border border-[#C5A059]/40">
                       <Icon className="w-6 h-6 text-[#E4C88A]" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B3B24]">
                         {pillar.name}
                       </h3>
                       <p className="text-xs sm:text-sm text-[#7A5E24] font-semibold font-sans mt-1">
@@ -264,16 +264,16 @@ export default function ProgrammesPage() {
                   {/* Metrics Strip */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                     {pillar.metrics.map((m, idx) => (
-                      <div key={idx} className="p-3 bg-[#F4EFE6] rounded-xs border border-[#0A192F]/10 text-center font-sans">
+                      <div key={idx} className="p-3 bg-[#F4EFE6] rounded-xs border border-[#0B3B24]/10 text-center font-sans">
                         <span className="text-xs text-[#4A5568] block">{m.label}</span>
-                        <span className="text-sm font-bold text-[#0A192F] block mt-0.5">{m.value}</span>
+                        <span className="text-sm font-bold text-[#0B3B24] block mt-0.5">{m.value}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Strategic Objectives */}
-                  <div className="p-5 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10 space-y-3 font-sans">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#0A192F] block">
+                  <div className="p-5 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10 space-y-3 font-sans">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0B3B24] block">
                       Core Strategic Objectives
                     </span>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-[#4A5568]">
@@ -287,7 +287,7 @@ export default function ProgrammesPage() {
                   </div>
 
                   {/* Bottom Action Strip */}
-                  <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#0A192F]/10">
+                  <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#0B3B24]/10">
                     <div className="text-xs text-[#4A5568] font-sans">
                       <span>Eligible for 50% Tax Deduction under Section 80G &amp; Schedule VII CSR Grants.</span>
                     </div>
@@ -313,12 +313,12 @@ export default function ProgrammesPage() {
       </section>
 
       {/* 4. Strategic Horizons & Future Expansion */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/30">
+      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-y border-[#C5A059]/30">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Strategic Expansion"
-            title="Statewide Education Grants & Learning Hubs"
-            subtitle="Scaling our proven Balangir operational model into all 30 districts of Odisha through technology and institutional partnerships."
+            title="Next-Stage Programme Development & Partnerships"
+            subtitle="These are future-facing programme and partnership pathways. Their geographic reach and delivery status should be updated only when implementation is formally approved and evidenced."
             align="center"
             theme="dark"
           />
@@ -328,7 +328,7 @@ export default function ProgrammesPage() {
               const Icon = item.icon;
               return (
                 <div key={idx} className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
-                  <div className="w-10 h-10 rounded-xs bg-[#0F172A] border border-[#C5A059]/40 flex items-center justify-center text-[#E4C88A]">
+                  <div className="w-10 h-10 rounded-xs bg-[#072617] border border-[#C5A059]/40 flex items-center justify-center text-[#E4C88A]">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
