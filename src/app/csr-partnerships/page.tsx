@@ -139,8 +139,8 @@ export default function CSRPartnershipsPage() {
       {/* 1. Page Hero */}
       <PageHero
         badge="Ministry of Corporate Affairs Approved • Reg: CSR00081063"
-        title="Turnkey Corporate Social Responsibility (CSR) Partnerships"
-        description="Mahaveer Educational & Charitable Trust (MECT) provides accredited corporate partners with fully compliant, auditable, and high-impact CSR project execution aligned with Schedule VII of the Companies Act, 2013."
+        title="Corporate Partnerships for Community Development"
+        description="Mahaveer Educational & Charitable Trust (MECT) invites responsible institutional collaboration around documented programmes in education, women's livelihoods, safe water and nutrition. Proposed CSR projects are scoped with clear outcomes, governance and reporting."
         breadcrumbs={[{ label: "CSR Partnerships" }]}
         actions={
           <>
@@ -161,11 +161,11 @@ export default function CSRPartnershipsPage() {
       />
 
       {/* 2. Statutory CSR Credentials Strip */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default">
           <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
               </div>
               <div>
@@ -173,7 +173,7 @@ export default function CSRPartnershipsPage() {
                   <Badge variant="forest" size="sm">
                     MCA CSR-1 Registered
                   </Badge>
-                  <span className="text-xs font-mono font-bold text-[#0A192F]">
+                  <span className="text-xs font-mono font-bold text-[#0B3B24]">
                     Registration No: {TRUST_CONFIG.statutory.mcaCsrNumber}
                   </span>
                 </div>
@@ -181,7 +181,7 @@ export default function CSRPartnershipsPage() {
                   Approved by Ministry of Corporate Affairs (ROC-Delhi, SRN-N14617237)
                 </p>
                 <p className="text-xs text-[#4A5568] mt-1 leading-relaxed font-sans max-w-3xl">
-                  MECT satisfies all conditions under Section 135 of the Companies Act, 2013 and Companies (CSR Policy) Amendment Rules. Section 12A URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • PAN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.pan}</strong>.
+                  MECT satisfies all conditions under Section 135 of the Companies Act, 2013 and Companies (CSR Policy) Amendment Rules. Section 12A URN: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • PAN: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.pan}</strong>.
                 </p>
               </div>
             </div>
@@ -200,8 +200,8 @@ export default function CSRPartnershipsPage() {
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Schedule VII Aligned"
-            title="Turnkey CSR Project Portfolios in Odisha"
-            subtitle="Choose from our four high-impact project tracks designed for measurable corporate compliance and deep grassroots impact."
+            title="Partner Across MECT's Community Programme Areas"
+            subtitle="Explore four existing programme areas that may be suitable for carefully scoped, accountable CSR collaboration, subject to project approval and due diligence."
             align="center"
           />
 
@@ -212,10 +212,10 @@ export default function CSRPartnershipsPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-8 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-5 flex flex-col justify-between"
+                  className="p-8 bg-white border-[#0B3B24]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-5 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                    <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
                       <span className="text-xs font-bold text-[#7A5E24] bg-[#7A5E24]/10 px-2.5 py-0.5 rounded-xs font-mono">
                         {track.sector}
                       </span>
@@ -225,11 +225,11 @@ export default function CSRPartnershipsPage() {
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
+                      <div className="w-11 h-11 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
                         <Icon className="w-5 h-5 text-[#E4C88A]" />
                       </div>
                       <div>
-                        <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                        <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                           {track.title}
                         </h3>
                         <p className="text-xs text-[#4A5568] mt-2 leading-relaxed font-sans">
@@ -239,8 +239,8 @@ export default function CSRPartnershipsPage() {
                     </div>
 
                     {/* Key Deliverables */}
-                    <div className="p-4 bg-[#F4EFE6] rounded-xs border border-[#0A192F]/10 space-y-2 font-sans">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0A192F] block">
+                    <div className="p-4 bg-[#F4EFE6] rounded-xs border border-[#0B3B24]/10 space-y-2 font-sans">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0B3B24] block">
                         Corporate Deliverables &amp; Auditing
                       </span>
                       <ul className="space-y-1.5 text-xs text-[#4A5568]">
@@ -270,7 +270,7 @@ export default function CSRPartnershipsPage() {
       </section>
 
       {/* 4. Corporate Governance & Fiduciary Assurance */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/30">
+      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-y border-[#C5A059]/30">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Fiduciary Integrity"
@@ -327,7 +327,7 @@ export default function CSRPartnershipsPage() {
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl">
             {csrSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
+              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in">
                 <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   CSR Inquiry Registered Successfully
