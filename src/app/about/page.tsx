@@ -80,7 +80,7 @@ export default function AboutPage() {
           "name": "Odisha, India",
         },
         "description":
-          "Irrevocable public charitable trust registered in 2013 (Deed No. 40311302194), dedicated to higher education grants, rural remedial schooling, women's tailoring livelihoods, and potable drinking water relief across all 30 districts of Odisha.",
+          "Registered public charitable trust established in 2013 (Deed No. 40311302194), working across education, women's vocational livelihoods, safe-water initiatives, nutrition support and community welfare in Odisha.",
         "address": [
           {
             "@type": "PostalAddress",
