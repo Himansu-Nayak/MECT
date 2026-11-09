@@ -107,12 +107,12 @@ export function Header() {
               className="flex items-center space-x-3.5 group focus-visible:outline-2 focus-visible:outline-[#C5A059]"
               aria-label="MAHAVIR TRUST Homepage"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#07111E] transition-colors shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#072617] transition-colors shrink-0">
                 M
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif tracking-wider font-bold text-lg sm:text-xl text-[#0A192F] leading-tight group-hover:text-[#1E3A8A] transition-colors">
+                  <span className="font-serif tracking-wider font-bold text-lg sm:text-xl text-[#0B3B24] leading-tight group-hover:text-[#165B38] transition-colors">
                     MAHAVIR TRUST
                   </span>
                   <span className="hidden sm:inline-flex text-[9px] font-bold uppercase tracking-wider bg-[#0B3B24]/10 text-[#0B3B24] px-1.5 py-0.5 rounded-xs border border-[#0B3B24]/20">
@@ -148,8 +148,8 @@ export function Header() {
                       aria-haspopup={hasChildren ? "menu" : undefined}
                       className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059] ${
                         isActive
-                          ? "text-[#0A192F] font-bold bg-[#0A192F]/8"
-                          : "text-[#1C2421] hover:text-[#0A192F] hover:bg-[#0A192F]/4"
+                          ? "text-[#0B3B24] font-bold bg-[#0B3B24]/8"
+                          : "text-[#1C2421] hover:text-[#0B3B24] hover:bg-[#0B3B24]/4"
                       }`}
                     >
                       <span>{item.label}</span>
@@ -168,7 +168,7 @@ export function Header() {
                       <div
                         role="menu"
                         aria-label={`${item.label} sub-navigation`}
-                        className="absolute top-full left-0 bg-[#FDFBF7] border border-[#0A192F]/15 rounded-xs shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 w-80 space-y-1"
+                        className="absolute top-full left-0 bg-[#FDFBF7] border border-[#0B3B24]/15 rounded-xs shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 w-80 space-y-1"
                       >
                         <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5E24] px-2 block mb-1">
                           {item.label} Sections
@@ -180,7 +180,7 @@ export function Header() {
                             role="menuitem"
                             className="block p-2 rounded-xs hover:bg-[#F4EFE6] transition-colors group/sub focus-visible:outline-2 focus-visible:outline-[#C5A059]"
                           >
-                            <div className="flex items-center justify-between text-xs font-semibold text-[#0A192F] group-hover/sub:text-[#1E3A8A]">
+                            <div className="flex items-center justify-between text-xs font-semibold text-[#0B3B24] group-hover/sub:text-[#165B38]">
                               <span>{subItem.label}</span>
                               {subItem.badge && (
                                 <Badge variant="forest" size="sm">
@@ -204,7 +204,7 @@ export function Header() {
             <div className="hidden lg:flex items-center space-x-2.5">
               <Link
                 href="/volunteer"
-                className="px-3.5 py-2 text-xs font-semibold text-[#0A192F] border border-[#0A192F]/30 hover:bg-[#0A192F]/5 rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="px-3.5 py-2 text-xs font-semibold text-[#0B3B24] border border-[#0B3B24]/30 hover:bg-[#0B3B24]/5 rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059]"
               >
                 Volunteer
               </Link>
@@ -229,7 +229,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-[#0A192F] hover:bg-[#0A192F]/5 rounded-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="p-2 text-[#0B3B24] hover:bg-[#0B3B24]/5 rounded-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
                 aria-expanded={mobileMenuOpen}
                 aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               >
@@ -253,13 +253,13 @@ export function Header() {
           aria-label="Mobile Navigation Menu"
         >
           {/* Drawer Top Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#0A192F]/10">
+          <div className="flex items-center justify-between pb-4 border-b border-[#0B3B24]/10">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xs bg-[#0A192F] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-lg">
+              <div className="w-9 h-9 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-lg">
                 M
               </div>
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-base text-[#0A192F]">MAHAVIR TRUST</span>
+                <span className="font-serif font-bold text-base text-[#0B3B24]">MAHAVIR TRUST</span>
                 <span className="text-[9px] uppercase tracking-wider text-[#7A5E24] font-semibold">
                   MECT Odisha • Est. 2013
                 </span>
@@ -267,7 +267,7 @@ export function Header() {
             </div>
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs"
+              className="p-2 text-[#0B3B24] hover:bg-[#0B3B24]/10 rounded-xs"
               aria-label="Close menu"
             >
               <X className="w-6 h-6" aria-hidden="true" />
@@ -275,13 +275,13 @@ export function Header() {
           </div>
 
           {/* Navigation Links List */}
-          <div className="py-4 space-y-1 divide-y divide-[#0A192F]/5">
+          <div className="py-4 space-y-1 divide-y divide-[#0B3B24]/5">
             {TRUST_CONFIG.navigation.map((item) => (
               <div key={item.label} className="pt-2">
                 <Link
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2.5 text-base font-semibold text-[#0A192F]"
+                  className="flex items-center justify-between py-2.5 text-base font-semibold text-[#0B3B24]"
                 >
                   <span>{item.label}</span>
                   <ArrowRight className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
@@ -293,7 +293,7 @@ export function Header() {
                         key={sub.label}
                         href={sub.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1.5 text-xs text-[#4A5568] hover:text-[#0A192F]"
+                        className="block py-1.5 text-xs text-[#4A5568] hover:text-[#0B3B24]"
                       >
                         • {sub.label}
                       </Link>
@@ -305,11 +305,11 @@ export function Header() {
           </div>
 
           {/* Mobile Statutory & Contact Info Box */}
-          <div className="mt-auto pt-6 border-t border-[#0A192F]/10 space-y-3">
-            <div className="bg-[#0A192F] text-white p-3 rounded-xs text-xs space-y-1">
+          <div className="mt-auto pt-6 border-t border-[#0B3B24]/10 space-y-3">
+            <div className="bg-[#0B3B24] text-white p-3 rounded-xs text-xs space-y-1">
               <div className="flex items-center justify-between text-[#E4C88A] font-semibold">
                 <span>Section 80G Tax Exemption</span>
-                <span className="text-[10px] bg-[#C5A059] text-[#0A192F] px-1 rounded-xs">Verified</span>
+                <span className="text-[10px] bg-[#C5A059] text-[#0B3B24] px-1 rounded-xs">Verified</span>
               </div>
               <p className="text-[11px] text-white/80">
                 URN: {TRUST_CONFIG.statutory.section80GUrn} • 50% Tax Deduction
