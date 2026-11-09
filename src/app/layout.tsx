@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
   },
   description:
-    "Official website of Mahaveer Educational & Charitable Trust (MECT). Registered in 2013 (Balangir, Odisha). 12A & 80G certified (50% tax exemption), MCA CSR-1 approved, NITI Aayog Darpan registered. Advancing higher education, rural skilling, and clean water relief.",
+    "Official website of Mahaveer Educational & Charitable Trust (MECT), Odisha. Explore our work in education, women's livelihoods, safe water, nutrition and community welfare, alongside governance and statutory disclosures.",
   keywords: [
     "Mahaveer Educational & Charitable Trust",
     "MECT Odisha",
@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     "80G Tax Exemption Donation Odisha",
     "MCA CSR-1 Registered Trust Odisha",
     "NITI Aayog NGO Darpan Odisha",
+    "Community Development NGO Odisha",
+    "Women Empowerment & Livelihood Odisha",
+    "Safe Drinking Water Community Programmes Odisha",
+    "Food Security & Nutrition Odisha",
     "Higher Education Scholarships Odisha",
     "Remedial Education Balangir",
     "Women Vocational Tailoring Odisha",
@@ -34,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013)",
     description:
-      "12+ years of civic service across Odisha. 12A & 80G tax-exempt charitable trust advancing higher education, rural women's tailoring livelihoods, and safe drinking water.",
+      "A registered charitable trust rooted in Odisha, working across education, women's livelihoods, safe water, nutrition and community welfare.",
     url: "https://mect.org.in",
     siteName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)",
     locale: "en_IN",
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MAHAVIR TRUST (MECT) — Fiduciary Philanthropy & Education in Odisha",
     description:
-      "12+ years of civic service. 12A & 80G tax-exempt charitable trust advancing higher education, rural skilling, and clean water relief.",
+      "A multi-sector charitable development organisation supporting education, livelihoods, safe water, nutrition and community wellbeing across Odisha.",
   },
   robots: {
     index: true,
@@ -67,7 +71,7 @@ const organizationJsonLd = {
   url: "https://mect.org.in",
   logo: "https://mect.org.in/logo.png",
   description:
-    "An irrevocable registered public charitable trust established on 27th July 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
+    "A registered public charitable trust established on 27th July 2013, working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
   foundingDate: "2013-07-27",
   taxID: "AADTM5474F",
   identifier: [
@@ -147,7 +151,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1C2421] selection:bg-[#C5A059] selection:text-[#0A192F]">
+      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1C2421] selection:bg-[#C5A059] selection:text-[#0B3B24]">
         {/* WCAG 2.2 AA Accessible Skip Link */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content
