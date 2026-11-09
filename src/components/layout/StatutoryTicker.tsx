@@ -18,7 +18,7 @@ export function StatutoryTicker() {
 
   return (
     <div
-      className="bg-[#0A192F] text-[#EDE6D8] border-b border-[#C5A059]/30 text-xs py-1.5 transition-colors print:hidden"
+      className="bg-[#0B3B24] text-[#EDE6D8] border-b border-[#C5A059]/30 text-xs py-1.5 transition-colors print:hidden"
       role="region"
       aria-label="Statutory Accreditation and Real-Time Institutional Desk"
     >
@@ -26,8 +26,8 @@ export function StatutoryTicker() {
         <div className="flex items-center justify-between gap-4">
           {/* Left: Ticker Badge & Scrolling Statutory Credentials */}
           <div className="flex items-center gap-3 overflow-hidden">
-            <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#C5A059] text-[#0A192F] text-[10px] font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-3 h-3 text-[#0A192F]" aria-hidden="true" />
+            <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-[#C5A059] text-[#0B3B24] text-[10px] font-bold uppercase tracking-wider">
+              <ShieldCheck className="w-3 h-3 text-[#0B3B24]" aria-hidden="true" />
               <span>Statutory</span>
             </span>
 
