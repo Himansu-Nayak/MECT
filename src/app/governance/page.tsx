@@ -201,11 +201,11 @@ export default function GovernancePage() {
       />
 
       {/* 2. Statutory Credentials Quick Verification Banner */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Statutory Accreditation Strip">
+      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10" aria-label="Statutory Accreditation Strip">
         <Container size="default">
           <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
               </div>
               <div>
@@ -213,7 +213,7 @@ export default function GovernancePage() {
                   <Badge variant="forest" size="sm">
                     Verified Public Record
                   </Badge>
-                  <span className="text-xs text-[#0A192F] font-bold font-mono">
+                  <span className="text-xs text-[#0B3B24] font-bold font-mono">
                     Deed No. 40311302194 (Balangir Sub-Registrar)
                   </span>
                 </div>
@@ -221,7 +221,7 @@ export default function GovernancePage() {
                   Governed under Indian Trusts Act, 1882 • Section 12A/80G &amp; MCA CSR-1 Certified
                 </p>
                 <p className="text-xs text-[#4A5568] mt-1 leading-relaxed font-sans">
-                  Permanent Account Number: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.pan}</strong> • Section 12A URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • MCA CSR-1: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.mcaCsrNumber}</strong>.
+                  Permanent Account Number: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.pan}</strong> • Section 12A URN: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • MCA CSR-1: <strong className="text-[#0B3B24]">{TRUST_CONFIG.statutory.mcaCsrNumber}</strong>.
                 </p>
               </div>
             </div>
@@ -252,19 +252,19 @@ export default function GovernancePage() {
                 <Card
                   key={trustee.name}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
                     <Badge variant="contrast-gold" size="sm">
                       {trustee.status}
                     </Badge>
-                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/5 px-2.5 py-0.5 rounded-xs font-mono">
+                    <span className="text-[10px] font-semibold text-[#0B3B24] bg-[#0B3B24]/5 px-2.5 py-0.5 rounded-xs font-mono">
                       {trustee.deedClause}
                     </span>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-[#C5A059]">
+                    <div className="w-12 h-12 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-[#C5A059]">
                       {trustee.name
                         .split(" ")
                         .map((n) => n[0])
@@ -272,7 +272,7 @@ export default function GovernancePage() {
                         .join("")}
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                         {trustee.name}
                       </h3>
                       <p className="text-xs text-[#7A5E24] font-semibold font-sans mt-0.5">
@@ -289,7 +289,7 @@ export default function GovernancePage() {
           </div>
 
           {/* Honorary Governance Alert */}
-          <div className="p-6 rounded-xs bg-[#0A192F] text-white border border-[#C5A059]/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+          <div className="p-6 rounded-xs bg-[#0B3B24] text-white border border-[#C5A059]/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
             <div className="flex items-center gap-3">
               <Scale className="w-8 h-8 text-[#E4C88A] shrink-0" aria-hidden="true" />
               <div>
@@ -311,7 +311,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 4. Key Trust Deed Clauses & Fiduciary Safeguards */}
-      <section className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10" aria-label="Key Trust Deed Clauses">
+      <section className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10" aria-label="Key Trust Deed Clauses">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Deed Mandates"
@@ -325,7 +325,7 @@ export default function GovernancePage() {
               <Card
                 key={idx}
                 variant="elevated"
-                className="p-6 sm:p-7 bg-white border-[#0A192F]/12 shadow-xs space-y-3"
+                className="p-6 sm:p-7 bg-white border-[#0B3B24]/12 shadow-xs space-y-3"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-[#7A5E24] bg-[#7A5E24]/10 px-2 py-0.5 rounded-xs">
@@ -335,7 +335,7 @@ export default function GovernancePage() {
                     Irrevocable Covenant
                   </Badge>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                   {item.title}
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -364,23 +364,23 @@ export default function GovernancePage() {
                 <Card
                   key={committee.title}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
                     <Badge variant="contrast-gold" size="sm">
                       {committee.scope}
                     </Badge>
-                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/8 px-2.5 py-0.5 rounded-xs font-sans">
+                    <span className="text-[10px] font-semibold text-[#0B3B24] bg-[#0B3B24]/8 px-2.5 py-0.5 rounded-xs font-sans">
                       Active Committee
                     </span>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                         {committee.title}
                       </h3>
                       <p className="text-xs text-[#4A5568] mt-1.5 leading-relaxed font-sans">
@@ -389,10 +389,10 @@ export default function GovernancePage() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#0A192F]/10 space-y-1.5 text-[11px] font-sans">
+                  <div className="pt-3 border-t border-[#0B3B24]/10 space-y-1.5 text-[11px] font-sans">
                     <div className="flex items-center justify-between">
                       <span className="text-[#4A5568] font-medium">Composition:</span>
-                      <span className="text-[#0A192F] font-semibold">{committee.composition}</span>
+                      <span className="text-[#0B3B24] font-semibold">{committee.composition}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-[#4A5568] font-medium">Statutory Status:</span>
@@ -407,7 +407,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 6. Financial Oversight & 100% Direct Disbursal Standard */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/25 relative overflow-hidden" aria-label="Financial Oversight">
+      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-y border-[#C5A059]/25 relative overflow-hidden" aria-label="Financial Oversight">
         <Container size="default" className="relative space-y-14">
           <SectionHeader
             badge="Fiduciary Safeguards"
@@ -452,7 +452,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 7. Institutional Documents & Compliance Registry */}
-      <section id="documents" className="py-20 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Institutional Documents">
+      <section id="documents" className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10" aria-label="Institutional Documents">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Transparency Registry"
@@ -466,7 +466,7 @@ export default function GovernancePage() {
               <Card
                 key={doc.code}
                 variant="elevated"
-                className="p-6 bg-white border-[#0A192F]/15 shadow-xs flex flex-col justify-between space-y-4"
+                className="p-6 bg-white border-[#0B3B24]/15 shadow-xs flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between text-[10px] font-bold tracking-wider">
@@ -475,7 +475,7 @@ export default function GovernancePage() {
                       {doc.type}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     {doc.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -483,11 +483,11 @@ export default function GovernancePage() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#0A192F]/10 flex items-center justify-between text-xs">
+                <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-xs">
                   <span className="text-[11px] text-[#4A5568] font-semibold font-sans">{doc.version}</span>
                   <Link href="/statutory-disclosures">
                     <Button variant="secondary" size="sm" className="gap-1.5 text-xs">
-                      <FileCheck className="w-3.5 h-3.5 text-[#0A192F]" aria-hidden="true" />
+                      <FileCheck className="w-3.5 h-3.5 text-[#0B3B24]" aria-hidden="true" />
                       <span>Inspect Details</span>
                     </Button>
                   </Link>
