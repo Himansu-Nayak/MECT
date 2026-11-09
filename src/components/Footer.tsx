@@ -20,12 +20,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A192F] text-[#EDE6D8] border-t border-[#C5A059]/30 pt-16 pb-12 transition-colors">
+    <footer className="bg-[#0B3B24] text-[#EDE6D8] border-t border-[#C5A059]/30 pt-16 pb-12 transition-colors">
       <Container size="default" className="space-y-12">
         {/* Tier 1: Mandatory Statutory & Compliance Transparency Notice Box */}
-        <div className="bg-[#0F172A] border border-[#C5A059]/40 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
+        <div className="bg-[#072617] border border-[#C5A059]/40 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xs bg-[#0A192F] border border-[#C5A059]/50 flex items-center justify-center shrink-0 text-[#E4C88A]">
+            <div className="w-10 h-10 rounded-xs bg-[#0B3B24] border border-[#C5A059]/50 flex items-center justify-center shrink-0 text-[#E4C88A]">
               <ShieldCheck className="w-5 h-5 text-[#E4C88A]" aria-hidden="true" />
             </div>
             <div>
@@ -49,7 +49,7 @@ export function Footer() {
           </div>
           <Link
             href="/statutory-disclosures"
-            className="inline-flex items-center gap-1.5 text-xs text-[#0A192F] font-bold px-4 py-2.5 bg-[#C5A059] hover:bg-[#E4C88A] rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+            className="inline-flex items-center gap-1.5 text-xs text-[#0B3B24] font-bold px-4 py-2.5 bg-[#C5A059] hover:bg-[#E4C88A] rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
           >
             <span>Verify Certificates</span>
             <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -65,7 +65,7 @@ export function Footer() {
               className="inline-flex items-center space-x-3.5 group focus-visible:outline-2 focus-visible:outline-[#C5A059]"
               aria-label="MAHAVIR TRUST Homepage"
             >
-              <div className="w-10 h-10 rounded-xs bg-[#0F172A] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#07111E] transition-colors shrink-0">
+              <div className="w-10 h-10 rounded-xs bg-[#072617] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#072617] transition-colors shrink-0">
                 M
               </div>
               <div className="flex flex-col">
@@ -201,7 +201,7 @@ export function Footer() {
               <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
               <span>Direct Bank NEFT/RTGS</span>
             </span>
-            <div className="bg-[#0F172A] p-3 rounded-xs border border-white/10 space-y-1.5 text-[11px]">
+            <div className="bg-[#072617] p-3 rounded-xs border border-white/10 space-y-1.5 text-[11px]">
               <div>
                 <span className="text-white/50 block">Bank Name:</span>
                 <span className="text-white font-medium">{TRUST_CONFIG.bank.bankName}</span>
