@@ -34,10 +34,10 @@ export interface RoadmapMilestone {
 
 export const ABOUT_CONTENT = {
   hero: {
-    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
-    title: "Dedicated to Educational Dignity, Rural Livelihoods & Fiduciary Philanthropy",
+    badge: "13+ Years of Community Service • Est. 2013, Odisha",
+    title: "Strengthening People, Families & Communities Across Odisha",
     description:
-      "MAHAVIR TRUST (Mahaveer Educational & Charitable Trust) was established in 2013 as an irrevocable public charitable trust to empower underprivileged students, train rural women in vocational trades, and provide vital community relief across Odisha.",
+      "MAHAVIR TRUST (Mahaveer Educational & Charitable Trust) was established in 2013 as a public charitable trust rooted in Odisha. Its work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare to support people and communities.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "About Us" },
@@ -46,10 +46,10 @@ export const ABOUT_CONTENT = {
 
   narrative: {
     badge: "Foundational Philosophy",
-    title: "True Philanthropy Enables Self-Reliance Through Education & Civic Welfare.",
+    title: "Lasting Community Progress Connects Opportunity With Dignity and Care.",
     paragraphs: [
-      "Higher education and vocational training represent the single most transformative engine of social and economic mobility in India. Yet, across Western Odisha, thousands of meritorious students and rural women find their potential constrained by poverty, lack of resources, and institutional barriers.",
-      "MAHAVIR TRUST was registered in Balangir in 2013 to address these systemic challenges. Over the past 12+ years, we have operated free remedial education centres, equipped over 120 rural women with certified tailoring skills, provided life-saving Jal Seva drinking water to thousands during scorching summers, and ensured hospital food relief through Jan Ahar.",
+      "People and families experience connected challenges. Access to learning, practical livelihood skills, safe water and nutritious food can all contribute to dignity, stability and opportunity.",
+      "Registered in Balangir in 2013, MAHAVIR TRUST has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These areas of work are rooted in local needs and should be described through current programme records and verified results.",
     ],
     safeguards: [
       {
@@ -70,15 +70,15 @@ export const ABOUT_CONTENT = {
     title: "Vision & Operational Mission",
     vision: {
       tag: "Institutional Vision",
-      title: "An Empowered, Educated & Self-Reliant Odisha",
+      title: "An Odisha Where People and Communities Can Thrive",
       description:
-        "An Odisha where every hardworking student and aspiring citizen, irrespective of socioeconomic background or geographic remoteness, has access to accredited higher education, dignified livelihood skills, and clean community resources.",
+        "An Odisha where individuals, families and communities can access opportunities for learning, dignified livelihoods, essential community support and the resources needed to build self-reliant futures.",
     },
     mission: {
       tag: "Operational Mission",
-      title: "Direct Grants, Livelihood Training & Community Relief",
+      title: "Opportunity, Livelihoods & Essential Community Support",
       description:
-        "To deliver transparent college fee grants, operate rural remedial education centres, provide certified women's vocational training, expand summer drinking water stations (Jal Seva), and foster sustainable community welfare across all 30 districts of Odisha.",
+        "To support educational access, women's vocational skills, safe-water initiatives, food and nutrition relief, and community welfare through transparent programme delivery and responsible partnerships.",
     },
   },
 
@@ -153,10 +153,10 @@ export const ABOUT_CONTENT = {
   ] as GovernanceTierItem[],
 
   roadmap: {
-    badge: "12-Year Evolution",
+    badge: "13+ Year Journey",
     title: "Institutional Journey & Milestones",
     subtitle:
-      "From our registered inception in 2013 to statewide higher education grants and corporate CSR collaborations.",
+      "From our registered inception in 2013 through grassroots programmes, statutory registrations, institutional development and collaboration.",
     milestones: [
       {
         year: "2013",
