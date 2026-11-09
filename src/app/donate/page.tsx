@@ -143,7 +143,7 @@ export default function DonatePage() {
       />
 
       {/* 2. Top Statutory Reassurance Ribbon */}
-      <section className="py-6 bg-[#0A192F] text-white border-b border-[#C5A059]/30">
+      <section className="py-6 bg-[#0B3B24] text-white border-b border-[#C5A059]/30">
         <Container size="default">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
             <div className="flex items-center gap-2">
@@ -186,8 +186,8 @@ export default function DonatePage() {
                     onClick={() => setDonationAmount(amt)}
                     className={`py-3 px-4 rounded-xs text-sm font-bold border transition-all ${
                       donationAmount === amt
-                        ? "bg-[#0A192F] text-[#E4C88A] border-[#C5A059] shadow-sm"
-                        : "bg-[#F4EFE6] text-[#0A192F] border-[#0A192F]/10 hover:border-[#C5A059]"
+                        ? "bg-[#0B3B24] text-[#E4C88A] border-[#C5A059] shadow-sm"
+                        : "bg-[#F4EFE6] text-[#0B3B24] border-[#0B3B24]/10 hover:border-[#C5A059]"
                     }`}
                   >
                     ₹{amt.toLocaleString("en-IN")}
@@ -199,7 +199,7 @@ export default function DonatePage() {
             {/* Custom Amount & Tax Slab Selectors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="text-xs font-bold text-[#0A192F] block mb-1 font-sans">
+                <label className="text-xs font-bold text-[#0B3B24] block mb-1 font-sans">
                   Custom Donation Amount (₹):
                 </label>
                 <div className="relative">
@@ -212,19 +212,19 @@ export default function DonatePage() {
                     step="500"
                     value={donationAmount}
                     onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
-                    className="w-full pl-8 pr-4 py-2.5 rounded-xs border border-[#0A192F]/20 text-base font-bold text-[#0A192F] focus:border-[#C5A059] focus:outline-none"
+                    className="w-full pl-8 pr-4 py-2.5 rounded-xs border border-[#0B3B24]/20 text-base font-bold text-[#0B3B24] focus:border-[#C5A059] focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#0A192F] block mb-1 font-sans">
+                <label className="text-xs font-bold text-[#0B3B24] block mb-1 font-sans">
                   Your Applicable Income Tax Slab:
                 </label>
                 <select
                   value={taxBracket}
                   onChange={(e) => setTaxBracket(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 rounded-xs border border-[#0A192F]/20 text-sm font-semibold text-[#0A192F] focus:border-[#C5A059] focus:outline-none bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xs border border-[#0B3B24]/20 text-sm font-semibold text-[#0B3B24] focus:border-[#C5A059] focus:outline-none bg-white"
                 >
                   <option value={0.3}>30% Slab (Highest Income Bracket)</option>
                   <option value={0.2}>20% Slab (Middle Income Bracket)</option>
@@ -235,7 +235,7 @@ export default function DonatePage() {
             </div>
 
             {/* Live Calculation Output Card */}
-            <div className="p-6 rounded-xs bg-[#0A192F] text-white border border-[#C5A059]/40 space-y-4">
+            <div className="p-6 rounded-xs bg-[#0B3B24] text-white border border-[#C5A059]/40 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                 <div className="p-4 bg-white/5 rounded-xs border border-white/10 space-y-1">
                   <span className="text-[11px] text-white/60 font-sans block">Your Contribution</span>
@@ -269,7 +269,7 @@ export default function DonatePage() {
       </section>
 
       {/* 4. Direct Bank Remittance (RTGS / NEFT / IMPS) */}
-      <section id="bank-details" className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10">
+      <section id="bank-details" className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Direct Domestic Giving"
@@ -279,13 +279,13 @@ export default function DonatePage() {
           />
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-[#0A192F]/10">
+            <div className="flex items-center justify-between pb-4 border-b border-[#0B3B24]/10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
+                <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
                   <Landmark className="w-5 h-5 text-[#E4C88A]" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     {TRUST_CONFIG.bank.bankName}
                   </h3>
                   <p className="text-xs text-[#7A5E24] font-medium font-sans">
@@ -299,22 +299,22 @@ export default function DonatePage() {
             </div>
 
             <div className="space-y-3.5 font-sans text-xs">
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
+              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10">
                 <div>
                   <span className="text-[10px] text-[#4A5568] uppercase font-bold block">Beneficiary Name</span>
-                  <span className="text-sm font-bold text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.accountName}</span>
+                  <span className="text-sm font-bold text-[#0B3B24] block mt-0.5">{TRUST_CONFIG.bank.accountName}</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleCopy(TRUST_CONFIG.bank.accountName, "name")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
+                  className="p-1.5 text-[#0B3B24] hover:bg-[#0B3B24]/10 rounded-xs transition-colors"
                   title="Copy Name"
                 >
                   {copiedField === "name" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
+              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10">
                 <div>
                   <span className="text-[10px] text-[#4A5568] uppercase font-bold block">Account Number</span>
                   <span className="text-base font-mono font-bold text-[#7A5E24] block mt-0.5">{TRUST_CONFIG.bank.accountNumber}</span>
@@ -322,38 +322,38 @@ export default function DonatePage() {
                 <button
                   type="button"
                   onClick={() => handleCopy(TRUST_CONFIG.bank.accountNumber, "acc")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
+                  className="p-1.5 text-[#0B3B24] hover:bg-[#0B3B24]/10 rounded-xs transition-colors"
                   title="Copy Account Number"
                 >
                   {copiedField === "acc" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
+              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10">
                 <div>
                   <span className="text-[10px] text-[#4A5568] uppercase font-bold block">IFSC Code (RTGS / NEFT)</span>
-                  <span className="text-base font-mono font-bold text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.ifsc}</span>
+                  <span className="text-base font-mono font-bold text-[#0B3B24] block mt-0.5">{TRUST_CONFIG.bank.ifsc}</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleCopy(TRUST_CONFIG.bank.ifsc, "ifsc")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
+                  className="p-1.5 text-[#0B3B24] hover:bg-[#0B3B24]/10 rounded-xs transition-colors"
                   title="Copy IFSC Code"
                 >
                   {copiedField === "ifsc" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
+              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10">
                 <div>
                   <span className="text-[10px] text-[#4A5568] uppercase font-bold block">MICR Code</span>
-                  <span className="text-sm font-mono text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.micr}</span>
+                  <span className="text-sm font-mono text-[#0B3B24] block mt-0.5">{TRUST_CONFIG.bank.micr}</span>
                 </div>
                 <span className="text-[10px] text-[#15803D] font-bold">Domestic Transfer</span>
               </div>
             </div>
 
-            <div className="p-4 bg-[#0A192F] text-white rounded-xs space-y-2 text-xs font-sans">
+            <div className="p-4 bg-[#0B3B24] text-white rounded-xs space-y-2 text-xs font-sans">
               <span className="text-[11px] font-bold text-[#E4C88A] uppercase tracking-wider block">
                 Next Step: Claim Your 80G Tax Receipt Below
               </span>
@@ -378,7 +378,7 @@ export default function DonatePage() {
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl">
             {receiptSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
+              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in">
                 <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   80G Receipt Request Successfully Logged
