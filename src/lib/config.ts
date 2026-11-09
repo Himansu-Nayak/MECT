@@ -29,7 +29,7 @@ export const TRUST_CONFIG = {
   motto: "Knowledge, Compassion & Self-Reliance Across Odisha",
   tagline: "Strengthening Communities Through Education, Livelihoods & Essential Support",
   subtext:
-    "An irrevocable registered public charitable trust established in 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
+    "A registered public charitable trust established in 2013, working across education, women's livelihoods, safe-water access, food and nutrition relief, and community welfare in Odisha.",
   foundedYear: "2013",
   establishedDate: "27th July 2013",
   registrationDate: "30th July 2013",
