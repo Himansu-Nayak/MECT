@@ -21,14 +21,14 @@ import {
 export const metadata: Metadata = {
   title: "About Us & Institutional Heritage",
   description:
-    "Learn about MAHAVIR TRUST's foundational heritage, mission, organizational structure, core values, and roadmap to advance higher education access across all 30 districts of Odisha, India.",
+    "Learn about MAHAVIR TRUST's story, mission, governance and multi-sector work across education, women's livelihoods, safe water, nutrition and community welfare in Odisha.",
   alternates: {
     canonical: "https://mect.org.in/about",
   },
   openGraph: {
     title: "About Us & Institutional Heritage | MAHAVIR TRUST",
     description:
-      "MAHAVIR TRUST's foundational heritage, mission, organizational structure, core values, and roadmap to advance higher education access across Odisha, India.",
+      "MAHAVIR TRUST's story, mission, governance and community-development work across education, livelihoods, safe water and nutrition in Odisha.",
     url: "https://mect.org.in/about",
     siteName: "MAHAVIR TRUST",
     locale: "en_IN",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Us & Institutional Heritage | MAHAVIR TRUST",
     description:
-      "Advancing higher education access, merit grants, and academic mentorship across all 30 districts of Odisha, India.",
+      "Strengthening people and communities through learning, livelihoods, safe water, nutrition and accountable community programmes.",
   },
 };
 
