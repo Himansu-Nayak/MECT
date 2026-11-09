@@ -70,7 +70,7 @@ export function QuickActionDock() {
     <>
       {/* Desktop Floating Right Ribbon Dock (print:hidden) */}
       <aside
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-[#0A192F]/95 backdrop-blur-md border-l border-y border-[#C5A059]/40 rounded-l-md shadow-2xl overflow-hidden py-1 transition-all print:hidden"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-[#0B3B24]/95 backdrop-blur-md border-l border-y border-[#C5A059]/40 rounded-l-md shadow-2xl overflow-hidden py-1 transition-all print:hidden"
         aria-label="Institutional Quick Actions Dock"
       >
         {quickLinks.map((item, idx) => {
@@ -85,7 +85,7 @@ export function QuickActionDock() {
               title={`${item.label} — ${item.subtext}`}
             >
               <div
-                className={`w-8 h-8 rounded-xs bg-[#0F172A] border border-[#C5A059]/30 flex items-center justify-center ${item.iconColor} group-hover:scale-105 transition-transform shrink-0`}
+                className={`w-8 h-8 rounded-xs bg-[#072617] border border-[#C5A059]/30 flex items-center justify-center ${item.iconColor} group-hover:scale-105 transition-transform shrink-0`}
               >
                 <Icon className="w-4 h-4" aria-hidden="true" />
               </div>
@@ -115,7 +115,7 @@ export function QuickActionDock() {
         <div className="fixed bottom-6 right-5 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-12 h-12 rounded-full bg-[#0A192F] text-[#E4C88A] border-2 border-[#C5A059] shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-[#C5A059] hover:scale-105 transition-transform"
+            className="w-12 h-12 rounded-full bg-[#0B3B24] text-[#E4C88A] border-2 border-[#C5A059] shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-[#C5A059] hover:scale-105 transition-transform"
             aria-expanded={isOpen}
             aria-label={isOpen ? "Close quick actions menu" : "Open quick actions menu"}
           >
@@ -129,7 +129,7 @@ export function QuickActionDock() {
 
         {isOpen && (
           <div
-            className="fixed bottom-20 right-5 w-72 bg-[#0A192F] text-white border border-[#C5A059]/40 rounded-md shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150"
+            className="fixed bottom-20 right-5 w-72 bg-[#0B3B24] text-white border border-[#C5A059]/40 rounded-md shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150"
             role="menu"
             aria-label="Mobile Quick Access Services"
           >
@@ -148,7 +148,7 @@ export function QuickActionDock() {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 p-2 rounded-xs hover:bg-white/5 transition-colors"
                   >
-                    <div className="w-7 h-7 rounded-xs bg-[#0F172A] border border-[#C5A059]/30 flex items-center justify-center text-[#E4C88A] shrink-0">
+                    <div className="w-7 h-7 rounded-xs bg-[#072617] border border-[#C5A059]/30 flex items-center justify-center text-[#E4C88A] shrink-0">
                       <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                     </div>
                     <div className="flex flex-col">
