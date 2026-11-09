@@ -27,15 +27,15 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Audited Civic Impact & Beneficiary Metrics — MECT Odisha",
+  title: "Community Impact & Programme Outcomes — MECT Odisha",
   description:
-    "Explore 12+ years of verified civic impact by Mahaveer Educational & Charitable Trust (MECT): 350+ remedial students, 120+ skilled rural women, 10,000+ Jal Seva beneficiaries, and statewide 30-district expansion roadmap.",
+    "Explore MECT's programme reach across education, women's livelihoods, safe-water initiatives and nutrition relief, alongside its documented operating areas and future outreach priorities.",
 };
 
 export default function ImpactPage() {
   const verifiedImpactMetrics = [
     {
-      title: "Remedial Rural Education",
+      title: "Education & Learning",
       metric: "350+ Students",
       subtext: "Balangir & Puintala Blocks",
       description:
@@ -44,7 +44,7 @@ export default function ImpactPage() {
       badge: "Shiksha Setu",
     },
     {
-      title: "Women's Livelihood Tailoring",
+      title: "Women Empowerment & Livelihoods",
       metric: "120+ Women Skilled",
       subtext: "Certified 6-Month Courses",
       description:
@@ -53,7 +53,7 @@ export default function ImpactPage() {
       badge: "Swavalamban",
     },
     {
-      title: "Jal Seva Safe Drinking Water",
+      title: "Safe Water & Community Wellbeing",
       metric: "10,000+ Citizens Served",
       subtext: "Western Odisha Summer Relief",
       description:
@@ -62,7 +62,7 @@ export default function ImpactPage() {
       badge: "Jal & Arogya",
     },
     {
-      title: "Jan Ahar Destitute Nutrition",
+      title: "Food Security & Nutrition",
       metric: "Daily Meal Distribution",
       subtext: "Balangir Hospital Vicinity",
       description:
@@ -138,9 +138,9 @@ export default function ImpactPage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Audited Civic Outcomes • 12+ Years Heritage"
-        title="Verifiable Community Impact & 30-District Odisha Strategy"
-        description="Authentic philanthropy is measured by real beneficiaries, degree completions, vocational livelihoods, and emergency relief. Explore 12+ years of verified grassroots outcomes across Western Odisha."
+        badge="Programme Outcomes • 13+ Years of Service"
+        title="Documented Community Impact Across Our Work"
+        description="Understand programme reach, community outcomes and the work behind the numbers. Geographic expansion plans are distinguished from active programme locations."
         breadcrumbs={[{ label: "Community Impact" }]}
         actions={
           <>
@@ -165,8 +165,8 @@ export default function ImpactPage() {
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Verified Ground Telemetry"
-            title="Grassroots Impact Across 4 Operational Tracks"
-            subtitle="Extracted from MECT's 2021–2024 certified annual activity reports and field ledgers."
+            title="Impact Across Four Connected Development Areas"
+            subtitle="Programme indicators are drawn from the trust's reported activity records; figures should be refreshed with the relevant reporting period before publication."
             align="center"
           />
 
@@ -177,11 +177,11 @@ export default function ImpactPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4 flex flex-col justify-between"
+                  className="p-6 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4 flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
+                      <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
                         <Icon className="w-5 h-5 text-[#E4C88A]" />
                       </div>
                       <Badge variant="contrast-gold" size="sm">
@@ -190,7 +190,7 @@ export default function ImpactPage() {
                     </div>
 
                     <div>
-                      <span className="font-serif text-2xl font-bold text-[#0A192F] block">
+                      <span className="font-serif text-2xl font-bold text-[#0B3B24] block">
                         {item.metric}
                       </span>
                       <span className="text-xs font-semibold text-[#7A5E24] font-sans block mt-0.5">
@@ -198,7 +198,7 @@ export default function ImpactPage() {
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-base font-bold text-[#0A192F]">
+                    <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                       {item.title}
                     </h3>
 
@@ -214,7 +214,7 @@ export default function ImpactPage() {
       </section>
 
       {/* 3. Authentic Grassroots Case Studies */}
-      <section className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10">
+      <section className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Field Case Studies"
@@ -228,16 +228,16 @@ export default function ImpactPage() {
               <Card
                 key={idx}
                 variant="elevated"
-                className="p-7 bg-white border-[#0A192F]/12 shadow-sm space-y-4 flex flex-col justify-between"
+                className="p-7 bg-white border-[#0B3B24]/12 shadow-sm space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-[#0A192F]/10 text-[11px] font-sans">
+                  <div className="flex items-center justify-between pb-2 border-b border-[#0B3B24]/10 text-[11px] font-sans">
                     <span className="text-[#7A5E24] font-bold">{story.location}</span>
                     <Badge variant="forest" size="sm">
                       {story.category}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                     {story.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
@@ -245,11 +245,11 @@ export default function ImpactPage() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#0A192F]/10 space-y-1 text-xs font-sans">
+                <div className="pt-3 border-t border-[#0B3B24]/10 space-y-1 text-xs font-sans">
                   <span className="text-[10px] uppercase font-bold text-[#15803D] block">
                     Verified Ground Impact:
                   </span>
-                  <p className="text-xs text-[#0A192F] font-semibold leading-snug">
+                  <p className="text-xs text-[#0B3B24] font-semibold leading-snug">
                     {story.impact}
                   </p>
                 </div>
@@ -263,9 +263,9 @@ export default function ImpactPage() {
       <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="30-District Framework">
         <Container size="default" className="space-y-14">
           <SectionHeader
-            badge="Geographic Mandate"
-            title="Odisha 30-District Outreach & Cluster Architecture"
-            subtitle="From our registered base in Balangir and corporate secretariat in Bhubaneswar, MECT progressively extends higher education and civic relief across all administrative zones."
+            badge="Reach & Presence"
+            title="Where We Work: Current Presence & Outreach Priorities"
+            subtitle="The map of activity must distinguish established programme locations, liaison offices, outreach areas and planned expansion. A listed district is not automatically an active project location."
             align="center"
           />
 
@@ -277,13 +277,13 @@ export default function ImpactPage() {
                 className={`p-7 bg-white space-y-4 transition-all ${
                   zone.highlight
                     ? "border-2 border-[#C5A059] shadow-md"
-                    : "border-[#0A192F]/12 shadow-xs"
+                    : "border-[#0B3B24]/12 shadow-xs"
                 }`}
               >
-                <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-[#C5A059]" />
-                    <span className="font-serif font-bold text-lg text-[#0A192F]">
+                    <span className="font-serif font-bold text-lg text-[#0B3B24]">
                       {zone.zone}
                     </span>
                   </div>
@@ -300,7 +300,7 @@ export default function ImpactPage() {
                     {zone.districts.map((d) => (
                       <span
                         key={d}
-                        className="text-xs bg-[#F4EFE6] text-[#0A192F] px-2.5 py-1 rounded-xs border border-[#0A192F]/10 font-medium"
+                        className="text-xs bg-[#F4EFE6] text-[#0B3B24] px-2.5 py-1 rounded-xs border border-[#0B3B24]/10 font-medium"
                       >
                         {d}
                       </span>
@@ -308,9 +308,9 @@ export default function ImpactPage() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#0A192F]/10 flex items-center justify-between text-xs font-sans">
+                <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-xs font-sans">
                   <span className="text-[#4A5568]">{zone.phase}</span>
-                  <span className="text-[#0A192F] font-bold">{zone.status}</span>
+                  <span className="text-[#0B3B24] font-bold">{zone.status}</span>
                 </div>
               </Card>
             ))}
@@ -319,7 +319,7 @@ export default function ImpactPage() {
       </section>
 
       {/* 5. Annual Reports & Audit Link */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8]">
+      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8]">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <Badge variant="gold-dark">
