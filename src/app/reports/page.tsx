@@ -132,7 +132,7 @@ export default function ReportsPage() {
       />
 
       {/* 2. Fiduciary Standards Strip */}
-      <section className="py-20 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-20 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Fiduciary Safeguards"
@@ -148,12 +148,12 @@ export default function ReportsPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 bg-white border-[#0A192F]/12 shadow-xs space-y-3 font-sans"
+                  className="p-6 bg-white border-[#0B3B24]/12 shadow-xs space-y-3 font-sans"
                 >
-                  <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
+                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
                     <Icon className="w-5 h-5 text-[#E4C88A]" />
                   </div>
-                  <h3 className="font-serif text-base font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -181,12 +181,12 @@ export default function ReportsPage() {
               <Card
                 key={report.referenceCode}
                 variant="elevated"
-                className="p-8 sm:p-10 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
+                className="p-8 sm:p-10 bg-white border-[#0B3B24]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-6"
               >
                 {/* Header Strip */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#0A192F]/10 gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#0B3B24]/10 gap-3">
                   <div className="flex items-center gap-3">
-                    <span className="font-serif text-2xl font-bold text-[#0A192F]">
+                    <span className="font-serif text-2xl font-bold text-[#0B3B24]">
                       {report.year}
                     </span>
                     <Badge variant="contrast-gold">
@@ -200,7 +200,7 @@ export default function ReportsPage() {
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0B3B24]">
                     {report.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#4A5568] mt-2 leading-relaxed font-sans">
@@ -209,8 +209,8 @@ export default function ReportsPage() {
                 </div>
 
                 {/* Highlights Grid */}
-                <div className="p-5 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10 space-y-2.5 font-sans">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0A192F] block">
+                <div className="p-5 bg-[#FDFBF7] rounded-xs border border-[#0B3B24]/10 space-y-2.5 font-sans">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B3B24] block">
                     Key Audited Milestones &amp; Operations
                   </span>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-[#4A5568]">
@@ -224,13 +224,13 @@ export default function ReportsPage() {
                 </div>
 
                 {/* Footer Strip */}
-                <div className="pt-3 border-t border-[#0A192F]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans">
+                <div className="pt-3 border-t border-[#0B3B24]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans">
                   <span className="text-[#4A5568] font-medium">
-                    Audit Status: <strong className="text-[#0A192F]">{report.auditStatus}</strong>
+                    Audit Status: <strong className="text-[#0B3B24]">{report.auditStatus}</strong>
                   </span>
                   <Link href="/contact?subject=Annual%20Report%20Inspection%20Request">
                     <Button variant="secondary" size="sm" className="gap-1.5 text-xs">
-                      <Download className="w-3.5 h-3.5 text-[#0A192F]" />
+                      <Download className="w-3.5 h-3.5 text-[#0B3B24]" />
                       <span>Request Official Audit Copy</span>
                     </Button>
                   </Link>
@@ -242,7 +242,7 @@ export default function ReportsPage() {
       </section>
 
       {/* 4. Inspection Rights & Fiduciary Reassurance */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8]">
+      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8]">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <Badge variant="gold-dark">
