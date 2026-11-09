@@ -178,7 +178,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION: Institutional Prestige & Factual 12-Year Mission */}
+      {/* 1. HERO SECTION: Multi-Sector Community Development Mission */}
       <section className="relative overflow-hidden bg-[#0B3B24] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
         {/* Subtle geometric grid background */}
         <div
@@ -518,8 +518,8 @@ export default function HomePage() {
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Geographic Scope"
-            title="Odisha State Outreach Vision"
-            subtitle="Targeting scholars, rural women, and underserved communities from educational institutions across all 30 districts of Odisha."
+            title="Our Roots, Reach & Future Outreach"
+            subtitle="Our registered base is in Balangir, with a corporate liaison office in Bhubaneswar. We distinguish current programme locations from wider outreach and future expansion priorities."
             align="center"
           />
 
@@ -940,10 +940,10 @@ export default function HomePage() {
               50% Tax Deduction • Section 80G Certified
             </Badge>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              Invest in a Scholar’s Future. Transform an Entire Family.
+              Support Community Progress. Help Opportunity Reach Further.
             </h2>
             <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans">
-              Every rupee donated to Mahaveer Educational &amp; Charitable Trust directly supports accredited higher education tuition grants, rural women&apos;s tailoring workshops, and community clean drinking water stations.
+              Your contribution helps sustain MECT's documented charitable work across education, women's vocational livelihoods, safe-water access and community food relief. Donations are handled through the trust's stated governance and reporting processes.
             </p>
 
             {/* 80G Tax Exemption & Direct Bank Transfer Reassurance Box */}
