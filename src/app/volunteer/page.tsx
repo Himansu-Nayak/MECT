@@ -206,10 +206,10 @@ export default function VolunteerPage() {
   return (
     <div className="flex flex-col w-full bg-[#FDFBF7] text-[#1C2421]">
       {/* 1. HERO SECTION: Institutional Prestige & Grand Narrative */}
-      <section className="relative overflow-hidden bg-[#0A192F] text-[#EDE6D8] pt-14 pb-20 md:pt-20 md:pb-24 border-b border-[#1E3A8A]">
+      <section className="relative overflow-hidden bg-[#0B3B24] text-[#EDE6D8] pt-14 pb-20 md:pt-20 md:pb-24 border-b border-[#165B38]">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#1E3A8A]/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#165B38]/30 rounded-full blur-3xl pointer-events-none" />
 
         <Container size="default" className="relative">
           {/* Breadcrumb Navigation */}
@@ -250,19 +250,19 @@ export default function VolunteerPage() {
 
             {/* Trust Metrics Pill Strip */}
             <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#E4C88A] font-medium">
-              <div className="flex items-center gap-1.5 bg-[#1E3A8A]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
+              <div className="flex items-center gap-1.5 bg-[#165B38]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>100% Non-Commercial</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#1E3A8A]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
+              <div className="flex items-center gap-1.5 bg-[#165B38]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
                 <Users className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>Grassroots & Virtual Tracks</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#1E3A8A]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
+              <div className="flex items-center gap-1.5 bg-[#165B38]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
                 <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>Flexible 2–4 hrs / month</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#1E3A8A]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
+              <div className="flex items-center gap-1.5 bg-[#165B38]/50 px-3 py-1.5 rounded-xs border border-[#C5A059]/30">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>Fiduciary Safeguarding Standards</span>
               </div>
@@ -272,14 +272,14 @@ export default function VolunteerPage() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <a
                 href="#tracks"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xs bg-[#C5A059] text-[#0A192F] text-xs font-bold uppercase tracking-wider hover:bg-[#E4C88A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:ring-offset-2 focus:ring-offset-[#0A192F]"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xs bg-[#C5A059] text-[#0B3B24] text-xs font-bold uppercase tracking-wider hover:bg-[#E4C88A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:ring-offset-2 focus:ring-offset-[#0B3B24]"
               >
                 <span>Explore Volunteer Tracks</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#apply"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xs bg-white/10 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 border border-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0A192F]"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xs bg-white/10 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 border border-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0B3B24]"
               >
                 <span>Register as a Volunteer</span>
                 <Send className="w-3.5 h-3.5" />
@@ -290,7 +290,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 2. PHILOSOPHY SECTION: The Guidance Deficit */}
-      <section className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
@@ -305,7 +305,7 @@ export default function VolunteerPage() {
               </p>
 
               <div className="p-4 bg-[#F4EFE6] border-l-4 border-[#C5A059] rounded-r-xs">
-                <p className="text-xs text-[#0A192F] italic leading-relaxed">
+                <p className="text-xs text-[#0B3B24] italic leading-relaxed">
                   “Tuition grants ensure a student enrolls in college; mentorship ensures they graduate with competence, dignity, and career clarity.”
                 </p>
                 <p className="text-[11px] font-semibold text-[#7A5E24] mt-1">
@@ -330,7 +330,7 @@ export default function VolunteerPage() {
               </Card>
 
               <Card variant="elevated" padding="md" className="space-y-3">
-                <div className="flex items-center gap-2.5 text-[#0A192F]">
+                <div className="flex items-center gap-2.5 text-[#0B3B24]">
                   <HeartHandshake className="w-5 h-5 text-[#C5A059]" />
                   <h3 className="font-serif text-lg font-bold">What Volunteer Mentors Bring</h3>
                 </div>
@@ -347,7 +347,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 3. FOUR PILLARS: Why Guide Scholars with MAHAVIR TRUST */}
-      <section className="py-16 md:py-24 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-16 md:py-24 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Institutional Principles"
@@ -357,11 +357,11 @@ export default function VolunteerPage() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0A192F]">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center">
+            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0B3B24]">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5 text-[#C5A059]" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#0A192F]">
+              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                 Strictly Non-Commercial
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -369,11 +369,11 @@ export default function VolunteerPage() {
               </p>
             </Card>
 
-            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0A192F]">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center">
+            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0B3B24]">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center">
                 <Clock className="w-5 h-5 text-[#C5A059]" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#0A192F]">
+              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                 Respect for Your Time
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -381,11 +381,11 @@ export default function VolunteerPage() {
               </p>
             </Card>
 
-            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0A192F]">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center">
+            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0B3B24]">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center">
                 <FileCheck2 className="w-5 h-5 text-[#C5A059]" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#0A192F]">
+              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                 Pre-Vetted Scholars
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -393,11 +393,11 @@ export default function VolunteerPage() {
               </p>
             </Card>
 
-            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0A192F]">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 text-[#0A192F] flex items-center justify-center">
+            <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7] border-t-4 border-t-[#0B3B24]">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center">
                 <Award className="w-5 h-5 text-[#C5A059]" />
               </div>
-              <h3 className="font-serif text-base font-bold text-[#0A192F]">
+              <h3 className="font-serif text-base font-bold text-[#0B3B24]">
                 Auditable Impact
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -409,7 +409,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 4. ROLE CATALOGUE: Volunteer Service Tracks */}
-      <section id="tracks" className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section id="tracks" className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Service Tracks"
@@ -420,44 +420,44 @@ export default function VolunteerPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Track 1 */}
-            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0B3B24]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0A192F] text-[#E4C88A] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0B3B24] text-[#E4C88A] px-2.5 py-1 rounded-xs">
                     Track 1 • Ground
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 3–5 hrs / week
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   Balangir Remedial Education Tutor
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Support Class 6–10 students in Balangir rural schools with evening remedial tutorials in Mathematics, Science, and English to prevent secondary school dropouts.
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">Graduate / B.Ed / College Student</span>
+                    <span className="font-semibold text-[#0B3B24]">Graduate / B.Ed / College Student</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Location:</span>
-                    <span className="font-semibold text-[#0A192F]">Balangir District (On-Ground)</span>
+                    <span className="font-semibold text-[#0B3B24]">Balangir District (On-Ground)</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Target Group:</span>
-                    <span className="font-semibold text-[#0A192F]">350+ Rural School Learners</span>
+                    <span className="font-semibold text-[#0B3B24]">350+ Rural School Learners</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("Balangir Remedial Education Tutor (Class 6-10)")}
                 >
                   <span>Apply as Remedial Tutor</span>
@@ -470,41 +470,41 @@ export default function VolunteerPage() {
             <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#C5A059]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#C5A059] text-[#0A192F] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#C5A059] text-[#0B3B24] px-2.5 py-1 rounded-xs">
                     Track 2 • Ground
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 2–4 hrs / week
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   Women Vocational & Tailoring Mentor
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Provide sewing, pattern-making, garment design, quality inspection, and basic micro-business financial coaching for rural women trainees.
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">Tailoring / Fashion / Craft Skills</span>
+                    <span className="font-semibold text-[#0B3B24]">Tailoring / Fashion / Craft Skills</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Location:</span>
-                    <span className="font-semibold text-[#0A192F]">Balangir Training Centre</span>
+                    <span className="font-semibold text-[#0B3B24]">Balangir Training Centre</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Target Group:</span>
-                    <span className="font-semibold text-[#0A192F]">Rural Women Trainees</span>
+                    <span className="font-semibold text-[#0B3B24]">Rural Women Trainees</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("Women Vocational & Tailoring Mentor")}
                 >
                   <span>Apply as Vocational Mentor</span>
@@ -514,44 +514,44 @@ export default function VolunteerPage() {
             </Card>
 
             {/* Track 3 */}
-            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0B3B24]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0A192F] text-[#E4C88A] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0B3B24] text-[#E4C88A] px-2.5 py-1 rounded-xs">
                     Track 3 • Virtual
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 2–4 hrs / month
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   Academic & Entrance Exam Mentor
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Guide undergraduate students in core subject dilemmas, review challenging coursework concepts, and advise on national/state entrance examinations (GATE, OPSC, IIT-JAM, NET).
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">Post-Graduate / Ph.D. / Faculty</span>
+                    <span className="font-semibold text-[#0B3B24]">Post-Graduate / Ph.D. / Faculty</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Engagement:</span>
-                    <span className="font-semibold text-[#0A192F]">Virtual (Video / Phone)</span>
+                    <span className="font-semibold text-[#0B3B24]">Virtual (Video / Phone)</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Target Group:</span>
-                    <span className="font-semibold text-[#0A192F]">B.Tech, B.Sc, B.Com Scholars</span>
+                    <span className="font-semibold text-[#0B3B24]">B.Tech, B.Sc, B.Com Scholars</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("Academic & Entrance Exam Mentor (Higher Ed)")}
                 >
                   <span>Apply for Academic Mentorship</span>
@@ -561,44 +561,44 @@ export default function VolunteerPage() {
             </Card>
 
             {/* Track 4 */}
-            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0B3B24]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0A192F] text-[#E4C88A] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0B3B24] text-[#E4C88A] px-2.5 py-1 rounded-xs">
                     Track 4 • Virtual
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 2 hrs / month
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   Career & Industry Guide
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Support final-year scholars with resume structuring, technical/HR mock interviews, workplace etiquette, and navigating entry-level corporate or civil service recruitment.
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">3+ Years Professional Exp</span>
+                    <span className="font-semibold text-[#0B3B24]">3+ Years Professional Exp</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Engagement:</span>
-                    <span className="font-semibold text-[#0A192F]">Virtual (Video / Phone)</span>
+                    <span className="font-semibold text-[#0B3B24]">Virtual (Video / Phone)</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Target Group:</span>
-                    <span className="font-semibold text-[#0A192F]">Final-Year Degree Scholars</span>
+                    <span className="font-semibold text-[#0B3B24]">Final-Year Degree Scholars</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("Career & Industry Guide (Mock Interviews)")}
                 >
                   <span>Apply for Career Mentorship</span>
@@ -608,44 +608,44 @@ export default function VolunteerPage() {
             </Card>
 
             {/* Track 5 */}
-            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0B3B24]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0A192F] text-[#E4C88A] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0B3B24] text-[#E4C88A] px-2.5 py-1 rounded-xs">
                     Track 5 • Hybrid
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 4–8 hrs / week
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   Project Samarth Hub Steward
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Provide physical stewardship at rural and semi-urban learning hubs. Manage book loan records, ensure digital terminal operation, and maintain quiet study hours.
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">Local Resident / Graduate</span>
+                    <span className="font-semibold text-[#0B3B24]">Local Resident / Graduate</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Engagement:</span>
-                    <span className="font-semibold text-[#0A192F]">In-Person at District Learning Hub</span>
+                    <span className="font-semibold text-[#0B3B24]">In-Person at District Learning Hub</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Priority Districts:</span>
-                    <span className="font-semibold text-[#0A192F]">Balangir, Koraput, Sundargarh</span>
+                    <span className="font-semibold text-[#0B3B24]">Balangir, Koraput, Sundargarh</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("Project Samarth Community Hub Steward")}
                 >
                   <span>Apply as Hub Steward</span>
@@ -655,44 +655,44 @@ export default function VolunteerPage() {
             </Card>
 
             {/* Track 6 */}
-            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" padding="lg" className="flex flex-col justify-between space-y-6 hover:border-[#C5A059] transition-colors border-t-4 border-t-[#0B3B24]">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0A192F] text-[#E4C88A] px-2.5 py-1 rounded-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#0B3B24] text-[#E4C88A] px-2.5 py-1 rounded-xs">
                     Track 6 • Institutional
                   </span>
                   <span className="text-xs font-semibold text-[#7A5E24] flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 1–2 hrs / semester
                   </span>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                   College & Faculty Liaison
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
                   Serve as our trusted institutional contact in degree and polytechnic colleges across Odisha to verify student bona fide enrollments, validate fee structures, and flag drop-out risks.
                 </p>
 
-                <div className="pt-2 border-t border-[#0A192F]/10 space-y-2 text-xs">
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                <div className="pt-2 border-t border-[#0B3B24]/10 space-y-2 text-xs">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Prerequisites:</span>
-                    <span className="font-semibold text-[#0A192F]">College Faculty / Admin Staff</span>
+                    <span className="font-semibold text-[#0B3B24]">College Faculty / Admin Staff</span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-[#0A192F]/5">
+                  <div className="flex justify-between py-1 border-b border-[#0B3B24]/5">
                     <span className="text-[#4A5568]">Engagement:</span>
-                    <span className="font-semibold text-[#0A192F]">Institutional / On-Campus</span>
+                    <span className="font-semibold text-[#0B3B24]">Institutional / On-Campus</span>
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A5568]">Scope:</span>
-                    <span className="font-semibold text-[#0A192F]">Statewide Degree Colleges</span>
+                    <span className="font-semibold text-[#0B3B24]">Statewide Degree Colleges</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#0A192F]/10">
+              <div className="pt-4 border-t border-[#0B3B24]/10">
                 <Button
                   type="button"
                   variant="primary"
-                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0A192F] hover:!bg-[#1E3A8A]"
+                  className="w-full text-xs uppercase tracking-wider font-bold !bg-[#0B3B24] hover:!bg-[#165B38]"
                   onClick={() => handleSelectRole("College & Faculty Institutional Liaison")}
                 >
                   <span>Apply as Faculty Liaison</span>
@@ -705,7 +705,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 5. INDUCTION PATHWAY: 4-Stage Onboarding Process */}
-      <section className="py-16 md:py-24 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-16 md:py-24 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Proposed Onboarding"
@@ -717,7 +717,7 @@ export default function VolunteerPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7]">
               <span className="font-serif text-3xl font-bold text-[#C5A059]">01</span>
-              <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+              <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                 Expression of Interest
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -727,7 +727,7 @@ export default function VolunteerPage() {
 
             <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7]">
               <span className="font-serif text-3xl font-bold text-[#C5A059]">02</span>
-              <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+              <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                 Secretariat Review [Proposed]
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -737,7 +737,7 @@ export default function VolunteerPage() {
 
             <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7]">
               <span className="font-serif text-3xl font-bold text-[#C5A059]">03</span>
-              <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+              <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                 Safeguarding Orientation [Proposed]
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -747,7 +747,7 @@ export default function VolunteerPage() {
 
             <Card variant="default" padding="md" className="space-y-3 bg-[#FDFBF7]">
               <span className="font-serif text-3xl font-bold text-[#C5A059]">04</span>
-              <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+              <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
                 Scholar Matching [Proposed]
               </h3>
               <p className="text-xs text-[#4A5568] leading-relaxed">
@@ -759,7 +759,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 6. SAFEGUARDING & CODE OF CONDUCT CALLOUT */}
-      <section className="py-12 md:py-16 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-12 md:py-16 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default">
           <Card variant="dark" padding="lg" className="space-y-6 border border-[#C5A059]/40">
             <div className="flex items-center gap-3">
@@ -807,7 +807,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 7. GEOGRAPHIC SCOPE: Odisha District Focus */}
-      <section className="py-16 md:py-20 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-16 md:py-20 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default" className="space-y-8">
           <SectionHeader
             badge="Proposed Regional Reach"
@@ -817,8 +817,8 @@ export default function VolunteerPage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0A192F]/15 space-y-2">
-              <div className="flex items-center gap-2 text-[#0A192F] font-bold text-sm">
+            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0B3B24]/15 space-y-2">
+              <div className="flex items-center gap-2 text-[#0B3B24] font-bold text-sm">
                 <MapPin className="w-4 h-4 text-[#C5A059]" />
                 <span>Proposed Rural & Tribal Pilot Zones</span>
               </div>
@@ -827,8 +827,8 @@ export default function VolunteerPage() {
               </p>
             </Card>
 
-            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0A192F]/15 space-y-2">
-              <div className="flex items-center gap-2 text-[#0A192F] font-bold text-sm">
+            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0B3B24]/15 space-y-2">
+              <div className="flex items-center gap-2 text-[#0B3B24] font-bold text-sm">
                 <Building2 className="w-4 h-4 text-[#C5A059]" />
                 <span>Proposed Higher Education Corridors</span>
               </div>
@@ -837,8 +837,8 @@ export default function VolunteerPage() {
               </p>
             </Card>
 
-            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0A192F]/15 space-y-2">
-              <div className="flex items-center gap-2 text-[#0A192F] font-bold text-sm">
+            <Card variant="default" padding="md" className="bg-[#F4EFE6] border-[#0B3B24]/15 space-y-2">
+              <div className="flex items-center gap-2 text-[#0B3B24] font-bold text-sm">
                 <Globe2 className="w-4 h-4 text-[#C5A059]" />
                 <span>Proposed Remote & Diaspora Network</span>
               </div>
@@ -854,12 +854,12 @@ export default function VolunteerPage() {
       <section id="apply" ref={formRef} className="py-16 md:py-24 bg-[#F4EFE6]">
         <Container size="narrow">
           <Card variant="elevated" padding="lg" className="space-y-8 bg-white">
-            <div className="border-b border-[#0A192F]/10 pb-6 space-y-2">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#0A192F]/10 text-[#0A192F] text-[11px] font-bold uppercase tracking-wider">
+            <div className="border-b border-[#0B3B24]/10 pb-6 space-y-2">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] text-[11px] font-bold uppercase tracking-wider">
                 <FileCheck2 className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>Official Volunteer Intake</span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F]">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B3B24]">
                 Register as an Academic Mentor or Community Volunteer
               </h2>
               <p className="text-xs sm:text-sm text-[#4A5568]">
@@ -868,7 +868,7 @@ export default function VolunteerPage() {
             </div>
 
             {formSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in duration-300">
+              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in duration-300">
                 <CheckCircle2 className="w-12 h-12 text-[#C5A059] mx-auto" />
                 <h3 className="font-serif text-2xl font-bold text-white">
                   Volunteer Application Successfully Recorded
@@ -1033,16 +1033,16 @@ export default function VolunteerPage() {
                 />
 
                 {/* Mandatory Consent Checkbox */}
-                <div className="p-4 bg-[#F4EFE6] rounded-xs border border-[#0A192F]/10 space-y-2">
+                <div className="p-4 bg-[#F4EFE6] rounded-xs border border-[#0B3B24]/10 space-y-2">
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input
                       id="vol-consent"
                       type="checkbox"
                       checked={formData.consentDeclared}
                       onChange={(e) => setFormData({ ...formData, consentDeclared: e.target.checked })}
-                      className="mt-0.5 w-4 h-4 text-[#0A192F] border-[#0A192F]/30 rounded-xs focus:ring-[#C5A059]"
+                      className="mt-0.5 w-4 h-4 text-[#0B3B24] border-[#0B3B24]/30 rounded-xs focus:ring-[#C5A059]"
                     />
-                    <span className="text-xs text-[#0A192F] leading-relaxed select-none">
+                    <span className="text-xs text-[#0B3B24] leading-relaxed select-none">
                       <strong>Institutional Declaration & Safeguarding Consent:</strong> I declare that all information provided is authentic. I agree to uphold MAHAVIR TRUST draft voluntary service principles and student safeguarding guidelines.
                     </span>
                   </label>
@@ -1074,7 +1074,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* 9. FAQ & SECRETARIAT DESK */}
-      <section className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="narrow" className="space-y-12">
           <SectionHeader
             badge="Clarifications"
@@ -1100,7 +1100,7 @@ export default function VolunteerPage() {
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <a
                 href={`mailto:${TRUST_CONFIG.contact.generalEmail}?subject=Institutional%20Volunteer%20Collaboration`}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xs bg-[#C5A059] text-[#0A192F] text-xs font-bold uppercase tracking-wider hover:bg-[#E4C88A] transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xs bg-[#C5A059] text-[#0B3B24] text-xs font-bold uppercase tracking-wider hover:bg-[#E4C88A] transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{TRUST_CONFIG.contact.generalEmail}</span>
