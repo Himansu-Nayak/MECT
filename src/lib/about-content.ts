@@ -49,7 +49,7 @@ export const ABOUT_CONTENT = {
     title: "Lasting Community Progress Connects Opportunity With Dignity and Care.",
     paragraphs: [
       "People and families experience connected challenges. Access to learning, practical livelihood skills, safe water and nutritious food can all contribute to dignity, stability and opportunity.",
-      "Registered in Balangir in 2013, MAHAVIR TRUST has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These areas of work are rooted in local needs and should be described through current programme records and verified results.",
+      "Registered in Balangir in 2013, MAHAVIR TRUST has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These initiatives respond to local priorities and are guided by a commitment to dignity, responsible stewardship and community participation.",
     ],
     safeguards: [
       {
