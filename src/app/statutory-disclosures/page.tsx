@@ -162,11 +162,11 @@ export default function StatutoryDisclosuresPage() {
       />
 
       {/* 2. Top Fiduciary Summary Banner */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10">
+      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
         <Container size="default">
           <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
               </div>
               <div>
@@ -174,7 +174,7 @@ export default function StatutoryDisclosuresPage() {
                   <Badge variant="forest" size="sm">
                     Statutory Compliance Standard
                   </Badge>
-                  <span className="text-xs text-[#0A192F] font-bold">
+                  <span className="text-xs text-[#0B3B24] font-bold">
                     100% Direct Remittance • Zero Intermediary Interventions
                   </span>
                 </div>
@@ -210,9 +210,9 @@ export default function StatutoryDisclosuresPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5E24] font-sans">
                       {item.category}
                     </span>
@@ -222,11 +222,11 @@ export default function StatutoryDisclosuresPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
+                    <div className="w-11 h-11 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
                       <Icon className="w-5 h-5 text-[#E4C88A]" aria-hidden="true" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
                         {item.title}
                       </h3>
                       <p className="text-xs text-[#7A5E24] font-medium font-sans">
@@ -236,11 +236,11 @@ export default function StatutoryDisclosuresPage() {
                   </div>
 
                   {/* Identifier Box */}
-                  <div className="p-3.5 rounded-xs bg-[#F4EFE6] border border-[#0A192F]/10 space-y-1 font-sans">
+                  <div className="p-3.5 rounded-xs bg-[#F4EFE6] border border-[#0B3B24]/10 space-y-1 font-sans">
                     <span className="text-[10px] text-[#4A5568] uppercase font-bold tracking-wider block">
                       {item.identifierLabel}:
                     </span>
-                    <span className="text-sm font-mono font-bold text-[#0A192F] block break-all">
+                    <span className="text-sm font-mono font-bold text-[#0B3B24] block break-all">
                       {item.identifierValue}
                     </span>
                     <div className="flex items-center justify-between pt-1 text-[11px] text-[#4A5568]">
@@ -260,7 +260,7 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 4. Section 80G Tax Exemption Guide for Donors */}
-      <section id="tax-benefit" className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/30" aria-label="80G Tax Deduction Guide">
+      <section id="tax-benefit" className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-y border-[#C5A059]/30" aria-label="80G Tax Deduction Guide">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Tax Exemption Reassurance"
@@ -329,7 +329,7 @@ export default function StatutoryDisclosuresPage() {
             </div>
 
             {/* Right: Direct Bank Account Coordinates */}
-            <div className="lg:col-span-5 bg-[#0F172A] p-7 rounded-xs border border-[#C5A059]/40 shadow-xl space-y-4">
+            <div className="lg:col-span-5 bg-[#072617] p-7 rounded-xs border border-[#C5A059]/40 shadow-xl space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-white/10">
                 <span className="text-xs uppercase font-bold text-[#E4C88A] tracking-wider">
                   Direct Bank Remittance (NEFT/RTGS)
@@ -372,9 +372,9 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 5. Corporate Social Responsibility (CSR) Framework */}
-      <section className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0A192F]/10">
+      <section className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
         <Container size="default">
-          <div className="bg-[#F4EFE6] rounded-xs p-8 sm:p-12 border border-[#0A192F]/15 space-y-8">
+          <div className="bg-[#F4EFE6] rounded-xs p-8 sm:p-12 border border-[#0B3B24]/15 space-y-8">
             <SectionHeader
               badge="Corporate Social Responsibility"
               title="Schedule VII Alignment for Corporate CSR Partners"
@@ -382,11 +382,11 @@ export default function StatutoryDisclosuresPage() {
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#4A5568] font-sans">
-              <div className="p-6 bg-white rounded-xs border border-[#0A192F]/10 space-y-2.5">
+              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (ii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0A192F]">
+                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
                   Promoting Education &amp; Remedial Coaching
                 </h4>
                 <p className="leading-relaxed">
@@ -394,11 +394,11 @@ export default function StatutoryDisclosuresPage() {
                 </p>
               </div>
 
-              <div className="p-6 bg-white rounded-xs border border-[#0A192F]/10 space-y-2.5">
+              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (iii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0A192F]">
+                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
                   Women Vocational Livelihood &amp; Skilling
                 </h4>
                 <p className="leading-relaxed">
@@ -406,11 +406,11 @@ export default function StatutoryDisclosuresPage() {
                 </p>
               </div>
 
-              <div className="p-6 bg-white rounded-xs border border-[#0A192F]/10 space-y-2.5">
+              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (i)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0A192F]">
+                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
                   Safe Drinking Water &amp; Sanitation (Jal Seva)
                 </h4>
                 <p className="leading-relaxed">
@@ -419,7 +419,7 @@ export default function StatutoryDisclosuresPage() {
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#0A192F]/10">
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#0B3B24]/10">
               <div className="text-xs text-[#4A5568] font-sans">
                 <span>Looking to allocate CSR funds before fiscal year-end? Connect with our CSR Project Desk.</span>
               </div>
@@ -439,7 +439,7 @@ export default function StatutoryDisclosuresPage() {
         <Container size="default">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#4A5568] font-sans">
             <div>
-              <h4 className="font-serif text-lg font-bold text-[#0A192F]">
+              <h4 className="font-serif text-lg font-bold text-[#0B3B24]">
                 Right to Inspect Public Trust Records
               </h4>
               <p className="mt-1 max-w-2xl leading-relaxed">
