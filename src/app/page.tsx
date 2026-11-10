@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -20,6 +19,7 @@ import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSec
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
 import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
+import { HeroPhotoGallery } from "@/components/sections/HeroPhotoGallery";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
@@ -225,7 +225,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 1 — PREMIUM EDITORIAL HERO: Multi-Sector NGO Positioning
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-terracotta text-white pt-16 pb-20 md:pt-24 md:pb-32 border-b border-terracotta-dark transition-colors">
+      <section className="relative overflow-hidden bg-terracotta text-white pt-8 pb-12 sm:pt-14 sm:pb-16 md:pt-20 md:pb-24 border-b border-terracotta-dark transition-colors">
         {/* Subtle architectural texture */}
         <div
           className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#F3E4D2_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
@@ -233,11 +233,11 @@ export default function HomePage() {
         />
 
         <Container size="default">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             {/* Left Content Column */}
-            <HeroEntrance className="lg:col-span-7 space-y-6 text-left">
+            <HeroEntrance className="lg:col-span-6 space-y-5 sm:space-y-6 text-left min-w-0">
               {/* Grand Editorial Headline */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] font-bold text-white tracking-tight leading-[1.09]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.05rem] xl:text-[3.3rem] font-bold text-white tracking-tight leading-[1.09]">
                 {HOMEPAGE_CONTENT.hero.headline}
               </h1>
 
@@ -247,9 +247,9 @@ export default function HomePage() {
               </p>
 
               {/* Structured Action Buttons — Primary: Explore Our Work, Secondary: Support Our Mission */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              <div className="pt-1 flex flex-wrap items-center gap-2.5 sm:gap-3">
                 <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
-                  <Button variant="gold" size="lg" className="shadow-lg font-bold sm:whitespace-nowrap">
+                  <Button variant="gold" size="md" className="shadow-lg font-bold px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap">
                     <Award className="w-4 h-4 mr-1.5 text-forest-deep" aria-hidden="true" />
                     <span>Explore Our Work</span>
                   </Button>
@@ -257,15 +257,15 @@ export default function HomePage() {
                 <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
                   <Button
                     variant="dark-outline"
-                    size="lg"
-                    className="font-semibold !border-sand !text-white bg-forest hover:!bg-forest-deep hover:!text-white sm:whitespace-nowrap"
+                    size="md"
+                    className="font-semibold !border-sand !text-white bg-forest hover:!bg-forest-deep hover:!text-white px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap"
                   >
                     <Heart className="w-4 h-4 mr-1.5 fill-current text-sand" aria-hidden="true" />
                     <span>Support Our Mission</span>
                   </Button>
                 </Link>
                 <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
-                  <Button variant="dark-outline" size="lg" className="font-semibold border-white/60 hover:bg-terracotta-dark sm:whitespace-nowrap">
+                  <Button variant="dark-outline" size="md" className="font-semibold border-white/60 hover:bg-terracotta-dark px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap">
                     <Briefcase className="w-4 h-4 mr-1.5 text-white" aria-hidden="true" />
                     <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
                   </Button>
@@ -290,108 +290,9 @@ export default function HomePage() {
               </div>
             </HeroEntrance>
 
-            {/* Right Column: Neutral Branded Institutional Composition (Child Safeguarding Compliant) */}
-            <HeroEntrance delay={0.1} className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Main Institutional Seal & Sector Vault Card */}
-                <div className="relative rounded-xs overflow-hidden border-2 border-sand/45 shadow-2xl bg-forest p-7 space-y-6 text-left">
-                  <div className="flex items-center justify-between border-b border-sand/25 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-sand bg-white flex items-center justify-center shrink-0 aspect-square">
-                        <Image
-                          src="/images/mect-official-emblem.png"
-                          alt="Mahaveer Educational & Charitable Trust Official Emblem"
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-cover scale-[1.06]"
-                        />
-                      </div>
-                      <div>
-                        <span className="font-serif text-sm font-bold text-white block">
-                          Mahaveer Educational &amp; Charitable Trust
-                        </span>
-                        <span className="text-[10px] text-cream font-sans block">
-                          Public Charitable Trust (MECT)
-                        </span>
-                      </div>
-                    </div>
-                    <Badge variant="gold" size="sm" className="whitespace-nowrap shrink-0">
-                      Deed 40311302194
-                    </Badge>
-                  </div>
-
-                  {/* Five Sector Matrices */}
-                  <div className="space-y-2.5">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-sand font-sans block">
-                      Documented Programme Pillars
-                    </span>
-                    <div className="grid grid-cols-1 gap-2">
-                      {[
-                        { num: "01", name: "Education & Learning", tag: "Shiksha Setu", stat: "350+ Coached" },
-                        { num: "02", name: "Women Empowerment", tag: "Swavalamban", stat: "120+ Skilled" },
-                        { num: "03", name: "Safe Water & Sanitation", tag: "Jal Seva", stat: "10,000+ Served" },
-                        { num: "04", name: "Food Security & Relief", tag: "Jan Ahar", stat: "Hospital Nutrition" },
-                        { num: "05", name: "Community Welfare", tag: "Samaj Kalyan", stat: "Disaster Relief" },
-                      ].map((item) => (
-                        <div
-                          key={item.num}
-                          className="p-2.5 rounded-xs bg-forest-deep/80 border border-white/10 flex items-center justify-between text-xs font-sans hover:border-sand/50 transition-colors"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="text-sand font-mono font-bold text-[11px]">{item.num}</span>
-                            <span className="text-white font-medium text-xs">{item.name}</span>
-                          </div>
-                          <span className="text-[10px] font-semibold text-white bg-terracotta px-1.5 py-0.5 rounded-xs border border-sand/30">
-                            {item.tag}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Safeguarding & Documentary Notice */}
-                  <div className="p-3.5 rounded-xs bg-forest-deep border border-sand/30 text-[11px] text-cream font-sans space-y-1">
-                    <div className="flex items-center gap-1.5 text-white font-semibold text-xs">
-                      <ShieldCheck className="w-3.5 h-3.5 text-sand" aria-hidden="true" />
-                      <span>Child Safeguarding &amp; Verified Governance</span>
-                    </div>
-                    <p className="text-[10px] text-cream/90 leading-relaxed">
-                      Beneficiary records are maintained in physical trust registries in Balangir. Public web publication of identifiable minor photography is restricted in accordance with child safeguarding and parental consent standards.
-                    </p>
-                  </div>
-
-                  {/* Institutional Highlights (Non-overlapping Inline Grid) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                    <div className="bg-cream text-forest p-2.5 rounded-xs border border-sand shadow-sm flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-white" aria-hidden="true" />
-                      </div>
-                      <div className="text-left font-sans min-w-0">
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-terracotta-dark block">
-                          Direct Disbursal
-                        </span>
-                        <span className="text-xs font-bold text-forest block leading-tight">
-                          Electronic College Remittance
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="bg-cream text-forest p-2.5 rounded-xs border border-sand shadow-sm flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
-                        <Droplets className="w-4 h-4 text-white" aria-hidden="true" />
-                      </div>
-                      <div className="text-left font-sans min-w-0">
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-terracotta-dark block">
-                          Jal Seva Relief
-                        </span>
-                        <span className="text-xs font-bold text-forest block leading-tight">
-                          10,000+ Reached
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Right Column: Seamless Editorial Two-Track Moving Photographic Gallery */}
+            <HeroEntrance delay={0.08} className="lg:col-span-6 relative min-w-0">
+              <HeroPhotoGallery />
             </HeroEntrance>
           </div>
 

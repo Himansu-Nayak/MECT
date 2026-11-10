@@ -25,7 +25,11 @@ export function Reveal({
   const shouldReduceMotion = useReducedMotion();
 
   if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
+    return (
+      <div className={className} style={{ opacity: 1, transform: "none" }}>
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -42,29 +46,17 @@ export function Reveal({
 }
 
 /**
- * Immediate controlled entrance for above-the-fold hero elements.
+ * Above-the-fold hero container: renders immediately visible at opacity: 1
+ * for 0ms LCP and reliable rendering under prefers-reduced-motion.
  */
 export function HeroEntrance({
   children,
-  delay = 0,
-  distance = 12,
   className = "",
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: distance }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.46, delay, ease: EASE_INSTITUTIONAL }}
-      className={className}
-    >
+    <div className={className} style={{ opacity: 1, transform: "none" }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
