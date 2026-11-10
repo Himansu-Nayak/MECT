@@ -21,10 +21,11 @@ const content = fs.readFileSync("src/lib/homepage-content.ts", "utf8");
 // SECTION 1 — Premium Editorial Hero
 assert(!pageContent.includes("Est. 2013") && !pageContent.includes("13+ Years of Community Service"), "Hero omits removed Est. 2013 service pill");
 assert(!pageContent.includes("80G Tax Exempt"), "Hero omits removed 80G Tax Exemption pill");
-assert(!pageContent.includes("MAHAVIR TRUST") && pageContent.includes("Mahaveer Educational"), "Hero uses official Mahaveer Educational & Charitable Trust identity");
+assert(pageContent.includes("HOMEPAGE_CONTENT.hero.subtext") && content.includes("Mahaveer Educational"), "Hero uses official Mahaveer Educational & Charitable Trust identity");
 assert(content.includes("Stronger communities begin with opportunity, dignity and care") && pageContent.includes("HOMEPAGE_CONTENT.hero.headline"), "Hero features grand multi-sector headline");
-assert(pageContent.includes("Child Safeguarding &amp; Verified Governance") || pageContent.includes("Child Safeguarding & Verified Governance"), "Hero implements child safeguarding and verified governance notice");
-assert(pageContent.includes("Documented Programme Pillars") || pageContent.includes("Sector Vault"), "Hero features neutral branded institutional composition");
+assert(!pageContent.includes("Documented Programme Pillars") && !pageContent.includes("Sector Vault Card"), "Hero removes old right-side information panel cleanly");
+const heroGalleryContent = fs.readFileSync("src/components/sections/HeroPhotoGallery.tsx", "utf8");
+assert(pageContent.includes("HeroPhotoGallery") && heroGalleryContent.includes("hero-gallery-track-ltr") && heroGalleryContent.includes("hero-gallery-track-rtl"), "Hero features continuous two-track photographic gallery");
 assert(pageContent.includes("HOMEPAGE_CONTENT.hero.ctas.csr"), "Hero features CSR Gateway CTA");
 assert(pageContent.includes("HOMEPAGE_CONTENT.hero.metrics.map"), "Hero renders verified metric cards");
 

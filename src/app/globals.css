@@ -216,6 +216,65 @@ select:focus-visible {
   animation-play-state: paused;
 }
 
+/* Hero Two-Track Continuous Photographic Gallery */
+@keyframes hero-marquee-rtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes hero-marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.hero-gallery-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+.hero-gallery-track-ltr {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: hero-marquee-ltr 48s linear infinite;
+}
+
+.hero-gallery-track-rtl {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: hero-marquee-rtl 54s linear infinite;
+}
+
+.hero-gallery-wrapper:hover .hero-gallery-track-ltr,
+.hero-gallery-wrapper:hover .hero-gallery-track-rtl,
+.hero-gallery-wrapper:focus-within .hero-gallery-track-ltr,
+.hero-gallery-wrapper:focus-within .hero-gallery-track-rtl,
+.hero-gallery-paused .hero-gallery-track-ltr,
+.hero-gallery-paused .hero-gallery-track-rtl {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
@@ -224,6 +283,35 @@ select:focus-visible {
   .animate-marquee {
     animation: none !important;
     transform: none !important;
+  }
+
+  .hero-gallery-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-gallery-track-ltr,
+  .hero-gallery-track-rtl {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .hero-gallery-seq {
+    display: contents !important;
+  }
+
+  .hero-gallery-card {
+    width: 100% !important;
+    height: 150px !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-gallery-clone {
+    display: none !important;
   }
 
   *,
