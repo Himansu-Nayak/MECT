@@ -7,3 +7,4 @@ export * from "./Input";
 export * from "./Textarea";
 export * from "./Select";
 export * from "./StateFeedback";
+export * from "./MotionPrimitives";

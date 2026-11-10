@@ -23,29 +23,30 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions — MAHAVIR TRUST",
+  title: "Frequently Asked Questions",
   description:
-    "Comprehensive answers concerning scholarship eligibility, direct college disbursal, institutional governance, Project Samarth study hubs, and volunteer induction.",
+    "Answers regarding MECT scholarship eligibility, direct-to-institution disbursal, governance, statutory disclosures, and volunteering.",
+  alternates: { canonical: "/faq" },
 };
 
 const SCHOLARSHIP_FAQS: FAQItem[] = [
   {
     category: "Scholarships",
-    question: "Who is eligible to apply for MAHAVIR TRUST scholarships?",
+    question: "Who is eligible to apply for MECT scholarships?",
     answer:
       "Eligible applicants must be permanent residents of Odisha or enrolled in accredited higher education institutions across Odisha. Eligibility requires demonstrated financial need (family income within defined means thresholds) combined with consistent academic merit in Class 10/12 or qualifying undergraduate/diploma examinations.",
   },
   {
     category: "Scholarships",
-    question: "How does MAHAVIR TRUST disburse scholarship funds?",
+    question: "How does Mahaveer Educational & Charitable Trust (MECT) disburse scholarship funds?",
     answer:
-      "MAHAVIR TRUST enforces a strict zero-cash intermediary policy. Approved scholarship awards are disbursed 100% via direct electronic bank transfer (NEFT/RTGS) directly to the verified bank account of the recipient's accredited educational institution against an official fee demand invoice.",
+      "Mahaveer Educational & Charitable Trust (MECT) enforces a strict zero-cash intermediary policy. Approved scholarship awards are disbursed 100% via direct electronic bank transfer (NEFT/RTGS) directly to the verified bank account of the recipient's accredited educational institution against an official fee demand invoice.",
   },
   {
     category: "Scholarships",
     question: "Is there any application fee or processing charge?",
     answer:
-      "None whatsoever. MAHAVIR TRUST never charges any application, registration, evaluation, or processing fee. All application procedures and desk evaluations are 100% free of cost. Beware of touts or unauthorized agents claiming to expedite applications.",
+      "None whatsoever. Mahaveer Educational & Charitable Trust (MECT) never charges any application, registration, evaluation, or processing fee. All application procedures and desk evaluations are 100% free of cost. Beware of touts or unauthorized agents claiming to expedite applications.",
   },
   {
     category: "Scholarships",
@@ -72,7 +73,7 @@ const MENTORSHIP_FAQS: FAQItem[] = [
     category: "Mentorship",
     question: "Who are the mentors assigned to students?",
     answer:
-      "Mentors include experienced university professors, research scholars, civil servants, software engineers, medical professionals, and corporate leaders who volunteer their time under the MAHAVIR TRUST Fellowship Charter.",
+      "Mentors include experienced university professors, research scholars, civil servants, software engineers, medical professionals, and corporate leaders who volunteer their time under the MECT Fellowship Charter.",
   },
   {
     category: "Mentorship",
@@ -91,7 +92,7 @@ const MENTORSHIP_FAQS: FAQItem[] = [
 const GOVERNANCE_FAQS: FAQItem[] = [
   {
     category: "Governance",
-    question: "How does MAHAVIR TRUST ensure impartiality in beneficiary selection?",
+    question: "How does Mahaveer Educational & Charitable Trust (MECT) ensure impartiality in beneficiary selection?",
     answer:
       "Scholar selection is governed by an independent Academic Advisory Committee operating on standardized, double-blind evaluation rubrics. Individual Trustees possess zero unilateral discretion over scholarship awards or beneficiary allocations.",
   },
@@ -99,7 +100,7 @@ const GOVERNANCE_FAQS: FAQItem[] = [
     category: "Governance",
     question: "What is the statutory and legal registration status of the Trust?",
     answer:
-      "MAHAVIR TRUST is established as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882, governed by a public Fiduciary Deed with registration under Sections 12AB and 80G of the Income-tax Act, 1961.",
+      "Mahaveer Educational & Charitable Trust (MECT) is established as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882, governed by a public Fiduciary Deed with registration under Sections 12AB and 80G of the Income-tax Act, 1961.",
   },
   {
     category: "Governance",
@@ -145,7 +146,7 @@ const STUDY_HUBS_FAQS: FAQItem[] = [
 const VOLUNTEER_FAQS: FAQItem[] = [
   {
     category: "Volunteering",
-    question: "Who can volunteer with MAHAVIR TRUST?",
+    question: "Who can volunteer with MECT?",
     answer:
       "We invite educators, working professionals, retired academicians, and senior university scholars who possess a strong ethical commitment to educational equity in Odisha.",
   },
@@ -186,7 +187,7 @@ const DONATIONS_FAQS: FAQItem[] = [
     category: "Donations",
     question: "Does the Trust employ fundraising agencies or pay commissions?",
     answer:
-      "Zero. MAHAVIR TRUST strictly prohibits fundraising commissions, third-party telemarketing, and percentage-based donor fees. 100% of public endowments directly fund educational subsidies and community learning infrastructure.",
+      "Zero. Mahaveer Educational & Charitable Trust (MECT) strictly prohibits fundraising commissions, third-party telemarketing, and percentage-based donor fees. 100% of public endowments directly fund educational subsidies and community learning infrastructure.",
   },
 ];
 
@@ -202,7 +203,7 @@ export default function FAQPage() {
         actions={
           <div className="flex flex-wrap gap-4 pt-2">
             <a href="#categories">
-              <Button variant="primary" className="!bg-[#C5A059] !text-[#0B3B24] hover:!bg-[#E4C88A]">
+              <Button variant="primary" className="!bg-sand !text-forest-deep hover:!bg-cream">
                 Browse Categories
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -217,7 +218,7 @@ export default function FAQPage() {
       />
 
       {/* 2. Category Jump Directory */}
-      <section id="categories" className="py-16 md:py-20 bg-[#FDFBF7] border-b border-[#0B3B24]/10 scroll-mt-20">
+      <section id="categories" className="py-16 md:py-20 bg-cream border-b border-border-warm scroll-mt-20">
         <Container size="default">
           <SectionHeader
             badge="Thematic Directory"
@@ -228,14 +229,14 @@ export default function FAQPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
             <a href="#scholarships" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Scholarships & Aid</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Scholarships & Aid</h3>
                   <Badge variant="gold">5 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   Eligibility criteria, direct-to-college disbursals, zero fee policy, and required documents.
                 </p>
               </Card>
@@ -243,14 +244,14 @@ export default function FAQPage() {
 
             <a href="#mentorship" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <Users className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Mentorship & Fellows</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Mentorship & Fellows</h3>
                   <Badge variant="gold">4 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   1-on-1 career mapping, mentor background profiles, exam prep, and attendance guidelines.
                 </p>
               </Card>
@@ -258,14 +259,14 @@ export default function FAQPage() {
 
             <a href="#governance" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <Scale className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Statutory Governance</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Statutory Governance</h3>
                   <Badge variant="gold">4 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   Trustee non-conflict rules, Section 12AB/80G status, Form 10B audits, and impartiality.
                 </p>
               </Card>
@@ -273,14 +274,14 @@ export default function FAQPage() {
 
             <a href="#study-hubs" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Project Samarth</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Project Samarth</h3>
                   <Badge variant="gold">4 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   Community study hubs, solar power continuity, free Wi-Fi, and district library networks.
                 </p>
               </Card>
@@ -288,14 +289,14 @@ export default function FAQPage() {
 
             <a href="#volunteering" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <HeartHandshake className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Volunteer Induction</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Volunteer Induction</h3>
                   <Badge variant="gold">4 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   Academic qualifications, child safeguarding, hours commitment, and fellowship certificates.
                 </p>
               </Card>
@@ -303,14 +304,14 @@ export default function FAQPage() {
 
             <a href="#donations" className="group">
               <Card variant="elevated" className="p-6 space-y-3 transition-transform duration-200 group-hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] group-hover:bg-[#0B3B24] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark group-hover:bg-terracotta group-hover:text-white transition-colors">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">Transparency Pledge</h3>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">Transparency Pledge</h3>
                   <Badge variant="gold">3 Questions</Badge>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed">
+                <p className="text-xs text-ink-sand leading-relaxed">
                   Zero commission policy, pre-launch endowments, 80G tax deductions, and CSR collaboration.
                 </p>
               </Card>
@@ -320,7 +321,7 @@ export default function FAQPage() {
       </section>
 
       {/* 3. Thematic FAQ Accordions */}
-      <section className="py-16 md:py-24 bg-[#F7F4EE] space-y-16">
+      <section className="py-16 md:py-24 bg-sand-light space-y-16">
         {/* Category 1 */}
         <div id="scholarships" className="scroll-mt-24">
           <Container size="narrow">
@@ -329,7 +330,7 @@ export default function FAQPage() {
               title="Scholarship Appraisal & Direct Disbursal"
               subtitle="Guidelines covering means-and-merit evaluation, zero intermediary rules, and required documentation."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={SCHOLARSHIP_FAQS} />
             </div>
           </Container>
@@ -343,7 +344,7 @@ export default function FAQPage() {
               title="Pratibha Mentorship Program"
               subtitle="Policies regarding 1-on-1 scholar pairing, academic coaching, and attendance expectations."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={MENTORSHIP_FAQS} />
             </div>
           </Container>
@@ -357,7 +358,7 @@ export default function FAQPage() {
               title="Fiduciary Oversight & Impartiality"
               subtitle="Legal registration, non-conflict charters, Form 10B public audits, and Trustee governance."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={GOVERNANCE_FAQS} />
             </div>
           </Container>
@@ -371,7 +372,7 @@ export default function FAQPage() {
               title="Project Samarth Infrastructure"
               subtitle="District learning centers, solar power backup, digital reference facilities, and access terms."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={STUDY_HUBS_FAQS} />
             </div>
           </Container>
@@ -385,7 +386,7 @@ export default function FAQPage() {
               title="Volunteer Induction & Code of Conduct"
               subtitle="Eligibility, safeguarding verifications, time commitments, and institutional certification."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={VOLUNTEER_FAQS} />
             </div>
           </Container>
@@ -399,7 +400,7 @@ export default function FAQPage() {
               title="Endowments & Non-Intermediary Pledge"
               subtitle="Zero commission principles, Section 80G tax deductions, and CSR collaboration protocols."
             />
-            <div className="mt-8 bg-[#FDFBF7] p-6 sm:p-8 rounded-xs border border-[#0B3B24]/10 shadow-sm">
+            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
               <Accordion items={DONATIONS_FAQS} />
             </div>
           </Container>
@@ -407,10 +408,10 @@ export default function FAQPage() {
       </section>
 
       {/* 4. Secretariat Helpdesk & Query Escalation Desk */}
-      <section id="helpdesk" className="py-16 md:py-24 bg-[#0B3B24] text-white scroll-mt-20">
+      <section id="helpdesk" className="py-16 md:py-24 bg-terracotta text-white scroll-mt-20">
         <Container size="narrow">
           <Card variant="dark" className="p-8 sm:p-12 text-center space-y-6">
-            <div className="w-14 h-14 rounded-xs bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] mx-auto">
+            <div className="w-14 h-14 rounded-xs bg-sand/20 flex items-center justify-center text-cream mx-auto">
               <HelpCircle className="w-7 h-7" />
             </div>
 
@@ -426,13 +427,13 @@ export default function FAQPage() {
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <Link href="/contact">
-                <Button variant="primary" className="!bg-[#C5A059] !text-[#0B3B24] hover:!bg-[#E4C88A]">
+                <Button variant="primary" className="!bg-sand !text-forest-deep hover:!bg-cream">
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Secretariat Desk
                 </Button>
               </Link>
               <Link href="/volunteer">
-                <Button variant="outline" className="!border-[#E4C88A] !text-[#E4C88A] hover:!bg-[#E4C88A]/15">
+                <Button variant="outline" className="!border-sand !text-white hover:!bg-white/15">
                   <Users className="w-4 h-4 mr-2" />
                   Explore Volunteer Fellowship
                 </Button>
@@ -440,7 +441,7 @@ export default function FAQPage() {
             </div>
 
             <div className="pt-4 border-t border-white/10 text-[11px] text-white/60">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#E4C88A] inline mr-1 -mt-0.5" />
+              <ShieldCheck className="w-3.5 h-3.5 text-cream inline mr-1 -mt-0.5" />
               Direct Secretariat Helpline: <strong>+91 671 234 5678</strong> (Mon–Fri, 10:00 AM – 5:00 PM IST)
             </div>
           </Card>

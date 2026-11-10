@@ -17,10 +17,10 @@ function assert(condition, message) {
 
 const progContent = fs.readFileSync("src/app/programmes/page.tsx", "utf8");
 
-assert(progContent.includes("Remedial Rural Education"), "Programmes includes Remedial Rural Education");
+assert(progContent.includes("Education & Learning Support") && (progContent.includes("Remedial") || progContent.includes("remedial")), "Programmes includes Education & Learning Support (Remedial Coaching)");
 assert(progContent.includes("Shiksha Setu"), "Education includes tag Shiksha Setu");
 assert(progContent.includes("350+"), "Education highlights 350+ coached students metric");
-assert(progContent.includes("Women's Vocational Tailoring"), "Programmes includes Women's Vocational Tailoring");
+assert(progContent.includes("Women's Vocational Skills & Livelihood Training") && (progContent.includes("Tailoring") || progContent.includes("tailoring")), "Programmes includes Women's Vocational Skills & Livelihood Training (Swavalamban)");
 assert(progContent.includes("Swavalamban"), "Women empowerment includes tag Swavalamban");
 assert(progContent.includes("120+"), "Women empowerment highlights 120+ graduated artisans metric");
 assert(progContent.includes("Jal Seva"), "Programmes includes Jal Seva Clean Drinking Water");
@@ -31,6 +31,7 @@ assert(progContent.includes("Statewide Higher Education Tuition Grants"), "Featu
 assert(progContent.includes("Project Samarth Community Learning Hubs"), "Features Project Samarth study hubs");
 assert(progContent.includes("/donate"), "Programmes links to /donate online gateway");
 assert(progContent.includes("/csr-partnerships"), "Programmes links to /csr-partnerships portal");
+assert(!progContent.includes("#0A192F"), "Programmes does not use prohibited Presidential Navy token #0A192F");
 
 console.log(`\nTEST RESULTS: ${passed} PASSED, ${failed} FAILED`);
 if (failed > 0) {

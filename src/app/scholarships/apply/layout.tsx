@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/scholarships/apply",
   },
   openGraph: {
-    title: "Apply for Higher Education Scholarship | MAHAVIR TRUST",
+    title: "Apply for Higher Education Scholarship | MECT",
     description:
       "Secure online scholarship application for underprivileged students in Odisha with direct-to-college institutional fee disbursal.",
     url: "https://mect.org.in/scholarships/apply",

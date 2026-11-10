@@ -19,9 +19,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Engagement — MAHAVIR TRUST",
+  title: "Terms of Engagement",
   description:
-    "Institutional terms of engagement, website use guidelines, and scholarship application understandings for MAHAVIR TRUST in Odisha, India.",
+    "Institutional terms of engagement, portal use guidelines, and scholarship application norms for Mahaveer Educational & Charitable Trust (MECT).",
+  alternates: { canonical: "/terms" },
 };
 
 const CLAUSES = [
@@ -29,7 +30,7 @@ const CLAUSES = [
     number: "01",
     title: "Statutory Preamble & Public Charitable Purpose",
     summary:
-      "MAHAVIR TRUST operates strictly as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882. All web pages, policy descriptions, and scholarship guidelines are published for public welfare, community empowerment, and transparent educational administration across Odisha.",
+      "Mahaveer Educational & Charitable Trust (MECT) operates strictly as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882. All web pages, policy descriptions, and scholarship guidelines are published for public welfare, community empowerment, and transparent educational administration across Odisha.",
   },
   {
     number: "02",
@@ -59,19 +60,19 @@ const CLAUSES = [
     number: "06",
     title: "Intellectual Property & Educational Fair Use",
     summary:
-      "All educational curricula, career guidance materials, and institutional reports published on this portal are protected by copyright. Content may be downloaded or printed solely for personal, non-commercial academic use, provided that MAHAVIR TRUST is prominently acknowledged as the source.",
+      "All educational curricula, career guidance materials, and institutional reports published on this portal are protected by copyright. Content may be downloaded or printed solely for personal, non-commercial academic use, provided that Mahaveer Educational & Charitable Trust (MECT) is prominently acknowledged as the source.",
   },
   {
     number: "07",
     title: "Limitation of Fiduciary Liability & Dispute Jurisdiction",
     summary:
-      "To the maximum extent permitted by applicable Indian law, MAHAVIR TRUST, its Board of Trustees, and executive officers shall not be held liable for indirect or consequential damages arising from website technical interruptions, third-party internet disruptions, or delays in institutional verification. All disputes arising from trust operations shall fall within the exclusive jurisdiction of the competent courts in Bhubaneswar or Cuttack, Odisha.",
+      "To the maximum extent permitted by applicable Indian law, Mahaveer Educational & Charitable Trust (MECT), its Board of Trustees, and executive officers shall not be held liable for indirect or consequential damages arising from website technical interruptions, third-party internet disruptions, or delays in institutional verification. All disputes arising from trust operations shall fall within the exclusive jurisdiction of the competent courts in Bhubaneswar or Cuttack, Odisha.",
   },
   {
     number: "08",
     title: "Anti-Bribery, Anti-Tout & Zero-Intermediary Undertaking",
     summary:
-      "MAHAVIR TRUST charges zero fees for applications, examinations, fellowship inductions, or grievance resolutions. The Trust does not authorize or recognize any commercial touts, commission brokers, or expedited admission agents. Any solicitation of fees by individuals claiming to represent the Trust should be reported immediately to the Secretariat.",
+      "Mahaveer Educational & Charitable Trust (MECT) charges zero fees for applications, examinations, fellowship inductions, or grievance resolutions. The Trust does not authorize or recognize any commercial touts, commission brokers, or expedited admission agents. Any solicitation of fees by individuals claiming to represent the Trust should be reported immediately to the Secretariat.",
   },
 ];
 
@@ -82,26 +83,26 @@ export default function TermsPage() {
       <PageHero
         badge="Legal & Institutional Charter"
         title="Terms of Engagement & Website Use"
-        description="Statutory guidelines governing participation in MAHAVIR TRUST educational schemes, digital portal access, and direct institutional grant allocations."
+        description="Statutory guidelines governing participation in MECT educational schemes, digital portal access, and direct institutional grant allocations."
         breadcrumbs={[{ label: "Terms of Engagement" }]}
       />
 
       {/* 2. Cross-Navigation Policy Tabs */}
-      <section className="bg-[#F7F4EE] border-b border-[#0B3B24]/10 py-4">
+      <section className="bg-sand-light border-b border-border-warm py-4">
         <Container size="narrow">
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-medium">
-            <span className="py-2 px-4 rounded-xs bg-[#0B3B24] text-white font-semibold">
+            <span className="py-2 px-4 rounded-xs bg-terracotta text-white font-semibold">
               Terms of Engagement
             </span>
             <Link
               href="/privacy"
-              className="py-2 px-4 rounded-xs bg-[#FDFBF7] text-[#0B3B24] border border-[#0B3B24]/15 hover:bg-[#0B3B24]/5 transition-colors"
+              className="py-2 px-4 rounded-xs bg-cream text-terracotta-dark border border-border-warm hover:bg-terracotta/5 transition-colors"
             >
               Privacy & Confidentiality
             </Link>
             <Link
               href="/accessibility"
-              className="py-2 px-4 rounded-xs bg-[#FDFBF7] text-[#0B3B24] border border-[#0B3B24]/15 hover:bg-[#0B3B24]/5 transition-colors"
+              className="py-2 px-4 rounded-xs bg-cream text-terracotta-dark border border-border-warm hover:bg-terracotta/5 transition-colors"
             >
               Accessibility Statement
             </Link>
@@ -110,7 +111,7 @@ export default function TermsPage() {
       </section>
 
       {/* 3. Main Clauses Section */}
-      <section className="py-16 md:py-24 bg-[#FDFBF7]">
+      <section className="py-16 md:py-24 bg-cream">
         <Container size="narrow">
           <SectionHeader
             badge="Fiduciary Governance"
@@ -123,14 +124,14 @@ export default function TermsPage() {
               <Card key={clause.number} variant="elevated" className="p-6 sm:p-8 space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="gold">Clause {clause.number}</Badge>
-                  <span className="text-[11px] font-mono text-[#9E7D3B] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono text-forest uppercase tracking-wider">
                     Binding Charter
                   </span>
                 </div>
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#0B3B24]">
+                <h3 className="font-serif text-lg sm:text-xl font-bold text-terracotta-dark">
                   {clause.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed">
+                <p className="text-xs sm:text-sm text-ink-sand leading-relaxed">
                   {clause.summary}
                 </p>
               </Card>
@@ -139,17 +140,17 @@ export default function TermsPage() {
 
           {/* Anti-Fraud Statutory Warning Box */}
           <div className="mt-12">
-            <Card variant="dark" className="p-8 space-y-4 border border-[#C5A059]/40">
+            <Card variant="dark" className="p-8 space-y-4 border border-sand/40">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xs bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0 mt-1">
+                <div className="w-10 h-10 rounded-xs bg-sand/20 flex items-center justify-center text-cream shrink-0 mt-1">
                   <AlertTriangle className="w-5 h-5" />
                 </div>
                 <div className="space-y-2 flex-1">
-                  <h4 className="font-serif text-lg font-bold text-[#E4C88A]">
+                  <h4 className="font-serif text-lg font-bold text-cream">
                     Statutory Notice: Absolute Prohibition of Application Fees
                   </h4>
                   <p className="text-xs text-white/85 leading-relaxed">
-                    Under Section 12AB transparency norms, MAHAVIR TRUST never solicits cash deposits, processing fees, or intermediary commissions. If any individual promises expedited selection or claims official affiliation in exchange for compensation, please dispatch evidence immediately to <code className="text-[#E4C88A] font-mono">grievance@mahavirtrust.org</code>.
+                    Under Section 12AB transparency norms, Mahaveer Educational & Charitable Trust (MECT) never solicits cash deposits, processing fees, or intermediary commissions. If any individual promises expedited selection or claims official affiliation in exchange for compensation, please dispatch evidence immediately to <code className="text-cream font-mono">grievance@mahavirtrust.org</code>.
                   </p>
                 </div>
               </div>
@@ -159,7 +160,7 @@ export default function TermsPage() {
                   Last Updated: Academic Year 2026–27 | Legal Jurisdiction: Bhubaneswar, Odisha
                 </span>
                 <Link href="/contact">
-                  <Button variant="outline" size="sm" className="!border-[#E4C88A] !text-[#E4C88A] hover:!bg-[#E4C88A]/10 text-xs">
+                  <Button variant="outline" size="sm" className="!border-sand !text-white hover:!bg-white/10 text-xs">
                     <Mail className="w-3.5 h-3.5 mr-1.5" />
                     Contact Secretariat Desk
                   </Button>

@@ -27,9 +27,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Community Impact & Programme Outcomes — MECT Odisha",
+  title: "Community Impact & Programme Outcomes",
   description:
-    "Explore MECT's programme reach across education, women's livelihoods, safe-water initiatives and nutrition relief, alongside its documented operating areas and future outreach priorities.",
+    "Documented programme reach across education, women's livelihoods, safe-water initiatives, and nutrition relief alongside verified Balangir and Bhubaneswar operating locations.",
+  alternates: { canonical: "/impact" },
 };
 
 export default function ImpactPage() {
@@ -107,38 +108,10 @@ export default function ImpactPage() {
     },
   ];
 
-  const groundCaseStudies = [
-    {
-      title: "Remedial Coaching Transforms Rural Board Exam Scores",
-      location: "Puintala Block, Balangir District",
-      scenario:
-        "In a rural agricultural cluster where the high school dropout rate exceeded 35%, MECT established an after-school study centre with solar lighting and dedicated volunteer teachers. Over 40 students completed their matriculation exams with first-division honours.",
-      impact: "100% board exam pass rate among regular attendees; 18 students enrolled in government polytechnics.",
-      category: "Education",
-    },
-    {
-      title: "Tailoring Trade Training Creates Financial Independence",
-      location: "Rugudipara Training Centre, Balangir",
-      scenario:
-        "A cohort of 25 rural women from landless laborer households enrolled in MECT's 6-month intensive tailoring course. Equipped with pedal sewing machine kits upon graduation, they formed a stitching cooperative fulfilling bulk orders for local school uniforms.",
-      impact: "Average monthly household income increased by ₹4,500 – ₹7,000 per artisan.",
-      category: "Women Livelihood",
-    },
-    {
-      title: "Emergency Summer Jal Seva Reaches Scorched Transit Nodes",
-      location: "Balangir Bus Terminus & District Hospital",
-      scenario:
-        "During extreme summer heatwaves with temperatures reaching 46°C, MECT deployed 4 shaded drinking water distribution points with clean earthen storage pots, water coolers, and ORS packets.",
-      impact: "Over 10,000 cold water portions served with zero heatstroke casualties reported at monitored transit points.",
-      category: "Public Health",
-    },
-  ];
-
   return (
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Programme Outcomes • 13+ Years of Service"
         title="Documented Community Impact Across Our Work"
         description="Understand programme reach, community outcomes and the work behind the numbers. Geographic expansion plans are distinguished from active programme locations."
         breadcrumbs={[{ label: "Community Impact" }]}
@@ -152,7 +125,7 @@ export default function ImpactPage() {
             </Link>
             <Link href="/reports">
               <Button variant="dark-outline" size="sm">
-                <FileText className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" />
+                <FileText className="w-3.5 h-3.5 mr-1 text-cream" />
                 <span>Audited Annual Reports</span>
               </Button>
             </Link>
@@ -161,7 +134,7 @@ export default function ImpactPage() {
       />
 
       {/* 2. Four Verified Metric Counters */}
-      <section id="metrics" className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section id="metrics" className="py-20 md:py-28 bg-cream">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Verified Ground Telemetry"
@@ -177,12 +150,12 @@ export default function ImpactPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4 flex flex-col justify-between"
+                  className="p-6 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4 flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
-                        <Icon className="w-5 h-5 text-[#E4C88A]" />
+                      <div className="w-10 h-10 rounded-xs bg-forest text-white flex items-center justify-center border border-sand/45">
+                        <Icon className="w-5 h-5 text-cream" />
                       </div>
                       <Badge variant="contrast-gold" size="sm">
                         {item.badge}
@@ -190,19 +163,19 @@ export default function ImpactPage() {
                     </div>
 
                     <div>
-                      <span className="font-serif text-2xl font-bold text-[#0B3B24] block">
+                      <span className="font-serif text-2xl font-bold text-forest block">
                         {item.metric}
                       </span>
-                      <span className="text-xs font-semibold text-[#7A5E24] font-sans block mt-0.5">
+                      <span className="text-xs font-semibold text-forest font-sans block mt-0.5">
                         {item.subtext}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-base font-bold text-[#0B3B24]">
+                    <h3 className="font-serif text-base font-bold text-forest">
                       {item.title}
                     </h3>
 
-                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                    <p className="text-xs text-ink leading-relaxed font-sans">
                       {item.description}
                     </p>
                   </div>
@@ -213,54 +186,8 @@ export default function ImpactPage() {
         </Container>
       </section>
 
-      {/* 3. Authentic Grassroots Case Studies */}
-      <section className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10">
-        <Container size="default" className="space-y-12">
-          <SectionHeader
-            badge="Field Case Studies"
-            title="Ground-Level Stories of Transformation"
-            subtitle="Documented field initiatives illustrating the life outcomes enabled by MECT's non-profit interventions in Odisha."
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {groundCaseStudies.map((story, idx) => (
-              <Card
-                key={idx}
-                variant="elevated"
-                className="p-7 bg-white border-[#0B3B24]/12 shadow-sm space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-[#0B3B24]/10 text-[11px] font-sans">
-                    <span className="text-[#7A5E24] font-bold">{story.location}</span>
-                    <Badge variant="forest" size="sm">
-                      {story.category}
-                    </Badge>
-                  </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
-                    {story.title}
-                  </h3>
-                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                    {story.scenario}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-[#0B3B24]/10 space-y-1 text-xs font-sans">
-                  <span className="text-[10px] uppercase font-bold text-[#15803D] block">
-                    Verified Ground Impact:
-                  </span>
-                  <p className="text-xs text-[#0B3B24] font-semibold leading-snug">
-                    {story.impact}
-                  </p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 4. Coverage Strategy Across All 30 Odisha Districts */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="30-District Framework">
+      {/* 3. Coverage Strategy Across All 30 Odisha Districts */}
+      <section className="py-20 md:py-28 bg-white" aria-label="30-District Framework">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Reach & Presence"
@@ -276,14 +203,14 @@ export default function ImpactPage() {
                 variant={zone.highlight ? "elevated" : "default"}
                 className={`p-7 bg-white space-y-4 transition-all ${
                   zone.highlight
-                    ? "border-2 border-[#C5A059] shadow-md"
-                    : "border-[#0B3B24]/12 shadow-xs"
+                    ? "border-2 border-sand shadow-md"
+                    : "border-border-warm shadow-xs"
                 }`}
               >
-                <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
+                <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#C5A059]" />
-                    <span className="font-serif font-bold text-lg text-[#0B3B24]">
+                    <MapPin className="w-4 h-4 text-sand" />
+                    <span className="font-serif font-bold text-lg text-terracotta-dark">
                       {zone.zone}
                     </span>
                   </div>
@@ -293,14 +220,14 @@ export default function ImpactPage() {
                 </div>
 
                 <div className="space-y-1.5 font-sans">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5E24] block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">
                     Districts in Cluster:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {zone.districts.map((d) => (
                       <span
                         key={d}
-                        className="text-xs bg-[#F4EFE6] text-[#0B3B24] px-2.5 py-1 rounded-xs border border-[#0B3B24]/10 font-medium"
+                        className="text-xs bg-sand-light text-forest px-2.5 py-1 rounded-xs border border-border-warm font-medium"
                       >
                         {d}
                       </span>
@@ -308,9 +235,9 @@ export default function ImpactPage() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-xs font-sans">
-                  <span className="text-[#4A5568]">{zone.phase}</span>
-                  <span className="text-[#0B3B24] font-bold">{zone.status}</span>
+                <div className="pt-3 border-t border-border-warm flex items-center justify-between text-xs font-sans">
+                  <span className="text-ink-sand">{zone.phase}</span>
+                  <span className="text-terracotta-dark font-bold">{zone.status}</span>
                 </div>
               </Card>
             ))}
@@ -319,27 +246,27 @@ export default function ImpactPage() {
       </section>
 
       {/* 5. Annual Reports & Audit Link */}
-      <section className="py-20 bg-[#0B3B24] text-[#EDE6D8]">
+      <section className="py-20 bg-sand-light text-ink border-t border-border-warm">
         <Container size="default">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <Badge variant="gold-dark">
+          <div className="max-w-3xl mx-auto text-center space-y-6 bg-white border border-border-warm rounded-xs p-8 sm:p-10 shadow-xs">
+            <Badge variant="contrast-gold">
               Public Fiduciary Archive
             </Badge>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight">
               Transparent, Audited Annual Reports &amp; Balance Sheets
             </h2>
-            <p className="text-sm text-white/80 leading-relaxed font-sans max-w-2xl mx-auto">
+            <p className="text-sm text-ink leading-relaxed font-sans max-w-2xl mx-auto">
               MECT publishes certified annual activity reports and balance sheets audited by independent Chartered Accountants, in accordance with the Indian Trusts Act and Income Tax Act Section 12A/80G norms.
             </p>
             <div className="pt-2 flex flex-wrap justify-center gap-4">
               <Link href="/reports">
-                <Button variant="gold" size="lg" className="shadow-lg font-bold">
+                <Button variant="gold" size="lg" className="shadow-sm font-bold">
                   <FileText className="w-4 h-4 mr-2" />
                   <span>Inspect Annual Reports Archive</span>
                 </Button>
               </Link>
               <Link href="/statutory-disclosures">
-                <Button variant="dark-outline" size="lg" className="font-semibold">
+                <Button variant="outline" size="lg" className="font-semibold">
                   <span>View 12A/80G Credentials</span>
                 </Button>
               </Link>

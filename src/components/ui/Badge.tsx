@@ -8,6 +8,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     | "contrast-gold"
     | "forest"
     | "forest-dark"
+    | "terracotta"
     | "neutral"
     | "success"
     | "warning"
@@ -27,16 +28,17 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    gold: "bg-[#C5A059]/15 text-[#7A5E24] border border-[#C5A059]/35 font-semibold",
-    "gold-dark": "bg-[#0B3B24] text-[#E4C88A] border border-[#C5A059]/40 font-semibold",
-    "contrast-gold": "bg-[#7A5E24]/10 text-[#7A5E24] border border-[#7A5E24]/30 font-semibold",
-    forest: "bg-[#0B3B24]/10 text-[#0B3B24] border border-[#0B3B24]/25 font-semibold",
-    "forest-dark": "bg-[#072617] text-[#EDE6D8] border border-[#C5A059]/30 font-semibold",
-    neutral: "bg-[#EDE6D8]/60 text-[#1C2421] border border-[#0B3B24]/15 font-medium",
-    success: "bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold",
-    warning: "bg-amber-50 text-amber-900 border border-amber-300 font-semibold",
-    danger: "bg-red-50 text-red-800 border border-red-300 font-semibold",
-    outline: "bg-transparent text-[#0B3B24] border border-[#0B3B24]/30 font-medium",
+    gold: "bg-sand-light text-ink border border-terracotta/40 font-semibold",
+    "gold-dark": "bg-forest text-cream border border-sand/40 font-semibold",
+    "contrast-gold": "bg-cream text-terracotta-dark border border-terracotta/35 font-semibold",
+    forest: "bg-sage text-forest border border-forest/20 font-semibold",
+    "forest-dark": "bg-forest-deep text-white border border-sand/35 font-semibold",
+    terracotta: "bg-terracotta text-white border border-terracotta-dark font-semibold",
+    neutral: "bg-cream text-ink border border-border-warm font-medium",
+    success: "bg-sage text-forest border border-forest/25 font-semibold",
+    warning: "bg-sand/70 text-ink border border-terracotta/50 font-semibold",
+    danger: "bg-red-50 text-red-900 border border-red-300 font-semibold",
+    outline: "bg-transparent text-forest border border-forest/35 font-medium",
   };
 
   const sizeStyles = {

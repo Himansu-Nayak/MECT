@@ -20,9 +20,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Accessibility Statement — MAHAVIR TRUST",
+  title: "Accessibility Statement",
   description:
-    "Commitment to digital accessibility, WCAG 2.2 Level AA compliance, and universal inclusion for all users of the MAHAVIR TRUST portal.",
+    "Commitment to digital accessibility, WCAG 2.2 Level AA compliance, keyboard navigation, and reduced-motion support on the MECT portal.",
+  alternates: { canonical: "/accessibility" },
 };
 
 const TECHNICAL_MEASURES = [
@@ -30,13 +31,13 @@ const TECHNICAL_MEASURES = [
     icon: Eye,
     title: "High Contrast & Typographic Legibility",
     description:
-      "Color palettes are calibrated to exceed WCAG 2.2 Level AA requirements. Body typography (#4A5568 / #1C2421) on ivory canvas (#FDFBF7) provides a minimum contrast ratio of 7:1 (exceeding the 4.5:1 threshold). Primary headings in deep forest (#0B3B24) exceed 10:1 contrast.",
+      "Color palettes are calibrated to meet and exceed WCAG 2.2 Level AA requirements. Primary body typography (#26332E) on warm cream (#F3E4D2) exceeds 10:1 contrast, primary headings in Forest Charcoal (#283730) on white (#FFFFFF) achieve 12.5:1 contrast, and white text on Primary Terracotta (#A45E44) meets 4.93:1 AA contrast.",
   },
   {
     icon: Keyboard,
     title: "Full Keyboard Operability & Focus Traps Elimination",
     description:
-      "All interactive elements—including mega-menus, navigation links, form inputs, accordions, and action buttons—are fully navigable via standard keyboard tab sequences. Clear, high-visibility 2px focus rings (focus:ring-2 focus:ring-[#C5A059]) are provided for all interactive states.",
+      "All interactive elements—including mega-menus, navigation links, form inputs, accordions, and action buttons—are fully navigable via standard keyboard tab sequences. Clear, high-visibility 2px focus rings (focus:ring-2 focus:ring-terracotta) are provided for all interactive states.",
   },
   {
     icon: Monitor,
@@ -78,22 +79,22 @@ export default function AccessibilityPage() {
       />
 
       {/* 2. Cross-Navigation Policy Tabs */}
-      <section className="bg-[#F7F4EE] border-b border-[#0B3B24]/10 py-4">
+      <section className="bg-sand-light border-b border-border-warm py-4">
         <Container size="narrow">
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-medium">
             <Link
               href="/terms"
-              className="py-2 px-4 rounded-xs bg-[#FDFBF7] text-[#0B3B24] border border-[#0B3B24]/15 hover:bg-[#0B3B24]/5 transition-colors"
+              className="py-2 px-4 rounded-xs bg-cream text-terracotta-dark border border-border-warm hover:bg-terracotta/5 transition-colors"
             >
               Terms of Engagement
             </Link>
             <Link
               href="/privacy"
-              className="py-2 px-4 rounded-xs bg-[#FDFBF7] text-[#0B3B24] border border-[#0B3B24]/15 hover:bg-[#0B3B24]/5 transition-colors"
+              className="py-2 px-4 rounded-xs bg-cream text-terracotta-dark border border-border-warm hover:bg-terracotta/5 transition-colors"
             >
               Privacy & Confidentiality
             </Link>
-            <span className="py-2 px-4 rounded-xs bg-[#0B3B24] text-white font-semibold">
+            <span className="py-2 px-4 rounded-xs bg-terracotta text-white font-semibold">
               Accessibility Statement
             </span>
           </div>
@@ -101,15 +102,15 @@ export default function AccessibilityPage() {
       </section>
 
       {/* 3. Main Accessibility Section */}
-      <section className="py-16 md:py-24 bg-[#FDFBF7]">
+      <section className="py-16 md:py-24 bg-cream">
         <Container size="narrow">
           <SectionHeader
             badge="Universal Design"
             title="Our Commitment to Digital Equity"
-            subtitle="MAHAVIR TRUST believes that digital access is a fundamental prerequisite for educational opportunity across Odisha."
+            subtitle="Mahaveer Educational & Charitable Trust (MECT) believes that digital access is a fundamental prerequisite for educational opportunity across Odisha."
           />
 
-          <div className="mt-8 space-y-6 text-xs sm:text-sm text-[#4A5568] leading-relaxed">
+          <div className="mt-8 space-y-6 text-xs sm:text-sm text-ink-sand leading-relaxed">
             <p>
               We are committed to providing a dignified, barrier-free digital experience for all visitors, including students, guardians, educators, and volunteers who rely on assistive technologies or connect over low-bandwidth mobile networks in rural and tribal districts.
             </p>
@@ -117,7 +118,7 @@ export default function AccessibilityPage() {
 
           {/* Technical Measures */}
           <div className="mt-12 space-y-6">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0B3B24]">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-terracotta-dark">
               Core Technical Accessibility Measures (WCAG 2.2 AA)
             </h3>
 
@@ -127,14 +128,14 @@ export default function AccessibilityPage() {
                 return (
                   <Card key={idx} variant="elevated" className="p-6 sm:p-8 space-y-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 flex items-center justify-center text-[#0B3B24] shrink-0">
+                      <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark shrink-0">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <h4 className="font-serif text-lg font-bold text-[#0B3B24]">
+                      <h4 className="font-serif text-lg font-bold text-terracotta-dark">
                         {item.title}
                       </h4>
                     </div>
-                    <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed pl-13">
+                    <p className="text-xs sm:text-sm text-ink-sand leading-relaxed pl-13">
                       {item.description}
                     </p>
                   </Card>
@@ -145,27 +146,27 @@ export default function AccessibilityPage() {
 
           {/* Assistive Technology Compatibility Table */}
           <div className="mt-14 space-y-6">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0B3B24]">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-terracotta-dark">
               Assistive Technology Compatibility Matrix
             </h3>
 
-            <div className="overflow-x-auto border border-[#0B3B24]/15 rounded-xs">
+            <div className="overflow-x-auto border border-border-warm rounded-xs">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#0B3B24] text-white">
+                <thead className="bg-terracotta text-white">
                   <tr>
                     <th className="py-3 px-4 font-serif font-semibold">Assistive Technology</th>
                     <th className="py-3 px-4 font-serif font-semibold">Platform & Browsers</th>
                     <th className="py-3 px-4 font-serif font-semibold">Support Level</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#0B3B24]/10 bg-[#FDFBF7]">
+                <tbody className="divide-y divide-border-warm bg-cream">
                   {COMPATIBILITY_TOOLS.map((tool, idx) => (
-                    <tr key={idx} className="hover:bg-[#F7F4EE]">
-                      <td className="py-3 px-4 font-medium text-[#0B3B24]">{tool.name}</td>
-                      <td className="py-3 px-4 text-[#4A5568]">{tool.platform}</td>
+                    <tr key={idx} className="hover:bg-sand-light">
+                      <td className="py-3 px-4 font-medium text-terracotta-dark">{tool.name}</td>
+                      <td className="py-3 px-4 text-ink-sand">{tool.platform}</td>
                       <td className="py-3 px-4">
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#0B3B24] bg-[#0B3B24]/10 py-0.5 px-2 rounded-xs">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0B3B24]" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-terracotta-dark bg-terracotta/10 py-0.5 px-2 rounded-xs">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-terracotta-dark" />
                           {tool.status}
                         </span>
                       </td>
@@ -178,19 +179,19 @@ export default function AccessibilityPage() {
 
           {/* Feedback & Remediation Desk */}
           <div className="mt-14">
-            <Card variant="dark" className="p-8 space-y-4 border border-[#C5A059]/40">
+            <Card variant="dark" className="p-8 space-y-4 border border-sand/40">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xs bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0 mt-1">
+                <div className="w-10 h-10 rounded-xs bg-sand/20 flex items-center justify-center text-cream shrink-0 mt-1">
                   <Accessibility className="w-5 h-5" />
                 </div>
                 <div className="space-y-2 flex-1">
-                  <h4 className="font-serif text-lg font-bold text-[#E4C88A]">
+                  <h4 className="font-serif text-lg font-bold text-cream">
                     Accessibility Feedback & Remediation Desk
                   </h4>
                   <p className="text-xs text-white/85 leading-relaxed">
-                    We welcome feedback on the accessibility of our website. If you encounter any difficulty accessing information, completing a registration form, or reading institutional reports, please email our administrative team at <code className="text-[#E4C88A] font-mono">contact@mahavirtrust.org</code> with the subject line <strong>[ACCESSIBILITY_FEEDBACK]</strong>.
+                    We welcome feedback on the accessibility of our website. If you encounter any difficulty accessing information, completing a registration form, or reading institutional reports, please email our administrative team at <code className="text-cream font-mono">contact@mahavirtrust.org</code> with the subject line <strong>[ACCESSIBILITY_FEEDBACK]</strong>.
                   </p>
-                  <p className="text-[11px] text-[#E4C88A]">
+                  <p className="text-[11px] text-cream">
                     SLA: All accessibility feedback is logged in our technical registry and acknowledged within 48 business hours.
                   </p>
                 </div>
@@ -201,7 +202,7 @@ export default function AccessibilityPage() {
                   Standards Reference: WCAG 2.2 Level AA | GIGW (Guidelines for Indian Government Websites)
                 </span>
                 <Link href="/contact">
-                  <Button variant="outline" size="sm" className="!border-[#E4C88A] !text-[#E4C88A] hover:!bg-[#E4C88A]/10 text-xs">
+                  <Button variant="outline" size="sm" className="!border-sand !text-white hover:!bg-white/10 text-xs">
                     <Mail className="w-3.5 h-3.5 mr-1.5" />
                     Submit Accessibility Report
                   </Button>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
@@ -11,18 +12,8 @@ import {
   Menu,
   X,
   ChevronDown,
-  Award,
-  PhoneCall,
-  ShieldCheck,
-  Building2,
-  BookOpen,
   ArrowRight,
   Heart,
-  Scale,
-  FileText,
-  Users,
-  HandHeart,
-  ExternalLink,
 } from "lucide-react";
 
 export function Header() {
@@ -31,6 +22,10 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
   // Monitor scroll for header backdrop elevation
   useEffect(() => {
@@ -41,7 +36,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menus on route change
+  // Close menus on route change and restore focus if drawer was open
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (prevPathname !== pathname) {
     setPrevPathname(pathname);
@@ -49,29 +44,60 @@ export function Header() {
     setOpenDropdown(null);
   }
 
-  // Lock body scroll when mobile menu is active
+  // Manage body scroll and focus when mobile menu opens/closes
   useEffect(() => {
     if (mobileMenuOpen) {
+      previousActiveElement.current = document.activeElement as HTMLElement;
       document.body.style.overflow = "hidden";
+      const timer = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "unset";
+      };
     } else {
       document.body.style.overflow = "unset";
+      if (previousActiveElement.current) {
+        previousActiveElement.current.focus();
+        previousActiveElement.current = null;
+      }
     }
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [mobileMenuOpen]);
 
-  // Global keydown listener for Escape key to close open menus
+  // Trap focus inside mobile drawer and handle Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpenDropdown(null);
         setMobileMenuOpen(false);
+        return;
+      }
+
+      if (mobileMenuOpen && e.key === "Tab" && drawerRef.current) {
+        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [mobileMenuOpen]);
 
   // Dismiss dropdown on outside click
   useEffect(() => {
@@ -94,93 +120,123 @@ export function Header() {
         ref={navRef}
         className={`w-full transition-all duration-200 border-b ${
           isScrolled
-            ? "bg-[#FDFBF7]/95 backdrop-blur-md border-[#0B3B24]/15 shadow-sm py-2.5"
-            : "bg-[#FDFBF7] border-[#0B3B24]/10 py-3.5"
+            ? "bg-cream/95 backdrop-blur-md border-border-warm shadow-sm py-2.5"
+            : "bg-cream border-border-warm py-3.5"
         }`}
         aria-label="Main Navigation"
       >
         <Container size="default">
           <div className="flex items-center justify-between">
-            {/* Institutional Brand / Monogram */}
+            {/* Institutional Brand / Official Emblem */}
             <Link
               href="/"
-              className="flex items-center space-x-3.5 group focus-visible:outline-2 focus-visible:outline-[#C5A059]"
-              aria-label="MAHAVIR TRUST Homepage"
+              className="flex items-center space-x-1.5 sm:space-x-3 group focus-visible:outline-2 focus-visible:outline-terracotta min-w-0 shrink sm:shrink-0"
+              aria-label="Mahaveer Educational & Charitable Trust Homepage"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-xl shadow-xs group-hover:bg-[#072617] transition-colors shrink-0">
-                M
+              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-terracotta bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square">
+                <Image
+                  src="/images/mect-official-emblem.png"
+                  alt="Mahaveer Educational & Charitable Trust Official Emblem"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-cover scale-[1.06]"
+                  priority
+                />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif tracking-wider font-bold text-lg sm:text-xl text-[#0B3B24] leading-tight group-hover:text-[#165B38] transition-colors">
-                    MAHAVIR TRUST
-                  </span>
-                  <span className="hidden sm:inline-flex text-[9px] font-bold uppercase tracking-wider bg-[#0B3B24]/10 text-[#0B3B24] px-1.5 py-0.5 rounded-xs border border-[#0B3B24]/20">
-                    Est. 2013
-                  </span>
-                </div>
-                <span className="text-[10px] tracking-wider uppercase font-semibold text-[#7A5E24] font-sans">
-                  Mahaveer Educational & Charitable Trust (MECT)
-                </span>
-              </div>
+              <span className="font-serif font-bold text-[10.5px] sm:text-sm xl:text-[14px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[130px] sm:max-w-[230px] lg:max-w-[185px] xl:max-w-none xl:whitespace-nowrap">
+                Mahaveer Educational &amp; Charitable Trust
+              </span>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Primary Navigation — WAI-ARIA Disclosure Navigation Pattern */}
+            <div className="hidden lg:flex items-center space-x-0.5 2xl:space-x-1.5 shrink-0">
               {TRUST_CONFIG.navigation.map((item) => {
                 const hasChildren = item.children && item.children.length > 0;
                 const isActive =
                   pathname === item.href ||
-                  (item.children && item.children.some((c) => pathname === c.href));
+                  (item.children &&
+                    item.children.some(
+                      (c) =>
+                        pathname === c.href ||
+                        (c.href !== "/" && pathname.startsWith(c.href))
+                    ));
                 const isItemOpen = openDropdown === item.label;
+                const disclosureId = `nav-disclosure-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+                const toggleId = `nav-toggle-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
                 return (
                   <div
                     key={item.label}
-                    className="relative"
+                    className="relative shrink-0"
                     onMouseEnter={() => setOpenDropdown(item.label)}
                     onMouseLeave={() => setOpenDropdown(null)}
+                    onBlur={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                        setOpenDropdown(null);
+                      }
+                    }}
                   >
-                    <Link
-                      href={item.href}
-                      aria-current={isActive ? "page" : undefined}
-                      aria-expanded={hasChildren ? isItemOpen : undefined}
-                      aria-haspopup={hasChildren ? "menu" : undefined}
-                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059] ${
-                        isActive
-                          ? "text-[#0B3B24] font-bold bg-[#0B3B24]/8"
-                          : "text-[#1C2421] hover:text-[#0B3B24] hover:bg-[#0B3B24]/4"
-                      }`}
-                    >
-                      <span>{item.label}</span>
+                    <div className="flex items-center">
+                      <Link
+                        href={item.href}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`whitespace-nowrap px-1 xl:px-2 2xl:px-3 py-2 text-[11.5px] xl:text-[12.5px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta ${
+                          isActive
+                            ? "text-terracotta-dark font-bold bg-sand/55 border-b-2 border-terracotta"
+                            : "text-forest hover:text-forest-deep hover:bg-sage/65"
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                      </Link>
                       {hasChildren && (
-                        <ChevronDown
-                          className={`w-3.5 h-3.5 text-[#1C2421]/60 transition-transform duration-200 ${
-                            isItemOpen ? "rotate-180" : ""
-                          }`}
-                          aria-hidden="true"
-                        />
+                        <button
+                          type="button"
+                          id={toggleId}
+                          aria-expanded={isItemOpen}
+                          aria-controls={disclosureId}
+                          aria-label={`${item.label} sub-navigation menu`}
+                          onClick={() => setOpenDropdown(isItemOpen ? null : item.label)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Escape") {
+                              setOpenDropdown(null);
+                            }
+                          }}
+                          className="min-w-[24px] min-h-[24px] p-1 inline-flex items-center justify-center text-forest/75 hover:text-terracotta-dark rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta transition-colors"
+                        >
+                          <ChevronDown
+                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                              isItemOpen ? "rotate-180" : ""
+                            }`}
+                            aria-hidden="true"
+                          />
+                        </button>
                       )}
-                    </Link>
+                    </div>
 
-                    {/* Accessible Institutional Mega-Menu Flyout */}
+                    {/* Accessible Sub-Navigation Disclosure Flyout */}
                     {hasChildren && isItemOpen && (
                       <div
-                        role="menu"
-                        aria-label={`${item.label} sub-navigation`}
-                        className="absolute top-full left-0 bg-[#FDFBF7] border border-[#0B3B24]/15 rounded-xs shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 w-80 space-y-1"
+                        id={disclosureId}
+                        aria-labelledby={toggleId}
+                        className="absolute top-full left-0 bg-white border border-border-warm rounded-xs shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150 w-80 space-y-1"
+                        onKeyDown={(e) => {
+                          if (e.key === "Escape") {
+                            setOpenDropdown(null);
+                            const toggleBtn = document.getElementById(toggleId);
+                            toggleBtn?.focus();
+                          }
+                        }}
                       >
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5E24] px-2 block mb-1">
-                          {item.label} Sections
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-forest px-2 block mb-1 font-sans">
+                          {item.label} Overview
                         </span>
                         {item.children?.map((subItem) => (
                           <Link
                             key={subItem.label}
                             href={subItem.href}
-                            role="menuitem"
-                            className="block p-2 rounded-xs hover:bg-[#F4EFE6] transition-colors group/sub focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                            className="block p-2 rounded-xs hover:bg-cream/65 transition-colors group/sub focus-visible:outline-2 focus-visible:outline-terracotta"
                           >
-                            <div className="flex items-center justify-between text-xs font-semibold text-[#0B3B24] group-hover/sub:text-[#165B38]">
+                            <div className="flex items-center justify-between text-xs font-semibold text-terracotta-dark group-hover/sub:text-forest-deep">
                               <span>{subItem.label}</span>
                               {subItem.badge && (
                                 <Badge variant="forest" size="sm">
@@ -188,7 +244,7 @@ export function Header() {
                                 </Badge>
                               )}
                             </div>
-                            <p className="text-[11px] text-[#4A5568] mt-0.5 leading-snug font-sans">
+                            <p className="text-[11px] text-ink-secondary mt-0.5 leading-snug font-sans">
                               {subItem.description}
                             </p>
                           </Link>
@@ -200,37 +256,39 @@ export function Header() {
               })}
             </div>
 
-            {/* Desktop Direct Action Buttons */}
-            <div className="hidden lg:flex items-center space-x-2.5">
+            {/* Desktop Direct Action Buttons — Approved Terracotta & Forest Charcoal Palette */}
+            <div className="hidden lg:flex items-center space-x-2 shrink-0">
               <Link
                 href="/volunteer"
-                className="px-3.5 py-2 text-xs font-semibold text-[#0B3B24] border border-[#0B3B24]/30 hover:bg-[#0B3B24]/5 rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="hidden xl:inline-flex px-2.5 2xl:px-3.5 py-2 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta"
               >
                 Volunteer
               </Link>
               <Link
                 href="/donate"
-                className="px-4 py-2 text-xs font-bold text-white bg-[#D97706] hover:bg-[#B45309] rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="px-3.5 2xl:px-4 py-2 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
-                <span>Donate (80G Tax Exemption)</span>
+                <span>Donate Now</span>
               </Link>
             </div>
 
-            {/* Mobile Menu Hamburger Button */}
-            <div className="flex lg:hidden items-center space-x-2">
+            {/* Mobile Menu Hamburger & Quick Donate Button */}
+            <div className="flex lg:hidden items-center space-x-1 sm:space-x-2 shrink-0">
               <Link
                 href="/donate"
-                className="px-2.5 py-1.5 text-xs font-bold text-white bg-[#D97706] hover:bg-[#B45309] rounded-xs shadow-xs transition-colors flex items-center gap-1"
+                className="min-h-[44px] px-2.5 sm:px-3.5 py-2 text-[11px] sm:text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest"
               >
-                <Heart className="w-3 h-3 fill-current" aria-hidden="true" />
+                <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" aria-hidden="true" />
                 <span>Donate</span>
               </Link>
               <button
+                ref={hamburgerRef}
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-[#0B3B24] hover:bg-[#0B3B24]/5 rounded-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="min-h-[44px] min-w-[40px] sm:min-w-[44px] p-2 text-forest hover:bg-sage/60 rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta flex items-center justify-center transition-colors"
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation-drawer"
                 aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               >
                 {mobileMenuOpen ? (
@@ -247,27 +305,34 @@ export function Header() {
       {/* Mobile Drawer Navigation (print:hidden) */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-[#FDFBF7] lg:hidden flex flex-col pt-16 px-6 pb-8 overflow-y-auto print:hidden"
+          ref={drawerRef}
+          id="mobile-navigation-drawer"
+          className="fixed inset-0 z-50 bg-cream lg:hidden flex flex-col pt-16 px-6 pb-8 overflow-y-auto print:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
         >
           {/* Drawer Top Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#0B3B24]/10">
+          <div className="flex items-center justify-between pb-4 border-b border-border-warm">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] font-serif font-bold text-lg">
-                M
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-terracotta bg-white flex items-center justify-center shrink-0 aspect-square shadow-xs">
+                <Image
+                  src="/images/mect-official-emblem.png"
+                  alt="Mahaveer Educational & Charitable Trust Official Emblem"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover scale-[1.06]"
+                />
               </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-bold text-base text-[#0B3B24]">MAHAVIR TRUST</span>
-                <span className="text-[9px] uppercase tracking-wider text-[#7A5E24] font-semibold">
-                  MECT Odisha • Est. 2013
-                </span>
-              </div>
+              <span className="font-serif font-bold text-sm text-forest leading-tight">
+                Mahaveer Educational &amp; Charitable Trust
+              </span>
             </div>
             <button
+              ref={closeButtonRef}
+              type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-[#0B3B24] hover:bg-[#0B3B24]/10 rounded-xs"
+              className="min-h-[44px] min-w-[44px] p-2.5 text-forest hover:bg-sage/60 rounded-xs flex items-center justify-center focus-visible:outline-2 focus-visible:outline-terracotta transition-colors"
               aria-label="Close menu"
             >
               <X className="w-6 h-6" aria-hidden="true" />
@@ -275,16 +340,16 @@ export function Header() {
           </div>
 
           {/* Navigation Links List */}
-          <div className="py-4 space-y-1 divide-y divide-[#0B3B24]/5">
+          <div className="py-4 space-y-1 divide-y divide-border-warm">
             {TRUST_CONFIG.navigation.map((item) => (
               <div key={item.label} className="pt-2">
                 <Link
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2.5 text-base font-semibold text-[#0B3B24]"
+                  className="flex items-center justify-between min-h-[44px] py-2 text-base font-semibold text-forest hover:text-terracotta-dark"
                 >
                   <span>{item.label}</span>
-                  <ArrowRight className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                  <ArrowRight className="w-4 h-4 text-terracotta" aria-hidden="true" />
                 </Link>
                 {item.children && (
                   <div className="pl-3 pb-2 space-y-1">
@@ -293,9 +358,17 @@ export function Header() {
                         key={sub.label}
                         href={sub.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1.5 text-xs text-[#4A5568] hover:text-[#0B3B24]"
+                        className="flex items-center justify-between min-h-[44px] py-1.5 px-2 text-xs text-ink-sand hover:text-terracotta-dark hover:bg-white/60 rounded-xs transition-colors"
                       >
-                        • {sub.label}
+                        <div className="flex flex-col">
+                          <span className="font-medium text-ink">{sub.label}</span>
+                          <span className="text-[11px] text-ink-sand">{sub.description}</span>
+                        </div>
+                        {sub.badge && (
+                          <Badge variant="forest" size="sm" className="shrink-0 ml-2">
+                            {sub.badge}
+                          </Badge>
+                        )}
                       </Link>
                     ))}
                   </div>
@@ -304,25 +377,33 @@ export function Header() {
             ))}
           </div>
 
-          {/* Mobile Statutory & Contact Info Box */}
-          <div className="mt-auto pt-6 border-t border-[#0B3B24]/10 space-y-3">
-            <div className="bg-[#0B3B24] text-white p-3 rounded-xs text-xs space-y-1">
-              <div className="flex items-center justify-between text-[#E4C88A] font-semibold">
-                <span>Section 80G Tax Exemption</span>
-                <span className="text-[10px] bg-[#C5A059] text-[#0B3B24] px-1 rounded-xs">Verified</span>
+          {/* Mobile Secondary Actions & Statutory Highlight */}
+          <div className="mt-auto pt-6 border-t border-border-warm space-y-3">
+            <Link
+              href="/volunteer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center transition-colors"
+            >
+              Volunteer &amp; Mentorship
+            </Link>
+
+            <div className="bg-forest text-white p-3 rounded-xs text-xs space-y-1">
+              <div className="flex items-center justify-between text-white font-semibold">
+                <span>State Bank of India</span>
+                <span className="text-[10px] bg-sand text-forest-deep px-1.5 rounded-xs font-bold">Verified A/C</span>
               </div>
-              <p className="text-[11px] text-white/80">
-                URN: {TRUST_CONFIG.statutory.section80GUrn} • 50% Tax Deduction
+              <p className="text-[11px] text-cream font-mono">
+                A/C: {TRUST_CONFIG.bank.accountNumber} • IFSC: {TRUST_CONFIG.bank.ifsc}
               </p>
             </div>
 
             <Link
               href="/donate"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 text-center text-sm font-bold text-white bg-[#D97706] hover:bg-[#B45309] rounded-xs shadow-xs flex items-center justify-center gap-2"
+              className="w-full min-h-[44px] py-3 text-center text-sm font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-forest"
             >
               <Heart className="w-4 h-4 fill-current" aria-hidden="true" />
-              <span>Donate (80G Tax Exemption)</span>
+              <span>Donate Now</span>
             </Link>
           </div>
         </div>

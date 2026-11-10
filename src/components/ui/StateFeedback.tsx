@@ -20,28 +20,28 @@ export function StateFeedback({
 }: StateFeedbackProps) {
   const configs = {
     loading: {
-      icon: <Loader2 className="w-10 h-10 text-[#C5A059] animate-spin" />,
-      containerStyles: "bg-[#FDFBF7] border border-[#0B3B24]/12 text-[#1C2421]",
-      titleStyles: "text-[#072617]",
-      descStyles: "text-[#4A5568]",
+      icon: <Loader2 className="w-10 h-10 text-terracotta animate-spin" />,
+      containerStyles: "bg-white border border-border-warm text-ink",
+      titleStyles: "text-forest",
+      descStyles: "text-ink-secondary",
     },
     error: {
       icon: <AlertCircle className="w-10 h-10 text-red-600" />,
-      containerStyles: "bg-red-50/70 border border-red-200 text-red-950",
+      containerStyles: "bg-red-50/80 border border-red-200 text-red-950",
       titleStyles: "text-red-900",
       descStyles: "text-red-800/90",
     },
     empty: {
-      icon: <Inbox className="w-10 h-10 text-[#C5A059]" />,
-      containerStyles: "bg-[#FDFBF7] border border-dashed border-[#0B3B24]/20 text-[#1C2421]",
-      titleStyles: "text-[#072617]",
-      descStyles: "text-[#4A5568]",
+      icon: <Inbox className="w-10 h-10 text-terracotta" />,
+      containerStyles: "bg-cream border border-dashed border-terracotta/35 text-ink",
+      titleStyles: "text-forest",
+      descStyles: "text-ink-sand",
     },
     success: {
-      icon: <CheckCircle2 className="w-12 h-12 text-[#E4C88A]" />,
-      containerStyles: "bg-[#072617] border border-[#C5A059]/40 text-[#EDE6D8] shadow-lg",
+      icon: <CheckCircle2 className="w-12 h-12 text-sand" />,
+      containerStyles: "bg-forest border border-sand/40 text-cream shadow-lg",
       titleStyles: "text-white",
-      descStyles: "text-white/85",
+      descStyles: "text-cream/90",
     },
   };
 
@@ -60,7 +60,7 @@ export function StateFeedback({
         </h3>
 
         {referenceId && (
-          <p className="text-xs font-mono text-[#E4C88A] bg-black/30 py-1 px-3 rounded-xs inline-block">
+          <p className="text-xs font-mono text-cream bg-forest-deep/60 py-1 px-3 rounded-xs inline-block">
             Registry Ref: #{referenceId}
           </p>
         )}

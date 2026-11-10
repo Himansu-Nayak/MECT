@@ -21,26 +21,26 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] disabled:opacity-50 disabled:pointer-events-none select-none";
+      "inline-flex items-center justify-center font-semibold tracking-tight transition-all duration-200 cursor-pointer rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta disabled:opacity-50 disabled:pointer-events-none select-none";
 
     const variantStyles = {
       primary:
-        "bg-[#0B3B24] text-[#FDFBF7] hover:bg-[#072617] border border-[#0B3B24] shadow-xs hover:shadow-sm active:scale-[0.99]",
+        "bg-terracotta text-white hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark shadow-xs hover:shadow-sm active:scale-[0.99]",
       secondary:
-        "bg-[#F4EFE6] text-[#072617] hover:bg-[#EDE6D8] border border-[#0B3B24]/15 shadow-xs active:scale-[0.99]",
+        "bg-sage text-forest hover:bg-sand border border-border-warm shadow-xs active:scale-[0.99]",
       outline:
-        "border border-[#0B3B24] text-[#0B3B24] hover:bg-[#0B3B24] hover:text-[#FDFBF7] active:scale-[0.99]",
+        "border border-terracotta text-terracotta-dark hover:bg-terracotta-dark hover:text-white active:scale-[0.99]",
       ghost:
-        "text-[#072617] hover:bg-[#0B3B24]/8 hover:text-[#0B3B24] active:bg-[#0B3B24]/12",
+        "text-forest hover:bg-sand-light hover:text-forest-deep active:bg-sand/60",
       gold:
-        "bg-[#C5A059] text-[#072617] hover:bg-[#B38D44] font-semibold border border-[#B38D44]/40 shadow-xs hover:shadow-sm active:scale-[0.99]",
+        "bg-sand text-forest-deep hover:bg-cream hover:text-forest-deep font-semibold border border-terracotta/40 hover:border-terracotta shadow-xs hover:shadow-sm active:scale-[0.99]",
       "dark-outline":
-        "border border-white/30 text-white hover:bg-white/10 hover:border-white/50 active:scale-[0.99]",
+        "border border-cream/55 text-white hover:bg-forest-deep hover:border-sand active:scale-[0.99]",
     };
 
     const sizeStyles = {
-      sm: "text-xs px-3.5 py-1.5 gap-1.5 min-h-[34px]",
-      md: "text-sm px-5 py-2.5 gap-2 min-h-[42px]",
+      sm: "text-xs px-3.5 py-1.5 gap-1.5 min-h-[36px]",
+      md: "text-sm px-5 py-2.5 gap-2 min-h-[44px]",
       lg: "text-base px-6 py-3.5 gap-2.5 min-h-[48px]",
     };
 

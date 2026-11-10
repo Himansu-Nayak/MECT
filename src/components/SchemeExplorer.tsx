@@ -71,7 +71,7 @@ export function SchemeExplorer() {
       title: "Academic & Career Mentorship Circle",
       tagline: "1-to-1 Guidance from University Faculty & Industry Leaders",
       target: "First-generation degree college students across Odisha",
-      criteria: "Enrolled Mahavir Trust grant recipients and university partner referrals.",
+      criteria: "Enrolled MECT grant recipients and university partner referrals.",
       disbursement: "Structured monthly advisory sessions and mock career reviews",
       timeline: "Year-round Volunteer Cohorts",
       coverage: "1-on-1 Faculty Mentorship, Career Roadmaps, Mock Interviews",
@@ -88,17 +88,17 @@ export function SchemeExplorer() {
   return (
     <section
       id="programs"
-      className="py-20 md:py-28 bg-[#FDFBF7] border-y border-[#0B3B24]/10"
+      className="py-20 md:py-28 bg-white border-y border-border-warm"
       aria-label="Institutional Initiatives and Schemes Explorer"
     >
       <Container size="default" className="space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <Badge variant="gold">Institutional Initiatives</Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0B3B24] tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest tracking-tight">
             Academic Grants & Student Support Ecosystem
           </h2>
-          <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
+          <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">
             Explorable educational interventions designed to address critical barriers across a scholar’s journey from higher secondary completion to professional independence.
           </p>
 
@@ -143,46 +143,46 @@ export function SchemeExplorer() {
               <Card
                 key={item.id}
                 variant="elevated"
-                className="p-8 space-y-5 bg-white border-[#0B3B24]/15 hover:border-[#C5A059] transition-all flex flex-col justify-between shadow-xs"
+                className="p-8 space-y-5 bg-cream/35 border-border-warm hover:border-terracotta transition-all flex flex-col justify-between shadow-xs"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <Badge variant="gold" size="sm">
                       {item.badge}
                     </Badge>
-                    <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5" aria-hidden="true" />
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-[#0B3B24]">
+                    <h3 className="font-serif text-2xl font-bold text-forest">
                       {item.title}
                     </h3>
-                    <p className="text-xs font-semibold text-[#7A5E24] mt-0.5">
+                    <p className="text-xs font-semibold text-terracotta-dark mt-0.5">
                       {item.tagline}
                     </p>
                   </div>
 
-                  <p className="text-xs text-[#4A5568] leading-relaxed">
+                  <p className="text-xs text-ink-sand leading-relaxed">
                     {item.criteria}
                   </p>
 
-                  <div className="space-y-2 pt-2 border-t border-[#0B3B24]/10 text-xs text-[#1C2421]">
+                  <div className="space-y-2 pt-2 border-t border-border-warm text-xs text-ink">
                     <div className="flex items-start gap-2">
-                      <ShieldCheck className="w-4 h-4 text-[#0B3B24] shrink-0 mt-0.5" aria-hidden="true" />
+                      <ShieldCheck className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
                       <span>
                         <strong>Disbursement Mode:</strong> {item.disbursement}
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Building2 className="w-4 h-4 text-[#0B3B24] shrink-0 mt-0.5" aria-hidden="true" />
+                      <Building2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
                       <span>
                         <strong>Grant Coverage:</strong> {item.coverage}
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Clock className="w-4 h-4 text-[#0B3B24] shrink-0 mt-0.5" aria-hidden="true" />
+                      <Clock className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
                       <span>
                         <strong>Application Window:</strong> {item.timeline}
                       </span>
@@ -190,12 +190,12 @@ export function SchemeExplorer() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[#0B3B24]/10 flex items-center justify-between">
-                  <span className="text-[11px] text-[#4A5568] font-medium">
+                <div className="pt-4 border-t border-border-warm flex items-center justify-between">
+                  <span className="text-[11px] text-ink-sand font-medium">
                     Statewide Scheme
                   </span>
                   <Link href={item.href}>
-                    <Button variant="outline" size="sm" className="gap-1.5 text-xs">
+                    <Button variant="outline" size="sm" className="gap-1.5 text-xs bg-white">
                       <span>View Guidelines</span>
                       <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                     </Button>

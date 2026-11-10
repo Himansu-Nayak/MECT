@@ -51,12 +51,12 @@ export default function AdminDashboardPage() {
   return (
     <div className="space-y-8">
       {/* Top Welcome Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-warm pb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-[#0B3B24] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-terracotta-dark tracking-tight">
             Secretariat Executive Overview
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          <p className="text-xs sm:text-sm text-ink-sand mt-1">
             Institutional governance summary for {user?.fullName || user?.username} ({user?.role.replace("ROLE_", "")})
           </p>
         </div>
@@ -84,20 +84,20 @@ export default function AdminDashboardPage() {
       {/* KPI Metrics Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Metric 1: Scholarships Demand */}
-        <Card className="p-5 bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col justify-between">
+        <Card className="p-5 bg-white border border-border-warm shadow-sm rounded-2xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Tuition Disbursal Demand</span>
-            <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center">
+            <span className="text-xs font-bold text-ink-sand uppercase tracking-wider">Tuition Disbursal Demand</span>
+            <div className="w-9 h-9 rounded-xl bg-terracotta/10 text-terracotta-dark flex items-center justify-center">
               <Landmark className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="text-2xl font-black text-[#0B3B24]">
+            <div className="text-2xl font-black text-terracotta-dark">
               ₹{stats ? Number(stats.totalDisbursalDemand).toLocaleString("en-IN") : "0"}
             </div>
-            <div className="text-[11px] text-gray-500 mt-1 flex items-center gap-1.5">
+            <div className="text-[11px] text-ink-sand mt-1 flex items-center gap-1.5">
               <span>Disbursed:</span>
-              <span className="font-bold text-emerald-700">
+              <span className="font-bold text-forest">
                 ₹{stats ? Number(stats.totalDisbursedAmount).toLocaleString("en-IN") : "0"}
               </span>
             </div>
@@ -105,53 +105,53 @@ export default function AdminDashboardPage() {
         </Card>
 
         {/* Metric 2: Applications Intake */}
-        <Card className="p-5 bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col justify-between">
+        <Card className="p-5 bg-white border border-border-warm shadow-sm rounded-2xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Scholarship Intake</span>
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center">
+            <span className="text-xs font-bold text-ink-sand uppercase tracking-wider">Scholarship Intake</span>
+            <div className="w-9 h-9 rounded-xl bg-terracotta/10 text-forest flex items-center justify-center">
               <GraduationCap className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="text-2xl font-black text-[#0B3B24]">{stats?.totalScholarships ?? 0}</div>
-            <div className="text-[11px] text-gray-500 mt-1 flex items-center gap-2">
-              <span className="text-amber-700 font-semibold">{stats?.submittedScholarships ?? 0} Pending</span>
+            <div className="text-2xl font-black text-terracotta-dark">{stats?.totalScholarships ?? 0}</div>
+            <div className="text-[11px] text-ink-sand mt-1 flex items-center gap-2">
+              <span className="text-terracotta-dark font-semibold">{stats?.submittedScholarships ?? 0} Pending</span>
               <span>•</span>
-              <span className="text-emerald-700 font-semibold">{stats?.approvedScholarships ?? 0} Approved</span>
+              <span className="text-forest font-semibold">{stats?.approvedScholarships ?? 0} Approved</span>
             </div>
           </div>
         </Card>
 
         {/* Metric 3: Volunteers */}
-        <Card className="p-5 bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col justify-between">
+        <Card className="p-5 bg-white border border-border-warm shadow-sm rounded-2xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">District Volunteers</span>
-            <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-700 flex items-center justify-center">
+            <span className="text-xs font-bold text-ink-sand uppercase tracking-wider">District Volunteers</span>
+            <div className="w-9 h-9 rounded-xl bg-terracotta/10 text-terracotta-dark flex items-center justify-center">
               <Users className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="text-2xl font-black text-[#0B3B24]">{stats?.totalVolunteers ?? 0}</div>
-            <div className="text-[11px] text-gray-500 mt-1 flex items-center gap-2">
-              <span className="text-amber-700 font-semibold">{stats?.pendingVolunteers ?? 0} Awaiting Review</span>
+            <div className="text-2xl font-black text-terracotta-dark">{stats?.totalVolunteers ?? 0}</div>
+            <div className="text-[11px] text-ink-sand mt-1 flex items-center gap-2">
+              <span className="text-terracotta-dark font-semibold">{stats?.pendingVolunteers ?? 0} Awaiting Review</span>
               <span>•</span>
-              <span className="text-emerald-700 font-semibold">{stats?.approvedVolunteers ?? 0} Active</span>
+              <span className="text-forest font-semibold">{stats?.approvedVolunteers ?? 0} Active</span>
             </div>
           </div>
         </Card>
 
         {/* Metric 4: Inquiries & Governance */}
-        <Card className="p-5 bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col justify-between">
+        <Card className="p-5 bg-white border border-border-warm shadow-sm rounded-2xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Public Inquiries</span>
+            <span className="text-xs font-bold text-ink-sand uppercase tracking-wider">Public Inquiries</span>
             <div className="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-700 flex items-center justify-center">
               <MessageSquare className="w-5 h-5" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="text-2xl font-black text-[#0B3B24]">{stats?.totalInquiries ?? 0}</div>
-            <div className="text-[11px] text-gray-500 mt-1">
-              Active Admin Staff: <span className="font-bold text-gray-800">{stats?.totalAdminUsers ?? 1}</span>
+            <div className="text-2xl font-black text-terracotta-dark">{stats?.totalInquiries ?? 0}</div>
+            <div className="text-[11px] text-ink-sand mt-1">
+              Active Admin Staff: <span className="font-bold text-ink">{stats?.totalAdminUsers ?? 1}</span>
             </div>
           </div>
         </Card>
@@ -160,17 +160,17 @@ export default function AdminDashboardPage() {
       {/* Administrative Action Modules */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Module 1: Scholarships Scrutiny */}
-        <Card className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl space-y-4">
+        <Card className="p-6 bg-white border border-border-warm shadow-sm rounded-2xl space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sand-light text-forest flex items-center justify-center">
                 <GraduationCap className="w-4 h-4" />
               </div>
-              <h2 className="text-base font-bold text-[#0B3B24]">Scholarship Scrutiny Desk</h2>
+              <h2 className="text-base font-bold text-terracotta-dark">Scholarship Scrutiny Desk</h2>
             </div>
             <Badge variant="neutral">{stats?.submittedScholarships ?? 0} Pending</Badge>
           </div>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p className="text-xs text-ink-sand leading-relaxed">
             Review student household income certificates, verify college enrolment against institutional demand
             letters, and execute board status approvals with direct college bank remittance.
           </p>
@@ -184,17 +184,17 @@ export default function AdminDashboardPage() {
         </Card>
 
         {/* Module 2: Volunteer Registry */}
-        <Card className="p-6 bg-white border border-gray-200 shadow-sm rounded-2xl space-y-4">
+        <Card className="p-6 bg-white border border-border-warm shadow-sm rounded-2xl space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-sand-light text-forest flex items-center justify-center">
                 <Users className="w-4 h-4" />
               </div>
-              <h2 className="text-base font-bold text-[#0B3B24]">Volunteer Coordination Desk</h2>
+              <h2 className="text-base font-bold text-terracotta-dark">Volunteer Coordination Desk</h2>
             </div>
             <Badge variant="neutral">{stats?.pendingVolunteers ?? 0} Need Orientation</Badge>
           </div>
-          <p className="text-xs text-gray-600 leading-relaxed">
+          <p className="text-xs text-ink-sand leading-relaxed">
             Manage 30-district ground mentors and scholarship intake assistants across Odisha. Transition volunteer
             stages with complete transactional audit recording and optimistic concurrency locking.
           </p>
@@ -209,15 +209,15 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Statutory Architecture Telemetry Box */}
-      <Card className="p-5 bg-gradient-to-r from-emerald-950 to-[#0B3B24] text-white rounded-2xl shadow-md border-0">
+      <Card className="p-5 bg-forest text-white rounded-2xl shadow-md border border-sand/30">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <ShieldCheck className="w-7 h-7 text-amber-400 shrink-0" />
+            <ShieldCheck className="w-7 h-7 text-sand shrink-0" />
             <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-amber-300 block">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-cream block">
                 Statutory Compliance & Audit Integrity
               </span>
-              <p className="text-xs text-emerald-100/90 mt-0.5">
+              <p className="text-xs text-cream/90 mt-0.5">
                 Every administrative state mutation triggers mandatory audit persistence. Disbursals enforce zero-cash
                 handout rules.
               </p>

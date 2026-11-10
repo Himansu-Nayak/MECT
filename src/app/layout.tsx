@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -6,21 +7,42 @@ import { QuickActionDock } from "@/components/QuickActionDock";
 import { HImChatbot } from "@/components/ai/HImChatbot";
 import { TRUST_CONFIG } from "@/lib/config";
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const loraSerif = Lora({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://mect.org.in"),
   title: {
-    default: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013) • Odisha",
-    template: "%s | MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+    default: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust • Odisha",
+    template: "%s | Mahaveer Educational & Charitable Trust (MECT)",
   },
   description:
     "Official website of Mahaveer Educational & Charitable Trust (MECT), Odisha. Explore our work in education, women's livelihoods, safe water, nutrition and community welfare, alongside governance and statutory disclosures.",
   keywords: [
     "Mahaveer Educational & Charitable Trust",
     "MECT Odisha",
-    "Mahavir Trust Balangir",
-    "Mahavir Trust Bhubaneswar",
+    "MECT Balangir",
+    "MECT Bhubaneswar",
     "80G Tax Exemption Donation Odisha",
-    "MCA CSR-1 Registered Trust Odisha",
+    "Schedule VII CSR Registered Trust Odisha",
     "NITI Aayog NGO Darpan Odisha",
     "Community Development NGO Odisha",
     "Women Empowerment & Livelihood Odisha",
@@ -36,17 +58,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "MAHAVIR TRUST (MECT) — Registered Public Charitable Trust (Est. 2013)",
+    title: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust",
     description:
       "A registered charitable trust rooted in Odisha, working across education, women's livelihoods, safe water, nutrition and community welfare.",
     url: "https://mect.org.in",
-    siteName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)",
+    siteName: "Mahaveer Educational & Charitable Trust (MECT)",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MAHAVIR TRUST (MECT) — Fiduciary Philanthropy & Education in Odisha",
+    title: "Mahaveer Educational & Charitable Trust (MECT) — Fiduciary Philanthropy & Education in Odisha",
     description:
       "A multi-sector charitable development organisation supporting education, livelihoods, safe water, nutrition and community wellbeing across Odisha.",
   },
@@ -67,9 +89,9 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: "Mahaveer Educational & Charitable Trust",
-  alternateName: ["MAHAVIR TRUST", "MECT ODISHA", "MECT"],
+  alternateName: ["MECT", "MECT Odisha"],
   url: "https://mect.org.in",
-  logo: "https://mect.org.in/logo.png",
+  logo: "https://mect.org.in/images/mect-official-emblem.png",
   description:
     "A registered public charitable trust established on 27th July 2013, working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
   foundingDate: "2013-07-27",
@@ -92,7 +114,7 @@ const organizationJsonLd = {
     },
     {
       "@type": "PropertyValue",
-      name: "Ministry of Corporate Affairs CSR Registration",
+      name: "CSR Registration Number",
       value: "CSR00081063",
     },
     {
@@ -144,20 +166,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${loraSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1C2421] selection:bg-[#C5A059] selection:text-[#0B3B24]">
+      <body className="min-h-screen flex flex-col bg-cream text-ink font-sans antialiased selection:bg-sand selection:text-forest-deep">
         {/* WCAG 2.2 AA Accessible Skip Link */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="flex-1 focus:outline-none">
+        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
           {children}
         </main>
         <QuickActionDock />

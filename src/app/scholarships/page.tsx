@@ -19,9 +19,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Scholarship Grants, Schemes & Appraisal Norms — MAHAVIR TRUST",
+  title: "Scholarship Grants, Schemes & Appraisal Norms",
   description:
-    "Explore higher education tuition grants, STEM fellowships, scheme comparison matrices, required document checklists, and application roadmaps for Odisha students.",
+    "Explore higher education tuition grants, scheme comparison matrices, required document checklists, and application guidelines for Odisha students.",
+  alternates: { canonical: "/scholarships" },
 };
 
 export default function ScholarshipsPage() {
@@ -131,7 +132,7 @@ export default function ScholarshipsPage() {
     {
       question: "Can students already receiving government scholarships (like e-Medhabruti) apply?",
       answer:
-        "Yes. MAHAVIR TRUST grants are designed to complement, not duplicate, existing public subsidies. If state or central assistance covers only a fraction of college expenses, our committee reviews the remaining documented tuition and textbook shortfall under our supplementary grant norms.",
+        "Yes. MECT grants are designed to complement, not duplicate, existing public subsidies. If state or central assistance covers only a fraction of college expenses, our committee reviews the remaining documented tuition and textbook shortfall under our supplementary grant norms.",
     },
     {
       question: "How is the scholarship fee disbursed?",
@@ -139,9 +140,9 @@ export default function ScholarshipsPage() {
         "Under our strict fiduciary charter, 100% of approved tuition fee assistance is remitted directly via bank RTGS/NEFT to the accredited college or university account where the scholar is enrolled. No cash is ever transferred to students, family members, or third-party intermediaries.",
     },
     {
-      question: "Are there any application or registration fees charged by MAHAVIR TRUST?",
+      question: "Are there any application or registration fees charged by MECT?",
       answer:
-        "None whatsoever. All scholarship application processing, verification, and mentorship support provided by MAHAVIR TRUST are 100% free of cost. The Trust strictly forbids any agent, college liaison, or staff member from demanding money.",
+        "None whatsoever. All scholarship application processing, verification, and mentorship support provided by MECT are 100% free of cost. The Trust strictly forbids any agent, college liaison, or staff member from demanding money.",
     },
     {
       question: "What happens if a student transfers to a different college or degree program?",
@@ -181,7 +182,7 @@ export default function ScholarshipsPage() {
       />
 
       {/* 2. Scheme Comparison Matrix */}
-      <section id="comparison" className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section id="comparison" className="py-20 md:py-28 bg-cream">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Programmatic Matrix"
@@ -192,40 +193,40 @@ export default function ScholarshipsPage() {
           />
 
           {/* Desktop Responsive Table */}
-          <div className="overflow-x-auto bg-white rounded-xs border border-[#0B3B24]/15 shadow-xs">
+          <div className="overflow-x-auto bg-white rounded-xs border border-border-warm shadow-xs">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#072617] text-[#EDE6D8] border-b border-[#C5A059]/30">
+                <tr className="bg-forest text-cream border-b border-sand/30">
                   <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4">
                     Feature / Evaluation Criterion
                   </th>
-                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-[#E4C88A]">
+                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-cream">
                     Shiksha Protsahan Yojana (Tuition Grants)
                   </th>
-                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-[#E4C88A]">
+                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-cream">
                     Pratibha Fellowship (STEM & Entrance)
                   </th>
-                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-[#E4C88A]">
+                  <th scope="col" className="p-4 sm:p-5 font-serif font-bold text-sm w-1/4 text-cream">
                     Project Samarth (Study Hubs)
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#0B3B24]/10 text-[#1C2421]">
+              <tbody className="divide-y divide-border-warm text-ink">
                 {schemeComparison.map((row, idx) => (
                   <tr
                     key={row.feature}
-                    className={idx % 2 === 0 ? "bg-[#FDFBF7]" : "bg-white"}
+                    className={idx % 2 === 0 ? "bg-cream" : "bg-white"}
                   >
-                    <td className="p-4 sm:p-5 font-bold text-[#0B3B24] align-top bg-[#F4EFE6]/50">
+                    <td className="p-4 sm:p-5 font-bold text-forest align-top bg-sand-light/50">
                       {row.feature}
                     </td>
-                    <td className="p-4 sm:p-5 align-top leading-relaxed text-[#4A5568]">
+                    <td className="p-4 sm:p-5 align-top leading-relaxed text-ink-sand">
                       {row.protsahan}
                     </td>
-                    <td className="p-4 sm:p-5 align-top leading-relaxed text-[#4A5568]">
+                    <td className="p-4 sm:p-5 align-top leading-relaxed text-ink-sand">
                       {row.pratibha}
                     </td>
-                    <td className="p-4 sm:p-5 align-top leading-relaxed text-[#4A5568]">
+                    <td className="p-4 sm:p-5 align-top leading-relaxed text-ink-sand">
                       {row.samarth}
                     </td>
                   </tr>
@@ -234,14 +235,14 @@ export default function ScholarshipsPage() {
             </table>
           </div>
 
-          <p className="text-[11px] text-[#4A5568] text-center italic">
+          <p className="text-[11px] text-ink-sand text-center italic">
             Note: All eligibility thresholds represent draft proposals pending final gazetted formalization by the Trustee Board ahead of the inaugural academic cycle.
           </p>
         </Container>
       </section>
 
       {/* 3. Four-Step Application & Appraisal Workflow */}
-      <section className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10">
+      <section className="py-20 bg-sand-light border-y border-border-warm">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Standardized Journey"
@@ -261,22 +262,22 @@ export default function ScholarshipsPage() {
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="w-8 h-8 rounded-full bg-[#0B3B24] text-[#E4C88A] font-serif font-bold text-sm flex items-center justify-center shadow-xs">
+                    <span className="w-8 h-8 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center shadow-xs">
                       {step.step}
                     </span>
                     <Badge variant="neutral" className="text-[10px]">
                       Phase {step.step}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-[#4A5568] leading-relaxed">
+                  <p className="text-xs text-ink-sand leading-relaxed">
                     {step.description}
                   </p>
                 </div>
-                <div className="pt-3 border-t border-[#0B3B24]/8 text-[11px] font-medium text-[#0B3B24]/80 flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                <div className="pt-3 border-t border-terracotta/8 text-[11px] font-medium text-terracotta-dark/80 flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-forest shrink-0" />
                   <span>{step.detail}</span>
                 </div>
               </Card>
@@ -286,7 +287,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* 4. Required Document Checklist */}
-      <section id="checklist" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
+      <section id="checklist" className="py-20 md:py-28 bg-cream border-b border-border-warm">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Application Preparedness"
@@ -306,19 +307,19 @@ export default function ScholarshipsPage() {
                   padding="lg"
                   className="space-y-5"
                 >
-                  <div className="flex items-center gap-3 pb-3 border-b border-[#0B3B24]/10">
-                    <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-3 pb-3 border-b border-border-warm">
+                    <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
+                    <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                       {group.category}
                     </h3>
                   </div>
 
                   <ul className="space-y-3">
                     {group.items.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#4A5568]">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-ink-sand">
+                        <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
                         <span className="leading-snug">{item}</span>
                       </li>
                     ))}
@@ -335,10 +336,10 @@ export default function ScholarshipsPage() {
             className="flex flex-col md:flex-row items-center justify-between gap-5 text-xs"
           >
             <div className="space-y-1">
-              <span className="font-bold text-[#0B3B24] uppercase tracking-wider block">
+              <span className="font-bold text-terracotta-dark uppercase tracking-wider block">
                 Verification Safeguard
               </span>
-              <p className="text-[#4A5568] leading-relaxed">
+              <p className="text-ink-sand leading-relaxed">
                 All submitted revenue certificates are validated against digital state land and revenue authority databases. Submission of forged documentation results in immediate disqualification and regulatory reporting.
               </p>
             </div>
@@ -352,7 +353,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* 5. Frequently Asked Questions */}
-      <section className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
+      <section className="py-20 bg-sand-light border-b border-border-warm">
         <Container size="narrow" className="space-y-12">
           <SectionHeader
             badge="Student Guidance"
@@ -376,7 +377,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* 6. Call to Action Strip */}
-      <section className="py-16 bg-[#072617] text-[#EDE6D8]">
+      <section className="py-16 bg-forest text-cream">
         <Container
           size="default"
           className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left"

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact MAHAVIR TRUST Secretariat",
+    title: "Contact MECT Secretariat",
     description:
       "Connect with the administrative inquiry desk for higher education grants, academic mentorship, and college coordination in Odisha.",
     url: "https://mect.org.in/contact",

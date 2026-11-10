@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
 
 export interface BreadcrumbItem {
   label: string;
@@ -21,6 +20,7 @@ export interface PageHeroProps {
     | "contrast-gold"
     | "forest"
     | "forest-dark"
+    | "terracotta"
     | "neutral"
     | "success"
     | "warning"
@@ -28,22 +28,16 @@ export interface PageHeroProps {
 }
 
 export function PageHero({
-  badge,
   title,
   description,
   breadcrumbs,
   actions,
-  badgeVariant = "gold-dark",
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-[#072617] text-[#EDE6D8] pt-12 pb-16 md:pt-16 md:pb-20 border-b border-[#C5A059]/20">
-      {/* Background Grid Pattern & Ambient Gold Glow */}
+    <section className="relative overflow-hidden bg-forest text-cream pt-12 pb-16 md:pt-16 md:pb-20 border-b border-terracotta/50">
+      {/* Subtle Architectural Texture Pattern */}
       <div
-        className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -top-24 -right-24 w-80 h-80 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#E5C499_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
         aria-hidden="true"
       />
 
@@ -52,7 +46,7 @@ export function PageHero({
           {/* Accessible Structured Breadcrumbs */}
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center space-x-2 text-xs text-white/70 flex-wrap"
+            className="flex items-center space-x-2 text-xs text-cream/90 flex-wrap"
           >
             <ol
               className="flex items-center space-x-2 flex-wrap"
@@ -68,7 +62,7 @@ export function PageHero({
                 <Link
                   href="/"
                   itemProp="item"
-                  className="flex items-center gap-1 hover:text-[#E4C88A] transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                  className="flex items-center gap-1 hover:text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
                   <Home className="w-3.5 h-3.5" aria-hidden="true" />
                   <span itemProp="name">Home</span>
@@ -87,20 +81,20 @@ export function PageHero({
                     className="flex items-center space-x-2"
                   >
                     <ChevronRight
-                      className="w-3 h-3 text-white/40 shrink-0"
+                      className="w-3 h-3 text-cream/50 shrink-0"
                       aria-hidden="true"
                     />
                     {item.href ? (
                       <Link
                         href={item.href}
                         itemProp="item"
-                        className="hover:text-[#E4C88A] transition-colors focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                        className="hover:text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                       >
                         <span itemProp="name">{item.label}</span>
                       </Link>
                     ) : (
                       <span
-                        className="text-[#E4C88A] font-medium"
+                        className="text-white font-medium"
                         aria-current="page"
                         itemProp="name"
                       >
@@ -114,23 +108,12 @@ export function PageHero({
             </ol>
           </nav>
 
-          {/* Title, Badge & Subtext */}
+          {/* Title & Subtext */}
           <div className="max-w-3xl space-y-4">
-            {badge && (
-              <div>
-                {typeof badge === "string" ? (
-                  <Badge variant={badgeVariant} size="md">
-                    {badge}
-                  </Badge>
-                ) : (
-                  badge
-                )}
-              </div>
-            )}
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-white tracking-tight leading-[1.12]">
               {title}
             </h1>
-            <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-cream leading-relaxed font-sans max-w-2xl">
               {description}
             </p>
             {actions && <div className="pt-2 flex flex-wrap gap-3">{actions}</div>}

@@ -21,9 +21,7 @@ assert(impactContent.includes("350+ Students"), "Impact page highlights 350+ rem
 assert(impactContent.includes("120+ Women Skilled"), "Impact page highlights 120+ skilled rural women");
 assert(impactContent.includes("10,000+ Citizens Served"), "Impact page highlights 10,000+ water beneficiaries");
 assert(impactContent.includes("Daily Meal Distribution"), "Impact page highlights Jan Ahar hospital nutrition");
-assert(impactContent.includes("Puintala Block, Balangir District"), "Features authentic Puintala case study");
-assert(impactContent.includes("Rugudipara Training Centre, Balangir"), "Features authentic Rugudipara tailoring case study");
-assert(impactContent.includes("Balangir Bus Terminus & District Hospital"), "Features authentic Jal Seva hospital case study");
+assert(!impactContent.includes("Ground-Level Stories") && !impactContent.includes("groundCaseStudies"), "Impact page removes unverified Stories / Case Studies section per Phase 7.3");
 assert(impactContent.includes("Western Operational Hub"), "Features Western Operational Hub with Balangir HQ");
 assert(impactContent.includes("Central & Capital Liaison Corridor"), "Features Central & Capital Corridor with Bhubaneswar Secretariat");
 assert(impactContent.includes("/reports"), "Impact page links to /reports archive");
