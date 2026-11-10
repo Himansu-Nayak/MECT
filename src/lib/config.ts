@@ -222,6 +222,12 @@ export const TRUST_CONFIG = {
           badge: "SBI Verified",
         },
         {
+          label: "Donor & Supporter Portal",
+          href: "/portal/login",
+          description: "OTP login, donation history, official PDF receipts, and consent preferences.",
+          badge: "OTP Portal",
+        },
+        {
           label: "Volunteer & Mentor",
           href: "/volunteer",
           description: "Contribute teaching, mentoring, vocational training, or field support.",

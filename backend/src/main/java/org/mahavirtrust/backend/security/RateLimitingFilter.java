@@ -37,8 +37,8 @@ public class RateLimitingFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // Rate limit only public submission endpoints to stop spam and flood attacks
-        if (path.contains("/public/")) {
+        // Rate limit public submission & OTP endpoints to stop spam and flood attacks
+        if (path.contains("/public/") || path.contains("/portal/auth/")) {
             String clientIp = getClientIp(request);
             long currentMinute = Instant.now().getEpochSecond() / 60;
 

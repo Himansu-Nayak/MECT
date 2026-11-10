@@ -77,9 +77,14 @@ public class SecurityConfig {
                 .requestMatchers("/actuator/health", "/actuator/info").permitAll()
                 .requestMatchers("/health").permitAll()
                 .requestMatchers("/public/**").permitAll()
+                .requestMatchers("/webhooks/**").permitAll()
                 .requestMatchers("/auth/login", "/auth/refresh").permitAll()
+                .requestMatchers("/portal/auth/request-otp", "/portal/auth/verify-otp", "/portal/auth/refresh").permitAll()
+                .requestMatchers("/portal/**").hasAnyRole("GENERAL_USER", "DONOR")
                 .requestMatchers("/auth/logout", "/auth/me").authenticated()
-                .requestMatchers("/admin/**").authenticated()
+                .requestMatchers("/admin/**").hasAnyRole(
+                        "SUPER_ADMIN", "TRUSTEE", "ADMIN", "APPLICATION_REVIEWER", "FINANCE_OFFICER", "VOLUNTEER_COORDINATOR"
+                )
                 .anyRequest().authenticated()
             )
             .addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)

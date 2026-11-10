@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
+import { SmartDonationCheckout } from "@/components/sections/SmartDonationCheckout";
 import {
   ShieldCheck,
   CheckCircle2,
@@ -141,6 +142,13 @@ export default function DonatePage() {
               <span className="text-forest font-semibold">Covered AY 2024-25 to AY 2026-27</span>
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* 2B. Smart Unified Donation Checkout & Dynamic UPI QR */}
+      <section id="smart-donate" className="py-16 md:py-20 bg-cream border-b border-border-warm">
+        <Container size="default">
+          <SmartDonationCheckout />
         </Container>
       </section>
 

@@ -54,3 +54,40 @@ app:
     secret: ${JWT_SECRET:mahavir-trust-institutional-secret-key-must-be-at-least-256-bits-long-2026}
     access-token-validity-seconds: ${JWT_ACCESS_VALIDITY:900}
     refresh-token-validity-seconds: ${JWT_REFRESH_VALIDITY:604800}
+  otp:
+    expiry-seconds: ${OTP_EXPIRY_SECONDS:600}
+    resend-cooldown-seconds: ${OTP_RESEND_COOLDOWN_SECONDS:60}
+    max-attempts: ${OTP_MAX_ATTEMPTS:5}
+    pepper: ${OTP_HASH_PEPPER:mect-otp-default-dev-pepper-override-in-prod}
+  resend:
+    api-key: ${RESEND_API_KEY:}
+    base-url: ${RESEND_BASE_URL:https://api.resend.com}
+    from-notifications: ${RESEND_FROM_NOTIFICATIONS:MECT Notifications <notifications@mect.org.in>}
+    from-donations: ${RESEND_FROM_DONATIONS:MECT Donations <donations@mect.org.in>}
+    webhook-secret: ${RESEND_WEBHOOK_SECRET:}
+    public-base-url: ${APP_PUBLIC_BASE_URL:https://mect.org.in}
+  sms:
+    provider: ${SMS_PROVIDER:NONE}
+    twilio-account-sid: ${TWILIO_ACCOUNT_SID:}
+    twilio-auth-token: ${TWILIO_AUTH_TOKEN:}
+    twilio-from-number: ${TWILIO_FROM_NUMBER:}
+    msg91-auth-key: ${MSG91_AUTH_KEY:}
+    msg91-template-id: ${MSG91_TEMPLATE_ID:}
+  payment:
+    provider: ${PAYMENT_PROVIDER:RAZORPAY}
+    sandbox-mode: ${PAYMENT_SANDBOX_MODE:false}
+    razorpay-key-id: ${RAZORPAY_KEY_ID:}
+    razorpay-key-secret: ${RAZORPAY_KEY_SECRET:}
+    razorpay-webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:}
+    qr-expiry-minutes: ${PAYMENT_QR_EXPIRY_MINUTES:15}
+  whatsapp:
+    provider: ${WHATSAPP_PROVIDER:NONE}
+    api-version: ${WHATSAPP_API_VERSION:v21.0}
+    phone-number-id: ${WHATSAPP_PHONE_NUMBER_ID:}
+    access-token: ${WHATSAPP_ACCESS_TOKEN:}
+    verify-token: ${WHATSAPP_WEBHOOK_VERIFY_TOKEN:}
+    app-secret: ${WHATSAPP_APP_SECRET:}
+    welcome-template: ${WHATSAPP_TEMPLATE_WELCOME:}
+    donation-template: ${WHATSAPP_TEMPLATE_DONATION:}
+  scheduling:
+    enabled: ${SCHEDULING_ENABLED:true}

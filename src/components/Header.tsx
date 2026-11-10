@@ -14,6 +14,7 @@ import {
   ChevronDown,
   ArrowRight,
   Heart,
+  UserCheck,
 } from "lucide-react";
 
 export function Header() {
@@ -257,19 +258,22 @@ export function Header() {
             </div>
 
             {/* Desktop Direct Action Buttons — Approved Terracotta & Forest Charcoal Palette */}
-            <div className="hidden lg:flex items-center space-x-2 shrink-0">
+            <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-2 shrink-0">
               <Link
-                href="/volunteer"
-                className="hidden xl:inline-flex px-2.5 2xl:px-3.5 py-2 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta"
+                href="/portal/login"
+                aria-label="Donor Portal"
+                className="px-2 2xl:px-3.5 py-2 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
               >
-                Volunteer
+                <UserCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
+                <span><span className="hidden xl:inline">Donor </span>Portal</span>
               </Link>
               <Link
                 href="/donate"
-                className="px-3.5 2xl:px-4 py-2 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
+                aria-label="Donate Now"
+                className="px-2.5 xl:px-3.5 2xl:px-4 py-2 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
-                <span>Donate Now</span>
+                <span>Donate<span className="hidden xl:inline"> Now</span></span>
               </Link>
             </div>
 
@@ -379,13 +383,23 @@ export function Header() {
 
           {/* Mobile Secondary Actions & Statutory Highlight */}
           <div className="mt-auto pt-6 border-t border-border-warm space-y-3">
-            <Link
-              href="/volunteer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center transition-colors"
-            >
-              Volunteer &amp; Mentorship
-            </Link>
+            <div className="grid grid-cols-2 gap-2">
+              <Link
+                href="/portal/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center gap-1.5 transition-colors"
+              >
+                <UserCheck className="w-3.5 h-3.5 text-terracotta" aria-hidden="true" />
+                <span>Donor Portal</span>
+              </Link>
+              <Link
+                href="/volunteer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center transition-colors"
+              >
+                Volunteer
+              </Link>
+            </div>
 
             <div className="bg-forest text-white p-3 rounded-xs text-xs space-y-1">
               <div className="flex items-center justify-between text-white font-semibold">

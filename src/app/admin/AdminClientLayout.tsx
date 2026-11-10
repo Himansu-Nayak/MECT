@@ -11,6 +11,7 @@ import {
   MessageSquare,
   ShieldAlert,
   UserCog,
+  HandHeart,
   LogOut,
   ExternalLink,
   Shield,
@@ -55,6 +56,7 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
 
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { label: "Donors & Ledger", href: "/admin/donors", icon: HandHeart },
     { label: "Scholarships", href: "/admin/scholarships", icon: GraduationCap },
     { label: "Volunteers", href: "/admin/volunteers", icon: Users },
     { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
