@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   Heart,
@@ -15,14 +15,52 @@ import { TRUST_CONFIG } from "@/lib/config";
 
 export function QuickActionDock() {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  // Close mobile dock on Escape key press
+  // Manage focus and scroll lock when mobile sheet opens/closes
   useEffect(() => {
+    if (isOpen) {
+      previousActiveElement.current = document.activeElement as HTMLElement;
+      // Focus first link in modal sheet
+      const timer = setTimeout(() => {
+        const firstLink = modalRef.current?.querySelector<HTMLElement>("a, button");
+        firstLink?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    } else if (previousActiveElement.current) {
+      previousActiveElement.current.focus();
+      previousActiveElement.current = null;
+    }
+  }, [isOpen]);
+
+  // Trap focus inside mobile sheet and handle Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === "Escape") {
         setIsOpen(false);
+        return;
+      }
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>("a, button");
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
@@ -30,39 +68,39 @@ export function QuickActionDock() {
   const quickLinks = [
     {
       href: "/donate",
-      label: "Donate (80G)",
-      subtext: "50% Tax Deduction",
+      label: "Donate Now",
+      subtext: "SBI • Direct Transfer",
       icon: Heart,
-      iconColor: "text-[#D97706]",
+      iconColor: "text-white",
       highlight: true,
     },
     {
       href: "/csr-partnerships",
       label: "CSR Partnerships",
-      subtext: "MCA Reg CSR00081063",
+      subtext: "Schedule VII Projects",
       icon: Briefcase,
-      iconColor: "text-[#E4C88A]",
+      iconColor: "text-cream",
     },
     {
       href: "/statutory-disclosures",
       label: "Statutory Vault",
       subtext: "12A, 80G, Darpan",
       icon: ShieldCheck,
-      iconColor: "text-[#E4C88A]",
+      iconColor: "text-cream",
     },
     {
       href: "/volunteer",
       label: "Join as Volunteer",
       subtext: "Mentor & Support",
       icon: Users,
-      iconColor: "text-[#E4C88A]",
+      iconColor: "text-cream",
     },
     {
       href: `tel:${TRUST_CONFIG.contact.phones.helpline}`,
       label: "Secretariat Desk",
       subtext: TRUST_CONFIG.contact.phones.helpline,
       icon: PhoneCall,
-      iconColor: "text-[#E4C88A]",
+      iconColor: "text-cream",
     },
   ];
 
@@ -70,7 +108,7 @@ export function QuickActionDock() {
     <>
       {/* Desktop Floating Right Ribbon Dock (print:hidden) */}
       <aside
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-[#0B3B24]/95 backdrop-blur-md border-l border-y border-[#C5A059]/40 rounded-l-md shadow-2xl overflow-hidden py-1 transition-all print:hidden"
+        className="group/dock fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col w-[52px] hover:w-[228px] focus-within:w-[228px] bg-forest border-l border-y border-sand/35 rounded-l-md shadow-2xl overflow-hidden py-1 transition-all duration-200 print:hidden"
         aria-label="Institutional Quick Actions Dock"
       >
         {quickLinks.map((item, idx) => {
@@ -79,21 +117,24 @@ export function QuickActionDock() {
             <Link
               key={idx}
               href={item.href}
-              className={`flex items-center gap-3 px-3.5 py-2.5 text-white/90 hover:text-[#E4C88A] hover:bg-white/5 transition-colors group relative border-b border-white/5 last:border-b-0 focus-visible:outline-2 focus-visible:outline-[#C5A059] ${
-                item.highlight ? "bg-[#D97706]/10" : ""
+              className={`flex items-center gap-3 px-2.5 py-2.5 text-white hover:text-cream hover:bg-terracotta/40 transition-colors group relative border-b border-white/10 last:border-b-0 focus-visible:outline-2 focus-visible:outline-sand whitespace-nowrap ${
+                item.highlight ? "bg-terracotta hover:bg-terracotta-dark" : ""
               }`}
               title={`${item.label} — ${item.subtext}`}
+              aria-label={`${item.label} — ${item.subtext}`}
             >
               <div
-                className={`w-8 h-8 rounded-xs bg-[#072617] border border-[#C5A059]/30 flex items-center justify-center ${item.iconColor} group-hover:scale-105 transition-transform shrink-0`}
+                className={`w-8 h-8 rounded-xs ${
+                  item.highlight ? "bg-terracotta-dark border-sand/50" : "bg-forest-deep border-sand/30"
+                } border flex items-center justify-center ${item.iconColor} group-hover:scale-105 transition-transform shrink-0`}
               >
                 <Icon className="w-4 h-4" aria-hidden="true" />
               </div>
-              <div className="flex flex-col pr-2">
-                <span className="text-xs font-semibold tracking-wide leading-tight text-white group-hover:text-[#E4C88A]">
+              <div className="hidden group-hover/dock:flex group-focus-within/dock:flex flex-col pr-2">
+                <span className="text-xs font-semibold tracking-wide leading-tight text-white group-hover:text-sand">
                   {item.label}
                 </span>
-                <span className="text-[10px] text-white/60 font-sans">
+                <span className="text-[10px] text-cream/85 font-sans">
                   {item.subtext}
                 </span>
               </div>
@@ -106,37 +147,51 @@ export function QuickActionDock() {
       <div className="xl:hidden print:hidden">
         {isOpen && (
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 transition-opacity animate-in fade-in duration-200"
+            className="fixed inset-0 bg-forest-deep/55 backdrop-blur-xs z-40 transition-opacity animate-in fade-in duration-200"
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
         )}
 
-        <div className="fixed bottom-6 right-5 z-50">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-5 z-50">
           <button
+            ref={triggerRef}
             onClick={() => setIsOpen(!isOpen)}
-            className="w-12 h-12 rounded-full bg-[#0B3B24] text-[#E4C88A] border-2 border-[#C5A059] shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-[#C5A059] hover:scale-105 transition-transform"
+            className="w-12 h-12 min-h-[44px] min-w-[44px] rounded-full bg-terracotta hover:bg-terracotta-dark text-white border-2 border-sand shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand hover:scale-105 active:scale-95 transition-transform"
             aria-expanded={isOpen}
+            aria-haspopup="true"
+            aria-controls="mobile-quick-actions-sheet"
             aria-label={isOpen ? "Close quick actions menu" : "Open quick actions menu"}
           >
             {isOpen ? (
               <X className="w-5 h-5 text-white" aria-hidden="true" />
             ) : (
-              <Layers className="w-5 h-5 text-[#E4C88A]" aria-hidden="true" />
+              <Layers className="w-5 h-5 text-cream" aria-hidden="true" />
             )}
           </button>
         </div>
 
         {isOpen && (
           <div
-            className="fixed bottom-20 right-5 w-72 bg-[#0B3B24] text-white border border-[#C5A059]/40 rounded-md shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150"
-            role="menu"
+            ref={modalRef}
+            id="mobile-quick-actions-sheet"
+            className="fixed bottom-18 sm:bottom-20 right-4 sm:right-5 w-[calc(100vw-2rem)] max-w-xs bg-forest text-cream border border-sand/40 rounded-md shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150"
+            role="dialog"
+            aria-modal="true"
             aria-label="Mobile Quick Access Services"
           >
-            <div className="px-2 py-1.5 border-b border-white/10 mb-2">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-[#C5A059]">
+            <div className="px-2 py-1.5 border-b border-white/15 mb-2 flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-sand">
                 Quick Institutional Access
               </span>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="text-cream/75 hover:text-white p-1 rounded-xs"
+                aria-label="Close quick actions panel"
+              >
+                <X className="w-3.5 h-3.5" aria-hidden="true" />
+              </button>
             </div>
             <div className="space-y-1">
               {quickLinks.map((item, idx) => {
@@ -146,16 +201,16 @@ export function QuickActionDock() {
                     key={idx}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 p-2 rounded-xs hover:bg-white/5 transition-colors"
+                    className="flex items-center gap-3 p-2.5 min-h-[44px] rounded-xs hover:bg-forest-deep/70 transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                   >
-                    <div className="w-7 h-7 rounded-xs bg-[#072617] border border-[#C5A059]/30 flex items-center justify-center text-[#E4C88A] shrink-0">
+                    <div className="w-7 h-7 rounded-xs bg-terracotta border border-sand/30 flex items-center justify-center text-white shrink-0">
                       <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs font-semibold text-white">
                         {item.label}
                       </span>
-                      <span className="text-[10px] text-white/60">
+                      <span className="text-[10px] text-cream/80">
                         {item.subtext}
                       </span>
                     </div>

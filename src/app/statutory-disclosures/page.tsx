@@ -28,9 +28,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Statutory Disclosures, 12A/80G & MCA CSR-1 Vault — MECT",
+  title: "Statutory Disclosures, 12A/80G & Regulatory Vault",
   description:
-    "Official Government registrations, Section 12A & 80G Income Tax exemption orders, MCA CSR-1 registration, NITI Aayog Darpan ID, and 2013 registered Trust Deed for Mahaveer Educational & Charitable Trust.",
+    "Verified Government registrations, Section 12A & 80G Form 10AC historical orders, CSR registration CSR00081063, NITI Aayog Darpan ID, and 2013 Trust Deed for MECT.",
+  alternates: { canonical: "/statutory-disclosures" },
 };
 
 export default function StatutoryDisclosuresPage() {
@@ -87,22 +88,22 @@ export default function StatutoryDisclosuresPage() {
       dateValue: "29-01-2024 (AY 2024-25 to AY 2026-27)",
       status: "50% Tax Deduction Eligible",
       description:
-        "Formal order issued under Section 80G(5)(iv) of the Income Tax Act, 1961 (DIN: AADTM5474FF2024101). Entitles Indian individual and corporate donors to claim a 50% deduction on taxable income for contributions.",
+        "Formal order issued under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: AADTM5474FF20241, DIN: AADTM5474FF2024101). Covered donations made in FY 2023-24 through FY 2025-26 (AY 2024-25 to AY 2026-27) for 50% deduction under the Old Tax Regime. Under the Income-tax Act, 2025, applications and examination orders for eligible donations are governed by Section 354 (Form 105 and Form 107) read with Section 536 repeal, savings and transition provisions. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
       badge: "80G Tax Deductible",
       icon: Heart,
     },
     {
       category: "Corporate Social Responsibility (CSR)",
-      title: "MCA Form CSR-1 Registration",
-      authority: "Ministry of Corporate Affairs, Government of India",
+      title: "CSR Registration",
+      authority: "Registrar of Companies, New Delhi",
       identifierLabel: "CSR Registration Number",
       identifierValue: TRUST_CONFIG.statutory.mcaCsrNumber,
       dateLabel: "Approval Date & Filing Reference",
-      dateValue: "09-11-2024 (ROC-DELHI, SRN-N14617237)",
-      status: "Approved for CSR Allocations",
+      dateValue: "09-11-2024 (SRN-N14617237)",
+      status: "Registered for CSR Allocations",
       description:
-        "Registered under Section 135 of the Companies Act, 2013 and Companies (CSR Policy) Rules. Formally certifies MECT to execute corporate CSR projects and receive corporate CSR grants.",
-      badge: "MCA CSR-1 Certified",
+        "Registered under Section 135 of the Companies Act, 2013 and Companies (CSR Policy) Rules for undertaking CSR activities and partnerships.",
+      badge: "CSR Registered",
       icon: Briefcase,
     },
     {
@@ -153,7 +154,7 @@ export default function StatutoryDisclosuresPage() {
             </Link>
             <Link href="#tax-benefit">
               <Button variant="dark-outline" size="sm">
-                <Heart className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" aria-hidden="true" />
+                <Heart className="w-3.5 h-3.5 mr-1 text-cream" aria-hidden="true" />
                 <span>80G Tax Guide</span>
               </Button>
             </Link>
@@ -162,23 +163,23 @@ export default function StatutoryDisclosuresPage() {
       />
 
       {/* 2. Top Fiduciary Summary Banner */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
+      <section className="py-8 bg-sand-light border-b border-border-warm">
         <Container size="default">
-          <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="p-6 bg-white rounded-xs border-2 border-sand/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+              <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-sand" aria-hidden="true" />
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <Badge variant="forest" size="sm">
                     Statutory Compliance Standard
                   </Badge>
-                  <span className="text-xs text-[#0B3B24] font-bold">
+                  <span className="text-xs text-terracotta-dark font-bold">
                     100% Direct Remittance • Zero Intermediary Interventions
                   </span>
                 </div>
-                <p className="text-xs text-[#4A5568] mt-1.5 leading-relaxed font-sans max-w-3xl">
+                <p className="text-xs text-ink-sand mt-1.5 leading-relaxed font-sans max-w-3xl">
                   MECT operates in strict accordance with the Indian Trusts Act, 1882 and Central Board of Direct Taxes (CBDT) regulations. All statutory registrations are active and subject to annual certified audits by independent Chartered Accountants.
                 </p>
               </div>
@@ -194,7 +195,7 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 3. Statutory Credentials Directory (7 Cards) */}
-      <section id="credentials" className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Statutory Credentials">
+      <section id="credentials" className="py-20 md:py-28 bg-cream" aria-label="Statutory Credentials">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Verified Records"
@@ -210,10 +211,10 @@ export default function StatutoryDisclosuresPage() {
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0B3B24]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5E24] font-sans">
+                  <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-forest font-sans">
                       {item.category}
                     </span>
                     <Badge variant="forest" size="sm">
@@ -222,34 +223,34 @@ export default function StatutoryDisclosuresPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
-                      <Icon className="w-5 h-5 text-[#E4C88A]" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 border border-sand/40">
+                      <Icon className="w-5 h-5 text-cream" aria-hidden="true" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
+                      <h3 className="font-serif text-xl font-bold text-terracotta-dark">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-[#7A5E24] font-medium font-sans">
+                      <p className="text-xs text-forest font-medium font-sans">
                         {item.authority}
                       </p>
                     </div>
                   </div>
 
                   {/* Identifier Box */}
-                  <div className="p-3.5 rounded-xs bg-[#F4EFE6] border border-[#0B3B24]/10 space-y-1 font-sans">
-                    <span className="text-[10px] text-[#4A5568] uppercase font-bold tracking-wider block">
+                  <div className="p-3.5 rounded-xs bg-sand-light border border-border-warm space-y-1 font-sans">
+                    <span className="text-[10px] text-forest uppercase font-bold tracking-wider block">
                       {item.identifierLabel}:
                     </span>
-                    <span className="text-sm font-mono font-bold text-[#0B3B24] block break-all">
+                    <span className="text-sm font-mono font-bold text-forest block break-all">
                       {item.identifierValue}
                     </span>
-                    <div className="flex items-center justify-between pt-1 text-[11px] text-[#4A5568]">
+                    <div className="flex items-center justify-between pt-1 text-[11px] text-ink">
                       <span>{item.dateLabel}: <strong>{item.dateValue}</strong></span>
-                      <span className="text-[#15803D] font-bold">✓ {item.status}</span>
+                      <span className="text-forest font-bold">✓ {item.status}</span>
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans pt-1">
+                  <p className="text-xs text-ink-sand leading-relaxed font-sans pt-1">
                     {item.description}
                   </p>
                 </Card>
@@ -260,7 +261,7 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 4. Section 80G Tax Exemption Guide for Donors */}
-      <section id="tax-benefit" className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-y border-[#C5A059]/30" aria-label="80G Tax Deduction Guide">
+      <section id="tax-benefit" className="py-20 bg-terracotta text-white border-y border-sand/30" aria-label="80G Tax Deduction Guide">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Tax Exemption Reassurance"
@@ -283,25 +284,25 @@ export default function StatutoryDisclosuresPage() {
               </div>
 
               {/* Numerical Calculation Example Box */}
-              <div className="p-5 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans text-xs">
-                <span className="text-xs font-bold text-[#E4C88A] uppercase tracking-wider block">
+              <div className="p-5 rounded-xs bg-forest border border-sand/45 space-y-3 font-sans text-xs">
+                <span className="text-xs font-bold text-white uppercase tracking-wider block">
                   Illustrative Tax Benefit Calculation:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-                  <div className="p-3 bg-black/20 rounded-xs border border-white/5">
-                    <span className="text-white/50 block text-[10px]">Your Contribution:</span>
+                  <div className="p-3 bg-forest-deep rounded-xs border border-white/15">
+                    <span className="text-white/85 block text-[10px]">Your Contribution:</span>
                     <span className="text-base font-bold text-white font-mono">₹10,000</span>
                   </div>
-                  <div className="p-3 bg-black/20 rounded-xs border border-white/5">
-                    <span className="text-white/50 block text-[10px]">80G Eligible Deduction (50%):</span>
-                    <span className="text-base font-bold text-[#E4C88A] font-mono">₹5,000</span>
+                  <div className="p-3 bg-forest-deep rounded-xs border border-white/15">
+                    <span className="text-white/85 block text-[10px]">80G Eligible Deduction (50%):</span>
+                    <span className="text-base font-bold text-cream font-mono">₹5,000</span>
                   </div>
-                  <div className="p-3 bg-black/20 rounded-xs border border-white/5">
-                    <span className="text-white/50 block text-[10px]">Estimated Tax Saved (30% Slab):</span>
-                    <span className="text-base font-bold text-[#86EFAC] font-mono">₹1,560*</span>
+                  <div className="p-3 bg-terracotta rounded-xs border border-sand/50">
+                    <span className="text-white block text-[10px]">Estimated Tax Saved (30% Slab):</span>
+                    <span className="text-base font-bold text-white font-mono">₹1,560*</span>
                   </div>
                 </div>
-                <p className="text-[10px] text-white/50 italic">
+                <p className="text-[10px] text-white/85 italic">
                   * Plus applicable education and health cess. Effective tax savings depend on your applicable income tax bracket (Old vs New Tax Regime rules apply).
                 </p>
               </div>
@@ -311,17 +312,17 @@ export default function StatutoryDisclosuresPage() {
                 <h4 className="text-sm font-bold text-white font-serif">
                   Mandatory Receipt &amp; Tax Certificate Protocol:
                 </h4>
-                <ul className="space-y-1.5 text-xs text-white/80 font-sans">
+                <ul className="space-y-1.5 text-xs text-white/95 font-sans">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-sand" aria-hidden="true" />
                     <span>Every donor receives a stamped, numbered receipt containing MECT&apos;s PAN and 80G URN.</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-sand" aria-hidden="true" />
                     <span>Donor PAN and address are recorded for annual Form 10BD statement of donations filed with the Income Tax Department.</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-sand" aria-hidden="true" />
                     <span>Donors receive Form 10BE Certificate of Donation enabling pre-filled ITR filing.</span>
                   </li>
                 </ul>
@@ -329,9 +330,9 @@ export default function StatutoryDisclosuresPage() {
             </div>
 
             {/* Right: Direct Bank Account Coordinates */}
-            <div className="lg:col-span-5 bg-[#072617] p-7 rounded-xs border border-[#C5A059]/40 shadow-xl space-y-4">
+            <div className="lg:col-span-5 bg-forest p-7 rounded-xs border border-sand/40 shadow-xl space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <span className="text-xs uppercase font-bold text-[#E4C88A] tracking-wider">
+                <span className="text-xs uppercase font-bold text-cream tracking-wider">
                   Direct Bank Remittance (NEFT/RTGS)
                 </span>
                 <Badge variant="forest" size="sm">
@@ -341,19 +342,19 @@ export default function StatutoryDisclosuresPage() {
 
               <div className="space-y-2.5 text-xs font-sans">
                 <div>
-                  <span className="text-white/50 block text-[11px]">Beneficiary Name:</span>
+                  <span className="text-white/85 block text-[11px]">Beneficiary Name:</span>
                   <span className="text-white font-semibold text-sm">{TRUST_CONFIG.bank.accountName}</span>
                 </div>
                 <div>
-                  <span className="text-white/50 block text-[11px]">Bank Name &amp; Branch:</span>
+                  <span className="text-white/85 block text-[11px]">Bank Name &amp; Branch:</span>
                   <span className="text-white font-medium">{TRUST_CONFIG.bank.bankName}, {TRUST_CONFIG.bank.branch}</span>
                 </div>
                 <div>
-                  <span className="text-white/50 block text-[11px]">Account Number:</span>
-                  <span className="text-[#E4C88A] font-mono font-bold text-base tracking-wider">{TRUST_CONFIG.bank.accountNumber}</span>
+                  <span className="text-white/85 block text-[11px]">Account Number:</span>
+                  <span className="text-cream font-mono font-bold text-base tracking-wider">{TRUST_CONFIG.bank.accountNumber}</span>
                 </div>
                 <div>
-                  <span className="text-white/50 block text-[11px]">IFSC Code:</span>
+                  <span className="text-white/85 block text-[11px]">IFSC Code:</span>
                   <span className="text-white font-mono font-bold text-sm">{TRUST_CONFIG.bank.ifsc}</span>
                 </div>
               </div>
@@ -372,21 +373,21 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 5. Corporate Social Responsibility (CSR) Framework */}
-      <section className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
+      <section className="py-20 md:py-24 bg-cream border-b border-border-warm">
         <Container size="default">
-          <div className="bg-[#F4EFE6] rounded-xs p-8 sm:p-12 border border-[#0B3B24]/15 space-y-8">
+          <div className="bg-white rounded-xs p-8 sm:p-12 border border-border-warm shadow-xs space-y-8">
             <SectionHeader
               badge="Corporate Social Responsibility"
               title="Schedule VII Alignment for Corporate CSR Partners"
-              subtitle="Registered under Ministry of Corporate Affairs (Reg: CSR00081063), MECT executes turnkey community projects compliant with Section 135."
+              subtitle="Registered under Schedule VII (CSR Reg: CSR00081063), MECT executes turnkey community projects compliant with Section 135."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#4A5568] font-sans">
-              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-ink-sand font-sans">
+              <div className="p-6 bg-cream rounded-xs border border-border-warm space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (ii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
+                <h4 className="font-serif text-base font-bold text-terracotta-dark">
                   Promoting Education &amp; Remedial Coaching
                 </h4>
                 <p className="leading-relaxed">
@@ -394,11 +395,11 @@ export default function StatutoryDisclosuresPage() {
                 </p>
               </div>
 
-              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
+              <div className="p-6 bg-cream rounded-xs border border-border-warm space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (iii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
+                <h4 className="font-serif text-base font-bold text-terracotta-dark">
                   Women Vocational Livelihood &amp; Skilling
                 </h4>
                 <p className="leading-relaxed">
@@ -406,11 +407,11 @@ export default function StatutoryDisclosuresPage() {
                 </p>
               </div>
 
-              <div className="p-6 bg-white rounded-xs border border-[#0B3B24]/10 space-y-2.5">
+              <div className="p-6 bg-cream rounded-xs border border-border-warm space-y-2.5">
                 <Badge variant="forest" size="sm">
                   Schedule VII (i)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-[#0B3B24]">
+                <h4 className="font-serif text-base font-bold text-terracotta-dark">
                   Safe Drinking Water &amp; Sanitation (Jal Seva)
                 </h4>
                 <p className="leading-relaxed">
@@ -419,8 +420,8 @@ export default function StatutoryDisclosuresPage() {
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#0B3B24]/10">
-              <div className="text-xs text-[#4A5568] font-sans">
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-border-warm">
+              <div className="text-xs text-ink-sand font-sans">
                 <span>Looking to allocate CSR funds before fiscal year-end? Connect with our CSR Project Desk.</span>
               </div>
               <Link href="/csr-partnerships">
@@ -435,11 +436,11 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 6. Document Inspection & Grievance Contact */}
-      <section className="py-16 bg-[#EDE6D8]/50">
+      <section className="py-16 bg-sand-light">
         <Container size="default">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#4A5568] font-sans">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-ink font-sans">
             <div>
-              <h4 className="font-serif text-lg font-bold text-[#0B3B24]">
+              <h4 className="font-serif text-lg font-bold text-forest">
                 Right to Inspect Public Trust Records
               </h4>
               <p className="mt-1 max-w-2xl leading-relaxed">

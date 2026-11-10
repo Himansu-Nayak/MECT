@@ -34,10 +34,10 @@ export interface RoadmapMilestone {
 
 export const ABOUT_CONTENT = {
   hero: {
-    badge: "13+ Years of Community Service • Est. 2013, Odisha",
+    badge: "Public Charitable Trust • Odisha",
     title: "Strengthening People, Families & Communities Across Odisha",
     description:
-      "MAHAVIR TRUST (Mahaveer Educational & Charitable Trust) was established in 2013 as a public charitable trust rooted in Odisha. Its work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare to support people and communities.",
+      "Mahaveer Educational & Charitable Trust (MECT) was established in 2013 as a public charitable trust rooted in Odisha. Its work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare to support people and communities.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "About Us" },
@@ -49,7 +49,7 @@ export const ABOUT_CONTENT = {
     title: "Lasting Community Progress Connects Opportunity With Dignity and Care.",
     paragraphs: [
       "People and families experience connected challenges. Access to learning, practical livelihood skills, safe water and nutritious food can all contribute to dignity, stability and opportunity.",
-      "Registered in Balangir in 2013, MAHAVIR TRUST has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These initiatives respond to local priorities and are guided by a commitment to dignity, responsible stewardship and community participation.",
+      "Registered in Balangir in 2013, Mahaveer Educational & Charitable Trust (MECT) has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These initiatives respond to local priorities and are guided by a commitment to dignity, responsible stewardship and community participation.",
     ],
     safeguards: [
       {
@@ -58,9 +58,9 @@ export const ABOUT_CONTENT = {
           "All educational scholarship subsidies are remitted directly to accredited institutions via verified bank transfers under a strict zero-cash policy.",
       },
       {
-        title: "Section 80G Tax Exemption Certified",
+        title: "Section 80G Historical Approval & Compliance Notice",
         description:
-          "Donors receive 50% tax deductions under Indian Income Tax Act Section 80G (URN: AADTM5474FF20241, issued by IT Dept CPC).",
+          "Historical Form 10AC approval (URN: AADTM5474FF20241, dated 29-01-2024) covered AY 2024-25 through AY 2026-27 (FY 2023-24 to FY 2025-26). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
       },
     ],
   },
@@ -119,8 +119,8 @@ export const ABOUT_CONTENT = {
       title: "Board of Trustees",
       role: "Fiduciary Stewardship & Charter Custodians",
       description:
-        "Led by Settler Founder & Permanent Managing Trustee Er. Japabandhu Kampa alongside life trustees Yudhisthir Rana, Ramachandra Biswal, and Sambit Kumar Dang under registered Trust Deed No. 40311302194.",
-      status: "Permanent Honorary Trustees (Deed Clause XVI)",
+        "Led by Settler Founder & Chairman cum Managing Trustee Er. Japabandhu Kampa alongside the Honorary Board of Trustees under registered Trust Deed No. 40311302194.",
+      status: "Honorary Fiduciary Governance (Deed Clause XVI)",
       icon: Landmark,
     },
     {
@@ -182,9 +182,9 @@ export const ABOUT_CONTENT = {
       {
         year: "2024",
         badge: "Statutory",
-        title: "12A, 80G & MCA CSR-1 Government Accreditations",
+        title: "12A, 80G & National NGO Portal Accreditations",
         description:
-          "CBDT Form 10AC orders for 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241). MCA CSR-1 approved (CSR00081063) and NITI Aayog NGO Darpan listing (OR/2024/0466491).",
+          "CBDT Form 10AC orders for 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241), and NITI Aayog NGO Darpan listing (OR/2024/0466491).",
       },
       {
         year: "2025–2026",

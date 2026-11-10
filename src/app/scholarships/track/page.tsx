@@ -119,20 +119,20 @@ function ScholarshipTrackContent() {
     <div className="space-y-10">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-[#0B3B24] text-xs font-bold uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-light text-forest text-xs font-bold uppercase tracking-wider mb-3">
           <Clock className="w-3.5 h-3.5" /> Public Application Tracking Console
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0B3B24] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-terracotta-dark tracking-tight">
           Track Scholarship Disbursal Status
         </h1>
-        <p className="mt-2 text-gray-600 text-sm sm:text-base">
+        <p className="mt-2 text-ink-sand text-sm sm:text-base">
           Check real-time status of your higher education financial aid application across scrutiny, institution
           verification, and bank transfer stages.
         </p>
       </div>
 
       {/* Lookup Card */}
-      <Card className="max-w-2xl mx-auto p-6 sm:p-8 bg-white shadow-xl rounded-2xl border border-gray-200">
+      <Card className="max-w-2xl mx-auto p-6 sm:p-8 bg-white shadow-xl rounded-2xl border border-border-warm">
         <form onSubmit={handleSearchSubmit} className="space-y-4">
           <Input
             label="Application Reference Number"
@@ -167,39 +167,39 @@ function ScholarshipTrackContent() {
 
       {/* Result Display */}
       {trackResult && (
-        <Card className="max-w-3xl mx-auto p-6 sm:p-10 bg-white shadow-2xl rounded-2xl border-2 border-emerald-500/20 space-y-8">
+        <Card className="max-w-3xl mx-auto p-6 sm:p-10 bg-white shadow-2xl rounded-2xl border-2 border-terracotta/20 space-y-8">
           {/* Header Summary */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-6">
             <div>
-              <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-widest block">
+              <span className="text-xs font-mono font-bold text-ink-secondary uppercase tracking-widest block">
                 Reference ID: {trackResult.applicationNumber}
               </span>
-              <h2 className="text-2xl font-black text-[#0B3B24] mt-1">{trackResult.maskedName}</h2>
-              <p className="text-xs text-gray-600 mt-1">
+              <h2 className="text-2xl font-black text-terracotta-dark mt-1">{trackResult.maskedName}</h2>
+              <p className="text-xs text-ink-sand mt-1">
                 {trackResult.courseName} • {trackResult.institutionName}
               </p>
             </div>
             <div className="sm:text-right">
               {getStatusBadge(trackResult.status)}
-              <span className="block text-[11px] text-gray-500 mt-2">
+              <span className="block text-[11px] text-ink-sand mt-2">
                 Submitted on: {new Date(trackResult.submittedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
               </span>
             </div>
           </div>
 
           {/* Status Message Alert */}
-          <div className="p-4 rounded-xl bg-[#F8FAFC] border border-gray-200 text-sm text-gray-700 flex items-start gap-3">
-            <Building2 className="w-5 h-5 text-[#0B3B24] shrink-0 mt-0.5" />
+          <div className="p-4 rounded-xl bg-cream border border-border-warm text-sm text-forest flex items-start gap-3">
+            <Building2 className="w-5 h-5 text-terracotta-dark shrink-0 mt-0.5" />
             <div>
-              <span className="font-bold text-[#0B3B24] block">Official Status Update:</span>
-              <p className="text-xs text-gray-600 mt-0.5">{trackResult.statusMessage}</p>
+              <span className="font-bold text-terracotta-dark block">Official Status Update:</span>
+              <p className="text-xs text-ink-sand mt-0.5">{trackResult.statusMessage}</p>
             </div>
           </div>
 
           {/* Action Required Box */}
           {trackResult.status === "ACTION_REQUIRED" && trackResult.actionRequiredNote && (
-            <div className="p-5 rounded-xl bg-amber-50 border-2 border-amber-300 text-amber-900 text-sm">
-              <span className="font-bold flex items-center gap-1.5 mb-1 text-amber-800">
+            <div className="p-5 rounded-xl bg-sand-light border-2 border-terracotta/50 text-ink text-sm">
+              <span className="font-bold flex items-center gap-1.5 mb-1 text-forest">
                 <AlertCircle className="w-4 h-4" /> Action Required from Applicant
               </span>
               <p className="text-xs leading-relaxed">{trackResult.actionRequiredNote}</p>
@@ -218,11 +218,11 @@ function ScholarshipTrackContent() {
 
           {/* Disbursal Details */}
           {trackResult.status === "DISBURSED" && (
-            <div className="p-5 rounded-xl bg-emerald-50 border-2 border-emerald-300 text-emerald-950 text-sm">
-              <span className="font-bold flex items-center gap-1.5 mb-1 text-emerald-800">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" /> Direct Remittance Confirmed
+            <div className="p-5 rounded-xl bg-sand-light border-2 border-border-warm text-forest text-sm">
+              <span className="font-bold flex items-center gap-1.5 mb-1 text-forest">
+                <CheckCircle2 className="w-5 h-5 text-terracotta-dark" /> Direct Remittance Confirmed
               </span>
-              <p className="text-xs text-emerald-900 leading-relaxed">
+              <p className="text-xs text-forest leading-relaxed">
                 Tuition grant funds were electronically remitted directly into the official bank account of{" "}
                 <strong>{trackResult.institutionName}</strong>.
               </p>
@@ -231,11 +231,11 @@ function ScholarshipTrackContent() {
 
           {/* Timeline Stages Stepper */}
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-[#0B3B24] uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-terracotta-dark uppercase tracking-wider">
               Verification & Disbursal Progression
             </h3>
 
-            <div className="relative pl-6 sm:pl-8 space-y-6 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200">
+            <div className="relative pl-6 sm:pl-8 space-y-6 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-sage/60">
               {trackResult.stages.map((st: TrackingStage, idx: number) => {
                 const isComplete = st.state === "COMPLETED";
                 const isCurrent = st.state === "CURRENT";
@@ -248,14 +248,14 @@ function ScholarshipTrackContent() {
                     <div
                       className={`absolute -left-[27px] sm:-left-[35px] top-0.5 w-6 h-6 rounded-full flex items-center justify-center text-xs ${
                         isComplete
-                          ? "bg-emerald-600 text-white"
+                          ? "bg-terracotta text-white"
                           : isCurrent
-                          ? "bg-[#0B3B24] text-white ring-4 ring-emerald-100"
+                          ? "bg-terracotta text-white ring-4 ring-sand/40"
                           : isRejected
                           ? "bg-red-600 text-white"
                           : isAction
-                          ? "bg-amber-500 text-white animate-pulse"
-                          : "bg-gray-100 text-gray-400 border border-gray-300"
+                          ? "bg-terracotta text-white animate-pulse"
+                          : "bg-sand-light text-ink-secondary border border-border-warm"
                       }`}
                     >
                       {isComplete ? (
@@ -267,26 +267,26 @@ function ScholarshipTrackContent() {
                       )}
                     </div>
 
-                    <div className="bg-gray-50/70 p-3.5 rounded-xl border border-gray-200/80">
+                    <div className="bg-cream/65/70 p-3.5 rounded-xl border border-border-warm/80">
                       <div className="flex items-center justify-between gap-2">
                         <span
                           className={`text-sm font-bold ${
                             isCurrent
-                              ? "text-[#0B3B24]"
+                              ? "text-terracotta-dark"
                               : isComplete
-                              ? "text-emerald-800"
+                              ? "text-forest"
                               : isRejected
                               ? "text-red-700"
-                              : "text-gray-600"
+                              : "text-ink-sand"
                           }`}
                         >
                           {st.label}
                         </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider bg-white border text-gray-600">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider bg-white border text-ink-sand">
                           {st.state}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">{st.description}</p>
+                      <p className="text-xs text-ink-sand mt-1">{st.description}</p>
                     </div>
                   </div>
                 );
@@ -296,15 +296,15 @@ function ScholarshipTrackContent() {
 
           {/* Footer Print & Support Actions */}
           <div className="pt-6 border-t flex flex-wrap items-center justify-between gap-4 text-xs">
-            <span className="text-gray-500">
+            <span className="text-ink-sand">
               Need assistance? Email secretariat at{" "}
-              <a href="mailto:scholarships@mahavirtrust.org" className="text-[#0B3B24] font-semibold underline">
+              <a href="mailto:scholarships@mahavirtrust.org" className="text-terracotta-dark font-semibold underline">
                 scholarships@mahavirtrust.org
               </a>
             </span>
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-semibold"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-warm bg-white hover:bg-cream/65 text-forest font-semibold"
             >
               <Printer className="w-3.5 h-3.5" /> Print Status Slip
             </button>
@@ -317,11 +317,11 @@ function ScholarshipTrackContent() {
 
 export default function ScholarshipTrackPage() {
   return (
-    <main className="min-h-screen bg-[#FDFBF7] py-16 px-4">
+    <div className="min-h-screen bg-cream py-16 px-4 pb-floating-clearance">
       <Container size="default">
         <Suspense
           fallback={
-            <div className="text-center py-20 text-gray-500 text-sm">
+            <div className="text-center py-20 text-ink-sand text-sm">
               Loading scholarship tracking console...
             </div>
           }
@@ -329,6 +329,6 @@ export default function ScholarshipTrackPage() {
           <ScholarshipTrackContent />
         </Suspense>
       </Container>
-    </main>
+    </div>
   );
 }

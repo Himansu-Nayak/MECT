@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +11,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
+import { HeroEntrance, Reveal } from "@/components/ui/MotionPrimitives";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
+import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
+import { SmileFundraisingSection } from "@/components/sections/SmileFundraisingSection";
+import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
+import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
 import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
@@ -41,6 +47,10 @@ import {
   Scissors,
   Droplets,
   Utensils,
+  Search,
+  Layers,
+  Calculator,
+  Receipt,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
 
@@ -63,11 +73,18 @@ const ODISHA_DISTRICTS_LIST = [
   "Other Odisha District",
 ];
 
-const ENABLEMENT_ICON_MAP = {
+const ENABLEMENT_ICON_MAP: Record<string, React.ElementType> = {
   Users,
   BookOpen,
   Compass,
   HeartHandshake,
+};
+
+const HOW_WE_WORK_ICON_MAP: Record<string, React.ElementType> = {
+  Search,
+  Layers,
+  Users,
+  ShieldCheck,
 };
 
 const PILLAR_ICON_MAP: Record<string, React.ElementType> = {
@@ -75,6 +92,7 @@ const PILLAR_ICON_MAP: Record<string, React.ElementType> = {
   "02": Scissors,
   "03": Droplets,
   "04": Utensils,
+  "05": HeartHandshake,
 };
 
 export default function HomePage() {
@@ -176,105 +194,221 @@ export default function HomePage() {
     }
   };
 
+  // Section 11: Interactive 80G Donation Calculator State
+  const [donationAmount, setDonationAmount] = useState<number>(5000);
+  const [taxRegime, setTaxRegime] = useState<"old" | "new">("old");
+  const [taxBracket, setTaxBracket] = useState<number>(0.3); // 30% default
+
+  // Under Old Tax Regime: 50% deduction of qualifying amount
+  // Under New Tax Regime (Section 115BAC): Chapter VI-A (80G) deductions are generally not permitted for individuals
+  const eligibleDeduction = taxRegime === "old" ? donationAmount * 0.5 : 0;
+  const estimatedTaxSaved = taxRegime === "old" ? eligibleDeduction * taxBracket : 0;
+
+  const getImpactDescription = (amount: number) => {
+    if (amount < 2500) {
+      return "Provides one month of scholastic books and learning materials for a rural student in Balangir.";
+    }
+    if (amount < 5000) {
+      return "Funds after-school remedial coaching and exam guidance for 2 tribal students for a full semester.";
+    }
+    if (amount < 10000) {
+      return "Supplies a complete vocational tailoring toolkit and fabric set for a rural woman artisan trainee.";
+    }
+    if (amount < 25000) {
+      return "Sustains a summer Jal Seva clean drinking water kiosk serving over 1,000 citizens in 45°C heatwaves.";
+    }
+    return "Sponsors hot, hygienic Jan Ahar daily meals for 250+ impoverished patient attendants at Balangir Hospital.";
+  };
+
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION: Multi-Sector Community Development Mission */}
-      <section className="relative overflow-hidden bg-[#0B3B24] text-[#EDE6D8] pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[#C5A059]/30 transition-colors">
-        {/* Subtle geometric grid background */}
+    <div className="flex flex-col w-full pb-floating-clearance bg-cream">
+      {/* =========================================================================
+          SECTION 1 — PREMIUM EDITORIAL HERO: Multi-Sector NGO Positioning
+          ========================================================================= */}
+      <section className="relative overflow-hidden bg-terracotta text-white pt-16 pb-20 md:pt-24 md:pb-32 border-b border-terracotta-dark transition-colors">
+        {/* Subtle architectural texture */}
         <div
-          className="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -top-40 -right-40 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#165B38]/30 rounded-full blur-3xl pointer-events-none"
+          className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#F3E4D2_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
           aria-hidden="true"
         />
 
         <Container size="default">
-          <div className="max-w-4xl mx-auto text-center space-y-7">
-            {/* Mission & Verification Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <Badge
-                variant="gold-dark"
-                size="md"
-                icon={<Sparkles className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
-              >
-                {HOMEPAGE_CONTENT.hero.badge}
-              </Badge>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xs bg-[#15803D]/20 text-[#86EFAC] text-xs font-semibold border border-[#15803D]/40">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#86EFAC]" aria-hidden="true" />
-                <span>80G Tax Exempt (50% Deduction)</span>
-              </span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content Column */}
+            <HeroEntrance className="lg:col-span-7 space-y-6 text-left">
+              {/* Grand Editorial Headline */}
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] font-bold text-white tracking-tight leading-[1.09]">
+                {HOMEPAGE_CONTENT.hero.headline}
+              </h1>
 
-            {/* Grand Editorial Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12]">
-              {HOMEPAGE_CONTENT.hero.headline}
-            </h1>
+              {/* Multi-Sector Narrative Subtext */}
+              <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed font-sans max-w-xl">
+                {HOMEPAGE_CONTENT.hero.subtext}
+              </p>
 
-            {/* Subtext */}
-            <p className="text-base sm:text-lg text-white/85 leading-relaxed font-sans max-w-3xl mx-auto">
-              {HOMEPAGE_CONTENT.hero.subtext}
-            </p>
-
-            {/* Structured Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
-                <Button variant="gold" size="lg" className="shadow-lg font-bold">
-                  <Heart className="w-4 h-4 mr-1.5 fill-current" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.primary.text}</span>
-                </Button>
-              </Link>
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
-                <Button variant="dark-outline" size="lg" className="font-semibold !border-[#C5A059]/60 !text-[#E4C88A] hover:!bg-[#C5A059]/10">
-                  <Briefcase className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
-                </Button>
-              </Link>
-              <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
-                <Button variant="dark-outline" size="lg" className="font-semibold">
-                  <Award className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>{HOMEPAGE_CONTENT.hero.ctas.secondary.text}</span>
-                </Button>
-              </Link>
-            </div>
-
-            {/* Quiet Governance Link & Notice */}
-            <div className="pt-2 space-y-1">
-              <p className="text-xs text-white/75 font-sans">
-                Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
-                <Link
-                  href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
-                  className="text-[#E4C88A] underline hover:text-white transition-colors font-medium"
-                >
-                  Fiduciary Charter &amp; Governance Code
+              {/* Structured Action Buttons — Primary: Explore Our Work, Secondary: Support Our Mission */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
+                  <Button variant="gold" size="lg" className="shadow-lg font-bold sm:whitespace-nowrap">
+                    <Award className="w-4 h-4 mr-1.5 text-forest-deep" aria-hidden="true" />
+                    <span>Explore Our Work</span>
+                  </Button>
                 </Link>
-                .
-              </p>
-              <p className="text-[11px] text-white/55">
-                {HOMEPAGE_CONTENT.hero.notice}
-              </p>
-            </div>
+                <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
+                  <Button
+                    variant="dark-outline"
+                    size="lg"
+                    className="font-semibold !border-sand !text-white bg-forest hover:!bg-forest-deep hover:!text-white sm:whitespace-nowrap"
+                  >
+                    <Heart className="w-4 h-4 mr-1.5 fill-current text-sand" aria-hidden="true" />
+                    <span>Support Our Mission</span>
+                  </Button>
+                </Link>
+                <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
+                  <Button variant="dark-outline" size="lg" className="font-semibold border-white/60 hover:bg-terracotta-dark sm:whitespace-nowrap">
+                    <Briefcase className="w-4 h-4 mr-1.5 text-white" aria-hidden="true" />
+                    <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Quiet Governance Link & Notice */}
+              <div className="pt-2 space-y-1.5 border-t border-white/25 max-w-xl">
+                <p className="text-xs sm:text-[13px] text-white font-sans leading-relaxed">
+                  Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
+                  <Link
+                    href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
+                    className="text-white underline decoration-sand underline-offset-4 hover:text-sand transition-colors font-semibold"
+                  >
+                    Fiduciary Charter &amp; Governance Code
+                  </Link>
+                  .
+                </p>
+                <p className="text-xs text-white/95 font-sans">
+                  {HOMEPAGE_CONTENT.hero.notice}
+                </p>
+              </div>
+            </HeroEntrance>
+
+            {/* Right Column: Neutral Branded Institutional Composition (Child Safeguarding Compliant) */}
+            <HeroEntrance delay={0.1} className="lg:col-span-5 relative">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                {/* Main Institutional Seal & Sector Vault Card */}
+                <div className="relative rounded-xs overflow-hidden border-2 border-sand/45 shadow-2xl bg-forest p-7 space-y-6 text-left">
+                  <div className="flex items-center justify-between border-b border-sand/25 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-sand bg-white flex items-center justify-center shrink-0 aspect-square">
+                        <Image
+                          src="/images/mect-official-emblem.png"
+                          alt="Mahaveer Educational & Charitable Trust Official Emblem"
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-cover scale-[1.06]"
+                        />
+                      </div>
+                      <div>
+                        <span className="font-serif text-sm font-bold text-white block">
+                          Mahaveer Educational &amp; Charitable Trust
+                        </span>
+                        <span className="text-[10px] text-cream font-sans block">
+                          Public Charitable Trust (MECT)
+                        </span>
+                      </div>
+                    </div>
+                    <Badge variant="gold" size="sm" className="whitespace-nowrap shrink-0">
+                      Deed 40311302194
+                    </Badge>
+                  </div>
+
+                  {/* Five Sector Matrices */}
+                  <div className="space-y-2.5">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-sand font-sans block">
+                      Documented Programme Pillars
+                    </span>
+                    <div className="grid grid-cols-1 gap-2">
+                      {[
+                        { num: "01", name: "Education & Learning", tag: "Shiksha Setu", stat: "350+ Coached" },
+                        { num: "02", name: "Women Empowerment", tag: "Swavalamban", stat: "120+ Skilled" },
+                        { num: "03", name: "Safe Water & Sanitation", tag: "Jal Seva", stat: "10,000+ Served" },
+                        { num: "04", name: "Food Security & Relief", tag: "Jan Ahar", stat: "Hospital Nutrition" },
+                        { num: "05", name: "Community Welfare", tag: "Samaj Kalyan", stat: "Disaster Relief" },
+                      ].map((item) => (
+                        <div
+                          key={item.num}
+                          className="p-2.5 rounded-xs bg-forest-deep/80 border border-white/10 flex items-center justify-between text-xs font-sans hover:border-sand/50 transition-colors"
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-sand font-mono font-bold text-[11px]">{item.num}</span>
+                            <span className="text-white font-medium text-xs">{item.name}</span>
+                          </div>
+                          <span className="text-[10px] font-semibold text-white bg-terracotta px-1.5 py-0.5 rounded-xs border border-sand/30">
+                            {item.tag}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Safeguarding & Documentary Notice */}
+                  <div className="p-3.5 rounded-xs bg-forest-deep border border-sand/30 text-[11px] text-cream font-sans space-y-1">
+                    <div className="flex items-center gap-1.5 text-white font-semibold text-xs">
+                      <ShieldCheck className="w-3.5 h-3.5 text-sand" aria-hidden="true" />
+                      <span>Child Safeguarding &amp; Verified Governance</span>
+                    </div>
+                    <p className="text-[10px] text-cream/90 leading-relaxed">
+                      Beneficiary records are maintained in physical trust registries in Balangir. Public web publication of identifiable minor photography is restricted in accordance with child safeguarding and parental consent standards.
+                    </p>
+                  </div>
+
+                  {/* Institutional Highlights (Non-overlapping Inline Grid) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                    <div className="bg-cream text-forest p-2.5 rounded-xs border border-sand shadow-sm flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-white" aria-hidden="true" />
+                      </div>
+                      <div className="text-left font-sans min-w-0">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-terracotta-dark block">
+                          Direct Disbursal
+                        </span>
+                        <span className="text-xs font-bold text-forest block leading-tight">
+                          Electronic College Remittance
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="bg-cream text-forest p-2.5 rounded-xs border border-sand shadow-sm flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                        <Droplets className="w-4 h-4 text-white" aria-hidden="true" />
+                      </div>
+                      <div className="text-left font-sans min-w-0">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-terracotta-dark block">
+                          Jal Seva Relief
+                        </span>
+                        <span className="text-xs font-bold text-forest block leading-tight">
+                          10,000+ Reached
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </HeroEntrance>
           </div>
 
-          {/* Statutorily Grounded Metric Cards */}
-          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {/* Statutorily Grounded Metric Cards Strip */}
+          <div className="mt-14 pt-8 border-t border-white/25 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="space-y-1 border-r border-white/10 last:border-r-0 pr-4 last:pr-0"
+                className="space-y-1.5 md:border-r md:border-white/25 md:last:border-r-0 md:px-4"
               >
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#E4C88A]">
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-white tabular-nums block">
                   {metric.value}
                 </span>
-                <p className="text-xs uppercase font-bold tracking-wider text-white/90 font-sans">
+                <p className="text-xs uppercase font-bold tracking-wider text-white font-sans">
                   {metric.label}
                 </p>
-                <p className="text-[11px] text-white/60 font-sans">
+                <p className="text-[11px] text-white/95 font-sans leading-snug">
                   {metric.subtext}
                 </p>
               </div>
@@ -283,97 +417,374 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 2. INSTITUTIONAL ACCREDITATION MARQUEE */}
+      {/* =========================================================================
+          SECTION 2 — INSTITUTIONAL CREDIBILITY: Verified Regulatory Vault
+          ========================================================================= */}
       <InstitutionalMarquee />
 
-      {/* 3. FOUR CORE MISSION PILLARS */}
-      <section id="programs" className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section className="py-10 bg-sand-light border-b border-border-warm">
         <Container size="default">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-5 space-y-6">
-              <Badge variant="forest">Grassroots Impact &amp; Purpose</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24] tracking-tight leading-snug">
-                Working Across the Needs That Shape Everyday Life.
-              </h2>
-              <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MECT responds to connected community needs. Learning support can expand opportunity; vocational training can strengthen livelihood options; safe-water access and nutrition support everyday wellbeing. Our programmes are rooted in local needs and documented initiatives.
-              </p>
-              <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                Across our work, we emphasise responsible stewardship, community participation and transparent use of resources. Where educational grants are provided, direct institutional disbursal supports accountability.
-              </p>
+          <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-terracotta-dark shrink-0" aria-hidden="true" />
+              <span className="font-semibold text-forest">
+                Authoritative Accreditation &amp; Governance Credentials:
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-4 text-ink">
+              <span><strong>Trust Deed:</strong> 40311302194</span>
+              <span className="text-forest/40">•</span>
+              <span><strong>12A URN:</strong> AADTM5474FE20231</span>
+              <span className="text-forest/40">•</span>
+              <span><strong>80G URN:</strong> AADTM5474FF20241</span>
+              <span className="text-forest/40">•</span>
+              <span><strong>PAN:</strong> AADTM5474F</span>
+              <span className="text-forest/40">•</span>
+              <span><strong>NGO Darpan:</strong> OR/2024/0466491</span>
+            </div>
+            <Link
+              href="/statutory-disclosures"
+              className="text-terracotta-dark hover:text-forest font-bold inline-flex items-center gap-1 transition-colors"
+            >
+              <span>View Statutory Vault</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
+          </div>
+        </Container>
+      </section>
 
-              <div className="pt-2 flex flex-wrap gap-3.5">
-                <Link href="/about">
-                  <Button variant="secondary" size="md">
-                    <span>Our Story</span>
-                    <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
-                  </Button>
-                </Link>
-                <Link href="/statutory-disclosures">
-                  <Button variant="outline" size="md">
-                    <ShieldCheck className="w-4 h-4 mr-1 text-[#C5A059]" aria-hidden="true" />
-                    <span>Statutory Vault</span>
-                  </Button>
-                </Link>
+      {/* =========================================================================
+          INSTITUTIONAL INTRODUCTION + VISION & MISSION EDITORIAL OVERVIEW
+          ========================================================================= */}
+      <section className="py-16 md:py-22 bg-white border-b border-border-warm" aria-label="Organisational Introduction, Vision and Mission">
+        <Container size="default">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+              {/* Editorial Narrative Column */}
+              <div className="lg:col-span-7 space-y-5">
+                <span className="text-xs font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
+                  {HOMEPAGE_CONTENT.aboutIntro.eyebrow}
+                </span>
+                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight leading-[1.15]">
+                  {HOMEPAGE_CONTENT.aboutIntro.heading}
+                </h2>
+                <p className="text-sm sm:text-base text-ink leading-relaxed font-sans max-w-2xl">
+                  {HOMEPAGE_CONTENT.aboutIntro.summary}
+                </p>
+                <ul className="space-y-2.5 pt-1 text-xs sm:text-sm text-ink font-sans">
+                  {HOMEPAGE_CONTENT.aboutIntro.principles.map((p) => (
+                    <li key={p} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold font-sans">
+                  <Link
+                    href="/about"
+                    className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
+                  >
+                    <span>Read About MECT</span>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                  <Link
+                    href="/governance"
+                    className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
+                  >
+                    <span>Governance &amp; Trust Deed</span>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Asymmetric Vision & Mission Editorial Stack */}
+              <div className="lg:col-span-5 space-y-4">
+                <div className="p-6 rounded-xs bg-cream/65 border-l-4 border-terracotta border-y border-r border-border-warm space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
+                    Institutional Vision
+                  </span>
+                  <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
+                    {HOMEPAGE_CONTENT.aboutIntro.vision}
+                  </p>
+                </div>
+                <div className="p-6 rounded-xs bg-sage/55 border-l-4 border-forest border-y border-r border-border-warm space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-forest font-sans block">
+                    Operational Mission
+                  </span>
+                  <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
+                    {HOMEPAGE_CONTENT.aboutIntro.mission}
+                  </p>
+                </div>
               </div>
             </div>
+          </Reveal>
+        </Container>
+      </section>
 
-            {/* Right: Pillars Grid (4 Core Pillars) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {HOMEPAGE_CONTENT.pillars.map((pillar) => {
-                const IconComponent = PILLAR_ICON_MAP[pillar.number] || Award;
-                return (
-                  <Card
-                    key={pillar.number}
-                    variant="elevated"
-                    className="space-y-3 p-6 border-[#0B3B24]/12 hover:border-[#C5A059] transition-all duration-300 bg-white shadow-xs"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xs bg-[#0B3B24]/5 border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059]">
-                        <IconComponent className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+      {/* =========================================================================
+          PHASE 3 — FREE EDUCATION FOR 200 STUDENTS
+          ========================================================================= */}
+      <FreeEducationSection />
+
+      {/* =========================================================================
+          PHASE 4 — SMILE FOUNDATION FUNDRAISING INITIATIVE
+          ========================================================================= */}
+      <SmileFundraisingSection />
+
+      {/* =========================================================================
+          SECTION 3 — OUR FIVE DEVELOPMENT SECTORS: Distinct Visual Identities
+          ========================================================================= */}
+      <section id="programs" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-20">
+        <Container size="default" className="space-y-16">
+          <SectionHeader
+            badge="Multi-Sector Community Development"
+            title="Five Documented Areas of Public Charitable Work"
+            subtitle="Responding to connected community needs across Odisha. Each initiative is grounded in authentic field records, volunteer action, and zero-intermediary delivery."
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {HOMEPAGE_CONTENT.pillars.map((pillar) => {
+              const IconComponent = PILLAR_ICON_MAP[pillar.number] || Award;
+              return (
+                <Card
+                  key={pillar.number}
+                  variant="elevated"
+                  className="flex flex-col justify-between p-7 border-border-warm hover:border-terracotta transition-all duration-300 bg-cream/35 shadow-xs group"
+                >
+                  <div className="space-y-4">
+                    {/* Top Bar with Number, Icon and Tag */}
+                    <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                      <div className="flex items-center gap-3">
+                        <span className="font-serif text-2xl font-bold text-forest">
+                          {pillar.number}
+                        </span>
+                        <div className="w-9 h-9 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs border border-terracotta-dark group-hover:scale-105 transition-transform">
+                          <IconComponent className="w-4 h-4 text-white" aria-hidden="true" />
+                        </div>
                       </div>
                       <Badge variant="contrast-gold" size="sm">
                         {pillar.tag}
                       </Badge>
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
+
+                    {/* Title and Description */}
+                    <h3 className="font-serif text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                    <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
                       {pillar.description}
                     </p>
-                  </Card>
-                );
-              })}
-            </div>
+                  </div>
+
+                  {/* Bottom Strip with Stat Badge & Link */}
+                  <div className="pt-4 mt-4 border-t border-border-warm flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-forest bg-sage/75 px-2 py-0.5 rounded-xs border border-border-warm">
+                      {pillar.stat || "Verified Activity"}
+                    </span>
+                    <Link
+                      href={pillar.href || "/programmes"}
+                      className="text-xs font-bold text-terracotta-dark hover:text-forest inline-flex items-center gap-1 group/link"
+                    >
+                      <span>Explore Pillar</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
+                    </Link>
+                  </div>
+                </Card>
+              );
+            })}
+
+            {/* Sixth Complementary Card: Higher Education Disbursals */}
+            <Card
+              variant="dark"
+              className="flex flex-col justify-between p-7 bg-forest border-sand/35 shadow-md"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-white/15">
+                  <span className="font-serif text-2xl font-bold text-sand">
+                    +
+                  </span>
+                  <Badge variant="gold-dark" size="sm">
+                    Statewide Grants
+                  </Badge>
+                </div>
+                <h3 className="font-serif text-xl font-bold text-white">
+                  Higher Education Scholarships &amp; Grants
+                </h3>
+                <p className="text-xs sm:text-sm text-cream/90 leading-relaxed font-sans">
+                  Direct RTGS bank disbursals to accredited colleges across Odisha covering verified tuition fees for economically underprivileged merit scholars.
+                </p>
+                <div className="p-3 rounded-xs bg-forest-deep border border-sand/35 text-xs text-white space-y-1">
+                  <div className="font-semibold text-sand">Direct Institutional Electronic Remittance</div>
+                  <p className="text-[11px] text-cream/95">Educational grant assistance is remitted directly to accredited institutional bank accounts via electronic transfer (NEFT/RTGS).</p>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-white/15 flex items-center justify-between">
+                <Link
+                  href="/scholarships"
+                  className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-bold bg-sand text-forest-deep hover:bg-cream rounded-xs transition-colors"
+                >
+                  <span>Scholarship Portal</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </Link>
+              </div>
+            </Card>
           </div>
         </Container>
       </section>
 
-      {/* 4. SCHEME EXPLORER */}
+      {/* =========================================================================
+          SECTION 5 — IMPACT AT A GLANCE: Statutorily Grounded Metrics
+          ========================================================================= */}
+      <section className="py-20 bg-forest text-white border-b border-terracotta/40">
+        <Container size="default" className="space-y-12">
+          <SectionHeader
+            badge="Verified Impact Overview"
+            title="Thirteen Years of Documented Civic Service"
+            subtitle="Every metric is derived from registered trust activity records, annual returns, and on-site distribution registers in Balangir, Odisha."
+            align="center"
+            theme="dark"
+          />
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">13+</span>
+              <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
+              <p className="text-xs font-bold uppercase tracking-wider text-sand">Years of Service</p>
+              <p className="text-[11px] text-cream/90 leading-relaxed">Established by Registered Trust Deed in 2013 (Balangir)</p>
+            </div>
+            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">350+</span>
+              <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
+              <p className="text-xs font-bold uppercase tracking-wider text-sand">Students Coached</p>
+              <p className="text-[11px] text-cream/90 leading-relaxed">Annual free remedial tuition &amp; books in Balangir &amp; Puintala</p>
+            </div>
+            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">120+</span>
+              <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
+              <p className="text-xs font-bold uppercase tracking-wider text-sand">Women Skilled</p>
+              <p className="text-[11px] text-cream/90 leading-relaxed">Certified vocational tailoring &amp; livelihood machine tooling</p>
+            </div>
+            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">10,000+</span>
+              <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
+              <p className="text-xs font-bold uppercase tracking-wider text-sand">Citizens Served</p>
+              <p className="text-[11px] text-cream/90 leading-relaxed">Jal Seva drinking water kiosks during 45°C summer heatwaves</p>
+            </div>
+          </div>
+
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-center">
+            <Link href="/impact">
+              <Button variant="gold" size="md" className="font-bold">
+                <span>View Full Impact Ledger &amp; Audits</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1.5" aria-hidden="true" />
+              </Button>
+            </Link>
+            <Link href="/reports">
+              <Button variant="dark-outline" size="md">
+                <span>Download Annual Audit Reports</span>
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* =========================================================================
+          SECTION 6 — HOW MECT WORKS: Four-Step Operational Delivery Model
+          ========================================================================= */}
+      <section className="py-20 md:py-28 bg-cream border-b border-border-warm">
+        <Container size="default" className="space-y-16">
+          <SectionHeader
+            badge="Operating Philosophy"
+            title="How MECT Works: Transparent &amp; Direct Delivery"
+            subtitle="Bridging gaps with integrity. Our operational model ensures that community contributions translate into tangible, verifiable grassroots results."
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {HOMEPAGE_CONTENT.howWeWork?.map((item, idx) => {
+              const IconComp = HOW_WE_WORK_ICON_MAP[item.iconName] || Users;
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-xs bg-white border border-border-warm space-y-3 flex flex-col justify-between shadow-xs"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="font-serif text-2xl font-bold text-forest">
+                        {item.step}
+                      </span>
+                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center">
+                        <IconComp className="w-4 h-4 text-white" aria-hidden="true" />
+                      </div>
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-forest">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-ink-secondary leading-relaxed font-sans">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* =========================================================================
+          SECTION 7 — SCHOLARSHIP SUITE: Scheme Explorer, Calculator & Disbursal
+          ========================================================================= */}
+      <section className="py-12 bg-sand-light border-b border-border-warm">
+        <Container size="default" className="space-y-8">
+          <SectionHeader
+            badge="Higher Education Empowerment"
+            title="Scholarship Discovery &amp; Direct College Disbursal"
+            subtitle="Explore accredited scholarship schemes, evaluate indicative eligibility criteria, and inspect our direct institutional bank remittance flowchart."
+            align="center"
+          />
+
+          <div className="flex justify-center gap-3">
+            <Link href="/scholarships/apply">
+              <Button variant="primary" size="sm" className="font-bold">
+                <span>Apply for Scholarship</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              </Button>
+            </Link>
+            <Link href="/scholarships/track">
+              <Button variant="outline" size="sm" className="bg-white">
+                <span>Track Existing Application</span>
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* 7A. SCHEME EXPLORER */}
       <SchemeExplorer />
 
-      {/* 5. INTERACTIVE ELIGIBILITY CALCULATOR */}
+      {/* 7B. INTERACTIVE ELIGIBILITY CALCULATOR */}
       <EligibilityCalculator />
 
-      {/* 6. TRANSPARENCY: DIRECT DISBURSAL STANDARD */}
+      {/* 7C. TRANSPARENCY: DIRECT DISBURSAL STANDARD */}
       <DirectDisbursalFlowchart />
 
-      {/* 7. FROM THE MANAGING TRUSTEE'S DESK */}
-      <section className="py-20 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
-        <Container size="default">
-          <div className="bg-[#0B3B24] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
-            {/* Ambient gold glow */}
-            <div
-              className="absolute top-0 right-0 w-80 h-80 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none"
-              aria-hidden="true"
-            />
+      {/* =========================================================================
+          SECTION 8 (PHASE 6) — CSR REGISTRATION & ORGANISATIONAL DETAILS
+          ========================================================================= */}
+      <CsrRegistrationSection />
 
+      {/* =========================================================================
+          SECTION 9 — MANAGING TRUSTEE MESSAGE & FIDUCIARY CHARTER
+          ========================================================================= */}
+      <section className="py-20 bg-cream border-b border-border-warm">
+        <Container size="default">
+          <div className="bg-terracotta text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-terracotta-dark shadow-xl">
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-[#072617] border border-[#C5A059]/30 text-[10px] uppercase font-bold tracking-widest text-[#E4C88A]">
-                  <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-forest border border-sand/35 text-[10px] uppercase font-bold tracking-widest text-cream">
+                  <Landmark className="w-3.5 h-3.5 text-sand" aria-hidden="true" />
                   <span>{HOMEPAGE_CONTENT.secretariat.badge}</span>
                 </div>
 
@@ -381,227 +792,108 @@ export default function HomePage() {
                   {HOMEPAGE_CONTENT.secretariat.quote}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-white leading-relaxed font-sans">
                   {HOMEPAGE_CONTENT.secretariat.paragraph}
                 </p>
 
-                <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-[#E4C88A]">
+                <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-white">
                   <span className="flex items-center gap-1.5 font-serif font-bold">
-                    <ShieldCheck className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
+                    <ShieldCheck className="w-4 h-4 text-sand" aria-hidden="true" />
                     Honorary Board of Trustees
                   </span>
-                  <span className="text-white/40" aria-hidden="true">•</span>
+                  <span className="text-white/55" aria-hidden="true">•</span>
                   <span>Registered Office: Balangir</span>
-                  <span className="text-white/40" aria-hidden="true">•</span>
+                  <span className="text-white/55" aria-hidden="true">•</span>
                   <span>Corporate Secretariat: Bhubaneswar</span>
-                  <span className="text-white/40" aria-hidden="true">•</span>
+                  <span className="text-white/55" aria-hidden="true">•</span>
                   <span>Indian Trusts Act, 1882</span>
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-[#072617] rounded-xs border border-[#C5A059]/40 text-center space-y-3.5 shadow-md">
-                <div className="w-14 h-14 rounded-xs bg-[#0B3B24] border-2 border-[#C5A059] flex items-center justify-center text-[#E4C88A] shadow-inner font-serif font-bold text-xl">
+              <div className="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-forest rounded-xs border border-sand/40 text-center space-y-3.5 shadow-md">
+                <div className="w-14 h-14 rounded-xs bg-terracotta border-2 border-sand flex items-center justify-center text-white shadow-inner font-serif font-bold text-xl">
                   JK
                 </div>
                 <div>
                   <h4 className="font-serif text-base font-bold text-white">
                     {HOMEPAGE_CONTENT.secretariat.officeTitle}
                   </h4>
-                  <p className="text-[11px] text-[#E4C88A] font-semibold">
+                  <p className="text-[11px] text-sand font-semibold">
                     {HOMEPAGE_CONTENT.secretariat.officeSubtitle}
                   </p>
                 </div>
-                <p className="text-[10px] text-white/70 italic leading-snug">
+                <p className="text-[10px] text-cream/90 italic leading-snug">
                   {HOMEPAGE_CONTENT.secretariat.statutoryNote}
                 </p>
-                <Link href="/governance" className="w-full pt-1">
-                  <Button variant="gold" size="sm" className="w-full justify-center text-xs">
+                <div className="w-full pt-1">
+                  <Link
+                    href="/governance"
+                    className="inline-flex items-center justify-center w-full min-h-[36px] px-3.5 py-1.5 text-xs font-semibold tracking-tight rounded-xs bg-sand text-forest-deep hover:bg-cream border border-terracotta/40 hover:border-terracotta shadow-xs hover:shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand"
+                  >
                     View Fiduciary Charter
-                  </Button>
-                </Link>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 8. CORPORATE CSR PARTNERSHIP HUB (SCHEDULE VII) */}
-      <section id="csr" className="py-20 md:py-24 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
-        <Container size="default">
-          <div className="bg-gradient-to-br from-[#0B3B24] to-[#165B38] text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-[#C5A059]/40 shadow-xl">
-            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <Badge variant="gold-dark" size="sm">
-                  MCA CSR-1 Registration: CSR00081063
-                </Badge>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
-                  Turnkey Corporate Social Responsibility (CSR) Partnerships in Odisha
-                </h2>
-                <p className="text-sm text-white/85 leading-relaxed font-sans">
-                  Mahaveer Educational &amp; Charitable Trust is fully certified under Section 135 of the Companies Act, 2013 and Ministry of Corporate Affairs norms. We partner with public and private sector enterprises to design, implement, and audit impactful CSR initiatives across Schedule VII focus areas:
-                </p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-white/90 pt-1 font-sans">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Promoting Education &amp; Remedial Coaching</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Women&apos;s Vocational Livelihood Training</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Safe Drinking Water &amp; Sanitation (Jal Seva)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                    <span>Independent Audits &amp; Utilization Certificates</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
-                <Link href="/csr-partnerships" className="w-full">
-                  <Button variant="gold" size="lg" className="w-full justify-center shadow-md font-bold">
-                    <Briefcase className="w-4 h-4 mr-2" aria-hidden="true" />
-                    <span>CSR Gateway &amp; Proposals</span>
-                  </Button>
-                </Link>
-                <Link href="/statutory-disclosures" className="w-full">
-                  <Button variant="dark-outline" size="md" className="w-full justify-center text-xs">
-                    <FileCheck className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                    <span>Download CSR-1 Registration</span>
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 9. STUDENT SUPPORT BEYOND FINANCIAL GRANTS */}
-      <section id="support" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10">
-        <Container size="default" className="space-y-14">
-          <SectionHeader
-            badge="Comprehensive Enablement"
-            title="Student Support Beyond Financial Grants"
-            subtitle="Nurturing professional competence, critical reasoning, and community stewardship across our scholar fraternity."
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {HOMEPAGE_CONTENT.enablement.map((item, idx) => {
-              const IconComp =
-                ENABLEMENT_ICON_MAP[item.iconName as keyof typeof ENABLEMENT_ICON_MAP] || Users;
-              return (
-                <Card
-                  key={idx}
-                  variant="elevated"
-                  className="p-6 space-y-3 bg-white border-[#0B3B24]/12 shadow-xs"
-                >
-                  <IconComp className="w-6 h-6 text-[#0B3B24]" aria-hidden="true" />
-                  <h3 className="font-serif text-base font-bold text-[#0B3B24]">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
-                    {item.description}
-                  </p>
-                </Card>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* 10. COMMUNITY IMPACT & ODISHA STATE OUTREACH */}
-      <section id="impact" className="py-20 bg-[#FDFBF7] border-b border-[#0B3B24]/10">
-        <Container size="default" className="space-y-12">
-          <SectionHeader
-            badge="Geographic Scope"
-            title="Our Roots, Reach & Future Outreach"
-            subtitle="Our registered base is in Balangir, with a corporate liaison office in Bhubaneswar. We distinguish current programme locations from wider outreach and future expansion priorities."
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {TRUST_CONFIG.perspectives.map((item, idx) => (
-              <Card
-                key={idx}
-                variant="accent"
-                className="p-8 space-y-4 bg-white flex flex-col justify-between shadow-xs border-[#0B3B24]/10"
-              >
-                <div className="space-y-3">
-                  <Badge variant="contrast-gold" size="sm">
-                    {item.focus}
-                  </Badge>
-                  <p className="font-serif text-base sm:text-lg italic text-[#1C2421] leading-relaxed">
-                    “{item.statement}”
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[#0B3B24]/10">
-                  <p className="text-xs font-bold text-[#0B3B24] font-sans">
-                    {item.authorNote}
-                  </p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 11. PARTICIPATION & VOLUNTEER REGISTRATION DESK */}
-      <section id="participate" className="py-20 md:py-28 bg-[#F4EFE6] border-b border-[#0B3B24]/10 scroll-mt-16">
+      {/* =========================================================================
+          SECTION 10 — VOLUNTEER & COMMUNITY PARTICIPATION REGISTRY
+          ========================================================================= */}
+      <section id="participate" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-16">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6">
               <Badge variant="forest">Civic Mentorship &amp; Volunteering</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B3B24]">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest leading-[1.15]">
                 Join the Cause as a Mentor, Volunteer, or Institutional Partner.
               </h2>
-              <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-                MAHAVIR TRUST welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access and rural welfare in Odisha.
+              <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">
+                Mahaveer Educational &amp; Charitable Trust (MECT) welcomes academicians, working professionals, alumni, and college faculties who share our dedication to educational access, women&apos;s livelihoods, and community welfare in Odisha.
               </p>
 
               <div className="space-y-4 pt-2">
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xs bg-cream text-terracotta-dark flex items-center justify-center shrink-0 border border-border-warm">
                     <Users className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
+                    <h3 className="text-sm font-bold text-forest">
                       Academic &amp; Professional Mentors
                     </h3>
-                    <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
-                      Dedicate 2 hours monthly to guide an undergraduate scholar in your discipline with entrance exams or career paths.
+                    <p className="text-xs text-ink-secondary mt-0.5 leading-relaxed font-sans">
+                      Dedicate 2 hours monthly to guide secondary and undergraduate students in your discipline with entrance exams or career paths.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
-                    <Building2 className="w-5 h-5" aria-hidden="true" />
+                  <div className="w-10 h-10 rounded-xs bg-cream text-terracotta-dark flex items-center justify-center shrink-0 border border-border-warm">
+                    <Scissors className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
-                      College &amp; University Affiliations
+                    <h3 className="text-sm font-bold text-forest">
+                      Vocational &amp; Livelihood Instructors
                     </h3>
-                    <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
-                      Degree colleges in Odisha can coordinate with our desk for student grant endorsements and fee verification.
+                    <p className="text-xs text-ink-secondary mt-0.5 leading-relaxed font-sans">
+                      Share technical guidance in garment tailoring, apparel fabrication, and micro-enterprise management for rural women.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-3.5">
-                  <div className="w-10 h-10 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
-                    <BookOpen className="w-5 h-5" aria-hidden="true" />
+                  <div className="w-10 h-10 rounded-xs bg-cream text-terracotta-dark flex items-center justify-center shrink-0 border border-border-warm">
+                    <Droplets className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#0B3B24]">
-                      Community Learning Hub Stewards
+                    <h3 className="text-sm font-bold text-forest">
+                      Community Relief &amp; Jal Seva Volunteers
                     </h3>
-                    <p className="text-xs text-[#4A5568] mt-0.5 leading-relaxed font-sans">
-                      Assist in managing community reference book collections and study rooms in cluster districts.
+                    <p className="text-xs text-ink-secondary mt-0.5 leading-relaxed font-sans">
+                      Assist on-site during summer drinking water distribution camps, hospital meal drives, and emergency welfare efforts.
                     </p>
                   </div>
                 </div>
@@ -609,31 +901,31 @@ export default function HomePage() {
             </div>
 
             {/* Right: Volunteer Form */}
-            <div className="lg:col-span-6 bg-white p-8 sm:p-10 rounded-xs border border-[#0B3B24]/15 shadow-sm">
-              <h3 className="font-serif text-2xl font-bold text-[#0B3B24] mb-1">
+            <div className="lg:col-span-6 bg-cream/40 p-8 sm:p-10 rounded-xs border border-border-warm shadow-sm">
+              <h3 className="font-serif text-2xl font-bold text-forest mb-1">
                 Volunteer &amp; Mentor Registry
               </h3>
-              <p className="text-xs text-[#4A5568] mb-6 font-sans">
+              <p className="text-xs text-ink-sand mb-6 font-sans">
                 Submit your academic or professional background to connect with our Secretariat Coordinator.
               </p>
 
               {volSubmitted ? (
-                <div className="p-6 bg-[#0B3B24] text-white rounded-xs space-y-3 text-center animate-in fade-in">
-                  <CheckCircle2 className="w-10 h-10 text-[#E4C88A] mx-auto" aria-hidden="true" />
+                <div className="p-6 bg-forest text-white rounded-xs space-y-3 text-center animate-in fade-in">
+                  <CheckCircle2 className="w-10 h-10 text-sand mx-auto" aria-hidden="true" />
                   <h4 className="font-serif text-xl font-bold">
                     Registration Recorded
                   </h4>
                   {volReferenceId && (
-                    <p className="text-xs font-mono text-[#E4C88A] bg-black/20 py-1 px-3 rounded inline-block">
+                    <p className="text-xs font-mono text-cream bg-forest-deep py-1 px-3 rounded inline-block">
                       Volunteer Registry Ref: #{volReferenceId}
                     </p>
                   )}
-                  <p className="text-xs text-white/85 leading-relaxed font-sans">
-                    Thank you for your willingness to guide Odisha’s students. The Secretariat team will review your profile and reach out via email.
+                  <p className="text-xs text-cream leading-relaxed font-sans">
+                    Thank you for your willingness to guide and support Odisha’s communities. The Secretariat team will review your profile and reach out via email.
                   </p>
                   <Button
-                    variant="outline"
-                    className="mt-3 text-xs !border-[#E4C88A] !text-[#E4C88A] hover:!bg-[#E4C88A]/10"
+                    variant="dark-outline"
+                    className="mt-3 text-xs"
                     onClick={() => {
                       setVolSubmitted(false);
                       setVolConsent(false);
@@ -721,16 +1013,16 @@ export default function HomePage() {
                         label: "Academic & Career Mentorship",
                       },
                       {
+                        value: "Women Livelihood & Vocational Training",
+                        label: "Women Livelihood & Tailoring Instruction",
+                      },
+                      {
+                        value: "Jal Seva & Community Relief",
+                        label: "Safe Water & Community Relief Volunteering",
+                      },
+                      {
                         value: "College Institutional Partnership",
                         label: "College / University Institutional Liaison",
-                      },
-                      {
-                        value: "Project Samarth Learning Hub Steward",
-                        label: "Project Samarth Study Hub Steward",
-                      },
-                      {
-                        value: "Community Field Volunteering",
-                        label: "District Field Volunteering",
                       },
                     ]}
                   />
@@ -751,16 +1043,16 @@ export default function HomePage() {
                       required
                       checked={volConsent}
                       onChange={(e) => setVolConsent(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded-xs border-[#0B3B24]/30 text-[#0B3B24] focus:ring-[#C5A059]"
+                      className="mt-0.5 h-4 w-4 rounded-xs border-terracotta/40 text-terracotta focus:ring-terracotta"
                     />
                     <label
                       htmlFor="vol-consent-homepage"
-                      className="text-[11px] text-[#4A5568] leading-tight select-none font-sans"
+                      className="text-[11px] text-ink-sand leading-tight select-none font-sans"
                     >
                       I voluntarily declare my intent to participate in academic mentorship or community volunteering in accordance with safeguarding and ethical conduct guidelines. For comprehensive tracks, review our{" "}
                       <Link
                         href="/volunteer"
-                        className="text-[#0B3B24] font-semibold underline hover:text-[#C5A059]"
+                        className="text-terracotta-dark font-semibold underline hover:text-forest"
                       >
                         Volunteer Portal
                       </Link>.
@@ -783,8 +1075,275 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 12. PUBLIC SECRETARIAT INQUIRY DESK */}
-      <section id="contact-desk" className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10 scroll-mt-16">
+      {/* =========================================================================
+          SECTION 11 (PHASE 5) — SBI DONATION SECTION & TAX DEDUCTION ESTIMATOR
+          ========================================================================= */}
+      <section id="donate" className="py-20 bg-terracotta text-white border-b border-terracotta-dark scroll-mt-16">
+        <Container size="default" className="space-y-12">
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <Badge variant="gold-dark">
+              Direct Institutional Banking • State Bank of India
+            </Badge>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
+              SUPPORT OUR MISSION — DONATE NOW
+            </h2>
+            <p className="text-sm sm:text-base text-white leading-relaxed font-sans">
+              Your contribution directly sustains Free Education for 200 Students alongside MECT&apos;s documented work in women&apos;s livelihoods, safe drinking water, and community nutrition across Odisha.
+            </p>
+          </div>
+
+          {/* Official State Bank of India Donation Card & Prepared QR Integration Area */}
+          <div className="max-w-5xl mx-auto">
+            <SbiDonationSection />
+          </div>
+
+          {/* Interactive Section 80G / Section 133 Tax Deduction Estimator */}
+          <div className="max-w-5xl mx-auto bg-white text-ink p-6 sm:p-10 rounded-xs border-2 border-sand shadow-2xl space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-2">
+              <div className="flex items-center gap-2">
+                <Calculator className="w-5 h-5 text-terracotta-dark" aria-hidden="true" />
+                <span className="font-serif text-xl font-bold text-forest">
+                  Section 133 / Section 80G Tax Deduction Estimator (Illustrative Model)
+                </span>
+              </div>
+              <span className="text-xs text-forest font-semibold font-sans tabular-nums">
+                Documented Order: AY 2024-25 to AY 2026-27 • URN: {TRUST_CONFIG.statutory.section80GUrn}
+              </span>
+            </div>
+
+            {/* Statutory Status Disclosure Banner for Tax Year 2026-27 */}
+            <div className="p-4 rounded-xs bg-sand-light border-l-4 border-terracotta text-xs text-ink font-sans space-y-1.5">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-terracotta-dark shrink-0" aria-hidden="true" />
+                <span className="font-bold uppercase tracking-wider text-[11px] text-forest">
+                  Statutory Status Disclosure • Tax Year 2026-27 / AY 2027-28
+                </span>
+              </div>
+              <p className="text-[11px] text-ink leading-relaxed">
+                MECT holds documented historical approval under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>, DIN: <strong>{TRUST_CONFIG.statutory.section80GDin}</strong>, Order Date: 29-01-2024) covering donations made in Financial Years 2023-24 through 2025-26 (Assessment Years 2024-25 through 2026-27). The historical approval does not automatically cover donations in the current <strong>Tax Year 2026-27</strong> (commenced 1 April 2026 / AY 2027-28). Under the Income-tax Act, 2025, Section 354 governs applications (Form 105) and formal examination orders (Form 107) for eligible donations, read with Section 536 repeal, savings and transition provisions. <strong>Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.</strong> This tool illustrates statutory deduction mechanics under Section 133 / legacy Section 80G for eligible donors filing under the Old Tax Regime and does not represent a guaranteed current tax benefit for MECT.
+              </p>
+            </div>
+
+            {/* Tax Regime Selector & Advisory */}
+            <div className="p-4 rounded-xs bg-cream/65 border border-border-warm space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span className="text-xs font-bold text-forest uppercase tracking-wider font-sans">
+                  Select Your Tax Filing Regime:
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setTaxRegime("old")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-xs border transition-all ${
+                      taxRegime === "old"
+                        ? "bg-forest text-white border-terracotta"
+                        : "bg-white text-ink border-border-warm hover:border-terracotta"
+                    }`}
+                  >
+                    Old Tax Regime (Section 133 / 80G Eligible)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTaxRegime("new")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-xs border transition-all ${
+                      taxRegime === "new"
+                        ? "bg-forest text-white border-terracotta"
+                        : "bg-white text-ink border-border-warm hover:border-terracotta"
+                    }`}
+                  >
+                    Section 202 Simplified Regime (New Regime Default)
+                  </button>
+                </div>
+              </div>
+              <p className="text-[11px] text-ink font-sans leading-normal">
+                {taxRegime === "old"
+                  ? "✓ Donors opting for the Old Tax Regime can claim up to 50% deduction of eligible contributions from gross total income, subject to the 10% Adjusted Gross Total Income (AGTI) cap."
+                  : "⚠ Under the default Section 202 Simplified Tax Regime (legacy Section 115BAC), individual taxpayers cannot claim Chapter VI-A / Part D deductions, including Section 133 / Section 80G. Tax offset is ₹0."}
+              </p>
+            </div>
+
+            {/* Quick Amount Selector */}
+            <div>
+              <span className="text-xs uppercase font-bold text-forest tracking-wider block mb-2 font-sans">
+                Select or Enter Contribution Amount (₹ INR):
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                {[2500, 5000, 10000, 25000, 50000].map((amt) => (
+                  <button
+                    key={amt}
+                    type="button"
+                    onClick={() => setDonationAmount(amt)}
+                    className={`py-2.5 px-3 rounded-xs text-xs font-bold border transition-all ${
+                      donationAmount === amt
+                        ? "bg-forest text-white border-terracotta shadow-xs"
+                        : "bg-cream text-forest border-border-warm hover:border-terracotta"
+                    }`}
+                  >
+                    ₹{amt.toLocaleString("en-IN")}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Custom Input & Tax Bracket */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="home-tax-amount" className="text-xs font-bold text-forest block mb-1 font-sans">
+                  Custom Contribution Amount (₹):
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-terracotta-dark">
+                    ₹
+                  </span>
+                  <input
+                    id="home-tax-amount"
+                    type="number"
+                    min="500"
+                    step="500"
+                    value={donationAmount}
+                    onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
+                    className="w-full pl-7 pr-3 py-2 rounded-xs border border-border-warm text-sm font-bold text-forest focus:border-terracotta focus:outline-none bg-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="home-tax-bracket" className="text-xs font-bold text-forest block mb-1 font-sans">
+                  Applicable Marginal Tax Bracket ({taxRegime === "old" ? "Old Regime" : "New Regime Disabled"}):
+                </label>
+                <select
+                  id="home-tax-bracket"
+                  value={taxBracket}
+                  disabled={taxRegime === "new"}
+                  onChange={(e) => setTaxBracket(Number(e.target.value))}
+                  className="w-full px-3 py-2 rounded-xs border border-border-warm text-xs font-semibold text-forest focus:border-terracotta focus:outline-none bg-white disabled:bg-sage/40 disabled:text-ink-secondary"
+                >
+                  <option value={0.3}>30% Slab (Highest Marginal Bracket)</option>
+                  <option value={0.2}>20% Slab (Middle Marginal Bracket)</option>
+                  <option value={0.1}>10% Slab (Lower Marginal Bracket)</option>
+                  <option value={0.05}>5% Slab (Entry Bracket)</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Live Calculation Strip */}
+            <div className="p-5 rounded-xs bg-forest text-white border border-sand/40 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+                <div className="p-3 bg-forest-deep rounded-xs border border-white/15 space-y-0.5">
+                  <span className="text-[10px] text-cream/90 font-sans block">1. Your Contribution</span>
+                  <span className="text-xl font-serif font-bold text-white tabular-nums">
+                    ₹{donationAmount.toLocaleString("en-IN")}
+                  </span>
+                  <span className="text-[9px] text-cream/85 block">Direct bank remittance</span>
+                </div>
+                <div className="p-3 bg-forest-deep rounded-xs border border-white/15 space-y-0.5">
+                  <span className="text-[10px] text-sand font-sans block">
+                    {taxRegime === "old" ? "2. Indicative Deduction (50%)" : "Deduction (Section 202)"}
+                  </span>
+                  <span className="text-xl font-serif font-bold text-cream tabular-nums">
+                    {taxRegime === "old" ? `₹${eligibleDeduction.toLocaleString("en-IN")}` : "₹0"}
+                  </span>
+                  <span className="text-[9px] text-cream/85 block">Reduces taxable income (not cash refund)</span>
+                </div>
+                <div className="p-3 bg-terracotta rounded-xs border border-sand/50 space-y-0.5">
+                  <span className="text-[10px] text-white font-sans block">
+                    {taxRegime === "old" ? "3. Potential Tax Offset*" : "Tax Offset (New Regime)"}
+                  </span>
+                  <span className="text-xl font-serif font-bold text-white tabular-nums">
+                    {taxRegime === "old" ? `₹${Math.round(estimatedTaxSaved).toLocaleString("en-IN")}*` : "₹0"}
+                  </span>
+                  <span className="text-[9px] text-white/95 block">Illustrative; contingent on donee approval</span>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-white/15 flex items-start gap-2.5 text-xs text-cream font-sans">
+                <CheckCircle2 className="w-4 h-4 text-sand shrink-0 mt-0.5" />
+                <div>
+                  <strong>Tangible Ground Impact:</strong> {getImpactDescription(donationAmount)}
+                </div>
+              </div>
+
+              {/* Statutory Footnote & Disclaimers */}
+              <div className="pt-3 border-t border-white/15 text-[11px] text-cream/90 space-y-1 font-sans">
+                <p>
+                  *<strong>Statutory Notes &amp; Assumptions under Section 133 / Section 80G:</strong>
+                </p>
+                <ul className="list-disc pl-4 space-y-0.5 text-[10px] text-cream/85">
+                  <li>
+                    <strong>Documentary Approval Status:</strong> MECT holds documented approval under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: {TRUST_CONFIG.statutory.section80GUrn}, DIN: {TRUST_CONFIG.statutory.section80GDin}, Order Date: 29-01-2024) covering donations made in FY 2023-24 through FY 2025-26 (Assessment Years 2024-25 through 2026-27). The historical approval does not automatically cover donations in the current Tax Year 2026-27 (commenced 1 April 2026 / AY 2027-28). Under the Income-tax Act, 2025, applications and approvals for eligible donations are governed by Section 354 (via Form 105 application and Form 107 formal examination order) read with Section 536 repeal, savings and transition provisions. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.
+                  </li>
+                  <li>
+                    <strong>Deduction vs. Cash Savings:</strong> A tax deduction reduces gross taxable income; it does not return cash or provide a rebate. Actual tax offset equals the deductible amount multiplied by your marginal tax slab (plus applicable 4% Health &amp; Education Cess).
+                  </li>
+                  <li>
+                    <strong>Qualifying Ceiling:</strong> Under Section 133 / Section 80G(4), aggregate deductions for charitable contributions are capped at 10% of the donor&apos;s Adjusted Gross Total Income (AGTI).
+                  </li>
+                  <li>
+                    <strong>Digital Payment Mode Mandate:</strong> Cash contributions exceeding ₹2,000 are disqualified from tax exemption under Section 133 / Section 80G(5D). Contributions must be transferred via digital or banking channels.
+                  </li>
+                  <li>
+                    <strong>Reporting &amp; Certificates:</strong> Annual donation reporting is conducted via Form 113 (legacy Form 10BD) to generate official Form 114 (legacy Form 10BE) certificates. Donors must furnish valid PAN and residential address. Note that under Section 202 (simplified tax regime), Section 133 charitable deductions are not available.
+                  </li>
+                  <li>
+                    <strong>Non-Advisory Disclaimer:</strong> This calculator is an illustrative educational model and does not constitute formal legal, accounting or tax advice. Donors should consult a certified Chartered Accountant to determine their personal tax liabilities.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Section 80G Statutory & Direct Bank Transfer Notice Box */}
+            <div className="p-5 rounded-xs bg-cream/65 border border-border-warm text-left space-y-3">
+              <div className="flex items-center gap-2 text-forest text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-terracotta-dark" aria-hidden="true" />
+                <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
+              </div>
+              <p className="text-xs text-ink leading-relaxed font-sans">
+                {HOMEPAGE_CONTENT.donorNotice.description}
+              </p>
+
+              <div className="pt-2 border-t border-border-warm grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-sans text-ink">
+                <div>
+                  <span className="text-terracotta-dark block text-[10px] font-semibold">Bank:</span>
+                  <span className="font-semibold">{TRUST_CONFIG.bank.bankName}</span>
+                </div>
+                <div>
+                  <span className="text-terracotta-dark block text-[10px] font-semibold">IFSC Code:</span>
+                  <span className="font-mono font-bold text-forest">{TRUST_CONFIG.bank.ifsc}</span>
+                </div>
+                <div>
+                  <span className="text-terracotta-dark block text-[10px] font-semibold">Account No:</span>
+                  <span className="font-mono font-bold text-forest">{TRUST_CONFIG.bank.accountNumber}</span>
+                </div>
+                <div>
+                  <span className="text-terracotta-dark block text-[10px] font-semibold">80G URN:</span>
+                  <span className="font-mono text-[11px]">{TRUST_CONFIG.statutory.section80GUrn}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Direct CTA */}
+            <div className="pt-2 flex flex-wrap justify-center gap-3.5">
+              <Link href="/donate">
+                <Button variant="primary" size="lg" className="shadow-lg font-bold">
+                  <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
+                  <span>DONATE NOW</span>
+                </Button>
+              </Link>
+              <Link href="/statutory-disclosures">
+                <Button variant="outline" size="lg" className="font-semibold bg-white">
+                  <ShieldCheck className="w-4 h-4 mr-1.5 text-terracotta-dark" aria-hidden="true" />
+                  <span>Verify Statutory Vault</span>
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* =========================================================================
+          SECTION 12 — PUBLIC SECRETARIAT INQUIRY & GUIDANCE DESK
+          ========================================================================= */}
+      <section id="contact-desk" className="py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Direct Public Access"
@@ -794,20 +1353,20 @@ export default function HomePage() {
             className="mb-12"
           />
 
-          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-lg">
+          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-border-warm shadow-lg">
             {inquirySubmitted ? (
-              <div className="p-8 bg-[#0B3B24] text-white rounded-xs space-y-4 text-center animate-in fade-in">
-                <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
+              <div className="p-8 bg-forest text-white rounded-xs space-y-4 text-center animate-in fade-in">
+                <CheckCircle2 className="w-12 h-12 text-sand mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   Inquiry Successfully Registered
                 </h3>
                 {inquiryReferenceId && (
-                  <p className="text-sm font-mono text-[#E4C88A] bg-black/25 py-1.5 px-4 rounded inline-block">
+                  <p className="text-sm font-mono text-cream bg-forest-deep py-1.5 px-4 rounded inline-block">
                     Secretariat Registry Ref: #{inquiryReferenceId}
                   </p>
                 )}
-                <p className="text-xs sm:text-sm text-white/85 leading-relaxed max-w-md mx-auto font-sans">
-                  Thank you for reaching out to MAHAVIR TRUST. Our Secretariat Coordinator has logged your query and will review your submission accordingly.
+                <p className="text-xs sm:text-sm text-cream leading-relaxed max-w-md mx-auto font-sans">
+                  Thank you for reaching out to Mahaveer Educational &amp; Charitable Trust (MECT). Our Secretariat Coordinator has logged your query and will review your submission accordingly.
                 </p>
                 <Button
                   variant="gold"
@@ -923,7 +1482,7 @@ export default function HomePage() {
                   <span>Transmit Official Inquiry</span>
                 </Button>
 
-                <p className="text-[11px] text-[#4A5568] text-center italic font-sans">
+                <p className="text-[11px] text-ink-secondary text-center italic font-sans">
                   Zero processing fees. Protected by institutional security standards and rate limiting.
                 </p>
               </form>
@@ -932,61 +1491,43 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 13. PHILANTHROPIC COMMITMENT & SECTION 80G TAX REASSURANCE */}
-      <section id="donate" className="py-20 bg-[#0B3B24] text-[#EDE6D8] border-t border-[#C5A059]/30 scroll-mt-16">
+      {/* =========================================================================
+          SECTION 13 — FINAL INSTITUTIONAL CALL TO ACTION
+          ========================================================================= */}
+      <section className="py-20 md:py-28 bg-sand-light text-ink border-t border-border-warm relative overflow-hidden">
         <Container size="default">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <Badge variant="gold-dark">
-              50% Tax Deduction • Section 80G Certified
-            </Badge>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              Support Community Progress. Help Opportunity Reach Further.
+          <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10 bg-white border border-border-warm rounded-xs p-8 sm:p-12 shadow-sm">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-forest tracking-tight leading-tight">
+              Participate in Sustainable Community Transformation Across Odisha.
             </h2>
-            <p className="text-sm sm:text-base text-white/85 leading-relaxed font-sans">
-              Your contribution helps sustain MECT's documented charitable work across education, women's vocational livelihoods, safe-water access and community food relief. Donations are handled through the trust's stated governance and reporting processes.
+
+            <p className="text-sm sm:text-base text-ink leading-relaxed font-sans max-w-2xl mx-auto">
+              Whether you are an institutional CSR partner, a volunteer educator, or a donor seeking 80G tax deductions, your engagement directly supports rural education, women&apos;s livelihoods, clean water, and community relief.
             </p>
 
-            {/* 80G Tax Exemption & Direct Bank Transfer Reassurance Box */}
-            <div className="p-6 rounded-xs bg-[#072617] border border-[#C5A059]/40 text-left max-w-xl mx-auto space-y-3.5 shadow-xl">
-              <div className="flex items-center gap-2 text-[#E4C88A] text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-[#C5A059]" aria-hidden="true" />
-                <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
-              </div>
-              <p className="text-xs text-white/80 leading-relaxed font-sans">
-                {HOMEPAGE_CONTENT.donorNotice.description}
-              </p>
-
-              <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-3 text-xs font-sans">
-                <div>
-                  <span className="text-white/50 block text-[10px]">Bank:</span>
-                  <span className="text-white font-medium">{TRUST_CONFIG.bank.bankName}</span>
-                </div>
-                <div>
-                  <span className="text-white/50 block text-[10px]">IFSC Code:</span>
-                  <span className="text-[#E4C88A] font-mono font-bold">{TRUST_CONFIG.bank.ifsc}</span>
-                </div>
-                <div>
-                  <span className="text-white/50 block text-[10px]">Account No:</span>
-                  <span className="text-[#E4C88A] font-mono font-bold">{TRUST_CONFIG.bank.accountNumber}</span>
-                </div>
-                <div>
-                  <span className="text-white/50 block text-[10px]">80G Order URN:</span>
-                  <span className="text-white font-mono">{TRUST_CONFIG.statutory.section80GUrn}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4 flex flex-wrap justify-center gap-4">
-              <Link href="/donate">
-                <Button variant="gold" size="lg" className="shadow-lg font-bold">
-                  <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
-                  <span>Donate with 80G Tax Exemption</span>
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-3.5">
+              <Link href="/programmes">
+                <Button variant="gold" size="lg" className="font-bold shadow-sm">
+                  <span>Explore All 5 Sectors</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
                 </Button>
               </Link>
-              <Link href="/statutory-disclosures">
-                <Button variant="dark-outline" size="lg" className="font-semibold">
-                  <ShieldCheck className="w-4 h-4 mr-1.5 text-[#E4C88A]" aria-hidden="true" />
-                  <span>Verify Tax Certificates</span>
+              <Link href="/donate">
+                <Button variant="primary" size="lg" className="font-semibold">
+                  <Heart className="w-4 h-4 mr-1.5 fill-current" aria-hidden="true" />
+                  <span>DONATE NOW</span>
+                </Button>
+              </Link>
+              <Link href="/volunteer">
+                <Button variant="outline" size="lg" className="font-semibold bg-white">
+                  <Users className="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span>Join as Volunteer</span>
+                </Button>
+              </Link>
+              <Link href="/csr-partnerships">
+                <Button variant="outline" size="lg" className="font-semibold bg-white">
+                  <Briefcase className="w-4 h-4 mr-1.5" aria-hidden="true" />
+                  <span>CSR Partnerships</span>
                 </Button>
               </Link>
             </div>

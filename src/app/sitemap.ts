@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://mect.org.in";
-  const buildDate = new Date("2026-11-05T12:00:00.000Z");
+  const buildDate = new Date("2026-11-10T12:00:00.000Z");
 
   return [
     {

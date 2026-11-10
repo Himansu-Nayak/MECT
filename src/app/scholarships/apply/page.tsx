@@ -337,10 +337,10 @@ export default function ScholarshipApplyPage() {
   // SUCCESS VIEW
   if (submittedApplication) {
     return (
-      <main className="min-h-screen bg-[#FDFBF7] py-16 px-4">
+      <div className="min-h-screen bg-cream py-16 px-4 pb-floating-clearance">
         <Container size="prose">
-          <Card className="p-8 md:p-12 text-center border-2 border-[#059669]/30 bg-white shadow-2xl rounded-2xl">
-            <div className="w-20 h-20 bg-[#059669]/10 text-[#059669] rounded-full flex items-center justify-center mx-auto mb-6">
+          <Card className="p-8 md:p-12 text-center border-2 border-terracotta/30 bg-white shadow-2xl rounded-2xl">
+            <div className="w-20 h-20 bg-cream text-terracotta-dark rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="w-12 h-12" />
             </div>
 
@@ -348,33 +348,33 @@ export default function ScholarshipApplyPage() {
               APPLICATION LOGGED & VAULT SECURED
             </Badge>
 
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#0B3B24] tracking-tight mb-4">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-terracotta-dark tracking-tight mb-4">
               Scholarship Application Transmitted
             </h1>
 
-            <p className="text-gray-600 max-w-xl mx-auto mb-8 text-base">
-              Your application has been logged into the MAHAVIR TRUST secretariat records. All submitted certificates
+            <p className="text-ink-sand max-w-xl mx-auto mb-8 text-base">
+              Your application has been logged into the MECT secretariat records. All submitted certificates
               have been secured with tamper-evident SHA-256 cryptographic fingerprints.
             </p>
 
             {/* Reference Box */}
-            <div className="bg-[#F8FAFC] border-2 border-dashed border-[#0B3B24]/20 rounded-xl p-6 max-w-lg mx-auto mb-8">
-              <span className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">
+            <div className="bg-cream border-2 border-dashed border-terracotta/20 rounded-xl p-6 max-w-lg mx-auto mb-8">
+              <span className="text-xs font-bold text-ink-sand uppercase tracking-widest block mb-2">
                 Official Application Reference Number
               </span>
               <div className="flex items-center justify-center gap-3">
-                <span className="text-2xl md:text-3xl font-mono font-black text-[#0B3B24] tracking-wider">
+                <span className="text-2xl md:text-3xl font-mono font-black text-terracotta-dark tracking-wider">
                   {submittedApplication.applicationNumber}
                 </span>
                 <button
                   onClick={copyRefId}
-                  className="p-2 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-colors"
+                  className="p-2 rounded-lg bg-white border border-border-warm hover:bg-cream/65 text-forest transition-colors"
                   title="Copy Reference ID"
                 >
-                  {copied ? <Check className="w-5 h-5 text-emerald-600" /> : <Copy className="w-5 h-5" />}
+                  {copied ? <Check className="w-5 h-5 text-terracotta-dark" /> : <Copy className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-ink-sand mt-2">
                 Quote this identifier in all correspondence with the Board of Trustees.
               </p>
             </div>
@@ -394,7 +394,7 @@ export default function ScholarshipApplyPage() {
             </div>
           </Card>
         </Container>
-      </main>
+      </div>
     );
   }
 
@@ -409,17 +409,17 @@ export default function ScholarshipApplyPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FDFBF7] py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-cream py-12 px-4 sm:px-6 pb-floating-clearance">
       <Container size="default">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0B3B24]/10 text-[#0B3B24] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream text-terracotta-dark text-xs font-bold uppercase tracking-wider mb-3">
             <Lock className="w-3.5 h-3.5" /> Direct College Disbursal Architecture
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0B3B24] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-terracotta-dark tracking-tight">
             Institutional Higher Education Scholarship Application
           </h1>
-          <p className="mt-3 text-gray-600 text-sm sm:text-base">
+          <p className="mt-3 text-ink-sand text-sm sm:text-base">
             Merit-cum-Means financial assistance for underprivileged students across all 30 districts of Odisha.
             Disbursements are remitted directly to accredited college bursars via electronic RTGS/NEFT.
           </p>
@@ -441,15 +441,15 @@ export default function ScholarshipApplyPage() {
                   disabled={s.number > currentStep}
                   className={`flex flex-col items-center p-2.5 rounded-xl transition-all border text-center ${
                     isActive
-                      ? "bg-[#0B3B24] text-white border-[#0B3B24] shadow-md ring-2 ring-[#0B3B24]/20"
+                      ? "bg-terracotta text-white border-terracotta shadow-md ring-2 ring-terracotta/20"
                       : isDone
-                      ? "bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 cursor-pointer"
-                      : "bg-white text-gray-400 border-gray-200 opacity-60 cursor-not-allowed"
+                      ? "bg-sand-light text-forest border-border-warm hover:bg-sand-light cursor-pointer"
+                      : "bg-white text-ink-secondary border-border-warm opacity-60 cursor-not-allowed"
                   }`}
                 >
                   <div
                     className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mb-1 ${
-                      isActive ? "bg-white text-[#0B3B24]" : isDone ? "bg-emerald-600 text-white" : "bg-gray-100 text-gray-500"
+                      isActive ? "bg-white text-terracotta-dark" : isDone ? "bg-terracotta text-white" : "bg-sand-light text-ink-sand"
                     }`}
                   >
                     {isDone ? <Check className="w-4 h-4" /> : s.number}
@@ -462,15 +462,15 @@ export default function ScholarshipApplyPage() {
         </div>
 
         {/* Step Card Form Container */}
-        <Card className="max-w-4xl mx-auto p-6 sm:p-10 bg-white shadow-xl rounded-2xl border border-gray-200">
+        <Card className="max-w-4xl mx-auto p-6 sm:p-10 bg-white shadow-xl rounded-2xl border border-border-warm">
           {/* STEP 1: Personal & Demographics */}
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <User className="w-5 h-5 text-emerald-700" /> Step 1: Personal & Demographic Profile
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <User className="w-5 h-5 text-forest" /> Step 1: Personal & Demographic Profile
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-sand mt-1">
                   Enter student details matching your official Aadhaar and Board examination certificates.
                 </p>
               </div>
@@ -595,10 +595,10 @@ export default function ScholarshipApplyPage() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-emerald-700" /> Step 2: Course & College Institutional Enrolment
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-forest" /> Step 2: Course & College Institutional Enrolment
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-sand mt-1">
                   Specify your enrolled college and academic programme. Disbursals are verified with these details.
                 </p>
               </div>
@@ -672,10 +672,10 @@ export default function ScholarshipApplyPage() {
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-emerald-700" /> Step 3: Socio-Economic Need & Means Appraisal
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <DollarSign className="w-5 h-5 text-forest" /> Step 3: Socio-Economic Need & Means Appraisal
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-sand mt-1">
                   Grants are targeted towards low-income households. Details must align with your Revenue Certificate.
                 </p>
               </div>
@@ -712,8 +712,8 @@ export default function ScholarshipApplyPage() {
                 />
               </div>
 
-              <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-xl bg-sand-light border border-terracotta/40 text-ink text-xs flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-terracotta-dark shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">Statutory Integrity Advisory:</span> The Trust secretariat verifies
                   income certificate references via Odisha e-District portal or local Tehsil scrutiny. Submission of
@@ -727,10 +727,10 @@ export default function ScholarshipApplyPage() {
           {currentStep === 4 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <Landmark className="w-5 h-5 text-emerald-700" /> Step 4: Direct College Institutional Bank Details
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <Landmark className="w-5 h-5 text-forest" /> Step 4: Direct College Institutional Bank Details
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-sand mt-1">
                   <strong>Zero-Cash-Handout Principle:</strong> All sanctioned tuition grants are disbursed strictly
                   into the institutional bank account of the college bursar/registrar. Personal student accounts are not permitted.
                 </p>
@@ -795,10 +795,10 @@ export default function ScholarshipApplyPage() {
           {currentStep === 5 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-emerald-700" /> Step 5: Document Vault & Cryptographic Verification
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-forest" /> Step 5: Document Vault & Cryptographic Verification
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-ink-sand mt-1">
                   Upload clear PDF/JPEG copies (max 5MB each). Each document is fingerprinted in your browser with a
                   SHA-256 cryptographic hash to ensure audit integrity.
                 </p>
@@ -818,31 +818,31 @@ export default function ScholarshipApplyPage() {
                     <div
                       key={docDef.key}
                       className={`p-4 rounded-xl border transition-all ${
-                        uploaded ? "bg-emerald-50/50 border-emerald-300" : "bg-gray-50/50 border-gray-200"
+                        uploaded ? "bg-sand-light/50 border-border-warm" : "bg-cream/65/50 border-border-warm"
                       }`}
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm font-bold text-gray-900">{docDef.label}</span>
+                            <span className="text-sm font-bold text-ink">{docDef.label}</span>
                             {docDef.required && (
-                              <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
+                              <span className="text-[10px] font-bold bg-sand/60 text-forest px-2 py-0.5 rounded">
                                 Mandatory
                               </span>
                             )}
                           </div>
                           {uploaded ? (
                             <div className="mt-2 space-y-1">
-                              <div className="flex items-center gap-2 text-xs text-emerald-800 font-medium">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600" /> {uploaded.file.name} (
+                              <div className="flex items-center gap-2 text-xs text-forest font-medium">
+                                <CheckCircle2 className="w-4 h-4 text-terracotta-dark" /> {uploaded.file.name} (
                                 {(uploaded.file.size / 1024).toFixed(1)} KB)
                               </div>
-                              <div className="text-[11px] font-mono text-gray-500 break-all bg-white px-2 py-1 rounded border border-gray-200">
+                              <div className="text-[11px] font-mono text-ink-sand break-all bg-white px-2 py-1 rounded border border-border-warm">
                                 SHA-256: {uploaded.sha256Hash}
                               </div>
                             </div>
                           ) : (
-                            <p className="text-xs text-gray-500 mt-1">PDF, JPG, or PNG under 5MB</p>
+                            <p className="text-xs text-ink-sand mt-1">PDF, JPG, or PNG under 5MB</p>
                           )}
                         </div>
 
@@ -856,7 +856,7 @@ export default function ScholarshipApplyPage() {
                               Replace File
                             </button>
                           ) : (
-                            <label className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-[#0B3B24]/30 hover:border-[#0B3B24] text-xs font-bold text-[#0B3B24] cursor-pointer shadow-sm hover:bg-emerald-50/50 transition-all">
+                            <label className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-terracotta/30 hover:border-terracotta text-xs font-bold text-forest cursor-pointer shadow-sm hover:bg-sand-light/50 transition-all">
                               <Upload className="w-4 h-4" /> Choose File
                               <input
                                 type="file"
@@ -883,71 +883,71 @@ export default function ScholarshipApplyPage() {
           {currentStep === 6 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h2 className="text-xl font-bold text-[#0B3B24] flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-emerald-700" /> Step 6: Review & Sworn Statutory Declaration
+                <h2 className="text-xl font-bold text-terracotta-dark flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-forest" /> Step 6: Review & Sworn Statutory Declaration
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
-                  Confirm all entered data before final submission to the MAHAVIR TRUST scholarship board.
+                <p className="text-xs text-ink-sand mt-1">
+                  Confirm all entered data before final submission to the MECT scholarship board.
                 </p>
               </div>
 
               {/* Review Summary Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-cream/65 p-4 rounded-xl border border-border-warm">
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Applicant</span>
-                  <span className="text-sm font-semibold text-gray-900">{formData.fullName}</span>
-                  <span className="block text-gray-600">{formData.phone} • {formData.email}</span>
-                  <span className="block text-gray-600">{formData.district}, Odisha (PIN: {formData.pinCode})</span>
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Applicant</span>
+                  <span className="text-sm font-semibold text-ink">{formData.fullName}</span>
+                  <span className="block text-ink-sand">{formData.phone} • {formData.email}</span>
+                  <span className="block text-ink-sand">{formData.district}, Odisha (PIN: {formData.pinCode})</span>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Course & Enrolment</span>
-                  <span className="text-sm font-semibold text-gray-900">{formData.courseName}</span>
-                  <span className="block text-gray-600">{formData.institutionName} ({formData.institutionDistrict})</span>
-                  <span className="block text-gray-600">Roll/Reg: {formData.rollOrRegistrationNumber}</span>
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Course & Enrolment</span>
+                  <span className="text-sm font-semibold text-ink">{formData.courseName}</span>
+                  <span className="block text-ink-sand">{formData.institutionName} ({formData.institutionDistrict})</span>
+                  <span className="block text-ink-sand">Roll/Reg: {formData.rollOrRegistrationNumber}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Household Income</span>
-                  <span className="text-sm font-semibold text-gray-900">₹{Number(formData.annualFamilyIncome).toLocaleString("en-IN")}/yr</span>
-                  <span className="block text-gray-600">Cert: {formData.tahasildarCertNumber}</span>
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Household Income</span>
+                  <span className="text-sm font-semibold text-ink">₹{Number(formData.annualFamilyIncome).toLocaleString("en-IN")}/yr</span>
+                  <span className="block text-ink-sand">Cert: {formData.tahasildarCertNumber}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">College Bank (Disbursal)</span>
-                  <span className="text-sm font-semibold text-gray-900">{formData.collegeBankName}</span>
-                  <span className="block text-gray-600">A/C: {formData.collegeBankAccountNumber} (IFSC: {formData.collegeBankIfsc})</span>
-                  <span className="block text-emerald-700 font-bold">Tuition Demanded: ₹{Number(formData.tuitionFeeDemanded).toLocaleString("en-IN")}</span>
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">College Bank (Disbursal)</span>
+                  <span className="text-sm font-semibold text-ink">{formData.collegeBankName}</span>
+                  <span className="block text-ink-sand">A/C: {formData.collegeBankAccountNumber} (IFSC: {formData.collegeBankIfsc})</span>
+                  <span className="block text-forest font-bold">Tuition Demanded: ₹{Number(formData.tuitionFeeDemanded).toLocaleString("en-IN")}</span>
                 </div>
               </div>
 
               {/* Uploaded Documents Fingerprint Table */}
               <div>
-                <span className="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">
+                <span className="text-xs font-bold text-forest uppercase tracking-wider block mb-2">
                   Cryptographically Fingerprinted Documents ({uploadedFiles.length})
                 </span>
                 <div className="space-y-1.5">
                   {uploadedFiles.map((doc, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-xs bg-white p-2.5 rounded-lg border border-gray-200">
+                    <div key={idx} className="flex items-center justify-between text-xs bg-white p-2.5 rounded-lg border border-border-warm">
                       <div className="flex items-center gap-2">
-                        <FileCheck2 className="w-4 h-4 text-emerald-600" />
-                        <span className="font-semibold text-gray-900">{doc.documentType}</span>
-                        <span className="text-gray-500">({doc.file.name})</span>
+                        <FileCheck2 className="w-4 h-4 text-terracotta-dark" />
+                        <span className="font-semibold text-ink">{doc.documentType}</span>
+                        <span className="text-ink-sand">({doc.file.name})</span>
                       </div>
-                      <span className="font-mono text-[10px] text-gray-500 hidden sm:inline">{doc.sha256Hash.substring(0, 16)}...</span>
+                      <span className="font-mono text-[10px] text-ink-sand hidden sm:inline">{doc.sha256Hash.substring(0, 16)}...</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Sworn Declaration Checkbox */}
-              <div className="p-4 rounded-xl bg-emerald-50/60 border-2 border-emerald-300">
+              <div className="p-4 rounded-xl bg-sand-light/60 border-2 border-border-warm">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
                     name="swornDeclaration"
                     checked={formData.swornDeclaration}
                     onChange={handleInputChange}
-                    className="mt-1 w-4 h-4 text-emerald-600 rounded border-gray-300 focus:ring-emerald-500"
+                    className="mt-1 w-4 h-4 text-terracotta-dark rounded border-border-warm focus:ring-terracotta"
                   />
-                  <span className="text-xs text-gray-800 leading-relaxed">
+                  <span className="text-xs text-ink leading-relaxed">
                     <strong>Statutory Institutional Declaration:</strong> I solemnly affirm that all particulars, income
                     statements, and uploaded certificates are authentic and truthful. I recognize that all sanctioned
                     scholarship amounts will be transferred directly and exclusively into the institutional bank account
@@ -969,7 +969,7 @@ export default function ScholarshipApplyPage() {
           )}
 
           {/* Stepper Navigation Buttons */}
-          <div className="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between">
+          <div className="mt-8 pt-6 border-t border-border-warm flex items-center justify-between">
             {currentStep > 1 ? (
               <Button type="button" variant="secondary" onClick={handleBack} disabled={isSubmitting}>
                 <ArrowLeft className="w-4 h-4 mr-2" /> Back
@@ -996,6 +996,6 @@ export default function ScholarshipApplyPage() {
           </div>
         </Card>
       </Container>
-    </main>
+    </div>
   );
 }

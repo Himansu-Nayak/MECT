@@ -32,9 +32,9 @@ assert.ok(content.includes("referenceId"), "Must present referenceId upon submis
 console.log("✓ Test 4: Verified API integration and reference ID generation");
 
 // Test 5: Verify Institutional Design Tokens
-assert.ok(content.includes("#0A192F"), "Must use Presidential Navy (#0A192F)");
-assert.ok(content.includes("#C5A059"), "Must use Temple Gold (#C5A059)");
-assert.ok(!content.includes("#072617"), "Must not use deprecated green #072617");
+assert.ok(content.includes("terracotta") && content.includes("forest"), "Must use Terracotta and Forest Charcoal tokens");
+assert.ok(content.includes("sand") || content.includes("cream"), "Must use Warm Sand / Warm Cream accents");
+assert.ok(!content.includes("#0A192F"), "Must not use prohibited Presidential Navy #0A192F");
 console.log("✓ Test 5: Verified institutional color palette compliance");
 
 // Test 6: Verify Safeguarding Guidelines
