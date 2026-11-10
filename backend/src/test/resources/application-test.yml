@@ -27,3 +27,30 @@ app:
     secret: test-jwt-secret-key-at-least-256-bits-long-for-testing-purposes-only-2026
     access-token-validity-seconds: 900
     refresh-token-validity-seconds: 604800
+  otp:
+    expiry-seconds: 600
+    resend-cooldown-seconds: 60
+    max-attempts: 5
+    pepper: test-otp-pepper-only
+  resend:
+    api-key: ""
+    base-url: https://api.resend.com
+    from-notifications: MECT Notifications <notifications@mect.org.in>
+    from-donations: MECT Donations <donations@mect.org.in>
+    webhook-secret: test-resend-webhook-secret
+    public-base-url: https://mect.org.in
+  sms:
+    provider: NONE
+  payment:
+    provider: RAZORPAY
+    sandbox-mode: true
+    razorpay-key-id: ""
+    razorpay-key-secret: ""
+    razorpay-webhook-secret: test-razorpay-webhook-secret
+    qr-expiry-minutes: 15
+  whatsapp:
+    provider: NONE
+    app-secret: test-whatsapp-app-secret
+    verify-token: test-whatsapp-verify-token
+  scheduling:
+    enabled: false

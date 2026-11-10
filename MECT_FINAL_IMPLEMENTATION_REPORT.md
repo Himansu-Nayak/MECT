@@ -1,40 +1,28 @@
-# MECT Final Implementation Report
+# MECT — Donor & User Platform Final Implementation Report
 
-**Implementation Date:** 2026-11-10
-**Branch:** `feat/multi-sector-ngo-repositioning` (uncommitted local working changes ready for review / git push / live deployment when requested)
-
----
-
-## 1. Summary of Changes Implemented
-
-1. **Approved Warm-Earthy Design System Verification:**
-   - Audited and verified consistent application of Primary Terracotta (`#A45E44`), Deep Terracotta (`#874A35`), Warm Sand (`#E5C499`), Light Sand (`#F0DEC5`), Forest Charcoal (`#283730`), Deep Forest (`#1D2924`), Muted Sage (`#D2D6C8`), Warm Cream (`#F3E4D2`), White (`#FFFFFF`), Primary Text (`#26332E`), Secondary Text (`#66736C`), and Border (`#DDD4C7`) across `src/app/globals.css` and all shared UI/layout components.
-2. **WhatsApp Image Inventory & Selective Curation (`MECT_IMAGE_SELECTION_REGISTER.md`):**
-   - Inspected all `24` images in `src/` visually and by dimensions/SHA-256 hash.
-   - Selected `6` high-resolution, watermark-free horizontal Balangir campus/community photographs into `public/images/hero/`.
-   - Preserved all remaining photos untouched in `src/` and documented excluded duplicates/watermarked/third-party assets.
-3. **Hero Right-Side Box Removal & Two-Track Moving Photographic Gallery:**
-   - Removed the large right-side dark information panel from Section 1 in `src/app/page.tsx`.
-   - Implemented `src/components/sections/HeroPhotoGallery.tsx` with two opposing infinite tracks (`48s` L→R, `54s` R→L), single-track mobile optimization (`< 768px`), eager loading (`loading="eager"`), AVIF/WebP image formats (`next.config.ts`), CSS alpha edge feathering, **Pause Gallery / Play Gallery** control, and symmetrical `3×2` static fallback under `prefers-reduced-motion: reduce`.
-   - Resolved an SSR `prefers-reduced-motion` `opacity: 0` hydration bug in `HeroEntrance` (`src/components/ui/MotionPrimitives.tsx`).
+**Project:** Mahaveer Educational & Charitable Trust (`mect.org.in`)
+**Architecture Stack:** Next.js `16.4.3` (React `19`, TypeScript `5.7`) + Spring Boot `4.1.1` (Java `21`) + PostgreSQL `18` / Flyway (`V7`–`V9`)
 
 ---
 
-## 2. Final Verification Checks Run After Final Edits
+## Status Classification Matrix
 
-| Verification Check | Result |
-|---|---|
-| `npx tsc --noEmit` | Exited `0` (0 errors) |
-| `npm run lint` (`eslint .`) | Exited `0` (0 errors, 0 warnings) |
-| `npm run build` (`next build --webpack`) | Exited `0` (`32/32` routes compiled cleanly) |
-| `node scratch/verify-hero-gallery.mjs` | Exited `0` — All 10 viewports (`320px`–`1920px`) PASS (`0` overflow, `0` broken images, `cls=0`), Pause control PASS, Reduced motion PASS, Hero DOM audit PASS, `0` console/HTTP errors |
-| `node scratch/test-all-phases-regression.mjs` | `16 Passed, 0 Failed (Total 16 Suites)` |
-| Visual Screenshot Inspection | Inspected `320px`, `360px`, `768px`, `1280px`, `1440px`, and `1440px reduced-motion` captures in `scratch/audit-screenshots/hero/` |
+| Capability | Classification | Notes & References |
+|---|---|---|
+| Isolated Public Supporter Identity (`portal_users`, `ROLE_GENERAL_USER`, `ROLE_DONOR`, `PORTAL` JWT claim isolation) | **Implemented & Tested successfully** | Isolated from `admin_users` (`SecurityConfig`, `JwtTokenProvider`, `PortalUserDetailsService`). Covered in `PortalAuthAndOtpSecurityTests`. |
+| Passwordless Email OTP Auth (`/portal/login`, cooldown, 5-attempt lockout, HMAC-SHA256 hash, anti-enumeration) | **Implemented & Tested successfully (mocked email provider)** | Requires newly rotated `RESEND_API_KEY` in production env for live mail delivery. |
+| Phone SMS OTP Auth (`ConfigurableSmsService`) | **Implemented (Fail-Closed SPI)** & **Requires provider credentials** | Supports `TWILIO` / `MSG91` / `NONE`. Defaults to `NONE` (`503 PROVIDER_UNCONFIGURED` when unconfigured; never fakes SMS delivery via Resend). |
+| User Profile Completion, Verified Contact Change OTP, Masked PAN, Preferences & Data Deletion Request (`/portal/profile`) | **Implemented & Tested successfully** | Server-side OTP contact-change verification, separate consent toggles, deletion request logging. Retention schedule confirmation needed from Trust counsel. |
+| Personalised Donor & Supporter Dashboard (`/portal/dashboard`) | **Implemented & Tested successfully** | Verified-only KPI totals, non-donor empty state, filterable donation history, authenticated PDF download. |
+| Unified Smart Donation Checkout & Dynamic UPI QR (`/donate`, `SmartDonationCheckout.tsx`) | **Implemented & Tested successfully (sandbox/mocked webhooks)** & **Requires provider credentials for live payments** | Uses only MECT's 5 verified programmes; one-time only; fail-closed gateway status when `RAZORPAY_*` keys absent; SBI remittance panel preserved intact. |
+| OpenPDF Institutional Receipt & Integrity Hash (`ReceiptPdfService`) | **Implemented & Tested successfully** & **Requires legal or organisational confirmation for FY 2026-27 80G** | Generates `%PDF-` bytes stored in `donation_receipts`. Explicitly states factual Trust credentials without fabricating active FY 2026-27 80G status. |
+| Resend Transactional Email Outbox & Svix Webhook Tracking (`ResendEmailService`, `NotificationOutboxService`) | **Implemented & Tested successfully (mocked mailer)** & **Requires provider credentials & organisational confirmation** | Needs rotated `RESEND_API_KEY`, `RESEND_WEBHOOK_SECRET`, and Resend webhook subscription against `mect.org.in` DNS. |
+| WhatsApp Business Cloud Notifications & Consent Ledger (`MetaWhatsAppCloudService`) | **Implemented (Opt-in Only SPI)** & **Requires provider credentials & external approval** | Separate opt-in checkbox off by default; requires Meta WABA verification, approved template names, `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_APP_SECRET`. |
+| Admin Donor, Reconciliation, Outbox & Campaign Ledger (`/admin/donors`) | **Implemented & Tested successfully** | RBAC CSV export restricted to `SUPER_ADMIN`, `TRUSTEE`, `FINANCE_OFFICER`. |
 
 ---
 
-## 3. What Remains for Next Phase
-
-- **Optional Future Media Expansion:** Reserved Balangir photographs documented in `MECT_IMAGE_SELECTION_REGISTER.md` (`WhatsApp Image 2026-11-09 at 6.26.40 PM (1).jpeg`, `6.26.37 PM (1).jpeg`, `6.26.39 PM (1).jpeg`, etc.) remain intact in `src/` for future `/programmes`, `/about`, or `/impact` gallery sections once reviewed/approved.
-- **Git Push & Production VPS Redeploy:** These new visual hero gallery changes are currently tested locally; pushing to GitHub (`feat/multi-sector-ngo-repositioning`) and deploying to `https://mect.org.in` (using the same staged VPS flow when ready) will publish this updated Hero live.
-- **Backend & DB:** Intentionally untouched (`0` modifications to `backend/`, API contracts, or `mect_db` schemas).
+## Security Reminder Before Deployment
+1. **Rotate the Resend API key** previously included in chat and load the new key strictly via server environment variables (`RESEND_API_KEY`)—never commit it to git.
+2. Apply Flyway migrations `V7`–`V9` on PostgreSQL (`mect_db`) safely without touching OHO TECH services or existing `V1`–`V6` Trust tables.
+3. Review the 9 companion reports (`MECT_DONOR_PLATFORM_ARCHITECTURE.md`, `MECT_AUTHENTICATION_SECURITY_REPORT.md`, `MECT_DATABASE_DESIGN_REPORT.md`, `MECT_PAYMENT_INTEGRATION_REPORT.md`, `MECT_RECEIPT_AND_INVOICE_REPORT.md`, `MECT_RESEND_EMAIL_INTEGRATION_REPORT.md`, `MECT_WHATSAPP_INTEGRATION_REPORT.md`, `MECT_PRIVACY_AND_CONSENT_REPORT.md`, `MECT_TEST_AND_QA_REPORT.md`).
