@@ -121,10 +121,10 @@ public class CashfreePaymentGatewayIntegrationTests {
                 .andExpect(jsonPath("$.checkoutMode").value("CASHFREE_SDK_V3"))
                 .andExpect(jsonPath("$.checkoutEnvironment").value("sandbox"));
 
-        // Invalid small amount rejected cleanly (< INR 10)
+        // Invalid small amount rejected cleanly (< INR 1)
         InitiateDonationRequest badAmount = new InitiateDonationRequest(
                 "EDUCATION_LEARNING",
-                new BigDecimal("5.00"),
+                new BigDecimal("0.50"),
                 "Invalid Donor",
                 "bad@example.org",
                 null,
@@ -138,6 +138,35 @@ public class CashfreePaymentGatewayIntegrationTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(badAmount)))
                 .andExpect(status().isBadRequest());
+
+        // Minimum INR 1.00 is accepted and reaches Cashfree order creation cleanly
+        mockCashfreeServer.expect(MockRestRequestMatchers.requestTo("https://sandbox.cashfree.com/pg/orders"))
+                .andExpect(MockRestRequestMatchers.method(HttpMethod.POST))
+                .andRespond(request -> {
+                    JsonNode sent = objectMapper.readTree(request.getBody().toString());
+                    String sentOrderId = sent.get("order_id").asString();
+                    return withSuccess("""
+                            {"cf_order_id": 2147483900, "order_id": "%s", "order_currency": "INR", "order_amount": 1.00, "order_status": "ACTIVE", "payment_session_id": "session_cf_1inr"}
+                            """.formatted(sentOrderId), MediaType.APPLICATION_JSON).createResponse(request);
+                });
+        mockMvc.perform(post("/payments/cashfree/create-order")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new InitiateDonationRequest(
+                                "EDUCATION_LEARNING",
+                                new BigDecimal("1.00"),
+                                "One Rupee Donor",
+                                "one@example.org",
+                                "+919876543210",
+                                null,
+                                null,
+                                null,
+                                false,
+                                "GATEWAY_CHECKOUT"
+                        ))))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.amount").value(1.0));
+        mockCashfreeServer.verify();
+        mockCashfreeServer.reset();
 
         // Expect outbound Cashfree POST /pg/orders call
         mockCashfreeServer.expect(MockRestRequestMatchers.requestTo("https://sandbox.cashfree.com/pg/orders"))

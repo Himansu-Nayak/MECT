@@ -235,8 +235,8 @@ export function SmartDonationCheckout() {
     setErrorMsg(null);
 
     const parsedAmount = Number(customAmountStr);
-    if (!parsedAmount || parsedAmount < 10) {
-      setErrorMsg("Please enter a voluntary contribution of at least ₹10.");
+    if (!parsedAmount || parsedAmount < 1) {
+      setErrorMsg("Please enter a voluntary contribution of at least ₹1.");
       return;
     }
     if (!donorName.trim()) {
@@ -630,7 +630,7 @@ export function SmartDonationCheckout() {
                 <Input
                   id="smart-custom-amount"
                   type="number"
-                  min={10}
+                  min={1}
                   step={1}
                   value={customAmountStr}
                   onChange={(e) => {

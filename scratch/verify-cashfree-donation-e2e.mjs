@@ -206,11 +206,13 @@ try {
   await checkout.locator("button:has-text('₹5,000')").click();
   check("Preset button sets custom input to 5000", (await checkout.locator("#smart-custom-amount").inputValue()) === "5000");
 
-  await checkout.locator("#smart-custom-amount").fill("5");
+  await checkout.locator("#smart-custom-amount").fill("0");
   await checkout.locator("#smart-donor-name").fill("E2E Supporter");
   await checkout.locator("button[type='submit']").click();
   const invalidAmountBlocked = await checkout.locator("#smart-custom-amount").evaluate((el) => !el.checkValidity());
-  check("Rejects amount < INR 10 cleanly", invalidAmountBlocked && initiateCount === 0);
+  await checkout.locator("#smart-custom-amount").fill("1");
+  const oneRupeeValid = await checkout.locator("#smart-custom-amount").evaluate((el) => el.checkValidity());
+  check("Rejects amount < INR 1 and allows INR 1 cleanly", invalidAmountBlocked && oneRupeeValid && initiateCount === 0);
 
   // Enter valid amount 2750 + submit -> USER_DROPPED -> Retry -> SUCCESSFUL
   await checkout.locator("#smart-custom-amount").fill("2750");
