@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface NotificationDeliveryLogRepository extends JpaRepository<NotificationDeliveryLog, Long> {
     List<NotificationDeliveryLog> findByOutboxIdOrderByLoggedAtDesc(Long outboxId);
+    boolean existsByWebhookEventId(String webhookEventId);
 }
 

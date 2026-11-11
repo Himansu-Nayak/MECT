@@ -65,8 +65,8 @@ public class WebhookController {
             JsonNode root = objectMapper.readTree(rawPayload);
             String eventType = root.path("type").asString("unknown");
             String emailId = root.path("data").path("email_id").asString(null);
-            outboxService.recordWebhookDeliveryUpdate("EMAIL", "RESEND", emailId, eventType, rawPayload, svixId);
-            return ResponseEntity.ok(Map.of("status", "RECORDED"));
+            boolean recorded = outboxService.recordWebhookDeliveryUpdate("EMAIL", "RESEND", emailId, eventType, rawPayload, svixId);
+            return ResponseEntity.ok(Map.of("status", recorded ? "RECORDED" : "IGNORED"));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(Map.of("status", "INVALID_PAYLOAD"));
         }
@@ -103,7 +103,8 @@ public class WebhookController {
                             for (JsonNode st : statuses) {
                                 String msgId = st.path("id").asString(null);
                                 String statusVal = st.path("status").asString("unknown");
-                                outboxService.recordWebhookDeliveryUpdate("WHATSAPP", "META_CLOUD", msgId, statusVal, rawPayload, msgId);
+                                String dedupEventId = (msgId != null && !msgId.isBlank()) ? (msgId + ":" + statusVal) : null;
+                                outboxService.recordWebhookDeliveryUpdate("WHATSAPP", "META_CLOUD", msgId, statusVal, rawPayload, dedupEventId);
                             }
                         }
                     }

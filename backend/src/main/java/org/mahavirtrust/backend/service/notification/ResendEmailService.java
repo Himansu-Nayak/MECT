@@ -14,6 +14,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.*;
 
 @Service
@@ -133,15 +134,26 @@ public class ResendEmailService implements EmailProvider {
 
     @Override
     public boolean verifyWebhookSignature(String svixId, String svixTimestamp, String payload, String svixSignatureHeader) {
-        if (webhookSecret.isBlank() || svixId == null || svixTimestamp == null || svixSignatureHeader == null || payload == null) {
+        if (webhookSecret.isBlank() || svixId == null || svixId.isBlank()
+                || svixTimestamp == null || svixTimestamp.isBlank()
+                || svixSignatureHeader == null || svixSignatureHeader.isBlank()
+                || payload == null) {
             return false;
         }
         try {
+            long tsSeconds = Long.parseLong(svixTimestamp.trim());
+            long nowSeconds = Instant.now().getEpochSecond();
+            // Svix/Resend replay protection: enforce +-300 seconds (5-minute) tolerance window
+            if (Math.abs(nowSeconds - tsSeconds) > 300L) {
+                log.warn("Rejected Resend webhook with expired/skewed svix-timestamp={} (now={})", tsSeconds, nowSeconds);
+                return false;
+            }
+
             byte[] keyBytes = webhookSecret.startsWith("whsec_")
                     ? Base64.getDecoder().decode(webhookSecret.substring(6))
                     : webhookSecret.getBytes(StandardCharsets.UTF_8);
 
-            String signedContent = svixId + "." + svixTimestamp + "." + payload;
+            String signedContent = svixId.trim() + "." + svixTimestamp.trim() + "." + payload;
             String expectedBase64 = HmacCryptoUtil.hmacSha256Base64(keyBytes, signedContent);
 
             for (String token : svixSignatureHeader.split(" ")) {

@@ -297,11 +297,13 @@ public class DonationLifecycleService {
                 qrId = textOrNull(paymentEntity, "notes", "qr_code_id");
             }
             if ("refund.created".equals(eventType) || "refund.processed".equals(eventType)) {
+                String refundId = textOrNull(refundEntity, "id");
                 String refundPaymentId = textOrNull(refundEntity, "payment_id");
                 long refundAmountPaise = refundEntity.path("amount").asLong(0L);
                 return processRefundEventInternal(
                         providerEventId,
                         eventType,
+                        refundId,
                         refundPaymentId != null ? refundPaymentId : paymentId,
                         BigDecimal.valueOf(refundAmountPaise).divide(BigDecimal.valueOf(100)),
                         rawPayload,
@@ -336,10 +338,10 @@ public class DonationLifecycleService {
             ignored.setProcessedAt(Instant.now());
             paymentEventRepository.save(ignored);
             return Map.of("status", "IGNORED", "eventType", eventType);
-        } catch (BadCredentialsException e) {
+        } catch (BadCredentialsException | ResourceNotFoundException e) {
             throw e;
         } catch (Exception ex) {
-            throw new IllegalStateException("Malformed webhook payload: " + ex.getMessage(), ex);
+            throw new IllegalArgumentException("Malformed webhook payload: " + ex.getMessage(), ex);
         }
     }
 
@@ -549,7 +551,10 @@ public class DonationLifecycleService {
         }
     }
 
-    private Map<String, Object> processRefundEventInternal(String providerEventId, String eventType, String providerPaymentId, BigDecimal refundedAmount, String rawPayload, String actor) {
+    private Map<String, Object> processRefundEventInternal(String providerEventId, String eventType, String refundId, String providerPaymentId, BigDecimal refundedAmount, String rawPayload, String actor) {
+        if (refundId != null && paymentEventRepository.existsByProviderEventId("REFUND_REF:" + refundId)) {
+            return Map.of("status", "IGNORED_DUPLICATE_REFUND", "refundId", refundId);
+        }
         Payment payment = providerPaymentId != null
                 ? paymentRepository.findByProviderPaymentId(providerPaymentId).orElseThrow(() -> new ResourceNotFoundException("Payment not found for refund"))
                 : null;
@@ -568,6 +573,20 @@ public class DonationLifecycleService {
         event.setProcessingStatus("PROCESSED");
         event.setProcessedAt(Instant.now());
         paymentEventRepository.save(event);
+
+        if (refundId != null) {
+            PaymentEvent dedupMarker = new PaymentEvent();
+            dedupMarker.setPayment(payment);
+            dedupMarker.setProvider("RAZORPAY");
+            dedupMarker.setProviderEventId("REFUND_REF:" + refundId);
+            dedupMarker.setEventType(eventType);
+            dedupMarker.setSignatureVerified(true);
+            dedupMarker.setPayloadSha256(HmacCryptoUtil.sha256Hex(rawPayload));
+            dedupMarker.setRawPayload("{}");
+            dedupMarker.setProcessingStatus("PROCESSED");
+            dedupMarker.setProcessedAt(Instant.now());
+            paymentEventRepository.save(dedupMarker);
+        }
 
         String prevStatus = payment.getStatus();
         BigDecimal totalRefunded = payment.getRefundedAmount().add(refundedAmount);
