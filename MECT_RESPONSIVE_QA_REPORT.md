@@ -1,31 +1,59 @@
-# MECT Responsive QA Report
+# MECT — Complete Responsive, Functional & Regression QA Report
 
-**Audit Date:** 2026-11-10
-**Test Tooling:** Headless Chromium/Edge via Playwright (`scratch/verify-hero-gallery.mjs`) against production build (`next start -p 3000`).
-
----
-
-## 1. 10-Viewport Responsive Verification Results (`https://localhost:3000` Build)
-
-| Viewport Width | Track Behaviour | ScrollWidth / InnerWidth | Visible Broken Images | CLS | Status |
-|---|---|---|---|---|---|
-| `320px` (Mobile S) | Single track (`Track 1` active, `Track 2` hidden) | `320 / 320` (0 overflow) | `0 / 6` | `0` | PASS |
-| `360px` (Mobile M) | Single track (`Track 1` active, `Track 2` hidden) | `360 / 360` (0 overflow) | `0 / 6` | `0` | PASS |
-| `390px` (Mobile L) | Single track (`Track 1` active, `Track 2` hidden) | `390 / 390` (0 overflow) | `0 / 6` | `0` | PASS |
-| `430px` (Mobile XL) | Single track (`Track 1` active, `Track 2` hidden) | `430 / 430` (0 overflow) | `0 / 6` | `0` | PASS |
-| `768px` (Tablet) | Dual opposing tracks (`Track 1` + `Track 2`) | `768 / 768` (0 overflow) | `0 / 12` | `0` | PASS |
-| `1024px` (Laptop) | Dual opposing tracks (`Track 1` + `Track 2`) | `1024 / 1024` (0 overflow) | `0 / 12` | `0` | PASS |
-| `1280px` (Desktop) | 2-column split + 3 inline CTAs + dual tracks | `1280 / 1280` (0 overflow) | `0 / 12` | `0` | PASS |
-| `1366px` (Desktop) | 2-column split + 3 inline CTAs + dual tracks | `1366 / 1366` (0 overflow) | `0 / 12` | `0` | PASS |
-| `1440px` (Desktop) | 2-column split + 3 inline CTAs + dual tracks | `1440 / 1440` (0 overflow) | `0 / 12` | `0` | PASS |
-| `1920px` (Desktop XL) | 2-column split + 3 inline CTAs + dual tracks | `1920 / 1920` (0 overflow) | `0 / 12` | `0` | PASS |
+**Date:** 2026-11-11  
+**Verification Command Suite:** `npx tsc --noEmit`, `npm run lint`, `npm run build`, `node scratch/verify-complete-release.mjs` (local `next start`)  
+**Total Failures:** `0`
 
 ---
 
-## 2. Iterative Fix & Visual Screenshot Audit Log
+## 1. Automated Build, TypeScript & Lint Checks (Post-Final Edit)
 
-1. **Initial Run Issue Caught:** Non-priority `<Image>` elements in off-screen horizontal marquee slots remained lazy-loaded until entering the viewport (`broken=2/6` on mobile, `5/12` on desktop). **Fix:** Added `loading="eager"` and `decoding="async"` in `HeroPhotoGallery.tsx`.
-2. **Visual Screenshot Inspection Fixes:**
-   - Tightened mobile hero top/bottom padding (`pt-8 pb-12 sm:pt-14 sm:pb-16`) so the photography gallery appears sooner on `320px–430px` screens.
-   - Adjusted CTA button horizontal padding so all three primary CTAs sit harmoniously on one row at `1280px` and `1440px` without wrapping onto two rows.
-   - Re-verified rendered screenshots at `320px`, `360px`, `768px`, `1280px`, `1440px`, and `1440px` reduced motion (`0` console errors, `0` HTTP `>=400` errors).
+| Check | Command | Observed Output | Status |
+|---|---|---|---|
+| TypeScript | `npx tsc --noEmit` | Exit code `0` (`0` errors) | **PASS** |
+| ESLint | `npm run lint` | Exit code `0` (`0` errors) | **PASS** |
+| Production Build | `npm run build` (`next build --webpack`) | Compiled in `25.7s`, TypeScript check `7.6s`, `37/37` static routes + dynamic `/api/ai/chat`, `/api/ai/health` built cleanly | **PASS** |
+
+---
+
+## 2. 10-Viewport Homepage Responsive, Animation & Performance Telemetry
+
+| Viewport | Overflow (`scrollW/innerW`) | LTR Drift (`dx / 0.9s`, `hero-bg-marquee-ltr`) | Broken Visible Images | CLS | Console / Asset Errors | Result |
+|---|---|---|---|---|---|---|
+| `320 x 740` | `320 / 320` | `+65.7px` | `0 / 2` | `0` | `0` | **PASS** |
+| `360 x 800` | `360 / 360` | `+73.9px` | `0 / 2` | `0` | `0` | **PASS** |
+| `375 x 812` | `375 / 375` | `+77.0px` | `0 / 2` | `0` | `0` | **PASS** |
+| `390 x 844` | `390 / 390` | `+80.1px` | `0 / 2` | `0` | `0` | **PASS** |
+| `430 x 932` | `430 / 430` | `+87.5px` | `0 / 2` | `0` | `0` | **PASS** |
+| `768 x 1024` | `768 / 768` | `+103.7px` | `0 / 3` | `0` | `0` | **PASS** |
+| `1024 x 768` | `1024 / 1024` | `+124.3px` | `0 / 3` | `0` | `0` | **PASS** |
+| `1280 x 800` | `1280 / 1280` | `+137.3px` | `0 / 3` | `0` | `0` | **PASS** |
+| `1440 x 900` | `1440 / 1440` | `+153.2px` | `0 / 3` | `0` | `0` | **PASS** |
+| `1920 x 1080` | `1920 / 1920` | `+207.8px` | `0 / 3` | `0` | `0` | **PASS** |
+
+*Note on Lazy Image Loading (`Phase 8`):* Initial fold hero frames (`idx 0, 1, 6`) load eagerly (`priority` on lead photo `idx 0`), while off-screen hero panels (`idx 2..5`), CSR certificate thumbnail, and footer emblem use `loading="lazy"`.
+
+---
+
+## 3. Subroute Regression Coverage (`390px` Mobile & `1440px` Desktop)
+
+| Route | `390px` HTTP & Overflow | `1440px` HTTP & Overflow | Errors | Result |
+|---|---|---|---|---|
+| `/about` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/programmes` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/impact` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/csr-partnerships` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/governance` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/donate` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+| `/contact` | `200`, `390 / 390` | `200`, `1440 / 1440` | `0` | **PASS** |
+
+*Local test note:* `SmartDonationCheckout` backend calls to `/api/v1/` are excluded from client error counts in offline `next start` mode because Nginx/Spring Boot runs on the production VPS.
+
+---
+
+## 4. Accessibility & Visual Inspection
+- **Reduced Motion (`prefers-reduced-motion: reduce` at `390px`):** `{ anim: 'none', cloneDisplay: 'none' }`, `open=true`, `close=true` — PASS.
+- **Visual Captures Inspected:**
+  - `scratch/complete-qa/home-mobile-390.png`, `home-desktop-1440.png`
+  - `scratch/complete-qa/qr-mobile-390.png`, `qr-desktop-1440.png`, `donate-qr-390.png`
+  - `scratch/complete-qa/route-about-1440.png`, `route-programmes-1440.png`, `route-donate-1440.png`

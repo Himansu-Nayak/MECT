@@ -87,9 +87,9 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
             alt=""
             fill
             sizes="(max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
-            loading="eager"
+            loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
             decoding="async"
-            priority={!isClone && idx < 2}
+            priority={!isClone && idx === 0}
             className="object-cover brightness-[1.06] contrast-[1.04]"
             style={{ objectPosition: slide.desktopObjectPosition }}
           />
@@ -119,9 +119,9 @@ function MobileSequence({ isClone = false }: { isClone?: boolean }) {
             alt=""
             fill
             sizes="(max-width: 767px) 96vw, 440px"
-            loading="eager"
+            loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
             decoding="async"
-            priority={!isClone && idx < 2}
+            priority={!isClone && idx === 0}
             className="object-cover"
             style={{ objectPosition: slide.mobileObjectPosition }}
           />

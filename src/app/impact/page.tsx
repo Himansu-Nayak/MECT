@@ -7,6 +7,13 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import {
+  StaggerGroup,
+  StaggerItem,
+  CountUpStat,
+  Reveal,
+  MOTION_STAGGER,
+} from "@/components/ui/MotionPrimitives";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
   MapPin,
@@ -143,46 +150,48 @@ export default function ImpactPage() {
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerGroup staggerDelay={MOTION_STAGGER.cards} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {verifiedImpactMetrics.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <Card
-                  key={idx}
-                  variant="elevated"
-                  className="p-6 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4 flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xs bg-forest text-white flex items-center justify-center border border-sand/45">
-                        <Icon className="w-5 h-5 text-cream" />
+                <StaggerItem key={idx}>
+                  <Card
+                    variant="elevated"
+                    className="h-full p-6 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4 flex flex-col justify-between"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="w-10 h-10 rounded-xs bg-forest text-white flex items-center justify-center border border-sand/45">
+                          <Icon className="w-5 h-5 text-cream" />
+                        </div>
+                        <Badge variant="contrast-gold" size="sm">
+                          {item.badge}
+                        </Badge>
                       </div>
-                      <Badge variant="contrast-gold" size="sm">
-                        {item.badge}
-                      </Badge>
+
+                      <div>
+                        <CountUpStat
+                          value={item.metric}
+                          className="font-serif text-2xl font-bold text-forest block"
+                        />
+                        <span className="text-xs font-semibold text-forest font-sans block mt-0.5">
+                          {item.subtext}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-base font-bold text-forest">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-xs text-ink leading-relaxed font-sans">
+                        {item.description}
+                      </p>
                     </div>
-
-                    <div>
-                      <span className="font-serif text-2xl font-bold text-forest block">
-                        {item.metric}
-                      </span>
-                      <span className="text-xs font-semibold text-forest font-sans block mt-0.5">
-                        {item.subtext}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-base font-bold text-forest">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-xs text-ink leading-relaxed font-sans">
-                      {item.description}
-                    </p>
-                  </div>
-                </Card>
+                  </Card>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -196,7 +205,8 @@ export default function ImpactPage() {
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Reveal direction="fade" tone="slow">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {districtZones.map((zone) => (
               <Card
                 key={zone.zone}
@@ -241,7 +251,8 @@ export default function ImpactPage() {
                 </div>
               </Card>
             ))}
-          </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
 

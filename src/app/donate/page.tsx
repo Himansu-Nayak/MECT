@@ -266,7 +266,7 @@ export default function DonatePage() {
           <SectionHeader
             badge="Direct Domestic Giving"
             title="SUPPORT OUR MISSION — DONATE NOW"
-            subtitle="Remit contributions directly via NEFT, RTGS, or IMPS into MECT's verified State Bank of India account."
+            subtitle="Remit contributions directly via SBI UPI QR (86971610172@sbi), NEFT, RTGS, or IMPS into MECT's verified State Bank of India account."
             align="center"
           />
 

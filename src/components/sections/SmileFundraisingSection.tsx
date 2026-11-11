@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal, StaggerGroup, StaggerItem, MOTION_STAGGER } from "@/components/ui/MotionPrimitives";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import {
   HeartHandshake,
@@ -47,29 +47,28 @@ export function SmileFundraisingSection() {
             </div>
 
             {/* 3-Column Contribution & Impact Flow */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <StaggerGroup staggerDelay={MOTION_STAGGER.steps} className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {data.utilizationPoints.map((point, idx) => {
                 const Icon = STEP_ICONS[idx] || BookOpen;
                 return (
-                  <div
-                    key={point.title}
-                    className="p-5 sm:p-6 rounded-xs bg-cream/55 border border-border-warm border-t-2 border-t-terracotta space-y-3 hover:border-terracotta transition-colors flex flex-col justify-between"
-                  >
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5" aria-hidden="true" />
+                  <StaggerItem key={point.title} direction="left">
+                    <div className="h-full p-5 sm:p-6 rounded-xs bg-cream/55 border border-border-warm border-t-2 border-t-terracotta space-y-3 hover:border-terracotta transition-colors flex flex-col justify-between">
+                      <div className="space-y-3">
+                        <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                          <Icon className="w-5 h-5" aria-hidden="true" />
+                        </div>
+                        <h3 className="font-serif text-base sm:text-lg font-bold text-forest">
+                          {point.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
+                          {point.detail}
+                        </p>
                       </div>
-                      <h3 className="font-serif text-base sm:text-lg font-bold text-forest">
-                        {point.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
-                        {point.detail}
-                      </p>
                     </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerGroup>
 
             {/* Beneficiary & Donation Instructions Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">

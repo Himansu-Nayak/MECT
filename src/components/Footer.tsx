@@ -4,6 +4,7 @@ import Image from "next/image";
 import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/ui/MotionPrimitives";
 import {
   ShieldCheck,
   Building2,
@@ -21,7 +22,8 @@ export function Footer() {
 
   return (
     <footer className="bg-forest text-cream border-t-2 border-terracotta pt-16 pb-12 transition-colors">
-      <Container size="default" className="space-y-12">
+      <Reveal direction="fade" tone="slow">
+        <Container size="default" className="space-y-12">
         {/* Tier 1: Mandatory Statutory & Compliance Transparency Notice Box */}
         <div className="bg-forest-deep border border-sand/30 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
           <div className="flex items-start gap-3.5">
@@ -71,7 +73,7 @@ export function Footer() {
                   alt="Mahaveer Educational & Charitable Trust Official Emblem"
                   width={44}
                   height={44}
-                  loading="eager"
+                  loading="lazy"
                   className="w-full h-full object-cover scale-[1.06]"
                 />
               </div>
@@ -343,6 +345,10 @@ export function Footer() {
                 <span className="text-sage block">IFSC Code:</span>
                 <span className="text-white font-mono font-bold">{TRUST_CONFIG.bank.ifsc}</span>
               </div>
+              <div>
+                <span className="text-sage block">UPI ID (SBI Scan &amp; Pay):</span>
+                <span className="text-sand font-mono font-bold">{TRUST_CONFIG.bank.upiId}</span>
+              </div>
               <div className="pt-1 text-[10px] text-cream/85 border-t border-white/15 leading-snug">
                 {TRUST_CONFIG.bank.branch}
               </div>
@@ -425,6 +431,7 @@ export function Footer() {
           , cropped &amp; exposure-balanced).
         </div>
       </Container>
+      </Reveal>
     </footer>
   );
 }
