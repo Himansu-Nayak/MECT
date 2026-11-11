@@ -15,6 +15,7 @@ import {
   fetchDonationStatus,
   fetchGatewayStatus,
   initiateDonation,
+  verifyCashfreePayment,
 } from "@/lib/portal-api";
 import {
   QrCode,
@@ -27,7 +28,52 @@ import {
   RefreshCw,
   UserCheck,
   Sparkles,
+  CreditCard,
+  Loader2,
 } from "lucide-react";
+
+declare global {
+  interface Window {
+    Cashfree?: (options: { mode: "sandbox" | "production" }) => {
+      checkout: (options: {
+        paymentSessionId: string;
+        redirectTarget?: "_self" | "_blank" | "_modal";
+      }) => Promise<{
+        error?: { message?: string };
+        redirect?: boolean;
+        paymentDetails?: { paymentMessage?: string };
+      }>;
+    };
+  }
+}
+
+const CASHFREE_SDK_URL = "https://sdk.cashfree.com/js/v3/cashfree.js";
+let cashfreeScriptPromise: Promise<void> | null = null;
+
+function ensureCashfreeSdkLoaded(): Promise<void> {
+  if (typeof window === "undefined") return Promise.reject(new Error("Browser required"));
+  if (typeof window.Cashfree === "function") return Promise.resolve();
+  if (cashfreeScriptPromise) return cashfreeScriptPromise;
+
+  cashfreeScriptPromise = new Promise<void>((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${CASHFREE_SDK_URL}"]`);
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("Failed to load Cashfree SDK")), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = CASHFREE_SDK_URL;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => {
+      cashfreeScriptPromise = null;
+      reject(new Error("Unable to load Cashfree Checkout SDK. Please check network/ad-blocker or use direct SBI bank transfer."));
+    };
+    document.head.appendChild(script);
+  });
+  return cashfreeScriptPromise;
+}
 
 const PRESET_AMOUNTS = [500, 1500, 3000, 5000, 10000];
 
@@ -48,6 +94,8 @@ export function SmartDonationCheckout() {
   const [anonymous, setAnonymous] = useState(false);
 
   const [isInitiating, setIsInitiating] = useState(false);
+  const [isLaunchingGateway, setIsLaunchingGateway] = useState(false);
+  const [isVerifyingReturn, setIsVerifyingReturn] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [initiatedPayment, setInitiatedPayment] = useState<InitiatedDonationResponse | null>(null);
   const [liveStatus, setLiveStatus] = useState<DonationStatusResponse | null>(null);
@@ -71,19 +119,48 @@ export function SmartDonationCheckout() {
       }
     }
     init();
+
+    // If donor returned via Cashfree return_url (?order_id=...), verify strictly server-side
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const returnOrderId = params.get("order_id");
+      if (returnOrderId && returnOrderId.trim()) {
+        const orderIdToVerify = returnOrderId.trim();
+        void (async () => {
+          await Promise.resolve();
+          if (!active) return;
+          setIsVerifyingReturn(true);
+          try {
+            const st = await verifyCashfreePayment(orderIdToVerify);
+            if (!active) return;
+            setLiveStatus(st);
+          } catch (err: unknown) {
+            if (!active) return;
+            setErrorMsg(err instanceof Error ? err.message : "Unable to verify returned payment status.");
+          } finally {
+            if (active) setIsVerifyingReturn(false);
+          }
+        })();
+      }
+    }
+
     return () => { active = false; };
   }, []);
 
   // Safe background status polling while payment is PENDING
   useEffect(() => {
-    if (!initiatedPayment) return;
-    if (liveStatus && ["SUCCESSFUL", "FAILED", "EXPIRED", "REFUNDED"].includes(liveStatus.status)) {
+    const refToPoll = initiatedPayment?.donationReference || liveStatus?.donationReference;
+    if (!refToPoll) return;
+    if (liveStatus && ["SUCCESSFUL", "FAILED", "USER_DROPPED", "EXPIRED", "REFUNDED"].includes(liveStatus.status)) {
       return;
     }
 
     const timer = setInterval(async () => {
       try {
-        const st = await fetchDonationStatus(initiatedPayment.donationReference);
+        const st =
+          initiatedPayment?.provider === "CASHFREE" || liveStatus?.provider === "CASHFREE"
+            ? await verifyCashfreePayment(initiatedPayment?.providerOrderId || liveStatus?.orderId || refToPoll)
+            : await fetchDonationStatus(refToPoll);
         setLiveStatus(st);
       } catch {
         // Silent retry
@@ -93,15 +170,60 @@ export function SmartDonationCheckout() {
     return () => clearInterval(timer);
   }, [initiatedPayment, liveStatus]);
 
+  const resetCheckoutState = () => {
+    setInitiatedPayment(null);
+    setLiveStatus(null);
+    setErrorMsg(null);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has("order_id")) {
+        url.searchParams.delete("order_id");
+        window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+      }
+    }
+  };
+
   const handleAmountPick = (val: number) => {
     setAmount(val);
     setCustomAmountStr(String(val));
   };
 
-  const handleManualStatusRefresh = async () => {
-    if (!initiatedPayment) return;
+  const launchCashfreeModal = async (session: InitiatedDonationResponse) => {
+    if (!session.paymentSessionId) return;
+    setErrorMsg(null);
+    setIsLaunchingGateway(true);
     try {
-      const st = await fetchDonationStatus(initiatedPayment.donationReference);
+      await ensureCashfreeSdkLoaded();
+      if (typeof window.Cashfree !== "function") {
+        throw new Error("Cashfree Checkout SDK did not initialize.");
+      }
+      const mode = session.checkoutEnvironment === "production" ? "production" : "sandbox";
+      const cashfree = window.Cashfree({ mode });
+      const result = await cashfree.checkout({
+        paymentSessionId: session.paymentSessionId,
+        redirectTarget: "_modal",
+      });
+      if (result?.error?.message) {
+        setErrorMsg(result.error.message);
+      }
+      // Regardless of modal close or redirect resolution, confirm status strictly from MECT backend
+      const verified = await verifyCashfreePayment(session.providerOrderId || session.donationReference);
+      setLiveStatus(verified);
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : "Unable to open Cashfree Checkout window.");
+    } finally {
+      setIsLaunchingGateway(false);
+    }
+  };
+
+  const handleManualStatusRefresh = async () => {
+    const ref = initiatedPayment?.donationReference || liveStatus?.donationReference;
+    if (!ref) return;
+    try {
+      const st =
+        initiatedPayment?.provider === "CASHFREE" || liveStatus?.provider === "CASHFREE"
+          ? await verifyCashfreePayment(initiatedPayment?.providerOrderId || liveStatus?.orderId || ref)
+          : await fetchDonationStatus(ref);
       setLiveStatus(st);
     } catch {
       // ignore
@@ -138,6 +260,7 @@ export function SmartDonationCheckout() {
         }
       }
 
+      const method = gatewayStatus?.provider === "CASHFREE" ? "GATEWAY_CHECKOUT" : "UPI_QR";
       const res = await initiateDonation(
         {
           programmeCode: selectedCode,
@@ -149,15 +272,18 @@ export function SmartDonationCheckout() {
           donorPan: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
           dedicationMessage: dedication.trim() || undefined,
           anonymous,
-          paymentMethod: "UPI_QR",
+          paymentMethod: method,
         },
         portalToken
       );
 
       setInitiatedPayment(res);
       setLiveStatus(null);
+      if (res.provider === "CASHFREE" && res.paymentSessionId) {
+        await launchCashfreeModal(res);
+      }
     } catch (err: unknown) {
-      setErrorMsg(err instanceof Error ? err.message : "Unable to initiate online dynamic QR donation.");
+      setErrorMsg(err instanceof Error ? err.message : "Unable to initiate online donation checkout.");
     } finally {
       setIsInitiating(false);
     }
@@ -170,8 +296,17 @@ export function SmartDonationCheckout() {
       <div className="bg-forest text-white p-6 sm:p-8 border-b-2 border-terracotta flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-bold text-sand">
-            <QrCode className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>Smart One-Time Donation &amp; Dynamic UPI QR</span>
+            {gatewayStatus?.provider === "CASHFREE" ? (
+              <>
+                <CreditCard className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>Smart One-Time Donation &amp; Cashfree Secure Checkout</span>
+              </>
+            ) : (
+              <>
+                <QrCode className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>Smart One-Time Donation &amp; Dynamic UPI QR</span>
+              </>
+            )}
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
             Contribute Directly to an Approved Programme
@@ -191,12 +326,15 @@ export function SmartDonationCheckout() {
 
       <div className="p-6 sm:p-8 space-y-6">
         {/* Honest Gateway Status Notice */}
-        {!loadingConfig && gatewayStatus && !gatewayStatus.configured && !gatewayStatus.sandboxMode && (
+        {!loadingConfig &&
+          gatewayStatus &&
+          !gatewayStatus.configured &&
+          (gatewayStatus.provider === "CASHFREE" || !gatewayStatus.sandboxMode) && (
           <div className="p-4 rounded-xs bg-sand-light border border-terracotta/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-sans">
             <div className="flex items-start gap-2.5 text-ink">
               <AlertCircle className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" />
               <div>
-                <strong className="text-forest block">Dynamic Payment Gateway Pending Activation</strong>
+                <strong className="text-forest block">Online Payment Gateway Pending Activation</strong>
                 <span className="text-ink-sand">{gatewayStatus.reason}</span>
               </div>
             </div>
@@ -210,9 +348,9 @@ export function SmartDonationCheckout() {
           </div>
         )}
 
-        {initiatedPayment ? (
+        {initiatedPayment || liveStatus || isVerifyingReturn ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Dynamic QR Display Card */}
+            {/* Payment Status / Cashfree / Dynamic QR Display Card */}
             <div className="lg:col-span-5 bg-sand-light border-2 border-sand rounded-xs p-6 text-center space-y-4">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-forest text-cream text-[11px] font-bold uppercase tracking-wider">
                 {currentStatus === "SUCCESSFUL" ? (
@@ -220,7 +358,7 @@ export function SmartDonationCheckout() {
                     <CheckCircle2 className="w-3.5 h-3.5 text-sand" />
                     <span>Payment Verified &amp; Confirmed</span>
                   </>
-                ) : currentStatus === "EXPIRED" || currentStatus === "FAILED" ? (
+                ) : currentStatus === "EXPIRED" || currentStatus === "FAILED" || currentStatus === "USER_DROPPED" ? (
                   <>
                     <AlertCircle className="w-3.5 h-3.5 text-sand" />
                     <span>Status: {currentStatus}</span>
@@ -228,21 +366,34 @@ export function SmartDonationCheckout() {
                 ) : (
                   <>
                     <Clock className="w-3.5 h-3.5 text-sand animate-pulse" />
-                    <span>Awaiting Verified Settlement ({currentStatus})</span>
+                    <span>
+                      {isVerifyingReturn
+                        ? "Verifying With Cashfree Server..."
+                        : `Awaiting Verified Settlement (${currentStatus})`}
+                    </span>
                   </>
                 )}
               </div>
 
-              {currentStatus === "PENDING" || currentStatus === "CREATED" ? (
+              {isVerifyingReturn ? (
+                <div className="p-6 bg-white rounded-xs border border-border-warm space-y-3">
+                  <Loader2 className="w-8 h-8 text-forest mx-auto animate-spin" />
+                  <p className="text-xs font-semibold text-forest">
+                    Confirming authoritative settlement status with Cashfree...
+                  </p>
+                </div>
+              ) : (currentStatus === "PENDING" || currentStatus === "CREATED") &&
+                initiatedPayment?.provider !== "CASHFREE" &&
+                liveStatus?.provider !== "CASHFREE" ? (
                 <div className="mx-auto w-56 h-56 bg-white p-3 rounded-xs border border-border-warm flex items-center justify-center shadow-sm">
-                  {initiatedPayment.qrImageUrl ? (
+                  {initiatedPayment?.qrImageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={initiatedPayment.qrImageUrl}
                       alt="Transaction-specific Dynamic UPI QR Code"
                       className="w-full h-full object-contain"
                     />
-                  ) : initiatedPayment.qrSvg ? (
+                  ) : initiatedPayment?.qrSvg ? (
                     <div
                       className="w-full h-full [&>svg]:w-full [&>svg]:h-full"
                       dangerouslySetInnerHTML={{ __html: initiatedPayment.qrSvg }}
@@ -250,6 +401,16 @@ export function SmartDonationCheckout() {
                   ) : (
                     <span className="text-xs text-ink-sand">QR unavailable</span>
                   )}
+                </div>
+              ) : (currentStatus === "PENDING" || currentStatus === "CREATED") ? (
+                <div className="p-6 bg-white rounded-xs border border-border-warm space-y-2.5">
+                  <CreditCard className="w-8 h-8 text-forest mx-auto" />
+                  <p className="font-serif font-bold text-base text-forest">
+                    Cashfree Secure Checkout Session Ready
+                  </p>
+                  <p className="text-xs text-ink-sand">
+                    Pay securely via UPI, Cards, or NetBanking. Click &ldquo;Open Cashfree Checkout&rdquo; below if the window did not open automatically.
+                  </p>
                 </div>
               ) : (
                 <div className="p-6 bg-white rounded-xs border border-border-warm space-y-2">
@@ -264,20 +425,43 @@ export function SmartDonationCheckout() {
                       Receipt: {liveStatus.receiptNumber}
                     </p>
                   )}
+                  {liveStatus?.paymentGroup && (
+                    <p className="text-[11px] text-ink-sand uppercase">
+                      Mode: {liveStatus.paymentGroup}
+                    </p>
+                  )}
                 </div>
               )}
 
               <div className="text-xs text-ink font-sans space-y-1">
                 <div className="text-lg font-serif font-bold text-forest">
-                  ₹{Number(initiatedPayment.amount).toLocaleString("en-IN")} INR
+                  ₹{Number(liveStatus?.amount ?? initiatedPayment?.amount ?? amount).toLocaleString("en-IN")} INR
                 </div>
-                <div className="text-ink-sand">{initiatedPayment.programmeName}</div>
+                <div className="text-ink-sand">
+                  {liveStatus?.programmeName ?? initiatedPayment?.programmeName ?? "MECT Programme"}
+                </div>
                 <div className="font-mono text-[11px] text-terracotta-dark">
-                  Ref: {initiatedPayment.donationReference}
+                  Ref: {liveStatus?.donationReference ?? initiatedPayment?.donationReference ?? "—"}
                 </div>
               </div>
 
               <div className="flex flex-wrap justify-center gap-2 pt-2">
+                {initiatedPayment?.provider === "CASHFREE" && initiatedPayment.paymentSessionId && liveStatus?.status !== "SUCCESSFUL" && (
+                  <Button
+                    type="button"
+                    variant="primary"
+                    size="sm"
+                    disabled={isLaunchingGateway}
+                    onClick={() => launchCashfreeModal(initiatedPayment)}
+                  >
+                    {isLaunchingGateway ? (
+                      <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
+                    ) : (
+                      <CreditCard className="w-3.5 h-3.5 mr-1.5" />
+                    )}
+                    <span>{isLaunchingGateway ? "Opening Cashfree..." : "Open Cashfree Checkout"}</span>
+                  </Button>
+                )}
                 <Button type="button" variant="secondary" size="sm" onClick={handleManualStatusRefresh}>
                   <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
                   <span>Check Settlement Status</span>
@@ -286,10 +470,7 @@ export function SmartDonationCheckout() {
                   type="button"
                   variant="ghost"
                   size="sm"
-                  onClick={() => {
-                    setInitiatedPayment(null);
-                    setLiveStatus(null);
-                  }}
+                  onClick={resetCheckoutState}
                 >
                   Start New Contribution
                 </Button>
@@ -299,28 +480,62 @@ export function SmartDonationCheckout() {
             {/* Payment Transparency Instructions */}
             <div className="lg:col-span-7 space-y-4 font-sans">
               <h3 className="font-serif text-xl font-bold text-forest">
-                How Dynamic QR Verification Works
+                {initiatedPayment?.provider === "CASHFREE" || liveStatus?.provider === "CASHFREE"
+                  ? "How Cashfree Online Verification Works"
+                  : "How Dynamic QR Verification Works"}
               </h3>
               <ul className="space-y-2.5 text-sm text-ink">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-terracotta shrink-0 mt-1" />
                   <span>
-                    Scan the unique QR using BHIM, Google Pay, PhonePe, Paytm, or your bank&apos;s UPI app.
+                    {initiatedPayment?.provider === "CASHFREE" || liveStatus?.provider === "CASHFREE"
+                      ? "Complete payment securely inside Cashfree using UPI apps, Debit/Credit Cards, or NetBanking."
+                      : "Scan the unique QR using BHIM, Google Pay, PhonePe, Paytm, or your bank's UPI app."}
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ShieldCheck className="w-4 h-4 text-terracotta shrink-0 mt-1" />
                   <span>
-                    <strong>Strict Server Verification:</strong> Donations transition to Confirmed only upon authenticated webhook signature verification from our payment gateway — never from client clicks.
+                    <strong>Strict Server Verification:</strong> Donations transition to Confirmed only upon authenticated webhook signature &amp; server-side order verification — never from client URL params.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Clock className="w-4 h-4 text-terracotta shrink-0 mt-1" />
                   <span>
-                    This dynamic QR is locked exclusively to order <code>{initiatedPayment.providerOrderId}</code> and expires automatically after 15 minutes if unpaid.
+                    This checkout session is locked exclusively to order{" "}
+                    <code>{initiatedPayment?.providerOrderId || liveStatus?.orderId || liveStatus?.donationReference}</code>.
+                    {liveStatus?.bankReference ? ` Gateway Bank Ref: ${liveStatus.bankReference}.` : ""}
                   </span>
                 </li>
               </ul>
+
+              {(liveStatus?.status === "FAILED" || liveStatus?.status === "USER_DROPPED" || liveStatus?.status === "EXPIRED") && (
+                <div className="p-4 rounded-xs bg-amber-50 border border-amber-200 space-y-2">
+                  <p className="text-xs font-bold text-terracotta-dark uppercase tracking-wider">
+                    Payment Not Completed ({liveStatus.status})
+                  </p>
+                  <p className="text-xs text-ink">
+                    {liveStatus.failureReason ||
+                      "Your transaction was cancelled or dropped before settlement. No donation was recorded."}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    <Button
+                      type="button"
+                      variant="primary"
+                      size="sm"
+                      onClick={resetCheckoutState}
+                    >
+                      Try Payment Again
+                    </Button>
+                    <a
+                      href="#bank-details"
+                      className="inline-flex items-center px-3 py-1.5 text-xs font-semibold text-forest border border-forest/30 rounded-xs hover:bg-sage/30"
+                    >
+                      Use Direct SBI Transfer / QR
+                    </a>
+                  </div>
+                </div>
+              )}
 
               {liveStatus?.receiptAvailable && liveStatus.receiptNumber && (
                 <div className="p-4 rounded-xs bg-forest text-white space-y-2">
@@ -511,8 +726,17 @@ export function SmartDonationCheckout() {
                 Or contribute directly via SBI UPI QR (<strong>86971610172@sbi</strong>) or NEFT/IMPS/RTGS to SBI Account <strong>33341302498</strong> below.
               </span>
               <Button type="submit" variant="primary" size="lg" disabled={isInitiating}>
-                <QrCode className="w-4 h-4 mr-2" />
-                <span>{isInitiating ? "Generating Dynamic QR..." : "Generate Dynamic UPI QR Payment"}</span>
+                {gatewayStatus?.provider === "CASHFREE" ? (
+                  <>
+                    <CreditCard className="w-4 h-4 mr-2" />
+                    <span>{isInitiating ? "Initiating Cashfree Checkout..." : "Proceed to Cashfree Secure Checkout"}</span>
+                  </>
+                ) : (
+                  <>
+                    <QrCode className="w-4 h-4 mr-2" />
+                    <span>{isInitiating ? "Generating Dynamic QR..." : "Generate Dynamic UPI QR Payment"}</span>
+                  </>
+                )}
               </Button>
             </div>
           </form>

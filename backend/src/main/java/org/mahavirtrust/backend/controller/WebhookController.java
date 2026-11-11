@@ -6,6 +6,7 @@ import org.mahavirtrust.backend.service.notification.EmailProvider;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
 import org.mahavirtrust.backend.service.notification.WhatsAppProvider;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,19 @@ public class WebhookController {
         this.outboxService = outboxService;
         this.objectMapper = objectMapper;
         this.whatsappVerifyToken = whatsappVerifyToken != null ? whatsappVerifyToken.trim() : "";
+    }
+
+    @PostMapping("/payments/cashfree")
+    public ResponseEntity<Map<String, Object>> cashfreeWebhook(
+            @RequestBody String rawPayload,
+            @RequestHeader(value = "x-webhook-signature", required = false) String signature,
+            @RequestHeader(value = "x-webhook-timestamp", required = false) String timestamp,
+            HttpServletRequest request) {
+        try {
+            return ResponseEntity.ok(donationService.processCashfreeWebhook(timestamp, rawPayload, signature, getClientIp(request)));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "invalid_cashfree_webhook_signature"));
+        }
     }
 
     @PostMapping("/payments/razorpay")
