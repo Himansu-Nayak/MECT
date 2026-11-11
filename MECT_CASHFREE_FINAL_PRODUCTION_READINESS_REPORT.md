@@ -3,7 +3,7 @@
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT)  
 **Production Domain:** `https://mect.org.in/`  
 **Repository:** `https://github.com/Himansu-Nayak/MAHAVIR-TRUST`  
-**Git Branch:** `feat/multi-sector-ngo-repositioning` (live VPS backend currently at `c0d4a8a`)  
+**Git Branch:** `feat/multi-sector-ngo-repositioning` (Stage 1 Release Commit: `155dd00`)  
 **Generated:** 2026-11-12  
 
 ---
@@ -27,7 +27,7 @@
 - **Secret Hygiene Audit (`PASS`):**
   - Post-build scan across `src/**/*.{ts,tsx}` and `.next/static/**/*.js` returned **`0` matches** for credential variables, headers, or key prefixes.
   - Existing credentials are preserved untouched per user direction (no keys regenerated or rotated automatically).
-  - **Operator Handling Rule:** After moving the existing Production keys securely into `/opt/mect/backend/.env` (`chmod 600`), delete plaintext `APIKey (2).csv` and `api keys.png` from the project workspace. Note also that because `api keys.png` and `APIKey (2).csv` existed in plaintext locally, rotating them manually in the Cashfree Dashboard remains advisable once convenient unless the operator explicitly chooses to retain them.
+  - **Operator Handling Complete:** Existing Cashfree Production keys were securely written into `/opt/mect/backend/.env` (`mect:mect`, `chmod 600`, `0` CRLF bytes) without printing secret values to logs, and both plaintext local exports (`APIKey (2).csv` and `api keys.png`) were deleted from the workspace (`PLAINTEXT_CREDS_REMOVED=True`). Rotating keys manually later in Cashfree Dashboard remains optional if extra precaution is desired against earlier local screenshot exposure.
 
 ---
 
@@ -90,15 +90,27 @@ Confirmed Cashfree Merchant Dashboard registration:
 ---
 
 ## 8. Live VPS, Reverse Proxy, & Production Verification Status
-- **Live Read-Only Reverse-Proxy Probe on `https://mect.org.in`:**
-  - `GET /api/v1/public/donations/gateway-status` returned **`HTTP 200`**: `{"provider":"RAZORPAY","configured":false,"sandboxMode":false,...}`.
-  - `POST /api/v1/webhooks/payments/cashfree` (unsigned `{}`) returned **`HTTP 500 Internal Server Error`** (proving Cloudflare + Nginx route `/api/v1/webhooks/payments/cashfree` cleanly to `127.0.0.1:8081` Tomcat, where older release `c0d4a8a` is still running without Cashfree endpoints).
-  - `HEAD /donate` returned **`HTTP 200`** with no restrictive `script-src` CSP blocking `https://sdk.cashfree.com/js/v3/cashfree.js`.
-- **Operations Pending Explicit Authorization (`BLOCKED`):**
-  1. VPS `pg_dump` backup & live `V10` migration on PostgreSQL database `mect_db`.
-  2. Configuring existing Production Cashfree keys in `/opt/mect/backend/.env` (keeping `PAYMENT_PROVIDER=RAZORPAY` initially during infra rollout), removing workspace CSV/screenshot exports cleanly, and restarting `mect-backend.service` + `mect_frontend` PM2 (without touching `oho_tech`).
-  3. Post-deploy probe verifying unsigned `POST https://mect.org.in/api/v1/webhooks/payments/cashfree` transitions from `HTTP 500` to **`HTTP 401`**.
-  4. Controlled authorized test transaction + live signed Cashfree webhook delivery verification + live PostgreSQL row, receipt PDF, email notification, and Admin reconciliation verification.
+- **Stage 1 Infrastructure Deployment Executed (`PASS` on `200.97.161.128` / `srv2000528`):**
+  - **Pre-Deploy Backups Verified:**
+    - PostgreSQL `mect_db`: `/opt/mect/backups/mect_db_pre_cashfree_20261111_201502.dump` (`100K`, `chmod 600`, `PG_RESTORE_TOC_ENTRIES=262`)
+    - Previous JAR: `/opt/mect/backups/mahavir-backend.jar.pre_cashfree_20261111_201502` (`65M`)
+    - Previous `.env`: `/opt/mect/backups/backend.env.pre_cashfree_20261111_201502` (`638B`)
+    - Previous Frontend Archive: `/opt/mect/backups/mect_frontend_989e0da_20261111_201502.tar.gz` (`220M`)
+  - **Flyway & PostgreSQL 18 `V10` Migration (`PASS`):** `mect_db` migrated cleanly from `V9` to `V10` (`10 | cashfree payment gateway schema | t`), and `\d payments` verified `cf_order_id`, `payment_session_id`, `gateway_raw_status`, `payment_group`, `bank_reference`, `verified_at`, and `uq_payments_provider_order UNIQUE (provider, provider_order_id)`.
+  - **Services & Isolation (`PASS`):**
+    - `mect-backend.service`: `active` (commit `155dd00`, Spring Boot started in `12.363s` on `127.0.0.1:8081`).
+    - `mect_frontend` PM2 (`id: 1`): rebuilt (`37/37` routes) & `online`.
+    - `oho_tech` PM2 (`id: 0`, `PID 200322`, `uptime 10D`): completely untouched (`https://ohotechn.com/` returned `HTTP 200`).
+- **Live Public HTTPS Checks (`PASS`):**
+  - `GET https://mect.org.in/` -> `HTTP 200`
+  - `GET https://mect.org.in/donate` -> `HTTP 200`
+  - `GET https://mect.org.in/api/v1/public/donations/programmes` -> `HTTP 200`
+  - `GET https://mect.org.in/api/v1/public/donations/gateway-status` -> **`HTTP 200`**: `{"provider":"RAZORPAY","configured":false,...}` (active provider safely preserved)
+  - `POST https://mect.org.in/api/v1/webhooks/payments/cashfree` (unsigned `{}` AND spoofed HMAC + valid timestamp) -> **`HTTP 401 Unauthorized`**: `{"error":"invalid_cashfree_webhook_signature"}` (logged `WEBHOOK_CASHFREE` / `WEBHOOK_SIGNATURE_INVALID` in `audit_logs` & `REJECTED` event)
+  - `POST https://mect.org.in/api/v1/webhooks/payments/razorpay` (unsigned `{}`) -> **`HTTP 401`** (preserved)
+- **Stage 2 Activation Remaining (`BLOCKED` — Requires Explicit Authorization & Agreed Amount):**
+  1. Switching `PAYMENT_PROVIDER=CASHFREE` in `/opt/mect/backend/.env` and restarting `mect-backend.service` (intentionally held at `RAZORPAY` per safety rules).
+  2. Executing Cashfree Dashboard Test webhook or one controlled live donation of an explicitly agreed INR amount to verify live `PAYMENT_SUCCESS_WEBHOOK` delivery, `mect_db` settlement row, single `DonationReceipt` PDF, email outbox notification, and Admin Donors UI visibility.
 
 ---
 
