@@ -168,19 +168,14 @@ async function run() {
       await ctx.close();
     }
 
-    console.log("\n=== 2. PAUSE BUTTON, CTA NAVIGATION & REDUCED MOTION ===");
+    console.log("\n=== 2. CTA NAVIGATION & REDUCED MOTION ===");
     {
       const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
       const page = await ctx.newPage();
       await page.goto(BASE + "/", { waitUntil: "load" });
-      const btn = page.getByRole("button", { name: /Pause Backdrop/i });
-      await btn.click();
-      const pausedPlayState = await page.evaluate(() =>
-        getComputedStyle(document.querySelector(".hero-bg-track-ltr")).animationPlayState
-      );
-      const pressedState = await page.getByRole("button", { name: /Play Backdrop/i }).getAttribute("aria-pressed");
-      console.log(`Pause Backdrop -> animationPlayState=${pausedPlayState}, aria-pressed=${pressedState}`);
-      if (pausedPlayState !== "paused" || pressedState !== "true") failures++;
+      const pauseBtnCount = await page.locator("button:has-text('Pause Backdrop')").count();
+      console.log(`Pause Backdrop button count (expected 0): ${pauseBtnCount}`);
+      if (pauseBtnCount !== 0) failures++;
 
       // Check CTA links resolve cleanly and return HTTP 200
       const ctas = await page.evaluate(() =>

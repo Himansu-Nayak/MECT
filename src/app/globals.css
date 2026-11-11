@@ -231,7 +231,7 @@ select:focus-visible {
   height: 100%;
   width: max-content;
   will-change: transform;
-  animation: hero-bg-marquee-ltr 48s linear infinite;
+  animation: hero-bg-marquee-ltr 26s linear infinite;
 }
 
 .hero-bg-panel-feather {
@@ -252,13 +252,9 @@ select:focus-visible {
   );
 }
 
-.hero-bg-paused .hero-bg-track-ltr {
-  animation-play-state: paused;
-}
-
 @media (max-width: 767px) {
   .hero-bg-track-ltr {
-    animation-duration: 54s;
+    animation-duration: 22s;
   }
 }
 

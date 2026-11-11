@@ -51,8 +51,6 @@ import {
   Layers,
   Calculator,
   Receipt,
-  Pause,
-  Play,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
 
@@ -98,8 +96,6 @@ const PILLAR_ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function HomePage() {
-  const [heroBackdropPaused, setHeroBackdropPaused] = useState(false);
-
   // Public Secretariat Inquiry State
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
   const [inquiryReferenceId, setInquiryReferenceId] = useState<number | null>(null);
@@ -229,39 +225,39 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 1 — CINEMATIC FULL-WIDTH PHOTOGRAPHIC HERO
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-forest-deep text-white pt-5 pb-7 sm:pt-11 sm:pb-11 md:pt-14 md:pb-12 lg:pt-16 lg:pb-14 border-b border-forest-deep">
+      <section className="relative overflow-hidden bg-forest-deep text-white pt-5 pb-6 sm:pt-11 sm:pb-11 md:pt-14 md:pb-12 lg:pt-16 lg:pb-14 border-b border-forest-deep">
         {/* Layer 0: Continuous Left-to-Right Photographic Backdrop */}
-        <HeroBackgroundMarquee isPaused={heroBackdropPaused} />
+        <HeroBackgroundMarquee />
 
-        {/* Layer 1: Dark Forest & Warm Terracotta Cinematic Scrim */}
+        {/* Layer 1: Balanced Forest & Subtle Terracotta Cinematic Scrim */}
         <div
           aria-hidden="true"
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background: [
-              "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.20) 0%, transparent 56%)",
-              "linear-gradient(180deg, rgba(29, 41, 36, 0.28) 0%, rgba(29, 41, 36, 0.02) 45%, rgba(29, 41, 36, 0.78) 100%)",
-              "linear-gradient(90deg, rgba(29, 41, 36, 0.80) 0%, rgba(29, 41, 36, 0.62) 38%, rgba(29, 41, 36, 0.30) 68%, rgba(29, 41, 36, 0.24) 100%)",
+              "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.18) 0%, transparent 56%)",
+              "linear-gradient(180deg, rgba(29, 41, 36, 0.22) 0%, rgba(29, 41, 36, 0.08) 40%, rgba(29, 41, 36, 0.72) 100%)",
+              "linear-gradient(90deg, rgba(29, 41, 36, 0.72) 0%, rgba(29, 41, 36, 0.52) 42%, rgba(29, 41, 36, 0.18) 72%, rgba(29, 41, 36, 0.14) 100%)",
             ].join(", "),
           }}
         />
 
         <Container size="default" className="relative z-20">
-          <HeroEntrance className="max-w-3xl lg:max-w-4xl space-y-3 sm:space-y-5 text-left min-w-0">
+          <HeroEntrance className="max-w-3xl lg:max-w-4xl space-y-2.5 sm:space-y-5 text-left min-w-0">
             {/* Institutional Eyebrow Badge */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xs border border-sand/45 bg-forest-deep/75 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.07em] sm:tracking-[0.11em] text-sand font-sans whitespace-nowrap">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xs border border-sand/55 bg-forest-deep/80 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.07em] sm:tracking-[0.11em] text-sand font-sans whitespace-nowrap shadow-sm">
               <ShieldCheck className="w-3.5 h-3.5 text-sand shrink-0" aria-hidden="true" />
               <span>{HOMEPAGE_CONTENT.hero.badge}</span>
             </div>
 
             {/* Grand Highlighted Editorial Headline */}
-            <h1 className="font-serif text-[1.72rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem] xl:text-[3.35rem] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.1] drop-shadow-[0_2px_14px_rgba(29,41,36,0.6)]">
+            <h1 className="font-serif text-[1.65rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem] xl:text-[3.35rem] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.1] drop-shadow-[0_2px_16px_rgba(12,18,15,0.88)]">
               Stronger communities begin with{" "}
               <span className="text-sand">opportunity, dignity and care.</span>
             </h1>
 
             {/* Multi-Sector Narrative Subtext */}
-            <p className="text-[13.5px] sm:text-base md:text-lg text-cream/95 leading-relaxed font-sans max-w-2xl drop-shadow-[0_1px_10px_rgba(29,41,36,0.7)]">
+            <p className="text-[13px] sm:text-base md:text-lg text-cream leading-relaxed font-sans max-w-2xl drop-shadow-[0_2px_10px_rgba(12,18,15,0.88)]">
               {HOMEPAGE_CONTENT.hero.subtext}
             </p>
 
@@ -271,7 +267,7 @@ export default function HomePage() {
                 <Button
                   variant="gold"
                   size="md"
-                  className="shadow-lg font-bold px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                  className="shadow-lg font-bold px-3 sm:px-5 h-9 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
                 >
                   <Award className="w-4 h-4 mr-1 sm:mr-1.5 text-forest-deep" aria-hidden="true" />
                   <span>Explore Our Work</span>
@@ -281,7 +277,7 @@ export default function HomePage() {
                 <Button
                   variant="primary"
                   size="md"
-                  className="shadow-lg font-semibold !border-sand/50 px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                  className="shadow-lg font-semibold !border-sand/50 px-3 sm:px-5 h-9 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
                 >
                   <Heart className="w-4 h-4 mr-1 sm:mr-1.5 fill-current text-sand" aria-hidden="true" />
                   <span>Support Our Mission</span>
@@ -291,7 +287,7 @@ export default function HomePage() {
                 <Button
                   variant="dark-outline"
                   size="md"
-                  className="font-semibold bg-forest-deep/75 !border-white/55 hover:!bg-forest-deep hover:!border-sand px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                  className="font-semibold bg-forest-deep/80 !border-white/60 hover:!bg-forest-deep hover:!border-sand px-3 sm:px-5 h-9 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
                 >
                   <Briefcase className="w-4 h-4 mr-1 sm:mr-1.5 text-sand" aria-hidden="true" />
                   <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
@@ -299,58 +295,38 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Quiet Governance Link, Notice & WCAG 2.2 Motion Control */}
-            <div className="pt-2.5 sm:pt-3 border-t border-white/25 max-w-3xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 pr-14 sm:pr-0">
-              <div className="space-y-0.5 sm:space-y-1">
-                <p className="text-[11px] sm:text-[13px] text-white font-sans leading-snug sm:leading-relaxed">
-                  Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
-                  <Link
-                    href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
-                    className="text-white underline decoration-sand underline-offset-4 hover:text-sand transition-colors font-semibold"
-                  >
-                    Fiduciary Charter &amp; Governance Code
-                  </Link>
-                  .
-                </p>
-                <p className="text-[11px] sm:text-xs text-cream/90 font-sans leading-snug">
-                  {HOMEPAGE_CONTENT.hero.notice}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setHeroBackdropPaused((prev) => !prev)}
-                aria-pressed={heroBackdropPaused}
-                className="inline-flex items-center self-start sm:self-end gap-1.5 rounded-xs border border-sand/55 bg-forest-deep/80 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] font-semibold font-sans text-cream hover:bg-forest hover:border-sand transition-colors shrink-0 min-h-[34px] sm:min-h-[36px] cursor-pointer"
-              >
-                {heroBackdropPaused ? (
-                  <>
-                    <Play className="w-3 h-3 text-sand" aria-hidden="true" />
-                    <span>Play Backdrop</span>
-                  </>
-                ) : (
-                  <>
-                    <Pause className="w-3 h-3 text-sand" aria-hidden="true" />
-                    <span>Pause Backdrop</span>
-                  </>
-                )}
-              </button>
+            {/* Quiet Governance Link & Notice */}
+            <div className="pt-2 sm:pt-3 border-t border-white/25 max-w-2xl space-y-0.5 sm:space-y-1 pr-12 sm:pr-0">
+              <p className="text-[11px] sm:text-[13px] text-white font-sans leading-snug sm:leading-relaxed drop-shadow-[0_1px_6px_rgba(12,18,15,0.85)]">
+                Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
+                <Link
+                  href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
+                  className="text-white underline decoration-sand underline-offset-4 hover:text-sand transition-colors font-semibold"
+                >
+                  Fiduciary Charter &amp; Governance Code
+                </Link>
+                .
+              </p>
+              <p className="text-[10.5px] sm:text-xs text-cream/95 font-sans leading-snug drop-shadow-[0_1px_6px_rgba(12,18,15,0.85)]">
+                {HOMEPAGE_CONTENT.hero.notice}
+              </p>
             </div>
           </HeroEntrance>
 
           {/* Statutorily Grounded Metric Cards Strip */}
-          <div className="mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-white/25 grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6 pr-12 sm:pr-0 text-center">
+          <div className="mt-4 sm:mt-10 pt-3.5 sm:pt-6 border-t border-white/25 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pr-12 sm:pr-0 text-center">
             {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
               <div
                 key={idx}
                 className="space-y-0.5 sm:space-y-1 md:border-r md:border-white/25 md:last:border-r-0 md:px-4"
               >
-                <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-sand tabular-nums block drop-shadow-[0_1px_6px_rgba(29,41,36,0.75)]">
+                <span className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-sand tabular-nums block drop-shadow-[0_2px_8px_rgba(12,18,15,0.88)]">
                   {metric.value}
                 </span>
-                <p className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-white font-sans">
+                <p className="text-[10.5px] sm:text-xs uppercase font-bold tracking-wider text-white font-sans drop-shadow-[0_1px_6px_rgba(12,18,15,0.85)]">
                   {metric.label}
                 </p>
-                <p className="text-[10.5px] sm:text-[11px] text-cream/90 font-sans leading-snug">
+                <p className="text-[10px] sm:text-[11px] text-cream/95 font-sans leading-tight sm:leading-snug drop-shadow-[0_1px_6px_rgba(12,18,15,0.85)]">
                   {metric.subtext}
                 </p>
               </div>
