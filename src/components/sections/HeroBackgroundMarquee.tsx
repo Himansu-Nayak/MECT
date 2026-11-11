@@ -44,7 +44,7 @@ function BackgroundSequence({ isClone = false }: { isClone?: boolean }) {
         <div
           key={`${isClone ? "clone" : "main"}-${slide.id}`}
           data-slide-index={idx}
-          className={`hero-bg-panel hero-bg-panel-feather relative h-full w-screen sm:w-[92vw] md:w-[84vw] lg:w-[76vw] xl:w-[72vw] shrink-0 overflow-hidden ${
+          className={`hero-bg-panel hero-bg-panel-feather relative h-full w-[88vw] sm:w-[86vw] md:w-[80vw] lg:w-[74vw] xl:w-[68vw] shrink-0 overflow-hidden ${
             !isClone && idx > 0 ? "hero-bg-secondary-slide" : ""
           } ${!isClone && idx > 1 ? "hero-bg-extra-slide" : ""}`}
         >
@@ -52,11 +52,11 @@ function BackgroundSequence({ isClone = false }: { isClone?: boolean }) {
             src={slide.src}
             alt=""
             fill
-            sizes="(max-width: 639px) 100vw, (max-width: 767px) 92vw, (max-width: 1023px) 84vw, (max-width: 1279px) 76vw, 72vw"
+            sizes="(max-width: 639px) 88vw, (max-width: 767px) 86vw, (max-width: 1023px) 80vw, (max-width: 1279px) 74vw, 68vw"
             loading="eager"
             decoding="async"
             priority={!isClone && idx < 2}
-            className="object-cover brightness-[0.96] contrast-[1.03]"
+            className="object-cover brightness-[1.06] contrast-[1.05]"
             style={{ objectPosition: slide.objectPosition }}
           />
         </div>
@@ -69,12 +69,10 @@ function BackgroundSequence({ isClone = false }: { isClone?: boolean }) {
  * Full-bleed widescreen decorative background marquee moving seamlessly
  * left-to-right behind the MECT homepage hero copy.
  */
-export function HeroBackgroundMarquee({ isPaused = false }: { isPaused?: boolean }) {
+export function HeroBackgroundMarquee() {
   return (
     <div
-      className={`hero-bg-marquee-wrapper absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep ${
-        isPaused ? "hero-bg-paused" : ""
-      }`}
+      className="hero-bg-marquee-wrapper absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
       aria-hidden="true"
     >
       <div className="hero-bg-track-ltr">
