@@ -133,14 +133,14 @@ Detailed step-by-step commands (`pg_dump`, JAR backup, `/opt/mect/backend/.env`,
 | TypeScript | **PASS** | `npx tsc --noEmit` (`0` errors) |
 | ESLint | **PASS** | `npm run lint` (`0` errors, `0` warnings) |
 | Next.js build | **PASS** | `npm run build` (`37/37` routes) |
-| Database migration | **PASS (H2)** / **BLOCKED (Live PostgreSQL)** | `V10` validated on H2 PostgreSQL mode; live `mect_db` awaits authorized deploy |
-| Webhook signature | **PASS** | Constant-time Base64 HMAC + `300s` replay tolerance tested in integration & unit tests |
-| Actual webhook delivery | **BLOCKED** | VPS currently serves `c0d4a8a` (`HTTP 500` on unsigned POST); awaiting authorized deploy & live delivery |
-| Live PostgreSQL | **BLOCKED** | Awaits authorized VPS deployment & Flyway `V10` run on `mect_db` |
-| Donation checkout | **PASS (Mocked E2E)** / **BLOCKED (Live Production)** | `14/14` Playwright checks passed; live Cashfree Production checkout awaits authorized activation |
+| Database migration | **PASS** | `V10` applied cleanly to live PostgreSQL `mect_db` (`10/10` Flyway rows `t`) & H2 |
+| Webhook signature | **PASS** | MockMvc integration tests + live `https://mect.org.in/api/v1/webhooks/payments/cashfree` returned `HTTP 401` on unsigned & spoofed payloads |
+| Actual webhook delivery | **BLOCKED** | Stage 1 endpoint live (`HTTP 401`); live signed Cashfree event pending Stage 2 activation & authorized test |
+| Live PostgreSQL | **PASS (Schema)** / **BLOCKED (Live Cashfree Txn)** | Live `V10` schema/indexes & `REJECTED` event logged; live settled `PAID` row awaits Stage 2 activation |
+| Donation checkout | **PASS (Mocked E2E)** / **BLOCKED (Live Production)** | `14/14` Playwright checks passed; live Cashfree Production checkout awaits Stage 2 `PAYMENT_PROVIDER=CASHFREE` switch |
 | Receipt generation | **PASS (Integration)** / **BLOCKED (Live Production)** | MockMvc verified single PDF receipt & email outbox per settlement; live test pending |
 | Admin reconciliation | **PASS** | RBAC `FINANCE_OFFICER`/`TRUSTEE`/`SUPER_ADMIN`, search/filter/verify/CSV export verified |
-| Payment security | **PASS** | Amount/currency tamper rejection, replay window, dedup, non-downgrade, fail-closed key mismatch |
-| VPS deployment | **BLOCKED** | Deployment guide ready in `CASHFREE_VPS_DEPLOYMENT_GUIDE.md`; requires explicit authorization |
-| Production activation | **BLOCKED** | Requires authorized VPS deployment, live `401` probe, explicit switch to `PAYMENT_PROVIDER=CASHFREE`, and 1 controlled live test verification |
+| Payment security | **PASS** | Amount/currency tamper rejection, replay window, dedup, non-downgrade, fail-closed env mismatch |
+| VPS deployment | **PASS (Stage 1)** | Backups created, `155dd00` deployed cleanly (`mect-backend` + `mect_frontend`), `oho_tech` (`HTTP 200`) untouched |
+| Production activation | **BLOCKED** | Intentionally preserved `PAYMENT_PROVIDER=RAZORPAY`; awaiting explicit authorization + agreed INR amount to switch `PAYMENT_PROVIDER=CASHFREE` |
 
