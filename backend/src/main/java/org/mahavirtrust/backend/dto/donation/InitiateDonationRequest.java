@@ -8,7 +8,7 @@ public record InitiateDonationRequest(
         String programmeCode,
 
         @NotNull(message = "Donation amount is required")
-        @DecimalMin(value = "10.00", message = "Minimum voluntary contribution is INR 10")
+        @DecimalMin(value = "1.00", message = "Minimum voluntary contribution is INR 1")
         @DecimalMax(value = "10000000.00", message = "Single online contribution exceeds gateway limit")
         BigDecimal amount,
 
