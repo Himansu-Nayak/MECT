@@ -401,6 +401,29 @@ export function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Photographic Attribution Notice */}
+        <div className="pt-3 mt-3 border-t border-white/10 text-[10.5px] text-cream/75 font-sans leading-relaxed">
+          Hero backdrop photography combines MECT Balangir archive images with illustrative stock photography via Wikimedia Commons: &ldquo;Self Help Group&rdquo; by Ganesh Dhamodkar (
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-sand/60 hover:text-sand"
+          >
+            CC BY 4.0
+          </a>
+          , cropped &amp; exposure-balanced) and &ldquo;Rammohun Library Main Reading Room&rdquo; by Sumitsurai (
+          <a
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-sand/60 hover:text-sand"
+          >
+            CC BY-SA 4.0
+          </a>
+          , cropped &amp; exposure-balanced).
+        </div>
       </Container>
     </footer>
   );

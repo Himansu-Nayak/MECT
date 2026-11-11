@@ -19,7 +19,7 @@ import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSec
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
 import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
-import { HeroPhotoGallery } from "@/components/sections/HeroPhotoGallery";
+import { HeroBackgroundMarquee } from "@/components/sections/HeroBackgroundMarquee";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
@@ -51,6 +51,8 @@ import {
   Layers,
   Calculator,
   Receipt,
+  Pause,
+  Play,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
 
@@ -96,6 +98,8 @@ const PILLAR_ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function HomePage() {
+  const [heroBackdropPaused, setHeroBackdropPaused] = useState(false);
+
   // Public Secretariat Inquiry State
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
   const [inquiryReferenceId, setInquiryReferenceId] = useState<number | null>(null);
@@ -223,58 +227,82 @@ export default function HomePage() {
   return (
     <div className="flex flex-col w-full pb-floating-clearance bg-cream">
       {/* =========================================================================
-          SECTION 1 — PREMIUM EDITORIAL HERO: Multi-Sector NGO Positioning
+          SECTION 1 — CINEMATIC FULL-WIDTH PHOTOGRAPHIC HERO
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-terracotta text-white pt-8 pb-12 sm:pt-14 sm:pb-16 md:pt-20 md:pb-24 border-b border-terracotta-dark transition-colors">
-        {/* Subtle architectural texture */}
+      <section className="relative overflow-hidden bg-forest-deep text-white pt-5 pb-7 sm:pt-11 sm:pb-11 md:pt-14 md:pb-12 lg:pt-16 lg:pb-14 border-b border-forest-deep">
+        {/* Layer 0: Continuous Left-to-Right Photographic Backdrop */}
+        <HeroBackgroundMarquee isPaused={heroBackdropPaused} />
+
+        {/* Layer 1: Dark Forest & Warm Terracotta Cinematic Scrim */}
         <div
-          className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#F3E4D2_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
           aria-hidden="true"
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: [
+              "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.20) 0%, transparent 56%)",
+              "linear-gradient(180deg, rgba(29, 41, 36, 0.28) 0%, rgba(29, 41, 36, 0.02) 45%, rgba(29, 41, 36, 0.78) 100%)",
+              "linear-gradient(90deg, rgba(29, 41, 36, 0.80) 0%, rgba(29, 41, 36, 0.62) 38%, rgba(29, 41, 36, 0.30) 68%, rgba(29, 41, 36, 0.24) 100%)",
+            ].join(", "),
+          }}
         />
 
-        <Container size="default">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Left Content Column */}
-            <HeroEntrance className="lg:col-span-6 space-y-5 sm:space-y-6 text-left min-w-0">
-              {/* Grand Editorial Headline */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.05rem] xl:text-[3.3rem] font-bold text-white tracking-tight leading-[1.09]">
-                {HOMEPAGE_CONTENT.hero.headline}
-              </h1>
+        <Container size="default" className="relative z-20">
+          <HeroEntrance className="max-w-3xl lg:max-w-4xl space-y-3 sm:space-y-5 text-left min-w-0">
+            {/* Institutional Eyebrow Badge */}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xs border border-sand/45 bg-forest-deep/75 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.07em] sm:tracking-[0.11em] text-sand font-sans whitespace-nowrap">
+              <ShieldCheck className="w-3.5 h-3.5 text-sand shrink-0" aria-hidden="true" />
+              <span>{HOMEPAGE_CONTENT.hero.badge}</span>
+            </div>
 
-              {/* Multi-Sector Narrative Subtext */}
-              <p className="text-sm sm:text-base md:text-lg text-white leading-relaxed font-sans max-w-xl">
-                {HOMEPAGE_CONTENT.hero.subtext}
-              </p>
+            {/* Grand Highlighted Editorial Headline */}
+            <h1 className="font-serif text-[1.72rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem] xl:text-[3.35rem] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.1] drop-shadow-[0_2px_14px_rgba(29,41,36,0.6)]">
+              Stronger communities begin with{" "}
+              <span className="text-sand">opportunity, dignity and care.</span>
+            </h1>
 
-              {/* Structured Action Buttons — Primary: Explore Our Work, Secondary: Support Our Mission */}
-              <div className="pt-1 flex flex-wrap items-center gap-2.5 sm:gap-3">
-                <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
-                  <Button variant="gold" size="md" className="shadow-lg font-bold px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap">
-                    <Award className="w-4 h-4 mr-1.5 text-forest-deep" aria-hidden="true" />
-                    <span>Explore Our Work</span>
-                  </Button>
-                </Link>
-                <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
-                  <Button
-                    variant="dark-outline"
-                    size="md"
-                    className="font-semibold !border-sand !text-white bg-forest hover:!bg-forest-deep hover:!text-white px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap"
-                  >
-                    <Heart className="w-4 h-4 mr-1.5 fill-current text-sand" aria-hidden="true" />
-                    <span>Support Our Mission</span>
-                  </Button>
-                </Link>
-                <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
-                  <Button variant="dark-outline" size="md" className="font-semibold border-white/60 hover:bg-terracotta-dark px-4 sm:px-5 h-10 sm:h-11 sm:whitespace-nowrap">
-                    <Briefcase className="w-4 h-4 mr-1.5 text-white" aria-hidden="true" />
-                    <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
-                  </Button>
-                </Link>
-              </div>
+            {/* Multi-Sector Narrative Subtext */}
+            <p className="text-[13.5px] sm:text-base md:text-lg text-cream/95 leading-relaxed font-sans max-w-2xl drop-shadow-[0_1px_10px_rgba(29,41,36,0.7)]">
+              {HOMEPAGE_CONTENT.hero.subtext}
+            </p>
 
-              {/* Quiet Governance Link & Notice */}
-              <div className="pt-2 space-y-1.5 border-t border-white/25 max-w-xl">
-                <p className="text-xs sm:text-[13px] text-white font-sans leading-relaxed">
+            {/* Structured Action Buttons — Preserved Destinations */}
+            <div className="pt-0.5 sm:pt-1 flex flex-wrap items-center gap-2 sm:gap-3">
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.secondary.href}>
+                <Button
+                  variant="gold"
+                  size="md"
+                  className="shadow-lg font-bold px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                >
+                  <Award className="w-4 h-4 mr-1 sm:mr-1.5 text-forest-deep" aria-hidden="true" />
+                  <span>Explore Our Work</span>
+                </Button>
+              </Link>
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href}>
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="shadow-lg font-semibold !border-sand/50 px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                >
+                  <Heart className="w-4 h-4 mr-1 sm:mr-1.5 fill-current text-sand" aria-hidden="true" />
+                  <span>Support Our Mission</span>
+                </Button>
+              </Link>
+              <Link href={HOMEPAGE_CONTENT.hero.ctas.csr.href}>
+                <Button
+                  variant="dark-outline"
+                  size="md"
+                  className="font-semibold bg-forest-deep/75 !border-white/55 hover:!bg-forest-deep hover:!border-sand px-3.5 sm:px-5 h-10 sm:h-11 text-xs sm:text-sm sm:whitespace-nowrap"
+                >
+                  <Briefcase className="w-4 h-4 mr-1 sm:mr-1.5 text-sand" aria-hidden="true" />
+                  <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
+                </Button>
+              </Link>
+            </div>
+
+            {/* Quiet Governance Link, Notice & WCAG 2.2 Motion Control */}
+            <div className="pt-2.5 sm:pt-3 border-t border-white/25 max-w-3xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 pr-14 sm:pr-0">
+              <div className="space-y-0.5 sm:space-y-1">
+                <p className="text-[11px] sm:text-[13px] text-white font-sans leading-snug sm:leading-relaxed">
                   Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
                   <Link
                     href={HOMEPAGE_CONTENT.hero.ctas.governance.href}
@@ -284,32 +312,45 @@ export default function HomePage() {
                   </Link>
                   .
                 </p>
-                <p className="text-xs text-white/95 font-sans">
+                <p className="text-[11px] sm:text-xs text-cream/90 font-sans leading-snug">
                   {HOMEPAGE_CONTENT.hero.notice}
                 </p>
               </div>
-            </HeroEntrance>
-
-            {/* Right Column: Seamless Editorial Two-Track Moving Photographic Gallery */}
-            <HeroEntrance delay={0.08} className="lg:col-span-6 relative min-w-0">
-              <HeroPhotoGallery />
-            </HeroEntrance>
-          </div>
+              <button
+                type="button"
+                onClick={() => setHeroBackdropPaused((prev) => !prev)}
+                aria-pressed={heroBackdropPaused}
+                className="inline-flex items-center self-start sm:self-end gap-1.5 rounded-xs border border-sand/55 bg-forest-deep/80 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] font-semibold font-sans text-cream hover:bg-forest hover:border-sand transition-colors shrink-0 min-h-[34px] sm:min-h-[36px] cursor-pointer"
+              >
+                {heroBackdropPaused ? (
+                  <>
+                    <Play className="w-3 h-3 text-sand" aria-hidden="true" />
+                    <span>Play Backdrop</span>
+                  </>
+                ) : (
+                  <>
+                    <Pause className="w-3 h-3 text-sand" aria-hidden="true" />
+                    <span>Pause Backdrop</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </HeroEntrance>
 
           {/* Statutorily Grounded Metric Cards Strip */}
-          <div className="mt-14 pt-8 border-t border-white/25 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-white/25 grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6 pr-12 sm:pr-0 text-center">
             {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="space-y-1.5 md:border-r md:border-white/25 md:last:border-r-0 md:px-4"
+                className="space-y-0.5 sm:space-y-1 md:border-r md:border-white/25 md:last:border-r-0 md:px-4"
               >
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-white tabular-nums block">
+                <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-sand tabular-nums block drop-shadow-[0_1px_6px_rgba(29,41,36,0.75)]">
                   {metric.value}
                 </span>
-                <p className="text-xs uppercase font-bold tracking-wider text-white font-sans">
+                <p className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-white font-sans">
                   {metric.label}
                 </p>
-                <p className="text-[11px] text-white/95 font-sans leading-snug">
+                <p className="text-[10.5px] sm:text-[11px] text-cream/90 font-sans leading-snug">
                   {metric.subtext}
                 </p>
               </div>
