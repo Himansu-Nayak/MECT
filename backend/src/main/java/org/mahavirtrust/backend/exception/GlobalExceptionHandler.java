@@ -166,7 +166,7 @@ public class GlobalExceptionHandler {
         ApiErrorResponse response = new ApiErrorResponse(
                 HttpStatus.CONFLICT.value(),
                 "Conflict",
-                "The volunteer application was concurrently modified by another transaction. Please reload the record and retry.",
+                "The record was concurrently updated by another request. Please refresh and try again.",
                 request.getRequestURI(),
                 Instant.now(),
                 List.of()

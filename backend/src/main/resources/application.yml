@@ -80,6 +80,14 @@ app:
     razorpay-key-secret: ${RAZORPAY_KEY_SECRET:}
     razorpay-webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:}
     qr-expiry-minutes: ${PAYMENT_QR_EXPIRY_MINUTES:15}
+    cashfree-app-id: ${CASHFREE_APP_ID:}
+    cashfree-secret-key: ${CASHFREE_SECRET_KEY:}
+    cashfree-env: ${CASHFREE_ENV:SANDBOX}
+    cashfree-api-version: ${CASHFREE_API_VERSION:2023-08-01}
+    cashfree-webhook-secret: ${CASHFREE_WEBHOOK_SECRET:}
+    cashfree-webhook-tolerance-seconds: ${CASHFREE_WEBHOOK_TOLERANCE_SECONDS:300}
+    cashfree-return-url: ${CASHFREE_RETURN_URL:https://mect.org.in/donate?order_id={order_id}}
+    cashfree-notify-url: ${CASHFREE_NOTIFY_URL:https://mect.org.in/api/v1/webhooks/payments/cashfree}
   whatsapp:
     provider: ${WHATSAPP_PROVIDER:NONE}
     api-version: ${WHATSAPP_API_VERSION:v21.0}

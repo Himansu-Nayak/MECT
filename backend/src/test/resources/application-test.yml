@@ -48,6 +48,14 @@ app:
     razorpay-key-secret: ""
     razorpay-webhook-secret: test-razorpay-webhook-secret
     qr-expiry-minutes: 15
+    cashfree-app-id: ""
+    cashfree-secret-key: ""
+    cashfree-env: SANDBOX
+    cashfree-api-version: 2023-08-01
+    cashfree-webhook-secret: test-cashfree-webhook-secret
+    cashfree-webhook-tolerance-seconds: 300
+    cashfree-return-url: http://localhost:3000/donate?order_id={order_id}
+    cashfree-notify-url: http://localhost:8081/api/v1/webhooks/payments/cashfree
   whatsapp:
     provider: NONE
     app-secret: test-whatsapp-app-secret

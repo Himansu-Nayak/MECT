@@ -55,6 +55,24 @@ public class Payment {
     @Column(name = "refunded_amount", nullable = false, precision = 12, scale = 2)
     private BigDecimal refundedAmount = BigDecimal.ZERO;
 
+    @Column(name = "cf_order_id", length = 120)
+    private String cfOrderId;
+
+    @Column(name = "payment_session_id", length = 255)
+    private String paymentSessionId;
+
+    @Column(name = "gateway_raw_status", length = 60)
+    private String gatewayRawStatus;
+
+    @Column(name = "payment_group", length = 60)
+    private String paymentGroup;
+
+    @Column(name = "bank_reference", length = 120)
+    private String bankReference;
+
+    @Column(name = "verified_at")
+    private Instant verifiedAt;
+
     @Version
     @Column(nullable = false)
     private Long version = 0L;
@@ -97,6 +115,18 @@ public class Payment {
     public void setFailureReason(String failureReason) { this.failureReason = failureReason; }
     public BigDecimal getRefundedAmount() { return refundedAmount; }
     public void setRefundedAmount(BigDecimal refundedAmount) { this.refundedAmount = refundedAmount; }
+    public String getCfOrderId() { return cfOrderId; }
+    public void setCfOrderId(String cfOrderId) { this.cfOrderId = cfOrderId; }
+    public String getPaymentSessionId() { return paymentSessionId; }
+    public void setPaymentSessionId(String paymentSessionId) { this.paymentSessionId = paymentSessionId; }
+    public String getGatewayRawStatus() { return gatewayRawStatus; }
+    public void setGatewayRawStatus(String gatewayRawStatus) { this.gatewayRawStatus = gatewayRawStatus; }
+    public String getPaymentGroup() { return paymentGroup; }
+    public void setPaymentGroup(String paymentGroup) { this.paymentGroup = paymentGroup; }
+    public String getBankReference() { return bankReference; }
+    public void setBankReference(String bankReference) { this.bankReference = bankReference; }
+    public Instant getVerifiedAt() { return verifiedAt; }
+    public void setVerifiedAt(Instant verifiedAt) { this.verifiedAt = verifiedAt; }
     public Long getVersion() { return version; }
     public Instant getCreatedAt() { return createdAt; }
     public Instant getUpdatedAt() { return updatedAt; }

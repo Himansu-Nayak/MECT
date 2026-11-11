@@ -17,6 +17,7 @@ import {
   fetchAdminOutbox,
   fetchAdminProgrammes,
   fetchDonationReconciliationLogs,
+  reconcileAdminDonation,
   retryAdminOutbox,
   toggleAdminProgramme,
 } from "@/lib/portal-api";
@@ -60,11 +61,14 @@ export default function AdminDonorsManagementPage() {
   // Donations tab state
   const [donations, setDonations] = useState<AdminDonationRow[]>([]);
   const [donationStatusFilter, setDonationStatusFilter] = useState("ALL");
+  const [donationProviderFilter, setDonationProviderFilter] = useState("ALL");
+  const [donationSearch, setDonationSearch] = useState("");
   const [donationSummary, setDonationSummary] = useState({
     totalSuccessfulAmount: 0,
     successfulCount: 0,
     pendingCount: 0,
     failedCount: 0,
+    userDroppedCount: 0,
     expiredCount: 0,
     refundedCount: 0,
   });
@@ -95,9 +99,14 @@ export default function AdminDonorsManagementPage() {
         const res = await fetchAdminDonors(token, donorSearch, donorRoleFilter);
         setDonors(res.content || []);
       } else if (activeTab === "DONATIONS") {
-        const res = await fetchAdminDonations(token, donationStatusFilter);
+        const res = await fetchAdminDonations(token, donationStatusFilter, donationProviderFilter, donationSearch);
         setDonations(res.content || []);
-        if (res.summary) setDonationSummary(res.summary);
+        if (res.summary) {
+          setDonationSummary({
+            userDroppedCount: 0,
+            ...res.summary,
+          });
+        }
       } else if (activeTab === "OUTBOX") {
         const res = await fetchAdminOutbox(token);
         setOutboxItems(res.content || []);
@@ -110,7 +119,7 @@ export default function AdminDonorsManagementPage() {
     } finally {
       setLoading(false);
     }
-  }, [token, activeTab, donorSearch, donorRoleFilter, donationStatusFilter]);
+  }, [token, activeTab, donorSearch, donorRoleFilter, donationStatusFilter, donationProviderFilter, donationSearch]);
 
   useEffect(() => {
     const id = window.setTimeout(() => {
@@ -385,37 +394,59 @@ export default function AdminDonorsManagementPage() {
               </div>
             </Card>
             <Card padding="md" className="bg-white border-border-warm">
-              <div className="text-[11px] uppercase text-ink-sand font-bold">Failed / Expired</div>
+              <div className="text-[11px] uppercase text-ink-sand font-bold">Failed / Dropped / Expired</div>
               <div className="text-lg font-serif font-bold text-ink-sand mt-1">
-                {donationSummary.failedCount + donationSummary.expiredCount}
+                {donationSummary.failedCount + (donationSummary.userDroppedCount || 0) + donationSummary.expiredCount}
               </div>
             </Card>
           </div>
 
           <Card padding="lg" className="bg-white border-border-warm space-y-4">
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-sm font-bold text-forest uppercase tracking-wider">
                 Payment Verification Ledger
               </h2>
-              <select
-                value={donationStatusFilter}
-                onChange={(e) => setDonationStatusFilter(e.target.value)}
-                className="h-9 px-3 text-xs bg-cream border border-border-warm rounded-xs text-ink"
-              >
-                <option value="ALL">All Statuses</option>
-                <option value="SUCCESS">SUCCESS</option>
-                <option value="PENDING">PENDING</option>
-                <option value="FAILED">FAILED</option>
-                <option value="EXPIRED">EXPIRED</option>
-                <option value="REFUNDED">REFUNDED</option>
-              </select>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="relative min-w-[200px]">
+                  <Search className="w-3.5 h-3.5 text-ink-sand absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
+                  <input
+                    type="text"
+                    value={donationSearch}
+                    onChange={(e) => setDonationSearch(e.target.value)}
+                    placeholder="Search ref, order ID, donor..."
+                    className="w-full h-9 pl-8 pr-3 text-xs bg-cream border border-border-warm rounded-xs text-ink"
+                  />
+                </div>
+                <select
+                  value={donationProviderFilter}
+                  onChange={(e) => setDonationProviderFilter(e.target.value)}
+                  className="h-9 px-3 text-xs bg-cream border border-border-warm rounded-xs text-ink"
+                >
+                  <option value="ALL">All Gateways</option>
+                  <option value="CASHFREE">CASHFREE</option>
+                  <option value="RAZORPAY">RAZORPAY</option>
+                </select>
+                <select
+                  value={donationStatusFilter}
+                  onChange={(e) => setDonationStatusFilter(e.target.value)}
+                  className="h-9 px-3 text-xs bg-cream border border-border-warm rounded-xs text-ink"
+                >
+                  <option value="ALL">All Statuses</option>
+                  <option value="SUCCESSFUL">SUCCESSFUL</option>
+                  <option value="PENDING">PENDING</option>
+                  <option value="USER_DROPPED">USER_DROPPED</option>
+                  <option value="FAILED">FAILED</option>
+                  <option value="EXPIRED">EXPIRED</option>
+                  <option value="REFUNDED">REFUNDED</option>
+                </select>
+              </div>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="border-b border-border-warm text-[11px] uppercase tracking-wider text-ink-sand">
-                    <th className="py-2 pr-4">Reference &amp; Date</th>
+                    <th className="py-2 pr-4">Reference &amp; Gateway</th>
                     <th className="py-2 pr-4">Donor</th>
                     <th className="py-2 pr-4">Programme</th>
                     <th className="py-2 pr-4">Amount</th>
@@ -430,7 +461,15 @@ export default function AdminDonorsManagementPage() {
                         <div className="font-mono font-bold text-forest">{row.donationReference}</div>
                         <div className="text-[11px] text-ink-sand">
                           {new Date(row.createdAt).toLocaleString("en-IN")}
+                          {row.provider ? ` • ${row.provider}` : ""}
+                          {row.paymentGroup ? ` (${row.paymentGroup})` : ""}
                         </div>
+                        {(row.providerPaymentId || row.cfOrderId) && (
+                          <div className="text-[10px] font-mono text-ink-sand">
+                            {row.providerPaymentId ? `PayID: ${row.providerPaymentId}` : ""}
+                            {row.cfOrderId ? `${row.providerPaymentId ? " • " : ""}CF: ${row.cfOrderId}` : ""}
+                          </div>
+                        )}
                       </td>
                       <td className="py-3 pr-4">
                         <div className="font-medium text-ink">{row.donorName}</div>
@@ -442,13 +481,40 @@ export default function AdminDonorsManagementPage() {
                       <td className="py-3 pr-4 font-bold text-forest">{formatInr(Number(row.amount))}</td>
                       <td className="py-3 pr-4">
                         <Badge
-                          variant={row.status === "SUCCESS" ? "forest" : row.status === "PENDING" ? "warning" : "terracotta"}
+                          variant={
+                            row.status === "SUCCESSFUL" || row.status === "SUCCESS"
+                              ? "forest"
+                              : row.status === "PENDING"
+                                ? "warning"
+                                : "terracotta"
+                          }
                           size="sm"
                         >
                           {row.status}
                         </Badge>
                       </td>
-                      <td className="py-3 text-right space-x-2">
+                      <td className="py-3 text-right space-x-2 whitespace-nowrap">
+                        {row.provider === "CASHFREE" && row.status !== "SUCCESSFUL" && row.status !== "REFUNDED" && (
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            onClick={async () => {
+                              if (!token) return;
+                              setErrorMsg(null);
+                              try {
+                                const res = await reconcileAdminDonation(token, row.donationReference);
+                                setStatusMsg(`Reconciled ${row.donationReference}: ${res.status}`);
+                                await loadTabData();
+                              } catch (err: unknown) {
+                                setErrorMsg(err instanceof Error ? err.message : "Reconciliation failed.");
+                              }
+                            }}
+                          >
+                            <RefreshCw className="w-3.5 h-3.5 mr-1 text-forest" aria-hidden="true" />
+                            Verify
+                          </Button>
+                        )}
                         {row.receiptNumber && (
                           <Button
                             type="button"

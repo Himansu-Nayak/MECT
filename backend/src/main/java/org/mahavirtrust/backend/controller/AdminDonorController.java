@@ -129,6 +129,8 @@ public class AdminDonorController {
     @Transactional(readOnly = true)
     public ResponseEntity<Map<String, Object>> listDonations(
             @RequestParam(defaultValue = "ALL") String status,
+            @RequestParam(defaultValue = "ALL") String provider,
+            @RequestParam(defaultValue = "") String search,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "25") int size) {
 
@@ -136,9 +138,26 @@ public class AdminDonorController {
                 ? donationRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(page, Math.min(size, 100)))
                 : donationRepository.findByStatusOrderByCreatedAtDesc(status.toUpperCase(Locale.ROOT), PageRequest.of(page, Math.min(size, 100)));
 
+        String searchNorm = search != null ? search.trim().toLowerCase(Locale.ROOT) : "";
+        String providerNorm = provider != null ? provider.trim().toUpperCase(Locale.ROOT) : "ALL";
+
         List<Map<String, Object>> rows = new ArrayList<>();
         for (Donation d : dPage.getContent()) {
             Payment p = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(d.getId()).orElse(null);
+            if (!"ALL".equals(providerNorm)) {
+                String pName = p != null && p.getProvider() != null ? p.getProvider().toUpperCase(Locale.ROOT) : "";
+                if (!providerNorm.equals(pName)) continue;
+            }
+            if (!searchNorm.isBlank()) {
+                String hay = String.join(" ",
+                        d.getDonationReference() != null ? d.getDonationReference() : "",
+                        d.getDonorName() != null ? d.getDonorName() : "",
+                        d.getDonorEmail() != null ? d.getDonorEmail() : "",
+                        p != null && p.getProviderOrderId() != null ? p.getProviderOrderId() : "",
+                        p != null && p.getProviderPaymentId() != null ? p.getProviderPaymentId() : ""
+                ).toLowerCase(Locale.ROOT);
+                if (!hay.contains(searchNorm)) continue;
+            }
             DonationReceipt r = receiptRepository.findByDonationId(d.getId()).orElse(null);
             Map<String, Object> row = new LinkedHashMap<>();
             row.put("donationReference", d.getDonationReference());
@@ -154,6 +173,9 @@ public class AdminDonorController {
             row.put("provider", p != null ? p.getProvider() : null);
             row.put("providerOrderId", p != null ? p.getProviderOrderId() : null);
             row.put("providerPaymentId", p != null ? p.getProviderPaymentId() : null);
+            row.put("cfOrderId", p != null ? p.getCfOrderId() : null);
+            row.put("paymentGroup", p != null ? p.getPaymentGroup() : null);
+            row.put("bankReference", p != null ? p.getBankReference() : null);
             row.put("receiptNumber", r != null ? r.getReceiptNumber() : null);
             row.put("createdAt", d.getCreatedAt());
             row.put("confirmedAt", d.getConfirmedAt());
@@ -165,6 +187,7 @@ public class AdminDonorController {
         summary.put("successfulCount", donationRepository.countByStatus("SUCCESSFUL"));
         summary.put("pendingCount", donationRepository.countByStatus("PENDING"));
         summary.put("failedCount", donationRepository.countByStatus("FAILED"));
+        summary.put("userDroppedCount", donationRepository.countByStatus("USER_DROPPED"));
         summary.put("expiredCount", donationRepository.countByStatus("EXPIRED"));
         summary.put("refundedCount", donationRepository.countByStatus("REFUNDED"));
 
@@ -173,6 +196,19 @@ public class AdminDonorController {
                 "content", rows,
                 "totalElements", dPage.getTotalElements(),
                 "totalPages", dPage.getTotalPages()
+        ));
+    }
+
+    @PostMapping("/donations/{donationReference}/reconcile")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'TRUSTEE', 'FINANCE_OFFICER')")
+    public ResponseEntity<Map<String, Object>> reconcileDonation(
+            @PathVariable String donationReference,
+            Authentication authentication,
+            HttpServletRequest request) {
+        return ResponseEntity.ok(donationService.reconcileDonationForAdmin(
+                donationReference,
+                authentication.getName(),
+                getClientIp(request)
         ));
     }
 
@@ -224,9 +260,10 @@ public class AdminDonorController {
     public ResponseEntity<byte[]> exportDonationsCsv(Authentication authentication, HttpServletRequest request) {
         List<Donation> list = donationRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(0, 500)).getContent();
         StringBuilder csv = new StringBuilder();
-        csv.append("DonationReference,Date,Programme,Amount,Currency,Status,PaymentMethod,DonorName,Anonymous,ReceiptNumber\n");
+        csv.append("DonationReference,Date,Programme,Amount,Currency,Status,PaymentMethod,DonorName,Anonymous,ReceiptNumber,GatewayProvider,GatewayOrderId,GatewayPaymentId,BankReference\n");
         for (Donation d : list) {
             DonationReceipt r = receiptRepository.findByDonationId(d.getId()).orElse(null);
+            Payment p = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(d.getId()).orElse(null);
             csv.append(escapeCsv(d.getDonationReference())).append(",")
                .append(escapeCsv(d.getCreatedAt().toString())).append(",")
                .append(escapeCsv(d.getProgramme().getName())).append(",")
@@ -236,7 +273,11 @@ public class AdminDonorController {
                .append(escapeCsv(d.getPaymentMethod())).append(",")
                .append(escapeCsv(d.getDonorName())).append(",")
                .append(d.isAnonymous()).append(",")
-               .append(escapeCsv(r != null ? r.getReceiptNumber() : ""))
+               .append(escapeCsv(r != null ? r.getReceiptNumber() : "")).append(",")
+               .append(escapeCsv(p != null ? p.getProvider() : "")).append(",")
+               .append(escapeCsv(p != null ? p.getProviderOrderId() : "")).append(",")
+               .append(escapeCsv(p != null ? p.getProviderPaymentId() : "")).append(",")
+               .append(escapeCsv(p != null ? p.getBankReference() : ""))
                .append("\n");
         }
 

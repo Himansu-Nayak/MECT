@@ -109,10 +109,13 @@ export interface GatewayStatusResponse {
   sandboxMode: boolean;
   dynamicQrSupported: boolean;
   reason: string;
+  checkoutMode?: string;
+  checkoutEnvironment?: string;
 }
 
 export interface InitiatedDonationResponse {
   donationReference: string;
+  orderId?: string | null;
   status: string;
   amount: number;
   currency: string;
@@ -122,6 +125,10 @@ export interface InitiatedDonationResponse {
   provider: string;
   providerOrderId?: string | null;
   providerQrId?: string | null;
+  cfOrderId?: string | null;
+  paymentSessionId?: string | null;
+  checkoutEnvironment?: string | null;
+  checkoutMode?: string | null;
   upiUri?: string | null;
   qrImageUrl?: string | null;
   qrSvg?: string | null;
@@ -130,12 +137,19 @@ export interface InitiatedDonationResponse {
 
 export interface DonationStatusResponse {
   donationReference: string;
+  orderId?: string | null;
+  cfOrderId?: string | null;
+  provider?: string | null;
   status: string;
   amount: number;
   currency: string;
   programmeName: string;
   paymentMethod: string;
   paymentStatus: string;
+  gatewayStatus?: string | null;
+  paymentGroup?: string | null;
+  bankReference?: string | null;
+  failureReason?: string | null;
   expiresAt?: string | null;
   confirmedAt?: string | null;
   receiptNumber?: string | null;
@@ -189,6 +203,9 @@ export interface AdminDonationRow {
   provider?: string | null;
   providerOrderId?: string | null;
   providerPaymentId?: string | null;
+  cfOrderId?: string | null;
+  paymentGroup?: string | null;
+  bankReference?: string | null;
   receiptNumber?: string | null;
   createdAt: string;
   confirmedAt?: string | null;
@@ -210,7 +227,7 @@ export interface AdminOutboxItem {
   createdAt: string;
 }
 
-const INTERNAL_PROVIDER_CODES = new Set(["RESEND", "NONE", "TWILIO", "MSG91", "RAZORPAY", "META_CLOUD"]);
+const INTERNAL_PROVIDER_CODES = new Set(["RESEND", "NONE", "TWILIO", "MSG91", "RAZORPAY", "CASHFREE", "META_CLOUD"]);
 
 async function parseErrorMessage(response: Response, fallback: string): Promise<string> {
   const err = await response.json().catch(() => ({}));
@@ -426,6 +443,22 @@ export async function fetchDonationStatus(donationReference: string): Promise<Do
   return res.json();
 }
 
+export async function verifyCashfreePayment(orderId: string): Promise<DonationStatusResponse> {
+  const res = await fetch(`${API_BASE_URL}/payments/cashfree/verify`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderId }),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to verify payment status with gateway."));
+  return res.json();
+}
+
+export async function fetchCashfreeOrderStatus(orderId: string): Promise<DonationStatusResponse> {
+  const res = await fetch(`${API_BASE_URL}/payments/cashfree/status/${encodeURIComponent(orderId)}`);
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to fetch payment status."));
+  return res.json();
+}
+
 export async function fetchAdminDonors(token: string, search = "", roleFilter = "ALL") {
   const params = new URLSearchParams({ search, roleFilter, page: "0", size: "50" });
   const res = await fetch(`${API_BASE_URL}/admin/donors?${params.toString()}`, {
@@ -435,8 +468,8 @@ export async function fetchAdminDonors(token: string, search = "", roleFilter = 
   return res.json() as Promise<{ content: AdminDonorRow[]; totalElements: number }>;
 }
 
-export async function fetchAdminDonations(token: string, status = "ALL") {
-  const params = new URLSearchParams({ status, page: "0", size: "50" });
+export async function fetchAdminDonations(token: string, status = "ALL", provider = "ALL", search = "") {
+  const params = new URLSearchParams({ status, provider, search, page: "0", size: "50" });
   const res = await fetch(`${API_BASE_URL}/admin/donations?${params.toString()}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -447,12 +480,22 @@ export async function fetchAdminDonations(token: string, status = "ALL") {
       successfulCount: number;
       pendingCount: number;
       failedCount: number;
+      userDroppedCount?: number;
       expiredCount: number;
       refundedCount: number;
     };
     content: AdminDonationRow[];
     totalElements: number;
   }>;
+}
+
+export async function reconcileAdminDonation(token: string, donationReference: string): Promise<DonationStatusResponse> {
+  const res = await fetch(`${API_BASE_URL}/admin/donations/${encodeURIComponent(donationReference)}/reconcile`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to reconcile donation status."));
+  return res.json();
 }
 
 export async function fetchDonationReconciliationLogs(token: string, donationReference: string) {

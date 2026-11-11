@@ -78,6 +78,7 @@ public class SecurityConfig {
                 .requestMatchers("/health").permitAll()
                 .requestMatchers("/public/**").permitAll()
                 .requestMatchers("/webhooks/**").permitAll()
+                .requestMatchers("/payments/cashfree/**").permitAll()
                 .requestMatchers("/auth/login", "/auth/refresh").permitAll()
                 .requestMatchers("/portal/auth/request-otp", "/portal/auth/verify-otp", "/portal/auth/refresh").permitAll()
                 .requestMatchers("/portal/**").hasAnyRole("GENERAL_USER", "DONOR")

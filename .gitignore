@@ -47,3 +47,17 @@ mect-ai-engine/qdrant_data/
 mect-ai-engine/logs/
 ai-training/outputs/
 ai-training/.cache/
+
+# Payment gateway credential exports
+APIkey*.csv
+APIkey*.CSV
+APIKey*.csv
+APIKey*.CSV
+*cashfree*credentials*
+.env.production
+backend/.env.production
+api keys.png
+*api*key*.png
+*api*keys*.png
+APIKey (*).csv
+APIkey (*).CSV
