@@ -15,9 +15,20 @@ import { TRUST_CONFIG } from "@/lib/config";
 
 export function QuickActionDock() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMobileDock, setShowMobileDock] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
+
+  // Show compact mobile dock after scrolling past the hero actions so hero stays unobstructed
+  useEffect(() => {
+    const onScroll = () => {
+      setShowMobileDock(window.scrollY > 320);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Manage focus and scroll lock when mobile sheet opens/closes
   useEffect(() => {
@@ -153,23 +164,25 @@ export function QuickActionDock() {
           />
         )}
 
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-5 z-50">
-          <button
-            ref={triggerRef}
-            onClick={() => setIsOpen(!isOpen)}
-            className="w-12 h-12 min-h-[44px] min-w-[44px] rounded-full bg-terracotta hover:bg-terracotta-dark text-white border-2 border-sand shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand hover:scale-105 active:scale-95 transition-transform"
-            aria-expanded={isOpen}
-            aria-haspopup="true"
-            aria-controls="mobile-quick-actions-sheet"
-            aria-label={isOpen ? "Close quick actions menu" : "Open quick actions menu"}
-          >
-            {isOpen ? (
-              <X className="w-5 h-5 text-white" aria-hidden="true" />
-            ) : (
-              <Layers className="w-5 h-5 text-cream" aria-hidden="true" />
-            )}
-          </button>
-        </div>
+        {(showMobileDock || isOpen) && (
+          <div className="fixed bottom-[max(0.875rem,env(safe-area-inset-bottom))] right-16 sm:bottom-5 sm:right-20 z-40 animate-in fade-in duration-150">
+            <button
+              ref={triggerRef}
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-full bg-terracotta hover:bg-terracotta-dark text-white border-2 border-sand shadow-xl flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand hover:scale-105 active:scale-95 transition-transform"
+              aria-expanded={isOpen}
+              aria-haspopup="true"
+              aria-controls="mobile-quick-actions-sheet"
+              aria-label={isOpen ? "Close quick actions menu" : "Open quick actions menu"}
+            >
+              {isOpen ? (
+                <X className="w-5 h-5 text-white" aria-hidden="true" />
+              ) : (
+                <Layers className="w-5 h-5 text-cream" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        )}
 
         {isOpen && (
           <div
