@@ -144,7 +144,7 @@ export function Header() {
                   priority
                 />
               </div>
-              <span className="font-serif font-bold text-[10.5px] sm:text-sm xl:text-[14px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[130px] sm:max-w-[230px] lg:max-w-[185px] xl:max-w-none xl:whitespace-nowrap">
+              <span className="font-serif font-bold text-[10.5px] min-[375px]:text-[11.5px] sm:text-sm xl:text-[14px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[140px] min-[375px]:max-w-[180px] sm:max-w-[240px] lg:max-w-[185px] xl:max-w-none xl:whitespace-nowrap">
                 Mahaveer Educational &amp; Charitable Trust
               </span>
             </Link>

@@ -25,13 +25,13 @@ export function StatutoryTicker() {
       <Container size="default">
         <div className="flex items-center justify-between gap-4">
           {/* Left: Ticker Badge & Scrolling Statutory Credentials */}
-          <div className="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
+          <div className="flex items-center gap-2.5 sm:gap-3 overflow-hidden min-w-0 flex-1">
             <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-sand text-forest-deep text-[10px] font-bold uppercase tracking-wider">
               <ShieldCheck className="w-3 h-3 text-forest-deep" aria-hidden="true" />
               <span>Statutory</span>
             </span>
 
-            <div className="overflow-hidden whitespace-nowrap text-xs text-white/95 min-w-0 flex-1 [mask-image:linear-gradient(to_right,transparent,black_2%,black_98%,transparent)]">
+            <div className="overflow-hidden whitespace-nowrap text-[11px] sm:text-xs text-white/95 min-w-0 flex-1 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
               <div className="inline-flex items-center animate-marquee font-medium">
                 {[0, 1].map((dup) => (
                   <span
@@ -53,6 +53,15 @@ export function StatutoryTicker() {
                 ))}
               </div>
             </div>
+
+            <Link
+              href="/statutory-disclosures"
+              aria-label="Read full statutory disclosures and registration details"
+              className="lg:hidden shrink-0 inline-flex items-center gap-1 px-2 py-1 min-h-[28px] rounded-xs border border-sand/40 text-[10px] font-semibold text-sand hover:bg-forest transition-colors whitespace-nowrap"
+            >
+              <FileText className="w-3 h-3" aria-hidden="true" />
+              <span>View</span>
+            </Link>
           </div>
 
           {/* Right: Quick Links for Disclosures, Donate & Helpline */}

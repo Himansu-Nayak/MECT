@@ -391,10 +391,24 @@ export function HImChatbot() {
     );
   };
 
+  const [showMobileFab, setShowMobileFab] = useState(false);
+
+  // Reveal floating chatbot button after scrolling slightly past hero on mobile/tablet so zero text or metric is obscured on load
+  useEffect(() => {
+    const onScroll = () => setShowMobileFab(window.scrollY > 180);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       {/* Floating launcher trigger */}
-      <div className="fixed bottom-18 right-4 sm:bottom-22 sm:right-5 xl:bottom-6 xl:right-6 z-50 print:hidden">
+      <div
+        className={`fixed bottom-[max(0.875rem,env(safe-area-inset-bottom))] right-3.5 sm:bottom-5 sm:right-5 xl:bottom-6 xl:right-6 z-50 print:hidden transition-opacity duration-200 ${
+          showMobileFab || isOpen ? "flex" : "hidden xl:flex"
+        }`}
+      >
         {!isOpen && (
           <button
             ref={triggerRef}
@@ -403,11 +417,11 @@ export function HImChatbot() {
             aria-haspopup="dialog"
             aria-expanded={false}
             aria-label="Open HIm — MECT AI Assistant"
-            className="group relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 min-h-[44px] min-w-[44px] rounded-full bg-forest hover:bg-forest-deep text-cream border-2 border-sand shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+            className="group relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 xl:w-14 xl:h-14 min-h-[44px] min-w-[44px] rounded-full bg-forest hover:bg-forest-deep text-cream border-2 border-sand shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
           >
             <div className="relative flex items-center justify-center">
-              <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-cream group-hover:rotate-6 transition-transform" />
-              <Sparkles className="w-3 h-3 text-sand absolute -top-1 -right-1" />
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6 xl:w-7 xl:h-7 text-cream group-hover:rotate-6 transition-transform" />
+              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sand absolute -top-1 -right-1" />
             </div>
 
             <span className="hidden lg:flex absolute right-16 px-3 py-1 bg-forest text-cream border border-sand/40 rounded-full text-xs font-semibold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none items-center gap-1.5">

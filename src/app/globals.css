@@ -231,7 +231,15 @@ select:focus-visible {
   height: 100%;
   width: max-content;
   will-change: transform;
-  animation: hero-bg-marquee-ltr 26s linear infinite;
+  animation: hero-bg-marquee-ltr 32s linear infinite;
+}
+
+.hero-mobile-track-ltr {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+  animation: hero-bg-marquee-ltr 30s linear infinite;
 }
 
 .hero-bg-panel-feather {
@@ -298,9 +306,27 @@ select:focus-visible {
     height: 100% !important;
   }
 
+  .hero-mobile-seq {
+    display: contents !important;
+  }
+
   .hero-bg-clone,
-  .hero-bg-extra-slide {
+  .hero-bg-extra-slide,
+  .hero-mobile-clone,
+  .hero-mobile-extra-panel {
     display: none !important;
+  }
+
+  .hero-mobile-track-ltr {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .hero-mobile-panel {
+    width: 100% !important;
+    max-width: none !important;
+    border-right: 0 !important;
   }
 
   @media (max-width: 767px) {
