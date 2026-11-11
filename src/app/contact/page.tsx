@@ -82,17 +82,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full pb-floating-clearance">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Direct Secretariat Desk • Est. 2013"
         title="Secretariat Desk & Grievance Redressal"
         description="Official communications gateway for students, educational institutions, donors, CSR partners, and regulatory stakeholders across Odisha."
         breadcrumbs={[{ label: "Contact Us & Grievance Desk" }]}
         actions={
           <div className="flex flex-wrap gap-4 pt-2">
             <a href="#inquiry-form">
-              <Button variant="primary" className="!bg-[#C5A059] !text-[#0A192F] hover:!bg-[#E4C88A]">
+              <Button variant="primary" className="!bg-sand !text-forest-deep hover:!bg-cream">
                 Dispatch Message
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -112,129 +111,129 @@ export default function ContactPage() {
       />
 
       {/* 2. Institutional Directory & Service Level Agreements */}
-      <section id="secretariat-directory" className="py-16 md:py-24 bg-[#FDFBF7] scroll-mt-20 border-b border-[#0A192F]/10">
+      <section id="secretariat-directory" className="py-16 md:py-24 bg-cream scroll-mt-20 border-b border-border-warm">
         <Container size="default">
           <SectionHeader
             badge="Institutional Directory"
             title="Secretariat Offices, Regional Hubs & Standards"
-            subtitle="MAHAVIR TRUST maintains verified physical offices in Balangir and Bhubaneswar, with auditable response standards across all channels."
+            subtitle="Mahaveer Educational & Charitable Trust (MECT) maintains verified physical offices in Balangir and Bhubaneswar, with auditable response standards across all channels."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Office 1: Registered Office Balangir */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-terracotta">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Building2 className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark">
+                  <Building2 className="w-5 h-5 text-terracotta-dark" />
                 </div>
                 <div>
-                  <Badge variant="forest" className="mb-1.5">Registered Office (Est. 2013)</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <Badge variant="forest" className="mb-1.5">Registered Office</Badge>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     Balangir Trust Office
                   </h3>
                 </div>
-                <div className="text-xs text-[#4A5568] space-y-2 leading-relaxed">
+                <div className="text-xs text-ink-sand space-y-2 leading-relaxed">
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                     <span>
                       {TRUST_CONFIG.contact.registeredOffice.addressLine1}, {TRUST_CONFIG.contact.registeredOffice.city},{" "}
                       {TRUST_CONFIG.contact.registeredOffice.state} - {TRUST_CONFIG.contact.registeredOffice.pin}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0A192F] font-semibold">
-                    <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <div className="flex items-center gap-2 pt-1 text-[11px] text-terracotta-dark font-semibold">
+                    <Phone className="w-3.5 h-3.5 text-sand" />
                     <span>{TRUST_CONFIG.contact.registeredOffice.phone}</span>
                   </div>
-                  <div className="flex items-start gap-2 pt-2 border-t border-[#0A192F]/10">
-                    <Clock className="w-3.5 h-3.5 text-[#0A192F] shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2 pt-2 border-t border-border-warm">
+                    <Clock className="w-3.5 h-3.5 text-terracotta-dark shrink-0 mt-0.5" />
                     <span>Mon – Sat: 10:00 AM – 5:30 PM IST</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Deed Juris:</span> Balangir Sub-Registrar (Doc No. 40311302194)
+              <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
+                <span className="font-semibold text-forest">Deed Juris:</span> Balangir Sub-Registrar (Doc No. 40311302194)
               </div>
             </Card>
 
             {/* Office 2: Corporate Secretariat Bhubaneswar */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#C5A059]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-terracotta">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#C5A059]/15 flex items-center justify-center text-[#0A192F]">
-                  <Building2 className="w-5 h-5 text-[#C5A059]" />
+                <div className="w-10 h-10 rounded-xs bg-sand-light flex items-center justify-center text-terracotta-dark">
+                  <Building2 className="w-5 h-5 text-sand" />
                 </div>
                 <div>
                   <Badge variant="gold" className="mb-1.5">Liaison Secretariat</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     Bhubaneswar Secretariat
                   </h3>
                 </div>
-                <div className="text-xs text-[#4A5568] space-y-2 leading-relaxed">
+                <div className="text-xs text-ink-sand space-y-2 leading-relaxed">
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                     <span>
                       {TRUST_CONFIG.contact.corporateOffice.addressLine1}, {TRUST_CONFIG.contact.corporateOffice.city},{" "}
                       {TRUST_CONFIG.contact.corporateOffice.state} - {TRUST_CONFIG.contact.corporateOffice.pin}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-1 text-[11px] text-[#0A192F] font-semibold">
-                    <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <div className="flex items-center gap-2 pt-1 text-[11px] text-terracotta-dark font-semibold">
+                    <Phone className="w-3.5 h-3.5 text-sand" />
                     <span>{TRUST_CONFIG.contact.corporateOffice.phone}</span>
                   </div>
-                  <div className="flex items-start gap-2 pt-2 border-t border-[#0A192F]/10">
-                    <Clock className="w-3.5 h-3.5 text-[#0A192F] shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2 pt-2 border-t border-border-warm">
+                    <Clock className="w-3.5 h-3.5 text-terracotta-dark shrink-0 mt-0.5" />
                     <span>Mon – Fri: 10:00 AM – 5:00 PM IST</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Receipt SLA:</span> Official documents logged same business day.
+              <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
+                <span className="font-semibold text-forest">Receipt SLA:</span> Official documents logged same business day.
               </div>
             </Card>
 
             {/* Office 3: Electronic Desks */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-terracotta">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Mail className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark">
+                  <Mail className="w-5 h-5 text-terracotta-dark" />
                 </div>
                 <div>
-                  <Badge variant="outline" className="mb-1.5 !border-[#0A192F] !text-[#0A192F]">Electronic Communications</Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <Badge variant="outline" className="mb-1.5 !border-terracotta !text-terracotta-dark">Electronic Communications</Badge>
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     Official Desks & Lines
                   </h3>
                 </div>
-                <div className="text-xs text-[#4A5568] space-y-2.5 leading-relaxed">
+                <div className="text-xs text-ink-sand space-y-2.5 leading-relaxed">
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-terracotta-dark">
                       General Secretariat
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.general}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-terracotta-dark font-medium hover:text-forest"
                     >
                       {TRUST_CONFIG.contact.officialEmails.general}
                     </a>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-terracotta-dark">
                       Registered Trust Email
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.alternate}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-terracotta-dark font-medium hover:text-forest"
                     >
                       {TRUST_CONFIG.contact.officialEmails.alternate}
                     </a>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F]">
+                    <div className="text-[10px] uppercase tracking-wider font-semibold text-terracotta-dark">
                       Scholarships & College Grants
                     </div>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.scholarships}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-terracotta-dark font-medium hover:text-forest"
                     >
                       {TRUST_CONFIG.contact.officialEmails.scholarships}
                     </a>
@@ -242,48 +241,48 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Response SLA:</span> Electronic inquiries answered within 24–48 hours.
+              <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
+                <span className="font-semibold text-forest">Response SLA:</span> Electronic inquiries answered within 24–48 hours.
               </div>
             </Card>
 
             {/* Office 4: Ombudsman */}
-            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-[#0A192F]">
+            <Card variant="elevated" className="p-6 space-y-4 flex flex-col justify-between border-t-4 border-t-terracotta">
               <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F]/10 flex items-center justify-center text-[#0A192F]">
-                  <Scale className="w-5 h-5 text-[#0A192F]" />
+                <div className="w-10 h-10 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark">
+                  <Scale className="w-5 h-5 text-terracotta-dark" />
                 </div>
                 <div>
-                  <Badge variant="outline" className="mb-1.5 !border-[#0A192F] !text-[#0A192F]">
+                  <Badge variant="outline" className="mb-1.5 !border-terracotta !text-terracotta-dark">
                     Statutory Compliance
                   </Badge>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     Ombudsman & RTI
                   </h3>
                 </div>
-                <div className="text-xs text-[#4A5568] space-y-2 leading-relaxed">
+                <div className="text-xs text-ink-sand space-y-2 leading-relaxed">
                   <p>
                     Formal grievances, audit inquiries, and RTI disclosures under independent Fiduciary Committee supervision.
                   </p>
                   <div className="pt-1">
-                    <span className="text-[10px] uppercase tracking-wider font-semibold text-[#0A192F] block">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-terracotta-dark block">
                       Grievance Redressal Desk
                     </span>
                     <a
                       href={`mailto:${TRUST_CONFIG.contact.officialEmails.grievance}`}
-                      className="underline text-[#0A192F] font-medium hover:text-[#C5A059]"
+                      className="underline text-terracotta-dark font-medium hover:text-forest"
                     >
                       {TRUST_CONFIG.contact.officialEmails.grievance}
                     </a>
                   </div>
-                  <p className="text-[10px] text-[#4A5568] pt-1">
-                    Subject prefix: <code className="bg-[#0A192F]/5 px-1 py-0.5 rounded text-[#0A192F] font-mono">[GRIEVANCE]</code>
+                  <p className="text-[10px] text-ink-sand pt-1">
+                    Subject prefix: <code className="bg-terracotta/5 px-1 py-0.5 rounded text-terracotta-dark font-mono">[GRIEVANCE]</code>
                   </p>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#0A192F]/10 text-[11px] text-[#4A5568] bg-[#F7F4EE] p-2.5 rounded-xs">
-                <span className="font-semibold text-[#0A192F]">Grievance SLA:</span> 48h ack; written resolution in 7 working days.
+              <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
+                <span className="font-semibold text-forest">Grievance SLA:</span> 48h ack; written resolution in 7 working days.
               </div>
             </Card>
           </div>
@@ -291,7 +290,7 @@ export default function ContactPage() {
       </section>
 
       {/* 3. Official Inquiry Desk Form */}
-      <section id="inquiry-form" className="py-16 md:py-24 bg-[#F7F4EE] scroll-mt-20">
+      <section id="inquiry-form" className="py-16 md:py-24 bg-white scroll-mt-20">
         <Container size="narrow">
           <SectionHeader
             badge="Official Correspondence"
@@ -299,27 +298,27 @@ export default function ContactPage() {
             subtitle="All communications are logged in the central trust registry and assigned an auditable reference number."
           />
 
-          <Card variant="elevated" className="p-8 sm:p-12 bg-[#FDFBF7]">
+          <Card variant="elevated" className="p-8 sm:p-12 bg-cream">
             {formSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-5 text-center animate-in fade-in">
-                <CheckCircle2 className="w-14 h-14 text-[#E4C88A] mx-auto" />
+              <div className="p-8 bg-terracotta text-white rounded-xs space-y-5 text-center animate-in fade-in">
+                <CheckCircle2 className="w-14 h-14 text-cream mx-auto" />
                 <h3 className="font-serif text-2xl font-bold">
                   Communication Logged with Secretariat
                 </h3>
                 {referenceId && (
-                  <div className="inline-block py-1.5 px-4 bg-black/25 border border-[#E4C88A]/30 rounded-xs">
-                    <span className="text-xs uppercase tracking-wider text-[#E4C88A] font-mono font-semibold">
+                  <div className="inline-block py-1.5 px-4 bg-black/25 border border-border-warm/30 rounded-xs">
+                    <span className="text-xs uppercase tracking-wider text-cream font-mono font-semibold">
                       Official Reference ID: #{referenceId}
                     </span>
                   </div>
                 )}
                 <p className="text-sm text-white/85 leading-relaxed max-w-xl mx-auto">
-                  Thank you for contacting MAHAVIR TRUST. Your inquiry has been securely stored in the secretariat registry and dispatched to the designated coordinator. A formal response will be issued within our published SLA window.
+                  Thank you for contacting Mahaveer Educational & Charitable Trust (MECT). Your inquiry has been securely stored in the secretariat registry and dispatched to the designated coordinator. A formal response will be issued within our published SLA window.
                 </p>
                 <div className="pt-4">
                   <Button
                     variant="outline"
-                    className="!border-[#E4C88A] !text-[#E4C88A] hover:!bg-[#E4C88A]/15 text-xs"
+                    className="!border-sand !text-white hover:!bg-white/15 text-xs"
                     onClick={() => {
                       setFormSubmitted(false);
                       setFormData({
@@ -429,9 +428,9 @@ export default function ContactPage() {
                   </Button>
                 </div>
 
-                <p className="text-[11px] text-[#4A5568] text-center pt-2 leading-relaxed">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#0A192F] inline mr-1 -mt-0.5" />
-                  <strong>Statutory Guarantee:</strong> MAHAVIR TRUST never shares, sells, or monetizes inquiry data. All submissions are processed strictly for educational administration and statutory fiduciary compliance.
+                <p className="text-[11px] text-ink-sand text-center pt-2 leading-relaxed">
+                  <ShieldCheck className="w-3.5 h-3.5 text-terracotta-dark inline mr-1 -mt-0.5" />
+                  <strong>Statutory Guarantee:</strong> Mahaveer Educational & Charitable Trust (MECT) never shares, sells, or monetizes inquiry data. All submissions are processed strictly for educational administration and statutory fiduciary compliance.
                 </p>
               </form>
             )}
@@ -440,13 +439,13 @@ export default function ContactPage() {
       </section>
 
       {/* 4. Statutory Grievance Redressal Protocol & Ombudsman Oversight */}
-      <section id="grievance-charter" className="py-16 md:py-24 bg-[#0A192F] text-white scroll-mt-20">
+      <section id="grievance-charter" className="py-16 md:py-24 bg-cream text-ink border-t border-border-warm scroll-mt-20">
         <Container size="default">
           <SectionHeader
             badge="Fiduciary Safeguards"
             title="Three-Tier Grievance Redressal Architecture"
             subtitle="In strict accordance with the Indian Trusts Act, 1882 and Section 12AB transparency norms, every beneficiary and citizen has an inviolable right to fair redressal."
-            theme="dark"
+            theme="light"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -454,7 +453,7 @@ export default function ContactPage() {
             <Card variant="dark" className="p-8 space-y-4">
               <div className="flex items-center justify-between">
                 <Badge variant="gold">Tier 1: Secretariat</Badge>
-                <span className="text-[11px] font-mono text-[#E4C88A]">48–72 Hours</span>
+                <span className="text-[11px] font-mono text-cream">48–72 Hours</span>
               </div>
               <h3 className="font-serif text-xl font-bold text-white">
                 Secretariat Operations Desk
@@ -462,7 +461,7 @@ export default function ContactPage() {
               <p className="text-xs text-white/80 leading-relaxed">
                 First-line resolution for application queries, portal documentation difficulties, and disbursal timeline status. Addressed directly by program coordinators.
               </p>
-              <div className="text-[11px] text-[#E4C88A] pt-2 border-t border-white/10">
+              <div className="text-[11px] text-cream pt-2 border-t border-white/10">
                 Action: Handled via electronic desk with logged ticket tracking.
               </div>
             </Card>
@@ -471,7 +470,7 @@ export default function ContactPage() {
             <Card variant="dark" className="p-8 space-y-4">
               <div className="flex items-center justify-between">
                 <Badge variant="gold">Tier 2: Ombudsman</Badge>
-                <span className="text-[11px] font-mono text-[#E4C88A]">Up to 7 Days</span>
+                <span className="text-[11px] font-mono text-cream">Up to 7 Days</span>
               </div>
               <h3 className="font-serif text-xl font-bold text-white">
                 Fiduciary Ombudsman Committee
@@ -479,7 +478,7 @@ export default function ContactPage() {
               <p className="text-xs text-white/80 leading-relaxed">
                 Appellate review for disputed eligibility determinations, verification disagreements, or unaddressed Tier 1 tickets. Supervised by an independent senior trustee.
               </p>
-              <div className="text-[11px] text-[#E4C88A] pt-2 border-t border-white/10">
+              <div className="text-[11px] text-cream pt-2 border-t border-white/10">
                 Action: Formal case re-examination with written findings dispatch.
               </div>
             </Card>
@@ -488,7 +487,7 @@ export default function ContactPage() {
             <Card variant="dark" className="p-8 space-y-4">
               <div className="flex items-center justify-between">
                 <Badge variant="gold">Tier 3: Board</Badge>
-                <span className="text-[11px] font-mono text-[#E4C88A]">Quarterly Docket</span>
+                <span className="text-[11px] font-mono text-cream">Quarterly Docket</span>
               </div>
               <h3 className="font-serif text-xl font-bold text-white">
                 Board of Trustees Statutory Review
@@ -496,23 +495,23 @@ export default function ContactPage() {
               <p className="text-xs text-white/80 leading-relaxed">
                 Final internal authority for institutional policy appeals, whistleblower reports, or statutory audit grievances. Placed directly on the formal quarterly Board docket.
               </p>
-              <div className="text-[11px] text-[#E4C88A] pt-2 border-t border-white/10">
+              <div className="text-[11px] text-cream pt-2 border-t border-white/10">
                 Action: Minute-recorded Board resolution with statutory audit filing.
               </div>
             </Card>
           </div>
 
           {/* Anti-Fraud Notice */}
-          <div className="mt-12 p-6 sm:p-8 rounded-xs bg-[#1E3A8A]/30 border border-[#C5A059]/40 text-white/90 flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="w-12 h-12 rounded-xs bg-[#C5A059]/20 flex items-center justify-center text-[#E4C88A] shrink-0">
+          <div className="mt-12 p-6 sm:p-8 rounded-xs bg-forest border border-sand/45 text-white flex flex-col md:flex-row items-start md:items-center gap-6 shadow-md">
+            <div className="w-12 h-12 rounded-xs bg-terracotta border border-sand/45 flex items-center justify-center text-sand shrink-0">
               <ShieldAlert className="w-7 h-7" />
             </div>
             <div className="space-y-1.5 flex-1">
-              <h4 className="font-serif text-lg font-bold text-[#E4C88A]">
+              <h4 className="font-serif text-lg font-bold text-white">
                 Critical Statutory Notice: Zero-Tolerance Policy for Intermediaries & Fees
               </h4>
-              <p className="text-xs text-white/80 leading-relaxed">
-                MAHAVIR TRUST charges <strong>zero fees</strong> at any stage of application, verification, or grievance submission. We never employ third-party touts or commission agents. If any individual or entity solicits money claiming to expedite your scholarship or fellowship, report the incident immediately with proof to <code className="text-[#E4C88A] font-mono">{TRUST_CONFIG.contact.officialEmails.grievance}</code> or <code className="text-[#E4C88A] font-mono">{TRUST_CONFIG.contact.officialEmails.general}</code>.
+              <p className="text-xs text-white/90 leading-relaxed">
+                Mahaveer Educational & Charitable Trust (MECT) charges <strong>zero fees</strong> at any stage of application, verification, or grievance submission. We never employ third-party touts or commission agents. If any individual or entity solicits money claiming to expedite your scholarship or fellowship, report the incident immediately with proof to <code className="text-cream font-mono underline">{TRUST_CONFIG.contact.officialEmails.grievance}</code> or <code className="text-cream font-mono underline">{TRUST_CONFIG.contact.officialEmails.general}</code>.
               </p>
             </div>
           </div>

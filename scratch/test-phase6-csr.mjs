@@ -16,8 +16,11 @@ function assert(condition, message) {
 }
 
 const csrContent = fs.readFileSync("src/app/csr-partnerships/page.tsx", "utf8");
+const csrSectionContent = fs.readFileSync("src/components/sections/CsrRegistrationSection.tsx", "utf8");
 
-assert(csrContent.includes("CSR00081063") || csrContent.includes("mcaCsrNumber"), "CSR page features MCA CSR-1 Reg CSR00081063");
+assert(csrContent.includes("CSR00081063") || csrContent.includes("CsrRegistrationSection"), "CSR page features verified CSR Registration CSR00081063");
+assert(!csrContent.includes("MCA CSR-1") && !csrSectionContent.includes("MCA CSR-1"), "CSR pages avoid unwanted MCA phrasing");
+assert(csrSectionContent.includes("mect-csr1-certificate.png"), "CSR Registration section provides certificate preview & download");
 assert(csrContent.includes("Schedule VII"), "CSR page aligns with Companies Act Schedule VII");
 assert(csrContent.includes("Schedule VII (ii)"), "Features Schedule VII (ii) for Education");
 assert(csrContent.includes("Schedule VII (iii)"), "Features Schedule VII (iii) for Women's Livelihood");
@@ -27,7 +30,7 @@ assert(csrContent.includes("Milestone-Based Tranche Disbursal"), "Features miles
 assert(csrContent.includes("companyName"), "Inquiry form captures company legal name");
 assert(csrContent.includes("csrBudget"), "Inquiry form captures corporate CSR budget");
 assert(csrContent.includes("submitInquiry"), "Inquiry form connects to backend API");
-assert(csrContent.includes("/statutory-disclosures"), "CSR page links to /statutory-disclosures");
+assert(csrContent.includes("/statutory-disclosures") || csrSectionContent.includes("/statutory-disclosures"), "CSR page & registration section link to /statutory-disclosures");
 
 console.log(`\nTEST RESULTS: ${passed} PASSED, ${failed} FAILED`);
 if (failed > 0) {

@@ -1,5 +1,5 @@
 /**
- * MAHAVIR TRUST - Intelligent AI Gateway Circuit Breaker
+ * Mahaveer Educational & Charitable Trust (MECT) - Intelligent AI Gateway Circuit Breaker
  * 
  * Manages operational state and automatic hot-standby failover between
  * the local independent Python AI engine (127.0.0.1:8082) and Groq Cloud.

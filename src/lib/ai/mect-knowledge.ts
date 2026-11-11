@@ -1,5 +1,5 @@
 /**
- * MAHAVIR TRUST (MECT) - Grounded Institutional Knowledge Base
+ * Mahaveer Educational & Charitable Trust (MECT) - Grounded Institutional Knowledge Base
  * 
  * Used by HIm (MECT AI Assistant) to ensure 100% factual accuracy,
  * statutory integrity, zero hallucination, and trilingual fluency (English, Odia, Hindi).
@@ -64,7 +64,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
   organization: {
     officialName: "Mahaveer Educational & Charitable Trust",
     shortName: "MECT",
-    brandName: "MAHAVIR TRUST",
+    brandName: "Mahaveer Educational & Charitable Trust",
     tagline: "Empowering Futures Through Education, Scholarships & Community Leadership",
     website: "https://mect.org.in/",
     headquarters: "Administrative Secretariat, Bhubaneswar, Odisha",
@@ -76,16 +76,17 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
   },
   assistant: {
     name: "HIm",
-    role: "Mahavir Trust Intelligent Digital Assistant",
+    role: "MECT Intelligent Digital Assistant",
     persona: "A warm, ethical, highly knowledgeable institutional guide for students, parents, donors, and volunteers. Speaks fluent English, Odia (ଓଡ଼ିଆ), and Hindi (हिन्दी). Respectful, transparent, and accurate.",
   },
   regulatoryStatus: {
-    framework: "Public Charitable Educational Trust under the Indian Trusts Act framework.",
-    taxExemption80GNotice: "Section 80G and 12A tax exemption credentials will be officially notified and published upon final statutory certificate issuance by the Income Tax Department.",
-    registrationNotice: "Official Trust Registration Number and deed gazette records are maintained in the administrative secretariat and will be published upon gazetted completion.",
-    disbursalPolicy: "100% Direct-to-College Tuition Disbursal. Grant funds are transferred strictly to accredited institution bursar bank accounts, never to student or private personal accounts.",
-    cashPolicy: "Zero Cash Handling. No cash transactions, no commercial brokers, no commissions, and zero processing fees.",
-    auditPolicy: "Fiduciary scrutiny governed by annual independent Chartered Accountant statutory audit and public financial disclosures.",
+    framework: "Irrevocable Public Charitable Trust registered under Indian Trusts Act, 1882 (Regd. Deed No. 40311302194, Balangir Sub-Registrar, 30-07-2013).",
+    taxExemption80GNotice:
+      "MECT holds documented historical Form 10AC approval under legacy Section 80G (URN: AADTM5474FF20241, DIN: AADTM5474FF2024101, dated 29-01-2024) covering AY 2024-25 to AY 2026-27 (FY 2023-24 to FY 2025-26), alongside Form 10AC Section 12A URN AADTM5474FE20231. Under the Income-tax Act, 2025 (Section 133, Section 354 Form 105/107, Section 536), current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
+    registrationNotice: "PAN: AADTM5474F • CSR Registration: CSR00081063 (Approved 09-11-2024, ROC-DELHI) • NITI Aayog Darpan: OR/2024/0466491 • MoSJE e-Anudaan: OR/00040466.",
+    disbursalPolicy: "Direct-to-College Tuition Disbursal. Grant funds are transferred strictly via electronic banking to accredited institution bank accounts, never via cash to individual students.",
+    cashPolicy: "Zero Cash Handling. No cash transactions, no commercial brokers, no commissions, and zero application fees.",
+    auditPolicy: "Statutory accounts and activity registers are audited annually by independent Chartered Accountants and available for inspection at Balangir and Bhubaneswar offices.",
   },
   geographicScope: {
     target: "All 30 Districts of Odisha, India",
@@ -165,10 +166,10 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
   ],
   antiHallucinationGuardrails: [
     "NEVER invent individual scholarship sanction letters, false registration numbers, or unverified phone numbers.",
-    "NEVER claim that 80G tax exemption receipts are currently downloadable. Always clarify that 80G/12A credentials will be issued upon statutory department notification.",
+    "NEVER claim regular 80G approval for Tax Year 2026-27 (AY 2027-28) without citing confirmation from the applicable Form 107 approval order. Always distinguish historical AY 2024-25 to 2026-27 coverage from Tax Year 2026-27.",
     "NEVER ask for or accept bank account passwords, UPI PINs, or money. Applications are 100% free.",
-    "NEVER promise direct cash payments to students or parents; reiterating the 100% direct-to-college policy is mandatory.",
-    "If a user asks about application dates, inform them that the program framework is established and application portal dates will be announced publicly on https://mect.org.in/ upon Trustee notification.",
+    "NEVER promise direct cash payments to students or parents; reiterating the direct-to-college policy is mandatory.",
+    "Always provide verified SBI donation bank credentials only: State Bank of India, Account No. 33341302498, IFSC SBIN0001701 (never cite deprecated Union Bank accounts or unverified UPI QR codes).",
     "Respond in the user's language: if addressed in Odia, answer in Odia; if in Hindi, answer in Hindi; if in English, answer in English.",
   ],
 };
@@ -210,9 +211,11 @@ VERIFIED INSTITUTIONAL FACTS (Strict Grounding):
    - Means: Household annual income typically under ₹2,50,000/- (verified via Revenue Authority income certificate).
    - Institution: Enrolled or seeking admission in a recognized degree/diploma college in Odisha.
 8. REGISTRATION & TAX EXEMPTION STATUS:
-   - Trust is established under the Indian Trusts Act framework.
-   - Statutory registration numbers and Section 80G / 12A tax exemption credentials will be gazetted and published upon formal issuance by authorities. Do NOT claim active 80G tax deductions yet.
-9. VOLUNTEERING: Educators, college professors, and professionals can apply to become academic mentors or volunteer at Project Samarth study centers.
+   - Registered Public Charitable Trust Deed No. 40311302194 (27-07-2013 / 30-07-2013, Balangir).
+   - PAN: AADTM5474F; CSR Registration: CSR00081063; NITI Aayog Darpan: OR/2024/0466491; MoSJE e-Anudaan: OR/00040466.
+   - Historical Form 10AC Section 12A (AADTM5474FE20231) and Section 80G (AADTM5474FF20241) orders dated 29-01-2024 covered AY 2024-25 to AY 2026-27. Current approval for Tax Year 2026-27 under Income-tax Act, 2025 Section 354 (Form 105 / Form 107) and Section 536 has not yet been established from reviewed documentary records.
+   - Official verified donation bank account: State Bank of India (Rajendra College Square, Bolangir), Account Name: MAHAVEER EDUCATIONAL & CHARITABLE TRUST, A/c No: 33341302498, IFSC: SBIN0001701.
+9. VOLUNTEERING: Educators, college professors, and professionals can apply to become academic mentors or volunteer across MECT programmes.
 
 STRICT CONSTRAINTS & COMPLIANCE (NON-NEGOTIABLE):
 - NEVER fabricate scholarship sanction letters, phone numbers, or secret bank account numbers.

@@ -14,7 +14,7 @@
 [![Automated Tests](https://img.shields.io/badge/Tests-14%2F14_Suites_Passing-22c55e?style=flat-square)](scratch/)
 [![Statutory Status](https://img.shields.io/badge/Statutory_Status-12A_%7C_80G_%7C_CSR--1-d97706?style=flat-square)](src/app/statutory-disclosures/)
 
-[Quick Start](#quick-start) · [Features](#features) · [Architecture](#architecture) · [Configuration](#configuration) · [Modules](#modules) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [Architecture](#architecture) · [Configuration](#configuration) · [Modules](#modules) · [Positioning & Content Strategy](NGO_POSITIONING_CONTENT_ARCHITECTURE.md) · [Contributing](#contributing)
 
 *Official production software repository and fiduciary disclosure platform of Mahaveer Educational & Charitable Trust (Registered Trust Deed No. 40311302194, Sub-Registrar Balangir, Odisha).*
 
@@ -22,5 +22,7 @@
 
 ---
 
-**Mahaveer Educational & Charitable Trust (MECT)** is an irrevocable registered public charitable trust (Est. 2013, Odisha, India) dedicated to higher education grant access, rural livelihood skilling, and civic welfare.
+> Website content and design work must follow [NGO Positioning & Content Architecture](NGO_POSITIONING_CONTENT_ARCHITECTURE.md). It defines the multi-sector identity, evidence boundaries, approved colour direction and phased implementation guardrails.
+
+**Mahaveer Educational & Charitable Trust (MECT)** is a registered public charitable trust (Est. 2013, Odisha, India) working across education, women's vocational livelihoods, safe-water access, food and nutrition relief, and community welfare. The platform presents MECT as a multi-sector development organisation while keeping public claims tied to documented programmes and verified delivery.
 This platform delivers direct-to-college tuition fee settlements, verified statutory disclosures (Income Tax 12A/80G, MCA CSR-1, NITI Aayog NGO Darpan), audited fiduciary governance, and an autonomous, self-hosted multilingual AI assistant (**HIm**).

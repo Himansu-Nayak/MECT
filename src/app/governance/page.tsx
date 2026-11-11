@@ -28,75 +28,58 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Fiduciary Governance, Board of Trustees & Statutory Charter — MECT",
+  title: "Fiduciary Governance, Board of Trustees & Trust Deed",
   description:
-    "Official governance framework, registered Trust Deed No. 40311302194 (Balangir), Board of Trustees, honorary non-remuneration code, and statutory compliance for Mahaveer Educational & Charitable Trust (MECT).",
+    "Governance framework, registered Trust Deed No. 40311302194 (Balangir), Board of Trustees, honorary non-remuneration code, and statutory disclosures for Mahaveer Educational & Charitable Trust (MECT).",
+  alternates: { canonical: "/governance" },
 };
 
 export default function GovernancePage() {
   const boardOfTrustees = [
     {
       name: "Er. Japabandhu Kampa",
-      role: "Settler Founder & Permanent Managing Trustee",
-      deedClause: "Clause VIII & IX (Permanent Trustee)",
+      role: "Settler Founder & Chairman cum Managing Trustee",
+      deedClause: "Clause 8(2) & Clause 10 (Life Founder Chairman)",
       details:
-        "Settler founder of Mahaveer Educational & Charitable Trust. Authorized custodian of trust records, bank operations, and statutory compliance under the registered Trust Deed (2013, Balangir).",
-      status: "Permanent Managing Trustee",
+        "Settler founder of Mahaveer Educational & Charitable Trust. Authorized custodian of trust records, institutional banking oversight, and statutory compliance under the registered Trust Deed (executed 27-07-2013, registered 30-07-2013 in Balangir).",
+      status: "Chairman cum Managing Trustee",
       icon: UserCheck,
     },
     {
-      name: "Yudhisthir Rana",
-      role: "Life Trustee",
-      deedClause: "Clause X (Founding Life Trustee)",
+      name: "Honorary Board of Trustees",
+      role: "Collective Fiduciary Custodians",
+      deedClause: "Clause 8(1) & Section 9 Clause XVI (Honorary Charter)",
       details:
-        "Resident of Puintala, Balangir. Fiduciary custodian overseeing community welfare, rural remedial education, and grassroots beneficiary verification across Western Odisha.",
-      status: "Life Trustee",
-      icon: UserCheck,
-    },
-    {
-      name: "Ramachandra Biswal",
-      role: "Life Trustee",
-      deedClause: "Clause X (Founding Life Trustee)",
-      details:
-        "Resident of Mahimunda, Balangir. Oversees civic outreach, seasonal Jal Seva clean drinking water relief, and public health camp logistics.",
-      status: "Life Trustee",
-      icon: UserCheck,
-    },
-    {
-      name: "Sambit Kumar Dang",
-      role: "Life Trustee",
-      deedClause: "Clause X (Founding Life Trustee)",
-      details:
-        "Resident of Rugudipara, Balangir. Coordinates vocational livelihood training, tailoring workshop administration, and student educational materials.",
-      status: "Life Trustee",
-      icon: UserCheck,
+        "Operating under registered Trust Deed quorum mandates (minimum 2 trustees or one-third of the Board, whichever is greater). Trustees oversee charitable programmes without personal remuneration.",
+      status: "Honorary Non-Remunerative Board",
+      icon: Landmark,
     },
   ];
 
   const keyDeedClauses = [
     {
-      clause: "Clause XVI",
+      clause: "Section 9 Clause XVI",
       title: "Strict Honorary & Non-Remunerative Governance",
       description:
-        "Trustees serve purely in an honorary capacity and are legally prohibited from receiving salary, commission, sitting fees, or personal remuneration from trust funds.",
+        "Trustees serve purely in an honorary capacity and are not entitled to salary or remuneration from trust funds, save for reimbursement of expenses properly incurred in executing Trust duties.",
     },
     {
-      clause: "Clause VIII & IX",
-      title: "Permanent Tenure & Board Quorum",
+      clause: "Clause 8, 12 & 13",
+      title: "Board Size (3–9 Trustees) & Meeting Quorum",
       description:
-        "The board maintains a minimum of 3 and maximum of 11 trustees. A quorum of 3 is required for all binding resolutions and biennial general audits.",
+        "Per Trust Deed Clause 8, the Board comprises not less than 3 and not more than 9 trustees including the Chairman cum Managing Trustee. Under Clause 12, quorum requires at least 2 trustees or one-third of the Board, whichever is greater.",
     },
     {
-      clause: "Clause XVII",
-      title: "Statutory Investment under Section 11(5)",
+      clause: "Section 9(VII) & Clause 16",
+      title: "Lawful Investments & Annual Audit of Accounts",
       description:
-        "All surplus funds, endowments, and liquid reserves must be invested strictly in scheduled commercial banks or instruments recognized under Section 11(5) of the Income Tax Act.",
+        "Trust funds must be invested strictly in modes authorized by Indian law (Section 9 Clause VII), and regular books of accounts, Income & Expenditure Statements, and Balance Sheets must be prepared and audited annually under Clause 16.",
     },
     {
-      clause: "Clause XVIII",
-      title: "Irrevocable Character & Amalgamation Safeguard",
+      clause: "Clauses 23, 24 & 25",
+      title: "Irrevocable Character & Dissolution Transfer",
       description:
-        "The Trust is irrevocable. In the event of dissolution, assets cannot revert to trustees and must be transferred to a charitable trust with identical educational objectives.",
+        "The Trust and Trust fund are irrevocable for all times (Clause 25) and no clause may be altered in a way repugnant to Income Tax exemption rules (Clause 23). Upon extinguishment, net assets transfer only to Trust(s) or Institutions with similar charitable objectives.",
     },
   ];
 
@@ -161,16 +144,16 @@ export default function GovernancePage() {
       code: "URN-AADTM5474FF20241",
       type: "Income Tax Order",
       description:
-        "Provisional approval under Section 80G(5)(iv) of the Income Tax Act, 1961, granting 50% tax deduction on donations made by Indian taxpayers.",
+        "Approval order issued under legacy Section 80G(5)(vi) of the Income Tax Act, 1961 (Order URN: AADTM5474FF20241, dated 29-01-2024), covering donations made in FY 2023-24 through FY 2025-26 (AY 2024-25 to AY 2026-27) for 50% tax deduction under the Old Tax Regime.",
       version: "Order Dated 29-01-2024",
     },
     {
-      title: "MCA CSR-1 Registration Certificate",
-      code: "CSR-CSR00081063",
-      type: "Ministry of Corporate Affairs",
+      title: "NITI Aayog NGO Darpan Enrollment",
+      code: "ID-OR/2024/0466491",
+      type: "Government of India Registry",
       description:
-        "Official CSR registration approved by the Ministry of Corporate Affairs (ROC-Delhi, SRN-N14617237) authorizing corporate CSR allocations under Section 135.",
-      version: "Approved 09-11-2024",
+        "Verified unique registration on NITI Aayog's national voluntary sector portal facilitating transparent public accountability.",
+      version: "Unique ID: OR/2024/0466491",
     },
   ];
 
@@ -178,7 +161,6 @@ export default function GovernancePage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Irrevocable Public Charitable Trust • Est. 2013"
         title="Institutional Governance, Board of Trustees & Fiduciary Code"
         description="Public confidence is the foundation of enduring philanthropy. Mahaveer Educational & Charitable Trust (MECT) operates under registered deed governance, non-remunerative trustee stewardship, and complete statutory transparency."
         breadcrumbs={[{ label: "About Us", href: "/about" }, { label: "Governance" }]}
@@ -192,7 +174,7 @@ export default function GovernancePage() {
             </Link>
             <Link href="/statutory-disclosures">
               <Button variant="dark-outline" size="sm">
-                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" aria-hidden="true" />
+                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-cream" aria-hidden="true" />
                 <span>Statutory Disclosures</span>
               </Button>
             </Link>
@@ -201,27 +183,27 @@ export default function GovernancePage() {
       />
 
       {/* 2. Statutory Credentials Quick Verification Banner */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Statutory Accreditation Strip">
+      <section className="py-8 bg-sand-light border-b border-border-warm" aria-label="Statutory Accreditation Strip">
         <Container size="default">
-          <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="p-6 bg-white rounded-xs border-2 border-sand/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+              <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-sand" aria-hidden="true" />
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <Badge variant="forest" size="sm">
                     Verified Public Record
                   </Badge>
-                  <span className="text-xs text-[#0A192F] font-bold font-mono">
+                  <span className="text-xs text-terracotta-dark font-bold font-mono">
                     Deed No. 40311302194 (Balangir Sub-Registrar)
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#1C2421] font-semibold mt-1 font-serif">
-                  Governed under Indian Trusts Act, 1882 • Section 12A/80G &amp; MCA CSR-1 Certified
+                <p className="text-xs sm:text-sm text-ink font-semibold mt-1 font-serif">
+                  Governed under Indian Trusts Act, 1882 • Section 12A/80G &amp; NITI Aayog Darpan Recorded
                 </p>
-                <p className="text-xs text-[#4A5568] mt-1 leading-relaxed font-sans">
-                  Permanent Account Number: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.pan}</strong> • Section 12A URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • MCA CSR-1: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.mcaCsrNumber}</strong>.
+                <p className="text-xs text-ink-sand mt-1 leading-relaxed font-sans">
+                  Permanent Account Number: <strong className="text-terracotta-dark">{TRUST_CONFIG.statutory.pan}</strong> • Section 12A URN: <strong className="text-terracotta-dark">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-terracotta-dark">{TRUST_CONFIG.statutory.section80GUrn}</strong> (AY 2024-25 to 2026-27) • NGO Darpan: <strong className="text-terracotta-dark">{TRUST_CONFIG.statutory.ngoDarpanId}</strong>.
                 </p>
               </div>
             </div>
@@ -236,7 +218,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 3. Board of Trustees Section */}
-      <section id="board" className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Board of Trustees">
+      <section id="board" className="py-20 md:py-28 bg-cream" aria-label="Board of Trustees">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Institutional Leadership"
@@ -252,19 +234,19 @@ export default function GovernancePage() {
                 <Card
                   key={trustee.name}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                     <Badge variant="contrast-gold" size="sm">
                       {trustee.status}
                     </Badge>
-                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/5 px-2.5 py-0.5 rounded-xs font-mono">
+                    <span className="text-[10px] font-semibold text-terracotta-dark bg-terracotta/5 px-2.5 py-0.5 rounded-xs font-mono">
                       {trustee.deedClause}
                     </span>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-[#C5A059]">
+                    <div className="w-12 h-12 rounded-xs bg-forest text-white flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-sand">
                       {trustee.name
                         .split(" ")
                         .map((n) => n[0])
@@ -272,13 +254,13 @@ export default function GovernancePage() {
                         .join("")}
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-xl font-bold text-terracotta-dark">
                         {trustee.name}
                       </h3>
-                      <p className="text-xs text-[#7A5E24] font-semibold font-sans mt-0.5">
+                      <p className="text-xs text-forest font-semibold font-sans mt-0.5">
                         {trustee.role}
                       </p>
-                      <p className="text-xs text-[#4A5568] mt-2 leading-relaxed font-sans">
+                      <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
                         {trustee.details}
                       </p>
                     </div>
@@ -289,9 +271,9 @@ export default function GovernancePage() {
           </div>
 
           {/* Honorary Governance Alert */}
-          <div className="p-6 rounded-xs bg-[#0A192F] text-white border border-[#C5A059]/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+          <div className="p-6 rounded-xs bg-terracotta text-white border border-sand/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
             <div className="flex items-center gap-3">
-              <Scale className="w-8 h-8 text-[#E4C88A] shrink-0" aria-hidden="true" />
+              <Scale className="w-8 h-8 text-cream shrink-0" aria-hidden="true" />
               <div>
                 <h4 className="font-serif text-base font-bold text-white">
                   Trust Deed Clause XVI: Prohibition of Trustee Remuneration
@@ -311,7 +293,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 4. Key Trust Deed Clauses & Fiduciary Safeguards */}
-      <section className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10" aria-label="Key Trust Deed Clauses">
+      <section className="py-20 bg-white border-y border-border-warm" aria-label="Key Trust Deed Clauses">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Deed Mandates"
@@ -325,20 +307,20 @@ export default function GovernancePage() {
               <Card
                 key={idx}
                 variant="elevated"
-                className="p-6 sm:p-7 bg-white border-[#0A192F]/12 shadow-xs space-y-3"
+                className="p-6 sm:p-7 bg-white border-border-warm shadow-xs space-y-3"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-[#7A5E24] bg-[#7A5E24]/10 px-2 py-0.5 rounded-xs">
+                  <span className="text-xs font-mono font-bold text-forest bg-forest/10 px-2 py-0.5 rounded-xs">
                     {item.clause}
                   </span>
                   <Badge variant="forest" size="sm">
                     Irrevocable Covenant
                   </Badge>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                <p className="text-xs text-ink-sand leading-relaxed font-sans">
                   {item.description}
                 </p>
               </Card>
@@ -348,7 +330,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 5. Multi-Tier Committee Architecture */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="Governance Committee Architecture">
+      <section className="py-20 md:py-28 bg-cream" aria-label="Governance Committee Architecture">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Committee Separation"
@@ -364,39 +346,39 @@ export default function GovernancePage() {
                 <Card
                   key={committee.title}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-[#0A192F]/12 shadow-xs hover:border-[#C5A059] transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
+                  <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                     <Badge variant="contrast-gold" size="sm">
                       {committee.scope}
                     </Badge>
-                    <span className="text-[10px] font-semibold text-[#0A192F] bg-[#0A192F]/8 px-2.5 py-0.5 rounded-xs font-sans">
+                    <span className="text-[10px] font-semibold text-terracotta-dark bg-terracotta/8 px-2.5 py-0.5 rounded-xs font-sans">
                       Active Committee
                     </span>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
+                    <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-sand" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#0A192F]">
+                      <h3 className="font-serif text-xl font-bold text-terracotta-dark">
                         {committee.title}
                       </h3>
-                      <p className="text-xs text-[#4A5568] mt-1.5 leading-relaxed font-sans">
+                      <p className="text-xs text-ink-sand mt-1.5 leading-relaxed font-sans">
                         {committee.mandate}
                       </p>
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#0A192F]/10 space-y-1.5 text-[11px] font-sans">
+                  <div className="pt-3 border-t border-border-warm space-y-1.5 text-[11px] font-sans">
                     <div className="flex items-center justify-between">
-                      <span className="text-[#4A5568] font-medium">Composition:</span>
-                      <span className="text-[#0A192F] font-semibold">{committee.composition}</span>
+                      <span className="text-ink-sand font-medium">Composition:</span>
+                      <span className="text-terracotta-dark font-semibold">{committee.composition}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[#4A5568] font-medium">Statutory Status:</span>
-                      <span className="text-[#7A5E24] font-semibold">{committee.status}</span>
+                      <span className="text-ink-sand font-medium">Statutory Status:</span>
+                      <span className="text-forest font-semibold">{committee.status}</span>
                     </div>
                   </div>
                 </Card>
@@ -407,7 +389,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 6. Financial Oversight & 100% Direct Disbursal Standard */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/25 relative overflow-hidden" aria-label="Financial Oversight">
+      <section className="py-20 bg-terracotta text-white border-y border-sand/25 relative overflow-hidden" aria-label="Financial Oversight">
         <Container size="default" className="relative space-y-14">
           <SectionHeader
             badge="Fiduciary Safeguards"
@@ -419,7 +401,7 @@ export default function GovernancePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
-              <Receipt className="w-8 h-8 text-[#E4C88A]" aria-hidden="true" />
+              <Receipt className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
                 100% Direct Bank Remittance
               </h3>
@@ -429,7 +411,7 @@ export default function GovernancePage() {
             </div>
 
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
-              <Scale className="w-8 h-8 text-[#E4C88A]" aria-hidden="true" />
+              <Scale className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
                 Dual-Authorization Controls
               </h3>
@@ -439,7 +421,7 @@ export default function GovernancePage() {
             </div>
 
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
-              <FileText className="w-8 h-8 text-[#E4C88A]" aria-hidden="true" />
+              <FileText className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
                 Chartered Accountant Audits
               </h3>
@@ -452,7 +434,7 @@ export default function GovernancePage() {
       </section>
 
       {/* 7. Institutional Documents & Compliance Registry */}
-      <section id="documents" className="py-20 bg-[#F4EFE6] border-b border-[#0A192F]/10" aria-label="Institutional Documents">
+      <section id="documents" className="py-20 bg-cream border-b border-border-warm" aria-label="Institutional Documents">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Transparency Registry"
@@ -466,28 +448,28 @@ export default function GovernancePage() {
               <Card
                 key={doc.code}
                 variant="elevated"
-                className="p-6 bg-white border-[#0A192F]/15 shadow-xs flex flex-col justify-between space-y-4"
+                className="p-6 bg-white border-border-warm shadow-xs flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between text-[10px] font-bold tracking-wider">
-                    <span className="text-[#7A5E24] uppercase font-mono">{doc.code}</span>
+                    <span className="text-forest uppercase font-mono">{doc.code}</span>
                     <Badge variant="forest" size="sm">
                       {doc.type}
                     </Badge>
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                     {doc.title}
                   </h3>
-                  <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                  <p className="text-xs text-ink-sand leading-relaxed font-sans">
                     {doc.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#0A192F]/10 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-[#4A5568] font-semibold font-sans">{doc.version}</span>
+                <div className="pt-3 border-t border-border-warm flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-ink-sand font-semibold font-sans">{doc.version}</span>
                   <Link href="/statutory-disclosures">
                     <Button variant="secondary" size="sm" className="gap-1.5 text-xs">
-                      <FileCheck className="w-3.5 h-3.5 text-[#0A192F]" aria-hidden="true" />
+                      <FileCheck className="w-3.5 h-3.5 text-terracotta-dark" aria-hidden="true" />
                       <span>Inspect Details</span>
                     </Button>
                   </Link>

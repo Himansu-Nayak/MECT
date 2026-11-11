@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { DeveloperCreditCard } from "@/components/DeveloperCreditCard";
+import { Reveal } from "@/components/ui/MotionPrimitives";
 import { ABOUT_CONTENT } from "@/lib/about-content";
 import {
   ShieldCheck,
@@ -21,24 +22,24 @@ import {
 export const metadata: Metadata = {
   title: "About Us & Institutional Heritage",
   description:
-    "Learn about MAHAVIR TRUST's foundational heritage, mission, organizational structure, core values, and roadmap to advance higher education access across all 30 districts of Odisha, India.",
+    "Learn about MECT's heritage, mission, governance and multi-sector work across education, women's livelihoods, safe water, nutrition and community welfare in Odisha.",
   alternates: {
     canonical: "https://mect.org.in/about",
   },
   openGraph: {
-    title: "About Us & Institutional Heritage | MAHAVIR TRUST",
+    title: "About Us & Institutional Heritage | Mahaveer Educational & Charitable Trust (MECT)",
     description:
-      "MAHAVIR TRUST's foundational heritage, mission, organizational structure, core values, and roadmap to advance higher education access across Odisha, India.",
+      "MECT's heritage, mission, governance and community-development work across education, livelihoods, safe water and nutrition in Odisha.",
     url: "https://mect.org.in/about",
-    siteName: "MAHAVIR TRUST",
+    siteName: "Mahaveer Educational & Charitable Trust (MECT)",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us & Institutional Heritage | MAHAVIR TRUST",
+    title: "About Us & Institutional Heritage | Mahaveer Educational & Charitable Trust (MECT)",
     description:
-      "Advancing higher education access, merit grants, and academic mentorship across all 30 districts of Odisha, India.",
+      "Strengthening people and communities through learning, livelihoods, safe water, nutrition and accountable community programmes.",
   },
 };
 
@@ -71,16 +72,16 @@ export default function AboutPage() {
         "@type": "NGO",
         "@id": "https://mect.org.in/#organization",
         "name": "Mahaveer Educational & Charitable Trust",
-        "alternateName": "MAHAVIR TRUST",
+        "alternateName": "MECT",
         "url": "https://mect.org.in",
-        "logo": "https://mect.org.in/icon.png",
+        "logo": "https://mect.org.in/images/mect-official-emblem.png",
         "foundingDate": "2013-07-27",
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": "Odisha, India",
         },
         "description":
-          "Irrevocable public charitable trust registered in 2013 (Deed No. 40311302194), dedicated to higher education grants, rural remedial schooling, women's tailoring livelihoods, and potable drinking water relief across all 30 districts of Odisha.",
+          "Registered public charitable trust established in 2013 (Deed No. 40311302194), working across education, women's vocational livelihoods, safe-water initiatives, nutrition support and community welfare in Odisha.",
         "address": [
           {
             "@type": "PostalAddress",
@@ -138,53 +139,53 @@ export default function AboutPage() {
 
         {/* SECTION 2: Foundational Philosophy & Structural Problem */}
         <section
-          className="py-20 md:py-28 bg-[#FDFBF7]"
+          className="py-20 md:py-28 bg-cream"
           aria-label="Foundational Narrative & Structural Problem"
         >
           <Container size="default">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Narrative Left */}
-              <div className="lg:col-span-7 space-y-6">
+              <Reveal direction="left" className="lg:col-span-7 space-y-6">
                 <Badge variant="forest">{narrative.badge}</Badge>
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0B3B24] leading-tight tracking-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-terracotta-dark leading-tight tracking-tight">
                   {narrative.title}
                 </h2>
                 {narrative.paragraphs.map((p, idx) => (
                   <p
                     key={idx}
-                    className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans"
+                    className="text-sm sm:text-base text-ink-sand leading-relaxed font-sans"
                   >
                     {p}
                   </p>
                 ))}
 
                 {/* Guiding Safeguards */}
-                <div className="pt-4 border-t border-[#0B3B24]/10 space-y-4">
+                <div className="pt-4 border-t border-border-warm space-y-4">
                   {narrative.safeguards.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-3.5">
-                      <div className="w-8 h-8 rounded-xs bg-[#0B3B24]/10 text-[#0B3B24] flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-[#0B3B24]" aria-hidden="true" />
+                      <div className="w-8 h-8 rounded-xs bg-cream text-terracotta-dark flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-terracotta-dark" aria-hidden="true" />
                       </div>
                       <div>
-                        <h3 className="font-serif text-sm font-bold text-[#0B3B24]">
+                        <h3 className="font-serif text-sm font-bold text-terracotta-dark">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-[#4A5568] mt-0.5 font-sans leading-relaxed">
+                        <p className="text-xs text-ink-sand mt-0.5 font-sans leading-relaxed">
                           {item.description}
                         </p>
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </Reveal>
 
               {/* Vision & Mission Cards Right (Section 3 Integration) */}
-              <div className="lg:col-span-5 bg-[#F4EFE6] p-8 sm:p-10 rounded-xs border border-[#0B3B24]/15 shadow-sm space-y-6">
+              <Reveal direction="right" delay={0.08} className="lg:col-span-5 bg-sand-light p-8 sm:p-10 rounded-xs border border-border-warm shadow-sm space-y-6">
                 <div className="space-y-1">
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#7A5E24] block">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-forest block">
                     {visionMission.badge}
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-[#0B3B24]">
+                  <h3 className="font-serif text-2xl font-bold text-terracotta-dark">
                     {visionMission.title}
                   </h3>
                 </div>
@@ -192,42 +193,42 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <Card
                     variant="default"
-                    className="p-5 bg-white border-[#0B3B24]/10 shadow-xs space-y-2"
+                    className="p-5 bg-white border-border-warm shadow-xs space-y-2"
                   >
                     <Badge variant="gold" size="sm">
                       {visionMission.vision.tag}
                     </Badge>
-                    <h4 className="font-serif text-sm font-bold text-[#0B3B24]">
+                    <h4 className="font-serif text-sm font-bold text-terracotta-dark">
                       {visionMission.vision.title}
                     </h4>
-                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                    <p className="text-xs text-ink-sand leading-relaxed font-sans">
                       {visionMission.vision.description}
                     </p>
                   </Card>
 
                   <Card
                     variant="default"
-                    className="p-5 bg-white border-[#0B3B24]/10 shadow-xs space-y-2"
+                    className="p-5 bg-white border-border-warm shadow-xs space-y-2"
                   >
                     <Badge variant="forest" size="sm">
                       {visionMission.mission.tag}
                     </Badge>
-                    <h4 className="font-serif text-sm font-bold text-[#0B3B24]">
+                    <h4 className="font-serif text-sm font-bold text-terracotta-dark">
                       {visionMission.mission.title}
                     </h4>
-                    <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                    <p className="text-xs text-ink-sand leading-relaxed font-sans">
                       {visionMission.mission.description}
                     </p>
                   </Card>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </Container>
         </section>
 
         {/* SECTION 4: Four Institutional Guiding Values */}
         <section
-          className="py-20 bg-[#F4EFE6] border-y border-[#0B3B24]/10"
+          className="py-20 bg-white border-y border-border-warm"
           aria-label="Our Guiding Values"
         >
           <Container size="default" className="space-y-12">
@@ -245,19 +246,19 @@ export default function AboutPage() {
                   <Card
                     key={item.title}
                     variant="elevated"
-                    className="p-7 bg-white border-[#0B3B24]/12 flex flex-col justify-between space-y-4 shadow-xs hover:border-[#C5A059]/60 transition-colors"
+                    className="p-7 bg-white border-border-warm flex flex-col justify-between space-y-4 shadow-xs hover:border-sand/60 transition-colors"
                   >
                     <div className="space-y-3">
-                      <div className="w-11 h-11 rounded-xs bg-[#0B3B24] text-[#E4C88A] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <Badge variant="contrast-gold" size="sm">
                         {item.tag}
                       </Badge>
-                      <h3 className="font-serif text-lg font-bold text-[#0B3B24]">
+                      <h3 className="font-serif text-lg font-bold text-terracotta-dark">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-[#4A5568] leading-relaxed font-sans">
+                      <p className="text-xs text-ink-sand leading-relaxed font-sans">
                         {item.description}
                       </p>
                     </div>
@@ -270,14 +271,14 @@ export default function AboutPage() {
 
         {/* SECTION 5: Multi-Tier Governance & Oversight Architecture */}
         <section
-          className="py-20 md:py-28 bg-[#FDFBF7] border-b border-[#0B3B24]/10"
+          className="py-20 md:py-28 bg-cream border-b border-border-warm"
           aria-label="Organizational Architecture"
         >
           <Container size="default" className="space-y-14">
             <SectionHeader
               badge="Fiduciary Governance Structure"
               title="Organizational & Oversight Architecture"
-              subtitle="MAHAVIR TRUST operates under a multi-tier governance model designed to prevent conflict of interest, eliminate administrative bias, and guarantee institutional accountability."
+              subtitle="Mahaveer Educational & Charitable Trust (MECT) operates under a multi-tier governance model designed to prevent conflict of interest, eliminate administrative bias, and guarantee institutional accountability."
               align="center"
             />
 
@@ -288,34 +289,34 @@ export default function AboutPage() {
                   <Card
                     key={tier.tier}
                     variant="elevated"
-                    className="p-7 sm:p-8 bg-white border-[#0B3B24]/15 shadow-xs space-y-4 relative overflow-hidden"
+                    className="p-7 sm:p-8 bg-white border-border-warm shadow-xs space-y-4 relative overflow-hidden"
                   >
-                    <div className="flex items-center justify-between pb-3 border-b border-[#0B3B24]/10">
+                    <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                       <Badge variant="contrast-gold" size="sm">
                         {tier.tier}
                       </Badge>
-                      <span className="text-[10px] font-semibold text-[#0B3B24] bg-[#0B3B24]/8 px-2.5 py-0.5 rounded-xs font-sans">
+                      <span className="text-[10px] font-semibold text-terracotta-dark bg-terracotta/8 px-2.5 py-0.5 rounded-xs font-sans">
                         {tier.role}
                       </span>
                     </div>
 
                     <div className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xs bg-[#072617] text-[#E4C88A] flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xs bg-forest text-cream flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div>
-                        <h3 className="font-serif text-xl font-bold text-[#0B3B24]">
+                        <h3 className="font-serif text-xl font-bold text-terracotta-dark">
                           {tier.title}
                         </h3>
-                        <p className="text-xs text-[#4A5568] mt-1.5 leading-relaxed font-sans">
+                        <p className="text-xs text-ink-sand mt-1.5 leading-relaxed font-sans">
                           {tier.description}
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-[#0B3B24]/10 flex items-center justify-between text-[11px] font-sans">
-                      <span className="text-[#4A5568] font-medium">Compliance Note:</span>
-                      <span className="font-semibold text-[#0B3B24] italic">{tier.status}</span>
+                    <div className="pt-3 border-t border-border-warm flex items-center justify-between text-[11px] font-sans">
+                      <span className="text-ink-sand font-medium">Compliance Note:</span>
+                      <span className="font-semibold text-terracotta-dark italic">{tier.status}</span>
                     </div>
                   </Card>
                 );
@@ -323,11 +324,15 @@ export default function AboutPage() {
             </div>
 
             {/* Statutory Disclosure Callout */}
-            <div className="p-6 bg-[#F4EFE6] rounded-xs border border-[#0B3B24]/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div className="p-6 bg-sand-light rounded-xs border border-border-warm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
               <div className="flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-[#0B3B24] shrink-0" aria-hidden="true" />
-                <p className="text-[#4A5568] font-sans">
-                  <strong>Statutory Notice:</strong> Official Trustee Board gazetted notifications and Section 12A/80G filings will be published for public inspection following government certificate issuance.
+                <ShieldCheck className="w-6 h-6 text-forest shrink-0" aria-hidden="true" />
+                <p className="text-ink font-sans">
+                  <strong className="text-forest">Statutory Notice:</strong> Registered Trust Deed No. 40311302194, Form 10AC historical 12A/80G orders (AY 2024–25 to AY 2026–27), CSR Registration CSR00081063, and NITI Aayog Darpan records are published in the{" "}
+                  <Link href="/statutory-disclosures" className="font-semibold underline text-forest">
+                    Statutory Disclosures Vault
+                  </Link>
+                  . Current approval for Tax Year 2026–27 has not yet been established from reviewed records.
                 </p>
               </div>
               <Link href="/governance" className="shrink-0">
@@ -342,11 +347,11 @@ export default function AboutPage() {
 
         {/* SECTION 6: Phased Evolution Roadmap (2025–2027) */}
         <section
-          className="py-20 md:py-28 bg-[#072617] text-[#EDE6D8] border-b border-[#C5A059]/20 relative overflow-hidden"
+          className="py-20 md:py-28 bg-forest text-cream border-b border-sand/20 relative overflow-hidden"
           aria-label="Phased Evolution Roadmap"
         >
           <div
-            className="absolute inset-0 opacity-5 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
+            className="absolute inset-0 opacity-5 bg-[radial-gradient(#E5C499_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
             aria-hidden="true"
           />
 
@@ -354,7 +359,7 @@ export default function AboutPage() {
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <Badge
                 variant="gold-dark"
-                icon={<Clock className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />}
+                icon={<Clock className="w-3.5 h-3.5 text-sand" aria-hidden="true" />}
               >
                 {roadmap.badge}
               </Badge>
@@ -372,8 +377,8 @@ export default function AboutPage() {
               <div className="flex justify-between relative z-10">
                 {roadmap.milestones.map((m, idx) => (
                   <div key={idx} className="flex flex-col items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#072617] border-2 border-[#C5A059] flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#E4C88A]" />
+                    <div className="w-4 h-4 rounded-full bg-forest border-2 border-sand flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-sand-light" />
                     </div>
                   </div>
                 ))}
@@ -385,11 +390,11 @@ export default function AboutPage() {
               {roadmap.milestones.map((milestone) => (
                 <div
                   key={milestone.year}
-                  className="p-6 bg-white/5 border border-white/10 rounded-xs hover:border-[#C5A059]/50 transition-all flex flex-col justify-between space-y-4 backdrop-blur-xs"
+                  className="p-6 bg-white/5 border border-white/10 rounded-xs hover:border-sand/50 transition-all flex flex-col justify-between space-y-4 backdrop-blur-xs"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                      <span className="font-serif text-2xl font-bold text-[#E4C88A]">
+                      <span className="font-serif text-2xl font-bold text-cream">
                         {milestone.year}
                       </span>
                       <Badge variant="gold-dark" size="sm">
@@ -423,16 +428,16 @@ export default function AboutPage() {
 
         {/* SECTION 8: Institutional Engagement Call-to-Action */}
         <section
-          className="py-20 bg-[#0B3B24] text-white relative overflow-hidden"
+          className="py-20 bg-sand-light text-ink border-t border-border-warm relative overflow-hidden"
           aria-label="Institutional Engagement Call to Action"
         >
           <Container size="default">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <Badge variant="gold-dark">{cta.badge}</Badge>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#EDE6D8]">
+            <div className="max-w-3xl mx-auto text-center space-y-6 bg-white border border-border-warm rounded-xs p-8 sm:p-10 shadow-xs">
+              <Badge variant="contrast-gold">{cta.badge}</Badge>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-forest">
                 {cta.title}
               </h2>
-              <p className="text-sm sm:text-base text-white/80 leading-relaxed font-sans">
+              <p className="text-sm sm:text-base text-ink leading-relaxed font-sans">
                 {cta.subtitle}
               </p>
 
@@ -444,12 +449,12 @@ export default function AboutPage() {
                   </Button>
                 </Link>
                 <Link href="/governance">
-                  <Button variant="dark-outline" size="md">
+                  <Button variant="outline" size="md">
                     <span>Review Fiduciary Charter</span>
                   </Button>
                 </Link>
                 <Link href="/volunteer">
-                  <Button variant="secondary" size="md">
+                  <Button variant="primary" size="md">
                     <span>Volunteer Network</span>
                     <ExternalLink className="w-3.5 h-3.5 ml-1.5" aria-hidden="true" />
                   </Button>

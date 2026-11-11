@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/volunteer",
   },
   openGraph: {
-    title: "Volunteer With MAHAVIR TRUST (Odisha)",
+    title: "Volunteer With Mahaveer Educational & Charitable Trust (MECT)",
     description:
       "Join our volunteer corps to mentor underprivileged students, coordinate direct college fee grants, and empower community learning across Odisha.",
     url: "https://mect.org.in/volunteer",

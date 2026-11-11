@@ -30,8 +30,8 @@ export function SectionHeader({
     right: "text-right items-end ml-auto",
   };
 
-  const titleColor = theme === "dark" ? "text-white" : "text-[#072617]";
-  const subtitleColor = theme === "dark" ? "text-[#EDE6D8]/80" : "text-[#4A5568]";
+  const titleColor = theme === "dark" ? "text-white" : "text-forest";
+  const subtitleColor = theme === "dark" ? "text-white/95" : "text-ink-sand";
 
   return (
     <div
@@ -51,13 +51,13 @@ export function SectionHeader({
       )}
 
       <h2
-        className={`font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight ${titleColor}`}
+        className={`font-serif text-3xl sm:text-4xl lg:text-[2.5rem] font-bold tracking-tight leading-[1.15] ${titleColor}`}
       >
         {title}
       </h2>
 
       {subtitle && (
-        <p className={`text-sm sm:text-base leading-relaxed ${subtitleColor}`}>
+        <p className={`text-sm sm:text-base leading-relaxed font-sans max-w-2xl ${subtitleColor}`}>
           {subtitle}
         </p>
       )}

@@ -17,24 +17,30 @@ function assert(condition, message) {
 
 // 1. Audit HOMEPAGE_CONTENT in src/lib/homepage-content.ts
 const content = fs.readFileSync("src/lib/homepage-content.ts", "utf8");
-assert(content.includes("12+ Years"), "Homepage content features 12+ Years heritage");
+assert(content.includes("13+ Years") || content.includes("12+ Years"), "Homepage content features 13+ Years of Community Service (Est. 2013)");
 assert(content.includes("40311302194"), "Homepage content references registered Trust Deed 40311302194");
-assert(content.includes("CSR00081063"), "Homepage content references MCA CSR-1 Reg CSR00081063");
+assert(!content.includes("MCA CSR-1"), "Homepage content removes MCA wording from general areas");
+assert(content.includes("FREE EDUCATION FOR 200 STUDENTS"), "Homepage content features Free Education for 200 Students");
+assert(content.includes("SUPPORT EDUCATION. TRANSFORM LIVES."), "Homepage content features Smile Foundation associated fundraising");
+assert(!content.includes("StoryCard") && !content.includes("Stories from the Ground"), "Homepage content removes Story section");
 assert(content.includes("AADTM5474FF20241"), "Homepage content references Section 80G URN AADTM5474FF20241");
 assert(content.includes("Er. Japabandhu Kampa"), "Homepage content features Managing Trustee Er. Japabandhu Kampa");
-assert(content.includes("Remedial Rural Education"), "Pillars include Remedial Rural Education");
-assert(content.includes("Women's Vocational Livelihood"), "Pillars include Women's Vocational Livelihood");
-assert(content.includes("Jal Seva Safe Drinking Water"), "Pillars include Jal Seva Safe Drinking Water");
-assert(content.includes("Jan Ahar Destitute Nutrition"), "Pillars include Jan Ahar Destitute Nutrition");
+assert(content.includes("Education & Learning") && content.includes("Shiksha Setu"), "Pillars include Education & Learning (Shiksha Setu)");
+assert(content.includes("Women Empowerment & Livelihoods") && content.includes("Swavalamban"), "Pillars include Women Empowerment & Livelihoods (Swavalamban)");
+assert(content.includes("Safe Water & Sanitation") && content.includes("Jal Seva"), "Pillars include Safe Water & Sanitation (Jal Seva)");
+assert(content.includes("Food Security & Nutrition") && content.includes("Jan Ahar"), "Pillars include Food Security & Nutrition (Jan Ahar)");
 
 // 2. Audit src/app/page.tsx
 const pageContent = fs.readFileSync("src/app/page.tsx", "utf8");
-assert(pageContent.includes("bg-[#0A192F]"), "Page uses Presidential Navy theme token");
-assert(pageContent.includes("80G Tax Exempt"), "Hero showcases 80G Tax Exemption badge");
+assert(pageContent.includes("bg-terracotta") || pageContent.includes("bg-forest"), "Page uses approved Terracotta / Forest Charcoal theme token");
+assert(!pageContent.includes("bg-[#0A192F]"), "Page does not use prohibited Presidential Navy token #0A192F");
+assert(!pageContent.includes("80G Tax Exempt") && !pageContent.includes("Est. 2013"), "Hero omits removed 80G Tax Exempt and Est. 2013 pill badges");
 assert(pageContent.includes("HOMEPAGE_CONTENT.hero.ctas.csr"), "Hero features Corporate CSR Gateway CTA");
 assert(pageContent.includes("HOMEPAGE_CONTENT.pillars.map"), "Page renders the 4 core mission pillars");
-assert(pageContent.includes("Turnkey Corporate Social Responsibility (CSR) Partnerships"), "Page features Corporate CSR Hub section");
-assert(pageContent.includes("CSR00081063"), "CSR section highlights MCA CSR-1 registration number");
+assert(pageContent.includes("CsrRegistrationSection"), "Page renders CSR Registration & Organisational Details section");
+assert(fs.readFileSync("src/components/sections/CsrRegistrationSection.tsx", "utf8").includes("CSR00081063") || fs.readFileSync("src/components/sections/CsrRegistrationSection.tsx", "utf8").includes("mcaCsrNumber"), "CSR section highlights verified CSR registration number");
+assert(pageContent.includes("SbiDonationSection"), "Page renders State Bank of India donation section");
+assert(pageContent.includes("FreeEducationSection") && pageContent.includes("SmileFundraisingSection"), "Page renders Free Education 200 and Fundraising sections");
 assert(pageContent.includes("Er. Japabandhu Kampa") || pageContent.includes("HOMEPAGE_CONTENT.secretariat.officeTitle"), "Managing Trustee desk is prominently rendered");
 assert(pageContent.includes("Section 80G Tax Exemption Notice") || pageContent.includes("HOMEPAGE_CONTENT.donorNotice.title"), "Section 80G tax reassurance is rendered");
 assert(pageContent.includes("TRUST_CONFIG.bank.ifsc"), "Domestic bank IFSC code is displayed for direct transfers");

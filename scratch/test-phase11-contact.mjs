@@ -39,8 +39,9 @@ console.log("✓ Test 5: Verified three-tier grievance redressal framework");
 
 // Test 6: Anti-Fraud Notice & Institutional Styling
 assert.ok(content.includes("Zero-Tolerance Policy for Intermediaries & Fees"), "Must include anti-fraud declaration");
-assert.ok(content.includes("#0A192F"), "Must use Presidential Navy #0A192F");
-assert.ok(!content.includes("#0B3B24"), "Must not use legacy green #0B3B24");
+assert.ok(content.includes("terracotta"), "Must use Terracotta accent token");
+assert.ok(content.includes("sand") && content.includes("forest"), "Must use Warm Sand and Forest Charcoal tokens");
+assert.ok(!content.includes("#0A192F"), "Must not use prohibited Presidential Navy #0A192F");
 console.log("✓ Test 6: Verified anti-fraud notice and institutional color palette");
 
 console.log("--- ALL PHASE 11 CONTACT TESTS PASSED (6/6) ---");

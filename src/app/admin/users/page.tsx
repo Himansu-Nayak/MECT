@@ -143,10 +143,10 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-warm pb-4">
         <div>
-          <h1 className="text-2xl font-black text-[#0B3B24]">Administrative Access & Staff Provisioning</h1>
-          <p className="text-xs text-gray-500 mt-1">
+          <h1 className="text-2xl font-black text-terracotta-dark">Administrative Access & Staff Provisioning</h1>
+          <p className="text-xs text-ink-sand mt-1">
             Manage institutional administrative personnel, assign RBAC access roles, and monitor account security states.
           </p>
         </div>
@@ -163,8 +163,8 @@ export default function AdminUsersPage() {
       </div>
 
       {successMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs rounded-xl flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+        <div className="p-3 bg-sand-light border border-border-warm text-forest text-xs rounded-xl flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
@@ -176,11 +176,11 @@ export default function AdminUsersPage() {
       )}
 
       {/* Users Table */}
-      <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+      <Card className="bg-white border border-border-warm rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider text-[10px]">
+              <tr className="bg-cream/65 border-b border-border-warm text-ink-sand font-bold uppercase tracking-wider text-[10px]">
                 <th className="p-3.5">Staff Officer</th>
                 <th className="p-3.5">Institutional Role</th>
                 <th className="p-3.5">Status</th>
@@ -192,38 +192,38 @@ export default function AdminUsersPage() {
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     Loading users...
                   </td>
                 </tr>
               ) : users.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     No users recorded.
                   </td>
                 </tr>
               ) : (
                 users.map((u) => (
-                  <tr key={u.id} className="hover:bg-gray-50/70 transition-colors">
+                  <tr key={u.id} className="hover:bg-cream/65/70 transition-colors">
                     <td className="p-3.5">
-                      <div className="font-bold text-gray-900">{u.fullName}</div>
-                      <div className="text-[11px] text-gray-500 font-mono">@{u.username} • {u.email}</div>
+                      <div className="font-bold text-ink">{u.fullName}</div>
+                      <div className="text-[11px] text-ink-sand font-mono">@{u.username} • {u.email}</div>
                     </td>
                     <td className="p-3.5">
-                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
+                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-sand-light text-forest border border-terracotta/40">
                         {u.role.replace("ROLE_", "")}
                       </span>
                     </td>
                     <td className="p-3.5">{getStatusBadge(u.status)}</td>
-                    <td className="p-3.5 font-mono text-gray-600">{u.failedLoginAttempts}</td>
-                    <td className="p-3.5 text-gray-500 text-[11px]">
+                    <td className="p-3.5 font-mono text-ink-sand">{u.failedLoginAttempts}</td>
+                    <td className="p-3.5 text-ink-sand text-[11px]">
                       {new Date(u.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                     </td>
                     <td className="p-3.5 text-right">
                       {currentUser?.role === "ROLE_SUPER_ADMIN" && u.username !== currentUser.username && (
                         <button
                           onClick={() => handleToggleStatus(u)}
-                          className="px-2.5 py-1 text-[11px] font-bold rounded-lg border border-gray-300 hover:bg-gray-100 text-gray-700 transition-colors"
+                          className="px-2.5 py-1 text-[11px] font-bold rounded-lg border border-border-warm hover:bg-sand-light text-forest transition-colors"
                         >
                           {u.status === "ACTIVE" ? "Suspend Account" : "Activate Account"}
                         </button>
@@ -240,12 +240,12 @@ export default function AdminUsersPage() {
       {/* Provisioning Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-gray-200">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-border-warm">
             <div className="flex items-center justify-between border-b pb-4 mb-4">
-              <h2 className="text-lg font-black text-[#0B3B24]">Provision New Staff Account</h2>
+              <h2 className="text-lg font-black text-terracotta-dark">Provision New Staff Account</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+                className="p-1.5 rounded-lg text-ink-secondary hover:text-forest hover:bg-sand-light"
               >
                 <X className="w-5 h-5" />
               </button>

@@ -190,10 +190,10 @@ export default function AdminScholarshipsPage() {
   return (
     <div className="space-y-6">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-warm pb-4">
         <div>
-          <h1 className="text-2xl font-black text-[#0B3B24]">Scholarship Scrutiny & Approval Workbench</h1>
-          <p className="text-xs text-gray-500 mt-1">
+          <h1 className="text-2xl font-black text-terracotta-dark">Scholarship Scrutiny & Approval Workbench</h1>
+          <p className="text-xs text-ink-sand mt-1">
             Review student means certificates, verify college institutional demand, and execute direct bursar disbursals.
           </p>
         </div>
@@ -209,28 +209,28 @@ export default function AdminScholarshipsPage() {
       )}
 
       {/* Filter and Search Bar */}
-      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+      <Card className="p-4 bg-white border border-border-warm rounded-xl shadow-sm">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Search</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">Search</label>
             <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+              <Search className="w-4 h-4 absolute left-3 top-3 text-ink-secondary" />
               <input
                 type="text"
                 placeholder="Name, Ref ID, Roll, College..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full pl-9 pr-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Status Filter</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">Status Filter</label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
             >
               {STATUS_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -241,11 +241,11 @@ export default function AdminScholarshipsPage() {
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">District Filter</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">District Filter</label>
             <select
               value={districtFilter}
               onChange={(e) => setDistrictFilter(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
             >
               <option value="">All Odisha Districts</option>
               {ODISHA_DISTRICTS.map((d) => (
@@ -259,11 +259,11 @@ export default function AdminScholarshipsPage() {
       </Card>
 
       {/* Table Container */}
-      <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+      <Card className="bg-white border border-border-warm rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider text-[10px]">
+              <tr className="bg-cream/65 border-b border-border-warm text-ink-sand font-bold uppercase tracking-wider text-[10px]">
                 <th className="p-3.5">Ref Number</th>
                 <th className="p-3.5">Applicant</th>
                 <th className="p-3.5">Course & College</th>
@@ -276,35 +276,35 @@ export default function AdminScholarshipsPage() {
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
                 <tr>
-                  <td colSpan={7} className="p-8 text-center text-gray-400">
+                  <td colSpan={7} className="p-8 text-center text-ink-secondary">
                     Loading scholarship records from database...
                   </td>
                 </tr>
               ) : filteredList.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="p-8 text-center text-gray-400">
+                  <td colSpan={7} className="p-8 text-center text-ink-secondary">
                     No scholarship applications match the selected criteria.
                   </td>
                 </tr>
               ) : (
                 filteredList.map((app) => (
-                  <tr key={app.id} className="hover:bg-gray-50/70 transition-colors">
-                    <td className="p-3.5 font-mono font-bold text-[#0B3B24]">{app.applicationNumber}</td>
+                  <tr key={app.id} className="hover:bg-cream/65/70 transition-colors">
+                    <td className="p-3.5 font-mono font-bold text-terracotta-dark">{app.applicationNumber}</td>
                     <td className="p-3.5">
-                      <div className="font-semibold text-gray-900">{app.fullName}</div>
-                      <div className="text-[11px] text-gray-500">{app.phone}</div>
+                      <div className="font-semibold text-ink">{app.fullName}</div>
+                      <div className="text-[11px] text-ink-sand">{app.phone}</div>
                     </td>
                     <td className="p-3.5 max-w-[200px]">
-                      <div className="font-medium text-gray-900 truncate">{app.courseName}</div>
-                      <div className="text-[11px] text-gray-500 truncate">{app.institutionName}</div>
+                      <div className="font-medium text-ink truncate">{app.courseName}</div>
+                      <div className="text-[11px] text-ink-sand truncate">{app.institutionName}</div>
                     </td>
-                    <td className="p-3.5 text-gray-700">{app.district}</td>
-                    <td className="p-3.5 font-bold text-gray-900">₹{Number(app.tuitionFeeDemanded).toLocaleString("en-IN")}</td>
+                    <td className="p-3.5 text-forest">{app.district}</td>
+                    <td className="p-3.5 font-bold text-ink">₹{Number(app.tuitionFeeDemanded).toLocaleString("en-IN")}</td>
                     <td className="p-3.5">{getStatusBadge(app.status)}</td>
                     <td className="p-3.5 text-right">
                       <button
                         onClick={() => openAppDetails(app)}
-                        className="px-2.5 py-1.5 rounded-lg border border-emerald-700/30 text-[#0B3B24] hover:bg-emerald-50 font-bold transition-all"
+                        className="px-2.5 py-1.5 rounded-lg border border-forest/30 text-forest hover:bg-sand-light font-bold transition-all"
                       >
                         Inspect
                       </button>
@@ -320,18 +320,18 @@ export default function AdminScholarshipsPage() {
       {/* Detail & Status Progression Modal */}
       {selectedApp && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200">
+          <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-border-warm">
             {/* Modal Header */}
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-5 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-white border-b border-border-warm p-5 flex items-center justify-between z-10">
               <div>
-                <span className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-widest block">
+                <span className="text-[10px] font-mono font-bold text-ink-sand uppercase tracking-widest block">
                   Reference: {selectedApp.applicationNumber}
                 </span>
-                <h2 className="text-xl font-black text-[#0B3B24]">{selectedApp.fullName}</h2>
+                <h2 className="text-xl font-black text-terracotta-dark">{selectedApp.fullName}</h2>
               </div>
               <button
                 onClick={() => setSelectedApp(null)}
-                className="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+                className="p-2 rounded-lg text-ink-secondary hover:text-forest hover:bg-sand-light"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -340,57 +340,57 @@ export default function AdminScholarshipsPage() {
             {/* Modal Body */}
             <div className="p-6 space-y-6 text-xs">
               {/* Profile Details Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-cream/65 p-4 rounded-xl border border-border-warm">
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Student Particulars</span>
-                  <p className="mt-1 font-semibold text-gray-900">
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Student Particulars</span>
+                  <p className="mt-1 font-semibold text-ink">
                     Aadhaar: **** **** {selectedApp.aadhaarLastFour} • DOB: {selectedApp.dateOfBirth}
                   </p>
-                  <p className="text-gray-600">{selectedApp.gender} • {selectedApp.category}</p>
-                  <p className="text-gray-600">{selectedApp.phone} • {selectedApp.email}</p>
-                  <p className="text-gray-600 mt-1">{selectedApp.permanentAddress}, {selectedApp.district} ({selectedApp.pinCode})</p>
+                  <p className="text-ink-sand">{selectedApp.gender} • {selectedApp.category}</p>
+                  <p className="text-ink-sand">{selectedApp.phone} • {selectedApp.email}</p>
+                  <p className="text-ink-sand mt-1">{selectedApp.permanentAddress}, {selectedApp.district} ({selectedApp.pinCode})</p>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">College & Disbursal Demand</span>
-                  <p className="mt-1 font-semibold text-gray-900">{selectedApp.courseName} ({selectedApp.currentYearSemester})</p>
-                  <p className="text-gray-600">{selectedApp.institutionName} ({selectedApp.institutionDistrict})</p>
-                  <p className="text-gray-600">Roll/Reg: {selectedApp.rollOrRegistrationNumber}</p>
-                  <p className="text-emerald-700 font-bold mt-1">
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">College & Disbursal Demand</span>
+                  <p className="mt-1 font-semibold text-ink">{selectedApp.courseName} ({selectedApp.currentYearSemester})</p>
+                  <p className="text-ink-sand">{selectedApp.institutionName} ({selectedApp.institutionDistrict})</p>
+                  <p className="text-ink-sand">Roll/Reg: {selectedApp.rollOrRegistrationNumber}</p>
+                  <p className="text-forest font-bold mt-1">
                     Tuition Fee Demanded: ₹{Number(selectedApp.tuitionFeeDemanded).toLocaleString("en-IN")}
                   </p>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Income & Tehsil Scrutiny</span>
-                  <p className="mt-1 font-semibold text-gray-900">
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Income & Tehsil Scrutiny</span>
+                  <p className="mt-1 font-semibold text-ink">
                     Income: ₹{Number(selectedApp.annualFamilyIncome).toLocaleString("en-IN")}/yr
                   </p>
-                  <p className="text-gray-600">Certificate No: {selectedApp.tahasildarCertNumber}</p>
-                  <p className="text-gray-600">Issue Date: {selectedApp.tahasildarCertIssueDate}</p>
+                  <p className="text-ink-sand">Certificate No: {selectedApp.tahasildarCertNumber}</p>
+                  <p className="text-ink-sand">Issue Date: {selectedApp.tahasildarCertIssueDate}</p>
                 </div>
                 <div>
-                  <span className="font-bold text-gray-500 uppercase tracking-wider block">Direct College Institutional Bank</span>
-                  <p className="mt-1 font-semibold text-gray-900">{selectedApp.collegeBankName}</p>
-                  <p className="text-gray-600">A/C: {selectedApp.collegeBankAccountNumber}</p>
-                  <p className="text-gray-600">IFSC: {selectedApp.collegeBankIfsc}</p>
-                  <p className="text-gray-600">Account Title: {selectedApp.collegeAccountHolderName}</p>
+                  <span className="font-bold text-ink-sand uppercase tracking-wider block">Direct College Institutional Bank</span>
+                  <p className="mt-1 font-semibold text-ink">{selectedApp.collegeBankName}</p>
+                  <p className="text-ink-sand">A/C: {selectedApp.collegeBankAccountNumber}</p>
+                  <p className="text-ink-sand">IFSC: {selectedApp.collegeBankIfsc}</p>
+                  <p className="text-ink-sand">Account Title: {selectedApp.collegeAccountHolderName}</p>
                 </div>
               </div>
 
               {/* Uploaded Documents Vault */}
               <div>
-                <span className="font-bold text-[#0B3B24] uppercase tracking-wider block mb-2">
+                <span className="font-bold text-terracotta-dark uppercase tracking-wider block mb-2">
                   Document Vault Cryptographic Fingerprints ({selectedApp.documents?.length || 0})
                 </span>
                 <div className="space-y-2">
                   {selectedApp.documents?.map((doc) => (
-                    <div key={doc.id} className="p-3 rounded-xl bg-gray-50 border border-gray-200 flex flex-col gap-1">
-                      <div className="flex items-center justify-between font-semibold text-gray-900">
+                    <div key={doc.id} className="p-3 rounded-xl bg-cream/65 border border-border-warm flex flex-col gap-1">
+                      <div className="flex items-center justify-between font-semibold text-ink">
                         <span className="flex items-center gap-1.5">
-                          <FileCheck2 className="w-4 h-4 text-emerald-600" /> {doc.documentType} ({doc.fileName})
+                          <FileCheck2 className="w-4 h-4 text-terracotta-dark" /> {doc.documentType} ({doc.fileName})
                         </span>
-                        <span className="text-[10px] text-gray-500">{(doc.fileSizeBytes / 1024).toFixed(1)} KB</span>
+                        <span className="text-[10px] text-ink-sand">{(doc.fileSizeBytes / 1024).toFixed(1)} KB</span>
                       </div>
-                      <div className="font-mono text-[10px] text-gray-500 break-all bg-white p-1.5 rounded border border-gray-200">
+                      <div className="font-mono text-[10px] text-ink-sand break-all bg-white p-1.5 rounded border border-border-warm">
                         SHA-256: {doc.sha256Hash}
                       </div>
                     </div>
@@ -399,20 +399,20 @@ export default function AdminScholarshipsPage() {
               </div>
 
               {/* Status Progression Form */}
-              <form onSubmit={handleStatusUpdate} className="pt-4 border-t border-gray-200 space-y-4">
-                <span className="font-bold text-[#0B3B24] uppercase tracking-wider block">
+              <form onSubmit={handleStatusUpdate} className="pt-4 border-t border-border-warm space-y-4">
+                <span className="font-bold text-terracotta-dark uppercase tracking-wider block">
                   Executive Status Progression
                 </span>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-bold text-forest uppercase tracking-wider mb-1">
                       Target Status
                     </label>
                     <select
                       value={targetStatus}
                       onChange={(e) => setTargetStatus(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-2 border border-border-warm rounded-lg text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-terracotta"
                     >
                       <option value="SUBMITTED">SUBMITTED</option>
                       <option value="UNDER_SCRUTINY">UNDER_SCRUTINY</option>
@@ -426,7 +426,7 @@ export default function AdminScholarshipsPage() {
 
                   {targetStatus === "DISBURSED" && (
                     <div>
-                      <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-forest uppercase tracking-wider mb-1">
                         RTGS / NEFT Disbursal Reference
                       </label>
                       <input
@@ -435,14 +435,14 @@ export default function AdminScholarshipsPage() {
                         required
                         value={disbursalRef}
                         onChange={(e) => setDisbursalRef(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full px-3 py-2 border border-border-warm rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-terracotta"
                       />
                     </div>
                   )}
 
                   {targetStatus === "ACTION_REQUIRED" && (
                     <div className="sm:col-span-2">
-                      <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-forest uppercase tracking-wider mb-1">
                         Required Action Note for Applicant
                       </label>
                       <textarea
@@ -451,14 +451,14 @@ export default function AdminScholarshipsPage() {
                         placeholder="e.g. Please re-upload a clear copy of your Tehsil Income Certificate."
                         value={actionNote}
                         onChange={(e) => setActionNote(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full px-3 py-2 border border-border-warm rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-terracotta"
                       />
                     </div>
                   )}
 
                   {targetStatus === "REJECTED" && (
                     <div className="sm:col-span-2">
-                      <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                      <label className="block text-[11px] font-bold text-forest uppercase tracking-wider mb-1">
                         Rejection Finding / Ground
                       </label>
                       <textarea
@@ -467,7 +467,7 @@ export default function AdminScholarshipsPage() {
                         placeholder="e.g. Annual household income exceeds statutory threshold."
                         value={rejectionReason}
                         onChange={(e) => setRejectionReason(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full px-3 py-2 border border-border-warm rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-terracotta"
                       />
                     </div>
                   )}

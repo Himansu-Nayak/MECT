@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/scholarships/track",
   },
   openGraph: {
-    title: "Track Application Lifecycle | MAHAVIR TRUST",
+    title: "Track Application Lifecycle | MECT",
     description:
       "Real-time 5-stage tracking of educational scholarship applications with transparent institutional audit logging.",
     url: "https://mect.org.in/scholarships/track",

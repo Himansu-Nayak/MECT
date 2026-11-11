@@ -37,26 +37,26 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest-deep flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {/* Crest & Title */}
         <div className="text-center">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto mb-4 shadow-inner">
-            <Shield className="w-8 h-8 text-amber-400" />
+          <div className="w-16 h-16 rounded-2xl bg-terracotta/10 border border-terracotta/30 text-sand flex items-center justify-center mx-auto mb-4 shadow-inner">
+            <Shield className="w-8 h-8 text-sand" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            MAHAVIR TRUST SECRETARIAT
+            MECT SECRETARIAT
           </h2>
-          <p className="mt-2 text-xs font-semibold text-emerald-400/80 uppercase tracking-widest">
+          <p className="mt-2 text-xs font-semibold text-sand/80 uppercase tracking-widest">
             Institutional Administrative Console
           </p>
         </div>
 
         {/* Login Form Box */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
+        <div className="bg-forest border border-sand/25 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-cream uppercase tracking-wider mb-1.5">
                 Staff Username
               </label>
               <input
@@ -65,12 +65,12 @@ export default function AdminLoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Institutional username"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-forest-deep border border-sand/30 text-white placeholder-cream/55 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-cream uppercase tracking-wider mb-1.5">
                 Staff Password
               </label>
               <input
@@ -79,7 +79,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-forest-deep border border-sand/30 text-white placeholder-cream/55 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent transition-all"
               />
             </div>
 
@@ -94,7 +94,7 @@ export default function AdminLoginPage() {
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 text-sm rounded-xl shadow-lg shadow-emerald-950"
+              className="w-full bg-terracotta hover:bg-terracotta text-white font-bold py-3 text-sm rounded-xl shadow-lg shadow-forest-deep"
               disabled={isLoading}
             >
               {isLoading ? "Authenticating..." : "Sign In to Secretariat"}
@@ -103,9 +103,9 @@ export default function AdminLoginPage() {
           </form>
 
           {/* Security Banner */}
-          <div className="mt-6 pt-5 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">
-            <div className="flex items-center gap-1.5 text-slate-300 font-semibold">
-              <Lock className="w-3.5 h-3.5 text-amber-400" /> Authorized Personnel Only
+          <div className="mt-6 pt-5 border-t border-sand/25 text-[11px] text-cream/85 space-y-1">
+            <div className="flex items-center gap-1.5 text-cream font-semibold">
+              <Lock className="w-3.5 h-3.5 text-sand" /> Authorized Personnel Only
             </div>
             <p>
               All authentication attempts, IP addresses, and state modifications are cryptographically audited in
@@ -118,9 +118,9 @@ export default function AdminLoginPage() {
         <div className="text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1 text-xs text-cream/85 hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Return to MAHAVIR TRUST Public Website
+            <ArrowLeft className="w-3.5 h-3.5" /> Return to MECT Public Website
           </Link>
         </div>
       </div>

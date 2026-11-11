@@ -23,13 +23,13 @@ export interface NavItem {
 
 export const TRUST_CONFIG = {
   // Official Institutional Identity
-  name: "MAHAVIR TRUST",
+  name: "Mahaveer Educational & Charitable Trust",
   legalName: "Mahaveer Educational & Charitable Trust",
   acronym: "MECT",
   motto: "Knowledge, Compassion & Self-Reliance Across Odisha",
-  tagline: "Empowering Futures Through Education, Rural Skilling & Fiduciary Philanthropy",
+  tagline: "Strengthening Communities Through Education, Livelihoods & Essential Support",
   subtext:
-    "An irrevocable registered public charitable trust established in 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
+    "A registered public charitable trust established in 2013, working across education, women's livelihoods, safe-water access, food and nutrition relief, and community welfare in Odisha.",
   foundedYear: "2013",
   establishedDate: "27th July 2013",
   registrationDate: "30th July 2013",
@@ -59,12 +59,9 @@ export const TRUST_CONFIG = {
   // Governance & Leadership
   governance: {
     managingTrustee: "Er. Japabandhu Kampa",
-    managingTrusteeTitle: "Settler Founder & Permanent Managing Trustee",
+    managingTrusteeTitle: "Settler Founder & Chairman cum Managing Trustee",
     foundingTrustees: [
       { name: "Er. Japabandhu Kampa", role: "Chairman cum Managing Trustee" },
-      { name: "Yudhisthir Rana", role: "Life Trustee" },
-      { name: "Ramachandra Biswal", role: "Life Trustee" },
-      { name: "Sambit Kumar Dang", role: "Life Trustee" },
     ],
     honoraryClause:
       "All trustees serve in an honorary capacity without salary, fee, or personal remuneration under registered Trust Deed Clause XVI.",
@@ -81,7 +78,7 @@ export const TRUST_CONFIG = {
     generalEmail: "contact@mect.org.in",
     scholarshipEmail: "mect27072013@gmail.com",
     verificationStatus:
-      "Registered Public Charitable Trust (Balangir Sub-Registrar 2013, Doc No. 40311302194) • 12A/80G & MCA CSR-1 Certified.",
+      "Registered Public Charitable Trust (Balangir Sub-Registrar 2013, Doc No. 40311302194) • 12A/80G Certified.",
 
     // Structured Office Details
     registeredOffice: {
@@ -133,144 +130,173 @@ export const TRUST_CONFIG = {
     hours: "Monday – Saturday: 10:00 AM – 5:30 PM IST",
   },
 
-  // Official Domestic Bank Account for 80G Donations
+  // Official Domestic Bank Account & UPI QR — Source: Supplied Cancelled Cheque & Official SBI QR Poster
   bank: {
-    bankName: "Union Bank of India",
-    branch: "Balangir Branch, Odisha",
-    accountName: "Mahaveer Educational & Charitable Trust",
-    accountNumber: "381002010014021",
-    ifsc: "UBIN0538108",
-    micr: "767026002",
-    taxBenefit: "Donations are eligible for 50% deduction under Section 80G of the Income Tax Act, 1961 (URN: AADTM5474FF20241).",
+    bankName: "State Bank of India",
+    branch: "Rajendra College Square, Bolangir, Odisha",
+    accountName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+    accountNumber: "33341302498",
+    ifsc: "SBIN0001701",
+    accountType: "SB Account",
+    upiId: "86971610172@sbi",
+    verifiedQrSrc: "/images/mect-sbi-upi-qr.png",
+    taxBenefit:
+      "Historical approval under legacy Section 80G(5)(vi) covered FY 2023-24 to FY 2025-26 (URN: AADTM5474FF20241). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
   },
 
   // Legal & Compliance Transparency Statement
   legal: {
-    trustStatus: "Registered Irrevocable Public Charitable Trust (Est. 2013)",
+    trustStatus: "Registered Irrevocable Public Charitable Trust",
     registrationNotice:
-      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A/80G certified (URN 12A: AADTM5474FE20231, URN 80G: AADTM5474FF20241). MCA CSR-1 Reg: CSR00081063. NITI Aayog Darpan: OR/2024/0466491.",
+      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A/80G historical records (URN 12A: AADTM5474FE20231, URN 80G: AADTM5474FF20241). NITI Aayog Darpan: OR/2024/0466491.",
     disbursalPolicy:
-      "All educational grants are remitted directly to accredited institutions. Direct donor receipts issued with Section 80G tax certificates.",
+      "All educational grants are remitted directly to accredited institutions under verifiable banking channels.",
   },
 
-  // Master Institutional Navigation
+  // Master Institutional Navigation (Taxonomy Restructured for Multi-Sector Development NGO)
   navigation: [
     {
-      label: "About Us",
+      label: "About",
       href: "/about",
-      description: "Our 12-year heritage, mission, and leadership.",
+      description: "Institutional background, registered charter, leadership, and statutory credentials.",
       children: [
         {
-          label: "Heritage & Mission",
+          label: "About the Trust",
           href: "/about",
-          description: "12+ years of civic service, foundational philosophy, and milestones.",
+          description: "Our 13+ year history, multi-sector mission, leadership, and operational footprint in Odisha.",
         },
         {
-          label: "Board of Trustees",
+          label: "Governance & Board",
           href: "/governance",
-          description: "Permanent Managing Trustee, Life Trustees, and Fiduciary Code.",
+          description: "Registered Trust Deed, managing trustee, and honorary fiduciary code.",
         },
         {
           label: "Statutory Disclosures",
           href: "/statutory-disclosures",
-          description: "12A, 80G, CSR-1, NGO Darpan & Trust Deed certifications.",
+          description: "12A, 80G, NGO Darpan & MoSJE certificates and official filings.",
           badge: "Verified",
         },
       ],
     },
     {
-      label: "Governance",
-      href: "/governance",
-      description: "Trust deed, honorary board charter, and fiduciary oversight.",
-    },
-    {
-      label: "Programmes",
+      label: "Our Work",
       href: "/programmes",
-      description: "Our core initiatives across Odisha.",
+      description: "Grassroots development across education, women's livelihoods, clean water, and nutrition.",
       children: [
         {
-          label: "Remedial Rural Education",
-          href: "/programmes#education",
-          description: "Free tuition and coaching for tribal and underprivileged students in Balangir.",
+          label: "Civic Programmes",
+          href: "/programmes",
+          description: "Education for 200 students, women's vocational training, Jal Seva water kiosks, and Jan Ahar relief.",
         },
         {
-          label: "Women Vocational Tailoring",
-          href: "/programmes#women-empowerment",
-          description: "Livelihood skills and self-help sewing workshops for rural women.",
-        },
-        {
-          label: "Safe Drinking Water (Jal Seva)",
-          href: "/programmes#water",
-          description: "Community drinking water points and summer hydration camps.",
-        },
-        {
-          label: "Jan Ahar Hunger Relief",
-          href: "/programmes#hunger-relief",
-          description: "Food relief for destitute patients and attendants at Balangir Hospital.",
+          label: "Higher Education Scholarships",
+          href: "/scholarships",
+          description: "Merit-cum-means financial aid and direct institution grants for underprivileged youth.",
         },
       ],
     },
     {
-      label: "CSR Partnerships",
-      href: "/csr-partnerships",
-      description: "Corporate Social Responsibility collaborations under Schedule VII (MCA CSR-1: CSR00081063).",
-    },
-    {
-      label: "Impact & Reports",
+      label: "Impact & Accountability",
       href: "/impact",
-      description: "Audited civic metrics, annual reports, and beneficiary milestones.",
+      description: "Audited civic metrics, beneficiary reach, and annual progress reports.",
       children: [
         {
-          label: "Civic Impact Overview",
+          label: "Our Impact",
           href: "/impact",
-          description: "Verified beneficiary metrics, school reach, and community outcomes.",
+          description: "Verified beneficiary metrics, school reach, and grassroots outcomes across Odisha.",
         },
         {
           label: "Annual Reports & Audits",
           href: "/reports",
-          description: "Download verified annual activity summaries and balance sheets.",
+          description: "Audited financial statements, activity summaries, and downloadable annual reports.",
         },
       ],
     },
     {
       label: "Get Involved",
       href: "/volunteer",
-      description: "Join as a volunteer mentor, educator, or civic supporter.",
+      description: "Support our charitable mission, volunteer professional skills, or establish a CSR partnership.",
+      children: [
+        {
+          label: "Donate Now",
+          href: "/donate",
+          description: "Direct bank transfers to State Bank of India and donation receipt verification.",
+          badge: "SBI Verified",
+        },
+        {
+          label: "Donor & Supporter Portal",
+          href: "/portal/login",
+          description: "OTP login, donation history, official PDF receipts, and consent preferences.",
+          badge: "OTP Portal",
+        },
+        {
+          label: "Volunteer & Mentor",
+          href: "/volunteer",
+          description: "Contribute teaching, mentoring, vocational training, or field support.",
+        },
+        {
+          label: "CSR Partnerships",
+          href: "/csr-partnerships",
+          description: "Schedule VII corporate collaborations and CSR registration credentials (CSR00081063).",
+        },
+      ],
     },
     {
-      label: "Contact",
+      label: "Resources & Help",
       href: "/contact",
-      description: "Balangir Registered Office and Bhubaneswar Liaison Secretariat.",
+      description: "Contact our offices, review frequently asked questions, or access accessibility options.",
+      children: [
+        {
+          label: "Contact & Offices",
+          href: "/contact",
+          description: "Balangir registered office, regional project office, and Bhubaneswar liaison desk.",
+        },
+        {
+          label: "Frequently Asked Questions",
+          href: "/faq",
+          description: "Common questions on 80G tax exemptions, scholarship applications, and donations.",
+        },
+        {
+          label: "Accessibility Statement",
+          href: "/accessibility",
+          description: "WCAG 2.2 accessibility commitment, assistive features, and keyboard navigation.",
+        },
+      ],
     },
   ] as NavItem[],
 
   // Core Mission Pillars (Verified from 2021-2024 Audit Records)
   pillars: [
     {
-      title: "Remedial Rural Education",
-      description: "Free scholastic tuition, entrance guidance, and study materials for 350+ underserved rural and tribal students in Balangir.",
+      title: "Education & Learning",
+      description: "Remedial tuition, exam guidance and study materials for underserved rural and tribal students in Balangir.",
       tag: "Shiksha Setu",
     },
     {
-      title: "Women's Vocational Livelihood",
-      description: "Professional tailoring, embroidery, and handicraft training empowering 120+ rural women toward financial self-reliance.",
+      title: "Women Empowerment & Livelihoods",
+      description: "Tailoring, embroidery and vocational training designed to strengthen women's skills and livelihood opportunities.",
       tag: "Swavalamban",
     },
     {
-      title: "Safe Drinking Water & Health",
-      description: "Clean water purification kiosks, summer Jal Seva stations, and community sanitation camps serving 10,000+ citizens.",
+      title: "Safe Water & Sanitation",
+      description: "Jal Seva drinking-water points, summer hydration support and community sanitation activities.",
       tag: "Jal & Arogya",
     },
     {
-      title: "Jan Ahar Destitute Nutrition",
-      description: "Nutritious cooked meals and food relief for hospital attendants, destitute families, and daily wage earners.",
+      title: "Food Security & Nutrition",
+      description: "Jan Ahar food relief and nutritious meals for documented vulnerable groups and hospital attendants.",
       tag: "Annadaan",
+    },
+    {
+      title: "Community Welfare & Rural Relief",
+      description: "Direct community assistance, seasonal essentials, and emergency civic relief across rural Odisha.",
+      tag: "Samaj Kalyan",
     },
   ],
 
   // Quantified Verified Impact Highlights
   impactHighlights: [
-    { figure: "12+", label: "Years of Civic Service", subtext: "Established by registered Trust Deed in 2013" },
+    { figure: "13+", label: "Years of Civic Service", subtext: "Established by registered Trust Deed in 2013" },
     { figure: "350+", label: "Rural Students Supported", subtext: "Free remedial coaching & scholastic books" },
     { figure: "120+", label: "Women Skilled in Tailoring", subtext: "Vocational certificates & livelihood tooling" },
     { figure: "10,000+", label: "Citizens Reached", subtext: "Jal Seva drinking water & emergency relief" },

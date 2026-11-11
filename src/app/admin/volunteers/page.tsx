@@ -139,10 +139,10 @@ export default function AdminVolunteersPage() {
   return (
     <div className="space-y-6">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-warm pb-4">
         <div>
-          <h1 className="text-2xl font-black text-[#0B3B24]">Volunteer Coordination Desk</h1>
-          <p className="text-xs text-gray-500 mt-1">
+          <h1 className="text-2xl font-black text-terracotta-dark">Volunteer Coordination Desk</h1>
+          <p className="text-xs text-ink-sand mt-1">
             Manage student mentors, academic tutors, and intake volunteers across all 30 Odisha districts.
           </p>
         </div>
@@ -152,8 +152,8 @@ export default function AdminVolunteersPage() {
       </div>
 
       {actionMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs rounded-xl flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+        <div className="p-3 bg-sand-light border border-border-warm text-forest text-xs rounded-xl flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0" />
           <span>{actionMessage}</span>
         </div>
       )}
@@ -165,28 +165,28 @@ export default function AdminVolunteersPage() {
       )}
 
       {/* Filter and Search Bar */}
-      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+      <Card className="p-4 bg-white border border-border-warm rounded-xl shadow-sm">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Search</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">Search</label>
             <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+              <Search className="w-4 h-4 absolute left-3 top-3 text-ink-secondary" />
               <input
                 type="text"
                 placeholder="Name, Phone, Email, Role..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full pl-9 pr-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Status Filter</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">Status Filter</label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
             >
               <option value="">All Volunteer Statuses</option>
               {VOLUNTEER_STATUSES.map((opt) => (
@@ -198,11 +198,11 @@ export default function AdminVolunteersPage() {
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">District Filter</label>
+            <label className="block text-[11px] font-bold text-ink-sand uppercase tracking-wider mb-1">District Filter</label>
             <select
               value={districtFilter}
               onChange={(e) => setDistrictFilter(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
             >
               <option value="">All Odisha Districts</option>
               {ODISHA_DISTRICTS.map((d) => (
@@ -216,11 +216,11 @@ export default function AdminVolunteersPage() {
       </Card>
 
       {/* Table Container */}
-      <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+      <Card className="bg-white border border-border-warm rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider text-[10px]">
+              <tr className="bg-cream/65 border-b border-border-warm text-ink-sand font-bold uppercase tracking-wider text-[10px]">
                 <th className="p-3.5">Volunteer</th>
                 <th className="p-3.5">Role Interest</th>
                 <th className="p-3.5">District</th>
@@ -232,26 +232,26 @@ export default function AdminVolunteersPage() {
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     Loading volunteer registry...
                   </td>
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     No volunteer records match the selected filter.
                   </td>
                 </tr>
               ) : (
                 filtered.map((v) => (
-                  <tr key={v.id} className="hover:bg-gray-50/70 transition-colors">
+                  <tr key={v.id} className="hover:bg-cream/65/70 transition-colors">
                     <td className="p-3.5">
-                      <div className="font-semibold text-gray-900">{v.fullName}</div>
-                      <div className="text-[11px] text-gray-500">{v.phone} • {v.email}</div>
+                      <div className="font-semibold text-ink">{v.fullName}</div>
+                      <div className="text-[11px] text-ink-sand">{v.phone} • {v.email}</div>
                     </td>
-                    <td className="p-3.5 font-medium text-gray-800">{v.roleInterest}</td>
-                    <td className="p-3.5 text-gray-700">{v.district || "Unassigned"}</td>
-                    <td className="p-3.5 text-gray-500">
+                    <td className="p-3.5 font-medium text-ink">{v.roleInterest}</td>
+                    <td className="p-3.5 text-forest">{v.district || "Unassigned"}</td>
+                    <td className="p-3.5 text-ink-sand">
                       {new Date(v.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                     </td>
                     <td className="p-3.5">{getStatusBadge(v.verificationStatus)}</td>
@@ -259,7 +259,7 @@ export default function AdminVolunteersPage() {
                       <select
                         value={v.verificationStatus}
                         onChange={(e) => handleStatusChange(v.id, e.target.value)}
-                        className="px-2 py-1 text-[11px] font-semibold border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500 bg-white"
+                        className="px-2 py-1 text-[11px] font-semibold border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta bg-white"
                       >
                         {VOLUNTEER_STATUSES.map((opt) => (
                           <option key={opt.value} value={opt.value}>

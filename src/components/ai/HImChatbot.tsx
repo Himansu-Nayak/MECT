@@ -25,7 +25,7 @@ interface Message {
 
 const STARTER_PROMPTS: Record<LanguageCode, string[]> = {
   en: [
-    "What scholarship schemes does Mahavir Trust offer?",
+    "What scholarship schemes does MECT offer?",
     "How does the 100% Direct-to-College disbursal work?",
     "What are the eligibility criteria for students?",
     "How can I volunteer or mentor students in Odisha?",
@@ -45,7 +45,7 @@ const STARTER_PROMPTS: Record<LanguageCode, string[]> = {
 };
 
 const INITIAL_GREETINGS: Record<LanguageCode, string> = {
-  en: "Hello! I am **HIm**, your Mahavir Trust Intelligent Assistant. I can guide you through our higher education tuition grants, the 100% direct-to-college disbursal standard, eligibility guidelines across all 30 districts of Odisha, and how to volunteer as a mentor. How may I assist you today?",
+  en: "Hello! I am **HIm**, your MECT Intelligent Assistant. I can guide you through our higher education tuition grants, the 100% direct-to-college disbursal standard, eligibility guidelines across all 30 districts of Odisha, and how to volunteer as a mentor. How may I assist you today?",
   or: "ନମସ୍କାର! ମୁଁ **HIm**, ମହାବୀର ଏଡ୍ୟୁକେସନାଲ ଆଣ୍ଡ ଚାରିଟେବୁଲ ଟ୍ରଷ୍ଟ (MECT) ର ଡିଜିଟାଲ୍ ସହାୟକ। ଓଡ଼ିଶାର ୩୦ଟି ଜିଲ୍ଲାର ମେଧାବୀ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ଶିକ୍ଷାବୃତ୍ତି, କଲେଜକୁ ସିଧାସଳଖ ଫିସ୍ ପ୍ରଦାନ ନୀତି ଏବଂ ମେଣ୍ଟରସିପ୍ କାର୍ଯ୍ୟକ୍ରମ ସମ୍ପର୍କରେ ମୁଁ ଆପଣଙ୍କୁ ସହାୟତା କରିପାରିବି। ଆଜି ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିବି?",
   hi: "नमस्ते! मैं **HIm**, महावीर एजुकेशनल एंड चैरिटेबल ट्रस्ट (MECT) का डिजिटल सहायक हूं। मैं ओडिशा के सभी 30 जिलों के छात्रों के लिए उच्च शिक्षा अनुदान, सीधे कॉलेज फीस भुगतान नीति, पात्रता और मेंटरशिप के बारे में आपकी सहायता कर सकता हूं। आज मैं आपकी क्या सहायता कर सकता हूँ?",
 };
@@ -141,20 +141,51 @@ export function HImChatbot() {
   }, [messages, isOpen, scrollToBottom]);
 
   // Focus input on dialog open
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
+
+  // Manage focus and scroll lock when chatbot modal opens/closes
   useEffect(() => {
     if (isOpen) {
+      previousActiveElement.current = document.activeElement as HTMLElement;
       const timer = setTimeout(() => inputRef.current?.focus(), 150);
       return () => clearTimeout(timer);
+    } else if (previousActiveElement.current) {
+      previousActiveElement.current.focus();
+      previousActiveElement.current = null;
     }
   }, [isOpen]);
 
-  // Close on Escape key
+  // Trap focus inside chatbot dialog and handle Escape key
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === "Escape") {
         setIsOpen(false);
+        return;
+      }
+
+      if (e.key === "Tab" && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
@@ -324,7 +355,7 @@ export function HImChatbot() {
             return parts.map((part, pIdx) => {
               if (part.startsWith("**") && part.endsWith("**")) {
                 return (
-                  <strong key={pIdx} className="font-semibold text-[#072617]">
+                  <strong key={pIdx} className="font-semibold text-forest">
                     {part.slice(2, -2)}
                   </strong>
                 );
@@ -336,7 +367,7 @@ export function HImChatbot() {
           if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
             return (
               <div key={idx} className="flex items-start gap-2 pl-1">
-                <span className="text-[#C5A059] font-bold mt-1 text-xs">•</span>
+                <span className="text-terracotta-dark font-bold mt-1 text-xs">•</span>
                 <span className="flex-1">{formatText(trimmed.slice(2))}</span>
               </div>
             );
@@ -346,7 +377,7 @@ export function HImChatbot() {
           if (matchNum) {
             return (
               <div key={idx} className="flex items-start gap-2 pl-1">
-                <span className="text-[#C5A059] font-bold text-xs shrink-0 mt-0.5">
+                <span className="text-terracotta-dark font-bold text-xs shrink-0 mt-0.5">
                   {matchNum[1]}.
                 </span>
                 <span className="flex-1">{formatText(matchNum[2])}</span>
@@ -360,27 +391,42 @@ export function HImChatbot() {
     );
   };
 
+  const [showMobileFab, setShowMobileFab] = useState(false);
+
+  // Reveal floating chatbot button after scrolling slightly past hero on mobile/tablet so zero text or metric is obscured on load
+  useEffect(() => {
+    const onScroll = () => setShowMobileFab(window.scrollY > 180);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       {/* Floating launcher trigger */}
-      <div className="fixed bottom-22 right-5 xl:bottom-6 xl:right-6 z-50 print:hidden">
+      <div
+        className={`fixed bottom-[max(0.875rem,env(safe-area-inset-bottom))] right-3.5 sm:bottom-5 sm:right-5 xl:bottom-6 xl:right-6 z-50 print:hidden transition-opacity duration-200 ${
+          showMobileFab || isOpen ? "flex" : "hidden xl:flex"
+        }`}
+      >
         {!isOpen && (
           <button
+            ref={triggerRef}
             type="button"
             onClick={() => setIsOpen(true)}
-            aria-label="Open HIm — Mahavir Trust AI Assistant"
-            className="group relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-[#072617] via-[#0B3B24] to-[#072617] text-[#E4C88A] border-2 border-[#C5A059] shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059]"
+            aria-haspopup="dialog"
+            aria-expanded={false}
+            aria-label="Open HIm — MECT AI Assistant"
+            className="group relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 xl:w-14 xl:h-14 min-h-[44px] min-w-[44px] rounded-full bg-forest hover:bg-forest-deep text-cream border-2 border-sand shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
           >
-            <span className="absolute inset-0 rounded-full bg-[#C5A059]/20 animate-ping pointer-events-none opacity-40" />
-
             <div className="relative flex items-center justify-center">
-              <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-[#E4C88A] group-hover:rotate-6 transition-transform" />
-              <Sparkles className="w-3 h-3 text-[#C5A059] absolute -top-1 -right-1 animate-pulse" />
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6 xl:w-7 xl:h-7 text-cream group-hover:rotate-6 transition-transform" />
+              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sand absolute -top-1 -right-1" />
             </div>
 
-            <span className="hidden lg:flex absolute right-16 px-3 py-1 bg-[#072617] text-[#E4C88A] border border-[#C5A059]/40 rounded-full text-xs font-semibold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none items-center gap-1.5">
+            <span className="hidden lg:flex absolute right-16 px-3 py-1 bg-forest text-cream border border-sand/40 rounded-full text-xs font-semibold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none items-center gap-1.5">
               <span>Ask HIm</span>
-              <span className="text-[10px] text-white/60 font-mono">(AI)</span>
+              <span className="text-[10px] text-sand font-mono">(AI)</span>
             </span>
           </button>
         )}
@@ -389,29 +435,30 @@ export function HImChatbot() {
       {/* Chat dialog window */}
       {isOpen && (
         <div
+          ref={dialogRef}
           role="dialog"
-          aria-label="HIm — Mahavir Trust Intelligent Assistant"
+          aria-label="HIm — MECT Intelligent Assistant"
           aria-modal="true"
-          className="fixed inset-x-2 bottom-2 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[410px] md:w-[430px] z-50 h-[86vh] sm:h-[620px] max-h-[720px] flex flex-col bg-[#FDFBF7] border-2 border-[#C5A059]/40 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 print:hidden font-sans"
+          className="fixed inset-x-2 bottom-2 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[410px] md:w-[430px] z-50 h-[86vh] sm:h-[620px] max-h-[720px] flex flex-col bg-cream border-2 border-terracotta/50 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 print:hidden font-sans"
         >
           {/* Header */}
-          <header className="bg-gradient-to-r from-[#072617] via-[#0B3B24] to-[#072617] text-white px-4 py-3 border-b border-[#C5A059]/40 flex items-center justify-between shrink-0">
+          <header className="bg-forest text-white px-4 py-3 border-b border-sand/30 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rounded-full bg-[#0B3B24] border border-[#C5A059] flex items-center justify-center text-[#E4C88A] shrink-0 shadow-inner">
+              <div className="relative w-9 h-9 rounded-full bg-terracotta border border-sand flex items-center justify-center text-white shrink-0 shadow-inner">
                 <Bot className="w-5 h-5" />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#072617]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-sand rounded-full border-2 border-forest" />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <h3 className="font-serif font-bold text-base text-[#E4C88A] tracking-wide">
+                  <h3 className="font-serif font-bold text-base text-white tracking-wide">
                     HIm
                   </h3>
-                  <span className="text-[10px] px-1.5 py-0.2 bg-[#C5A059]/20 text-[#E4C88A] rounded-xs font-mono font-medium">
+                  <span className="text-[10px] px-1.5 py-0.2 bg-terracotta text-white rounded-xs font-mono font-medium">
                     MECT AI
                   </span>
                 </div>
-                <p className="text-[11px] text-white/70">
-                  Mahavir Trust Institutional Guide
+                <p className="text-[11px] text-cream/85">
+                  MECT Institutional Guide
                 </p>
               </div>
             </div>
@@ -422,7 +469,7 @@ export function HImChatbot() {
                 onClick={handleReset}
                 title="Clear and restart conversation"
                 aria-label="Restart chat"
-                className="p-1.5 text-white/70 hover:text-[#E4C88A] hover:bg-white/10 rounded-md transition-colors"
+                className="min-h-[44px] min-w-[44px] p-2 text-cream/80 hover:text-white hover:bg-white/10 rounded-md transition-colors flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -432,7 +479,7 @@ export function HImChatbot() {
                 onClick={() => setIsOpen(false)}
                 title="Minimize assistant"
                 aria-label="Close chat window"
-                className="p-1.5 text-white/70 hover:text-[#E4C88A] hover:bg-white/10 rounded-md transition-colors"
+                className="min-h-[44px] min-w-[44px] p-2 text-cream/80 hover:text-white hover:bg-white/10 rounded-md transition-colors flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -440,9 +487,9 @@ export function HImChatbot() {
           </header>
 
           {/* Language selector */}
-          <div className="bg-[#072617]/95 px-4 py-1.5 border-b border-[#C5A059]/20 flex items-center justify-between text-xs text-white/80 shrink-0">
-            <div className="flex items-center gap-1.5 text-[11px] text-white/60">
-              <Globe2 className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="bg-forest-deep px-4 py-1.5 border-b border-sand/20 flex items-center justify-between text-xs text-cream shrink-0">
+            <div className="flex items-center gap-1.5 text-[11px] text-cream/80">
+              <Globe2 className="w-3.5 h-3.5 text-sand" />
               <span>Language:</span>
             </div>
             <div className="flex items-center gap-1">
@@ -459,8 +506,8 @@ export function HImChatbot() {
                   onClick={() => handleLanguageChange(lang.code)}
                   className={`px-2 py-0.5 rounded-xs text-[11px] font-medium transition-colors ${
                     language === lang.code
-                      ? "bg-[#C5A059] text-[#072617] font-semibold"
-                      : "text-white/70 hover:text-white hover:bg-white/10"
+                      ? "bg-sand text-forest-deep font-semibold"
+                      : "text-cream/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {lang.label}
@@ -470,7 +517,7 @@ export function HImChatbot() {
           </div>
 
           {/* Message Thread */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FDFBF7]">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-cream">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -479,7 +526,7 @@ export function HImChatbot() {
                 }`}
               >
                 {msg.role === "assistant" && (
-                  <div className="w-7 h-7 rounded-full bg-[#072617] border border-[#C5A059]/40 flex items-center justify-center text-[#E4C88A] shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-full bg-forest border border-sand/40 flex items-center justify-center text-cream shrink-0 mt-0.5">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
@@ -487,16 +534,16 @@ export function HImChatbot() {
                 <div
                   className={`relative group max-w-[84%] rounded-xl p-3 shadow-xs transition-colors ${
                     msg.role === "user"
-                      ? "bg-[#072617] text-white rounded-br-xs border border-[#0B3B24]"
-                      : "bg-[#F3EFE6] text-[#1C2421] rounded-bl-xs border border-[#C5A059]/30"
+                      ? "bg-terracotta text-white rounded-br-xs border border-terracotta-dark"
+                      : "bg-white text-ink rounded-bl-xs border border-border-warm"
                   }`}
                 >
                   {msg.role === "assistant" ? (
                     msg.content ? (
                       renderFormattedContent(msg.content)
                     ) : (
-                      <div className="flex items-center gap-1.5 py-1 text-xs text-[#072617]/70">
-                        <Sparkles className="w-3.5 h-3.5 text-[#C5A059] animate-spin" />
+                      <div className="flex items-center gap-1.5 py-1 text-xs text-forest/80">
+                        <Sparkles className="w-3.5 h-3.5 text-terracotta animate-spin" />
                         <span>HIm is consulting MECT knowledge...</span>
                       </div>
                     )
@@ -509,8 +556,8 @@ export function HImChatbot() {
                   <div
                     className={`flex items-center justify-between gap-3 mt-1.5 pt-1 text-[10px] ${
                       msg.role === "user"
-                        ? "text-white/50 border-t border-white/10"
-                        : "text-[#072617]/50 border-t border-[#C5A059]/20"
+                        ? "text-white/75 border-t border-white/15"
+                        : "text-ink-secondary border-t border-border-warm"
                     }`}
                   >
                     <span>{msg.timestamp}</span>
@@ -519,11 +566,11 @@ export function HImChatbot() {
                       <button
                         type="button"
                         onClick={() => handleCopy(msg.id, msg.content)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 hover:text-[#072617]"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 hover:text-forest"
                         title="Copy message"
                       >
                         {copiedId === msg.id ? (
-                          <span className="flex items-center gap-1 text-emerald-700 font-semibold">
+                          <span className="flex items-center gap-1 text-forest font-semibold">
                             <Check className="w-3 h-3" /> Copied
                           </span>
                         ) : (
@@ -537,7 +584,7 @@ export function HImChatbot() {
                 </div>
 
                 {msg.role === "user" && (
-                  <div className="w-7 h-7 rounded-full bg-[#0B3B24] border border-[#C5A059]/40 flex items-center justify-center text-[#E4C88A] shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-full bg-forest border border-sand/40 flex items-center justify-center text-cream shrink-0 mt-0.5">
                     <User className="w-4 h-4" />
                   </div>
                 )}
@@ -547,7 +594,7 @@ export function HImChatbot() {
             {/* Quick Starter Prompts */}
             {messages.length === 1 && (
               <div className="pt-2 pb-1 space-y-2 animate-in fade-in duration-300">
-                <span className="text-[11px] font-semibold text-[#072617]/70 uppercase tracking-wider block">
+                <span className="text-[11px] font-semibold text-forest uppercase tracking-wider block">
                   Suggested Queries:
                 </span>
                 <div className="grid grid-cols-1 gap-1.5">
@@ -556,10 +603,10 @@ export function HImChatbot() {
                       key={pIdx}
                       type="button"
                       onClick={() => handleSendMessage(prompt)}
-                      className="text-left text-xs px-3 py-2 bg-white hover:bg-[#F3EFE6] text-[#072617] rounded-lg border border-[#C5A059]/30 hover:border-[#C5A059] transition-all shadow-2xs flex items-center justify-between group"
+                      className="text-left text-xs px-3 py-2 bg-white hover:bg-sand-light text-forest rounded-lg border border-border-warm hover:border-terracotta transition-all shadow-2xs flex items-center justify-between group"
                     >
                       <span className="line-clamp-1">{prompt}</span>
-                      <Sparkles className="w-3 h-3 text-[#C5A059] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <Sparkles className="w-3 h-3 text-terracotta shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
                   ))}
                 </div>
@@ -570,7 +617,7 @@ export function HImChatbot() {
           </div>
 
           {/* Input Form */}
-          <footer className="p-3 bg-white border-t border-[#C5A059]/30 shrink-0 space-y-1.5">
+          <footer className="p-3 bg-white border-t border-border-warm shrink-0 space-y-1.5">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -597,7 +644,7 @@ export function HImChatbot() {
                       ? "हिन्दी, अंग्रेजी या ओडिया में प्रश्न पूछें..."
                       : "Ask about scholarships, direct disbursals, eligibility..."
                   }
-                  className="w-full resize-none max-h-24 px-3 py-2 text-xs sm:text-sm bg-[#FDFBF7] text-[#1C2421] placeholder:text-[#1C2421]/45 border border-[#C5A059]/40 rounded-xl focus:outline-none focus:border-[#072617] focus:ring-1 focus:ring-[#072617]"
+                  className="w-full resize-none max-h-24 px-3 py-2 text-xs sm:text-sm bg-cream/55 text-ink placeholder:text-ink-secondary border border-border-warm rounded-xl focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta"
                 />
               </div>
 
@@ -605,10 +652,10 @@ export function HImChatbot() {
                 type="submit"
                 disabled={isLoading || !input.trim()}
                 aria-label="Send message"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#072617] hover:bg-[#0B3B24] disabled:opacity-40 disabled:cursor-not-allowed text-[#E4C88A] border border-[#C5A059] flex items-center justify-center shrink-0 shadow-sm transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-[#C5A059]"
+                className="w-10 h-10 sm:w-11 sm:h-11 min-h-[44px] min-w-[44px] rounded-xl bg-terracotta hover:bg-terracotta-dark disabled:opacity-40 disabled:cursor-not-allowed text-white border border-terracotta-dark flex items-center justify-center shrink-0 shadow-sm transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-terracotta"
               >
                 {isLoading ? (
-                  <Sparkles className="w-4 h-4 text-[#C5A059] animate-spin" />
+                  <Sparkles className="w-4 h-4 text-sand animate-spin" />
                 ) : (
                   <Send className="w-4 h-4" />
                 )}
@@ -616,11 +663,11 @@ export function HImChatbot() {
             </form>
 
             {/* Footer Micro-text */}
-            <div className="flex items-center justify-between text-[10px] text-[#072617]/60 px-1 pt-0.5">
+            <div className="flex items-center justify-between text-[10px] text-ink-secondary px-1 pt-0.5">
               <span>MECT AI • 100% Direct Disbursal Standard</span>
               <a
                 href="/governance"
-                className="underline hover:text-[#072617] flex items-center gap-0.5"
+                className="underline hover:text-forest flex items-center gap-0.5"
                 target="_blank"
                 rel="noopener noreferrer"
               >

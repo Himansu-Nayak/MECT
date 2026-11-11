@@ -13,30 +13,19 @@ import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
+import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
+import { SmartDonationCheckout } from "@/components/sections/SmartDonationCheckout";
 import {
-  Heart,
   ShieldCheck,
   CheckCircle2,
   Receipt,
-  Landmark,
   Calculator,
-  Download,
   AlertCircle,
-  Building2,
   Send,
   ArrowRight,
-  ExternalLink,
-  GraduationCap,
-  Scissors,
-  Droplets,
-  Utensils,
-  Copy,
-  Check,
 } from "lucide-react";
 
 export default function DonatePage() {
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-
   // 80G Tax Calculator State
   const [donationAmount, setDonationAmount] = useState<number>(10000);
   const [taxBracket, setTaxBracket] = useState<number>(0.3); // 30% default
@@ -58,14 +47,8 @@ export default function DonatePage() {
     pin: "767001",
     amount: "10000",
     utrNumber: "",
-    programme: "Higher Education Tuition Grants",
+    programme: "Free Education for 200 Students",
   });
-
-  const handleCopy = (text: string, field: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => setCopiedField(null), 2500);
-  };
 
   const handleReceiptSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,25 +100,25 @@ export default function DonatePage() {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full pb-floating-clearance">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Section 80G Certified • 50% Tax Deduction"
-        title="Transform Lives in Odisha Through 80G Tax-Deductible Philanthropy"
-        description="Every contribution to Mahaveer Educational & Charitable Trust directly funds college tuition grants, rural women's tailoring livelihood labs, safe drinking water kiosks, and hospital food relief under an audited zero-cash policy."
-        breadcrumbs={[{ label: "Donate (80G Tax Benefit)" }]}
+        badge="State Bank of India • Direct Institutional Remittance"
+        title="SUPPORT OUR MISSION — DONATE NOW"
+        description="Every contribution to Mahaveer Educational & Charitable Trust directly supports Free Education for 200 Students, college tuition relief, rural women's vocational training, safe drinking water, and community nutrition in Odisha."
+        breadcrumbs={[{ label: "Donate" }]}
         actions={
           <>
             <Link href="#bank-details">
               <Button variant="gold" size="sm">
-                <span>Direct Bank RTGS/NEFT</span>
+                <span>SBI Bank Details</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
             <Link href="#calculator">
               <Button variant="dark-outline" size="sm">
-                <Calculator className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" />
-                <span>80G Tax Calculator</span>
+                <Calculator className="w-3.5 h-3.5 mr-1 text-cream" />
+                <span>Tax Deduction Estimator</span>
               </Button>
             </Link>
           </>
@@ -143,39 +126,46 @@ export default function DonatePage() {
       />
 
       {/* 2. Top Statutory Reassurance Ribbon */}
-      <section className="py-6 bg-[#0A192F] text-white border-b border-[#C5A059]/30">
+      <section className="py-5 bg-sand-light text-ink border-b border-border-warm">
         <Container size="default">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
-              <span><strong>80G Order URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</span>
-              <span className="text-white/40">•</span>
-              <span><strong>DIN:</strong> {TRUST_CONFIG.statutory.section80GDin}</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <ShieldCheck className="w-4 h-4 text-forest" />
+              <span><strong className="text-forest">80G Historical URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</span>
+              <span className="text-forest" aria-hidden="true">•</span>
+              <span><strong className="text-forest">DIN:</strong> {TRUST_CONFIG.statutory.section80GDin}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Receipt className="w-4 h-4 text-[#C5A059]" />
-              <span><strong>Trust PAN:</strong> {TRUST_CONFIG.statutory.pan}</span>
-              <span className="text-white/40">•</span>
-              <span className="text-[#86EFAC] font-semibold">Valid AY 2024-25 to AY 2026-27</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Receipt className="w-4 h-4 text-forest" />
+              <span><strong className="text-forest">Trust PAN:</strong> {TRUST_CONFIG.statutory.pan}</span>
+              <span className="text-forest" aria-hidden="true">•</span>
+              <span className="text-forest font-semibold">Covered AY 2024-25 to AY 2026-27</span>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. Interactive Section 80G Tax Deduction Calculator */}
-      <section id="calculator" className="py-20 md:py-28 bg-[#FDFBF7]">
-        <Container size="default" className="space-y-12">
+      {/* 2B. Smart Unified Donation Checkout & Dynamic UPI QR */}
+      <section id="smart-donate" className="py-16 md:py-20 bg-cream border-b border-border-warm">
+        <Container size="default">
+          <SmartDonationCheckout />
+        </Container>
+      </section>
+
+      {/* 3. Interactive Section 133 / 80G Tax Deduction Calculator */}
+      <section id="calculator" className="py-20 md:py-24 bg-cream">
+        <Container size="default" className="space-y-10">
           <SectionHeader
-            badge="Interactive Tax Estimator"
-            title="Section 80G Tax Deduction Calculator"
-            subtitle="Calculate your eligible income tax deduction under Section 80G of the Indian Income Tax Act, 1961."
+            badge="Interactive Tax Estimator (Illustrative Model)"
+            title="Section 133 / Section 80G Tax Deduction Estimator"
+            subtitle="Illustrative calculation for donors opting for the Old Tax Regime. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed."
             align="center"
           />
 
-          <div className="max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-xs border-2 border-[#C5A059]/40 shadow-xl space-y-8">
+          <div className="max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-xs border-2 border-sand/40 shadow-xl space-y-8">
             {/* Quick Donation Selector Buttons */}
             <div>
-              <span className="text-xs uppercase font-bold text-[#7A5E24] tracking-wider block mb-3 font-sans">
+              <span className="text-xs uppercase font-bold text-forest tracking-wider block mb-3 font-sans">
                 Select or Enter Contribution Amount (₹ INR):
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
@@ -186,8 +176,8 @@ export default function DonatePage() {
                     onClick={() => setDonationAmount(amt)}
                     className={`py-3 px-4 rounded-xs text-sm font-bold border transition-all ${
                       donationAmount === amt
-                        ? "bg-[#0A192F] text-[#E4C88A] border-[#C5A059] shadow-sm"
-                        : "bg-[#F4EFE6] text-[#0A192F] border-[#0A192F]/10 hover:border-[#C5A059]"
+                        ? "bg-forest text-white border-sand shadow-sm"
+                        : "bg-sand-light text-forest border-border-warm hover:border-sand"
                     }`}
                   >
                     ₹{amt.toLocaleString("en-IN")}
@@ -199,32 +189,34 @@ export default function DonatePage() {
             {/* Custom Amount & Tax Slab Selectors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="text-xs font-bold text-[#0A192F] block mb-1 font-sans">
+                <label htmlFor="donate-custom-amount" className="text-xs font-bold text-terracotta-dark block mb-1 font-sans">
                   Custom Donation Amount (₹):
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-[#7A5E24]">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-forest">
                     ₹
                   </span>
                   <input
+                    id="donate-custom-amount"
                     type="number"
                     min="500"
                     step="500"
                     value={donationAmount}
                     onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
-                    className="w-full pl-8 pr-4 py-2.5 rounded-xs border border-[#0A192F]/20 text-base font-bold text-[#0A192F] focus:border-[#C5A059] focus:outline-none"
+                    className="w-full pl-8 pr-4 py-2.5 rounded-xs border border-terracotta/20 text-base font-bold text-terracotta-dark focus:border-sand focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#0A192F] block mb-1 font-sans">
+                <label htmlFor="donate-tax-slab" className="text-xs font-bold text-terracotta-dark block mb-1 font-sans">
                   Your Applicable Income Tax Slab:
                 </label>
                 <select
+                  id="donate-tax-slab"
                   value={taxBracket}
                   onChange={(e) => setTaxBracket(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 rounded-xs border border-[#0A192F]/20 text-sm font-semibold text-[#0A192F] focus:border-[#C5A059] focus:outline-none bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xs border border-terracotta/20 text-sm font-semibold text-terracotta-dark focus:border-sand focus:outline-none bg-white"
                 >
                   <option value={0.3}>30% Slab (Highest Income Bracket)</option>
                   <option value={0.2}>20% Slab (Middle Income Bracket)</option>
@@ -235,30 +227,30 @@ export default function DonatePage() {
             </div>
 
             {/* Live Calculation Output Card */}
-            <div className="p-6 rounded-xs bg-[#0A192F] text-white border border-[#C5A059]/40 space-y-4">
+            <div className="p-6 rounded-xs bg-forest text-white border border-sand/45 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                <div className="p-4 bg-white/5 rounded-xs border border-white/10 space-y-1">
-                  <span className="text-[11px] text-white/60 font-sans block">Your Contribution</span>
+                <div className="p-4 bg-white/5 rounded-xs border border-white/15 space-y-1">
+                  <span className="text-[11px] text-white/85 font-sans block">Your Contribution</span>
                   <span className="text-2xl font-serif font-bold text-white">
                     ₹{donationAmount.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="p-4 bg-white/5 rounded-xs border border-white/10 space-y-1">
-                  <span className="text-[11px] text-[#C5A059] font-sans block">80G Eligible Deduction (50%)</span>
-                  <span className="text-2xl font-serif font-bold text-[#E4C88A]">
+                <div className="p-4 bg-white/5 rounded-xs border border-white/15 space-y-1">
+                  <span className="text-[11px] text-cream font-sans block">80G Eligible Deduction (50%)</span>
+                  <span className="text-2xl font-serif font-bold text-cream">
                     ₹{eligibleDeduction.toLocaleString("en-IN")}
                   </span>
                 </div>
-                <div className="p-4 bg-[#15803D]/20 rounded-xs border border-[#15803D]/40 space-y-1">
-                  <span className="text-[11px] text-[#86EFAC] font-sans block">Estimated Tax Saved</span>
-                  <span className="text-2xl font-serif font-bold text-[#86EFAC]">
+                <div className="p-4 bg-terracotta rounded-xs border border-sand/55 space-y-1">
+                  <span className="text-[11px] text-white font-sans block">Estimated Tax Saved</span>
+                  <span className="text-2xl font-serif font-bold text-white">
                     ₹{Math.round(estimatedTaxSaved).toLocaleString("en-IN")}*
                   </span>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-white/10 flex items-start gap-3 text-xs text-white/80 font-sans">
-                <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
+              <div className="pt-2 border-t border-white/15 flex items-start gap-3 text-xs text-white/90 font-sans">
+                <CheckCircle2 className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                 <div>
                   <strong>Tangible Ground Impact:</strong> {getImpactDescription(donationAmount)}
                 </div>
@@ -268,105 +260,24 @@ export default function DonatePage() {
         </Container>
       </section>
 
-      {/* 4. Direct Bank Remittance (RTGS / NEFT / IMPS) */}
-      <section id="bank-details" className="py-20 bg-[#F4EFE6] border-y border-[#0A192F]/10">
-        <Container size="default" className="space-y-12">
+      {/* 4. Direct Bank Remittance — STATE BANK OF INDIA */}
+      <section id="bank-details" className="py-20 bg-white border-y border-border-warm scroll-mt-16">
+        <Container size="default" className="space-y-10">
           <SectionHeader
             badge="Direct Domestic Giving"
-            title="Official Bank Account Details for 80G Donations"
-            subtitle="Remit contributions directly via NEFT, RTGS, IMPS, or Net Banking straight into MECT's verified institutional account."
+            title="SUPPORT OUR MISSION — DONATE NOW"
+            subtitle="Remit contributions directly via SBI UPI QR (86971610172@sbi), NEFT, RTGS, or IMPS into MECT's verified State Bank of India account."
             align="center"
           />
 
-          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-[#0A192F]/10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center border border-[#C5A059]/40">
-                  <Landmark className="w-5 h-5 text-[#E4C88A]" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-bold text-[#0A192F]">
-                    {TRUST_CONFIG.bank.bankName}
-                  </h3>
-                  <p className="text-xs text-[#7A5E24] font-medium font-sans">
-                    {TRUST_CONFIG.bank.branch}
-                  </p>
-                </div>
-              </div>
-              <Badge variant="forest" size="sm">
-                Active Account
-              </Badge>
-            </div>
-
-            <div className="space-y-3.5 font-sans text-xs">
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
-                <div>
-                  <span className="text-[10px] text-[#4A5568] uppercase font-bold block">Beneficiary Name</span>
-                  <span className="text-sm font-bold text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.accountName}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleCopy(TRUST_CONFIG.bank.accountName, "name")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
-                  title="Copy Name"
-                >
-                  {copiedField === "name" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
-                <div>
-                  <span className="text-[10px] text-[#4A5568] uppercase font-bold block">Account Number</span>
-                  <span className="text-base font-mono font-bold text-[#7A5E24] block mt-0.5">{TRUST_CONFIG.bank.accountNumber}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleCopy(TRUST_CONFIG.bank.accountNumber, "acc")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
-                  title="Copy Account Number"
-                >
-                  {copiedField === "acc" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
-                <div>
-                  <span className="text-[10px] text-[#4A5568] uppercase font-bold block">IFSC Code (RTGS / NEFT)</span>
-                  <span className="text-base font-mono font-bold text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.ifsc}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleCopy(TRUST_CONFIG.bank.ifsc, "ifsc")}
-                  className="p-1.5 text-[#0A192F] hover:bg-[#0A192F]/10 rounded-xs transition-colors"
-                  title="Copy IFSC Code"
-                >
-                  {copiedField === "ifsc" ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between p-3 bg-[#FDFBF7] rounded-xs border border-[#0A192F]/10">
-                <div>
-                  <span className="text-[10px] text-[#4A5568] uppercase font-bold block">MICR Code</span>
-                  <span className="text-sm font-mono text-[#0A192F] block mt-0.5">{TRUST_CONFIG.bank.micr}</span>
-                </div>
-                <span className="text-[10px] text-[#15803D] font-bold">Domestic Transfer</span>
-              </div>
-            </div>
-
-            <div className="p-4 bg-[#0A192F] text-white rounded-xs space-y-2 text-xs font-sans">
-              <span className="text-[11px] font-bold text-[#E4C88A] uppercase tracking-wider block">
-                Next Step: Claim Your 80G Tax Receipt Below
-              </span>
-              <p className="text-white/80 leading-relaxed">
-                After completing your bank transfer, please fill out the confirmation form below with your transaction UTR number and PAN so we can issue your official stamped receipt and file Form 10BD with the Income Tax Department.
-              </p>
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <SbiDonationSection />
           </div>
         </Container>
       </section>
 
       {/* 5. Donor 80G Receipt Claim & KYC Capture Form */}
-      <section id="receipt-claim" className="py-20 md:py-28 bg-[#FDFBF7] scroll-mt-16">
+      <section id="receipt-claim" className="py-20 md:py-28 bg-cream scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Tax Compliance & Receipt Desk"
@@ -376,15 +287,15 @@ export default function DonatePage() {
             className="mb-12"
           />
 
-          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl">
+          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-sand/40 shadow-xl">
             {receiptSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
-                <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
+              <div className="p-8 bg-terracotta text-white rounded-xs space-y-4 text-center animate-in fade-in">
+                <CheckCircle2 className="w-12 h-12 text-cream mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   80G Receipt Request Successfully Logged
                 </h3>
                 {receiptRefId && (
-                  <p className="text-sm font-mono text-[#E4C88A] bg-black/25 py-1.5 px-4 rounded inline-block">
+                  <p className="text-sm font-mono text-cream bg-black/25 py-1.5 px-4 rounded inline-block">
                     Secretariat Acknowledgment Ref: #{receiptRefId}
                   </p>
                 )}
@@ -501,6 +412,7 @@ export default function DonatePage() {
                   value={donorData.programme}
                   onChange={(e) => setDonorData({ ...donorData, programme: e.target.value })}
                   options={[
+                    { value: "Free Education for 200 Students", label: "Free Education for 200 Students" },
                     { value: "Higher Education Tuition Grants", label: "Higher Education Tuition Grants (Odisha)" },
                     { value: "Remedial Rural Education (Balangir)", label: "Remedial Rural Education (Balangir)" },
                     { value: "Women Vocational Tailoring & Livelihood", label: "Women's Vocational Tailoring & Livelihood" },
@@ -512,7 +424,7 @@ export default function DonatePage() {
 
                 <Textarea
                   id="donor-address"
-                  label="Complete Postal Address with PIN (Mandatory for Form 10BD/10BE Filing) *"
+                  label="Complete Postal Address with PIN (For Donation Receipt & Form 113/114 Records) *"
                   required
                   rows={2}
                   value={donorData.address}
@@ -527,11 +439,11 @@ export default function DonatePage() {
                   className="w-full justify-center shadow-md font-bold"
                 >
                   <Send className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
-                  <span>Transmit 80G Receipt Confirmation</span>
+                  <span>Transmit Donation Confirmation</span>
                 </Button>
 
-                <p className="text-[11px] text-[#4A5568] text-center italic font-sans">
-                  Regulated under CBDT Form 10AC Section 80G Order URN: {TRUST_CONFIG.statutory.section80GUrn}.
+                <p className="text-[11px] text-ink-sand text-center italic font-sans">
+                  Bank Account: {TRUST_CONFIG.bank.bankName} ({TRUST_CONFIG.bank.accountNumber}, IFSC: {TRUST_CONFIG.bank.ifsc}) • Historical 80G Order URN: {TRUST_CONFIG.statutory.section80GUrn}.
                 </p>
               </form>
             )}
