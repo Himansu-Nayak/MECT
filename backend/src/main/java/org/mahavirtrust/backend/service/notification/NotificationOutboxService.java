@@ -213,13 +213,16 @@ public class NotificationOutboxService {
     }
 
     @Transactional
-    public void recordWebhookDeliveryUpdate(String channel, String provider, String providerMessageId, String deliveryStatus, String rawPayload, String webhookEventId) {
+    public boolean recordWebhookDeliveryUpdate(String channel, String provider, String providerMessageId, String deliveryStatus, String rawPayload, String webhookEventId) {
+        if (webhookEventId != null && !webhookEventId.isBlank() && deliveryLogRepository.existsByWebhookEventId(webhookEventId)) {
+            return false;
+        }
         if (providerMessageId == null || providerMessageId.isBlank()) {
-            return;
+            return false;
         }
         NotificationOutbox outbox = outboxRepository.findByProviderMessageId(providerMessageId).orElse(null);
         if (outbox == null) {
-            return;
+            return false;
         }
         NotificationDeliveryLog logEntry = new NotificationDeliveryLog();
         logEntry.setOutbox(outbox);
@@ -230,6 +233,12 @@ public class NotificationOutboxService {
         logEntry.setProviderResponse(rawPayload);
         logEntry.setWebhookEventId(webhookEventId);
         deliveryLogRepository.save(logEntry);
+
+        if ("email.bounced".equalsIgnoreCase(deliveryStatus) || "email.complained".equalsIgnoreCase(deliveryStatus)) {
+            outbox.setLastError(truncate("RESEND_WEBHOOK_" + deliveryStatus.toUpperCase()));
+            outboxRepository.save(outbox);
+        }
+        return true;
     }
 
     private void recordAttempt(NotificationOutbox outbox, String provider, ProviderDispatchResult result) {
