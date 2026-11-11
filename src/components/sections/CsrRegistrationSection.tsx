@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal, GalleryReveal } from "@/components/ui/MotionPrimitives";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
   FileCheck,
@@ -215,16 +215,16 @@ export function CsrRegistrationSection() {
                 </div>
 
                 {/* Clean Bordered Document Thumbnail */}
-                <div className="relative bg-white rounded-xs overflow-hidden border border-sand/50 aspect-[3/4] max-h-[340px] w-full mx-auto">
+                <GalleryReveal className="relative bg-white rounded-xs overflow-hidden border border-sand/50 aspect-[3/4] max-h-[340px] w-full mx-auto group">
                   <Image
                     src="/documents/mect-csr1-certificate.png"
                     alt="Official CSR Registration Approval Letter CSR00081063 for Mahaveer Educational & Charitable Trust"
                     fill
-                    loading="eager"
-                    className="object-contain p-1"
+                    loading="lazy"
+                    className="object-contain p-1 transition-transform duration-300 group-hover:scale-[1.015]"
                     sizes="(max-width: 1024px) 100vw, 400px"
                   />
-                </div>
+                </GalleryReveal>
 
                 <p className="text-[11px] text-cream/90 leading-relaxed font-sans">
                   Extracted from official trust records (Ref: SRN-N14617237, Dated 09-11-2024, ROC-DELHI, PAN: {TRUST_CONFIG.statutory.pan}).

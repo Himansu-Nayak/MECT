@@ -4,7 +4,13 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  CountUpStat,
+  MOTION_STAGGER,
+} from "@/components/ui/MotionPrimitives";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import {
   GraduationCap,
@@ -29,10 +35,10 @@ export function FreeEducationSection() {
       aria-labelledby="free-education-heading"
     >
       <Container size="default">
-        <Reveal className="space-y-10">
+        <div className="space-y-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Narrative & Programme Structure */}
-            <div className="lg:col-span-7 space-y-6">
+            <Reveal direction="left" className="lg:col-span-7 space-y-6">
               <div className="space-y-3.5">
                 <Badge variant="contrast-gold" size="md">
                   {data.badge}
@@ -43,7 +49,7 @@ export function FreeEducationSection() {
                 >
                   FREE EDUCATION FOR{" "}
                   <span className="inline-flex items-baseline px-3 py-0.5 rounded-xs bg-terracotta text-white border border-terracotta-dark tabular-nums shadow-xs">
-                    {data.targetCount}
+                    <CountUpStat value={String(data.targetCount)} />
                   </span>{" "}
                   STUDENTS
                 </h2>
@@ -60,30 +66,31 @@ export function FreeEducationSection() {
               </p>
 
               {/* Support Details Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+              <StaggerGroup staggerDelay={MOTION_STAGGER.cards} className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
                 {data.supportPillars.map((pillar, idx) => {
                   const Icon = PILLAR_ICONS[idx] || BookOpen;
                   return (
-                    <Card
-                      key={pillar.title}
-                      variant="default"
-                      className="p-4 sm:p-5 bg-white border-border-warm border-t-2 border-t-terracotta shadow-xs space-y-2.5 hover:border-terracotta transition-colors flex flex-col justify-between"
-                    >
-                      <div className="space-y-2.5">
-                        <div className="w-9 h-9 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
-                          <Icon className="w-4 h-4" aria-hidden="true" />
+                    <StaggerItem key={pillar.title}>
+                      <Card
+                        variant="default"
+                        className="h-full p-4 sm:p-5 bg-white border-border-warm border-t-2 border-t-terracotta shadow-xs space-y-2.5 hover:border-terracotta transition-colors flex flex-col justify-between"
+                      >
+                        <div className="space-y-2.5">
+                          <div className="w-9 h-9 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0">
+                            <Icon className="w-4 h-4" aria-hidden="true" />
+                          </div>
+                          <h3 className="font-serif text-sm sm:text-base font-bold text-forest leading-snug">
+                            {pillar.title}
+                          </h3>
+                          <p className="text-xs text-ink-secondary leading-relaxed font-sans">
+                            {pillar.detail}
+                          </p>
                         </div>
-                        <h3 className="font-serif text-sm sm:text-base font-bold text-forest leading-snug">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-xs text-ink-secondary leading-relaxed font-sans">
-                          {pillar.detail}
-                        </p>
-                      </div>
-                    </Card>
+                      </Card>
+                    </StaggerItem>
                   );
                 })}
-              </div>
+              </StaggerGroup>
 
               {/* Verified Beneficiary & Fundraising Context */}
               <div className="p-5 rounded-xs bg-sand-light border-l-4 border-terracotta space-y-2.5 text-xs font-sans">
@@ -118,10 +125,10 @@ export function FreeEducationSection() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </Reveal>
 
             {/* Right Highlight Visual Panel (Non-Photographic Safeguarding-Compliant Composition) */}
-            <div className="lg:col-span-5">
+            <Reveal direction="right" delay={0.08} className="lg:col-span-5">
               <div className="bg-forest text-cream rounded-xs border-2 border-sand/50 shadow-2xl p-6 sm:p-8 space-y-6 relative overflow-hidden">
                 <div className="relative flex items-center justify-between border-b border-white/15 pb-4">
                   <span className="text-[11px] font-bold uppercase tracking-widest text-white font-sans">
@@ -167,11 +174,12 @@ export function FreeEducationSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Structured 6-Point Programme Framework (Operational & Accountability Details) */}
-          <div className="bg-white rounded-xs border border-border-warm p-6 sm:p-8 shadow-xs space-y-5">
+          <Reveal direction="fade" tone="slow">
+            <div className="bg-white rounded-xs border border-border-warm p-6 sm:p-8 shadow-xs space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border-warm pb-3.5">
               <h3 className="font-serif text-lg sm:text-xl font-bold text-forest">
                 Programme Structure, Eligibility &amp; Accountability Specifications
@@ -195,8 +203,9 @@ export function FreeEducationSection() {
                 </div>
               ))}
             </div>
-          </div>
-        </Reveal>
+            </div>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

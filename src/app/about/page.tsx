@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { DeveloperCreditCard } from "@/components/DeveloperCreditCard";
+import { Reveal } from "@/components/ui/MotionPrimitives";
 import { ABOUT_CONTENT } from "@/lib/about-content";
 import {
   ShieldCheck,
@@ -144,7 +145,7 @@ export default function AboutPage() {
           <Container size="default">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Narrative Left */}
-              <div className="lg:col-span-7 space-y-6">
+              <Reveal direction="left" className="lg:col-span-7 space-y-6">
                 <Badge variant="forest">{narrative.badge}</Badge>
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-terracotta-dark leading-tight tracking-tight">
                   {narrative.title}
@@ -176,10 +177,10 @@ export default function AboutPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Reveal>
 
               {/* Vision & Mission Cards Right (Section 3 Integration) */}
-              <div className="lg:col-span-5 bg-sand-light p-8 sm:p-10 rounded-xs border border-border-warm shadow-sm space-y-6">
+              <Reveal direction="right" delay={0.08} className="lg:col-span-5 bg-sand-light p-8 sm:p-10 rounded-xs border border-border-warm shadow-sm space-y-6">
                 <div className="space-y-1">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-forest block">
                     {visionMission.badge}
@@ -220,7 +221,7 @@ export default function AboutPage() {
                     </p>
                   </Card>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </Container>
         </section>

@@ -130,7 +130,7 @@ export const TRUST_CONFIG = {
     hours: "Monday – Saturday: 10:00 AM – 5:30 PM IST",
   },
 
-  // Official Domestic Bank Account — Source: Supplied Cancelled Cheque
+  // Official Domestic Bank Account & UPI QR — Source: Supplied Cancelled Cheque & Official SBI QR Poster
   bank: {
     bankName: "State Bank of India",
     branch: "Rajendra College Square, Bolangir, Odisha",
@@ -138,6 +138,8 @@ export const TRUST_CONFIG = {
     accountNumber: "33341302498",
     ifsc: "SBIN0001701",
     accountType: "SB Account",
+    upiId: "86971610172@sbi",
+    verifiedQrSrc: "/images/mect-sbi-upi-qr.png",
     taxBenefit:
       "Historical approval under legacy Section 80G(5)(vi) covered FY 2023-24 to FY 2025-26 (URN: AADTM5474FF20241). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
   },

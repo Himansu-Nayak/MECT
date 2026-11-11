@@ -10,7 +10,14 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
-import { HeroEntrance, Reveal } from "@/components/ui/MotionPrimitives";
+import {
+  HeroEntrance,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  CountUpStat,
+  MOTION_STAGGER,
+} from "@/components/ui/MotionPrimitives";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
 import { SmileFundraisingSection } from "@/components/sections/SmileFundraisingSection";
@@ -387,68 +394,66 @@ export default function HomePage() {
       {/* =========================================================================
           INSTITUTIONAL INTRODUCTION + VISION & MISSION EDITORIAL OVERVIEW
           ========================================================================= */}
-      <section className="py-16 md:py-22 bg-white border-b border-border-warm" aria-label="Organisational Introduction, Vision and Mission">
+      <section className="py-16 md:py-24 bg-white border-b border-border-warm" aria-label="Organisational Introduction, Vision and Mission">
         <Container size="default">
-          <Reveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-              {/* Editorial Narrative Column */}
-              <div className="lg:col-span-7 space-y-5">
-                <span className="text-xs font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
-                  {HOMEPAGE_CONTENT.aboutIntro.eyebrow}
-                </span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight leading-[1.15]">
-                  {HOMEPAGE_CONTENT.aboutIntro.heading}
-                </h2>
-                <p className="text-sm sm:text-base text-ink leading-relaxed font-sans max-w-2xl">
-                  {HOMEPAGE_CONTENT.aboutIntro.summary}
-                </p>
-                <ul className="space-y-2.5 pt-1 text-xs sm:text-sm text-ink font-sans">
-                  {HOMEPAGE_CONTENT.aboutIntro.principles.map((p) => (
-                    <li key={p} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold font-sans">
-                  <Link
-                    href="/about"
-                    className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
-                  >
-                    <span>Read About MECT</span>
-                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </Link>
-                  <Link
-                    href="/governance"
-                    className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
-                  >
-                    <span>Governance &amp; Trust Deed</span>
-                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </Link>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            {/* Editorial Narrative Column */}
+            <Reveal direction="left" className="lg:col-span-7 space-y-5">
+              <span className="text-xs font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
+                {HOMEPAGE_CONTENT.aboutIntro.eyebrow}
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight leading-[1.15]">
+                {HOMEPAGE_CONTENT.aboutIntro.heading}
+              </h2>
+              <p className="text-sm sm:text-base text-ink leading-relaxed font-sans max-w-2xl">
+                {HOMEPAGE_CONTENT.aboutIntro.summary}
+              </p>
+              <ul className="space-y-2.5 pt-1 text-xs sm:text-sm text-ink font-sans">
+                {HOMEPAGE_CONTENT.aboutIntro.principles.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold font-sans">
+                <Link
+                  href="/about"
+                  className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
+                >
+                  <span>Read About MECT</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="/governance"
+                  className="text-forest hover:text-terracotta-dark inline-flex items-center gap-1 underline decoration-terracotta underline-offset-4"
+                >
+                  <span>Governance &amp; Trust Deed</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </Link>
               </div>
+            </Reveal>
 
-              {/* Asymmetric Vision & Mission Editorial Stack */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="p-6 rounded-xs bg-cream/65 border-l-4 border-terracotta border-y border-r border-border-warm space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
-                    Institutional Vision
-                  </span>
-                  <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
-                    {HOMEPAGE_CONTENT.aboutIntro.vision}
-                  </p>
-                </div>
-                <div className="p-6 rounded-xs bg-sage/55 border-l-4 border-forest border-y border-r border-border-warm space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-forest font-sans block">
-                    Operational Mission
-                  </span>
-                  <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
-                    {HOMEPAGE_CONTENT.aboutIntro.mission}
-                  </p>
-                </div>
+            {/* Asymmetric Vision & Mission Editorial Stack */}
+            <Reveal direction="right" delay={0.08} className="lg:col-span-5 space-y-4">
+              <div className="p-6 rounded-xs bg-cream/65 border-l-4 border-terracotta border-y border-r border-border-warm space-y-2">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-terracotta-dark font-sans block">
+                  Institutional Vision
+                </span>
+                <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
+                  {HOMEPAGE_CONTENT.aboutIntro.vision}
+                </p>
               </div>
-            </div>
-          </Reveal>
+              <div className="p-6 rounded-xs bg-sage/55 border-l-4 border-forest border-y border-r border-border-warm space-y-2">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-forest font-sans block">
+                  Operational Mission
+                </span>
+                <p className="text-xs sm:text-sm text-ink leading-relaxed font-sans">
+                  {HOMEPAGE_CONTENT.aboutIntro.mission}
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
@@ -474,94 +479,97 @@ export default function HomePage() {
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerGroup staggerDelay={MOTION_STAGGER.cards} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {HOMEPAGE_CONTENT.pillars.map((pillar) => {
               const IconComponent = PILLAR_ICON_MAP[pillar.number] || Award;
               return (
-                <Card
-                  key={pillar.number}
-                  variant="elevated"
-                  className="flex flex-col justify-between p-7 border-border-warm hover:border-terracotta transition-all duration-300 bg-cream/35 shadow-xs group"
-                >
-                  <div className="space-y-4">
-                    {/* Top Bar with Number, Icon and Tag */}
-                    <div className="flex items-center justify-between pb-3 border-b border-border-warm">
-                      <div className="flex items-center gap-3">
-                        <span className="font-serif text-2xl font-bold text-forest">
-                          {pillar.number}
-                        </span>
-                        <div className="w-9 h-9 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs border border-terracotta-dark group-hover:scale-105 transition-transform">
-                          <IconComponent className="w-4 h-4 text-white" aria-hidden="true" />
+                <StaggerItem key={pillar.number}>
+                  <Card
+                    variant="elevated"
+                    className="h-full flex flex-col justify-between p-7 border-border-warm hover:border-terracotta transition-all duration-300 bg-cream/35 shadow-xs group"
+                  >
+                    <div className="space-y-4">
+                      {/* Top Bar with Number, Icon and Tag */}
+                      <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                        <div className="flex items-center gap-3">
+                          <span className="font-serif text-2xl font-bold text-forest">
+                            {pillar.number}
+                          </span>
+                          <div className="w-9 h-9 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs border border-terracotta-dark group-hover:scale-105 transition-transform">
+                            <IconComponent className="w-4 h-4 text-white" aria-hidden="true" />
+                          </div>
                         </div>
+                        <Badge variant="contrast-gold" size="sm">
+                          {pillar.tag}
+                        </Badge>
                       </div>
-                      <Badge variant="contrast-gold" size="sm">
-                        {pillar.tag}
-                      </Badge>
+
+                      {/* Title and Description */}
+                      <h3 className="font-serif text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
+                        {pillar.description}
+                      </p>
                     </div>
 
-                    {/* Title and Description */}
-                    <h3 className="font-serif text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
-                      {pillar.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom Strip with Stat Badge & Link */}
-                  <div className="pt-4 mt-4 border-t border-border-warm flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-forest bg-sage/75 px-2 py-0.5 rounded-xs border border-border-warm">
-                      {pillar.stat || "Verified Activity"}
-                    </span>
-                    <Link
-                      href={pillar.href || "/programmes"}
-                      className="text-xs font-bold text-terracotta-dark hover:text-forest inline-flex items-center gap-1 group/link"
-                    >
-                      <span>Explore Pillar</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
-                    </Link>
-                  </div>
-                </Card>
+                    {/* Bottom Strip with Stat Badge & Link */}
+                    <div className="pt-4 mt-4 border-t border-border-warm flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-forest bg-sage/75 px-2 py-0.5 rounded-xs border border-border-warm">
+                        {pillar.stat || "Verified Activity"}
+                      </span>
+                      <Link
+                        href={pillar.href || "/programmes"}
+                        className="text-xs font-bold text-terracotta-dark hover:text-forest inline-flex items-center gap-1 group/link"
+                      >
+                        <span>Explore Pillar</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
+                      </Link>
+                    </div>
+                  </Card>
+                </StaggerItem>
               );
             })}
 
             {/* Sixth Complementary Card: Higher Education Disbursals */}
-            <Card
-              variant="dark"
-              className="flex flex-col justify-between p-7 bg-forest border-sand/35 shadow-md"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-white/15">
-                  <span className="font-serif text-2xl font-bold text-sand">
-                    +
-                  </span>
-                  <Badge variant="gold-dark" size="sm">
-                    Statewide Grants
-                  </Badge>
+            <StaggerItem>
+              <Card
+                variant="dark"
+                className="h-full flex flex-col justify-between p-7 bg-forest border-sand/35 shadow-md hover:-translate-y-0.5 hover:border-sand transition-all duration-300"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-white/15">
+                    <span className="font-serif text-2xl font-bold text-sand">
+                      +
+                    </span>
+                    <Badge variant="gold-dark" size="sm">
+                      Statewide Grants
+                    </Badge>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-white">
+                    Higher Education Scholarships &amp; Grants
+                  </h3>
+                  <p className="text-xs sm:text-sm text-cream/90 leading-relaxed font-sans">
+                    Direct RTGS bank disbursals to accredited colleges across Odisha covering verified tuition fees for economically underprivileged merit scholars.
+                  </p>
+                  <div className="p-3 rounded-xs bg-forest-deep border border-sand/35 text-xs text-white space-y-1">
+                    <div className="font-semibold text-sand">Direct Institutional Electronic Remittance</div>
+                    <p className="text-[11px] text-cream/95">Educational grant assistance is remitted directly to accredited institutional bank accounts via electronic transfer (NEFT/RTGS).</p>
+                  </div>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-white">
-                  Higher Education Scholarships &amp; Grants
-                </h3>
-                <p className="text-xs sm:text-sm text-cream/90 leading-relaxed font-sans">
-                  Direct RTGS bank disbursals to accredited colleges across Odisha covering verified tuition fees for economically underprivileged merit scholars.
-                </p>
-                <div className="p-3 rounded-xs bg-forest-deep border border-sand/35 text-xs text-white space-y-1">
-                  <div className="font-semibold text-sand">Direct Institutional Electronic Remittance</div>
-                  <p className="text-[11px] text-cream/95">Educational grant assistance is remitted directly to accredited institutional bank accounts via electronic transfer (NEFT/RTGS).</p>
-                </div>
-              </div>
 
-              <div className="pt-4 mt-4 border-t border-white/15 flex items-center justify-between">
-                <Link
-                  href="/scholarships"
-                  className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-bold bg-sand text-forest-deep hover:bg-cream rounded-xs transition-colors"
-                >
-                  <span>Scholarship Portal</span>
-                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                </Link>
-              </div>
-            </Card>
-          </div>
+                <div className="pt-4 mt-4 border-t border-white/15 flex items-center justify-between">
+                  <Link
+                    href="/scholarships"
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-bold bg-sand text-forest-deep hover:bg-cream rounded-xs transition-colors"
+                  >
+                    <span>Scholarship Portal</span>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </Card>
+            </StaggerItem>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -580,25 +588,25 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">13+</span>
+              <CountUpStat value="13+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Years of Service</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Established by Registered Trust Deed in 2013 (Balangir)</p>
             </div>
             <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">350+</span>
+              <CountUpStat value="350+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Students Coached</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Annual free remedial tuition &amp; books in Balangir &amp; Puintala</p>
             </div>
             <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">120+</span>
+              <CountUpStat value="120+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Women Skilled</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Certified vocational tailoring &amp; livelihood machine tooling</p>
             </div>
             <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tabular-nums block">10,000+</span>
+              <CountUpStat value="10,000+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Citizens Served</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Jal Seva drinking water kiosks during 45°C summer heatwaves</p>
@@ -633,34 +641,33 @@ export default function HomePage() {
             align="center"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerGroup staggerDelay={MOTION_STAGGER.steps} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {HOMEPAGE_CONTENT.howWeWork?.map((item, idx) => {
               const IconComp = HOW_WE_WORK_ICON_MAP[item.iconName] || Users;
               return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-xs bg-white border border-border-warm space-y-3 flex flex-col justify-between shadow-xs"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="font-serif text-2xl font-bold text-forest">
-                        {item.step}
-                      </span>
-                      <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center">
-                        <IconComp className="w-4 h-4 text-white" aria-hidden="true" />
+                <StaggerItem key={idx} direction="left">
+                  <div className="h-full p-6 rounded-xs bg-white border border-border-warm space-y-3 flex flex-col justify-between shadow-xs hover:border-terracotta/50 transition-colors">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="font-serif text-2xl font-bold text-forest">
+                          {item.step}
+                        </span>
+                        <div className="w-8 h-8 rounded-xs bg-terracotta text-white flex items-center justify-center">
+                          <IconComp className="w-4 h-4 text-white" aria-hidden="true" />
+                        </div>
                       </div>
+                      <h3 className="font-serif text-lg font-bold text-forest">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-ink-secondary leading-relaxed font-sans">
+                        {item.description}
+                      </p>
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-forest">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-ink-secondary leading-relaxed font-sans">
-                      {item.description}
-                    </p>
                   </div>
-                </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -711,7 +718,8 @@ export default function HomePage() {
           ========================================================================= */}
       <section className="py-20 bg-cream border-b border-border-warm">
         <Container size="default">
-          <div className="bg-terracotta text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-terracotta-dark shadow-xl">
+          <Reveal direction="fade" tone="slow">
+            <div className="bg-terracotta text-white rounded-xs p-8 sm:p-12 relative overflow-hidden border border-terracotta-dark shadow-xl">
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-forest border border-sand/35 text-[10px] uppercase font-bold tracking-widest text-cream">
@@ -766,7 +774,8 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -841,7 +850,7 @@ export default function HomePage() {
               </p>
 
               {volSubmitted ? (
-                <div className="p-6 bg-forest text-white rounded-xs space-y-3 text-center animate-in fade-in">
+                <Reveal direction="fade" tone="fast" className="p-6 bg-forest text-white rounded-xs space-y-3 text-center">
                   <CheckCircle2 className="w-10 h-10 text-sand mx-auto" aria-hidden="true" />
                   <h4 className="font-serif text-xl font-bold">
                     Registration Recorded
@@ -873,7 +882,7 @@ export default function HomePage() {
                   >
                     Register Another Volunteer
                   </Button>
-                </div>
+                </Reveal>
               ) : (
                 <form onSubmit={handleVolSubmit} className="space-y-4">
                   {volError && (
@@ -1286,7 +1295,7 @@ export default function HomePage() {
 
           <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-border-warm shadow-lg">
             {inquirySubmitted ? (
-              <div className="p-8 bg-forest text-white rounded-xs space-y-4 text-center animate-in fade-in">
+              <Reveal direction="fade" tone="fast" className="p-8 bg-forest text-white rounded-xs space-y-4 text-center">
                 <CheckCircle2 className="w-12 h-12 text-sand mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   Inquiry Successfully Registered
@@ -1317,7 +1326,7 @@ export default function HomePage() {
                 >
                   Submit Another Inquiry
                 </Button>
-              </div>
+              </Reveal>
             ) : (
               <form onSubmit={handleInquirySubmit} className="space-y-4">
                 {inquiryError && (

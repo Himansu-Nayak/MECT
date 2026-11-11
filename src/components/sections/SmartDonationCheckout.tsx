@@ -203,7 +203,7 @@ export function SmartDonationCheckout() {
             <Link href="#bank-details" className="shrink-0">
               <Button variant="secondary" size="sm">
                 <Landmark className="w-3.5 h-3.5 mr-1.5" />
-                <span>Use SBI Bank Transfer</span>
+                <span>Use SBI QR / Bank Transfer</span>
                 <ArrowDown className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
@@ -508,7 +508,7 @@ export function SmartDonationCheckout() {
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-border-warm">
               <span className="text-xs text-ink-sand">
-                Or transfer directly via NEFT/IMPS/RTGS to SBI Account <strong>33341302498</strong> below.
+                Or contribute directly via SBI UPI QR (<strong>86971610172@sbi</strong>) or NEFT/IMPS/RTGS to SBI Account <strong>33341302498</strong> below.
               </span>
               <Button type="submit" variant="primary" size="lg" disabled={isInitiating}>
                 <QrCode className="w-4 h-4 mr-2" />
