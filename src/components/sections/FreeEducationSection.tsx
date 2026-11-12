@@ -12,6 +12,7 @@ import {
   MOTION_STAGGER,
 } from "@/components/ui/MotionPrimitives";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
+import { FreeEducationDotGrid } from "@/components/motion/FreeEducationDotGrid";
 import {
   GraduationCap,
   BookOpen,
@@ -31,7 +32,7 @@ export function FreeEducationSection() {
   return (
     <section
       id="free-education-200"
-      className="py-16 sm:py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-20"
+      className="py-16 sm:py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-32"
       aria-labelledby="free-education-heading"
     >
       <Container size="default">
@@ -176,6 +177,9 @@ export function FreeEducationSection() {
               </div>
             </Reveal>
           </div>
+
+          {/* 20x10 Cohort Dot Grid (Anime.js stagger) */}
+          <FreeEducationDotGrid />
 
           {/* Structured 6-Point Programme Framework (Operational & Accountability Details) */}
           <Reveal direction="fade" tone="slow">

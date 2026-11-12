@@ -35,12 +35,12 @@ Branch: `motion-ui`
 - [x] **M3.7** Stories rail (`carousel-cards` if consented stories exist in `content/stories.ts`, otherwise `empty-state`).
 
 ## PHASE M4 — Programmes: one illustration per pillar (Anime.js)
-- [ ] **M4.1** Education book illustration (`createDrawable`).
-- [ ] **M4.2** Women Empowerment stitch illustration (`createDrawable` / `createMotionPath`).
-- [ ] **M4.3** Safe Water droplet & fill rise (`createMotionPath` + transform scale).
-- [ ] **M4.4** Food Security plate & steam (`stagger`).
-- [ ] **M4.5** Community Welfare house outline (`createTimeline`).
-- [ ] **M4.6** Free Education for 200 dot grid (`20x10` `stagger`, confirmed funded places from `content/funding.ts` or outlined target).
+- [x] **M4.1** Education book illustration (`createDrawable`).
+- [x] **M4.2** Women Empowerment stitch illustration (`createDrawable` / `createMotionPath`).
+- [x] **M4.3** Safe Water droplet & fill rise (`createMotionPath` + transform scale).
+- [x] **M4.4** Food Security plate & steam (`stagger`).
+- [x] **M4.5** Community Welfare house outline (`createTimeline`).
+- [x] **M4.6** Free Education for 200 dot grid (`20x10` `stagger`, confirmed funded places from `content/funding.ts` or outlined target).
 
 ## PHASE M5 — Impact page: Bklit charts and district map
 - [ ] **M5.1** Install needed `@bklit` chart components.

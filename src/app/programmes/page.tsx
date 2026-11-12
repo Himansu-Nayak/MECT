@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/Button";
 import { TRUST_CONFIG } from "@/lib/config";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
 import {
+  PillarIllustration,
+  CommunityWelfareHouseIllustration,
+} from "@/components/motion/PillarIllustrations";
+import {
   GraduationCap,
   Award,
   School,
@@ -249,18 +253,21 @@ export default function ProgrammesPage() {
                   </div>
 
                   {/* Header */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs border border-sand/40">
-                      <Icon className="w-6 h-6 text-cream" />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs border border-sand/40">
+                        <Icon className="w-6 h-6 text-cream" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-terracotta-dark">
+                          {pillar.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-forest font-semibold font-sans mt-1">
+                          {pillar.tagline}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-terracotta-dark">
-                        {pillar.name}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-forest font-semibold font-sans mt-1">
-                        {pillar.tagline}
-                      </p>
-                    </div>
+                    <PillarIllustration id={pillar.id} />
                   </div>
 
                   <p className="text-sm text-ink-sand leading-relaxed font-sans">
@@ -328,6 +335,10 @@ export default function ProgrammesPage() {
             align="center"
             theme="light"
           />
+
+          <div className="flex justify-center">
+            <CommunityWelfareHouseIllustration />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {futureExpansion.map((item, idx) => {
