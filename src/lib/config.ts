@@ -6,6 +6,8 @@
  * Income Tax Form 10AC (12A & 80G), and MCA CSR-1 (CSR00081063).
  */
 
+import { ORG } from "@content/org";
+
 export interface NavChildItem {
   label: string;
   href: string;
@@ -22,133 +24,118 @@ export interface NavItem {
 }
 
 export const TRUST_CONFIG = {
-  // Official Institutional Identity
-  name: "Mahaveer Educational & Charitable Trust",
-  legalName: "Mahaveer Educational & Charitable Trust",
-  acronym: "MECT",
-  motto: "Knowledge, Compassion & Self-Reliance Across Odisha",
-  tagline: "Strengthening Communities Through Education, Livelihoods & Essential Support",
-  subtext:
-    "A registered public charitable trust established in 2013, working across education, women's livelihoods, safe-water access, food and nutrition relief, and community welfare in Odisha.",
-  foundedYear: "2013",
-  establishedDate: "27th July 2013",
-  registrationDate: "30th July 2013",
+  // Official Institutional Identity (single-sourced from content/org.ts)
+  name: ORG.name,
+  legalName: ORG.legalName,
+  acronym: ORG.shortName,
+  motto: ORG.motto,
+  tagline: ORG.tagline,
+  subtext: ORG.subtext,
+  foundedYear: ORG.foundedYear,
+  establishedDate: ORG.trustDeed.executedDateDisplay,
+  registrationDate: ORG.trustDeed.registeredDateDisplay,
   headquarters: "Balangir & Bhubaneswar, Odisha, India",
   region: "Balangir & Bhubaneswar, Odisha, India",
 
   // Statutory Registrations & Legal Verification Credentials
   statutory: {
-    trustDeedNumber: "Book No. 4, Volume No. 45, Document No. 40311302194",
-    registrationAuthority: "District Sub-Registrar, Balangir, Government of Odisha",
-    pan: "AADTM5474F",
-    panIssueDate: "27/07/2013",
-    mcaCsrNumber: "CSR00081063",
-    mcaCsrApprovalDate: "09-11-2024 (ROC-DELHI, SRN-N14617237)",
-    section12AUrn: "AADTM5474FE20231",
-    section12ADin: "AADTM5474FE2023101",
-    section12AOrderDate: "29-01-2024",
-    section12AValidity: "AY 2024-25 to AY 2026-27",
-    section80GUrn: "AADTM5474FF20241",
-    section80GDin: "AADTM5474FF2024101",
-    section80GOrderDate: "29-01-2024",
-    section80GValidity: "AY 2024-25 to AY 2026-27 (50% Income Tax Exemption for Donors)",
-    ngoDarpanId: "OR/2024/0466491",
-    mosjeAnudaanId: "OR/00040466",
+    trustDeedNumber: ORG.trustDeed.bookVolume,
+    registrationAuthority: ORG.trustDeed.registrationAuthority,
+    pan: ORG.ids.pan,
+    panIssueDate: ORG.trustDeed.executedDate,
+    mcaCsrNumber: ORG.ids.csr1,
+    mcaCsrApprovalDate: `${ORG.ids.csr1ApprovalDate} (ROC-DELHI, SRN-${ORG.ids.csr1Srn})`,
+    section12AUrn: ORG.ids.urn12A,
+    section12ADin: ORG.ids.din12A,
+    section12AOrderDate: ORG.ids.taxOrderDate,
+    section12AValidity: ORG.ids.taxOrderValidityPeriod,
+    section80GUrn: ORG.ids.urn80G,
+    section80GDin: ORG.ids.din80G,
+    section80GOrderDate: ORG.ids.taxOrderDate,
+    section80GValidity: `${ORG.ids.taxOrderValidityPeriod} (50% Income Tax Exemption for Donors)`,
+    ngoDarpanId: ORG.ids.darpan,
+    mosjeAnudaanId: ORG.ids.eAnudaan,
   },
 
   // Governance & Leadership
   governance: {
-    managingTrustee: "Er. Japabandhu Kampa",
-    managingTrusteeTitle: "Settler Founder & Chairman cum Managing Trustee",
+    managingTrustee: ORG.chairman.name,
+    managingTrusteeTitle: ORG.chairman.fullTitle,
     foundingTrustees: [
-      { name: "Er. Japabandhu Kampa", role: "Chairman cum Managing Trustee" },
+      { name: ORG.chairman.name, role: ORG.chairman.role },
     ],
-    honoraryClause:
-      "All trustees serve in an honorary capacity without salary, fee, or personal remuneration under registered Trust Deed Clause XVI.",
+    honoraryClause: ORG.chairman.honoraryClause,
   },
 
   // Official Institutional Offices & Contact Details
   contact: {
-    // Top-level aliases for backwards compatibility with legacy views
-    addressLine1: "Near Sai Mandir, Rugudipara",
-    city: "Balangir",
-    state: "Odisha",
-    pin: "767001",
-    country: "India",
-    generalEmail: "contact@mect.org.in",
-    scholarshipEmail: "mect27072013@gmail.com",
-    verificationStatus:
-      "Registered Public Charitable Trust (Balangir Sub-Registrar 2013, Doc No. 40311302194) • 12A/80G Certified.",
+    addressLine1: ORG.addresses.registered.line1,
+    city: ORG.addresses.registered.city,
+    state: ORG.addresses.registered.state,
+    pin: ORG.addresses.registered.pin,
+    country: ORG.addresses.registered.country,
+    generalEmail: ORG.emails.general,
+    scholarshipEmail: ORG.emails.official,
+    verificationStatus: `Registered Public Charitable Trust (${ORG.trustDeed.subRegistrar}, Doc No. ${ORG.trustDeed.deedNumber}).`,
 
     // Structured Office Details
     registeredOffice: {
-      title: "Registered Trust Office",
-      addressLine1: "Near Sai Mandir, Rugudipara",
-      city: "Balangir",
-      district: "Balangir",
-      state: "Odisha",
-      pin: "767001",
-      country: "India",
-      phone: "+91 94371 23616",
+      title: ORG.addresses.registered.title,
+      addressLine1: ORG.addresses.registered.line1,
+      city: ORG.addresses.registered.city,
+      district: ORG.addresses.registered.district,
+      state: ORG.addresses.registered.state,
+      pin: ORG.addresses.registered.pin,
+      country: ORG.addresses.registered.country,
+      phone: ORG.helpline.display,
     },
     corporateOffice: {
-      title: "Corporate & Liaison Secretariat",
-      addressLine1: "A1, 3rd Floor, Lewis Plaza, BJB Nagar",
-      city: "Bhubaneswar",
-      district: "Khordha",
-      state: "Odisha",
-      pin: "751014",
-      country: "India",
-      phone: "+91 94371 23616 / +91 94373 53616",
-    },
-    projectOffice: {
-      title: "Regional Project Office",
-      addressLine1: "Chandrasekhar Nagar, Near RTO Office",
-      city: "Balangir",
-      district: "Balangir",
-      state: "Odisha",
-      pin: "767002",
-      country: "India",
-      phone: "+91 94371 23616",
+      title: ORG.addresses.corporateLiaison.title,
+      addressLine1: ORG.addresses.corporateLiaison.line1,
+      city: ORG.addresses.corporateLiaison.city,
+      district: ORG.addresses.corporateLiaison.district,
+      state: ORG.addresses.corporateLiaison.state,
+      pin: ORG.addresses.corporateLiaison.pin,
+      country: ORG.addresses.corporateLiaison.country,
+      phone: ORG.helpline.display,
     },
     officialEmails: {
-      general: "contact@mect.org.in",
-      alternate: "mect27072013@gmail.com",
-      scholarships: "scholarships@mect.org.in",
-      grievance: "contact@mect.org.in",
+      general: ORG.emails.general,
+      alternate: ORG.emails.official,
+      scholarships: ORG.emails.scholarships,
+      grievance: ORG.emails.grievance,
     },
     emails: {
-      primary: "contact@mect.org.in",
-      official: "mect27072013@gmail.com",
-      secondary: "mectpuintala@gmail.com",
-      secretariat: "Kampabbsr@gmail.com",
+      primary: ORG.emails.general,
+      official: ORG.emails.official,
+      secondary: ORG.emails.fieldUnit,
+      secretariat: ORG.emails.secretariatAlt,
     },
     phones: {
-      helpline: "+91 94371 23616",
-      liaison: "+91 70081 23456",
+      helpline: ORG.helpline.display,
+      helplineHref: ORG.helpline.href,
     },
-    hours: "Monday – Saturday: 10:00 AM – 5:30 PM IST",
+    hours: ORG.helpline.hours,
   },
 
-  // Official Domestic Bank Account & UPI QR — Source: Supplied Cancelled Cheque & Official SBI QR Poster
+  // Official Domestic Bank Account & UPI QR (single-sourced from content/org.ts)
   bank: {
-    bankName: "State Bank of India",
-    branch: "Rajendra College Square, Bolangir, Odisha",
-    accountName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
-    accountNumber: "33341302498",
-    ifsc: "SBIN0001701",
-    accountType: "SB Account",
-    upiId: "86971610172@sbi",
-    verifiedQrSrc: "/images/mect-sbi-upi-qr.png",
-    taxBenefit:
-      "Historical approval under legacy Section 80G(5)(vi) covered FY 2023-24 to FY 2025-26 (URN: AADTM5474FF20241). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
+    bankName: ORG.bank.bankName,
+    branch: ORG.bank.branch,
+    accountName: ORG.bank.accountName,
+    accountNumber: ORG.bank.accountNumber,
+    ifsc: ORG.bank.ifsc,
+    accountType: ORG.bank.accountType,
+    upiId: ORG.bank.upiId,
+    upiBeneficiaryDisplay: ORG.bank.upiBeneficiaryDisplay,
+    verifiedQrSrc: ORG.bank.verifiedQrSrc,
+    taxBenefit: `Historical approval under legacy Section 80G(5)(vi) covered ${ORG.ids.taxOrderValidityPeriod} (URN: ${ORG.ids.urn80G}, dated ${ORG.ids.taxOrderDate}). Current position for FY 2026-27 is under Chartered Accountant confirmation.`,
   },
 
   // Legal & Compliance Transparency Statement
   legal: {
     trustStatus: "Registered Irrevocable Public Charitable Trust",
-    registrationNotice:
-      "Registered under Indian Trusts Act (Reg No. 40311302194, Balangir). 12A/80G historical records (URN 12A: AADTM5474FE20231, URN 80G: AADTM5474FF20241). NITI Aayog Darpan: OR/2024/0466491.",
+    registrationNotice: `${ORG.trustDeed.summaryLine} (${ORG.trustDeed.bookVolume}). Historical 12A URN: ${ORG.ids.urn12A}, Historical 80G URN: ${ORG.ids.urn80G}. NITI Aayog Darpan: ${ORG.ids.darpan}.`,
     disbursalPolicy:
       "All educational grants are remitted directly to accredited institutions under verifiable banking channels.",
   },

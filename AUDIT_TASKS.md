@@ -13,7 +13,7 @@ Master task tracker for the 12 Nov 2026 audit remediation on `https://mect.org.i
 - [ ] **A1.2** Unify navigation (`About`, `Our Work`, `Impact & Accountability`, `Get Involved`, `Resources & Help`, `Donor Portal`, `Donate Now`) and fix footer labels (`Statutory Disclosures` -> `/statutory-disclosures`, `Corporate CSR Partnership` -> `/csr-partnerships`).
 - [ ] **A1.3** Replace every old-brand string in components, metadata, JSON-LD, and content files with `Mahaveer Educational & Charitable Trust (MECT)` or `MECT`; remove `"guidelines published for trustee review"`; standardise `<title>` to `Page Name | Mahaveer Educational & Charitable Trust (MECT)`.
 - [ ] **A1.4** Fix metadata for every route (self-referencing canonical, `og:url`, per-page `og:title`/`og:description`/`twitter:*`, default 1200x630 `og:image`, remove `meta keywords`).
-- [ ] **A1.5** Single-source footer data from `content/org.ts` (name, addresses, helpline, hours, IDs, bank, UPI); remove hardcoded page duplicates.
+- [x] **A1.5** Single-source footer data from `content/org.ts` (name, addresses, helpline, hours, IDs, bank, UPI); remove hardcoded page duplicates.
 - [ ] **A1.6** Normalise `tel:` links to `tel:+919437123616`.
 
 ## PHASE 2 — Legal and tax wording
