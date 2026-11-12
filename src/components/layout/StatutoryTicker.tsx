@@ -3,17 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { TRUST_CONFIG } from "@/lib/config";
+import { ORG } from "@content/org";
 import { ShieldCheck, PhoneCall, FileText, Heart } from "lucide-react";
 
 export function StatutoryTicker() {
   const credentials = [
-    `Regd. Public Charitable Trust (Deed No. ${TRUST_CONFIG.statutory.trustDeedNumber.split(", Document No. ")[1] || "40311302194"})`,
-    `NITI Aayog Darpan: ${TRUST_CONFIG.statutory.ngoDarpanId}`,
-    `MoSJE e-Anudaan: ${TRUST_CONFIG.statutory.mosjeAnudaanId}`,
-    `IT Act 12A URN: ${TRUST_CONFIG.statutory.section12AUrn}`,
-    `IT Act 80G URN: ${TRUST_CONFIG.statutory.section80GUrn}`,
-    `PAN: ${TRUST_CONFIG.statutory.pan}`,
+    `Regd. Public Charitable Trust (Deed No. ${ORG.trustDeed.deedNumber})`,
+    `NITI Aayog Darpan: ${ORG.ids.darpan}`,
+    `MoSJE e-Anudaan: ${ORG.ids.eAnudaan}`,
+    `IT Act 12A URN: ${ORG.ids.urn12A}`,
+    `IT Act 80G URN: ${ORG.ids.urn80G}`,
+    `PAN: ${ORG.ids.pan}`,
   ];
 
   return (
@@ -83,12 +83,12 @@ export function StatutoryTicker() {
             </Link>
             <span className="text-white/30" aria-hidden="true">|</span>
             <a
-              href={`tel:${TRUST_CONFIG.contact.phones.helpline}`}
+              href={ORG.helpline.href}
               className="text-cream/85 hover:text-sand transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-sand"
               title="Official Institutional Helpline"
             >
               <PhoneCall className="w-3 h-3 text-sand" aria-hidden="true" />
-              <span>{TRUST_CONFIG.contact.phones.helpline}</span>
+              <span>{ORG.helpline.display}</span>
             </a>
           </div>
         </div>
