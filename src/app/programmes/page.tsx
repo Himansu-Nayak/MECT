@@ -155,7 +155,7 @@ export default function ProgrammesPage() {
       title: "Corporate CSR Turnkey Implementation",
       scope: "Schedule VII Compliant Partnerships",
       description:
-        "Customized corporate CSR collaborations backed by CSR Registration (CSR00081063), independent CA auditing, and verifiable impact reporting.",
+        "Customized corporate CSR collaborations backed by CSR Registration (CSR00081063), voucher-backed accounting, and structured impact reporting.",
       icon: Briefcase,
     },
   ];

@@ -76,19 +76,19 @@ export default function GovernancePage() {
     },
     {
       title: "Audit & Financial Scrutiny Panel",
-      scope: "Independent Statutory Oversight",
+      scope: "Statutory Financial Oversight",
       mandate:
-        "Quarterly reconciliation of direct institutional disbursements, expenditure ledgers, and certified annual audits by independent Chartered Accountants (Form 10B).",
-      status: "Annual Audit Protocol Active",
-      composition: "Independent Chartered Accountants & Statutory Auditors",
+        "Periodic reconciliation of institutional disbursements, expenditure ledgers, and preparation of annual accounts under Trust Deed Clause 16.",
+      status: "Chartered Under Deed Clause 16",
+      composition: "Managing Trustee & Appointed Auditors",
       icon: Scale,
     },
     {
       title: "Educational Appraisal Council",
       scope: "Merit-cum-Means Selection Authority",
       mandate:
-        "Autonomous evaluation of student applications against standardized scoring rubrics. Zero discretionary grant allocation permitted by individual trustees.",
-      status: "Objective Blind-Scoring Model",
+        "Evaluation of student applications against standardized scoring rubrics. Zero discretionary grant allocation permitted by individual trustees.",
+      status: "Draft Framework (Pre-Intake)",
       composition: "Educators, College Principals & Subject Specialists",
       icon: ShieldCheck,
     },
@@ -97,7 +97,7 @@ export default function GovernancePage() {
       scope: "Daily Administration & Grievance Redressal",
       mandate:
         "Managing candidate record verification, university liaison, whistleblower grievance intake, and public disclosure updates across Balangir and Bhubaneswar offices.",
-      status: "Balangir & Bhubaneswar Offices Operational",
+      status: "Balangir Registered Office & Bhubaneswar Liaison",
       composition: "Administrative Officers & Compliance Coordinators",
       icon: Building2,
     },
@@ -308,7 +308,7 @@ export default function GovernancePage() {
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Committee Separation"
-            title="Governance Committees & Operational Architecture"
+            title="Governance Committees & Oversight Structure"
             subtitle="Authority is deliberately divided across independent panels to ensure that no single trustee possesses discretionary grant-making authority."
             align="center"
           />
@@ -368,7 +368,7 @@ export default function GovernancePage() {
           <SectionHeader
             badge="Fiduciary Safeguards"
             title="Financial Oversight & Direct Disbursal Standard"
-            subtitle="Every financial transaction follows a dual-authorization verification protocol to eliminate leakage, fraud, or intermediary commissions."
+            subtitle="Financial transactions follow documented trustee verification and bank-channel records to prevent leakage or intermediary commissions."
             align="center"
             theme="dark"
           />
@@ -377,30 +377,30 @@ export default function GovernancePage() {
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
               <Receipt className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
-                100% Direct Bank Remittance
+                Direct Bank Remittance
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Approved scholarship subsidies are remitted exclusively via bank RTGS/NEFT straight to accredited college bursar accounts. Zero cash handling.
+                Approved scholarship subsidies are planned for remittance via bank RTGS/NEFT straight to accredited college bursar accounts. Zero cash handling.
               </p>
             </div>
 
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
               <Scale className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
-                Dual-Authorization Controls
+                Documented Trustee Oversight
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Batch payment lists require joint authorization from the Managing Trustee and the Finance Committee following independent scrutiny approval.
+                Payments and programme disbursements are recorded against board resolutions and verified bills under Managing Trustee oversight.
               </p>
             </div>
 
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-4">
               <FileText className="w-8 h-8 text-cream" aria-hidden="true" />
               <h3 className="font-serif text-xl font-bold text-white">
-                Chartered Accountant Audits
+                Annual Accounts &amp; Audit Filings
               </h3>
               <p className="text-xs text-white/75 leading-relaxed font-sans">
-                Annual balance sheets and expenditure ledgers undergo certified auditing by independent Chartered Accountants with Form 10B compliance.
+                Annual balance sheets and expenditure ledgers are prepared under Trust Deed Clause 16 for statutory audit and public review.
               </p>
             </div>
           </div>

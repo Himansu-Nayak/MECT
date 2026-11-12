@@ -161,7 +161,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     },
     {
       title: "Auditable Institutional Governance",
-      description: "100% direct-to-institution bank payments with annual independent CA auditing.",
+      description: "Direct-to-institution bank payments with documented financial accountability.",
     },
   ],
   antiHallucinationGuardrails: [
