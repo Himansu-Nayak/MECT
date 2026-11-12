@@ -3,6 +3,8 @@ import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { ReadingProgress } from "@/components/motion/ReadingProgress";
+import { Reveal } from "@/components/motion/Reveal";
+import { ScrollIndex } from "@/components/motion/ScrollIndex";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -166,6 +168,12 @@ export default function StatutoryDisclosuresPage() {
       />
 
       {/* 2. Top Fiduciary Summary Banner */}
+      <ScrollIndex
+        items={[
+          { id: "credentials", label: "Credentials Directory" },
+          { id: "tax-benefit", label: "80G / Section 354 Guide" },
+        ]}
+      />
       <section className="py-8 bg-sand-light border-b border-border-warm">
         <Container size="default">
           <div className="p-6 bg-white rounded-xs border-2 border-sand/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
@@ -211,10 +219,10 @@ export default function StatutoryDisclosuresPage() {
             {statutoryCredentials.map((item, idx) => {
               const Icon = item.icon;
               return (
+                <Reveal key={idx} delay={idx * 0.05}>
                 <Card
-                  key={idx}
                   variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
+                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4 h-full"
                 >
                   <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-forest font-sans">
@@ -257,6 +265,7 @@ export default function StatutoryDisclosuresPage() {
                     {item.description}
                   </p>
                 </Card>
+                </Reveal>
               );
             })}
           </div>

@@ -2,6 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/motion/Reveal";
+import { ScrollIndex } from "@/components/motion/ScrollIndex";
+import { EmptyState } from "@/components/motion/EmptyState";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
@@ -134,7 +137,14 @@ export default function ReportsPage() {
       />
 
       {/* 2. Fiduciary Standards Strip */}
-      <section className="py-20 bg-cream border-b border-border-warm">
+      <ScrollIndex
+        items={[
+          { id: "standards", label: "Fiduciary Safeguards" },
+          { id: "archive", label: "Annual Reports Archive" },
+          { id: "news-updates", label: "News & Press Releases" },
+        ]}
+      />
+      <section id="standards" className="py-20 bg-cream border-b border-border-warm scroll-mt-24">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Fiduciary Safeguards"
@@ -179,9 +189,9 @@ export default function ReportsPage() {
           />
 
           <div className="space-y-8">
-            {annualReports.map((report) => (
+            {annualReports.map((report, idx) => (
+              <Reveal key={report.referenceCode} delay={idx * 0.06}>
               <Card
-                key={report.referenceCode}
                 variant="elevated"
                 className="p-8 sm:p-10 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-6"
               >
@@ -238,8 +248,32 @@ export default function ReportsPage() {
                   </Link>
                 </div>
               </Card>
+              </Reveal>
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 3B. News & Press Releases Empty State */}
+      <section id="news-updates" className="py-16 bg-cream border-t border-border-warm scroll-mt-24">
+        <Container size="narrow" className="space-y-6">
+          <SectionHeader
+            badge="Public Notices"
+            title="News &amp; Press Releases"
+            subtitle="Official announcements and field updates verified by the Trust Secretariat."
+            align="center"
+          />
+          <EmptyState
+            title="No press releases currently published"
+            description="Verified institutional circulars and annual activity summaries are published in the Reports Archive above or inspected via the Trust Secretariat."
+            action={
+              <Link href="/contact">
+                <Button variant="outline" size="sm">
+                  Contact Trust Secretariat
+                </Button>
+              </Link>
+            }
+          />
         </Container>
       </section>
 

@@ -17,6 +17,7 @@ import {
 import { TRUST_CONFIG } from "@/lib/config";
 import { ImpactChartsSection } from "@/components/charts/ImpactChartsSection";
 import { OdishaDistrictGrid } from "@/components/motion/OdishaDistrictGrid";
+import { LightboxGrid } from "@/components/motion/LightboxGrid";
 import {
   MapPin,
   CheckCircle2,
@@ -289,6 +290,19 @@ export default function ImpactPage() {
             ))}
             </div>
           </Reveal>
+        </Container>
+      </section>
+
+      {/* 4B. Field Documentation Gallery */}
+      <section id="gallery" className="py-16 md:py-24 bg-cream border-t border-border-warm scroll-mt-24" aria-label="Field Documentation Gallery">
+        <Container size="default" className="space-y-10">
+          <SectionHeader
+            badge="Field Records"
+            title="Community Outreach &amp; Field Documentation"
+            subtitle="Photographic records from MECT's community classrooms, Jal Seva water stations, and women's vocational seminars in Odisha."
+            align="center"
+          />
+          <LightboxGrid />
         </Container>
       </section>
 

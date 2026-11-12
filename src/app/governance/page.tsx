@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { ReadingProgress } from "@/components/motion/ReadingProgress";
+import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -211,11 +212,11 @@ export default function GovernancePage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {TRUSTEES.map((trustee) => (
+            {TRUSTEES.map((trustee, index) => (
+              <Reveal key={trustee.id} delay={index * 0.06}>
               <Card
-                key={trustee.id}
                 variant="elevated"
-                className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
+                className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4 h-full"
               >
                 <div className="flex items-center justify-between pb-3 border-b border-border-warm">
                   <Badge variant={trustee.isConfirmed ? "contrast-gold" : "forest"} size="sm">
@@ -243,6 +244,7 @@ export default function GovernancePage() {
                   </div>
                 </div>
               </Card>
+              </Reveal>
             ))}
           </div>
 
