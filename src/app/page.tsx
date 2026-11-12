@@ -241,10 +241,14 @@ export default function HomePage() {
           {/* Layer 0: Full-Bleed Left-to-Right Marquee Behind Hero Copy */}
           <HeroBackgroundMarquee />
 
-          {/* Layer 1a: Mobile Even Scrim so full photo stays clearly visible edge-to-edge */}
+          {/* Layer 1a: Mobile Scrim + Bottom Melt so full unzoomed photo sits behind headline & melts into forest-deep */}
           <div
             aria-hidden="true"
-            className="md:hidden absolute inset-0 z-10 pointer-events-none bg-forest-deep/45"
+            className="md:hidden absolute inset-x-0 top-0 h-[230px] sm:h-[270px] z-10 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(29, 41, 36, 0.42) 0%, rgba(29, 41, 36, 0.34) 55%, #1D2924 100%)",
+            }}
           />
 
           {/* Layer 1b: Desktop Forest & Subtle Terracotta Cinematic Scrim */}
