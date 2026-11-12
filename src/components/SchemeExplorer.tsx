@@ -26,7 +26,7 @@ export function SchemeExplorer() {
       id: "shiksha-protsahan",
       category: "grants",
       badge: "Undergraduate Tuition Grant",
-      title: "Mahavir Shiksha Protsahan Yojana",
+      title: "Mahaveer Shiksha Protsahan Yojana",
       tagline: "Proposed Need-cum-Merit Higher Education Tuition Fee Grants",
       target: "Underprivileged undergraduate scholars across Odisha",
       criteria: "Minimum 60% aggregate in +2 / Higher Secondary; verified household annual income criteria.",

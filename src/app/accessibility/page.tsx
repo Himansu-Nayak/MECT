@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ORG } from "@content/org";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -189,7 +190,7 @@ export default function AccessibilityPage() {
                     Accessibility Feedback & Remediation Desk
                   </h4>
                   <p className="text-xs text-white/85 leading-relaxed">
-                    We welcome feedback on the accessibility of our website. If you encounter any difficulty accessing information, completing a registration form, or reading institutional reports, please email our administrative team at <code className="text-cream font-mono">contact@mahavirtrust.org</code> with the subject line <strong>[ACCESSIBILITY_FEEDBACK]</strong>.
+                    We welcome feedback on the accessibility of our website. If you encounter any difficulty accessing information, completing a registration form, or reading institutional reports, please email our administrative team at <code className="text-cream font-mono">{ORG.emails.general}</code> with the subject line <strong>[ACCESSIBILITY_FEEDBACK]</strong>.
                   </p>
                   <p className="text-[11px] text-cream">
                     SLA: All accessibility feedback is logged in our technical registry and acknowledged within 48 business hours.

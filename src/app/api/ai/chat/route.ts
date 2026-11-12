@@ -272,7 +272,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "HIm assistant is temporarily experiencing technical difficulties. Please try again shortly or contact contact@mahavirtrust.org directly.",
+          "HIm assistant is temporarily experiencing technical difficulties. Please try again shortly or contact contact@mect.org.in directly.",
       },
       { status: 503 }
     );

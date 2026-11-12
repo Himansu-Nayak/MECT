@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ORG } from "@content/org";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -150,7 +151,7 @@ export default function TermsPage() {
                     Statutory Notice: Absolute Prohibition of Application Fees
                   </h4>
                   <p className="text-xs text-white/85 leading-relaxed">
-                    Under Section 12AB transparency norms, Mahaveer Educational & Charitable Trust (MECT) never solicits cash deposits, processing fees, or intermediary commissions. If any individual promises expedited selection or claims official affiliation in exchange for compensation, please dispatch evidence immediately to <code className="text-cream font-mono">grievance@mahavirtrust.org</code>.
+                    Under Section 12AB transparency norms, {ORG.legalName} never solicits cash deposits, processing fees, or intermediary commissions. If any individual promises expedited selection or claims official affiliation in exchange for compensation, please dispatch evidence immediately to <code className="text-cream font-mono">{ORG.emails.grievance}</code>.
                   </p>
                 </div>
               </div>

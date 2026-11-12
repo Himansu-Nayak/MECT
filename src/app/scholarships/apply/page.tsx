@@ -71,10 +71,10 @@ const ODISHA_DISTRICTS = [
 ];
 
 const SCHEMES = [
-  { code: "GEN-MERIT-UG", name: "Mahavir Protsahan Undergraduate Scholarship (Degree/Arts/Commerce/Science)" },
+  { code: "GEN-MERIT-UG", name: "Mahaveer Shiksha Protsahan Yojana (Degree/Arts/Commerce/Science)" },
   { code: "ENG-AID-DIP", name: "Engineering & Technical Education Grant (B.Tech / Diploma / Polytechnic)" },
   { code: "MED-GRANT-UG", name: "Medical & Healthcare Degree Grant (MBBS / BDS / B.Pharm / Nursing)" },
-  { code: "STEM-FELLOW-PG", name: "Mahavir Pratibha STEM & Merit Fellowship" },
+  { code: "STEM-FELLOW-PG", name: "Pratibha Excellence Fellowship (STEM & Merit)" },
   { code: "VOC-DIPLOMA", name: "Vocational & Industrial Training Grant (ITI / Specialized Trades)" },
 ];
 

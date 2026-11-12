@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import AdminClientLayout from "./AdminClientLayout";
 
-export const metadata: Metadata = {
-  title: "MECT Administrative Secretariat",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-    },
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Administrative Secretariat",
+  description: "Internal secretariat administration dashboard for Mahaveer Educational & Charitable Trust (MECT).",
+  path: "/admin",
+  noIndex: true,
+});
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return <AdminClientLayout>{children}</AdminClientLayout>;

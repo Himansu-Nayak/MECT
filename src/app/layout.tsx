@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteLayout } from "@/components/layout/SiteLayout";
-import { TRUST_CONFIG } from "@/lib/config";
+import { ORG } from "@content/org";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -26,10 +26,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mect.org.in"),
+  metadataBase: new URL(ORG.branding.canonicalOrigin),
   title: {
-    default: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust • Odisha",
-    template: "%s | Mahaveer Educational & Charitable Trust (MECT)",
+    default: `Home | ${ORG.legalName}`,
+    template: `%s | ${ORG.legalName}`,
   },
   description:
     "Official website of Mahaveer Educational & Charitable Trust (MECT), Odisha. Explore our work in education, women's livelihoods, safe water, nutrition and community welfare, alongside governance and statutory disclosures.",
@@ -85,75 +85,75 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
-  name: "Mahaveer Educational & Charitable Trust",
-  alternateName: ["MECT", "MECT Odisha"],
-  url: "https://mect.org.in",
-  logo: "https://mect.org.in/images/mect-official-emblem.png",
+  name: ORG.name,
+  alternateName: [ORG.shortName, "MECT Odisha"],
+  url: ORG.branding.canonicalOrigin,
+  logo: `${ORG.branding.canonicalOrigin}${ORG.branding.logoPath}`,
   description:
     "A registered public charitable trust established on 27th July 2013, working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
   foundingDate: "2013-07-27",
-  taxID: "AADTM5474F",
+  taxID: ORG.ids.pan,
   identifier: [
     {
       "@type": "PropertyValue",
       name: "Trust Deed Registration Number",
-      value: "Book No. 4, Volume No. 45, Document No. 40311302194",
+      value: ORG.trustDeed.bookVolume,
     },
     {
       "@type": "PropertyValue",
       name: "Income Tax Section 12A URN",
-      value: "AADTM5474FE20231",
+      value: ORG.ids.urn12A,
     },
     {
       "@type": "PropertyValue",
       name: "Income Tax Section 80G URN",
-      value: "AADTM5474FF20241",
+      value: ORG.ids.urn80G,
     },
     {
       "@type": "PropertyValue",
       name: "CSR Registration Number",
-      value: "CSR00081063",
+      value: ORG.ids.csr1,
     },
     {
       "@type": "PropertyValue",
       name: "NITI Aayog NGO Darpan Unique ID",
-      value: "OR/2024/0466491",
+      value: ORG.ids.darpan,
     },
   ],
   address: [
     {
       "@type": "PostalAddress",
-      streetAddress: "Near Sai Mandir, Rugudipara",
-      addressLocality: "Balangir",
-      addressRegion: "Odisha",
-      postalCode: "767001",
+      streetAddress: ORG.addresses.registered.line1,
+      addressLocality: ORG.addresses.registered.city,
+      addressRegion: ORG.addresses.registered.state,
+      postalCode: ORG.addresses.registered.pin,
       addressCountry: "IN",
-      description: "Registered Trust Office",
+      description: ORG.addresses.registered.title,
     },
     {
       "@type": "PostalAddress",
-      streetAddress: "A1, 3rd Floor, Lewis Plaza, BJB Nagar",
-      addressLocality: "Bhubaneswar",
-      addressRegion: "Odisha",
-      postalCode: "751014",
+      streetAddress: ORG.addresses.corporateLiaison.line1,
+      addressLocality: ORG.addresses.corporateLiaison.city,
+      addressRegion: ORG.addresses.corporateLiaison.state,
+      postalCode: ORG.addresses.corporateLiaison.pin,
       addressCountry: "IN",
-      description: "Corporate & Liaison Office",
+      description: ORG.addresses.corporateLiaison.title,
     },
   ],
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "Secretariat & Public Inquiries",
-      telephone: "+91-94371-23616",
-      email: "mect27072013@gmail.com",
+      telephone: ORG.helpline.e164,
+      email: ORG.emails.official,
       areaServed: "IN",
       availableLanguage: ["English", "Odia", "Hindi"],
     },
   ],
   funder: {
     "@type": "Person",
-    name: "Er. Japabandhu Kampa",
-    jobTitle: "Settler Founder & Managing Trustee",
+    name: ORG.chairman.name,
+    jobTitle: ORG.chairman.role,
   },
 };
 

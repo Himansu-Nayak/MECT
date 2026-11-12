@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ORG } from "@content/org";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -160,7 +161,7 @@ export default function PrivacyPage() {
                     Statutory Data Inquiries & Right to Rectification
                   </h4>
                   <p className="text-xs text-white/85 leading-relaxed">
-                    Scholars, guardians, and volunteers may request verification, correction, or deletion of their submitted personal records by writing to our designated Grievance Redressal Officer at <code className="text-cream font-mono">grievance@mahavirtrust.org</code>. Requests are acknowledged within 48 hours and resolved in accordance with statutory guidelines.
+                    Scholars, guardians, and volunteers may request verification, correction, or deletion of their submitted personal records by writing to our designated Grievance Redressal Officer at <code className="text-cream font-mono">{ORG.emails.grievance}</code>. Requests are acknowledged within 48 hours and resolved in accordance with statutory guidelines.
                   </p>
                 </div>
               </div>
