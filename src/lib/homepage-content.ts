@@ -281,11 +281,11 @@ export const HOMEPAGE_CONTENT = {
   },
 
   // PHASE 4: Educational Resource Mobilisation Appeal
-  smileFundraising: {
+  educationalAppeal: {
     badge: "Educational Resource Mobilisation",
     heading: "SUPPORT EDUCATION. TRANSFORM LIVES.",
     contextNote:
-      "Informed by MECT's remedial instruction model referenced alongside Smile Foundation competency work in trust documentation, this public appeal raises direct funds for primary and secondary learning materials.",
+      "This public appeal raises direct funds for primary and secondary learning materials across MECT's remedial instruction model.",
     purpose:
       "Meet essential study-kit, remedial instruction, and mentoring expenses for out-of-school and first-generation learners from daily-wage households.",
     utilizationPoints: [
@@ -299,13 +299,11 @@ export const HOMEPAGE_CONTENT = {
       },
       {
         title: "Transparent Direct Banking",
-        detail: "100% of contributions are received directly in MECT's State Bank of India trust account with verifiable bank references.",
+        detail: "Contributions are received directly in MECT's State Bank of India trust account with verifiable bank references.",
       },
     ],
     beneficiaries:
       "Out-of-school children, first-generation learners, and students from daily-wage and migrant families across Balangir and Odisha.",
-    authorisationDisclaimer:
-      "Notice of Organisational Independence: This fundraising appeal is conducted solely by Mahaveer Educational & Charitable Trust (MECT) for its educational programmes. It does not claim or imply an active corporate sponsorship, official funding grant, or trademark affiliation with Smile Foundation without separate written bilateral authorisation.",
   },
 
   // How MECT Works — Operational Delivery Framework
