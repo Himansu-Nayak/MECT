@@ -271,7 +271,7 @@ export default function AdminUsersPage() {
               <Input
                 label="Official Email Address"
                 type="email"
-                placeholder="officer@mahavirtrust.org"
+                placeholder="officer@mect.org.in"
                 required
                 value={newUser.email}
                 onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}

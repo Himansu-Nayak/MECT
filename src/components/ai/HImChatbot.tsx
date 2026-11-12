@@ -319,10 +319,10 @@ export function HImChatbot() {
       console.error("[HIm Chat Client Error]:", err);
       const fallbackText =
         language === "or"
-          ? "କ୍ଷମା କରିବେ, ଏହି ମୁହୂର୍ତ୍ତରେ ସର୍ଭର ସଂଯୋଗରେ ସମସ୍ୟା ହେଉଛି। ଦୟାକରି କିଛି ସମୟ ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା contact@mahavirtrust.org ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
+          ? "କ୍ଷମା କରିବେ, ଏହି ମୁହୂର୍ତ୍ତରେ ସର୍ଭର ସଂଯୋଗରେ ସମସ୍ୟା ହେଉଛି। ଦୟାକରି କିଛି ସମୟ ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା contact@mect.org.in ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
           : language === "hi"
-          ? "क्षमा करें, सर्वर कनेक्शन में अस्थायी समस्या आ रही है। कृपया कुछ क्षण बाद पुनः प्रयास करें या contact@mahavirtrust.org पर संपर्क करें।"
-          : "I apologize, but I am experiencing temporary connectivity difficulties. Please try again in a few moments or email the Secretariat at contact@mahavirtrust.org.";
+          ? "क्षमा करें, सर्वर कनेक्शन में अस्थायी समस्या आ रही है। कृपया कुछ क्षण बाद पुनः प्रयास करें या contact@mect.org.in पर संपर्क करें।"
+          : "I apologize, but I am experiencing temporary connectivity difficulties. Please try again in a few moments or email the Secretariat at contact@mect.org.in.";
 
       const errorAssistantMsg: Message = {
         id: assistantId,
@@ -392,21 +392,36 @@ export function HImChatbot() {
   };
 
   const [showMobileFab, setShowMobileFab] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
 
-  // Reveal floating chatbot button after scrolling slightly past hero on mobile/tablet so zero text or metric is obscured on load
+  // Reveal floating chatbot button after scrolling past hero on mobile/tablet and tuck aside over footer
   useEffect(() => {
     const onScroll = () => setShowMobileFab(window.scrollY > 180);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const footerEl = document.querySelector("footer");
+    let observer: IntersectionObserver | null = null;
+    if (footerEl && typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        (entries) => setIsNearFooter(entries[0]?.isIntersecting ?? false),
+        { threshold: 0.12 }
+      );
+      observer.observe(footerEl);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer?.disconnect();
+    };
   }, []);
 
   return (
     <>
       {/* Floating launcher trigger */}
       <div
-        className={`fixed bottom-[max(0.875rem,env(safe-area-inset-bottom))] right-3.5 sm:bottom-5 sm:right-5 xl:bottom-6 xl:right-6 z-50 print:hidden transition-opacity duration-200 ${
-          showMobileFab || isOpen ? "flex" : "hidden xl:flex"
+        className={`fixed bottom-[max(0.625rem,env(safe-area-inset-bottom))] right-3 sm:bottom-5 sm:right-5 xl:bottom-6 xl:right-6 z-50 print:hidden transition-opacity duration-200 ${
+          (showMobileFab && !isNearFooter) || isOpen ? "flex" : "hidden xl:flex"
         }`}
       >
         {!isOpen && (

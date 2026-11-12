@@ -193,7 +193,7 @@ export function EligibilityCalculator() {
                         Flagship Proposed Scheme
                       </span>
                       <h4 className="font-serif text-lg font-bold text-forest">
-                        Mahavir Shiksha Protsahan Yojana
+                        Mahaveer Shiksha Protsahan Yojana
                       </h4>
                     </div>
                   </div>

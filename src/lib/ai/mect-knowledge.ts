@@ -67,12 +67,12 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     brandName: "Mahaveer Educational & Charitable Trust",
     tagline: "Empowering Futures Through Education, Scholarships & Community Leadership",
     website: "https://mect.org.in/",
-    headquarters: "Administrative Secretariat, Bhubaneswar, Odisha",
+    headquarters: "Registered Office: Balangir | Corporate Liaison: Bhubaneswar, Odisha",
     state: "Odisha",
     country: "India",
-    pin: "751001",
-    generalEmail: "contact@mahavirtrust.org",
-    scholarshipEmail: "scholarships@mahavirtrust.org",
+    pin: "767001 / 751014",
+    generalEmail: "contact@mect.org.in",
+    scholarshipEmail: "scholarships@mect.org.in",
   },
   assistant: {
     name: "HIm",
@@ -100,11 +100,11 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
   proposedSchemes: [
     {
       id: "shiksha-protsahan",
-      name: "Mahavir Shiksha Protsahan Yojana [Draft Proposal]",
+      name: "Mahaveer Shiksha Protsahan Yojana [Planned]",
       tagline: "Undergraduate & Technical Tuition Grants",
       targetGroup: "Meritorious students from economically weaker households pursuing BA, BSc, BCom, BTech, Diploma, or professional courses in recognized Odisha colleges/universities.",
       coverage: "Direct tuition fee remission to colleges.",
-      status: "Program Framework Finalized — Application cycles pending formal Trustee gazette launch.",
+      status: "Planned initiative — applications not yet open.",
       keyFeatures: [
         "Direct-to-college bank transfer",
         "Need-cum-merit blind evaluation",
@@ -201,8 +201,8 @@ VERIFIED INSTITUTIONAL FACTS (Strict Grounding):
 3. ZERO CASH POLICY: Zero cash handling, zero brokers or intermediaries, zero commission.
 4. APPLICATION FEES: 100% FREE. The Trust never charges any application or processing fee.
 5. GEOGRAPHIC MANDATE: All 30 districts of Odisha (e.g. Khordha, Cuttack, Puri, Ganjam, Sambalpur, Koraput, Mayurbhanj, Sundargarh, Balasore, etc.).
-6. PROPOSED SCHEMES:
-   - "Mahavir Shiksha Protsahan Yojana [Draft Proposal]": Undergraduate and technical tuition assistance for economically disadvantaged students in recognized Odisha colleges.
+6. PLANNED SCHEMES:
+   - "Mahaveer Shiksha Protsahan Yojana [Planned]": Undergraduate and technical tuition assistance for economically disadvantaged students in recognized Odisha colleges.
    - "Pratibha Excellence Fellowship [Draft Proposal]": Postgraduate & competitive exam (UPSC, OPSC, GATE) preparation support.
    - "Project Samarth [Draft Proposal]": Community study centers and reference libraries (Pilot: Khordha District).
 7. ELIGIBILITY CRITERIA:
