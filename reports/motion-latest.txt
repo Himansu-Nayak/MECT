@@ -1,8 +1,8 @@
 ================================================================
 MECT MOTION & ACCESSIBILITY AUDIT REPORT
-Timestamp: 2026-11-12T09:36:15.011Z
+Timestamp: 2026-11-12T09:59:45.441Z
 Routes checked: 18
-Home ("/") First-Load JS: 319.68 KB gzipped (baseline 279.75 KB, delta 39.93 KB)
+Home ("/") First-Load JS: 319.98 KB gzipped (baseline 279.75 KB, delta 40.23 KB)
 ----------------------------------------------------------------
 Check Category               | Status | Failures
 -----------------------------+--------+---------

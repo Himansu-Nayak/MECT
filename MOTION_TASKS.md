@@ -75,9 +75,9 @@ Branch: `motion-ui`
 
 ## PHASE M8 — Ask HIm(AI) assistant
 
-- [ ] **M8.1** Restyle with `ai-prompt`, `ai-loading`, Motion `AnimatePresence`.
-- [ ] **M8.2** Add `ai-citations` + visible disclaimer ("This assistant can make mistakes. Check the Statutory Disclosures page.").
-- [ ] **M8.3** Respect reduced motion, no auto-open.
+- [x] **M8.1** Restyle with `ai-prompt`, `ai-loading`, Motion `AnimatePresence`.
+- [x] **M8.2** Add `ai-citations` + visible disclaimer ("This assistant can make mistakes. Check the Statutory Disclosures page.").
+- [x] **M8.3** Respect reduced motion, no auto-open.
 
 ## PHASE M9 — Regression, performance, documentation
 
