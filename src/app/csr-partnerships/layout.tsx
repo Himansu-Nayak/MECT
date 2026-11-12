@@ -1,20 +1,12 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "CSR Partnerships & Schedule VII Collaboration (CSR00081063)",
+export const metadata = createPageMetadata({
+  title: "CSR Partnerships & Schedule VII Collaboration",
   description:
     "Collaborate with Mahaveer Educational & Charitable Trust (MECT) under Section 135 of the Companies Act, 2013. View CSR Registration CSR00081063 and Schedule VII programme areas in Odisha.",
-  alternates: {
-    canonical: "/csr-partnerships",
-  },
-  openGraph: {
-    title: "CSR Partnerships & Collaboration | Mahaveer Educational & Charitable Trust (MECT)",
-    description:
-      "Schedule VII focus areas, verified CSR registration certificate (CSR00081063), and institutional CSR enquiry desk for Odisha.",
-    url: "https://mect.org.in/csr-partnerships",
-    type: "website",
-  },
-};
+  path: "/csr-partnerships",
+  ogImage: "/images/og-disclosures.png",
+});
 
 export default function CsrPartnershipsLayout({
   children,
@@ -23,4 +15,3 @@ export default function CsrPartnershipsLayout({
 }) {
   return <>{children}</>;
 }
-

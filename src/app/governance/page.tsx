@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -27,12 +27,13 @@ import {
   Heart,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Fiduciary Governance, Board of Trustees & Trust Deed",
   description:
     "Governance framework, registered Trust Deed No. 40311302194 (Balangir), Board of Trustees, honorary non-remuneration code, and statutory disclosures for Mahaveer Educational & Charitable Trust (MECT).",
-  alternates: { canonical: "/governance" },
-};
+  path: "/governance",
+  ogImage: "/images/og-disclosures.png",
+});
 
 export default function GovernancePage() {
   const boardOfTrustees = [

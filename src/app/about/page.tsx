@@ -1,5 +1,4 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { DeveloperCreditCard } from "@/components/DeveloperCreditCard";
 import { Reveal } from "@/components/ui/MotionPrimitives";
 import { ABOUT_CONTENT } from "@/lib/about-content";
+import { createPageMetadata } from "@/lib/seo";
 import {
   ShieldCheck,
   ArrowRight,
@@ -19,29 +19,12 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "About Us & Institutional Heritage",
   description:
     "Learn about MECT's heritage, mission, governance and multi-sector work across education, women's livelihoods, safe water, nutrition and community welfare in Odisha.",
-  alternates: {
-    canonical: "https://mect.org.in/about",
-  },
-  openGraph: {
-    title: "About Us & Institutional Heritage | Mahaveer Educational & Charitable Trust (MECT)",
-    description:
-      "MECT's heritage, mission, governance and community-development work across education, livelihoods, safe water and nutrition in Odisha.",
-    url: "https://mect.org.in/about",
-    siteName: "Mahaveer Educational & Charitable Trust (MECT)",
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Us & Institutional Heritage | Mahaveer Educational & Charitable Trust (MECT)",
-    description:
-      "Strengthening people and communities through learning, livelihoods, safe water, nutrition and accountable community programmes.",
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   const { hero, narrative, visionMission, values, governanceTiers, roadmap, cta } =

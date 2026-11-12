@@ -1,5 +1,5 @@
 import React from "react";
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -27,12 +27,13 @@ import {
   Lock,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Statutory Disclosures, 12A/80G & Regulatory Vault",
   description:
     "Verified Government registrations, Section 12A & 80G Form 10AC historical orders, CSR registration CSR00081063, NITI Aayog Darpan ID, and 2013 Trust Deed for MECT.",
-  alternates: { canonical: "/statutory-disclosures" },
-};
+  path: "/statutory-disclosures",
+  ogImage: "/images/og-disclosures.png",
+});
 
 export default function StatutoryDisclosuresPage() {
   const statutoryCredentials = [
@@ -84,12 +85,12 @@ export default function StatutoryDisclosuresPage() {
       authority: "Director of Income Tax (Central Processing Centre)",
       identifierLabel: "Unique Registration Number (URN)",
       identifierValue: TRUST_CONFIG.statutory.section80GUrn,
-      dateLabel: "Order Date & Validity",
+      dateLabel: "Order Date & Historical Validity",
       dateValue: "29-01-2024 (AY 2024-25 to AY 2026-27)",
-      status: "50% Tax Deduction Eligible",
+      status: "Historical Order (Tax Year 2026-27 Unverified)",
       description:
         "Formal order issued under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: AADTM5474FF20241, DIN: AADTM5474FF2024101). Covered donations made in FY 2023-24 through FY 2025-26 (AY 2024-25 to AY 2026-27) for 50% deduction under the Old Tax Regime. Under the Income-tax Act, 2025, applications and examination orders for eligible donations are governed by Section 354 (Form 105 and Form 107) read with Section 536 repeal, savings and transition provisions. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
-      badge: "80G Tax Deductible",
+      badge: "Historical 80G",
       icon: Heart,
     },
     {
@@ -261,12 +262,12 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 4. Section 80G Tax Exemption Guide for Donors */}
-      <section id="tax-benefit" className="py-20 bg-terracotta text-white border-y border-sand/30" aria-label="80G Tax Deduction Guide">
+      <section id="tax-benefit" className="py-20 bg-terracotta text-white border-y border-sand/30 scroll-mt-32" aria-label="80G Tax Deduction Guide">
         <Container size="default" className="space-y-12">
           <SectionHeader
-            badge="Tax Exemption Reassurance"
-            title="Understanding Section 80G Tax Benefits for Donors"
-            subtitle="Under Section 80G of the Income Tax Act, 1961, 50% of your donation is deductible from your taxable income."
+            badge="Illustrative Tax Mechanics"
+            title="Understanding Historical 80G / Section 354 Tax Mechanics"
+            subtitle="Illustrates how historical 50% Section 80G deduction applied (AY 2024-25 to AY 2026-27). Current approval for Tax Year 2026-27 under Section 354 (Form 105/107) has not yet been established from reviewed documentary records."
             align="center"
             theme="dark"
           />
@@ -276,10 +277,10 @@ export default function StatutoryDisclosuresPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-3">
                 <h3 className="font-serif text-2xl font-bold text-white">
-                  How Does Your 50% Tax Deduction Work?
+                  How Historical 50% Tax Deduction Mechanics Work
                 </h3>
-                <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans">
-                  When you contribute to Mahaveer Educational &amp; Charitable Trust (MECT), our Section 80G registration (Order URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>) enables you to deduct 50% of the donated amount from your Gross Total Income before calculating your final income tax liability.
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-sans">
+                  Under MECT&apos;s historical Form 10AC Section 80G order (URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>, covering FY 2023-24 through FY 2025-26), eligible Old Tax Regime donors could deduct 50% of qualifying donations from Gross Total Income. For Tax Year 2026-27 onward, regular approval is governed by Section 354 / Section 536 of the Income-tax Act, 2025 and should not be assumed until confirmation from an applicable Form 107 approval order.
                 </p>
               </div>
 
