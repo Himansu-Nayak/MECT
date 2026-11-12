@@ -57,12 +57,12 @@ Branch: `motion-ui`
 
 ## PHASE M6 — Donate and forms
 
-- [ ] **M6.1** `amount-pad` in "Record your intended donation" (pledge/intent only, presets from `content/org.ts`).
-- [ ] **M6.2** Copy buttons micro-feedback (150ms icon swap + ARIA live "Copied").
-- [ ] **M6.3** Receipt desk `promise-toast`, `save-status`, `inline-alert` field errors with focus-first-error.
-- [ ] **M6.4** Scholarship `file-upload` (gated behind `intakeOpen === true`).
-- [ ] **M6.5** Optional `slot-picker` for document inspection (only if backend exists).
-- [ ] **M6.6** `slide-text-button` secondary actions + single hero `attract-button` (disabled on touch/reduced motion).
+- [x] **M6.1** `amount-pad` in "Record your intended donation" (pledge/intent only, presets from `content/org.ts`).
+- [x] **M6.2** Copy buttons micro-feedback (150ms icon swap + ARIA live "Copied").
+- [x] **M6.3** Receipt desk `promise-toast`, `save-status`, `inline-alert` field errors with focus-first-error.
+- [x] **M6.4** Scholarship `file-upload` (gated behind `intakeOpen === true`).
+- [x] **M6.5** Optional `slot-picker` for document inspection (only if backend exists — skipped: no booking backend exists).
+- [x] **M6.6** `slide-text-button` secondary actions + single hero `attract-button` (disabled on touch/reduced motion).
 
 ## PHASE M7 — Content pages
 

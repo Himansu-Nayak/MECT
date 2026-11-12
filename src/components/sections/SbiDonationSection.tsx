@@ -8,10 +8,10 @@ import { TRUST_CONFIG } from "@/lib/config";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal, MOTION_DURATION, MOTION_EASING } from "@/components/ui/MotionPrimitives";
+import { CopyButton } from "@/components/motion/CopyButton";
+import { SlideTextButton } from "@/components/motion/SlideTextButton";
 import {
   Landmark,
-  Copy,
-  Check,
   QrCode,
   ShieldCheck,
   Heart,
@@ -39,14 +39,6 @@ export function SbiDonationSection({
 }: SbiDonationSectionProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
-
-  const handleCopy = (value: string, fieldKey: string) => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(value);
-      setCopiedField(fieldKey);
-      setTimeout(() => setCopiedField(null), 2200);
-    }
-  };
 
   const bankFields = [
     {
@@ -97,7 +89,7 @@ export function SbiDonationSection({
     <Reveal direction="fade" tone="standard">
       <div
         id="donate-sbi"
-        className="bg-white text-ink rounded-xs border-2 border-sand shadow-2xl overflow-hidden scroll-mt-20"
+        className="bg-white text-ink rounded-xs border-2 border-sand shadow-2xl overflow-hidden scroll-mt-32"
       >
       {/* Top Banner — STATE BANK OF INDIA Official Bank Header */}
       <div className="bg-forest text-white p-6 sm:p-8 border-b-2 border-terracotta flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -160,7 +152,6 @@ export function SbiDonationSection({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {bankFields.map((item) => {
-              const isCopied = copiedField === item.key;
               return (
                 <div
                   key={item.key}
@@ -184,19 +175,14 @@ export function SbiDonationSection({
                       {item.value}
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => handleCopy(item.value, item.key)}
-                    className="min-h-[36px] min-w-[36px] p-2 rounded-xs bg-white border border-border-warm text-terracotta-dark hover:bg-terracotta hover:text-white transition-colors shrink-0 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-terracotta"
-                    aria-label={`Copy ${item.label}: ${item.value}`}
-                    title={`Copy ${item.label}`}
-                  >
-                    {isCopied ? (
-                      <Check className="w-4 h-4 text-current" aria-hidden="true" />
-                    ) : (
-                      <Copy className="w-4 h-4" aria-hidden="true" />
-                    )}
-                  </button>
+                  <CopyButton
+                    value={item.value}
+                    label={`${item.label}: ${item.value}`}
+                    onCopied={() => {
+                      setCopiedField(item.key);
+                      setTimeout(() => setCopiedField(null), 2200);
+                    }}
+                  />
                 </div>
               );
             })}
@@ -237,8 +223,10 @@ export function SbiDonationSection({
             </Link>
             <Link href="/donate" className="w-full sm:w-auto">
               <Button variant="secondary" size="lg" className="w-full sm:w-auto justify-center font-semibold sm:whitespace-nowrap">
-                <span>Full Donation Portal</span>
-                <ArrowRight className="w-4 h-4 ml-1.5 shrink-0" aria-hidden="true" />
+                <SlideTextButton>
+                  <span>Full Donation Portal</span>
+                  <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
+                </SlideTextButton>
               </Button>
             </Link>
           </div>
@@ -284,19 +272,15 @@ export function SbiDonationSection({
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(TRUST_CONFIG.bank.upiId, "upiId")}
-                        className="min-h-[36px] min-w-[36px] p-2 rounded-xs bg-cream border border-border-warm text-terracotta-dark hover:bg-terracotta hover:text-white transition-colors flex items-center justify-center focus-visible:outline-2 focus-visible:outline-terracotta"
-                        aria-label={`Copy Official SBI UPI ID: ${TRUST_CONFIG.bank.upiId}`}
-                        title="Copy UPI ID"
-                      >
-                        {copiedField === "upiId" ? (
-                          <Check className="w-4 h-4 text-current" aria-hidden="true" />
-                        ) : (
-                          <Copy className="w-4 h-4" aria-hidden="true" />
-                        )}
-                      </button>
+                      <CopyButton
+                        value={TRUST_CONFIG.bank.upiId}
+                        label={`Official SBI UPI ID: ${TRUST_CONFIG.bank.upiId}`}
+                        className="bg-cream"
+                        onCopied={() => {
+                          setCopiedField("upiId");
+                          setTimeout(() => setCopiedField(null), 2200);
+                        }}
+                      />
                       <a
                         href={verifiedQrSrc}
                         download="MECT-SBI-UPI-QR.png"

@@ -17,12 +17,16 @@ import { submitInquiry } from "@/lib/api";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
 import { SmartDonationCheckout } from "@/components/sections/SmartDonationCheckout";
 import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
+import { AmountPad } from "@/components/motion/AmountPad";
+import { SaveStatus, type SaveStatusState } from "@/components/motion/SaveStatus";
+import { InlineAlert } from "@/components/motion/InlineAlert";
+import { SlideTextButton } from "@/components/motion/SlideTextButton";
+import { useToast } from "@/components/ui/PromiseToast";
 import {
   ShieldCheck,
   CheckCircle2,
   Receipt,
   Calculator,
-  AlertCircle,
   Send,
   ArrowRight,
 } from "lucide-react";
@@ -33,10 +37,13 @@ export default function DonatePage() {
   const [taxBracket, setTaxBracket] = useState<number>(0.3); // 30% default
 
   // Donor Receipt Claim State
+  const { promiseToast } = useToast();
   const [receiptSubmitted, setReceiptSubmitted] = useState(false);
   const [receiptRefId, setReceiptRefId] = useState<number | null>(null);
   const [receiptIsSubmitting, setReceiptIsSubmitting] = useState(false);
   const [receiptError, setReceiptError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [saveStatus, setSaveStatus] = useState<SaveStatusState>("idle");
 
   const [donorData, setDonorData] = useState({
     fullName: "",
@@ -56,26 +63,95 @@ export default function DonatePage() {
     e.preventDefault();
     setReceiptIsSubmitting(true);
     setReceiptError(null);
+    setFieldErrors({});
 
-    // Validate PAN format (Basic 10-char regex)
-    const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-    if (!panRegex.test(donorData.pan.trim().toUpperCase())) {
-      setReceiptError("Please enter a valid 10-character Permanent Account Number (PAN) required for your Section 80G tax exemption certificate.");
+    const nextFieldErrors: Record<string, string> = {};
+    const orderedIds: Array<[keyof typeof nextFieldErrors | string, string, boolean, string]> = [
+      ["donor-name", "fullName", !donorData.fullName.trim(), "Donor full name is required."],
+      [
+        "donor-pan",
+        "pan",
+        !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(donorData.pan.trim().toUpperCase()),
+        "Enter a valid 10-character PAN (e.g. ABCDE1234F).",
+      ],
+      [
+        "donor-email",
+        "email",
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(donorData.email.trim()),
+        "Enter a valid email address for receipt delivery.",
+      ],
+      [
+        "donor-phone",
+        "phone",
+        donorData.phone.trim().length < 8,
+        "Enter a valid contact phone number.",
+      ],
+      [
+        "donor-amount",
+        "amount",
+        !(Number(donorData.amount) > 0),
+        "Enter a valid intended or remitted amount (> ₹0).",
+      ],
+      [
+        "donor-utr",
+        "utrNumber",
+        donorData.utrNumber.trim().length < 4,
+        "Enter your Bank UTR / UPI transaction reference.",
+      ],
+      [
+        "donor-address",
+        "address",
+        donorData.address.trim().length < 6,
+        "Enter your complete postal address with PIN.",
+      ],
+    ];
+
+    let firstInvalidId: string | null = null;
+    for (const [domId, key, invalid, msg] of orderedIds) {
+      if (invalid) {
+        nextFieldErrors[key] = msg;
+        if (!firstInvalidId) firstInvalidId = domId;
+      }
+    }
+
+    if (firstInvalidId) {
+      setFieldErrors(nextFieldErrors);
+      setReceiptError("Please review the highlighted fields below before submitting.");
+      setSaveStatus("error");
       setReceiptIsSubmitting(false);
+      if (typeof document !== "undefined") {
+        document.getElementById(firstInvalidId)?.focus();
+      }
       return;
     }
 
+    setSaveStatus("saving");
     try {
-      const response = await submitInquiry({
-        fullName: donorData.fullName.trim(),
-        email: donorData.email.trim(),
-        phone: donorData.phone.trim(),
-        category: "Donation Certificate Request",
-        message: `[Donation Certificate Claim]\nDonor Name: ${donorData.fullName.trim()}\nPAN: ${donorData.pan.trim().toUpperCase()}\nDonated Amount: ₹${donorData.amount}\nUTR / Bank Ref: ${donorData.utrNumber.trim()}\nProgramme: ${donorData.programme}\nPostal Address: ${donorData.address.trim()}, ${donorData.district}, ${donorData.state} - ${donorData.pin}\n\nNotice: Please issue official stamped donation certificate.`,
-      });
+      const response = await promiseToast(
+        submitInquiry({
+          fullName: donorData.fullName.trim(),
+          email: donorData.email.trim(),
+          phone: donorData.phone.trim(),
+          category: "Donation Certificate Request",
+          message: `[Donation Certificate Claim]\nDonor Name: ${donorData.fullName.trim()}\nPAN: ${donorData.pan.trim().toUpperCase()}\nDonated Amount: ₹${donorData.amount}\nUTR / Bank Ref: ${donorData.utrNumber.trim()}\nProgramme: ${donorData.programme}\nPostal Address: ${donorData.address.trim()}, ${donorData.district}, ${donorData.state} - ${donorData.pin}\n\nNotice: Please issue official stamped donation certificate.`,
+        }),
+        {
+          loading: "Logging donation receipt request...",
+          success: (res) =>
+            res.referenceId
+              ? `Receipt claim logged (Ref #${res.referenceId})`
+              : "Donation receipt request logged.",
+          error: (err) =>
+            err instanceof Error
+              ? err.message
+              : "Unable to register donor receipt claim.",
+        }
+      );
       setReceiptRefId(response.referenceId || null);
       setReceiptSubmitted(true);
+      setSaveStatus("saved");
     } catch (err: unknown) {
+      setSaveStatus("error");
       if (err instanceof Error) {
         setReceiptError(err.message);
       } else {
@@ -119,8 +195,10 @@ export default function DonatePage() {
             </Link>
             <Link href="#receipt-claim">
               <Button variant="dark-outline" size="sm">
-                <Receipt className="w-3.5 h-3.5 mr-1 text-cream" />
-                <span>Submit UTR &amp; Claim Receipt</span>
+                <SlideTextButton>
+                  <Receipt className="w-3.5 h-3.5 text-cream" />
+                  <span>Submit UTR &amp; Claim Receipt</span>
+                </SlideTextButton>
               </Button>
             </Link>
           </>
@@ -249,22 +327,21 @@ export default function DonatePage() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleReceiptSubmit} className="space-y-4">
-                {receiptError && (
-                  <div
-                    className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xs text-xs flex items-start gap-2"
-                    role="alert"
-                  >
-                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{receiptError}</span>
-                  </div>
-                )}
+              <form onSubmit={handleReceiptSubmit} noValidate className="space-y-4">
+                <InlineAlert message={receiptError} fieldErrors={fieldErrors} />
+
+                <AmountPad
+                  value={donorData.amount}
+                  onChange={(val) => setDonorData((prev) => ({ ...prev, amount: val }))}
+                  error={fieldErrors.amount}
+                />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <Input
                     id="donor-name"
                     label="Donor Full Name (As per PAN) *"
                     required
+                    error={fieldErrors.fullName}
                     value={donorData.fullName}
                     onChange={(e) => setDonorData({ ...donorData, fullName: e.target.value })}
                     placeholder="e.g. Subhashree Mohanty"
@@ -273,6 +350,7 @@ export default function DonatePage() {
                     id="donor-pan"
                     label="Permanent Account Number (PAN) *"
                     required
+                    error={fieldErrors.pan}
                     value={donorData.pan}
                     onChange={(e) => setDonorData({ ...donorData, pan: e.target.value.toUpperCase() })}
                     placeholder="e.g. ABCDE1234F"
@@ -286,6 +364,7 @@ export default function DonatePage() {
                     type="email"
                     label="Email Address (For Receipt) *"
                     required
+                    error={fieldErrors.email}
                     value={donorData.email}
                     onChange={(e) => setDonorData({ ...donorData, email: e.target.value })}
                     placeholder="subhashree@example.com"
@@ -295,31 +374,22 @@ export default function DonatePage() {
                     type="tel"
                     label="Phone / Mobile Number *"
                     required
+                    error={fieldErrors.phone}
                     value={donorData.phone}
                     onChange={(e) => setDonorData({ ...donorData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Input
-                    id="donor-amount"
-                    type="number"
-                    label="Remitted Donation Amount (₹) *"
-                    required
-                    value={donorData.amount}
-                    onChange={(e) => setDonorData({ ...donorData, amount: e.target.value })}
-                    placeholder="10000"
-                  />
-                  <Input
-                    id="donor-utr"
-                    label="Bank UTR / UPI Transaction Ref *"
-                    required
-                    value={donorData.utrNumber}
-                    onChange={(e) => setDonorData({ ...donorData, utrNumber: e.target.value })}
-                    placeholder="e.g. UBINR520261105..."
-                  />
-                </div>
+                <Input
+                  id="donor-utr"
+                  label="Bank UTR / UPI Transaction Ref *"
+                  required
+                  error={fieldErrors.utrNumber}
+                  value={donorData.utrNumber}
+                  onChange={(e) => setDonorData({ ...donorData, utrNumber: e.target.value })}
+                  placeholder="e.g. UBINR520261105..."
+                />
 
                 <Select
                   id="donor-prog"
@@ -341,11 +411,16 @@ export default function DonatePage() {
                   id="donor-address"
                   label="Complete Postal Address with PIN (For Official Receipt Records) *"
                   required
+                  error={fieldErrors.address}
                   rows={2}
                   value={donorData.address}
                   onChange={(e) => setDonorData({ ...donorData, address: e.target.value })}
                   placeholder="Plot/Flat No, Street, Landmark, City, State - PIN..."
                 />
+
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                  <SaveStatus status={saveStatus} />
+                </div>
 
                 <Button
                   type="submit"

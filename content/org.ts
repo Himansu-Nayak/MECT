@@ -100,4 +100,11 @@ export const ORG = {
     canonicalOrigin: "https://mect.org.in",
     ogDefaultImagePath: "/images/og-default.png",
   },
+  donationIntentPresets: [1000, 2500, 5000, 10000, 25000] as readonly number[],
+  scholarshipIntake: {
+    intakeOpen: false,
+    statusNote:
+      "Online document upload is currently paused pending the next Trust intake window announcement. Please direct scholarship queries to scholarships@mect.org.in.",
+  },
 } as const;
+
