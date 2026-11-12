@@ -156,7 +156,7 @@ export function Footer() {
                   href="/statutory-disclosures"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
-                  Statutory Disclosures &amp; Vault
+                  Statutory Disclosures
                 </Link>
               </li>
               <li>
@@ -286,7 +286,7 @@ export function Footer() {
                   href="/csr-partnerships"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
-                  CSR Partnerships (Schedule VII)
+                  Corporate CSR Partnership
                 </Link>
               </li>
               <li>
