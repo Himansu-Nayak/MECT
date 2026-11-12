@@ -26,13 +26,13 @@ Branch: `motion-ui`
 - [x] **M2.8** Footer (Reveal only; static bank details).
 
 ## PHASE M3 — Home page
-- [ ] **M3.1** Hero cross-fade (first slide eager, lazy-load rest <= 7, opacity 6s, pause/play & prev/next, no auto-advance under reduced motion).
-- [ ] **M3.2** Five pillars (`bento-grid` linking to `/programmes#<id>`, subtle hover lift).
-- [ ] **M3.3** Impact numbers (`metric-card` + Anime.js count-up 1.2s from server HTML, confirmed labels + Source link).
-- [ ] **M3.4** "How MECT works" flow (Anime.js `createDrawable` + `onScroll` line; Motion `<Reveal>` cards).
-- [ ] **M3.5** Statutory strip (static confirmed wording).
-- [ ] **M3.6** Marker emphasis (`marker-text` max once per page, static under reduced motion).
-- [ ] **M3.7** Stories rail (`carousel-cards` if consented stories exist in `content/stories.ts`, otherwise `empty-state`).
+- [x] **M3.1** Hero cross-fade (first slide eager, lazy-load rest <= 7, opacity 6s, pause/play & prev/next, no auto-advance under reduced motion).
+- [x] **M3.2** Five pillars (`bento-grid` linking to `/programmes#<id>`, subtle hover lift).
+- [x] **M3.3** Impact numbers (`metric-card` + Anime.js count-up 1.2s from server HTML, confirmed labels + Source link).
+- [x] **M3.4** "How MECT works" flow (Anime.js `createDrawable` + `onScroll` line; Motion `<Reveal>` cards).
+- [x] **M3.5** Statutory strip (static confirmed wording).
+- [x] **M3.6** Marker emphasis (`marker-text` max once per page, static under reduced motion).
+- [x] **M3.7** Stories rail (`carousel-cards` if consented stories exist in `content/stories.ts`, otherwise `empty-state`).
 
 ## PHASE M4 — Programmes: one illustration per pillar (Anime.js)
 - [ ] **M4.1** Education book illustration (`createDrawable`).
