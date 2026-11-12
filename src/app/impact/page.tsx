@@ -15,6 +15,8 @@ import {
   MOTION_STAGGER,
 } from "@/components/ui/MotionPrimitives";
 import { TRUST_CONFIG } from "@/lib/config";
+import { ImpactChartsSection } from "@/components/charts/ImpactChartsSection";
+import { OdishaDistrictGrid } from "@/components/motion/OdishaDistrictGrid";
 import {
   MapPin,
   CheckCircle2,
@@ -118,8 +120,34 @@ export default function ImpactPage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. Page Hero */}
-      <PageHero
+      {/* 1. Page Hero with subtle low-contrast topographic contours */}
+      <div className="relative overflow-hidden">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 1200 320"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.07] text-sand z-10"
+        >
+          <path
+            d="M-50 80 Q 250 20, 560 95 T 1250 70"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M-50 150 Q 300 90, 620 165 T 1250 140"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M-50 225 Q 280 175, 650 235 T 1250 210"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+        </svg>
+        <PageHero
         title="Documented Community Impact Across Our Work"
         description="Understand programme reach, community outcomes and the work behind the numbers. Geographic expansion plans are distinguished from active programme locations."
         breadcrumbs={[{ label: "Community Impact" }]}
@@ -140,6 +168,7 @@ export default function ImpactPage() {
           </>
         }
       />
+      </div>
 
       {/* 2. Four Verified Metric Counters */}
       <section id="metrics" className="py-20 md:py-28 bg-cream">
@@ -193,6 +222,9 @@ export default function ImpactPage() {
               );
             })}
           </StaggerGroup>
+
+          {/* Bklit Charts + Accessible Data Tables + Empty-State Fallbacks */}
+          <ImpactChartsSection />
         </Container>
       </section>
 
@@ -205,6 +237,9 @@ export default function ImpactPage() {
             subtitle="The map of activity must distinguish established programme locations, liaison offices, outreach areas and planned expansion. A listed district is not automatically an active project location."
             align="center"
           />
+
+          {/* 30-District Odisha Matrix (Anime.js stagger, includes Angul & Dhenkanal) */}
+          <OdishaDistrictGrid />
 
           <Reveal direction="fade" tone="slow">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
