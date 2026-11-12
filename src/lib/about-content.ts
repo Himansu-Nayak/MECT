@@ -163,7 +163,7 @@ export const ABOUT_CONTENT = {
         badge: "Inception",
         title: "Registration of Trust Deed in Balangir",
         description:
-          "Formal execution of Trust Deed on 27-07-2013 and registration before District Sub-Registrar, Balangir (Doc No. 40311302194). PAN card issued (AADTM5474F).",
+          "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar (Doc No. 40311302194). PAN card issued (AADTM5474F) {{CONFIRM: PAN allotment date vs deed date}}.",
       },
       {
         year: "2014–2020",
