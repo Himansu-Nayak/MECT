@@ -21,6 +21,7 @@ export function TaxStatusNotice({
   return (
     <div
       role="note"
+      data-inline-alert="tax-status"
       aria-label={COMPLIANCE.taxStatusNotice.heading}
       className={[
         "rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4",
@@ -81,3 +82,4 @@ export function TaxStatusNotice({
     </div>
   );
 }
+

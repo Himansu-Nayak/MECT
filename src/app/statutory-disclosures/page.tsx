@@ -2,6 +2,7 @@ import React from "react";
 import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { ReadingProgress } from "@/components/motion/ReadingProgress";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -139,6 +140,7 @@ export default function StatutoryDisclosuresPage() {
 
   return (
     <div className="flex flex-col w-full">
+      <ReadingProgress />
       {/* 1. Page Hero */}
       <PageHero
         badge="Government-Certified Transparency Vault"
