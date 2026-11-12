@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Accordion, type FAQItem } from "@/components/Accordion";
+import { FaqFilterWrapper } from "@/components/sections/FaqFilterWrapper";
 import {
   GraduationCap,
   Users,
@@ -323,90 +324,113 @@ export default function FAQPage() {
       </section>
 
       {/* 3. Thematic FAQ Accordions */}
-      <section className="py-16 md:py-24 bg-sand-light space-y-16">
-        {/* Category 1 */}
-        <div id="scholarships" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Scholarships & Financial Aid"
-              title="Scholarship Appraisal & Direct Disbursal"
-              subtitle="Guidelines covering means-and-merit evaluation, zero intermediary rules, and required documentation."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={SCHOLARSHIP_FAQS} />
-            </div>
-          </Container>
-        </div>
-
-        {/* Category 2 */}
-        <div id="mentorship" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Mentorship & Career Fellowship"
-              title="Pratibha Mentorship Program"
-              subtitle="Policies regarding 1-on-1 scholar pairing, academic coaching, and attendance expectations."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={MENTORSHIP_FAQS} />
-            </div>
-          </Container>
-        </div>
-
-        {/* Category 3 */}
-        <div id="governance" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Statutory Governance & Audit"
-              title="Fiduciary Oversight & Impartiality"
-              subtitle="Legal registration, non-conflict charters, Form 10B public audits, and Trustee governance."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={GOVERNANCE_FAQS} />
-            </div>
-          </Container>
-        </div>
-
-        {/* Category 4 */}
-        <div id="study-hubs" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Community Study Hubs"
-              title="Project Samarth Infrastructure"
-              subtitle="District learning centers, solar power backup, digital reference facilities, and access terms."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={STUDY_HUBS_FAQS} />
-            </div>
-          </Container>
-        </div>
-
-        {/* Category 5 */}
-        <div id="volunteering" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Volunteering & Fellowship"
-              title="Volunteer Induction & Code of Conduct"
-              subtitle="Eligibility, safeguarding verifications, time commitments, and institutional certification."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={VOLUNTEER_FAQS} />
-            </div>
-          </Container>
-        </div>
-
-        {/* Category 6 */}
-        <div id="donations" className="scroll-mt-24">
-          <Container size="narrow">
-            <SectionHeader
-              badge="Transparency & Donors"
-              title="Endowments & Non-Intermediary Pledge"
-              subtitle="Zero commission principles, Section 80G tax deductions, and CSR collaboration protocols."
-            />
-            <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
-              <Accordion items={DONATIONS_FAQS} />
-            </div>
-          </Container>
-        </div>
+      <section className="py-16 md:py-24 bg-sand-light">
+        <FaqFilterWrapper
+          sections={[
+            {
+              id: "scholarships",
+              label: "Scholarships",
+              count: SCHOLARSHIP_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Scholarships & Financial Aid"
+                    title="Scholarship Appraisal & Direct Disbursal"
+                    subtitle="Guidelines covering means-and-merit evaluation, zero intermediary rules, and required documentation."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={SCHOLARSHIP_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+            {
+              id: "mentorship",
+              label: "Mentorship",
+              count: MENTORSHIP_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Mentorship & Career Fellowship"
+                    title="Pratibha Mentorship Program"
+                    subtitle="Policies regarding 1-on-1 scholar pairing, academic coaching, and attendance expectations."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={MENTORSHIP_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+            {
+              id: "governance",
+              label: "Governance",
+              count: GOVERNANCE_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Statutory Governance & Audit"
+                    title="Fiduciary Oversight & Impartiality"
+                    subtitle="Legal registration, non-conflict charters, Form 10B public audits, and Trustee governance."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={GOVERNANCE_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+            {
+              id: "study-hubs",
+              label: "Study Hubs",
+              count: STUDY_HUBS_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Community Study Hubs"
+                    title="Project Samarth Infrastructure"
+                    subtitle="District learning centers, solar power backup, digital reference facilities, and access terms."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={STUDY_HUBS_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+            {
+              id: "volunteering",
+              label: "Volunteering",
+              count: VOLUNTEER_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Volunteering & Fellowship"
+                    title="Volunteer Induction & Code of Conduct"
+                    subtitle="Eligibility, safeguarding verifications, time commitments, and institutional certification."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={VOLUNTEER_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+            {
+              id: "donations",
+              label: "Donations & Tax",
+              count: DONATIONS_FAQS.length,
+              content: (
+                <Container size="narrow">
+                  <SectionHeader
+                    badge="Transparency & Donors"
+                    title="Endowments & Non-Intermediary Pledge"
+                    subtitle="Zero commission principles, Section 80G tax deductions, and CSR collaboration protocols."
+                  />
+                  <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
+                    <Accordion items={DONATIONS_FAQS} />
+                  </div>
+                </Container>
+              ),
+            },
+          ]}
+        />
       </section>
 
       {/* 4. Secretariat Helpdesk & Query Escalation Desk */}

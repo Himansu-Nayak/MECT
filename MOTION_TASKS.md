@@ -66,12 +66,12 @@ Branch: `motion-ui`
 
 ## PHASE M7 — Content pages
 
-- [ ] **M7.1** FAQ (`smooth-tab`, server-rendered `AnimatePresence` accordion, `helpful-rating`).
-- [ ] **M7.2** Statutory & Reports (`<Reveal>` document cards, `scroll-index` sticky TOC).
-- [ ] **M7.3** Gallery (`lightbox-grid` with `layoutId`, captions, Escape, focus return, lazy-loaded).
-- [ ] **M7.4** News & empty states (`empty-state`).
-- [ ] **M7.5** CSR page (`dot-field` subtle background, static under reduced motion).
-- [ ] **M7.6** Governance (`<Reveal>` trustee cards, static legal text).
+- [x] **M7.1** FAQ (`smooth-tab`, server-rendered `AnimatePresence` accordion, `helpful-rating`).
+- [x] **M7.2** Statutory & Reports (`<Reveal>` document cards, `scroll-index` sticky TOC).
+- [x] **M7.3** Gallery (`lightbox-grid` with `layoutId`, captions, Escape, focus return, lazy-loaded).
+- [x] **M7.4** News & empty states (`empty-state`).
+- [x] **M7.5** CSR page (`dot-field` subtle background, static under reduced motion).
+- [x] **M7.6** Governance (`<Reveal>` trustee cards, static legal text).
 
 ## PHASE M8 — Ask HIm(AI) assistant
 

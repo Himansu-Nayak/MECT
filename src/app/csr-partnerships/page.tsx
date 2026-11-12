@@ -14,6 +14,7 @@ import { Select } from "@/components/ui/Select";
 import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
 import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
+import { DotField } from "@/components/motion/DotField";
 import {
   Briefcase,
   ShieldCheck,
@@ -238,8 +239,9 @@ export default function CSRPartnershipsPage() {
       </section>
 
       {/* 4. Corporate Governance & Fiduciary Assurance */}
-      <section className="py-20 bg-terracotta text-white border-y border-sand/30">
-        <Container size="default" className="space-y-12">
+      <section className="relative overflow-hidden py-20 bg-terracotta text-white border-y border-sand/30">
+        <DotField />
+        <Container size="default" className="relative z-10 space-y-12">
           <SectionHeader
             badge="Fiduciary Integrity"
             title="The MECT Corporate Governance Guarantee"
