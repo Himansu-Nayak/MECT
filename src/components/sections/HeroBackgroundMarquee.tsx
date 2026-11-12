@@ -184,7 +184,7 @@ export function HeroBackgroundMarquee() {
   return (
     <>
       <div
-        className="hero-bg-marquee-wrapper block absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
+        className="hero-bg-marquee-wrapper block absolute inset-x-0 top-0 h-[230px] sm:h-[270px] md:inset-0 md:h-full z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
         aria-hidden="true"
       >
         <div
