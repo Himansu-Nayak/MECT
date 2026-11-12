@@ -31,6 +31,13 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 7.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 8rem;
+    }
   }
 
   body {
@@ -177,7 +184,7 @@
 
 /* Floating Action & Chatbot Safe-Area Clearance on Mobile */
 .pb-floating-clearance {
-  padding-bottom: max(7.5rem, calc(env(safe-area-inset-bottom, 20px) + 6rem));
+  padding-bottom: max(6.5rem, calc(env(safe-area-inset-bottom, 20px) + 5rem));
 }
 
 @media (min-width: 1280px) {
@@ -262,7 +269,12 @@ select:focus-visible {
 
 @media (max-width: 767px) {
   .hero-bg-track-ltr {
-    animation-duration: 22s;
+    animation-duration: 24s;
+  }
+  .hero-bg-panel-feather {
+    margin-right: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
