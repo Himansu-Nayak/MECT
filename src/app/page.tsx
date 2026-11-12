@@ -15,9 +15,12 @@ import {
   Reveal,
   StaggerGroup,
   StaggerItem,
-  CountUpStat,
   MOTION_STAGGER,
 } from "@/components/ui/MotionPrimitives";
+import { AnimeCountUp } from "@/components/motion/AnimeCountUp";
+import { HowMectWorksConnector } from "@/components/motion/HowMectWorksConnector";
+import { MarkerText } from "@/components/motion/MarkerText";
+import { StoriesRailSection } from "@/components/sections/StoriesRailSection";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
@@ -268,7 +271,9 @@ export default function HomePage() {
               {/* Grand Highlighted Editorial Headline */}
               <h1 className="font-serif text-[clamp(1.5rem,6.2vw,2.05rem)] sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem] xl:text-[3.35rem] font-bold text-white tracking-tight leading-[1.15] sm:leading-[1.1] [text-wrap:balance] drop-shadow-[0_2px_16px_rgba(12,18,15,0.88)]">
                 Stronger communities begin with{" "}
-                <span className="text-sand">opportunity, dignity and care.</span>
+                <MarkerText className="text-sand">
+                  opportunity, dignity and care.
+                </MarkerText>
               </h1>
 
               {/* Multi-Sector Narrative Subtext */}
@@ -363,7 +368,10 @@ export default function HomePage() {
           ========================================================================= */}
       <InstitutionalMarquee />
 
-      <section className="py-10 bg-sand-light border-b border-border-warm">
+      <section
+        data-statutory-strip="true"
+        className="py-10 bg-sand-light border-b border-border-warm"
+      >
         <Container size="default">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
             <div className="flex items-center gap-2">
@@ -484,7 +492,7 @@ export default function HomePage() {
                 <StaggerItem key={pillar.number}>
                   <Card
                     variant="elevated"
-                    className="h-full flex flex-col justify-between p-7 border-border-warm hover:border-terracotta transition-all duration-300 bg-cream/35 shadow-xs group"
+                    className="h-full flex flex-col justify-between p-7 border-border-warm hover:border-terracotta hover:-translate-y-0.5 transition-all duration-300 bg-cream/35 shadow-xs group"
                   >
                     <div className="space-y-4">
                       {/* Top Bar with Number, Icon and Tag */}
@@ -585,29 +593,41 @@ export default function HomePage() {
           />
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <CountUpStat value="13+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
+            <div data-metric-card="years" className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <AnimeCountUp value="13+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Years of Service</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Established by Registered Trust Deed in 2013 (Balangir)</p>
+              <Link href="/statutory-disclosures" className="inline-block text-[10px] font-mono text-sand/85 hover:text-sand underline underline-offset-2">
+                Source: Trust Deed
+              </Link>
             </div>
-            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <CountUpStat value="350+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
+            <div data-metric-card="students" className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <AnimeCountUp value="350+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Students Coached</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Annual free remedial tuition &amp; books in Balangir &amp; Puintala</p>
+              <Link href="/impact" className="inline-block text-[10px] font-mono text-sand/85 hover:text-sand underline underline-offset-2">
+                Source: Impact Ledger
+              </Link>
             </div>
-            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <CountUpStat value="120+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
+            <div data-metric-card="women" className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <AnimeCountUp value="120+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Women Skilled</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Certified vocational tailoring &amp; livelihood machine tooling</p>
+              <Link href="/impact" className="inline-block text-[10px] font-mono text-sand/85 hover:text-sand underline underline-offset-2">
+                Source: Impact Ledger
+              </Link>
             </div>
-            <div className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
-              <CountUpStat value="10,000+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
+            <div data-metric-card="citizens" className="p-5 sm:p-7 bg-forest-deep rounded-xs border border-sand/30 text-center space-y-2.5 min-w-0 shadow-sm">
+              <AnimeCountUp value="10,000+" className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white block" />
               <div className="w-8 h-0.5 bg-sand mx-auto" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-wider text-sand">Citizens Served</p>
               <p className="text-[11px] text-cream/90 leading-relaxed">Jal Seva drinking water kiosks during 45°C summer heatwaves</p>
+              <Link href="/impact" className="inline-block text-[10px] font-mono text-sand/85 hover:text-sand underline underline-offset-2">
+                Source: Field Registers
+              </Link>
             </div>
           </div>
 
@@ -639,6 +659,8 @@ export default function HomePage() {
             align="center"
           />
 
+          <HowMectWorksConnector />
+
           <StaggerGroup staggerDelay={MOTION_STAGGER.steps} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {HOMEPAGE_CONTENT.howWeWork?.map((item, idx) => {
               const IconComp = HOW_WE_WORK_ICON_MAP[item.iconName] || Users;
@@ -668,6 +690,9 @@ export default function HomePage() {
           </StaggerGroup>
         </Container>
       </section>
+
+      {/* Consent-Verified Field Stories Rail / Empty State */}
+      <StoriesRailSection />
 
       {/* =========================================================================
           SECTION 7 — SCHOLARSHIP SUITE: Scheme Explorer, Calculator & Disbursal

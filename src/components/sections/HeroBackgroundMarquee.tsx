@@ -1,5 +1,10 @@
-import React from "react";
+// motion: owner = Motion
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import { useReducedMotion } from "motion/react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 export interface HeroBackgroundSlide {
   id: string;
@@ -87,7 +92,7 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
             alt=""
             fill
             sizes="(max-width: 639px) 100vw, (max-width: 767px) 92vw, (max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
-            loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
+            loading={!isClone && idx === 0 ? "eager" : "lazy"}
             decoding="async"
             priority={!isClone && idx === 0}
             className="object-cover brightness-[1.06] contrast-[1.04]"
@@ -119,7 +124,7 @@ function MobileSequence({ isClone = false }: { isClone?: boolean }) {
             alt=""
             fill
             sizes="(max-width: 767px) 96vw, 440px"
-            loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
+            loading={!isClone && idx === 0 ? "eager" : "lazy"}
             decoding="async"
             priority={!isClone && idx === 0}
             className="object-cover"
@@ -162,15 +167,81 @@ export function HeroMobilePhotoStrip() {
  * moving continuously left-to-right behind the MECT homepage hero copy.
  */
 export function HeroBackgroundMarquee() {
+  const [isPaused, setIsPaused] = useState(false);
+  const [manualOffset, setManualOffset] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const pausedOrReduced = Boolean(shouldReduceMotion) || isPaused;
+
+  const stepSlide = (delta: number) => {
+    setIsPaused(true);
+    setManualOffset(
+      (prev) =>
+        (prev + delta + HERO_BACKGROUND_SLIDES.length) %
+        HERO_BACKGROUND_SLIDES.length
+    );
+  };
+
   return (
-    <div
-      className="hero-bg-marquee-wrapper block absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
-      aria-hidden="true"
-    >
-      <div className="hero-bg-track-ltr">
-        <DesktopSequence />
-        <DesktopSequence isClone />
+    <>
+      <div
+        className="hero-bg-marquee-wrapper block absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
+        aria-hidden="true"
+      >
+        <div
+          className={`hero-bg-track-ltr transition-opacity duration-500 ${
+            pausedOrReduced ? "[animation-play-state:paused]" : ""
+          }`}
+          style={
+            isPaused && !shouldReduceMotion
+              ? {
+                  animation: "none",
+                  transform: `translate3d(-${manualOffset * 14.285}%, 0, 0)`,
+                  transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+                }
+              : undefined
+          }
+        >
+          <DesktopSequence />
+          <DesktopSequence isClone />
+        </div>
       </div>
-    </div>
+
+      {/* Subtle Hero Background Controls (Pause/Play & Prev/Next) */}
+      <div className="absolute bottom-3 right-3 z-30 hidden sm:flex items-center gap-1 rounded-xs bg-forest-deep/80 border border-sand/35 p-1 backdrop-blur-xs print:hidden">
+        <button
+          type="button"
+          onClick={() => stepSlide(-1)}
+          aria-label="Previous background photo"
+          className="min-w-[28px] min-h-[28px] inline-flex items-center justify-center rounded-xs text-cream hover:text-sand hover:bg-forest transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+        >
+          <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
+        </button>
+        {!shouldReduceMotion && (
+          <button
+            type="button"
+            onClick={() => setIsPaused((prev) => !prev)}
+            aria-pressed={isPaused}
+            aria-label={
+              isPaused ? "Resume hero photo motion" : "Pause hero photo motion"
+            }
+            className="min-w-[28px] min-h-[28px] inline-flex items-center justify-center rounded-xs text-cream hover:text-sand hover:bg-forest transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+          >
+            {isPaused ? (
+              <Play className="w-3 h-3" aria-hidden="true" />
+            ) : (
+              <Pause className="w-3 h-3" aria-hidden="true" />
+            )}
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => stepSlide(1)}
+          aria-label="Next background photo"
+          className="min-w-[28px] min-h-[28px] inline-flex items-center justify-center rounded-xs text-cream hover:text-sand hover:bg-forest transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+        >
+          <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+        </button>
+      </div>
+    </>
   );
 }
