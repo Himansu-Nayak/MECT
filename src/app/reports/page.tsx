@@ -82,9 +82,9 @@ export default function ReportsPage() {
 
   const financialStandards = [
     {
-      title: "100% Programme Expense Policy",
+      title: "Direct Programme Allocation Focus",
       description:
-        "All donations and grants are allocated directly toward verified educational fees, vocational sewing machinery, water filtration equipment, and nutritional food supplies.",
+        "Contributions and grants are directed toward educational fees, vocational sewing equipment, water filtration, and nutritional food relief, subject to essential trust administration.",
       icon: Receipt,
     },
     {
@@ -94,9 +94,9 @@ export default function ReportsPage() {
       icon: Scale,
     },
     {
-      title: "Independent CA Audits",
+      title: "Statutory Audit Process",
       description:
-        "All ledgers, bank transactions, and balance sheets undergo annual audit by independent Chartered Accountants with mandatory Form 10B filings under the Income Tax Act.",
+        "Trust accounts are prepared under Trust Deed Clause 16; certified audit statements are published in the archive below as they are finalized ({{CONFIRM: audited accounts and Form 10B}}).",
       icon: ShieldCheck,
     },
     {

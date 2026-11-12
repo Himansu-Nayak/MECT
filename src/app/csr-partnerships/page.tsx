@@ -86,7 +86,7 @@ export default function CSRPartnershipsPage() {
         "Branded rural coaching centres equipped with desks and teaching aids",
         "Free student study kits (textbooks, notebooks, geometry sets)",
         "Monthly attendance and academic performance tracking reports",
-        "Independent CA Utilization Certificate (UC) and photographic audit",
+        "Project Utilization Certificate (UC) and photographic field documentation",
       ],
       icon: GraduationCap,
     },
@@ -252,10 +252,10 @@ export default function CSRPartnershipsPage() {
             <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
               <FileCheck className="w-8 h-8 text-cream" />
               <h4 className="font-serif text-lg font-bold text-white">
-                Independent CA Utilization Certificates
+                Utilization Certificates &amp; Vouchers
               </h4>
               <p className="text-xs text-white/75 leading-relaxed">
-                Every rupee disbursed is reconciled with bills, vouchers, and vendor invoices. Donors receive certified Form 10B and project Utilization Certificates (UC) signed by independent Chartered Accountants.
+                Project disbursements are reconciled with bills, vouchers, and vendor invoices, with Utilization Certificates (UC) prepared for corporate CSR partners.
               </p>
             </div>
 

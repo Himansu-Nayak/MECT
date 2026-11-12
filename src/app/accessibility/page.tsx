@@ -61,11 +61,11 @@ const TECHNICAL_MEASURES = [
 ];
 
 const COMPATIBILITY_TOOLS = [
-  { name: "NVDA (NonVisual Desktop Access)", platform: "Windows (Firefox, Chrome, Edge)", status: "Fully Supported" },
-  { name: "JAWS (Job Access With Speech)", platform: "Windows (Chrome, Edge)", status: "Fully Supported" },
-  { name: "Apple VoiceOver", platform: "macOS & iOS (Safari)", status: "Fully Supported" },
-  { name: "Google TalkBack", platform: "Android (Chrome)", status: "Fully Supported" },
-  { name: "Screen Magnification Tools", platform: "Windows Magnifier, macOS Zoom", status: "Tested up to 200%" },
+  { name: "NVDA (NonVisual Desktop Access)", platform: "Windows (Firefox, Chrome, Edge)", status: "Semantic HTML Targeted" },
+  { name: "JAWS (Job Access With Speech)", platform: "Windows (Chrome, Edge)", status: "Semantic HTML Targeted" },
+  { name: "Apple VoiceOver", platform: "macOS & iOS (Safari)", status: "Semantic HTML Targeted" },
+  { name: "Google TalkBack", platform: "Android (Chrome)", status: "Semantic HTML Targeted" },
+  { name: "Screen Magnification Tools", platform: "Windows Magnifier, macOS Zoom", status: "Responsive Layout up to 200%" },
 ];
 
 export default function AccessibilityPage() {
