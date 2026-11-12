@@ -1225,7 +1225,7 @@ export default function HomePage() {
                     <strong>Digital Payment Mode Mandate:</strong> Cash contributions exceeding ₹2,000 are disqualified from tax exemption under Section 133 / Section 80G(5D). Contributions must be transferred via digital or banking channels.
                   </li>
                   <li>
-                    <strong>Reporting &amp; Certificates:</strong> Annual donation reporting is conducted via Form 113 (legacy Form 10BD) to generate official Form 114 (legacy Form 10BE) certificates. Donors must furnish valid PAN and residential address. Note that under Section 202 (simplified tax regime), Section 133 charitable deductions are not available.
+                    <strong>Reporting &amp; Certificates:</strong> Official donation certificates and statutory reporting are issued in accordance with applicable tax rules; donors must furnish valid PAN and residential address. Note that under the simplified tax regime, charitable deductions are not available.
                   </li>
                   <li>
                     <strong>Non-Advisory Disclaimer:</strong> This calculator is an illustrative educational model and does not constitute formal legal, accounting or tax advice. Donors should consult a certified Chartered Accountant to determine their personal tax liabilities.

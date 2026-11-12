@@ -320,11 +320,11 @@ export default function StatutoryDisclosuresPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-sand" aria-hidden="true" />
-                    <span>Donor PAN and address are recorded for annual Form 10BD statement of donations filed with the Income Tax Department.</span>
+                    <span>Donor PAN and address are recorded when required for statutory donation reporting.</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-sand" aria-hidden="true" />
-                    <span>Donors receive Form 10BE Certificate of Donation enabling pre-filled ITR filing.</span>
+                    <span>Donors receive an official donation certificate for their records.</span>
                   </li>
                 </ul>
               </div>
@@ -364,7 +364,7 @@ export default function StatutoryDisclosuresPage() {
                 <Link href="/donate" className="w-full">
                   <Button variant="gold" size="lg" className="w-full justify-center shadow-lg font-bold">
                     <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
-                    <span>Online 80G Donation Gateway</span>
+                    <span>Donation details</span>
                   </Button>
                 </Link>
               </div>
