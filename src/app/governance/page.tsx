@@ -8,6 +8,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { TRUST_CONFIG } from "@/lib/config";
+import { TRUSTEES } from "@content/trustees";
+import { COMPLIANCE } from "@content/compliance";
 import {
   ShieldCheck,
   FileText,
@@ -20,7 +22,6 @@ import {
   ArrowRight,
   Receipt,
   Mail,
-  UserCheck,
   CheckCircle2,
   ExternalLink,
   FileCheck,
@@ -36,27 +37,6 @@ export const metadata = createPageMetadata({
 });
 
 export default function GovernancePage() {
-  const boardOfTrustees = [
-    {
-      name: "Er. Japabandhu Kampa",
-      role: "Settler Founder & Chairman cum Managing Trustee",
-      deedClause: "Clause 8(2) & Clause 10 (Life Founder Chairman)",
-      details:
-        "Settler founder of Mahaveer Educational & Charitable Trust. Authorized custodian of trust records, institutional banking oversight, and statutory compliance under the registered Trust Deed (executed 27-07-2013, registered 30-07-2013 in Balangir).",
-      status: "Chairman cum Managing Trustee",
-      icon: UserCheck,
-    },
-    {
-      name: "Honorary Board of Trustees",
-      role: "Collective Fiduciary Custodians",
-      deedClause: "Clause 8(1) & Section 9 Clause XVI (Honorary Charter)",
-      details:
-        "Operating under registered Trust Deed quorum mandates (minimum 2 trustees or one-third of the Board, whichever is greater). Trustees oversee charitable programmes without personal remuneration.",
-      status: "Honorary Non-Remunerative Board",
-      icon: Landmark,
-    },
-  ];
-
   const keyDeedClauses = [
     {
       clause: "Section 9 Clause XVI",
@@ -129,8 +109,8 @@ export default function GovernancePage() {
       code: "DEED-40311302194",
       type: "Registered Public Deed",
       description:
-        "Original registered trust deed executed before District Sub-Registrar, Balangir (Book 4, Vol 45, Doc No. 40311302194) establishing MECT's irrevocable public charitable status.",
-      version: "Legally Ratified (30-07-2013)",
+        "Original registered trust deed before District Sub-Registrar, Balangir (Book 4, Vol 45, Doc No. 40311302194) establishing MECT's irrevocable public charitable status.",
+      version: COMPLIANCE.trustDeedWording,
     },
     {
       title: "CBDT Form 10AC Section 12A Order",
@@ -229,46 +209,39 @@ export default function GovernancePage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {boardOfTrustees.map((trustee) => {
-              const Icon = trustee.icon;
-              return (
-                <Card
-                  key={trustee.name}
-                  variant="elevated"
-                  className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
-                >
-                  <div className="flex items-center justify-between pb-3 border-b border-border-warm">
-                    <Badge variant="contrast-gold" size="sm">
-                      {trustee.status}
-                    </Badge>
-                    <span className="text-[10px] font-semibold text-terracotta-dark bg-terracotta/5 px-2.5 py-0.5 rounded-xs font-mono">
-                      {trustee.deedClause}
-                    </span>
-                  </div>
+            {TRUSTEES.map((trustee) => (
+              <Card
+                key={trustee.id}
+                variant="elevated"
+                className="p-7 sm:p-8 bg-white border-border-warm shadow-xs hover:border-sand transition-all space-y-4"
+              >
+                <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                  <Badge variant={trustee.isConfirmed ? "contrast-gold" : "forest"} size="sm">
+                    {trustee.status}
+                  </Badge>
+                  <span className="text-[10px] font-semibold text-terracotta-dark bg-terracotta/5 px-2.5 py-0.5 rounded-xs font-mono">
+                    {trustee.deedClause}
+                  </span>
+                </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xs bg-forest text-white flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-sand">
-                      {trustee.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .slice(0, 2)
-                        .join("")}
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-xl font-bold text-terracotta-dark">
-                        {trustee.name}
-                      </h3>
-                      <p className="text-xs text-forest font-semibold font-sans mt-0.5">
-                        {trustee.role}
-                      </p>
-                      <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
-                        {trustee.details}
-                      </p>
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xs bg-forest text-white flex items-center justify-center shrink-0 font-serif font-bold text-lg border border-sand">
+                    {trustee.initials}
                   </div>
-                </Card>
-              );
-            })}
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-terracotta-dark">
+                      {trustee.name}
+                    </h3>
+                    <p className="text-xs text-forest font-semibold font-sans mt-0.5">
+                      {trustee.role}
+                    </p>
+                    <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
+                      {trustee.details}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
 
           {/* Honorary Governance Alert */}
