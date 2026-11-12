@@ -18,7 +18,7 @@ Master task tracker for the 12 Nov 2026 audit remediation on `https://mect.org.i
 
 ## PHASE 2 — Legal and tax wording
 - [x] **A2.1** Create `content/compliance.ts` as single source for registration status text and `ELIGIBILITY_FY2026_27` (`unconfirmed | confirmed`, default `unconfirmed`).
-- [ ] **A2.2** Show ONE `<TaxStatusNotice />` box at top of `/donate` and in footer when `unconfirmed`, linking to `/statutory-disclosures` and using `{{CONFIRM: 80G notice wording}}`.
+- [x] **A2.2** Show ONE `<TaxStatusNotice />` box at top of `/donate` and in footer when `unconfirmed`, linking to `/statutory-disclosures` and using `{{CONFIRM: 80G notice wording}}`.
 - [ ] **A2.3** Remove unconfirmed green ticks and `80G Tax Deductible` / `50% Tax Deduction Eligible` / `All statutory registrations are active` / `Legally Ratified & Permanent` / `Section 80G Approval` badges/CTAs and gate Tax Deduction Estimator behind flag.
 - [ ] **A2.4** Remove repeated 80G paragraph from `/` (keep single pointer to `/statutory-disclosures`; full explanation only on `/statutory-disclosures`).
 - [ ] **A2.5** Rewrite `/governance` statuses (`content/trustees.ts`, `{{CONFIRM: trustee list}}`, always show chairman, remove pending-gazette/no-public-funds/certificate-issuance lines).
