@@ -19,12 +19,12 @@ import {
 const STEP_ICONS = [BookOpen, Users, Landmark];
 
 export function SmileFundraisingSection() {
-  const data = HOMEPAGE_CONTENT.smileFundraising;
+  const data = HOMEPAGE_CONTENT.educationalAppeal;
 
   return (
     <section
       id="fundraising"
-      className="py-16 sm:py-20 md:py-24 bg-sand-light border-b border-border-warm scroll-mt-20"
+      className="py-16 sm:py-20 md:py-24 bg-sand-light border-b border-border-warm scroll-mt-32"
       aria-labelledby="fundraising-heading"
     >
       <Container size="default" className="space-y-10">
@@ -117,14 +117,6 @@ export function SmileFundraisingSection() {
                   </Link>
                 </div>
               </div>
-            </div>
-
-            {/* Explicit Organisational Independence Disclosure */}
-            <div className="p-4 rounded-xs bg-cream/65 border border-border-warm flex items-start gap-3 text-xs text-ink-sand font-sans">
-              <Info className="w-4 h-4 text-forest shrink-0 mt-0.5" aria-hidden="true" />
-              <p className="leading-relaxed">
-                {data.authorisationDisclaimer}
-              </p>
             </div>
           </div>
         </Reveal>

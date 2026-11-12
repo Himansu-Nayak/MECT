@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/MotionPrimitives";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
-import { SmileFundraisingSection } from "@/components/sections/SmileFundraisingSection";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
 import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
 import { SchemeExplorer } from "@/components/SchemeExplorer";
@@ -462,11 +461,6 @@ export default function HomePage() {
           PHASE 3 — FREE EDUCATION FOR 200 STUDENTS
           ========================================================================= */}
       <FreeEducationSection />
-
-      {/* =========================================================================
-          PHASE 4 — SMILE FOUNDATION FUNDRAISING INITIATIVE
-          ========================================================================= */}
-      <SmileFundraisingSection />
 
       {/* =========================================================================
           SECTION 3 — OUR FIVE DEVELOPMENT SECTORS: Distinct Visual Identities
