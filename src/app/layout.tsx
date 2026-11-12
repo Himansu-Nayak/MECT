@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { QuickActionDock } from "@/components/QuickActionDock";
-import { HImChatbot } from "@/components/ai/HImChatbot";
+import { SiteLayout } from "@/components/layout/SiteLayout";
 import { TRUST_CONFIG } from "@/lib/config";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -177,17 +174,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-cream text-ink font-sans antialiased selection:bg-sand selection:text-forest-deep">
-        {/* WCAG 2.2 AA Accessible Skip Link */}
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-          {children}
-        </main>
-        <QuickActionDock />
-        <HImChatbot />
-        <Footer />
+        <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
   );
