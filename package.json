@@ -13,17 +13,28 @@
     "audit:motion": "node scripts/audit-motion.mts"
   },
   "dependencies": {
+    "@number-flow/react": "^0.6.2",
     "animejs": "^4.5.0",
+    "clsx": "^2.1.1",
+    "cn": "^0.5.2",
+    "d3-array": "^3.2.5",
+    "d3-scale": "^4.0.3",
+    "d3-shape": "^3.2.1",
     "groq-sdk": "^1.6.0",
     "lucide-react": "^1.16.0",
     "motion": "^12.4.7",
     "next": "^16.4.3",
+    "radix-ui": "^1.8.1",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.4.6",
     "@tailwindcss/postcss": "^4.0.0",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.2.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
