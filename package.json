@@ -1,15 +1,16 @@
 {
-  "name": "mahavir-trust",
+  "name": "mect",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/check-confirm.ts && next build --webpack",
+    "build": "node scripts/check-confirm.mts && next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check:confirm": "node scripts/check-confirm.ts",
-    "audit:site": "node scripts/audit-site.ts"
+    "check:confirm": "node scripts/check-confirm.mts",
+    "audit:site": "node scripts/audit-site.mts",
+    "audit:motion": "node scripts/audit-motion.mts"
   },
   "dependencies": {
     "animejs": "^4.5.0",
@@ -21,6 +22,7 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.4.6",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
