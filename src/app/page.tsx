@@ -238,15 +238,21 @@ export default function HomePage() {
           {/* Layer 0: Full-Bleed Left-to-Right Marquee Behind Hero Copy */}
           <HeroBackgroundMarquee />
 
-          {/* Layer 1: Forest & Subtle Terracotta Cinematic Scrim for Contrast */}
+          {/* Layer 1a: Mobile Even Scrim so full photo stays clearly visible edge-to-edge */}
           <div
             aria-hidden="true"
-            className="block absolute inset-0 z-10 pointer-events-none"
+            className="md:hidden absolute inset-0 z-10 pointer-events-none bg-forest-deep/45"
+          />
+
+          {/* Layer 1b: Desktop Forest & Subtle Terracotta Cinematic Scrim */}
+          <div
+            aria-hidden="true"
+            className="hidden md:block absolute inset-0 z-10 pointer-events-none"
             style={{
               background: [
-                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.16) 0%, transparent 56%)",
-                "linear-gradient(180deg, rgba(29, 41, 36, 0.30) 0%, rgba(29, 41, 36, 0.18) 42%, rgba(29, 41, 36, 0.68) 100%)",
-                "linear-gradient(90deg, rgba(29, 41, 36, 0.68) 0%, rgba(29, 41, 36, 0.46) 45%, rgba(29, 41, 36, 0.18) 76%, rgba(29, 41, 36, 0.14) 100%)",
+                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.18) 0%, transparent 56%)",
+                "linear-gradient(180deg, rgba(29, 41, 36, 0.22) 0%, rgba(29, 41, 36, 0.08) 40%, rgba(29, 41, 36, 0.72) 100%)",
+                "linear-gradient(90deg, rgba(29, 41, 36, 0.72) 0%, rgba(29, 41, 36, 0.52) 42%, rgba(29, 41, 36, 0.18) 72%, rgba(29, 41, 36, 0.14) 100%)",
               ].join(", "),
             }}
           />
