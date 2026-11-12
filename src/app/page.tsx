@@ -25,7 +25,7 @@ import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSec
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
 import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
-import { HeroBackgroundMarquee, HeroMobilePhotoStrip } from "@/components/sections/HeroBackgroundMarquee";
+import { HeroBackgroundMarquee } from "@/components/sections/HeroBackgroundMarquee";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import { TRUST_CONFIG } from "@/lib/config";
 import { COMPLIANCE } from "@content/compliance";
@@ -232,24 +232,21 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 1 — CINEMATIC FULL-WIDTH PHOTOGRAPHIC HERO
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-forest-deep text-white pt-0 pb-0 md:pt-14 md:pb-14 lg:pt-16 lg:pb-14 border-b border-forest-deep">
-        {/* Mobile (<768px): Landscape un-obscured marquee strip showing full subjects cleanly */}
-        <HeroMobilePhotoStrip />
-
-        {/* Hero Background Canvas (Desktop 768px+) & Foreground Typography Area */}
-        <div className="relative md:static overflow-hidden -mt-3 md:mt-0 pt-1.5 md:pt-0 pb-4 sm:pb-5 md:pb-0">
-          {/* Layer 0: Desktop & Tablet Full-Bleed Left-to-Right Marquee */}
+      <section className="relative overflow-hidden bg-forest-deep text-white py-10 sm:py-12 md:pt-14 md:pb-14 lg:pt-16 lg:pb-14 border-b border-forest-deep">
+        {/* Hero Background Canvas (All Viewports) & Foreground Typography Area */}
+        <div className="static overflow-hidden">
+          {/* Layer 0: Full-Bleed Left-to-Right Marquee Behind Hero Copy */}
           <HeroBackgroundMarquee />
 
-          {/* Layer 1: Desktop Forest & Subtle Terracotta Cinematic Scrim */}
+          {/* Layer 1: Forest & Subtle Terracotta Cinematic Scrim for Contrast */}
           <div
             aria-hidden="true"
-            className="hidden md:block absolute inset-0 z-10 pointer-events-none"
+            className="block absolute inset-0 z-10 pointer-events-none"
             style={{
               background: [
-                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.18) 0%, transparent 56%)",
-                "linear-gradient(180deg, rgba(29, 41, 36, 0.22) 0%, rgba(29, 41, 36, 0.08) 40%, rgba(29, 41, 36, 0.72) 100%)",
-                "linear-gradient(90deg, rgba(29, 41, 36, 0.72) 0%, rgba(29, 41, 36, 0.52) 42%, rgba(29, 41, 36, 0.18) 72%, rgba(29, 41, 36, 0.14) 100%)",
+                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.22) 0%, transparent 58%)",
+                "linear-gradient(180deg, rgba(29, 41, 36, 0.56) 0%, rgba(29, 41, 36, 0.44) 45%, rgba(29, 41, 36, 0.80) 100%)",
+                "linear-gradient(90deg, rgba(29, 41, 36, 0.78) 0%, rgba(29, 41, 36, 0.58) 48%, rgba(29, 41, 36, 0.26) 80%, rgba(29, 41, 36, 0.20) 100%)",
               ].join(", "),
             }}
           />
