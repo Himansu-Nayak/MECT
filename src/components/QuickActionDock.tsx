@@ -11,23 +11,38 @@ import {
   X,
   Layers,
 } from "lucide-react";
-import { TRUST_CONFIG } from "@/lib/config";
+import { ORG } from "@content/org";
 
 export function QuickActionDock() {
   const [isOpen, setIsOpen] = useState(false);
   const [showMobileDock, setShowMobileDock] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  // Show compact mobile dock after scrolling past the hero actions so hero stays unobstructed
+  // Show compact mobile dock after scrolling past hero actions, and auto-tuck away when reaching footer
   useEffect(() => {
     const onScroll = () => {
       setShowMobileDock(window.scrollY > 320);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const footerEl = document.querySelector("footer");
+    let observer: IntersectionObserver | null = null;
+    if (footerEl && typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        (entries) => setIsNearFooter(entries[0]?.isIntersecting ?? false),
+        { threshold: 0.12 }
+      );
+      observer.observe(footerEl);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer?.disconnect();
+    };
   }, []);
 
   // Manage focus and scroll lock when mobile sheet opens/closes
@@ -107,9 +122,9 @@ export function QuickActionDock() {
       iconColor: "text-cream",
     },
     {
-      href: `tel:${TRUST_CONFIG.contact.phones.helpline}`,
+      href: ORG.helpline.href,
       label: "Secretariat Desk",
-      subtext: TRUST_CONFIG.contact.phones.helpline,
+      subtext: ORG.helpline.display,
       icon: PhoneCall,
       iconColor: "text-cream",
     },
@@ -164,8 +179,8 @@ export function QuickActionDock() {
           />
         )}
 
-        {(showMobileDock || isOpen) && (
-          <div className="fixed bottom-[max(0.875rem,env(safe-area-inset-bottom))] right-16 sm:bottom-5 sm:right-20 z-40 animate-in fade-in duration-150">
+        {((showMobileDock && !isNearFooter) || isOpen) && (
+          <div className="fixed bottom-[max(0.625rem,env(safe-area-inset-bottom))] right-[62px] sm:bottom-5 sm:right-20 z-40">
             <button
               ref={triggerRef}
               onClick={() => setIsOpen(!isOpen)}

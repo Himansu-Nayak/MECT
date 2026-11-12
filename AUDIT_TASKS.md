@@ -14,7 +14,7 @@ Master task tracker for the 12 Nov 2026 audit remediation on `https://mect.org.i
 - [x] **A1.3** Replace every old-brand string in components, metadata, JSON-LD, and content files with `Mahaveer Educational & Charitable Trust (MECT)` or `MECT`; remove `"guidelines published for trustee review"`; standardise `<title>` to `Page Name | Mahaveer Educational & Charitable Trust (MECT)`.
 - [x] **A1.4** Fix metadata for every route (self-referencing canonical, `og:url`, per-page `og:title`/`og:description`/`twitter:*`, default 1200x630 `og:image`, remove `meta keywords`).
 - [x] **A1.5** Single-source footer data from `content/org.ts` (name, addresses, helpline, hours, IDs, bank, UPI); remove hardcoded page duplicates.
-- [ ] **A1.6** Normalise `tel:` links to `tel:+919437123616`.
+- [x] **A1.6** Normalise `tel:` links to `tel:+919437123616`.
 
 ## PHASE 2 — Legal and tax wording
 - [ ] **A2.1** Create `content/compliance.ts` as single source for registration status text and `ELIGIBILITY_FY2026_27` (`unconfirmed | confirmed`, default `unconfirmed`).
