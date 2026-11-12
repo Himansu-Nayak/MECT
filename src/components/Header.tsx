@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ORG } from "@content/org";
 import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -139,16 +140,16 @@ export function Header() {
             >
               <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-terracotta bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square">
                 <Image
-                  src="/images/mect-official-emblem.png"
-                  alt="Mahaveer Educational & Charitable Trust Official Emblem"
+                  src={ORG.branding.logoPath}
+                  alt={ORG.branding.logoAlt}
                   width={44}
                   height={44}
                   className="w-full h-full object-cover scale-[1.06]"
                   priority
                 />
               </div>
-              <span className="font-serif font-bold text-[10.5px] min-[375px]:text-[11.5px] sm:text-sm xl:text-[14px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[140px] min-[375px]:max-w-[180px] sm:max-w-[240px] lg:max-w-[185px] xl:max-w-none xl:whitespace-nowrap">
-                Mahaveer Educational &amp; Charitable Trust
+              <span className="font-serif font-bold text-[10.5px] min-[375px]:text-[11.5px] sm:text-sm xl:text-[14px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[140px] min-[375px]:max-w-[180px] sm:max-w-[240px] lg:max-w-[175px] xl:max-w-none xl:whitespace-nowrap">
+                {ORG.name}
               </span>
             </Link>
 
@@ -285,18 +286,18 @@ export function Header() {
               <Link
                 href="/portal/login"
                 aria-label="Donor Portal"
-                className="px-2 2xl:px-3.5 py-2 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                className="whitespace-nowrap px-2 xl:px-3 2xl:px-3.5 py-2 text-[11.5px] xl:text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
               >
                 <UserCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
-                <span><span className="hidden xl:inline">Donor </span>Portal</span>
+                <span>Donor Portal</span>
               </Link>
               <Link
                 href="/donate"
                 aria-label="Donate Now"
-                className="px-2.5 xl:px-3.5 2xl:px-4 py-2 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
+                className="whitespace-nowrap px-2.5 xl:px-3.5 2xl:px-4 py-2 text-[11.5px] xl:text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
-                <span>Donate<span className="hidden xl:inline"> Now</span></span>
+                <span>Donate Now</span>
               </Link>
             </div>
 
