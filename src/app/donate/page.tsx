@@ -70,8 +70,8 @@ export default function DonatePage() {
         fullName: donorData.fullName.trim(),
         email: donorData.email.trim(),
         phone: donorData.phone.trim(),
-        category: "Donation 80G Tax Receipt Request",
-        message: `[Section 80G Tax Exemption Receipt Claim]\nDonor Name: ${donorData.fullName.trim()}\nPAN: ${donorData.pan.trim().toUpperCase()}\nDonated Amount: ₹${donorData.amount}\nUTR / Bank Ref: ${donorData.utrNumber.trim()}\nProgramme: ${donorData.programme}\nPostal Address: ${donorData.address.trim()}, ${donorData.district}, ${donorData.state} - ${donorData.pin}\n\nNotice: Please issue official stamped Form 10BE donation certificate.`,
+        category: "Donation Certificate Request",
+        message: `[Donation Certificate Claim]\nDonor Name: ${donorData.fullName.trim()}\nPAN: ${donorData.pan.trim().toUpperCase()}\nDonated Amount: ₹${donorData.amount}\nUTR / Bank Ref: ${donorData.utrNumber.trim()}\nProgramme: ${donorData.programme}\nPostal Address: ${donorData.address.trim()}, ${donorData.district}, ${donorData.state} - ${donorData.pin}\n\nNotice: Please issue official stamped donation certificate.`,
       });
       setReceiptRefId(response.referenceId || null);
       setReceiptSubmitted(true);
@@ -222,7 +222,7 @@ export default function DonatePage() {
                   <div><strong>Historical 80G URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</div>
                 </div>
                 <p className="text-xs text-white/90 leading-relaxed max-w-md mx-auto font-sans">
-                  Our Accounts Secretariat will manually verify the bank credit / UPI reference against SBI statements and email your official donation acknowledgment receipt within 1–2 business days (Tax Year 2026-27 Form 10BE tax exemption remains subject to confirmed Section 354 / Form 107 approval).
+                  Our Accounts Secretariat will manually verify the bank credit / UPI reference against SBI statements and email your official donation certificate within 1–2 business days (FY 2026-27 tax exemption eligibility remains subject to Chartered Accountant confirmation).
                 </p>
                 <Button
                   variant="gold"

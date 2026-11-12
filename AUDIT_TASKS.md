@@ -23,7 +23,7 @@ Master task tracker for the 12 Nov 2026 audit remediation on `https://mect.org.i
 - [x] **A2.4** Remove repeated 80G paragraph from `/` (keep single pointer to `/statutory-disclosures`; full explanation only on `/statutory-disclosures`).
 - [x] **A2.5** Rewrite `/governance` statuses (`content/trustees.ts`, `{{CONFIRM: trustee list}}`, always show chairman, remove pending-gazette/no-public-funds/certificate-issuance lines).
 - [x] **A2.6** Standardise registration date wording everywhere (`Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar`) and add `{{CONFIRM: PAN allotment date vs deed date}}`.
-- [ ] **A2.7** Replace `Online 80G Donation Gateway` link text with `Donation details`; standardise certificate wording to `donation certificate` without unconfirmed form numbers.
+- [x] **A2.7** Replace `Online 80G Donation Gateway` link text with `Donation details`; standardise certificate wording to `donation certificate` without unconfirmed form numbers.
 - [ ] **A2.8** Remove unsupported absolutes (`100% Programme Expense Policy`, `Fully Supported` matrix label, unbacked `Independent CA audits annually`, `Dual-authorization controls`, `Operational` committees).
 - [ ] **A2.9** Remove Smile Foundation reference and `Notice of Organisational Independence` from `/`.
 
