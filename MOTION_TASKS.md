@@ -4,9 +4,9 @@ Branch: `motion-ui`
 
 ## PHASE M0 — Install, audit script, inventory
 - [x] **M0.1** Create branch `motion-ui`, install `motion` & `animejs`, configure Kokonut & Bklit registries in `components.json`, record versions/licences in `THIRD_PARTY.md`.
-- [ ] **M0.2** Create `src/lib/motion.ts` with shared durations (`fast 0.2s`, `base 0.4s`, `slow 0.7s`), easings, spring (`{ stiffness: 120, damping: 22 }`), and viewport settings (`{ once: true, amount: 0.2 }`).
-- [ ] **M0.3** Build `scripts/audit-motion.ts` (`npm run audit:motion`) covering reduced-motion, no-JS, forbidden properties, single-owner check, and `/` first-load JS bundle delta (`<= 60 KB gzipped`), and save baseline to `reports/motion-baseline.txt` and `reports/motion-baseline-bundle.txt`.
-- [ ] **M0.4** Write `reports/motion-inventory.md` listing every page and section where motion or a component will be added and any items recommended dropping.
+- [x] **M0.2** Create `src/lib/motion.ts` with shared durations (`fast 0.2s`, `base 0.4s`, `slow 0.7s`), easings, spring (`{ stiffness: 120, damping: 22 }`), and viewport settings (`{ once: true, amount: 0.2 }`).
+- [x] **M0.3** Build `scripts/audit-motion.ts` (`npm run audit:motion`) covering reduced-motion, no-JS, forbidden properties, single-owner check, and `/` first-load JS bundle delta (`<= 60 KB gzipped`), and save baseline to `reports/motion-baseline.txt` and `reports/motion-baseline-bundle.txt`.
+- [x] **M0.4** Write `reports/motion-inventory.md` listing every page and section where motion or a component will be added and any items recommended dropping.
 
 ## PHASE M1 — Motion foundation
 - [ ] **M1.1** Create `src/components/motion/MotionProvider.tsx` (`LazyMotion` + `domAnimation` + `MotionConfig reducedMotion="user"`), wrap root layout.

@@ -1,0 +1,22 @@
+# Baseline First-Load JS on "/" (2026-11-12T06:32:07.152Z)
+chunks=16
+raw_bytes=939200
+gzip_bytes=286468
+gzip_kb=279.75
+
+62.56 KB  /_next/static/chunks/4bd1b696-e199e788e58acf79.js
+65.84 KB  /_next/static/chunks/3794-76809258438a3d8c.js
+0.22 KB  /_next/static/chunks/main-app-132a4302be06da64.js
+4.15 KB  /_next/static/chunks/422-2613e3c73db5a3ff.js
+38.21 KB  /_next/static/chunks/4461-befd70f718b91343.js
+5.95 KB  /_next/static/chunks/3544-8f8234a31fb5b051.js
+2.76 KB  /_next/static/chunks/1204-3179cc5eebcfeb37.js
+17.75 KB  /_next/static/chunks/app/layout-637e8808e68d92d6.js
+2.93 KB  /_next/static/chunks/6381-492fb91b890b9184.js
+3.27 KB  /_next/static/chunks/253-136ded08b7e3f95b.js
+5.60 KB  /_next/static/chunks/4438-3b6874b5b5abf56f.js
+4.81 KB  /_next/static/chunks/1410-fdd6e670307e5062.js
+3.23 KB  /_next/static/chunks/7585-87071ae859eee053.js
+22.06 KB  /_next/static/chunks/app/page-7afc69af76894052.js
+38.70 KB  /_next/static/chunks/polyfills-42372ed130431b0a.js
+1.71 KB  /_next/static/chunks/webpack-3f0ec0fbecaf1972.js
