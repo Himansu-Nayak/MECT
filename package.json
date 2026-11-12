@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check:confirm": "node scripts/check-confirm.ts"
+    "check:confirm": "node scripts/check-confirm.ts",
+    "audit:site": "node scripts/audit-site.ts"
   },
   "dependencies": {
     "groq-sdk": "^1.6.0",

@@ -6,7 +6,7 @@ Master task tracker for the 12 Nov 2026 audit remediation on `https://mect.org.i
 - [x] **A0.1** Create branch `audit-fixes` and `AUDIT_TASKS.md` listing every task ID from the audit remediation prompt as a checkbox.
 - [x] **A0.2** Create `content/todo-confirm.md` with the 10 open questions for trustees and the Chartered Accountant.
 - [x] **A0.3** Add `{{CONFIRM: ...}}` marker convention and `scripts/check-confirm.ts` failing production builds (`NODE_ENV=production` and `CI=true`) if any marker remains in `app/`, `components/`, or `content/` (except `content/todo-confirm.md`), covering `src/` counterparts cleanly.
-- [ ] **A0.4** Build `scripts/audit-site.ts` (`npm run audit:site`) that starts the app, crawls from `/` + sitemap + internal links, checks all Page/Anchor/Brand/Meta/A11y criteria, prints a pass/fail table, and saves `reports/baseline-crawl.txt` before fixes.
+- [x] **A0.4** Build `scripts/audit-site.ts` (`npm run audit:site`) that starts the app, crawls from `/` + sitemap + internal links, checks all Page/Anchor/Brand/Meta/A11y criteria, prints a pass/fail table, and saves `reports/baseline-crawl.txt` before fixes.
 
 ## PHASE 1 — One template, one brand
 - [ ] **A1.1** Create single `SiteLayout` (header, top statutory ticker, footer, floating action bar) and use it for every route; remove old MAHAVIR TRUST header/footer/notice-bar components and unused styles.

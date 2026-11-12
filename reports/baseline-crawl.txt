@@ -1,0 +1,118 @@
+================================================================
+MECT SITE CRAWLER AUDIT REPORT
+Timestamp: 2026-11-12T05:42:25.571Z
+Base URL: http://127.0.0.1:3199
+Sitemap routes discovered: 18
+HTML pages crawled: 19
+Asset hrefs checked: 2
+Fragment links checked: 178
+----------------------------------------------------------------
+CHECK SUMMARY (PASS / FAIL COUNTS)
+Check Category               | Status | Failures
+-----------------------------+--------+---------
+NON_200_PAGE                 | PASS   |        0
+BROKEN_INTERNAL_HREF         | PASS   |        0
+BROKEN_FRAGMENT              | PASS   |        0
+FORBIDDEN_TEXT               | FAIL   |        2
+CANONICAL_MISMATCH           | FAIL   |        1
+MISSING_OR_DUPLICATE_TITLE   | FAIL   |        2
+MISSING_META_DESCRIPTION     | PASS   |        0
+MISSING_OG_IMAGE             | FAIL   |       19
+IMAGE_ALT_ISSUE              | FAIL   |       28
+TEL_WITH_SPACES              | FAIL   |       38
+MULTIPLE_H1                  | PASS   |        0
+----------------------------------------------------------------
+TOTAL FAILURES: 90
+================================================================
+
+DETAILED FINDINGS:
+1. [MISSING_OG_IMAGE] (/) Missing or empty <meta property="og:image">
+2. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+3. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+4. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+5. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+6. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+7. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+8. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+9. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+10. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+11. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+12. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+13. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+14. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+15. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+16. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+17. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+18. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+19. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+20. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+21. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+22. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+23. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+24. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+25. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+26. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+27. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+28. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+29. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+30. [TEL_WITH_SPACES] (/) tel: link contains whitespace: "tel:+91 94371 23616"
+31. [TEL_WITH_SPACES] (/) tel: link contains whitespace: "tel:+91 94371 23616"
+32. [MISSING_OG_IMAGE] (/donate) Missing or empty <meta property="og:image">
+33. [TEL_WITH_SPACES] (/donate) tel: link contains whitespace: "tel:+91 94371 23616"
+34. [TEL_WITH_SPACES] (/donate) tel: link contains whitespace: "tel:+91 94371 23616"
+35. [MISSING_OG_IMAGE] (/about) Missing or empty <meta property="og:image">
+36. [TEL_WITH_SPACES] (/about) tel: link contains whitespace: "tel:+91 94371 23616"
+37. [TEL_WITH_SPACES] (/about) tel: link contains whitespace: "tel:+91 94371 23616"
+38. [MISSING_OG_IMAGE] (/scholarships) Missing or empty <meta property="og:image">
+39. [TEL_WITH_SPACES] (/scholarships) tel: link contains whitespace: "tel:+91 94371 23616"
+40. [TEL_WITH_SPACES] (/scholarships) tel: link contains whitespace: "tel:+91 94371 23616"
+41. [MISSING_OG_IMAGE] (/scholarships/apply) Missing or empty <meta property="og:image">
+42. [TEL_WITH_SPACES] (/scholarships/apply) tel: link contains whitespace: "tel:+91 94371 23616"
+43. [TEL_WITH_SPACES] (/scholarships/apply) tel: link contains whitespace: "tel:+91 94371 23616"
+44. [MISSING_OG_IMAGE] (/statutory-disclosures) Missing or empty <meta property="og:image">
+45. [TEL_WITH_SPACES] (/statutory-disclosures) tel: link contains whitespace: "tel:+91 94371 23616"
+46. [TEL_WITH_SPACES] (/statutory-disclosures) tel: link contains whitespace: "tel:+91 94371 23616"
+47. [MISSING_OG_IMAGE] (/csr-partnerships) Missing or empty <meta property="og:image">
+48. [TEL_WITH_SPACES] (/csr-partnerships) tel: link contains whitespace: "tel:+91 94371 23616"
+49. [TEL_WITH_SPACES] (/csr-partnerships) tel: link contains whitespace: "tel:+91 94371 23616"
+50. [MISSING_OG_IMAGE] (/reports) Missing or empty <meta property="og:image">
+51. [TEL_WITH_SPACES] (/reports) tel: link contains whitespace: "tel:+91 94371 23616"
+52. [TEL_WITH_SPACES] (/reports) tel: link contains whitespace: "tel:+91 94371 23616"
+53. [MISSING_OG_IMAGE] (/scholarships/track) Missing or empty <meta property="og:image">
+54. [TEL_WITH_SPACES] (/scholarships/track) tel: link contains whitespace: "tel:+91 94371 23616"
+55. [TEL_WITH_SPACES] (/scholarships/track) tel: link contains whitespace: "tel:+91 94371 23616"
+56. [MISSING_OG_IMAGE] (/programmes) Missing or empty <meta property="og:image">
+57. [TEL_WITH_SPACES] (/programmes) tel: link contains whitespace: "tel:+91 94371 23616"
+58. [TEL_WITH_SPACES] (/programmes) tel: link contains whitespace: "tel:+91 94371 23616"
+59. [MISSING_OG_IMAGE] (/impact) Missing or empty <meta property="og:image">
+60. [TEL_WITH_SPACES] (/impact) tel: link contains whitespace: "tel:+91 94371 23616"
+61. [TEL_WITH_SPACES] (/impact) tel: link contains whitespace: "tel:+91 94371 23616"
+62. [MISSING_OG_IMAGE] (/governance) Missing or empty <meta property="og:image">
+63. [TEL_WITH_SPACES] (/governance) tel: link contains whitespace: "tel:+91 94371 23616"
+64. [TEL_WITH_SPACES] (/governance) tel: link contains whitespace: "tel:+91 94371 23616"
+65. [MISSING_OG_IMAGE] (/volunteer) Missing or empty <meta property="og:image">
+66. [TEL_WITH_SPACES] (/volunteer) tel: link contains whitespace: "tel:+91 94371 23616"
+67. [TEL_WITH_SPACES] (/volunteer) tel: link contains whitespace: "tel:+91 94371 23616"
+68. [MISSING_OG_IMAGE] (/contact) Missing or empty <meta property="og:image">
+69. [TEL_WITH_SPACES] (/contact) tel: link contains whitespace: "tel:+91 94371 23616"
+70. [TEL_WITH_SPACES] (/contact) tel: link contains whitespace: "tel:+91 94371 23616"
+71. [MISSING_OG_IMAGE] (/faq) Missing or empty <meta property="og:image">
+72. [FORBIDDEN_TEXT] (/faq) Forbidden text "671 234 5678" matched: "...p Direct Secretariat Helpline: +91 671 234 5678 (Mon–Fri, 10:00 AM – 5:00 PM IST) ..."
+73. [FORBIDDEN_TEXT] (/faq) Forbidden text "pre-launch" matched: "... Questions Zero commission policy, pre-launch endowments, 80G tax deductions, an..."
+74. [TEL_WITH_SPACES] (/faq) tel: link contains whitespace: "tel:+91 94371 23616"
+75. [TEL_WITH_SPACES] (/faq) tel: link contains whitespace: "tel:+91 94371 23616"
+76. [MISSING_OG_IMAGE] (/privacy) Missing or empty <meta property="og:image">
+77. [TEL_WITH_SPACES] (/privacy) tel: link contains whitespace: "tel:+91 94371 23616"
+78. [TEL_WITH_SPACES] (/privacy) tel: link contains whitespace: "tel:+91 94371 23616"
+79. [MISSING_OG_IMAGE] (/terms) Missing or empty <meta property="og:image">
+80. [TEL_WITH_SPACES] (/terms) tel: link contains whitespace: "tel:+91 94371 23616"
+81. [TEL_WITH_SPACES] (/terms) tel: link contains whitespace: "tel:+91 94371 23616"
+82. [MISSING_OG_IMAGE] (/accessibility) Missing or empty <meta property="og:image">
+83. [TEL_WITH_SPACES] (/accessibility) tel: link contains whitespace: "tel:+91 94371 23616"
+84. [TEL_WITH_SPACES] (/accessibility) tel: link contains whitespace: "tel:+91 94371 23616"
+85. [MISSING_OG_IMAGE] (/portal/login) Missing or empty <meta property="og:image">
+86. [CANONICAL_MISMATCH] (/portal/login) Canonical "https://mect.org.in" != expected "https://mect.org.in/portal/login"
+87. [TEL_WITH_SPACES] (/portal/login) tel: link contains whitespace: "tel:+91 94371 23616"
+88. [TEL_WITH_SPACES] (/portal/login) tel: link contains whitespace: "tel:+91 94371 23616"
+89. [MISSING_OR_DUPLICATE_TITLE] (/) Duplicate <title> "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust • Odisha" shared across: /, /portal/login
+90. [MISSING_OR_DUPLICATE_TITLE] (/portal/login) Duplicate <title> "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust • Odisha" shared across: /, /portal/login
