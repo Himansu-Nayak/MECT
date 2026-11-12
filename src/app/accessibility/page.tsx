@@ -1,7 +1,7 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ORG } from "@content/org";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -20,12 +20,12 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Accessibility Statement",
   description:
-    "Commitment to digital accessibility, WCAG 2.2 Level AA compliance, keyboard navigation, and reduced-motion support on the MECT portal.",
-  alternates: { canonical: "/accessibility" },
-};
+    "Commitment to digital accessibility, WCAG 2.2 Level AA support, keyboard navigation, and reduced-motion support on the MECT website.",
+  path: "/accessibility",
+});
 
 const TECHNICAL_MEASURES = [
   {

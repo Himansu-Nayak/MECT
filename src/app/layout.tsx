@@ -33,41 +33,33 @@ export const metadata: Metadata = {
   },
   description:
     "Official website of Mahaveer Educational & Charitable Trust (MECT), Odisha. Explore our work in education, women's livelihoods, safe water, nutrition and community welfare, alongside governance and statutory disclosures.",
-  keywords: [
-    "Mahaveer Educational & Charitable Trust",
-    "MECT Odisha",
-    "MECT Balangir",
-    "MECT Bhubaneswar",
-    "80G Tax Exemption Donation Odisha",
-    "Schedule VII CSR Registered Trust Odisha",
-    "NITI Aayog NGO Darpan Odisha",
-    "Community Development NGO Odisha",
-    "Women Empowerment & Livelihood Odisha",
-    "Safe Drinking Water Community Programmes Odisha",
-    "Food Security & Nutrition Odisha",
-    "Higher Education Scholarships Odisha",
-    "Remedial Education Balangir",
-    "Women Vocational Tailoring Odisha",
-    "Jal Seva Drinking Water Relief",
-  ],
-  authors: [{ name: "MECT Board of Trustees" }],
+  authors: [{ name: `${ORG.shortName} Board of Trustees` }],
   alternates: {
-    canonical: "/",
+    canonical: ORG.branding.canonicalOrigin,
   },
   openGraph: {
-    title: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust",
+    title: `Home | ${ORG.legalName}`,
     description:
       "A registered charitable trust rooted in Odisha, working across education, women's livelihoods, safe water, nutrition and community welfare.",
-    url: "https://mect.org.in",
-    siteName: "Mahaveer Educational & Charitable Trust (MECT)",
+    url: ORG.branding.canonicalOrigin,
+    siteName: ORG.legalName,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: ORG.branding.ogDefaultImagePath,
+        width: 1200,
+        height: 630,
+        alt: ORG.legalName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mahaveer Educational & Charitable Trust (MECT) — Fiduciary Philanthropy & Education in Odisha",
+    title: `Home | ${ORG.legalName}`,
     description:
-      "A multi-sector charitable development organisation supporting education, livelihoods, safe water, nutrition and community wellbeing across Odisha.",
+      "A registered public charitable trust supporting education, livelihoods, safe water, nutrition and community wellbeing across Odisha.",
+    images: [ORG.branding.ogDefaultImagePath],
   },
   robots: {
     index: true,

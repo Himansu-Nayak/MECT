@@ -1,5 +1,5 @@
 import React from "react";
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ORG } from "@content/org";
 import { PageHero } from "@/components/PageHero";
@@ -19,12 +19,12 @@ import {
   Mail,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Terms of Engagement",
   description:
     "Institutional terms of engagement, portal use guidelines, and scholarship application norms for Mahaveer Educational & Charitable Trust (MECT).",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 const CLAUSES = [
   {

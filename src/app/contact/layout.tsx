@@ -1,19 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contact Secretariat & Desk",
   description:
-    "Official administrative secretariat inquiry desk for Mahaveer Educational & Charitable Trust (MECT) in Bhubaneswar, Odisha.",
-  alternates: {
-    canonical: "/contact",
-  },
-  openGraph: {
-    title: "Contact MECT Secretariat",
-    description:
-      "Connect with the administrative inquiry desk for higher education grants, academic mentorship, and college coordination in Odisha.",
-    url: "https://mect.org.in/contact",
-  },
-};
+    "Official administrative secretariat inquiry desk for Mahaveer Educational & Charitable Trust (MECT) in Balangir and Bhubaneswar, Odisha.",
+  path: "/contact",
+});
 
 export default function ContactLayout({
   children,
@@ -22,4 +14,3 @@ export default function ContactLayout({
 }) {
   return <>{children}</>;
 }
-

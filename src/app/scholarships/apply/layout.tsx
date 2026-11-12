@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Scholarship Online Intake & Application",
   description:
-    "Submit your need-cum-merit scholarship application for direct college tuition fee grant under Mahaveer Educational & Charitable Trust.",
-  alternates: {
-    canonical: "/scholarships/apply",
-  },
-  openGraph: {
-    title: "Apply for Higher Education Scholarship | MECT",
-    description:
-      "Secure online scholarship application for underprivileged students in Odisha with direct-to-college institutional fee disbursal.",
-    url: "https://mect.org.in/scholarships/apply",
-  },
-};
+    "Submit your need-cum-merit scholarship interest or application for direct college tuition fee grant under Mahaveer Educational & Charitable Trust (MECT).",
+  path: "/scholarships/apply",
+  ogImage: "/images/og-programmes.png",
+});
 
 export default function ScholarshipApplyLayout({
   children,
@@ -22,4 +15,3 @@ export default function ScholarshipApplyLayout({
 }) {
   return <>{children}</>;
 }
-

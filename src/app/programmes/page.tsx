@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -28,12 +28,13 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Our Work & Community Development Programmes",
   description:
     "Explore MECT's documented programme areas across education, Free Education for 200 Students, women's livelihoods, safe-water access, sanitation and nutrition relief in Odisha.",
-  alternates: { canonical: "/programmes" },
-};
+  path: "/programmes",
+  ogImage: "/images/og-programmes.png",
+});
 
 export default function ProgrammesPage() {
   const verifiedPillars = [

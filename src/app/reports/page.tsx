@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -23,12 +23,13 @@ import {
   Landmark,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Annual Activity Summaries & Statutory Financial Disclosures",
+export const metadata = createPageMetadata({
+  title: "Annual Reports & Financial Disclosures",
   description:
     "Annual activity summaries (FY 2021–2024), expenditure stewardship principles, and Secretariat inspection procedures for Mahaveer Educational & Charitable Trust (MECT).",
-  alternates: { canonical: "/reports" },
-};
+  path: "/reports",
+  ogImage: "/images/og-disclosures.png",
+});
 
 export default function ReportsPage() {
   const annualReports = [

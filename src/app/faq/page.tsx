@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -22,12 +22,12 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers regarding MECT scholarship eligibility, direct-to-institution disbursal, governance, statutory disclosures, and volunteering.",
-  alternates: { canonical: "/faq" },
-};
+    "Answers regarding MECT programmes, donations, governance, statutory disclosures, scholarships, and volunteering.",
+  path: "/faq",
+});
 
 const SCHOLARSHIP_FAQS: FAQItem[] = [
   {

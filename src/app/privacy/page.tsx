@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { ORG } from "@content/org";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -19,12 +19,12 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
     "Data privacy and confidentiality commitments of Mahaveer Educational & Charitable Trust (MECT) in Odisha, India.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 const PRIVACY_SECTIONS = [
   {

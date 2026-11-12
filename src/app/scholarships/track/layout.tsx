@@ -1,19 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Track Scholarship Status",
   description:
     "Track your scholarship application progress across document scrutiny, college verification, committee approval, and treasury disbursal.",
-  alternates: {
-    canonical: "/scholarships/track",
-  },
-  openGraph: {
-    title: "Track Application Lifecycle | MECT",
-    description:
-      "Real-time 5-stage tracking of educational scholarship applications with transparent institutional audit logging.",
-    url: "https://mect.org.in/scholarships/track",
-  },
-};
+  path: "/scholarships/track",
+});
 
 export default function ScholarshipTrackLayout({
   children,
@@ -22,4 +14,3 @@ export default function ScholarshipTrackLayout({
 }) {
   return <>{children}</>;
 }
-

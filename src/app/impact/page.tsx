@@ -1,6 +1,6 @@
 import React from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -33,12 +33,13 @@ import {
   Landmark,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Community Impact & Programme Outcomes",
   description:
-    "Documented programme reach across education, women's livelihoods, safe-water initiatives, and nutrition relief alongside verified Balangir and Bhubaneswar operating locations.",
-  alternates: { canonical: "/impact" },
-};
+    "Documented programme reach across education, women's livelihoods, safe-water initiatives, and nutrition relief alongside Balangir and Bhubaneswar operating locations.",
+  path: "/impact",
+  ogImage: "/images/og-programmes.png",
+});
 
 export default function ImpactPage() {
   const verifiedImpactMetrics = [
