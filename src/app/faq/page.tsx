@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
+import { ReadingProgress } from "@/components/motion/ReadingProgress";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
@@ -194,6 +195,7 @@ const DONATIONS_FAQS: FAQItem[] = [
 export default function FAQPage() {
   return (
     <div className="flex flex-col w-full">
+      <ReadingProgress />
       {/* 1. Page Hero */}
       <PageHero
         badge="Knowledge Base"

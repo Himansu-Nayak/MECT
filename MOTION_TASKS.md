@@ -16,14 +16,14 @@ Branch: `motion-ui`
 - [x] **M1.5** Document library ownership, tokens, reduced-motion, and banned effects in `docs/MOTION.md`.
 
 ## PHASE M2 — Site shell
-- [ ] **M2.1** Header (`morphic-navbar` + `useScroll` shrink, transform/opacity only, real server links, locked logo).
-- [ ] **M2.2** Mobile menu (`smooth-drawer` + `AnimatePresence`, focus trap, Escape, focus return, 44px targets).
-- [ ] **M2.3** Site search (`action-search-bar` indexed from content files, `/` and `Ctrl/Cmd+K`, no 404s).
-- [ ] **M2.4** Reading progress (`useScroll` 3px decorative bar on statutory, FAQ, governance).
-- [ ] **M2.5** Toasts (`promise-toast` with ARIA live region for form submits).
-- [ ] **M2.6** Inline notices (`inline-alert` for `<TaxStatusNotice />`, steady legal text).
-- [ ] **M2.7** Ticker (hover/focus pause, visible pause button, static wrap under reduced motion, `aria-hidden` + `inert` duplicates).
-- [ ] **M2.8** Footer (Reveal only; static bank details).
+- [x] **M2.1** Header (`morphic-navbar` + `useScroll` shrink, transform/opacity only, real server links, locked logo).
+- [x] **M2.2** Mobile menu (`smooth-drawer` + `AnimatePresence`, focus trap, Escape, focus return, 44px targets).
+- [x] **M2.3** Site search (`action-search-bar` indexed from content files, `/` and `Ctrl/Cmd+K`, no 404s).
+- [x] **M2.4** Reading progress (`useScroll` 3px decorative bar on statutory, FAQ, governance).
+- [x] **M2.5** Toasts (`promise-toast` with ARIA live region for form submits).
+- [x] **M2.6** Inline notices (`inline-alert` for `<TaxStatusNotice />`, steady legal text).
+- [x] **M2.7** Ticker (hover/focus pause, visible pause button, static wrap under reduced motion, `aria-hidden` + `inert` duplicates).
+- [x] **M2.8** Footer (Reveal only; static bank details).
 
 ## PHASE M3 — Home page
 - [ ] **M3.1** Hero cross-fade (first slide eager, lazy-load rest <= 7, opacity 6s, pause/play & prev/next, no auto-advance under reduced motion).

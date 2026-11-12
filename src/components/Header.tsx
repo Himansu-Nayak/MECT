@@ -1,15 +1,23 @@
+// motion: owner = Motion
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  m,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import { ORG } from "@content/org";
 import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StatutoryTicker } from "@/components/layout/StatutoryTicker";
+import { SiteSearchTrigger } from "@/components/layout/SiteSearch";
 import { MOTION_EASING, MOTION_DURATION, MOTION_STAGGER } from "@/components/ui/MotionPrimitives";
 import {
   Menu,
@@ -32,14 +40,11 @@ export function Header() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
-  // Monitor scroll for header backdrop elevation
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Monitor scroll using Motion useScroll for header backdrop elevation
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
   // Close menus on route change and restore focus if drawer was open
   const [prevPathname, setPrevPathname] = useState(pathname);
@@ -193,13 +198,14 @@ export function Header() {
                       >
                         <span>{item.label}</span>
                         {isActive && (
-                          <motion.span
-                            layoutId={shouldReduceMotion ? undefined : "mect-nav-active-indicator"}
+                          <m.span
+                            initial={shouldReduceMotion ? false : { scaleX: 0, opacity: 0 }}
+                            animate={{ scaleX: 1, opacity: 1 }}
                             transition={{
                               duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
                               ease: MOTION_EASING.institutional,
                             }}
-                            className="absolute inset-x-1 bottom-0 h-0.5 bg-terracotta rounded-full"
+                            className="absolute inset-x-1 bottom-0 h-0.5 origin-left bg-terracotta rounded-full"
                             aria-hidden="true"
                           />
                         )}
@@ -232,7 +238,7 @@ export function Header() {
                     {/* Accessible Sub-Navigation Disclosure Flyout */}
                     <AnimatePresence>
                       {hasChildren && isItemOpen && (
-                        <motion.div
+                        <m.div
                           id={disclosureId}
                           aria-labelledby={toggleId}
                           initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
@@ -273,7 +279,7 @@ export function Header() {
                               </p>
                             </Link>
                           ))}
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </div>
@@ -283,6 +289,7 @@ export function Header() {
 
             {/* Desktop Direct Action Buttons — Approved Terracotta & Forest Charcoal Palette */}
             <div className="hidden lg:flex items-center space-x-1.5 xl:space-x-2 shrink-0">
+              <SiteSearchTrigger />
               <Link
                 href="/portal/login"
                 aria-label="Donor Portal"
@@ -339,7 +346,7 @@ export function Header() {
       {/* Mobile Drawer Navigation (print:hidden) */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <m.div
             ref={drawerRef}
             id="mobile-navigation-drawer"
             initial={shouldReduceMotion ? false : { opacity: 0, x: 16 }}
@@ -384,7 +391,7 @@ export function Header() {
             {/* Navigation Links List with Restrained Stagger */}
             <div className="py-4 space-y-1 divide-y divide-border-warm">
               {TRUST_CONFIG.navigation.map((item, idx) => (
-                <motion.div
+                <m.div
                   key={item.label}
                   initial={shouldReduceMotion ? false : { opacity: 0, x: 8 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -425,7 +432,7 @@ export function Header() {
                       ))}
                     </div>
                   )}
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
@@ -468,7 +475,7 @@ export function Header() {
                 <span>Donate Now</span>
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

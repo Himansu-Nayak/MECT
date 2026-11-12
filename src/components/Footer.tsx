@@ -6,7 +6,7 @@ import { COMPLIANCE } from "@content/compliance";
 import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal } from "@/components/motion";
 import {
   ShieldCheck,
   Building2,
