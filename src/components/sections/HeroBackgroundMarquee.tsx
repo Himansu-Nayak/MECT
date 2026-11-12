@@ -78,7 +78,7 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
         <div
           key={`${isClone ? "clone" : "main"}-${slide.id}`}
           data-slide-index={idx}
-          className={`hero-bg-panel hero-bg-panel-feather relative h-full md:w-[76vw] lg:w-[68vw] xl:w-[62vw] shrink-0 overflow-hidden ${
+          className={`hero-bg-panel hero-bg-panel-feather relative h-full w-[100vw] sm:w-[88vw] md:w-[76vw] lg:w-[68vw] xl:w-[62vw] shrink-0 overflow-hidden ${
             !isClone && idx > 0 ? "hero-bg-secondary-slide" : ""
           } ${!isClone && idx > 1 ? "hero-bg-extra-slide" : ""}`}
         >
@@ -86,7 +86,7 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
             src={slide.src}
             alt=""
             fill
-            sizes="(max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
+            sizes="(max-width: 639px) 100vw, (max-width: 767px) 88vw, (max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
             loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
             decoding="async"
             priority={!isClone && idx === 0}
@@ -138,7 +138,7 @@ function MobileSequence({ isClone = false }: { isClone?: boolean }) {
 export function HeroMobilePhotoStrip() {
   return (
     <div
-      className="md:hidden relative w-full h-[195px] min-[375px]:h-[210px] sm:h-[245px] overflow-hidden bg-forest-deep select-none pointer-events-none"
+      className="md:hidden relative w-full h-[168px] min-[375px]:h-[184px] sm:h-[224px] overflow-hidden bg-forest-deep select-none pointer-events-none"
       aria-hidden="true"
     >
       <div className="hero-mobile-track-ltr">
@@ -164,7 +164,7 @@ export function HeroMobilePhotoStrip() {
 export function HeroBackgroundMarquee() {
   return (
     <div
-      className="hero-bg-marquee-wrapper hidden md:block absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
+      className="hero-bg-marquee-wrapper block absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-forest-deep"
       aria-hidden="true"
     >
       <div className="hero-bg-track-ltr">
