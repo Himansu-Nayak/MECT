@@ -232,7 +232,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 1 — CINEMATIC FULL-WIDTH PHOTOGRAPHIC HERO
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-forest-deep text-white py-10 sm:py-12 md:pt-14 md:pb-14 lg:pt-16 lg:pb-14 border-b border-forest-deep">
+      <section className="relative overflow-hidden bg-forest-deep text-white py-7 sm:py-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-14 border-b border-forest-deep">
         {/* Hero Background Canvas (All Viewports) & Foreground Typography Area */}
         <div className="static overflow-hidden">
           {/* Layer 0: Full-Bleed Left-to-Right Marquee Behind Hero Copy */}
@@ -244,9 +244,9 @@ export default function HomePage() {
             className="block absolute inset-0 z-10 pointer-events-none"
             style={{
               background: [
-                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.22) 0%, transparent 58%)",
-                "linear-gradient(180deg, rgba(29, 41, 36, 0.56) 0%, rgba(29, 41, 36, 0.44) 45%, rgba(29, 41, 36, 0.80) 100%)",
-                "linear-gradient(90deg, rgba(29, 41, 36, 0.78) 0%, rgba(29, 41, 36, 0.58) 48%, rgba(29, 41, 36, 0.26) 80%, rgba(29, 41, 36, 0.20) 100%)",
+                "radial-gradient(ellipse at 16% 34%, rgba(164, 94, 68, 0.16) 0%, transparent 56%)",
+                "linear-gradient(180deg, rgba(29, 41, 36, 0.30) 0%, rgba(29, 41, 36, 0.18) 42%, rgba(29, 41, 36, 0.68) 100%)",
+                "linear-gradient(90deg, rgba(29, 41, 36, 0.68) 0%, rgba(29, 41, 36, 0.46) 45%, rgba(29, 41, 36, 0.18) 76%, rgba(29, 41, 36, 0.14) 100%)",
               ].join(", "),
             }}
           />
