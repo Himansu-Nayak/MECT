@@ -78,7 +78,7 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
         <div
           key={`${isClone ? "clone" : "main"}-${slide.id}`}
           data-slide-index={idx}
-          className={`hero-bg-panel hero-bg-panel-feather relative h-full w-[100vw] sm:w-[88vw] md:w-[76vw] lg:w-[68vw] xl:w-[62vw] shrink-0 overflow-hidden ${
+          className={`hero-bg-panel hero-bg-panel-feather relative h-full w-[155vw] sm:w-[110vw] md:w-[76vw] lg:w-[68vw] xl:w-[62vw] shrink-0 overflow-hidden ${
             !isClone && idx > 0 ? "hero-bg-secondary-slide" : ""
           } ${!isClone && idx > 1 ? "hero-bg-extra-slide" : ""}`}
         >
@@ -86,7 +86,7 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
             src={slide.src}
             alt=""
             fill
-            sizes="(max-width: 639px) 100vw, (max-width: 767px) 88vw, (max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
+            sizes="(max-width: 639px) 155vw, (max-width: 767px) 110vw, (max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
             loading={idx === 0 || idx === 1 || idx === HERO_BACKGROUND_SLIDES.length - 1 ? "eager" : "lazy"}
             decoding="async"
             priority={!isClone && idx === 0}
