@@ -266,7 +266,7 @@ export default function ReportsPage() {
               <Link href="/donate">
                 <Button variant="outline" size="lg" className="font-semibold">
                   <Heart className="w-4 h-4 mr-1.5" />
-                  <span>Donate with 80G Tax Exemption</span>
+                  <span>Support Our Mission — Donate</span>
                 </Button>
               </Link>
             </div>

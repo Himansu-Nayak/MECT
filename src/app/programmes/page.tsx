@@ -295,7 +295,7 @@ export default function ProgrammesPage() {
                   {/* Bottom Action Strip */}
                   <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-border-warm">
                     <div className="text-xs text-ink-sand font-sans">
-                      <span>Eligible for 50% Tax Deduction under Section 80G &amp; Schedule VII CSR Grants.</span>
+                      <span>Order dated 29-01-2024, valid AY 2024-25 to AY 2026-27; CSR Registration CSR00081063.</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Link href="/donate">

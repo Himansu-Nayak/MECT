@@ -29,6 +29,7 @@ import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart"
 import { HeroBackgroundMarquee, HeroMobilePhotoStrip } from "@/components/sections/HeroBackgroundMarquee";
 import { HOMEPAGE_CONTENT } from "@/lib/homepage-content";
 import { TRUST_CONFIG } from "@/lib/config";
+import { COMPLIANCE } from "@content/compliance";
 import {
   GraduationCap,
   Award,
@@ -237,7 +238,7 @@ export default function HomePage() {
         <HeroMobilePhotoStrip />
 
         {/* Hero Background Canvas (Desktop 768px+) & Foreground Typography Area */}
-        <div className="relative md:static overflow-hidden -mt-4 md:mt-0 pt-2 md:pt-0 pb-5 sm:pb-6 md:pb-0">
+        <div className="relative md:static overflow-hidden -mt-3 md:mt-0 pt-1.5 md:pt-0 pb-4 sm:pb-5 md:pb-0">
           {/* Layer 0: Desktop & Tablet Full-Bleed Left-to-Right Marquee */}
           <HeroBackgroundMarquee />
 
@@ -255,7 +256,7 @@ export default function HomePage() {
           />
 
           <Container size="default" className="relative z-20">
-            <HeroEntrance className="max-w-3xl lg:max-w-4xl space-y-3 sm:space-y-4 md:space-y-5 text-left min-w-0">
+            <HeroEntrance className="max-w-3xl lg:max-w-4xl space-y-2.5 sm:space-y-3.5 md:space-y-5 text-left min-w-0">
               {/* Institutional Eyebrow Badge */}
               <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xs border border-sand/55 bg-forest-deep/85 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.07em] sm:tracking-[0.11em] text-sand font-sans whitespace-nowrap shadow-sm">
                 <ShieldCheck className="w-3.5 h-3.5 text-sand shrink-0" aria-hidden="true" />
@@ -311,7 +312,7 @@ export default function HomePage() {
               </div>
 
               {/* Quiet Governance Link & Notice */}
-              <div className="pt-3 mt-1 border-t border-white/25 max-w-2xl space-y-1">
+              <div className="pt-2.5 sm:pt-3 mt-1 border-t border-white/25 max-w-2xl space-y-1">
                 <p className="text-[11.5px] sm:text-[13px] text-white font-sans leading-relaxed drop-shadow-[0_1px_6px_rgba(12,18,15,0.85)]">
                   Operating under registered Trust Deed (2013, Balangir Doc No. 40311302194). Review our{" "}
                   <Link
@@ -333,7 +334,7 @@ export default function HomePage() {
         {/* Statutorily Grounded Metric Cards Strip — Flows cleanly below mobile photo zone; integrated on desktop */}
         <div className="relative z-20 bg-forest-deep border-t border-sand/20 md:bg-transparent md:border-t-0">
           <Container size="default">
-            <div className="py-4 md:py-0 md:mt-10 md:pt-6 md:border-t md:border-white/25 grid grid-cols-1 min-[350px]:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5 md:gap-6 text-center">
+            <div className="py-3.5 md:py-0 md:mt-10 md:pt-6 md:border-t md:border-white/25 grid grid-cols-1 min-[350px]:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 md:gap-6 text-center">
               {HOMEPAGE_CONTENT.hero.metrics.map((metric, idx) => (
                 <div
                   key={idx}
@@ -470,7 +471,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 3 — OUR FIVE DEVELOPMENT SECTORS: Distinct Visual Identities
           ========================================================================= */}
-      <section id="programs" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-20">
+      <section id="programs" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-32">
         <Container size="default" className="space-y-16">
           <SectionHeader
             badge="Multi-Sector Community Development"
@@ -782,7 +783,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 10 — VOLUNTEER & COMMUNITY PARTICIPATION REGISTRY
           ========================================================================= */}
-      <section id="participate" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-16">
+      <section id="participate" className="py-20 md:py-28 bg-white border-b border-border-warm scroll-mt-32">
         <Container size="default">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Content */}
@@ -1018,7 +1019,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 11 (PHASE 5) — SBI DONATION SECTION & TAX DEDUCTION ESTIMATOR
           ========================================================================= */}
-      <section id="donate" className="py-20 bg-terracotta text-white border-b border-terracotta-dark scroll-mt-16">
+      <section id="donate" className="py-20 bg-terracotta text-white border-b border-terracotta-dark scroll-mt-32">
         <Container size="default" className="space-y-12">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <Badge variant="gold-dark">
@@ -1037,9 +1038,11 @@ export default function HomePage() {
             <SbiDonationSection />
           </div>
 
-          {/* Interactive Section 80G / Section 133 Tax Deduction Estimator */}
+          {/* Interactive Section 80G / Section 133 Tax Deduction Estimator (gated behind COMPLIANCE.showTaxEstimator) */}
           <div className="max-w-5xl mx-auto bg-white text-ink p-6 sm:p-10 rounded-xs border-2 border-sand shadow-2xl space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-2">
+            {COMPLIANCE.showTaxEstimator && (
+              <>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-2">
               <div className="flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-terracotta-dark" aria-hidden="true" />
                 <span className="font-serif text-xl font-bold text-forest">
@@ -1230,6 +1233,8 @@ export default function HomePage() {
                 </ul>
               </div>
             </div>
+              </>
+            )}
 
             {/* Section 80G Statutory & Direct Bank Transfer Notice Box */}
             <div className="p-5 rounded-xs bg-cream/65 border border-border-warm text-left space-y-3">
@@ -1283,7 +1288,7 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION 12 — PUBLIC SECRETARIAT INQUIRY & GUIDANCE DESK
           ========================================================================= */}
-      <section id="contact-desk" className="py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-16">
+      <section id="contact-desk" className="py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-32">
         <Container size="default">
           <SectionHeader
             badge="Direct Public Access"
