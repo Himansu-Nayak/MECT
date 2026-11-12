@@ -1260,8 +1260,8 @@ export default function HomePage() {
                   <span className="font-mono font-bold text-forest">{TRUST_CONFIG.bank.accountNumber}</span>
                 </div>
                 <div>
-                  <span className="text-terracotta-dark block text-[10px] font-semibold">80G URN:</span>
-                  <span className="font-mono text-[11px]">{TRUST_CONFIG.statutory.section80GUrn}</span>
+                  <span className="text-terracotta-dark block text-[10px] font-semibold">Trust PAN:</span>
+                  <span className="font-mono font-bold text-forest text-[11px]">{TRUST_CONFIG.statutory.pan}</span>
                 </div>
               </div>
             </div>
