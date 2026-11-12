@@ -1,6 +1,10 @@
+// motion: owner = Motion
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
+import { MOTION_TRANSITIONS } from "@/lib/motion";
 import {
   X,
   Send,
@@ -64,6 +68,7 @@ function getFormattedTime(): string {
 
 export function HImChatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const [language, setLanguage] = useState<LanguageCode>(() => {
     if (typeof window !== "undefined") {
       try {
@@ -448,13 +453,18 @@ export function HImChatbot() {
       </div>
 
       {/* Chat dialog window */}
+      <AnimatePresence>
       {isOpen && (
-        <div
+        <m.div
           ref={dialogRef}
           role="dialog"
           aria-label="HIm — MECT Intelligent Assistant"
           aria-modal="true"
-          className="fixed inset-x-2 bottom-2 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[410px] md:w-[430px] z-50 h-[86vh] sm:h-[620px] max-h-[720px] flex flex-col bg-cream border-2 border-terracotta/50 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 print:hidden font-sans"
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10, scale: 0.98 }}
+          transition={MOTION_TRANSITIONS.fast}
+          className="fixed inset-x-2 bottom-2 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[410px] md:w-[430px] z-50 h-[86vh] sm:h-[620px] max-h-[720px] flex flex-col bg-cream border-2 border-terracotta/50 rounded-2xl shadow-2xl overflow-hidden print:hidden font-sans"
         >
           {/* Header */}
           <header className="bg-forest text-white px-4 py-3 border-b border-sand/30 flex items-center justify-between shrink-0">
@@ -555,10 +565,60 @@ export function HImChatbot() {
                 >
                   {msg.role === "assistant" ? (
                     msg.content ? (
-                      renderFormattedContent(msg.content)
+                      <div className="space-y-2">
+                        {renderFormattedContent(msg.content)}
+                        {msg.id !== "msg-welcome" && (
+                          <div className="pt-1.5 border-t border-border-warm/60 flex flex-wrap items-center gap-1.5 text-[10px]">
+                            <span className="font-semibold text-ink-sand">Sources:</span>
+                            <Link
+                              href="/statutory-disclosures"
+                              className="rounded-xs bg-cream px-1.5 py-0.5 text-forest underline hover:text-terracotta-dark"
+                            >
+                              Statutory Disclosures
+                            </Link>
+                            <Link
+                              href="/governance"
+                              className="rounded-xs bg-cream px-1.5 py-0.5 text-forest underline hover:text-terracotta-dark"
+                            >
+                              Governance
+                            </Link>
+                            <Link
+                              href="/programmes"
+                              className="rounded-xs bg-cream px-1.5 py-0.5 text-forest underline hover:text-terracotta-dark"
+                            >
+                              Programmes
+                            </Link>
+                          </div>
+                        )}
+                      </div>
                     ) : (
-                      <div className="flex items-center gap-1.5 py-1 text-xs text-forest/80">
-                        <Sparkles className="w-3.5 h-3.5 text-terracotta animate-spin" />
+                      <div
+                        role="status"
+                        aria-live="polite"
+                        className="flex items-center gap-2 py-1 text-xs text-forest/80"
+                      >
+                        <span className="inline-flex items-center gap-1" aria-hidden="true">
+                          {[0, 1, 2].map((dot) => (
+                            <m.span
+                              key={dot}
+                              className="w-1.5 h-1.5 rounded-full bg-terracotta"
+                              animate={
+                                shouldReduceMotion
+                                  ? { opacity: 0.85 }
+                                  : { opacity: [0.3, 1, 0.3], scale: [0.9, 1.15, 0.9] }
+                              }
+                              transition={
+                                shouldReduceMotion
+                                  ? undefined
+                                  : {
+                                      duration: 0.9,
+                                      repeat: Infinity,
+                                      delay: dot * 0.16,
+                                    }
+                              }
+                            />
+                          ))}
+                        </span>
                         <span>HIm is consulting MECT knowledge...</span>
                       </div>
                     )
@@ -677,12 +737,21 @@ export function HImChatbot() {
               </button>
             </form>
 
-            {/* Footer Micro-text */}
-            <div className="flex items-center justify-between text-[10px] text-ink-secondary px-1 pt-0.5">
-              <span>MECT AI • 100% Direct Disbursal Standard</span>
+            {/* Footer Micro-text & Mandatory Disclaimer */}
+            <div className="flex items-center justify-between gap-2 text-[10px] text-ink-secondary px-1 pt-0.5">
+              <span>
+                This assistant can make mistakes. Check the{" "}
+                <Link
+                  href="/statutory-disclosures"
+                  className="underline font-semibold text-forest hover:text-terracotta-dark"
+                >
+                  Statutory Disclosures
+                </Link>{" "}
+                page.
+              </span>
               <a
                 href="/governance"
-                className="underline hover:text-forest flex items-center gap-0.5"
+                className="underline hover:text-forest flex items-center gap-0.5 shrink-0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -691,8 +760,9 @@ export function HImChatbot() {
               </a>
             </div>
           </footer>
-        </div>
+        </m.div>
       )}
+      </AnimatePresence>
     </>
   );
 }
