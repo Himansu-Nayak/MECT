@@ -1,0 +1,58 @@
+================================================================
+MECT SITE CRAWLER AUDIT REPORT
+Timestamp: 2026-11-12T06:26:43.390Z
+Base URL: http://127.0.0.1:3199
+Sitemap routes discovered: 18
+HTML pages crawled: 19
+Asset hrefs checked: 2
+Fragment links checked: 177
+----------------------------------------------------------------
+CHECK SUMMARY (PASS / FAIL COUNTS)
+Check Category               | Status | Failures
+-----------------------------+--------+---------
+NON_200_PAGE                 | PASS   |        0
+BROKEN_INTERNAL_HREF         | PASS   |        0
+BROKEN_FRAGMENT              | PASS   |        0
+FORBIDDEN_TEXT               | FAIL   |        2
+CANONICAL_MISMATCH           | PASS   |        0
+MISSING_OR_DUPLICATE_TITLE   | PASS   |        0
+MISSING_META_DESCRIPTION     | PASS   |        0
+MISSING_OG_IMAGE             | PASS   |        0
+IMAGE_ALT_ISSUE              | FAIL   |       28
+TEL_WITH_SPACES              | PASS   |        0
+MULTIPLE_H1                  | PASS   |        0
+----------------------------------------------------------------
+TOTAL FAILURES: 30
+================================================================
+
+DETAILED FINDINGS:
+1. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+2. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+3. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+4. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+5. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+6. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+7. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+8. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+9. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+10. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+11. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+12. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+13. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+14. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+15. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+16. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+17. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+18. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+19. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+20. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+21. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+22. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-trustees-campus-walk.webp&w=3840&q=75)
+23. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-child-support-outreach.webp&w=3840&q=75)
+24. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-women-self-help-group.webp&w=3840&q=75)
+25. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-legal-literacy-session.webp&w=3840&q=75)
+26. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75)
+27. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fillustrative-community-library-reading.webp&w=3840&q=75)
+28. [IMAGE_ALT_ISSUE] (/) <img> has empty alt="" without decorative flag (src=/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75)
+29. [FORBIDDEN_TEXT] (/faq) Forbidden text "671 234 5678" matched: "...p Direct Secretariat Helpline: +91 671 234 5678 (Mon–Fri, 10:00 AM – 5:00 PM IST) ..."
+30. [FORBIDDEN_TEXT] (/faq) Forbidden text "pre-launch" matched: "... Questions Zero commission policy, pre-launch endowments, 80G tax deductions, an..."
