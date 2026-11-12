@@ -1,7 +1,8 @@
+// motion: owner = Motion
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { m, useInView, useReducedMotion } from "motion/react";
 
 /**
  * Institutional Motion Design Tokens — MECT
@@ -73,7 +74,7 @@ export function Reveal({
       : MOTION_DURATION.standard;
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, ...initialOffset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.04 }}
@@ -81,7 +82,7 @@ export function Reveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -121,7 +122,7 @@ export function StaggerGroup({
   }
 
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.08 }}
@@ -136,7 +137,7 @@ export function StaggerGroup({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -168,7 +169,7 @@ export function StaggerItem({
       : { opacity: 0, x: 0, y: 14 };
 
   return (
-    <motion.div
+    <m.div
       variants={{
         hidden: hiddenState,
         visible: {
@@ -184,7 +185,7 @@ export function StaggerItem({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -204,7 +205,7 @@ export function GalleryReveal({ children, className = "" }: GalleryRevealProps) 
   }
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 1.02 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -212,7 +213,7 @@ export function GalleryReveal({ children, className = "" }: GalleryRevealProps) 
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

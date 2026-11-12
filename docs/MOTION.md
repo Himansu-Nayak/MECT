@@ -10,19 +10,27 @@ Every animated element is owned by **one** library only. Every animated componen
 
 If a component coordinates both libraries on separate child elements, it must include `// motion: split` with a brief explanation.
 
-## 2. Shared Tokens (`src/lib/motion.ts`)
+## 2. Motion Foundation (`M1`)
+- **`MotionProvider` (`src/components/motion/MotionProvider.tsx`):** Wraps `RootLayout` (`src/app/layout.tsx`) with `<LazyMotion features={domAnimation}>` and `<MotionConfig reducedMotion="user">`. Motion UI components should import `m` from `"motion/react"` to stay on the lightweight `domAnimation` bundle.
+- **Server-First Wrappers (`src/components/motion/Reveal.tsx`):** `<Reveal>`, `<RevealList>`, `<RevealListItem>`, and `<FadeIn>` render visible server HTML (`opacity: 1`) for SSR and no-JS environments, then animate below-the-fold elements post-hydration using `transform` and `opacity` only.
+- **Anime.js Scope Helper (`src/lib/anime.ts`):**
+  - `canAnimate()`: returns `false` during SSR or when `prefers-reduced-motion: reduce` matches.
+  - `withScope(ref, fn)`: binds `createScope({ root: ref })` for a React ref and returns `() => scope.revert()` for `useEffect` cleanup.
+- **Route Transition (`src/app/template.tsx`):** Enter-only opacity fade using `MOTION_TRANSITIONS.fast`. Initial SSR/hydration renders at `opacity: 1` for 0 ms LCP; subsequent client-side navigations fade in cleanly.
+
+## 3. Shared Tokens (`src/lib/motion.ts`)
 - Durations: `fast = 0.2s`, `base = 0.4s`, `slow = 0.7s`
 - Easings: `easeOut = [0.22, 1, 0.36, 1]`, `easeInOut = [0.4, 0, 0.2, 1]`
 - Spring: `{ type: "spring", stiffness: 120, damping: 22 }`
 - Viewport: `{ once: true, amount: 0.2 }`
 
-## 3. Accessibility & Performance Rules
+## 4. Accessibility & Performance Rules
 - Respect `prefers-reduced-motion: reduce` everywhere (animations become instant or simple opacity fades; no running Web Animations after load).
 - Animate **only** `transform` and `opacity` (never `width`, `height`, `top`, `left`).
 - All text, headings, pillars, bank details, and links must be present and visible in server-rendered HTML with JavaScript disabled.
 - Banned effects: Glitch Text, Pull Cord, Tear Button, Bell Button, Particle Button, Plucked Text, confetti, body-text parallax, bouncing/overshooting springs, flashing effects, sound, or any payment-like slide/tear gesture.
 
-## 4. Canonical Bundle Measurement Method
+## 5. Canonical Bundle Measurement Method
 First-load JS for `/` is measured using **one canonical method** implemented in `scripts/audit-motion.mts` (`measureHomeFirstLoadJs`):
 1. Build the production app (`npm run build`).
 2. Fetch the production HTML of `/` from `next start`.

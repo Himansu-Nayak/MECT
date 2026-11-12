@@ -9,11 +9,11 @@ Branch: `motion-ui`
 - [x] **M0.4** Write `reports/motion-inventory.md` listing every page and section where motion or a component will be added and any items recommended dropping.
 
 ## PHASE M1 — Motion foundation
-- [ ] **M1.1** Create `src/components/motion/MotionProvider.tsx` (`LazyMotion` + `domAnimation` + `MotionConfig reducedMotion="user"`), wrap root layout.
-- [ ] **M1.2** Create reusable wrappers `<Reveal>`, `<RevealList>`, and `<FadeIn>` rendering server HTML first and animating post-hydration.
-- [ ] **M1.3** Create `src/lib/anime.ts` (`canAnimate()`, `withScope(ref, fn)` with `createScope` + `revert()` on unmount).
-- [ ] **M1.4** Add enter-only route fade in `src/app/template.tsx` (opacity only, `fast`).
-- [ ] **M1.5** Document library ownership, tokens, reduced-motion, and banned effects in `docs/MOTION.md`.
+- [x] **M1.1** Create `src/components/motion/MotionProvider.tsx` (`LazyMotion` + `domAnimation` + `MotionConfig reducedMotion="user"`), wrap root layout.
+- [x] **M1.2** Create reusable wrappers `<Reveal>`, `<RevealList>`, and `<FadeIn>` rendering server HTML first and animating post-hydration.
+- [x] **M1.3** Create `src/lib/anime.ts` (`canAnimate()`, `withScope(ref, fn)` with `createScope` + `revert()` on unmount).
+- [x] **M1.4** Add enter-only route fade in `src/app/template.tsx` (opacity only, `fast`).
+- [x] **M1.5** Document library ownership, tokens, reduced-motion, and banned effects in `docs/MOTION.md`.
 
 ## PHASE M2 — Site shell
 - [ ] **M2.1** Header (`morphic-navbar` + `useScroll` shrink, transform/opacity only, real server links, locked logo).

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteLayout } from "@/components/layout/SiteLayout";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import { ORG } from "@content/org";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -166,7 +167,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-cream text-ink font-sans antialiased selection:bg-sand selection:text-forest-deep">
-        <SiteLayout>{children}</SiteLayout>
+        <MotionProvider>
+          <SiteLayout>{children}</SiteLayout>
+        </MotionProvider>
       </body>
     </html>
   );
