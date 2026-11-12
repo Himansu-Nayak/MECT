@@ -45,7 +45,7 @@ export default function StatutoryDisclosuresPage() {
       identifierValue: "Book No. 4, Volume No. 45, Document No. 40311302194",
       dateLabel: "Registration Date",
       dateValue: "30th July 2013 (Deed executed 27-07-2013)",
-      status: "Legally Ratified & Permanent",
+      status: "Registered & Irrevocable Trust Deed",
       description:
         "Executed under the Indian Trusts Act, 1882, establishing Mahaveer Educational & Charitable Trust (MECT) as an irrevocable public charitable entity with Settler Founder Er. Japabandhu Kampa and permanent honorary trustees.",
       badge: "Foundational Deed",
@@ -181,7 +181,7 @@ export default function StatutoryDisclosuresPage() {
                   </span>
                 </div>
                 <p className="text-xs text-ink-sand mt-1.5 leading-relaxed font-sans max-w-3xl">
-                  MECT operates in strict accordance with the Indian Trusts Act, 1882 and Central Board of Direct Taxes (CBDT) regulations. All statutory registrations are active and subject to annual certified audits by independent Chartered Accountants.
+                  MECT operates in accordance with the Indian Trusts Act, 1882. Documented registrations, order dates, and validity periods are published below; FY 2026-27 tax status is being confirmed with the Trust&apos;s Chartered Accountant.
                 </p>
               </div>
             </div>

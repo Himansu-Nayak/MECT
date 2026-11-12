@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
 import { TRUST_CONFIG } from "@/lib/config";
+import { COMPLIANCE } from "@content/compliance";
 import { submitInquiry } from "@/lib/api";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
 import { SmartDonationCheckout } from "@/components/sections/SmartDonationCheckout";
@@ -365,8 +366,9 @@ export default function DonatePage() {
         </Container>
       </section>
 
-      {/* 5. Interactive Section 133 / 80G Tax Deduction Calculator */}
-      <section id="calculator" className="py-16 md:py-24 bg-white border-b border-border-warm scroll-mt-32">
+      {/* 5. Interactive Section 133 / 80G Tax Deduction Calculator (gated behind COMPLIANCE.showTaxEstimator) */}
+      {COMPLIANCE.showTaxEstimator && (
+        <section id="calculator" className="py-16 md:py-24 bg-white border-b border-border-warm scroll-mt-32">
         <Container size="default" className="space-y-10">
           <SectionHeader
             badge="Interactive Tax Estimator (Illustrative Model)"
@@ -472,6 +474,7 @@ export default function DonatePage() {
           </div>
         </Container>
       </section>
+      )}
 
       {/* 6. Pending Dynamic Payment Gateway (Automated Razorpay Integration) */}
       <section id="smart-donate" className="py-16 md:py-20 bg-cream scroll-mt-32">

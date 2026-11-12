@@ -81,8 +81,8 @@ export const HOMEPAGE_CONTENT = {
       iconName: "Landmark",
     },
     {
-      title: "Section 80G Approval",
-      subtitle: "50% Deduction u/s 80G (AY 2024-25 to 2026-27)",
+      title: "Income-tax 12A & 80G Orders",
+      subtitle: "Order dated 29-01-2024, valid AY 2024-25 to AY 2026-27",
       iconName: "ShieldCheck",
     },
     {
