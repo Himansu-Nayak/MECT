@@ -20,6 +20,8 @@ import {
 import { AnimeCountUp } from "@/components/motion/AnimeCountUp";
 import { HowMectWorksConnector } from "@/components/motion/HowMectWorksConnector";
 import { MarkerText } from "@/components/motion/MarkerText";
+import { AttractButton } from "@/components/motion/AttractButton";
+import { SlideTextButton } from "@/components/motion/SlideTextButton";
 import { StoriesRailSection } from "@/components/sections/StoriesRailSection";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
@@ -298,14 +300,16 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href={HOMEPAGE_CONTENT.hero.ctas.primary.href} className="w-full sm:w-auto">
-                  <Button
-                    variant="primary"
-                    size="md"
-                    className="w-full sm:w-auto shadow-lg font-semibold !border-sand/50 px-4 sm:px-5 h-11 text-[13px] sm:text-sm whitespace-nowrap"
-                  >
-                    <Heart className="w-4 h-4 mr-1.5 fill-current text-sand shrink-0" aria-hidden="true" />
-                    <span>Support Our Mission</span>
-                  </Button>
+                  <AttractButton>
+                    <Button
+                      variant="primary"
+                      size="md"
+                      className="w-full sm:w-auto shadow-lg font-semibold !border-sand/50 px-4 sm:px-5 h-11 text-[13px] sm:text-sm whitespace-nowrap"
+                    >
+                      <Heart className="w-4 h-4 mr-1.5 fill-current text-sand shrink-0" aria-hidden="true" />
+                      <span>Support Our Mission</span>
+                    </Button>
+                  </AttractButton>
                 </Link>
                 <Link
                   href={HOMEPAGE_CONTENT.hero.ctas.csr.href}
@@ -316,8 +320,10 @@ export default function HomePage() {
                     size="md"
                     className="w-full sm:w-auto font-semibold bg-forest-deep/85 !border-white/60 hover:!bg-forest-deep hover:!border-sand px-4 sm:px-5 h-11 text-[13px] sm:text-sm whitespace-nowrap"
                   >
-                    <Briefcase className="w-4 h-4 mr-1.5 text-sand shrink-0" aria-hidden="true" />
-                    <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
+                    <SlideTextButton>
+                      <Briefcase className="w-4 h-4 text-sand shrink-0" aria-hidden="true" />
+                      <span>{HOMEPAGE_CONTENT.hero.ctas.csr.text}</span>
+                    </SlideTextButton>
                   </Button>
                 </Link>
               </div>

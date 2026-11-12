@@ -20,7 +20,6 @@ import {
   ArrowLeft,
   Upload,
   Lock,
-  Copy,
   Check,
   Building2,
   User,
@@ -36,6 +35,8 @@ import {
   DocumentUploadDto,
   ScholarshipApplicationData,
 } from "@/lib/api";
+import { ORG } from "@content/org";
+import { CopyButton } from "@/components/motion/CopyButton";
 
 const ODISHA_DISTRICTS = [
   "Angul",
@@ -95,7 +96,6 @@ interface LocalFileItem {
 
 export default function ScholarshipApplyPage() {
   const [currentStep, setCurrentStep] = useState<number>(1);
-  const [copied, setCopied] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submittedApplication, setSubmittedApplication] = useState<ScholarshipApplicationData | null>(null);
@@ -326,14 +326,6 @@ export default function ScholarshipApplyPage() {
     }
   };
 
-  const copyRefId = () => {
-    if (submittedApplication?.applicationNumber) {
-      navigator.clipboard.writeText(submittedApplication.applicationNumber);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    }
-  };
-
   // SUCCESS VIEW
   if (submittedApplication) {
     return (
@@ -366,13 +358,10 @@ export default function ScholarshipApplyPage() {
                 <span className="text-2xl md:text-3xl font-mono font-black text-terracotta-dark tracking-wider">
                   {submittedApplication.applicationNumber}
                 </span>
-                <button
-                  onClick={copyRefId}
-                  className="p-2 rounded-lg bg-white border border-border-warm hover:bg-cream/65 text-forest transition-colors"
-                  title="Copy Reference ID"
-                >
-                  {copied ? <Check className="w-5 h-5 text-terracotta-dark" /> : <Copy className="w-5 h-5" />}
-                </button>
+                <CopyButton
+                  value={submittedApplication.applicationNumber}
+                  label="Application Reference Number"
+                />
               </div>
               <p className="text-xs text-ink-sand mt-2">
                 Quote this identifier in all correspondence with the Board of Trustees.
@@ -811,7 +800,13 @@ export default function ScholarshipApplyPage() {
               )}
 
               <div className="space-y-4">
-                {REQUIRED_DOC_TYPES.map((docDef) => {
+                {!ORG.scholarshipIntake.intakeOpen ? (
+                  <div className="p-4 rounded-xl border border-sand bg-cream text-xs text-forest space-y-1.5">
+                    <p className="font-bold">Online document upload paused</p>
+                    <p className="text-ink-sand">{ORG.scholarshipIntake.statusNote}</p>
+                  </div>
+                ) : (
+                  REQUIRED_DOC_TYPES.map((docDef) => {
                   const uploaded = uploadedFiles.find((f) => f.documentType === docDef.key);
 
                   return (
@@ -874,7 +869,7 @@ export default function ScholarshipApplyPage() {
                       </div>
                     </div>
                   );
-                })}
+                }))}
               </div>
             </div>
           )}
