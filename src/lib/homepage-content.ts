@@ -196,11 +196,11 @@ export const HOMEPAGE_CONTENT = {
     },
   ],
 
-  // Donor notice
+  // Donor notice (short pointer; full explanation kept on /statutory-disclosures)
   donorNotice: {
-    title: "Section 80G Tax Exemption Notice & Statutory Disclosures",
+    title: "Statutory Disclosures & Registration Records",
     description:
-      "Mahaveer Educational & Charitable Trust holds documented historical approval under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: AADTM5474FF20241, DIN: AADTM5474FF2024101, dated 29-01-2024) covering donations made in Financial Years 2023-24 through 2025-26 (Assessment Years 2024-25 through 2026-27). Donors filing under the Old Tax Regime were eligible for a 50% deduction of qualifying donations from taxable income (subject to the 10% Adjusted Gross Total Income ceiling under Section 80G(4)). For the current Tax Year 2026-27 (commenced 1 April 2026 / AY 2027-28), statutory approval under the Income-tax Act, 2025 is governed by Section 354 (application via Form 105 and formal examination order via Form 107) read with Section 536 repeal, savings and transition provisions. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed. Under Section 202 (simplified tax regime), Section 133 charitable deductions are not available. Annual donation reporting is conducted via Form 113 to generate official Form 114 certificates. Donations must be made through digital/banking channels (cash > ₹2,000 is disqualified under Section 133 / legacy Section 80G(5D)).",
+      "MECT holds documented Section 12A and Section 80G orders dated 29-01-2024 (covering AY 2024-25 to AY 2026-27); current tax status for FY 2026-27 is being confirmed with our Chartered Accountant. Full statutory records, order copies, and tax details are published on the Statutory Disclosures page.",
   },
 
   // Organisational Introduction & Vision/Mission (Homepage Section 2)
