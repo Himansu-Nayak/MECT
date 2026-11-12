@@ -15,6 +15,7 @@ import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
 import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
 import { SmartDonationCheckout } from "@/components/sections/SmartDonationCheckout";
+import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
 import {
   ShieldCheck,
   CheckCircle2,
@@ -111,49 +112,261 @@ export default function DonatePage() {
           <>
             <Link href="#bank-details">
               <Button variant="gold" size="sm">
-                <span>SBI Bank Details</span>
+                <span>SBI QR &amp; Bank Details</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
-            <Link href="#calculator">
+            <Link href="#receipt-claim">
               <Button variant="dark-outline" size="sm">
-                <Calculator className="w-3.5 h-3.5 mr-1 text-cream" />
-                <span>Tax Deduction Estimator</span>
+                <Receipt className="w-3.5 h-3.5 mr-1 text-cream" />
+                <span>Submit UTR &amp; Claim Receipt</span>
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* 2. Top Statutory Reassurance Ribbon */}
-      <section className="py-5 bg-sand-light text-ink border-b border-border-warm">
+      {/* 2. Top Statutory & Tax Status Notice */}
+      <section className="py-5 bg-cream-dark/60 border-b border-border-warm">
         <Container size="default">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
-            <div className="flex items-center gap-2 flex-wrap">
-              <ShieldCheck className="w-4 h-4 text-forest" />
-              <span><strong className="text-forest">80G Historical URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</span>
-              <span className="text-forest" aria-hidden="true">•</span>
-              <span><strong className="text-forest">DIN:</strong> {TRUST_CONFIG.statutory.section80GDin}</span>
+          <TaxStatusNotice variant="light" />
+        </Container>
+      </section>
+
+      {/* 2B. Payment Method Clarity & 3-Step Direct Giving Pathway */}
+      <section className="py-8 bg-white border-b border-border-warm" aria-label="Donation Methods and Receipt Steps">
+        <Container size="default">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans">
+            <div className="p-4 rounded-xs bg-cream/65 border-l-4 border-l-forest border-y border-r border-border-warm space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded-xs bg-forest text-cream text-[10px] font-bold uppercase tracking-wider">
+                Step 1 • Active Now
+              </span>
+              <h2 className="font-serif text-sm font-bold text-forest pt-1">
+                Direct SBI Remittance or Static UPI QR
+              </h2>
+              <p className="text-ink-sand leading-relaxed">
+                Transfer via SBI Account <strong className="font-mono text-forest">33341302498</strong> (IFSC <strong className="font-mono text-forest">SBIN0001701</strong>) or scan MECT&apos;s SBI QR (<strong className="font-mono text-forest">86971610172@sbi</strong>).
+              </p>
             </div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <Receipt className="w-4 h-4 text-forest" />
-              <span><strong className="text-forest">Trust PAN:</strong> {TRUST_CONFIG.statutory.pan}</span>
-              <span className="text-forest" aria-hidden="true">•</span>
-              <span className="text-forest font-semibold">Covered AY 2024-25 to AY 2026-27</span>
+            <div className="p-4 rounded-xs bg-cream/65 border-l-4 border-l-terracotta border-y border-r border-border-warm space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded-xs bg-terracotta text-white text-[10px] font-bold uppercase tracking-wider">
+                Step 2 • Receipt Desk
+              </span>
+              <h2 className="font-serif text-sm font-bold text-forest pt-1">
+                Submit Bank UTR / UPI Reference
+              </h2>
+              <p className="text-ink-sand leading-relaxed">
+                Static UPI and NEFT transfers are not auto-verified. Submit your UTR in the <Link href="#receipt-claim" className="underline text-terracotta-dark font-semibold">Receipt Desk form</Link> below to receive your official institutional receipt.
+              </p>
+            </div>
+            <div className="p-4 rounded-xs bg-sand-light/65 border-l-4 border-l-sand border-y border-r border-border-warm space-y-1">
+              <span className="inline-block px-2 py-0.5 rounded-xs bg-sand text-forest-deep text-[10px] font-bold uppercase tracking-wider">
+                Gateway Notice • Pending
+              </span>
+              <h2 className="font-serif text-sm font-bold text-forest pt-1">
+                Automated Razorpay Gateway Pending
+              </h2>
+              <p className="text-ink-sand leading-relaxed">
+                Online automated Razorpay dynamic QR settlement is pending credential activation. Please use active direct SBI channels above.
+              </p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 2B. Smart Unified Donation Checkout & Dynamic UPI QR */}
-      <section id="smart-donate" className="py-16 md:py-20 bg-cream border-b border-border-warm">
-        <Container size="default">
-          <SmartDonationCheckout />
+      {/* 3. Active Direct Bank Remittance & Static SBI Scan & Pay QR — STATE BANK OF INDIA */}
+      <section id="bank-details" className="py-16 md:py-20 bg-white border-b border-border-warm scroll-mt-32">
+        <Container size="default" className="space-y-10">
+          <SectionHeader
+            badge="Active Domestic Giving"
+            title="SUPPORT OUR MISSION — DONATE NOW"
+            subtitle="Remit contributions directly via SBI Static UPI QR (86971610172@sbi), NEFT, RTGS, or IMPS into MECT's verified State Bank of India account."
+            align="center"
+          />
+
+          <div className="max-w-5xl mx-auto">
+            <SbiDonationSection />
+          </div>
         </Container>
       </section>
 
-      {/* 3. Interactive Section 133 / 80G Tax Deduction Calculator */}
-      <section id="calculator" className="py-20 md:py-24 bg-cream">
+      {/* 4. Donor Receipt Claim & KYC Capture Form */}
+      <section id="receipt-claim" className="py-16 md:py-24 bg-cream border-b border-border-warm scroll-mt-32">
+        <Container size="default">
+          <SectionHeader
+            badge="Manual Verification & Receipt Desk"
+            title="Confirm Donation &amp; Request Official Receipt"
+            subtitle="Because direct bank transfers and static UPI payments are reconciled manually, please submit your UTR / UPI reference and PAN for institutional receipt issuance."
+            align="center"
+            className="mb-12"
+          />
+
+          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-sand/40 shadow-xl">
+            {receiptSubmitted ? (
+              <div className="p-8 bg-terracotta text-white rounded-xs space-y-4 text-center">
+                <CheckCircle2 className="w-12 h-12 text-cream mx-auto" aria-hidden="true" />
+                <h3 className="font-serif text-2xl font-bold">
+                  Donation Receipt Request Logged
+                </h3>
+                {receiptRefId && (
+                  <p className="text-sm font-mono text-cream bg-black/25 py-1.5 px-4 rounded inline-block">
+                    Secretariat Acknowledgment Ref: #{receiptRefId}
+                  </p>
+                )}
+                <div className="p-4 bg-white/5 rounded-xs border border-white/10 text-xs text-white/85 text-left space-y-1.5 font-sans">
+                  <div><strong>Donor Name:</strong> {donorData.fullName}</div>
+                  <div><strong>Permanent Account Number (PAN):</strong> {donorData.pan.toUpperCase()}</div>
+                  <div><strong>Confirmed Amount:</strong> ₹{Number(donorData.amount).toLocaleString("en-IN")}</div>
+                  <div><strong>Bank UTR / UPI Reference:</strong> {donorData.utrNumber}</div>
+                  <div><strong>Historical 80G URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</div>
+                </div>
+                <p className="text-xs text-white/90 leading-relaxed max-w-md mx-auto font-sans">
+                  Our Accounts Secretariat will manually verify the bank credit / UPI reference against SBI statements and email your official donation acknowledgment receipt within 1–2 business days (Tax Year 2026-27 Form 10BE tax exemption remains subject to confirmed Section 354 / Form 107 approval).
+                </p>
+                <Button
+                  variant="gold"
+                  size="sm"
+                  onClick={() => {
+                    setReceiptSubmitted(false);
+                    setDonorData({
+                      fullName: "",
+                      pan: "",
+                      email: "",
+                      phone: "",
+                      address: "",
+                      district: "Balangir",
+                      state: "Odisha",
+                      pin: "767001",
+                      amount: "10000",
+                      utrNumber: "",
+                      programme: "Free Education for 200 Students",
+                    });
+                  }}
+                  className="mt-2 font-bold"
+                >
+                  Submit Another Donation Confirmation
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleReceiptSubmit} className="space-y-4">
+                {receiptError && (
+                  <div
+                    className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xs text-xs flex items-start gap-2"
+                    role="alert"
+                  >
+                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{receiptError}</span>
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <Input
+                    id="donor-name"
+                    label="Donor Full Name (As per PAN) *"
+                    required
+                    value={donorData.fullName}
+                    onChange={(e) => setDonorData({ ...donorData, fullName: e.target.value })}
+                    placeholder="e.g. Subhashree Mohanty"
+                  />
+                  <Input
+                    id="donor-pan"
+                    label="Permanent Account Number (PAN) *"
+                    required
+                    value={donorData.pan}
+                    onChange={(e) => setDonorData({ ...donorData, pan: e.target.value.toUpperCase() })}
+                    placeholder="e.g. ABCDE1234F"
+                    maxLength={10}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <Input
+                    id="donor-email"
+                    type="email"
+                    label="Email Address (For Receipt) *"
+                    required
+                    value={donorData.email}
+                    onChange={(e) => setDonorData({ ...donorData, email: e.target.value })}
+                    placeholder="subhashree@example.com"
+                  />
+                  <Input
+                    id="donor-phone"
+                    type="tel"
+                    label="Phone / Mobile Number *"
+                    required
+                    value={donorData.phone}
+                    onChange={(e) => setDonorData({ ...donorData, phone: e.target.value })}
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <Input
+                    id="donor-amount"
+                    type="number"
+                    label="Remitted Donation Amount (₹) *"
+                    required
+                    value={donorData.amount}
+                    onChange={(e) => setDonorData({ ...donorData, amount: e.target.value })}
+                    placeholder="10000"
+                  />
+                  <Input
+                    id="donor-utr"
+                    label="Bank UTR / UPI Transaction Ref *"
+                    required
+                    value={donorData.utrNumber}
+                    onChange={(e) => setDonorData({ ...donorData, utrNumber: e.target.value })}
+                    placeholder="e.g. UBINR520261105..."
+                  />
+                </div>
+
+                <Select
+                  id="donor-prog"
+                  label="Designated Programme Track *"
+                  value={donorData.programme}
+                  onChange={(e) => setDonorData({ ...donorData, programme: e.target.value })}
+                  options={[
+                    { value: "Free Education for 200 Students", label: "Free Education for 200 Students" },
+                    { value: "Higher Education Tuition Grants", label: "Higher Education Tuition Grants (Odisha)" },
+                    { value: "Remedial Rural Education (Balangir)", label: "Remedial Rural Education (Balangir)" },
+                    { value: "Women Vocational Tailoring & Livelihood", label: "Women's Vocational Tailoring & Livelihood" },
+                    { value: "Safe Drinking Water - Jal Seva", label: "Safe Drinking Water - Jal Seva" },
+                    { value: "Hospital Food Relief - Jan Ahar", label: "Hospital Food Relief - Jan Ahar" },
+                    { value: "General Charitable Corpus Fund", label: "General Charitable Corpus Fund" },
+                  ]}
+                />
+
+                <Textarea
+                  id="donor-address"
+                  label="Complete Postal Address with PIN (For Official Receipt Records) *"
+                  required
+                  rows={2}
+                  value={donorData.address}
+                  onChange={(e) => setDonorData({ ...donorData, address: e.target.value })}
+                  placeholder="Plot/Flat No, Street, Landmark, City, State - PIN..."
+                />
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  isLoading={receiptIsSubmitting}
+                  className="w-full justify-center shadow-md font-bold"
+                >
+                  <Send className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
+                  <span>Transmit Donation Confirmation</span>
+                </Button>
+
+                <p className="text-[11px] text-ink-sand text-center italic font-sans">
+                  Bank Account: {TRUST_CONFIG.bank.bankName} ({TRUST_CONFIG.bank.accountNumber}, IFSC: {TRUST_CONFIG.bank.ifsc}) • UPI ID: {TRUST_CONFIG.bank.upiId} • Historical 80G Order URN: {TRUST_CONFIG.statutory.section80GUrn}.
+                </p>
+              </form>
+            )}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. Interactive Section 133 / 80G Tax Deduction Calculator */}
+      <section id="calculator" className="py-16 md:py-24 bg-white border-b border-border-warm scroll-mt-32">
         <Container size="default" className="space-y-10">
           <SectionHeader
             badge="Interactive Tax Estimator (Illustrative Model)"
@@ -236,7 +449,7 @@ export default function DonatePage() {
                   </span>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xs border border-white/15 space-y-1">
-                  <span className="text-[11px] text-cream font-sans block">80G Eligible Deduction (50%)</span>
+                  <span className="text-[11px] text-cream font-sans block">Illustrative 50% Deduction</span>
                   <span className="text-2xl font-serif font-bold text-cream">
                     ₹{eligibleDeduction.toLocaleString("en-IN")}
                   </span>
@@ -260,194 +473,10 @@ export default function DonatePage() {
         </Container>
       </section>
 
-      {/* 4. Direct Bank Remittance — STATE BANK OF INDIA */}
-      <section id="bank-details" className="py-20 bg-white border-y border-border-warm scroll-mt-16">
-        <Container size="default" className="space-y-10">
-          <SectionHeader
-            badge="Direct Domestic Giving"
-            title="SUPPORT OUR MISSION — DONATE NOW"
-            subtitle="Remit contributions directly via SBI UPI QR (86971610172@sbi), NEFT, RTGS, or IMPS into MECT's verified State Bank of India account."
-            align="center"
-          />
-
-          <div className="max-w-5xl mx-auto">
-            <SbiDonationSection />
-          </div>
-        </Container>
-      </section>
-
-      {/* 5. Donor 80G Receipt Claim & KYC Capture Form */}
-      <section id="receipt-claim" className="py-20 md:py-28 bg-cream scroll-mt-16">
+      {/* 6. Pending Dynamic Payment Gateway (Automated Razorpay Integration) */}
+      <section id="smart-donate" className="py-16 md:py-20 bg-cream scroll-mt-32">
         <Container size="default">
-          <SectionHeader
-            badge="Tax Compliance & Receipt Desk"
-            title="Confirm Donation & Request 80G Tax Exemption Certificate"
-            subtitle="Submit your bank transaction reference and Permanent Account Number (PAN) for statutory Form 10BE certificate issuance."
-            align="center"
-            className="mb-12"
-          />
-
-          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-sand/40 shadow-xl">
-            {receiptSubmitted ? (
-              <div className="p-8 bg-terracotta text-white rounded-xs space-y-4 text-center animate-in fade-in">
-                <CheckCircle2 className="w-12 h-12 text-cream mx-auto" aria-hidden="true" />
-                <h3 className="font-serif text-2xl font-bold">
-                  80G Receipt Request Successfully Logged
-                </h3>
-                {receiptRefId && (
-                  <p className="text-sm font-mono text-cream bg-black/25 py-1.5 px-4 rounded inline-block">
-                    Secretariat Acknowledgment Ref: #{receiptRefId}
-                  </p>
-                )}
-                <div className="p-4 bg-white/5 rounded-xs border border-white/10 text-xs text-white/85 text-left space-y-1.5 font-sans">
-                  <div><strong>Donor Name:</strong> {donorData.fullName}</div>
-                  <div><strong>Permanent Account Number (PAN):</strong> {donorData.pan.toUpperCase()}</div>
-                  <div><strong>Confirmed Amount:</strong> ₹{Number(donorData.amount).toLocaleString("en-IN")}</div>
-                  <div><strong>Bank UTR Reference:</strong> {donorData.utrNumber}</div>
-                  <div><strong>80G Registration URN:</strong> {TRUST_CONFIG.statutory.section80GUrn}</div>
-                </div>
-                <p className="text-xs text-white/80 leading-relaxed max-w-md mx-auto font-sans">
-                  Our Accounts Secretariat will verify the bank credit and email your stamped 80G receipt within 1-2 business days. Your donation will also be included in our annual Form 10BD filing for auto-population in your ITR.
-                </p>
-                <Button
-                  variant="gold"
-                  size="sm"
-                  onClick={() => {
-                    setReceiptSubmitted(false);
-                    setDonorData({
-                      fullName: "",
-                      pan: "",
-                      email: "",
-                      phone: "",
-                      address: "",
-                      district: "Balangir",
-                      state: "Odisha",
-                      pin: "767001",
-                      amount: "10000",
-                      utrNumber: "",
-                      programme: "Higher Education Tuition Grants",
-                    });
-                  }}
-                  className="mt-2 font-bold"
-                >
-                  Submit Another Donation Confirmation
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleReceiptSubmit} className="space-y-4">
-                {receiptError && (
-                  <div
-                    className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xs text-xs flex items-start gap-2"
-                    role="alert"
-                  >
-                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{receiptError}</span>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Input
-                    id="donor-name"
-                    label="Donor Full Name (As per PAN) *"
-                    required
-                    value={donorData.fullName}
-                    onChange={(e) => setDonorData({ ...donorData, fullName: e.target.value })}
-                    placeholder="e.g. Subhashree Mohanty"
-                  />
-                  <Input
-                    id="donor-pan"
-                    label="Permanent Account Number (PAN) *"
-                    required
-                    value={donorData.pan}
-                    onChange={(e) => setDonorData({ ...donorData, pan: e.target.value.toUpperCase() })}
-                    placeholder="e.g. ABCDE1234F"
-                    maxLength={10}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Input
-                    id="donor-email"
-                    type="email"
-                    label="Email Address (For Tax Receipt) *"
-                    required
-                    value={donorData.email}
-                    onChange={(e) => setDonorData({ ...donorData, email: e.target.value })}
-                    placeholder="subhashree@example.com"
-                  />
-                  <Input
-                    id="donor-phone"
-                    type="tel"
-                    label="Phone / Mobile Number *"
-                    required
-                    value={donorData.phone}
-                    onChange={(e) => setDonorData({ ...donorData, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Input
-                    id="donor-amount"
-                    type="number"
-                    label="Remitted Donation Amount (₹) *"
-                    required
-                    value={donorData.amount}
-                    onChange={(e) => setDonorData({ ...donorData, amount: e.target.value })}
-                    placeholder="10000"
-                  />
-                  <Input
-                    id="donor-utr"
-                    label="Bank Transaction UTR / Ref Number *"
-                    required
-                    value={donorData.utrNumber}
-                    onChange={(e) => setDonorData({ ...donorData, utrNumber: e.target.value })}
-                    placeholder="e.g. UBINR520261105..."
-                  />
-                </div>
-
-                <Select
-                  id="donor-prog"
-                  label="Designated Programme Track *"
-                  value={donorData.programme}
-                  onChange={(e) => setDonorData({ ...donorData, programme: e.target.value })}
-                  options={[
-                    { value: "Free Education for 200 Students", label: "Free Education for 200 Students" },
-                    { value: "Higher Education Tuition Grants", label: "Higher Education Tuition Grants (Odisha)" },
-                    { value: "Remedial Rural Education (Balangir)", label: "Remedial Rural Education (Balangir)" },
-                    { value: "Women Vocational Tailoring & Livelihood", label: "Women's Vocational Tailoring & Livelihood" },
-                    { value: "Safe Drinking Water - Jal Seva", label: "Safe Drinking Water - Jal Seva" },
-                    { value: "Hospital Food Relief - Jan Ahar", label: "Hospital Food Relief - Jan Ahar" },
-                    { value: "General Charitable Corpus Fund", label: "General Charitable Corpus Fund" },
-                  ]}
-                />
-
-                <Textarea
-                  id="donor-address"
-                  label="Complete Postal Address with PIN (For Donation Receipt & Form 113/114 Records) *"
-                  required
-                  rows={2}
-                  value={donorData.address}
-                  onChange={(e) => setDonorData({ ...donorData, address: e.target.value })}
-                  placeholder="Plot/Flat No, Street, Landmark, City, State - PIN..."
-                />
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  isLoading={receiptIsSubmitting}
-                  className="w-full justify-center shadow-md font-bold"
-                >
-                  <Send className="w-3.5 h-3.5 mr-1.5" aria-hidden="true" />
-                  <span>Transmit Donation Confirmation</span>
-                </Button>
-
-                <p className="text-[11px] text-ink-sand text-center italic font-sans">
-                  Bank Account: {TRUST_CONFIG.bank.bankName} ({TRUST_CONFIG.bank.accountNumber}, IFSC: {TRUST_CONFIG.bank.ifsc}) • Historical 80G Order URN: {TRUST_CONFIG.statutory.section80GUrn}.
-                </p>
-              </form>
-            )}
-          </div>
+          <SmartDonationCheckout />
         </Container>
       </section>
     </div>

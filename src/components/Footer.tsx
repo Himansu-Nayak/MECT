@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ORG } from "@content/org";
+import { COMPLIANCE } from "@content/compliance";
+import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/MotionPrimitives";
@@ -24,40 +26,44 @@ export function Footer() {
     <footer className="bg-forest text-cream border-t-2 border-terracotta pt-16 pb-12 transition-colors">
       <Reveal direction="fade" tone="slow">
         <Container size="default" className="space-y-12">
-        {/* Tier 1: Mandatory Statutory & Compliance Transparency Notice Box */}
-        <div className="bg-forest-deep border border-sand/30 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xs bg-forest border border-sand/45 flex items-center justify-center shrink-0 text-sand">
-              <ShieldCheck className="w-5 h-5 text-sand" aria-hidden="true" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-bold text-white tracking-wider uppercase text-[11px] font-sans">
-                  Statutory &amp; Fiduciary Disclosure (Govt. of India / Govt. of Odisha)
-                </span>
-                <Badge variant="gold-dark" size="sm">
-                  12A &amp; 80G Recorded
-                </Badge>
-                <Badge variant="forest" size="sm">
-                  NGO Darpan Verified
-                </Badge>
-                <Badge variant="forest" size="sm">
-                  e-Anudaan Enrolled
-                </Badge>
+        {/* Tier 1: Mandatory Statutory & Tax Status Notice Box */}
+        {COMPLIANCE.isTaxEligibilityConfirmed ? (
+          <div className="bg-forest-deep border border-sand/30 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-xs bg-forest border border-sand/45 flex items-center justify-center shrink-0 text-sand">
+                <ShieldCheck className="w-5 h-5 text-sand" aria-hidden="true" />
               </div>
-              <p className="text-cream/95 text-[12px] mt-1.5 leading-relaxed max-w-4xl">
-                {ORG.trustDeed.summaryLine} ({ORG.trustDeed.bookVolume}). PAN: {ORG.ids.pan}. CSR-1: {ORG.ids.csr1}. NITI Aayog Darpan: {ORG.ids.darpan}. e-Anudaan: {ORG.ids.eAnudaan}. Historical 12A URN: {ORG.ids.urn12A} and 80G URN: {ORG.ids.urn80G} (dated {ORG.ids.taxOrderDate}, covering {ORG.ids.taxOrderValidityPeriod}); current approval for FY 2026-27 is being confirmed with the Trust&apos;s Chartered Accountant. {ORG.chairman.honoraryClause}
-              </p>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-white tracking-wider uppercase text-[11px] font-sans">
+                    Statutory &amp; Fiduciary Disclosure (Govt. of India / Govt. of Odisha)
+                  </span>
+                  <Badge variant="gold-dark" size="sm">
+                    12A &amp; 80G Recorded
+                  </Badge>
+                  <Badge variant="forest" size="sm">
+                    NGO Darpan Verified
+                  </Badge>
+                  <Badge variant="forest" size="sm">
+                    e-Anudaan Enrolled
+                  </Badge>
+                </div>
+                <p className="text-cream/95 text-[12px] mt-1.5 leading-relaxed max-w-4xl">
+                  {ORG.trustDeed.summaryLine} ({ORG.trustDeed.bookVolume}). PAN: {ORG.ids.pan}. CSR-1: {ORG.ids.csr1}. NITI Aayog Darpan: {ORG.ids.darpan}. e-Anudaan: {ORG.ids.eAnudaan}. {COMPLIANCE.historical12ASummary} and {COMPLIANCE.historical80GSummary}. {ORG.chairman.honoraryClause}
+                </p>
+              </div>
             </div>
+            <Link
+              href="/statutory-disclosures"
+              className="inline-flex items-center gap-1.5 text-xs text-white font-bold px-4 py-2.5 bg-terracotta hover:bg-terracotta-dark border border-terracotta-dark rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-sand"
+            >
+              <span>Verify Certificates</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
-          <Link
-            href="/statutory-disclosures"
-            className="inline-flex items-center gap-1.5 text-xs text-white font-bold px-4 py-2.5 bg-terracotta hover:bg-terracotta-dark border border-terracotta-dark rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-sand"
-          >
-            <span>Verify Certificates</span>
-            <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-          </Link>
-        </div>
+        ) : (
+          <TaxStatusNotice variant="dark" />
+        )}
 
         {/* Tier 2: Main Institutional Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-7 pb-10 border-b border-white/15">
