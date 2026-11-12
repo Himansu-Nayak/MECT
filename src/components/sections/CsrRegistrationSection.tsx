@@ -48,13 +48,13 @@ export function CsrRegistrationSection() {
     {
       label: "Permanent Account Number (PAN)",
       value: TRUST_CONFIG.statutory.pan,
-      sub: `Issued ${TRUST_CONFIG.statutory.panIssueDate}`,
+      sub: `Issued ${TRUST_CONFIG.statutory.panIssueDate} {{CONFIRM: PAN allotment date vs deed date}}`,
       highlight: false,
     },
     {
       label: "Registered Trust Deed",
       value: "Doc No. 40311302194",
-      sub: "Book 4, Vol 45 • Balangir Sub-Registrar (30-07-2013)",
+      sub: "Book 4, Vol 45 • Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar",
       highlight: false,
     },
     {
@@ -80,7 +80,7 @@ export function CsrRegistrationSection() {
   return (
     <section
       id="csr-registration"
-      className="py-16 sm:py-20 md:py-24 bg-white border-b border-border-warm scroll-mt-20"
+      className="py-16 sm:py-20 md:py-24 bg-white border-b border-border-warm scroll-mt-32"
       aria-labelledby="csr-registration-heading"
     >
       <Container size="default" className="space-y-10">

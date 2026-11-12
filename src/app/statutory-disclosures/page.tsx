@@ -44,7 +44,7 @@ export default function StatutoryDisclosuresPage() {
       identifierLabel: "Deed Registration Number",
       identifierValue: "Book No. 4, Volume No. 45, Document No. 40311302194",
       dateLabel: "Registration Date",
-      dateValue: "30th July 2013 (Deed executed 27-07-2013)",
+      dateValue: "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar",
       status: "Registered & Irrevocable Trust Deed",
       description:
         "Executed under the Indian Trusts Act, 1882, establishing Mahaveer Educational & Charitable Trust (MECT) as an irrevocable public charitable entity with Settler Founder Er. Japabandhu Kampa and permanent honorary trustees.",
@@ -58,7 +58,7 @@ export default function StatutoryDisclosuresPage() {
       identifierLabel: "PAN",
       identifierValue: TRUST_CONFIG.statutory.pan,
       dateLabel: "Allotment Date",
-      dateValue: "27th July 2013",
+      dateValue: "27 July 2013 {{CONFIRM: PAN allotment date vs deed date}}",
       status: "Active & Verified",
       description:
         "Official Income Tax Department PAN card issued in the registered legal name of Mahaveer Educational & Charitable Trust for all statutory banking, tax filing, and financial accounting operations.",
