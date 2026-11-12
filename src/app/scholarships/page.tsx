@@ -237,7 +237,7 @@ export default function ScholarshipsPage() {
           </div>
 
           <p className="text-[11px] text-ink-sand text-center italic">
-            Note: All eligibility thresholds represent draft proposals pending final gazetted formalization by the Trustee Board ahead of the inaugural academic cycle.
+            Note: All eligibility thresholds represent draft proposals pending formal approval by the Board of Trustees ahead of the inaugural academic cycle.
           </p>
         </Container>
       </section>
