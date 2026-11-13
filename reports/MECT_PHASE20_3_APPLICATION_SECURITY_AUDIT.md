@@ -38,3 +38,4 @@
 - **Filter:** `RateLimitingFilter.java` placed before `UsernamePasswordAuthenticationFilter`.
 - **Algorithm:** In-memory token-bucket rate limiter tracking client IP addresses.
 - **Protected Endpoints:** Public intake endpoints (contact forms, volunteer applications, OTP requests) are throttled to prevent automated volumetric abuse and denial-of-service attempts.
+

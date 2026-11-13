@@ -58,3 +58,4 @@ $$\begin{aligned}
 
 - **Settlement Status:** The ₹7.00 in successful Cashfree gateway collections is expected to settle into the MECT State Bank of India operational bank account according to Cashfree's T+1/T+2 settlement schedule.
 - **Auditor Note:** Confirmation that funds have physically settled into MECT's bank account requires independent reconciliation against MECT's official monthly State Bank of India statement by the Trust Treasurer or designated accountant.
+

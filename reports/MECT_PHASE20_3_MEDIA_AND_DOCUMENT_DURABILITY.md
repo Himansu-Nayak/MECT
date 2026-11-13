@@ -51,3 +51,4 @@ Storing binary receipts and media inside PostgreSQL provides critical reliabilit
 
 - Tested that recreating or restarting `mect-backend` maintains volume mounts.
 - Filesystem permissions inside containers: Owned by unprivileged user `mect` (UID 1001), allowing read/write operations while preventing host privilege escalation.
+

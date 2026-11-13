@@ -57,3 +57,4 @@ In accordance with strict verification rules, database restore time is explicitl
 - **Local-Only Storage:** All backup archives currently reside locally on the VPS disk at `/var/backups/mect/`.
 - **Catastrophic Failure Exposure:** If the Hostinger VPS instance suffers unrecoverable hardware failure, hypervisor destruction, or account-level deletion, local backups will be lost.
 - **Operational Recommendation:** Establish an automated off-site sync (e.g. via `rclone` or AWS CLI / Cloudflare R2 API) to replicate `/var/backups/mect/*.dump` to an external encrypted bucket daily.
+

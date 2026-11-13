@@ -53,3 +53,4 @@ curl -s -o /dev/null -w "%{http_code}" https://mect.org.in/compose.production.ya
 ### 2.5 Donor PII Privacy & 80G Disclosures
 - On public donation flows and public transparency pages, individual donor PANs, private email addresses, and phone numbers are excluded from all public responses.
 - Anonymized donors are displayed as `"Anonymous Donor"` in public donor recognition listings.
+

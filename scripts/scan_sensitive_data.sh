@@ -45,3 +45,4 @@ if [ -n "$sample_js" ]; then
   echo -n "$map_url -> "
   curl -s -o /dev/null -w "%{http_code}\n" "$map_url"
 fi
+

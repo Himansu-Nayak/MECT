@@ -67,3 +67,4 @@ The Phase 20.3 final security acceptance audit has validated all six core pillar
 ## 4. Final Sign-Off
 
 The Mahaveer Educational & Charitable Trust (MECT) platform is officially **ACCEPTED FOR PRODUCTION OPERATION**.
+

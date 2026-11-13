@@ -65,3 +65,4 @@ The Spring Boot backend enforces granular roles via `SecurityConfig.java`:
 - **Password Storage:** BCrypt with work factor **12** (`new BCryptPasswordEncoder(12)`). Enforces slow cryptographic hashing resistant to GPU-accelerated dictionary attacks.
 - **Access Token Lifetime:** **900 seconds (15 minutes)** (`app.jwt.access-token-validity-seconds: 900`). Short-lived access limits exposure window.
 - **Refresh Token Lifetime:** **604,800 seconds (7 days)** (`app.jwt.refresh-token-validity-seconds: 604800`). Rotated upon usage, stored with user UUID linkage.
+
