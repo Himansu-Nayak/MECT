@@ -80,3 +80,4 @@ Captured live from `docker inspect mect-backend`:
 ## 4. Conclusion & Operational Recommendation
 
 The Phase 20.1 test failure was entirely an **artifact of premature test timing (12s vs 40s start_period) and querying an invalid URL path**. The Spring Boot backend container itself operates flawlessly, connects cleanly to PostgreSQL, and maintains continuous `healthy` state.
+

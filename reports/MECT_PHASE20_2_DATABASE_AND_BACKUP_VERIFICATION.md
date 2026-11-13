@@ -79,3 +79,4 @@ Inspection of Docker volumes on the production host confirms:
 |---|---|---|---|
 | **RTO (Recovery Time Objective)** | **1.8 seconds** | **~2.5 minutes** | `pg_restore` drill into temporary DB took 1.8s. Full cold-start of 3 containers from scratch takes ~2.5 minutes. |
 | **RPO (Recovery Point Objective)** | **< 24 hours** | **< 24 hours** | Enforced by daily cron `/etc/cron.d/mect-backup` running at 02:00 UTC. |
+

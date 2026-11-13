@@ -52,3 +52,4 @@ Per strict operational mandates, the independent OHO TECH application hosted on 
 - `tcp 127.0.0.1:5433` -> `mect-postgres` (Port 5433 loopback)
 
 **Conclusion:** Complete physical, process, network, and memory boundary isolation between MECT and OHO TECH is independently confirmed.
+

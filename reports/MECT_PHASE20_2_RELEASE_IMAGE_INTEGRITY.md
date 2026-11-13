@@ -65,3 +65,4 @@ Captured live via `docker inspect`:
 
 - **Local Working Tree:** `On branch motion-ui`, `nothing to commit, working tree clean`.
 - **VPS Host Working Tree:** `/opt/mect` matches git release commit cleanly. Zero untracked or modified source files.
+

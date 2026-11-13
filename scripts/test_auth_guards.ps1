@@ -17,3 +17,4 @@ foreach ($t in $authTests) {
   }
 }
 $results | Format-Table -AutoSize
+

@@ -58,3 +58,4 @@ In compliance with Phase 20.2 requirements, a simple `HTTP 200` status code was 
 | `/api/v1/portal/donations` | Donor Portal API | Spring Security JWT Bearer Filter | **401 Unauthorized** | Requests without valid JWT are immediately rejected. |
 | `/admin` | Admin Secretariat Portal | Next.js Client Route Guard + SEO Robots | **200 (Login Guard Shell)** | Renders `<meta name="robots" content="noindex, nofollow"/>` and forces authentication before disclosing administrative data. |
 | `/portal/dashboard` | Donor Dashboard | Next.js Client Route Guard + SEO Robots | **200 (Login Guard Shell)** | Renders `<meta name="robots" content="noindex, nofollow"/>` and redirects unauthenticated users to `/portal/login`. |
+

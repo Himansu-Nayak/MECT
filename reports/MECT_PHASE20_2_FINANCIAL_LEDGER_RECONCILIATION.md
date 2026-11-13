@@ -87,3 +87,4 @@ $$\begin{aligned}
 ## 6. Financial Integrity Certification
 
 The MECT financial ledger is completely reconciled, tamper-free, and balanced to the exact rupee. No unpaid or pending donation has issued a receipt, and no financial records were deleted or modified during this investigation.
+
