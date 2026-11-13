@@ -79,6 +79,14 @@ public class PortalAccountController {
         return ResponseEntity.ok(accountService.requestDeletionOrCorrection(userId, request, getClientIp(httpRequest)));
     }
 
+    @PostMapping("/me/donations/claim")
+    public ResponseEntity<Map<String, Object>> claimGuestDonations(
+            Authentication authentication,
+            HttpServletRequest httpRequest) {
+        Long userId = requirePortalUserId(authentication);
+        return ResponseEntity.ok(accountService.claimGuestDonations(userId, getClientIp(httpRequest)));
+    }
+
     @GetMapping("/receipts/{receiptNumber}/pdf")
     public ResponseEntity<byte[]> downloadMyReceipt(
             @PathVariable String receiptNumber,

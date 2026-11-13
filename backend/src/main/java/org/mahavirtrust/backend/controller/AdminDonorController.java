@@ -1,11 +1,15 @@
 package org.mahavirtrust.backend.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import org.mahavirtrust.backend.dto.donation.ReviewManualSbiClaimRequest;
+import org.mahavirtrust.backend.dto.donation.UpdatePaymentConfigurationRequest;
 import org.mahavirtrust.backend.entity.*;
 import org.mahavirtrust.backend.exception.ResourceNotFoundException;
 import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.AuditLogService;
 import org.mahavirtrust.backend.service.donation.DonationLifecycleService;
+import org.mahavirtrust.backend.service.donation.PaymentConfigurationService;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +28,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/admin")
-@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'TRUSTEE', 'ADMIN', 'FINANCE_OFFICER')")
+@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'TRUSTEE', 'ADMIN', 'FINANCE_OFFICER', 'DONATION_VERIFICATION_OFFICER', 'AUDITOR')")
 public class AdminDonorController {
 
     private final PortalUserRepository portalUserRepository;
@@ -38,6 +42,7 @@ public class AdminDonorController {
     private final DonationProgrammeRepository programmeRepository;
     private final NotificationOutboxRepository outboxRepository;
     private final DonationLifecycleService donationService;
+    private final PaymentConfigurationService paymentConfigurationService;
     private final NotificationOutboxService outboxService;
     private final AuditLogService auditLogService;
 
@@ -53,6 +58,7 @@ public class AdminDonorController {
             DonationProgrammeRepository programmeRepository,
             NotificationOutboxRepository outboxRepository,
             DonationLifecycleService donationService,
+            PaymentConfigurationService paymentConfigurationService,
             NotificationOutboxService outboxService,
             AuditLogService auditLogService) {
         this.portalUserRepository = portalUserRepository;
@@ -66,6 +72,7 @@ public class AdminDonorController {
         this.programmeRepository = programmeRepository;
         this.outboxRepository = outboxRepository;
         this.donationService = donationService;
+        this.paymentConfigurationService = paymentConfigurationService;
         this.outboxService = outboxService;
         this.auditLogService = auditLogService;
     }
@@ -331,6 +338,45 @@ public class AdminDonorController {
         DonationProgramme saved = programmeRepository.save(p);
         auditLogService.record(authentication.getName(), "CAMPAIGN_TOGGLED", "DONATION_PROGRAMME", saved.getCode(), getClientIp(request), "Active=" + saved.isActive());
         return ResponseEntity.ok(saved);
+    }
+
+    @GetMapping("/donations/summary")
+    public ResponseEntity<Map<String, Object>> donationSummary() {
+        return ResponseEntity.ok(donationService.getAdminDonationSummary());
+    }
+
+    @GetMapping("/manual-claims")
+    public ResponseEntity<List<Map<String, Object>>> listManualClaims(
+            @RequestParam(defaultValue = "ALL") String status) {
+        return ResponseEntity.ok(donationService.listManualSbiClaims(status));
+    }
+
+    @PostMapping("/manual-claims/{claimReference}/review")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN', 'FINANCE_OFFICER', 'DONATION_VERIFICATION_OFFICER')")
+    public ResponseEntity<Map<String, Object>> reviewManualClaim(
+            @PathVariable String claimReference,
+            @Valid @RequestBody ReviewManualSbiClaimRequest request,
+            Authentication authentication,
+            HttpServletRequest httpRequest) {
+        return ResponseEntity.ok(
+                donationService.reviewManualSbiClaim(claimReference, request, authentication.getName(), getClientIp(httpRequest))
+        );
+    }
+
+    @GetMapping("/payment-config")
+    public ResponseEntity<Map<String, Object>> getPaymentConfiguration() {
+        return ResponseEntity.ok(paymentConfigurationService.getAdminConfigMap());
+    }
+
+    @PutMapping("/payment-config")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN', 'FINANCE_OFFICER')")
+    public ResponseEntity<Map<String, Object>> updatePaymentConfiguration(
+            @Valid @RequestBody UpdatePaymentConfigurationRequest request,
+            Authentication authentication,
+            HttpServletRequest httpRequest) {
+        return ResponseEntity.ok(
+                paymentConfigurationService.updateConfig(request, authentication.getName(), getClientIp(httpRequest))
+        );
     }
 
     private String escapeCsv(String v) {

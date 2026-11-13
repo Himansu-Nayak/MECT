@@ -36,3 +36,4 @@ Risks and notes:
 - `scripts/check-confirm.ts` skips dot-prefixed entries (`entry.name.startsWith(".")`) like `.git` or `.next`; non-dot files in `app/`, `components/`, `content/`, `src/app/`, `src/components/`, and `src/content/` (except `content/todo-confirm.md`) are scanned strictly.
 - Payment conflict noted for Phase 6 (`A6.1`): existing repository contains Cashfree integration commits from earlier work while Audit Rule #3 mandates domestic SBI NEFT/RTGS/IMPS and static SBI UPI QR only with no gateway wording on `/donate`; Phase 0 left application code untouched per loop rules.
 Next: Phase 1
+

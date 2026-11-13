@@ -80,3 +80,4 @@ All items below require documentary verification from the Trustees and/or Charte
 - **Odia (`/or`) translation review** (`Odia translation` — Phase 8): fluent Odia reviewer sign-off before removing `{{CONFIRM}}` markers on `/or/...` routes.
 - **Developer LinkedIn URL** (`LinkedIn URL` — Phase 8 / `/about`): confirm exact verified profile URL with Himansu Nayak.
 - **Payment wording policy conflict noted in Phase 6 (`A6.1`)**: Existing repository includes Cashfree payment gateway integration code; Master Audit Rule #3 specifies domestic SBI NEFT/RTGS/IMPS + static SBI UPI QR only with no gateway wording on `/donate`. Confirmation / architectural decision for Cashfree code retention vs removal is tracked for Phase 6.
+

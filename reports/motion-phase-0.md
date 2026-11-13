@@ -78,3 +78,4 @@
 - **`noindex` metadata:** **PRESENT.** `src/app/admin/layout.tsx` and `src/app/portal/login/layout.tsx` (as well as portal dashboard/profile/welcome layouts) export `createPageMetadata({ ..., noIndex: true })`.
 - **`sitemap.xml` exclusion:** **PRESENT.** `src/app/sitemap.ts` excludes `/admin/*` and `/portal/*`.
 - **`robots.ts`:** Disallows `/admin/`, `/admin`, and `/api/`, but does **not** currently disallow `/portal/`.
+

@@ -84,7 +84,9 @@ public class SecurityConfig {
                 .requestMatchers("/portal/**").hasAnyRole("GENERAL_USER", "DONOR")
                 .requestMatchers("/auth/logout", "/auth/me").authenticated()
                 .requestMatchers("/admin/**").hasAnyRole(
-                        "SUPER_ADMIN", "TRUSTEE", "ADMIN", "APPLICATION_REVIEWER", "FINANCE_OFFICER", "VOLUNTEER_COORDINATOR"
+                        "SUPER_ADMIN", "TRUSTEE", "ADMIN", "APPLICATION_REVIEWER", "FINANCE_OFFICER",
+                        "VOLUNTEER_COORDINATOR", "CONTENT_ADMIN", "DONATION_VERIFICATION_OFFICER",
+                        "SUPPORT_ADMIN", "AUDITOR"
                 )
                 .anyRequest().authenticated()
             )

@@ -8,17 +8,20 @@ import { useAdminAuth } from "@/context/AdminAuthContext";
 import {
   AdminDonationRow,
   AdminDonorRow,
+  AdminManualClaimRow,
   AdminOutboxItem,
   DonationProgrammeItem,
   downloadAdminReceiptPdf,
   exportAdminDonationsCsv,
   fetchAdminDonations,
   fetchAdminDonors,
+  fetchAdminManualClaims,
   fetchAdminOutbox,
   fetchAdminProgrammes,
   fetchDonationReconciliationLogs,
   reconcileAdminDonation,
   retryAdminOutbox,
+  reviewAdminManualClaim,
   toggleAdminProgramme,
 } from "@/lib/portal-api";
 import {
@@ -26,6 +29,7 @@ import {
   IndianRupee,
   MailCheck,
   Layers,
+  Landmark,
   Search,
   Download,
   FileDown,
@@ -36,7 +40,7 @@ import {
   X,
 } from "lucide-react";
 
-type AdminTab = "DONORS" | "DONATIONS" | "OUTBOX" | "PROGRAMMES";
+type AdminTab = "DONORS" | "DONATIONS" | "SBI_QUEUE" | "OUTBOX" | "PROGRAMMES";
 
 const formatInr = (amount: number) =>
   new Intl.NumberFormat("en-IN", {
@@ -85,9 +89,20 @@ export default function AdminDonorsManagementPage() {
     }>
   >([]);
 
-  // Outbox & Programmes state
+  // Outbox & Programmes & SBI Claims state
   const [outboxItems, setOutboxItems] = useState<AdminOutboxItem[]>([]);
   const [programmes, setProgrammes] = useState<DonationProgrammeItem[]>([]);
+  const [manualClaims, setManualClaims] = useState<AdminManualClaimRow[]>([]);
+  const [claimStatusFilter, setClaimStatusFilter] = useState("ALL");
+  const [reviewingClaimRef, setReviewingClaimRef] = useState<string | null>(null);
+  const [bankStmtInputs, setBankStmtInputs] = useState<Record<string, string>>({});
+  const [reviewNoteInputs, setReviewNoteInputs] = useState<Record<string, string>>({});
+
+  const canVerifyClaims =
+    user?.role === "ROLE_SUPER_ADMIN" ||
+    user?.role === "ROLE_ADMIN" ||
+    user?.role === "ROLE_FINANCE_OFFICER" ||
+    user?.role === "ROLE_DONATION_VERIFICATION_OFFICER";
 
   const loadTabData = useCallback(async () => {
     if (!token) return;
@@ -107,6 +122,9 @@ export default function AdminDonorsManagementPage() {
             ...res.summary,
           });
         }
+      } else if (activeTab === "SBI_QUEUE") {
+        const claims = await fetchAdminManualClaims(token, claimStatusFilter);
+        setManualClaims(claims || []);
       } else if (activeTab === "OUTBOX") {
         const res = await fetchAdminOutbox(token);
         setOutboxItems(res.content || []);
@@ -119,7 +137,34 @@ export default function AdminDonorsManagementPage() {
     } finally {
       setLoading(false);
     }
-  }, [token, activeTab, donorSearch, donorRoleFilter, donationStatusFilter, donationProviderFilter, donationSearch]);
+  }, [token, activeTab, donorSearch, donorRoleFilter, donationStatusFilter, donationProviderFilter, donationSearch, claimStatusFilter]);
+
+  const handleReviewClaim = async (
+    claimReference: string,
+    decision: "UNDER_REVIEW" | "VERIFIED" | "REJECTED" | "NEEDS_REVIEW"
+  ) => {
+    if (!token || !canVerifyClaims) return;
+    setReviewingClaimRef(claimReference);
+    setErrorMsg(null);
+    setStatusMsg(null);
+    try {
+      const updated = await reviewAdminManualClaim(token, claimReference, {
+        decision,
+        bankStatementReference: bankStmtInputs[claimReference] || undefined,
+        verificationNotes: reviewNoteInputs[claimReference] || undefined,
+      });
+      setStatusMsg(
+        decision === "VERIFIED"
+          ? `Claim ${claimReference} verified. Official receipt ${updated.receiptNumber || ""} generated and queued for email delivery.`
+          : `Claim ${claimReference} updated to ${updated.status}.`
+      );
+      await loadTabData();
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Failed to review SBI claim.");
+    } finally {
+      setReviewingClaimRef(null);
+    }
+  };
 
   useEffect(() => {
     const id = window.setTimeout(() => {
@@ -244,6 +289,7 @@ export default function AdminDonorsManagementPage() {
         {[
           { id: "DONORS" as const, label: "Donors & Supporters", icon: Users },
           { id: "DONATIONS" as const, label: "Donations & Reconciliation", icon: IndianRupee },
+          { id: "SBI_QUEUE" as const, label: "SBI UTR Verification Queue", icon: Landmark },
           { id: "OUTBOX" as const, label: "Notification Outbox", icon: MailCheck },
           { id: "PROGRAMMES" as const, label: "Programmes & Campaigns", icon: Layers },
         ].map((tab) => {
@@ -641,6 +687,131 @@ export default function AdminDonorsManagementPage() {
             </table>
           </div>
         </Card>
+      )}
+
+      {/* TAB: SBI UTR VERIFICATION QUEUE */}
+      {activeTab === "SBI_QUEUE" && (
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-border-warm rounded-xs p-3">
+            <div className="text-xs text-ink-sand">
+              Reconcile donor-submitted SBI UTRs against bank statement credits before issuing official receipts.
+            </div>
+            <select
+              value={claimStatusFilter}
+              onChange={(e) => setClaimStatusFilter(e.target.value)}
+              className="h-9 px-3 text-xs bg-cream border border-border-warm rounded-xs text-ink"
+            >
+              <option value="ALL">All Claim States</option>
+              <option value="UTR_SUBMITTED">UTR Submitted</option>
+              <option value="UNDER_REVIEW">Under Review</option>
+              <option value="NEEDS_REVIEW">Needs Review</option>
+              <option value="VERIFIED">Verified</option>
+              <option value="REJECTED">Rejected</option>
+            </select>
+          </div>
+
+          {manualClaims.length === 0 ? (
+            <Card padding="lg" className="bg-white border-border-warm text-center text-xs text-ink-sand py-10">
+              No manual SBI transfer claims match the selected filter.
+            </Card>
+          ) : (
+            <div className="space-y-3">
+              {manualClaims.map((claim) => (
+                <Card key={claim.claimReference} padding="md" className="bg-white border-border-warm space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-warm pb-2.5">
+                    <div className="space-y-0.5">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-mono font-bold text-sm text-forest">{claim.claimReference}</span>
+                        <Badge variant={claim.status === "VERIFIED" ? "forest" : claim.status === "REJECTED" ? "outline" : "gold"} size="sm">
+                          {claim.status}
+                        </Badge>
+                      </div>
+                      <div className="text-xs text-ink-sand">
+                        Donation <span className="font-mono font-semibold text-forest">{claim.donationReference}</span> · {claim.programmeName}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-mono font-bold text-lg text-forest">{formatInr(Number(claim.claimedAmount))}</div>
+                      <div className="text-[11px] text-ink-sand">Transfer Date: {claim.transferDate}</div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div>
+                      <span className="text-ink-sand block">Donor:</span>
+                      <strong className="text-forest">{claim.donorName}</strong> ({claim.donorEmail || claim.donorPhone || "N/A"})
+                    </div>
+                    <div>
+                      <span className="text-ink-sand block">Normalized UTR:</span>
+                      <span className="font-mono font-bold text-terracotta-dark">{claim.utrNormalized}</span>
+                    </div>
+                    <div>
+                      <span className="text-ink-sand block">Mode / Proof Note:</span>
+                      <span>{claim.paymentModeNote || "SBI Transfer"} {claim.proofSummary ? `· ${claim.proofSummary}` : ""}</span>
+                    </div>
+                  </div>
+
+                  {claim.status !== "VERIFIED" && canVerifyClaims && (
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-2.5 pt-2 border-t border-border-warm items-center">
+                      <input
+                        type="text"
+                        placeholder="Bank Statement Ref (e.g. SBI-STMT-..."
+                        value={bankStmtInputs[claim.claimReference] ?? claim.bankStatementReference ?? ""}
+                        onChange={(e) => setBankStmtInputs({ ...bankStmtInputs, [claim.claimReference]: e.target.value })}
+                        className="md:col-span-4 h-9 px-2.5 text-xs bg-cream border border-border-warm rounded-xs font-mono"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Verification Notes"
+                        value={reviewNoteInputs[claim.claimReference] ?? claim.verificationNotes ?? ""}
+                        onChange={(e) => setReviewNoteInputs({ ...reviewNoteInputs, [claim.claimReference]: e.target.value })}
+                        className="md:col-span-4 h-9 px-2.5 text-xs bg-cream border border-border-warm rounded-xs"
+                      />
+                      <div className="md:col-span-4 flex flex-wrap justify-end gap-1.5">
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          disabled={reviewingClaimRef === claim.claimReference}
+                          onClick={() => handleReviewClaim(claim.claimReference, "UNDER_REVIEW")}
+                          className="text-[11px]"
+                        >
+                          Under Review
+                        </Button>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          disabled={reviewingClaimRef === claim.claimReference}
+                          onClick={() => handleReviewClaim(claim.claimReference, "REJECTED")}
+                          className="text-[11px] text-red-700 border-red-200"
+                        >
+                          Reject
+                        </Button>
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="primary"
+                          disabled={reviewingClaimRef === claim.claimReference}
+                          onClick={() => handleReviewClaim(claim.claimReference, "VERIFIED")}
+                          className="text-[11px]"
+                        >
+                          Verify &amp; Issue Receipt
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                  {claim.receiptNumber && (
+                    <div className="text-xs text-emerald-800 font-mono font-semibold">
+                      Verified by {claim.reviewedBy} · Issued Receipt: {claim.receiptNumber}
+                    </div>
+                  )}
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
       )}
 
       {/* TAB 4: PROGRAMMES */}

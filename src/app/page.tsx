@@ -25,7 +25,6 @@ import { SlideTextButton } from "@/components/motion/SlideTextButton";
 import { StoriesRailSection } from "@/components/sections/StoriesRailSection";
 import { InstitutionalMarquee } from "@/components/InstitutionalMarquee";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
-import { SbiDonationSection } from "@/components/sections/SbiDonationSection";
 import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
 import { SchemeExplorer } from "@/components/SchemeExplorer";
 import { EligibilityCalculator } from "@/components/EligibilityCalculator";
@@ -61,7 +60,6 @@ import {
   Utensils,
   Search,
   Layers,
-  Calculator,
   Receipt,
 } from "lucide-react";
 import { submitInquiry, submitVolunteerRegistration } from "@/lib/api";
@@ -204,32 +202,6 @@ export default function HomePage() {
     } finally {
       setVolIsSubmitting(false);
     }
-  };
-
-  // Section 11: Interactive 80G Donation Calculator State
-  const [donationAmount, setDonationAmount] = useState<number>(5000);
-  const [taxRegime, setTaxRegime] = useState<"old" | "new">("old");
-  const [taxBracket, setTaxBracket] = useState<number>(0.3); // 30% default
-
-  // Under Old Tax Regime: 50% deduction of qualifying amount
-  // Under New Tax Regime (Section 115BAC): Chapter VI-A (80G) deductions are generally not permitted for individuals
-  const eligibleDeduction = taxRegime === "old" ? donationAmount * 0.5 : 0;
-  const estimatedTaxSaved = taxRegime === "old" ? eligibleDeduction * taxBracket : 0;
-
-  const getImpactDescription = (amount: number) => {
-    if (amount < 2500) {
-      return "Provides one month of scholastic books and learning materials for a rural student in Balangir.";
-    }
-    if (amount < 5000) {
-      return "Funds after-school remedial coaching and exam guidance for 2 tribal students for a full semester.";
-    }
-    if (amount < 10000) {
-      return "Supplies a complete vocational tailoring toolkit and fabric set for a rural woman artisan trainee.";
-    }
-    if (amount < 25000) {
-      return "Sustains a summer Jal Seva clean drinking water kiosk serving over 1,000 citizens in 45°C heatwaves.";
-    }
-    return "Sponsors hot, hygienic Jan Ahar daily meals for 250+ impoverished patient attendants at Balangir Hospital.";
   };
 
   return (
@@ -1049,270 +1021,38 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          SECTION 11 (PHASE 5) — SBI DONATION SECTION & TAX DEDUCTION ESTIMATOR
+          SECTION 11 — UNIFIED DONATION & TRANSPARENT RECEIPT PORTAL CTA
           ========================================================================= */}
-      <section id="donate" className="py-20 bg-terracotta text-white border-b border-terracotta-dark scroll-mt-32">
-        <Container size="default" className="space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <Badge variant="gold-dark">
-              Direct Institutional Banking • State Bank of India
-            </Badge>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              SUPPORT OUR MISSION — DONATE NOW
-            </h2>
-            <p className="text-sm sm:text-base text-white leading-relaxed font-sans">
-              Your contribution directly sustains Free Education for 200 Students alongside MECT&apos;s documented work in women&apos;s livelihoods, safe drinking water, and community nutrition across Odisha.
-            </p>
-          </div>
-
-          {/* Official State Bank of India Donation Card & Prepared QR Integration Area */}
-          <div className="max-w-5xl mx-auto">
-            <SbiDonationSection />
-          </div>
-
-          {/* Interactive Section 80G / Section 133 Tax Deduction Estimator (gated behind COMPLIANCE.showTaxEstimator) */}
-          <div className="max-w-5xl mx-auto bg-white text-ink p-6 sm:p-10 rounded-xs border-2 border-sand shadow-2xl space-y-6">
-            {COMPLIANCE.showTaxEstimator && (
-              <>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-2">
-              <div className="flex items-center gap-2">
-                <Calculator className="w-5 h-5 text-terracotta-dark" aria-hidden="true" />
-                <span className="font-serif text-xl font-bold text-forest">
-                  Section 133 / Section 80G Tax Deduction Estimator (Illustrative Model)
-                </span>
-              </div>
-              <span className="text-xs text-forest font-semibold font-sans tabular-nums">
-                Documented Order: AY 2024-25 to AY 2026-27 • URN: {TRUST_CONFIG.statutory.section80GUrn}
-              </span>
-            </div>
-
-            {/* Statutory Status Disclosure Banner for Tax Year 2026-27 */}
-            <div className="p-4 rounded-xs bg-sand-light border-l-4 border-terracotta text-xs text-ink font-sans space-y-1.5">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-terracotta-dark shrink-0" aria-hidden="true" />
-                <span className="font-bold uppercase tracking-wider text-[11px] text-forest">
-                  Statutory Status Disclosure • Tax Year 2026-27 / AY 2027-28
-                </span>
-              </div>
-              <p className="text-[11px] text-ink leading-relaxed">
-                MECT holds documented historical approval under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>, DIN: <strong>{TRUST_CONFIG.statutory.section80GDin}</strong>, Order Date: 29-01-2024) covering donations made in Financial Years 2023-24 through 2025-26 (Assessment Years 2024-25 through 2026-27). The historical approval does not automatically cover donations in the current <strong>Tax Year 2026-27</strong> (commenced 1 April 2026 / AY 2027-28). Under the Income-tax Act, 2025, Section 354 governs applications (Form 105) and formal examination orders (Form 107) for eligible donations, read with Section 536 repeal, savings and transition provisions. <strong>Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.</strong> This tool illustrates statutory deduction mechanics under Section 133 / legacy Section 80G for eligible donors filing under the Old Tax Regime and does not represent a guaranteed current tax benefit for MECT.
-              </p>
-            </div>
-
-            {/* Tax Regime Selector & Advisory */}
-            <div className="p-4 rounded-xs bg-cream/65 border border-border-warm space-y-2">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <span className="text-xs font-bold text-forest uppercase tracking-wider font-sans">
-                  Select Your Tax Filing Regime:
-                </span>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setTaxRegime("old")}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-xs border transition-all ${
-                      taxRegime === "old"
-                        ? "bg-forest text-white border-terracotta"
-                        : "bg-white text-ink border-border-warm hover:border-terracotta"
-                    }`}
-                  >
-                    Old Tax Regime (Section 133 / 80G Eligible)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTaxRegime("new")}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-xs border transition-all ${
-                      taxRegime === "new"
-                        ? "bg-forest text-white border-terracotta"
-                        : "bg-white text-ink border-border-warm hover:border-terracotta"
-                    }`}
-                  >
-                    Section 202 Simplified Regime (New Regime Default)
-                  </button>
-                </div>
-              </div>
-              <p className="text-[11px] text-ink font-sans leading-normal">
-                {taxRegime === "old"
-                  ? "✓ Donors opting for the Old Tax Regime can claim up to 50% deduction of eligible contributions from gross total income, subject to the 10% Adjusted Gross Total Income (AGTI) cap."
-                  : "⚠ Under the default Section 202 Simplified Tax Regime (legacy Section 115BAC), individual taxpayers cannot claim Chapter VI-A / Part D deductions, including Section 133 / Section 80G. Tax offset is ₹0."}
-              </p>
-            </div>
-
-            {/* Quick Amount Selector */}
-            <div>
-              <span className="text-xs uppercase font-bold text-forest tracking-wider block mb-2 font-sans">
-                Select or Enter Contribution Amount (₹ INR):
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-                {[2500, 5000, 10000, 25000, 50000].map((amt) => (
-                  <button
-                    key={amt}
-                    type="button"
-                    onClick={() => setDonationAmount(amt)}
-                    className={`py-2.5 px-3 rounded-xs text-xs font-bold border transition-all ${
-                      donationAmount === amt
-                        ? "bg-forest text-white border-terracotta shadow-xs"
-                        : "bg-cream text-forest border-border-warm hover:border-terracotta"
-                    }`}
-                  >
-                    ₹{amt.toLocaleString("en-IN")}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Custom Input & Tax Bracket */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="home-tax-amount" className="text-xs font-bold text-forest block mb-1 font-sans">
-                  Custom Contribution Amount (₹):
-                </label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-terracotta-dark">
-                    ₹
-                  </span>
-                  <input
-                    id="home-tax-amount"
-                    type="number"
-                    min="500"
-                    step="500"
-                    value={donationAmount}
-                    onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
-                    className="w-full pl-7 pr-3 py-2 rounded-xs border border-border-warm text-sm font-bold text-forest focus:border-terracotta focus:outline-none bg-white"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="home-tax-bracket" className="text-xs font-bold text-forest block mb-1 font-sans">
-                  Applicable Marginal Tax Bracket ({taxRegime === "old" ? "Old Regime" : "New Regime Disabled"}):
-                </label>
-                <select
-                  id="home-tax-bracket"
-                  value={taxBracket}
-                  disabled={taxRegime === "new"}
-                  onChange={(e) => setTaxBracket(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-xs border border-border-warm text-xs font-semibold text-forest focus:border-terracotta focus:outline-none bg-white disabled:bg-sage/40 disabled:text-ink-secondary"
-                >
-                  <option value={0.3}>30% Slab (Highest Marginal Bracket)</option>
-                  <option value={0.2}>20% Slab (Middle Marginal Bracket)</option>
-                  <option value={0.1}>10% Slab (Lower Marginal Bracket)</option>
-                  <option value={0.05}>5% Slab (Entry Bracket)</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Live Calculation Strip */}
-            <div className="p-5 rounded-xs bg-forest text-white border border-sand/40 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-                <div className="p-3 bg-forest-deep rounded-xs border border-white/15 space-y-0.5">
-                  <span className="text-[10px] text-cream/90 font-sans block">1. Your Contribution</span>
-                  <span className="text-xl font-serif font-bold text-white tabular-nums">
-                    ₹{donationAmount.toLocaleString("en-IN")}
-                  </span>
-                  <span className="text-[9px] text-cream/85 block">Direct bank remittance</span>
-                </div>
-                <div className="p-3 bg-forest-deep rounded-xs border border-white/15 space-y-0.5">
-                  <span className="text-[10px] text-sand font-sans block">
-                    {taxRegime === "old" ? "2. Indicative Deduction (50%)" : "Deduction (Section 202)"}
-                  </span>
-                  <span className="text-xl font-serif font-bold text-cream tabular-nums">
-                    {taxRegime === "old" ? `₹${eligibleDeduction.toLocaleString("en-IN")}` : "₹0"}
-                  </span>
-                  <span className="text-[9px] text-cream/85 block">Reduces taxable income (not cash refund)</span>
-                </div>
-                <div className="p-3 bg-terracotta rounded-xs border border-sand/50 space-y-0.5">
-                  <span className="text-[10px] text-white font-sans block">
-                    {taxRegime === "old" ? "3. Potential Tax Offset*" : "Tax Offset (New Regime)"}
-                  </span>
-                  <span className="text-xl font-serif font-bold text-white tabular-nums">
-                    {taxRegime === "old" ? `₹${Math.round(estimatedTaxSaved).toLocaleString("en-IN")}*` : "₹0"}
-                  </span>
-                  <span className="text-[9px] text-white/95 block">Illustrative; contingent on donee approval</span>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-white/15 flex items-start gap-2.5 text-xs text-cream font-sans">
-                <CheckCircle2 className="w-4 h-4 text-sand shrink-0 mt-0.5" />
-                <div>
-                  <strong>Tangible Ground Impact:</strong> {getImpactDescription(donationAmount)}
-                </div>
-              </div>
-
-              {/* Statutory Footnote & Disclaimers */}
-              <div className="pt-3 border-t border-white/15 text-[11px] text-cream/90 space-y-1 font-sans">
-                <p>
-                  *<strong>Statutory Notes &amp; Assumptions under Section 133 / Section 80G:</strong>
-                </p>
-                <ul className="list-disc pl-4 space-y-0.5 text-[10px] text-cream/85">
-                  <li>
-                    <strong>Documentary Approval Status:</strong> MECT holds documented approval under legacy Section 80G(5)(vi) of the Income-tax Act, 1961 (Order URN: {TRUST_CONFIG.statutory.section80GUrn}, DIN: {TRUST_CONFIG.statutory.section80GDin}, Order Date: 29-01-2024) covering donations made in FY 2023-24 through FY 2025-26 (Assessment Years 2024-25 through 2026-27). The historical approval does not automatically cover donations in the current Tax Year 2026-27 (commenced 1 April 2026 / AY 2027-28). Under the Income-tax Act, 2025, applications and approvals for eligible donations are governed by Section 354 (via Form 105 application and Form 107 formal examination order) read with Section 536 repeal, savings and transition provisions. Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.
-                  </li>
-                  <li>
-                    <strong>Deduction vs. Cash Savings:</strong> A tax deduction reduces gross taxable income; it does not return cash or provide a rebate. Actual tax offset equals the deductible amount multiplied by your marginal tax slab (plus applicable 4% Health &amp; Education Cess).
-                  </li>
-                  <li>
-                    <strong>Qualifying Ceiling:</strong> Under Section 133 / Section 80G(4), aggregate deductions for charitable contributions are capped at 10% of the donor&apos;s Adjusted Gross Total Income (AGTI).
-                  </li>
-                  <li>
-                    <strong>Digital Payment Mode Mandate:</strong> Cash contributions exceeding ₹2,000 are disqualified from tax exemption under Section 133 / Section 80G(5D). Contributions must be transferred via digital or banking channels.
-                  </li>
-                  <li>
-                    <strong>Reporting &amp; Certificates:</strong> Official donation certificates and statutory reporting are issued in accordance with applicable tax rules; donors must furnish valid PAN and residential address. Note that under the simplified tax regime, charitable deductions are not available.
-                  </li>
-                  <li>
-                    <strong>Non-Advisory Disclaimer:</strong> This calculator is an illustrative educational model and does not constitute formal legal, accounting or tax advice. Donors should consult a certified Chartered Accountant to determine their personal tax liabilities.
-                  </li>
-                </ul>
-              </div>
-            </div>
-              </>
-            )}
-
-            {/* Section 80G Statutory & Direct Bank Transfer Notice Box */}
-            <div className="p-5 rounded-xs bg-cream/65 border border-border-warm text-left space-y-3">
-              <div className="flex items-center gap-2 text-forest text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-terracotta-dark" aria-hidden="true" />
-                <span>{HOMEPAGE_CONTENT.donorNotice.title}</span>
-              </div>
-              <p className="text-xs text-ink leading-relaxed font-sans">
-                {HOMEPAGE_CONTENT.donorNotice.description}
-              </p>
-
-              <div className="pt-2 border-t border-border-warm grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-sans text-ink">
-                <div>
-                  <span className="text-terracotta-dark block text-[10px] font-semibold">Bank:</span>
-                  <span className="font-semibold">{TRUST_CONFIG.bank.bankName}</span>
-                </div>
-                <div>
-                  <span className="text-terracotta-dark block text-[10px] font-semibold">IFSC Code:</span>
-                  <span className="font-mono font-bold text-forest">{TRUST_CONFIG.bank.ifsc}</span>
-                </div>
-                <div>
-                  <span className="text-terracotta-dark block text-[10px] font-semibold">Account No:</span>
-                  <span className="font-mono font-bold text-forest">{TRUST_CONFIG.bank.accountNumber}</span>
-                </div>
-                <div>
-                  <span className="text-terracotta-dark block text-[10px] font-semibold">Trust PAN:</span>
-                  <span className="font-mono font-bold text-forest text-[11px]">{TRUST_CONFIG.statutory.pan}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Direct CTA */}
-            <div className="pt-2 flex flex-wrap justify-center gap-3.5">
-              <Link href="/donate">
-                <Button variant="primary" size="lg" className="shadow-lg font-bold">
-                  <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
-                  <span>DONATE NOW</span>
-                </Button>
-              </Link>
-              <Link href="/statutory-disclosures">
-                <Button variant="outline" size="lg" className="font-semibold bg-white">
-                  <ShieldCheck className="w-4 h-4 mr-1.5 text-terracotta-dark" aria-hidden="true" />
-                  <span>Verify Statutory Vault</span>
-                </Button>
-              </Link>
-            </div>
+      <section id="donate" className="py-16 sm:py-20 bg-terracotta text-white border-b border-terracotta-dark scroll-mt-32">
+        <Container size="default" className="max-w-4xl text-center space-y-6">
+          <Badge variant="gold-dark">
+            Unified Contribution Portal &bull; Cashfree &amp; Verified SBI Direct
+          </Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Support MECT&apos;s Mission — One Transparent Donation Desk
+          </h2>
+          <p className="text-sm sm:text-base text-white/95 leading-relaxed font-sans max-w-2xl mx-auto">
+            Contribute securely via Cashfree Online Checkout or our verified State Bank of India UPI/bank account. Guest checkout and Donor Portal receipt tracking are both supported at our canonical donation portal.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3.5 pt-2">
+            <Link href="/donate">
+              <Button variant="primary" size="lg" className="bg-forest hover:bg-forest-deep text-white shadow-lg font-bold">
+                <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
+                <span>Proceed to /donate</span>
+              </Button>
+            </Link>
+            <Link href="/portal/dashboard">
+              <Button variant="outline" size="lg" className="bg-white text-forest hover:bg-cream font-semibold">
+                <Receipt className="w-4 h-4 mr-1.5 text-terracotta-dark" aria-hidden="true" />
+                <span>Donor Portal &amp; Receipts</span>
+              </Button>
+            </Link>
+            <Link href="/statutory-disclosures">
+              <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/40 hover:bg-white/20 font-semibold">
+                <ShieldCheck className="w-4 h-4 mr-1.5" aria-hidden="true" />
+                <span>Statutory Disclosures</span>
+              </Button>
+            </Link>
           </div>
         </Container>
       </section>

@@ -27,3 +27,4 @@
   - `REDUCED_MOTION`: **PASS** (0) | `NO_JS_CONTENT`: **PASS** (0) | `FORBIDDEN_PROPS`: **PASS** (0) | `SINGLE_OWNER`: **PASS** (0) | `BUNDLE_BUDGET`: **PASS** (0)
 - **Home (`/`) First-Load JS:** `292.82 KB` gzipped (baseline `279.75 KB`, delta `+13.07 KB`, within `<= +60.00 KB` budget)
 - **Screenshots:** `reports/shots/m2-home-desktop.png`, `reports/shots/m2-home-mobile.png`
+

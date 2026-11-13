@@ -23,3 +23,4 @@ Extracted from `.next/analyze/client.html` (`@next/bundle-analyzer`) filtered st
 | 10 | 3.35 KB | 11.87 KB | `src/components/sections/SbiDonationSection.tsx` | `static/chunks/1410-fdd6e670307e5062.js` |
 
 > Note: Chunk `4461-befd70f718b91343.js` (`38.21 KB` gzipped total) bundles `motion` (`framer-motion` / `motion-dom`) eagerly because `MotionPrimitives.tsx` currently imports `motion` directly instead of `LazyMotion` + `domAnimation` + `m` (which will be addressed in **Phase M1.1**).
+

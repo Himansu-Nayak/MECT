@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { getAdminDashboardStats, AdminDashboardStats } from "@/lib/api";
+import { AdminDonationSummaryDto, fetchAdminDonationSummary } from "@/lib/portal-api";
 import { Card, Badge } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import {
@@ -23,6 +24,7 @@ import {
 export default function AdminDashboardPage() {
   const { token, user } = useAdminAuth();
   const [stats, setStats] = useState<AdminDashboardStats | null>(null);
+  const [donationSummary, setDonationSummary] = useState<AdminDonationSummaryDto | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,8 +34,12 @@ export default function AdminDashboardPage() {
       setIsLoading(true);
       setError(null);
       try {
-        const data = await getAdminDashboardStats(token);
+        const [data, donSummary] = await Promise.all([
+          getAdminDashboardStats(token),
+          fetchAdminDonationSummary(token).catch(() => null),
+        ]);
         setStats(data);
+        setDonationSummary(donSummary);
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -78,6 +84,58 @@ export default function AdminDashboardPage() {
         <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{error}</span>
+        </div>
+      )}
+
+      {/* Donation Ecosystem Financial Snapshot */}
+      {donationSummary && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card className="p-5 bg-forest text-white rounded-2xl shadow-sm flex flex-col justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-cream/80">Total Verified Donations</span>
+            <div className="mt-3">
+              <div className="text-2xl font-black font-mono">
+                ₹{Number(donationSummary.totalVerifiedAmount).toLocaleString("en-IN")}
+              </div>
+              <div className="text-[11px] text-cream/80 mt-1">
+                {donationSummary.verifiedDonationCount} verified · Last 30d: ₹{Number(donationSummary.last30DaysVerifiedAmount).toLocaleString("en-IN")}
+              </div>
+            </div>
+          </Card>
+          <Card className="p-5 bg-white border border-border-warm rounded-2xl shadow-sm flex flex-col justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-ink-sand">Channel Split (Verified)</span>
+            <div className="mt-3 text-xs space-y-1">
+              <div className="flex justify-between">
+                <span>Cashfree Gateway:</span>
+                <strong className="font-mono text-forest">₹{Number(donationSummary.cashfreeVerifiedAmount).toLocaleString("en-IN")}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span>SBI Direct Verified:</span>
+                <strong className="font-mono text-forest">₹{Number(donationSummary.sbiVerifiedAmount).toLocaleString("en-IN")}</strong>
+              </div>
+            </div>
+          </Card>
+          <Card className="p-5 bg-white border border-border-warm rounded-2xl shadow-sm flex flex-col justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-ink-sand">SBI UTR Review Queue</span>
+            <div className="mt-3 flex items-end justify-between">
+              <div className="text-2xl font-black text-terracotta-dark">{donationSummary.utrReviewQueueCount}</div>
+              <Link href="/admin/donors" className="text-xs font-bold text-forest underline">
+                Open Queue &rarr;
+              </Link>
+            </div>
+          </Card>
+          <Card className="p-5 bg-white border border-border-warm rounded-2xl shadow-sm flex flex-col justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-ink-sand">Gateway Pending / Failed</span>
+            <div className="mt-3 text-xs space-y-1">
+              <div className="flex justify-between">
+                <span>Pending Gateway:</span>
+                <strong className="font-mono">{donationSummary.pendingGatewayCount}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span>Failed / Expired:</span>
+                <strong className="font-mono text-red-700">{donationSummary.failedOrExpiredCount}</strong>
+              </div>
+            </div>
+          </Card>
         </div>
       )}
 

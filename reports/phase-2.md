@@ -60,3 +60,4 @@ Risks and notes:
 - `SmileFundraisingSection` was removed from `/` per `A2.9`; component file remains in `src/components/sections/SmileFundraisingSection.tsx` with Smile Foundation references stripped.
 
 Next: Phase 3
+

@@ -103,15 +103,15 @@ export function SmileFundraisingSection() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <Link href="/#donate-sbi" className="flex-1 min-w-[160px]">
+                  <Link href="/donate" className="flex-1 min-w-[160px]">
                     <Button variant="primary" size="lg" className="w-full justify-center font-bold shadow-md">
                       <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
                       <span>DONATE NOW</span>
                     </Button>
                   </Link>
-                  <Link href="/donate">
+                  <Link href="/portal/dashboard">
                     <Button variant="outline" size="lg" className="font-semibold bg-white">
-                      <span>Receipt Desk</span>
+                      <span>Donor Portal</span>
                       <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                     </Button>
                   </Link>

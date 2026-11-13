@@ -87,9 +87,22 @@ export interface PortalDashboardData {
     successfulCount: number;
     pendingCount: number;
     failedCount: number;
+    claimableGuestDonationsCount?: number;
     latestDonation: PortalDonationHistoryItem | null;
   };
   donationHistory: PortalDonationHistoryItem[];
+  manualClaims?: Array<{
+    claimReference: string;
+    donationReference: string;
+    programmeName: string;
+    utrNormalized: string;
+    claimedAmount: number;
+    transferDate: string;
+    status: string;
+    verificationNotes?: string | null;
+    createdAt: string;
+    reviewedAt?: string | null;
+  }>;
 }
 
 export interface DonationProgrammeItem {
@@ -571,4 +584,298 @@ export async function toggleAdminProgramme(token: string, id: number): Promise<D
   if (!res.ok) throw new Error("Failed to update programme status.");
   return res.json();
 }
+
+export interface PaymentConfigurationDto {
+  cashfreeEnabled: boolean;
+  sbiQrEnabled: boolean;
+  primaryMethod: "CASHFREE" | "SBI_QR";
+  fallbackEnabled: boolean;
+  minAmount: number;
+  maxAmount: number;
+  presetAmounts: number[];
+  generalFundEnabled: boolean;
+  sbiBankName: string;
+  sbiAccountName: string;
+  sbiAccountNumber: string;
+  sbiIfsc: string;
+  sbiBranch: string;
+  sbiUpiId: string;
+  sbiQrImageUrl: string;
+  paymentInstructions: string;
+  gatewayNoticeText: string;
+  statutoryStatus: string;
+  statutoryFinancialYear: string;
+  statutoryEffectiveDate?: string | null;
+  statutoryExpiryDate?: string | null;
+  statutoryUrn80g?: string | null;
+  statutoryUrn12a?: string | null;
+  statutoryClaimApproved: boolean;
+  statutoryDisclosureText: string;
+  updatedBy?: string | null;
+  updatedAt?: string | null;
+}
+
+export interface PublicDonationConfigResponse {
+  programmes: DonationProgrammeItem[];
+  gatewayStatus: GatewayStatusResponse;
+  config: PaymentConfigurationDto;
+}
+
+export interface SubmitSbiUtrPayload {
+  programmeCode: string;
+  amount: number;
+  donorName: string;
+  donorEmail?: string;
+  donorPhone?: string;
+  donorAddress?: string;
+  donorPan?: string;
+  dedicationMessage?: string;
+  anonymous: boolean;
+  communicationConsent?: boolean;
+  utrReference: string;
+  transferDate: string;
+  paymentModeNote?: string;
+  proofSummary?: string;
+  existingDonationReference?: string;
+}
+
+export interface SubmitSbiUtrResponse {
+  claimReference: string;
+  donationReference: string;
+  claimStatus: string;
+  donationStatus: string;
+  utrNormalized: string;
+  claimedAmount: number;
+  transferDate: string;
+  programmeName: string;
+  receiptIssued: boolean;
+  message: string;
+}
+
+export interface AdminManualClaimRow {
+  claimReference: string;
+  donationReference: string;
+  programmeName: string;
+  donorName: string;
+  donorEmail?: string | null;
+  donorPhone?: string | null;
+  utrReference: string;
+  utrNormalized: string;
+  claimedAmount: number;
+  transferDate: string;
+  paymentModeNote?: string | null;
+  proofSummary?: string | null;
+  status: string;
+  donationStatus: string;
+  bankStatementReference?: string | null;
+  verificationNotes?: string | null;
+  reviewedBy?: string | null;
+  reviewedAt?: string | null;
+  receiptNumber?: string | null;
+  createdAt: string;
+}
+
+export interface AdminDonationSummaryDto {
+  totalVerifiedAmount: number;
+  last30DaysVerifiedAmount: number;
+  cashfreeVerifiedAmount: number;
+  sbiVerifiedAmount: number;
+  verifiedDonationCount: number;
+  pendingVerificationCount: number;
+  utrReviewQueueCount: number;
+  pendingGatewayCount: number;
+  failedOrExpiredCount: number;
+  activeProgrammeCount: number;
+}
+
+export interface CmsPageSummary {
+  id: number;
+  slug: string;
+  title: string;
+  status: string;
+  publishedAt?: string | null;
+  publishedBy?: string | null;
+  updatedAt: string;
+  sectionJson?: string;
+  draftJson?: string | null;
+  revisions?: Array<{
+    revisionNumber: number;
+    changeSummary?: string | null;
+    editedBy: string;
+    createdAt: string;
+    snapshotJson: string;
+  }>;
+}
+
+export interface MediaAssetDto {
+  assetKey: string;
+  fileName: string;
+  contentType: string;
+  fileSize: number;
+  altText: string;
+  focalPoint: string;
+  publicUrl: string;
+  uploadedBy: string;
+  createdAt: string;
+}
+
+export async function fetchPublicDonationConfig(): Promise<PublicDonationConfigResponse> {
+  const res = await fetch(`${API_BASE_URL}/public/donations/config`, { cache: "no-store" });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to load donation configuration."));
+  return res.json();
+}
+
+export async function submitManualSbiUtrClaim(
+  payload: SubmitSbiUtrPayload,
+  portalToken?: string | null
+): Promise<SubmitSbiUtrResponse> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (portalToken) headers.Authorization = `Bearer ${portalToken}`;
+  const res = await fetch(`${API_BASE_URL}/public/donations/sbi/submit-utr`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to submit SBI UTR claim."));
+  return res.json();
+}
+
+export async function claimGuestDonations(portalToken: string): Promise<{
+  claimedCount: number;
+  claimedReferences: string[];
+  message: string;
+}> {
+  const res = await fetch(`${API_BASE_URL}/portal/me/donations/claim`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${portalToken}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to claim previous donations."));
+  return res.json();
+}
+
+export async function fetchAdminDonationSummary(token: string): Promise<AdminDonationSummaryDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/donations/summary`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load donation summary."));
+  return res.json();
+}
+
+export async function fetchAdminManualClaims(token: string, status = "ALL"): Promise<AdminManualClaimRow[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/manual-claims?status=${encodeURIComponent(status)}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load SBI UTR verification queue."));
+  return res.json();
+}
+
+export async function reviewAdminManualClaim(
+  token: string,
+  claimReference: string,
+  payload: { decision: "UNDER_REVIEW" | "VERIFIED" | "REJECTED" | "NEEDS_REVIEW"; bankStatementReference?: string; verificationNotes?: string }
+): Promise<AdminManualClaimRow> {
+  const res = await fetch(`${API_BASE_URL}/admin/manual-claims/${encodeURIComponent(claimReference)}/review`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to update verification decision."));
+  return res.json();
+}
+
+export async function fetchAdminPaymentConfig(token: string): Promise<PaymentConfigurationDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/payment-config`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load payment settings."));
+  return res.json();
+}
+
+export async function updateAdminPaymentConfig(
+  token: string,
+  payload: Omit<PaymentConfigurationDto, "updatedBy" | "updatedAt">
+): Promise<PaymentConfigurationDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/payment-config`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to update payment settings."));
+  return res.json();
+}
+
+export async function fetchAdminCmsPages(token: string): Promise<CmsPageSummary[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/cms/pages`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load CMS pages."));
+  return res.json();
+}
+
+export async function fetchAdminCmsPage(token: string, slug: string): Promise<CmsPageSummary> {
+  const res = await fetch(`${API_BASE_URL}/admin/cms/pages/${encodeURIComponent(slug)}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load CMS page."));
+  return res.json();
+}
+
+export async function saveAdminCmsDraft(
+  token: string,
+  slug: string,
+  payload: { title: string; draftJson: string; changeSummary?: string }
+): Promise<CmsPageSummary> {
+  const res = await fetch(`${API_BASE_URL}/admin/cms/pages/${encodeURIComponent(slug)}/draft`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to save CMS draft."));
+  return res.json();
+}
+
+export async function publishAdminCmsPage(token: string, slug: string): Promise<CmsPageSummary> {
+  const res = await fetch(`${API_BASE_URL}/admin/cms/pages/${encodeURIComponent(slug)}/publish`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to publish CMS page."));
+  return res.json();
+}
+
+export async function fetchAdminMedia(token: string): Promise<MediaAssetDto[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/media`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load media library."));
+  return res.json();
+}
+
+export async function uploadAdminMedia(
+  token: string,
+  file: File,
+  altText: string,
+  focalPoint = "center"
+): Promise<MediaAssetDto> {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("altText", altText);
+  form.append("focalPoint", focalPoint);
+  const res = await fetch(`${API_BASE_URL}/admin/media`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: form,
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to upload media."));
+  return res.json();
+}
+
+export async function deleteAdminMedia(token: string, assetKey: string): Promise<void> {
+  const res = await fetch(`${API_BASE_URL}/admin/media/${encodeURIComponent(assetKey)}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to delete media asset."));
+}
+
 
