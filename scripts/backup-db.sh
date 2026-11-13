@@ -60,3 +60,4 @@ log "Pruning backups older than ${RETENTION_DAYS} days..."
 find "${BACKUP_DIR}" -name "mect_db_backup_*.dump" -type f -mtime "+${RETENTION_DAYS}" -delete
 
 log "MECT database backup finished successfully."
+

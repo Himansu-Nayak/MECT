@@ -84,3 +84,4 @@ Upon backend container initialization, Flyway detected existing ranks 1–10 and
 ## 5. Certification
 
 Zero financial records were altered, lost, or dropped during migration. The database operates on persistent volume `mect-pgdata`.
+

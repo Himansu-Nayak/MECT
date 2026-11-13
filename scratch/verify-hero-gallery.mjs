@@ -35,7 +35,14 @@ async function main() {
     page.on("pageerror", (e) => consoleErrors.push(`${vp.name}: ${e.message}`));
     page.on("response", (r) => { if (r.status() >= 400) httpErrors.push(`${vp.name}: ${r.status()} ${r.url()}`); });
 
-    await page.goto(BASE + "/", { waitUntil: "networkidle", timeout: 30000 });
+    await page.goto(BASE + "/", { waitUntil: "load", timeout: 45000 });
+    await page.evaluate(() =>
+      Promise.all(
+        Array.from(document.images).map((img) =>
+          img.complete ? Promise.resolve() : new Promise((res) => { img.onload = res; img.onerror = res; })
+        )
+      )
+    );
     await page.waitForTimeout(350);
 
     const m = await page.evaluate(() => {
@@ -88,7 +95,7 @@ async function main() {
   {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await ctx.newPage();
-    await page.goto(BASE + "/", { waitUntil: "networkidle" });
+    await page.goto(BASE + "/", { waitUntil: "load", timeout: 45000 });
     const pauseBtn = page.getByRole("button", { name: /Pause Gallery/i });
     await pauseBtn.click();
     const pausedState = await page.evaluate(() => {
@@ -113,7 +120,7 @@ async function main() {
       reducedMotion: "reduce",
     });
     const page = await ctx.newPage();
-    await page.goto(BASE + "/", { waitUntil: "networkidle" });
+    await page.goto(BASE + "/", { waitUntil: "load", timeout: 45000 });
     await page.waitForTimeout(250);
     const rm = await page.evaluate(() => {
       const t1 = document.querySelector(".hero-gallery-track-ltr");
@@ -138,7 +145,7 @@ async function main() {
   {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await ctx.newPage();
-    await page.goto(BASE + "/", { waitUntil: "networkidle" });
+    await page.goto(BASE + "/", { waitUntil: "load", timeout: 45000 });
     const domCheck = await page.evaluate(() => {
       const bodyText = document.body.innerText;
       const ctas = ["Explore Our Work", "Support Our Mission", "Partner With Us"].map(

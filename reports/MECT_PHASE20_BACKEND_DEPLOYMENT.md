@@ -62,3 +62,4 @@ Environment keys loaded securely from `/opt/mect/.env.production` (permissions `
 - **Graceful Shutdown:** Configured via signal trapping (`exec java`).
 - **Memory Consumption:** `459.7 MiB` (bounded strictly below 512 MiB ceiling).
 - **Restart Recovery:** Verified in 27 seconds with automatic health recovery.
+

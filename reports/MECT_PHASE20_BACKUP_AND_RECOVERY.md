@@ -67,3 +67,4 @@ The restore script automatically:
 3. Restores schema and data with `--clean --if-exists --no-owner --no-privileges`.
 4. Restarts `mect-backend`.
 5. Validates actuator health `http://127.0.0.1:8081/api/v1/actuator/health`.
+

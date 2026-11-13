@@ -57,3 +57,4 @@ docker compose -f /opt/mect/compose.production.yaml start mect-backend
 echo "Restore complete! Verifying backend health..."
 sleep 10
 curl -f http://127.0.0.1:8081/api/v1/actuator/health || echo "Backend still initializing, please check logs."
+
