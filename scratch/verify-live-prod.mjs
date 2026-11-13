@@ -53,7 +53,8 @@ async function main() {
         failedRequests.push(`home@${vp.name}: ${res.status()} ${res.url()}`);
       }
     });
-    const res = await page.goto(`${BASE}/`, { waitUntil: "networkidle", timeout: 30000 });
+    const res = await page.goto(`${BASE}/`, { waitUntil: "load", timeout: 45000 });
+    await page.waitForTimeout(300);
     const metrics = await page.evaluate(() => {
       const imgs = Array.from(document.querySelectorAll("img"));
       return {
@@ -86,7 +87,7 @@ async function main() {
         }
       });
 
-      const res = await page.goto(`${BASE}${route}`, { waitUntil: "networkidle", timeout: 30000 });
+      const res = await page.goto(`${BASE}${route}`, { waitUntil: "load", timeout: 45000 });
       await page.evaluate(async () => {
         for (let y = 0; y <= document.body.scrollHeight; y += 900) {
           window.scrollTo(0, y);

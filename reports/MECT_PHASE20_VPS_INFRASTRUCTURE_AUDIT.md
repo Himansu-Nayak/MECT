@@ -62,3 +62,4 @@ Strict VPS isolation protocol was verified prior to executing any container oper
 2. Docker Engine 29.8.1 and Compose v5.5.1 were pre-installed and functional.
 3. Dedicated deployment path `/opt/mect` isolated from `/home/ohotech` and other server tenants.
 4. Clearance granted for Docker deployment.
+

@@ -76,3 +76,4 @@ d788733511e3   mect-frontend   0.00%     51.63MiB / 15.61GiB   0.32%     15.3kB 
 - Total memory consumed across all 3 MECT services: **~558 MiB** (3.5% of host memory).
 - Idle CPU usage: **< 0.5%**.
 - High headroom available for sudden donation traffic surges and heavy reporting queries.
+

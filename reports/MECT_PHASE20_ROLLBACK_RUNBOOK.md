@@ -73,3 +73,4 @@ sudo -u postgres pg_restore -d mect_db --clean --if-exists /var/backups/mect/mec
 - [ ] `systemctl is-active mect-backend.service` returns `active`.
 - [ ] OHO TECH (`pm2 id 0`, port 3000, port 8080) confirmed untouched and online.
 - [ ] `https://mect.org.in/` returning HTTP `200 OK`.
+

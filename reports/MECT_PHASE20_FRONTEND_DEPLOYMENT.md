@@ -49,3 +49,4 @@ Frontend environment configuration conforms to strict isolation rules:
   - Payload: `{"status":"operational","service":"MECT AI Assistant (HIm)"}`
 - **Memory Consumption:** `51.63 MiB` / `15.61 GiB` (0.32% host memory).
 - **Restart Policy:** `unless-stopped` verified across daemon restart.
+

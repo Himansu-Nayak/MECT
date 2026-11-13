@@ -64,3 +64,4 @@
    - `POST /api/v1/portal/auth/request-otp` rapid repeat -> **429 Too Many Requests** (`"Please wait 52 seconds..."`).
 6. **Actuator Metric Protection:**
    - `/actuator/metrics`, `/actuator/env`, `/actuator/beans` blocked from public proxy. Only health probe `/api/v1/actuator/health` exposed.
+
