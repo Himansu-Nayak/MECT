@@ -38,3 +38,4 @@ Inspection of `flyway_schema_history` confirms:
 - **Zero Record Deletions:** Historical donation records (IDs 3, 4, 5, 6) remain fully intact.
 - **Transactional ACID Migrations:** Flyway runs DDL inside transactions where supported, ensuring rollback on failure.
 - **Index Health:** All 29 tables carry optimized B-Tree indices on primary keys, lookup codes, order IDs, and status columns.
+

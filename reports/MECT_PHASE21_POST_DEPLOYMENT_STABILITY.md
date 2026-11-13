@@ -43,3 +43,4 @@ Captured live via `docker stats --no-stream`:
 - **Backend Logs (`docker logs --tail 100 mect-backend`):** Zero unhandled NullPointerExceptions, zero HikariCP pool exhaustions, zero OutOfMemory errors.
 - **Frontend Logs (`docker logs --tail 100 mect-frontend`):** Zero server-side rendering crashes or uncaught hydration exceptions.
 - **Nginx Access & Error Logs:** Zero 502/504 errors recorded on legitimate application traffic.
+

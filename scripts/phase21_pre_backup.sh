@@ -15,3 +15,4 @@ sha256sum "${GLOBALS_FILE}"
 
 echo "=== TOC OBJECT COUNT ==="
 docker exec -i mect-postgres pg_restore --list < /var/backups/mect/mect_db_backup_20261113_100627.dump | wc -l
+

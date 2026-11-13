@@ -26,3 +26,4 @@
 - **Flyway Database Migrations:** 11 migrations (V1 to V11) applied. All tables use normalized constraints, foreign keys with appropriate cascades, and indexed search columns.
 - **Payment & Webhook Validation:** Cashfree webhook verifies HMAC-SHA256 signature and rejects expired timestamps (> 300s). Manual SBI UTR verification protects against duplicate submissions via database unique constraints.
 - **Exception Handling:** `GlobalExceptionHandler` masks internal stack traces from clients and formats standardized REST error responses.
+

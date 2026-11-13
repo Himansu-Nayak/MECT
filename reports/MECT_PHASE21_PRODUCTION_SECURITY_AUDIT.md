@@ -31,3 +31,4 @@
   - `CASHFREE_CLIENT_SECRET`: Zero occurrences.
   - `POSTGRES_PASSWORD`: Zero occurrences.
 - Private donor PII (PAN, residential addresses, phone numbers) are masked from public listings and only accessible to authenticated administrators with designated roles (`ROLE_FINANCE_OFFICER`, `ROLE_ADMIN`).
+

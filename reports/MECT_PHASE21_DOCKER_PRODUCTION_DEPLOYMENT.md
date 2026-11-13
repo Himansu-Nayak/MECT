@@ -45,3 +45,4 @@ Configuration file: `/opt/mect/compose.production.yaml`:
   - `mect-frontend`: Up 1+ hour (`healthy`, 0 failing streaks).
   - `mect-backend`: Up 1+ hour (`healthy`, 0 failing streaks).
   - `mect-postgres`: Up 2+ hours (`healthy`, 0 failing streaks).
+

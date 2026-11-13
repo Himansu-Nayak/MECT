@@ -42,3 +42,4 @@ $$\begin{aligned}
    - Status: `UTR_SUBMITTED` / `PENDING_VERIFICATION`.
    - Zero funds credited, zero receipt issued. Duplicate submissions trigger `HTTP 409 Conflict`.
 3. **Receipt Storage:** All 3 receipts store binary PDF bytes in PostgreSQL table `donation_receipts.pdf_bytes` with valid SHA-256 hashes.
+

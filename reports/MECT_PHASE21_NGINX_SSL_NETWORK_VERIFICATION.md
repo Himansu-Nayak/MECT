@@ -44,3 +44,4 @@ Active host configuration file: `/etc/nginx/sites-available/mect.org.in`:
 | `3000` | TCP6 | `:::3000` | OHO TECH Frontend | Internal / Host Only |
 | `8080` | TCP6 | `127.0.0.1:8080` | OHO TECH Backend | **Loopback Only** |
 | `5432` | TCP / TCP6 | `127.0.0.1:5432` | Host PostgreSQL | **Loopback Only** |
+

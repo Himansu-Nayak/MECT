@@ -50,3 +50,4 @@
 | **Duplicate UTR Submission** | Blocked with `HTTP 409 Conflict` | Confirmed via unique constraint `utr_normalized` | **PASS** |
 | **Unverified Claim Receipt** | No receipt issued | Confirmed: 0 receipts for unverified claims | **PASS** |
 | **Successful Payment Receipt** | 1 receipt generated with PDF bytes & SHA-256 | Confirmed for IDs 4, 5, 6 | **PASS** |
+

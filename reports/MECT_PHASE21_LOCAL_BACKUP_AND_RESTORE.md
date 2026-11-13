@@ -41,3 +41,4 @@ Per Phase 21 instructions, external cloud accounts and paid services (Cloudflare
 - **Limitation:** All backups currently reside locally on the Hostinger VPS disk at `/var/backups/mect/`.
 - **Catastrophe Risk:** Local backups do NOT protect against total physical VPS destruction, hypervisor-level data loss, or account-level termination.
 - **Standing Operational Recommendation:** Off-site replication to encrypted cloud storage remains recommended as a future non-blocking operational enhancement.
+

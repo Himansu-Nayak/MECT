@@ -37,3 +37,4 @@
   - `mect-backend` (`mect-backend:production`): Up 1+ hour (healthy), port 127.0.0.1:8081->8080
   - `mect-postgres` (`postgres:18-alpine`): Up 2+ hours (healthy), port 127.0.0.1:5433->5432
 - **OHO TECH State:** PM2 process ID 0 (`oho_tech` PID 416801) online (uptime 3h+, 0 restarts, 59.4 MB RAM). Ports 3000, 8080, and PostgreSQL 5432 strictly isolated.
+
