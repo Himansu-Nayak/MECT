@@ -90,6 +90,8 @@ function DesktopSequence({ isClone = false }: { isClone?: boolean }) {
           <Image
             src={slide.src}
             alt=""
+            aria-hidden="true"
+            data-decorative="true"
             fill
             sizes="(max-width: 639px) 100vw, (max-width: 767px) 92vw, (max-width: 1023px) 76vw, (max-width: 1279px) 68vw, 62vw"
             loading={!isClone && idx === 0 ? "eager" : "lazy"}
@@ -122,6 +124,8 @@ function MobileSequence({ isClone = false }: { isClone?: boolean }) {
           <Image
             src={slide.src}
             alt=""
+            aria-hidden="true"
+            data-decorative="true"
             fill
             sizes="(max-width: 767px) 96vw, 440px"
             loading={!isClone && idx === 0 ? "eager" : "lazy"}

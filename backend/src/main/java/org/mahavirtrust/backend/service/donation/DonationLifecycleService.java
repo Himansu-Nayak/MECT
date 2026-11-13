@@ -1,8 +1,11 @@
 package org.mahavirtrust.backend.service.donation;
 
 import org.mahavirtrust.backend.dto.donation.InitiateDonationRequest;
+import org.mahavirtrust.backend.dto.donation.ReviewManualSbiClaimRequest;
+import org.mahavirtrust.backend.dto.donation.SubmitManualSbiUtrRequest;
 import org.mahavirtrust.backend.dto.donation.VerifyGatewayPaymentRequest;
 import org.mahavirtrust.backend.entity.*;
+import org.mahavirtrust.backend.exception.DuplicateResourceException;
 import org.mahavirtrust.backend.exception.ResourceNotFoundException;
 import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.AuditLogService;
@@ -16,6 +19,7 @@ import org.mahavirtrust.backend.util.HmacCryptoUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,7 +31,9 @@ import tools.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -55,6 +61,8 @@ public class DonationLifecycleService {
     private final EmailTemplateRenderer emailRenderer;
     private final AuditLogService auditLogService;
     private final ObjectMapper objectMapper;
+    private final PaymentConfigurationService paymentConfigurationService;
+    private final ManualBankTransferClaimRepository manualClaimRepository;
 
     private final String activeProviderName;
     private final int qrExpiryMinutes;
@@ -76,6 +84,8 @@ public class DonationLifecycleService {
             EmailTemplateRenderer emailRenderer,
             AuditLogService auditLogService,
             ObjectMapper objectMapper,
+            PaymentConfigurationService paymentConfigurationService,
+            ManualBankTransferClaimRepository manualClaimRepository,
             @Value("${app.payment.provider:CASHFREE}") String activeProviderName,
             @Value("${app.payment.qr-expiry-minutes:15}") int qrExpiryMinutes,
             @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled) {
@@ -94,6 +104,8 @@ public class DonationLifecycleService {
         this.emailRenderer = emailRenderer;
         this.auditLogService = auditLogService;
         this.objectMapper = objectMapper;
+        this.paymentConfigurationService = paymentConfigurationService;
+        this.manualClaimRepository = manualClaimRepository;
         this.activeProviderName = activeProviderName != null ? activeProviderName.trim().toUpperCase(Locale.ROOT) : "CASHFREE";
         this.qrExpiryMinutes = qrExpiryMinutes;
         this.schedulingEnabled = schedulingEnabled;
@@ -145,9 +157,20 @@ public class DonationLifecycleService {
             InitiateDonationRequest req,
             PaymentGatewayProvider gateway,
             String clientIp) {
+        paymentConfigurationService.validateDonationAmount(req.amount());
+        Map<String, Object> publicConfig = paymentConfigurationService.getPublicConfigMap();
+
         DonationProgramme programme = programmeRepository.findByCode(req.programmeCode().trim())
                 .filter(DonationProgramme::isActive)
                 .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
+
+        if (programme.isGeneralFund() && !Boolean.TRUE.equals(publicConfig.get("generalFundEnabled"))) {
+            throw new IllegalArgumentException("General Fund contributions are currently disabled by MECT administration.");
+        }
+        if ("CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider())
+                && !Boolean.TRUE.equals(publicConfig.get("cashfreeEnabled"))) {
+            throw new IllegalArgumentException("Online Cashfree checkout is currently paused. Please use the verified SBI direct transfer option.");
+        }
 
         PortalUser portalUser = optionalPortalUserId != null
                 ? portalUserRepository.findById(optionalPortalUserId).orElse(null)
@@ -171,6 +194,7 @@ public class DonationLifecycleService {
         donation.setDonorPan(req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT) : null);
         donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
         donation.setAnonymous(req.anonymous());
+        donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
         String defaultMethod = "CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider()) ? "GATEWAY_CHECKOUT" : "UPI_QR";
         donation.setPaymentMethod(req.paymentMethod() != null && !req.paymentMethod().isBlank() ? req.paymentMethod() : defaultMethod);
         donation.setStatus("CREATED");
@@ -682,12 +706,18 @@ public class DonationLifecycleService {
                 "Payment verified (" + source + "), providerPaymentId=" + payment.getProviderPaymentId());
 
         // Promote linked General User -> Donor safely without creating a separate account
+        grantDonorRoleAndIssueReceiptAndNotify(donation, payment, actor);
+    }
+
+    private void grantDonorRoleAndIssueReceiptAndNotify(Donation donation, Payment payment, String actor) {
         PortalUser portalUser = donation.getPortalUser();
         if (portalUser != null && !portalUserRoleRepository.existsByPortalUserIdAndRoleName(portalUser.getId(), PortalRoleName.ROLE_DONOR)) {
             portalUserRoleRepository.save(new PortalUserRole(portalUser, PortalRoleName.ROLE_DONOR));
             auditLogService.record("portal:" + portalUser.getUserUuid(), "ROLE_DONOR_GRANTED", "PORTAL_USER_ROLE",
                     portalUser.getId().toString(), actor, "Granted upon verified donation " + donation.getDonationReference());
         }
+
+        String statutoryNote = paymentConfigurationService.getStatutoryReceiptNote();
 
         // Deterministic PDF Receipt Generation
         DonationReceipt receipt = receiptRepository.findByDonationId(donation.getId()).orElseGet(() -> {
@@ -698,7 +728,7 @@ public class DonationLifecycleService {
                     donation,
                     payment,
                     donorDisplay,
-                    FACTUAL_STATUTORY_NOTE
+                    statutoryNote
             );
 
             DonationReceipt dr = new DonationReceipt();
@@ -709,8 +739,8 @@ public class DonationLifecycleService {
             dr.setAmount(donation.getAmount());
             dr.setCurrency(donation.getCurrency());
             dr.setReceiptType("INSTITUTIONAL_PAYMENT_RECEIPT");
-            dr.setStatutoryNote(FACTUAL_STATUTORY_NOTE);
-            dr.setTemplateVersion("v1.0");
+            dr.setStatutoryNote(statutoryNote);
+            dr.setTemplateVersion("v1.1");
             dr.setPdfBytes(pdfBytes);
             dr.setPdfSha256(HmacCryptoUtil.sha256Hex(pdfBytes));
             return receiptRepository.save(dr);
@@ -1043,6 +1073,326 @@ public class DonationLifecycleService {
             }
         }
         return null;
+    }
+
+    @Transactional
+    public Map<String, Object> submitManualSbiUtrClaim(Long optionalPortalUserId, SubmitManualSbiUtrRequest req, String clientIp) {
+        Map<String, Object> publicConfig = paymentConfigurationService.getPublicConfigMap();
+        if (!Boolean.TRUE.equals(publicConfig.get("sbiQrEnabled"))) {
+            throw new IllegalArgumentException("Manual SBI bank/UPI transfer claims are currently disabled.");
+        }
+        paymentConfigurationService.validateDonationAmount(req.amount());
+
+        DonationProgramme programme = programmeRepository.findByCode(req.programmeCode().trim())
+                .filter(DonationProgramme::isActive)
+                .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
+        if (programme.isGeneralFund() && !Boolean.TRUE.equals(publicConfig.get("generalFundEnabled"))) {
+            throw new IllegalArgumentException("General Fund contributions are currently disabled by MECT administration.");
+        }
+
+        if (req.transferDate().isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("Transfer date cannot be in the future.");
+        }
+
+        String utrNormalized = req.utrReference().trim().toUpperCase(Locale.ROOT).replaceAll("[^A-Z0-9]", "");
+        if (utrNormalized.length() < 8 || utrNormalized.length() > 40) {
+            throw new IllegalArgumentException("UTR / bank reference must contain 8 to 40 alphanumeric characters.");
+        }
+
+        Optional<ManualBankTransferClaim> existingUtr = manualClaimRepository.findByUtrNormalized(utrNormalized);
+        if (existingUtr.isPresent()) {
+            auditLogService.record(
+                    optionalPortalUserId != null ? "portal:" + optionalPortalUserId : "PUBLIC_CHECKOUT",
+                    "MANUAL_SBI_UTR_DUPLICATE",
+                    "MANUAL_BANK_TRANSFER_CLAIM",
+                    utrNormalized,
+                    clientIp,
+                    "Duplicate UTR rejected; existing claim=" + existingUtr.get().getClaimReference()
+            );
+            throw new DuplicateResourceException(
+                    "This UTR / bank reference (" + utrNormalized + ") has already been submitted under claim "
+                            + existingUtr.get().getClaimReference() + ". Please contact MECT support if you need assistance."
+            );
+        }
+
+        PortalUser portalUser = optionalPortalUserId != null
+                ? portalUserRepository.findById(optionalPortalUserId).orElse(null)
+                : null;
+
+        Donation donation = null;
+        if (req.existingDonationReference() != null && !req.existingDonationReference().isBlank()) {
+            donation = donationRepository.findByDonationReference(req.existingDonationReference().trim()).orElse(null);
+            if (donation != null && "SUCCESSFUL".equals(donation.getStatus())) {
+                throw new IllegalArgumentException("Donation " + donation.getDonationReference() + " is already verified and settled.");
+            }
+        }
+
+        if (donation == null) {
+            donation = new Donation();
+            donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
+            donation.setPortalUser(portalUser);
+            donation.setProgramme(programme);
+            donation.setAmount(req.amount().setScale(2, RoundingMode.HALF_UP));
+            donation.setCurrency("INR");
+            donation.setFrequency("ONE_TIME");
+            donation.setDonorName(req.donorName().trim());
+            donation.setDonorEmail(req.donorEmail() != null && !req.donorEmail().isBlank()
+                    ? req.donorEmail().trim().toLowerCase(Locale.ROOT)
+                    : (portalUser != null ? portalUser.getPrimaryEmail() : null));
+            donation.setDonorPhone(req.donorPhone() != null && !req.donorPhone().isBlank()
+                    ? req.donorPhone().trim()
+                    : (portalUser != null ? portalUser.getPrimaryPhone() : null));
+            donation.setDonorAddress(req.donorAddress() != null && !req.donorAddress().isBlank() ? req.donorAddress().trim() : null);
+            donation.setDonorPan(req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT) : null);
+            donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
+            donation.setAnonymous(req.anonymous());
+            donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
+        } else if (donation.getPortalUser() == null && portalUser != null) {
+            donation.setPortalUser(portalUser);
+        }
+
+        String prevStatus = donation.getStatus() != null ? donation.getStatus() : "PENDING_TRANSFER";
+        donation.setPaymentMethod("SBI_DIRECT");
+        donation.setStatus("PENDING_VERIFICATION");
+        donation = donationRepository.save(donation);
+
+        ManualBankTransferClaim claim = new ManualBankTransferClaim();
+        claim.setClaimReference("MECT-UTR-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
+        claim.setDonation(donation);
+        claim.setUtrNumber(req.utrReference().trim());
+        claim.setUtrNormalized(utrNormalized);
+        claim.setClaimedAmount(req.amount().setScale(2, RoundingMode.HALF_UP));
+        claim.setTransferDate(req.transferDate());
+        claim.setRemitterName(req.paymentModeNote() != null && !req.paymentModeNote().isBlank() ? req.paymentModeNote().trim() : donation.getDonorName());
+        claim.setProofReference(req.proofSummary() != null && !req.proofSummary().isBlank() ? req.proofSummary().trim() : null);
+        claim.setStatus("UTR_SUBMITTED");
+        claim = manualClaimRepository.save(claim);
+
+        Payment payment = new Payment();
+        payment.setDonation(donation);
+        payment.setProvider("SBI_DIRECT");
+        payment.setProviderOrderId(claim.getClaimReference());
+        payment.setProviderPaymentId(claim.getUtrNormalized());
+        payment.setBankReference(claim.getUtrNormalized());
+        payment.setPaymentGroup("SBI_DIRECT_TRANSFER");
+        payment.setGatewayRawStatus("UTR_SUBMITTED");
+        payment.setAmount(donation.getAmount());
+        payment.setCurrency(donation.getCurrency());
+        payment.setStatus("PENDING_VERIFICATION");
+        payment = paymentRepository.save(payment);
+
+        recordReconciliation(donation, payment, prevStatus, "PENDING_VERIFICATION", "SBI_UTR_SUBMISSION",
+                portalUser != null ? "portal:" + portalUser.getUserUuid() : "PUBLIC_CHECKOUT",
+                "Submitted UTR " + utrNormalized + " (" + claim.getClaimReference() + ") for verification");
+
+        if (donation.getDonorEmail() != null) {
+            outboxService.enqueueEmail(
+                    "SBI_CLAIM_SUBMITTED:" + claim.getId(),
+                    "DONATION_INITIATED",
+                    portalUser != null ? portalUser.getId() : null,
+                    donation.getId(),
+                    donation.getDonorEmail(),
+                    true,
+                    emailRenderer.renderDonationInitiatedEmail(
+                            donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
+                            "INR " + donation.getAmount().toPlainString(),
+                            programme.getName(),
+                            donation.getDonationReference() + " (Pending Verification — UTR " + utrNormalized + ")"
+                    ),
+                    null,
+                    Map.of("claimReference", claim.getClaimReference(), "utr", utrNormalized)
+            );
+        }
+
+        auditLogService.record(
+                portalUser != null ? "portal:" + portalUser.getUserUuid() : "PUBLIC_CHECKOUT",
+                "MANUAL_SBI_UTR_SUBMITTED",
+                "MANUAL_BANK_TRANSFER_CLAIM",
+                claim.getClaimReference(),
+                clientIp,
+                "Donation=" + donation.getDonationReference() + ", UTR=" + utrNormalized + ", Amount=" + claim.getClaimedAmount()
+        );
+
+        Map<String, Object> res = new LinkedHashMap<>();
+        res.put("claimReference", claim.getClaimReference());
+        res.put("donationReference", donation.getDonationReference());
+        res.put("claimStatus", claim.getStatus());
+        res.put("donationStatus", donation.getStatus());
+        res.put("utrNormalized", claim.getUtrNormalized());
+        res.put("claimedAmount", claim.getClaimedAmount());
+        res.put("transferDate", claim.getTransferDate());
+        res.put("programmeName", programme.getName());
+        res.put("receiptIssued", false);
+        res.put("message", "Your SBI transfer reference has been submitted for verification. Your final institutional receipt will be issued once MECT Finance reconciles the credit.");
+        return res;
+    }
+
+    @Transactional
+    public Map<String, Object> reviewManualSbiClaim(
+            String claimReference,
+            ReviewManualSbiClaimRequest req,
+            String actor,
+            String clientIp) {
+        ManualBankTransferClaim claim = manualClaimRepository.findByClaimReference(claimReference)
+                .orElseThrow(() -> new ResourceNotFoundException("Manual SBI claim not found: " + claimReference));
+
+        if ("VERIFIED".equals(claim.getStatus())) {
+            throw new IllegalArgumentException("Claim " + claimReference + " is already verified.");
+        }
+
+        Donation donation = claim.getDonation();
+        String prevClaimStatus = claim.getStatus();
+        String prevDonationStatus = donation.getStatus();
+        String decision = req.decision().trim().toUpperCase(Locale.ROOT);
+
+        claim.setStatus(decision);
+        claim.setBankStatementRef(req.bankStatementReference() != null && !req.bankStatementReference().isBlank()
+                ? req.bankStatementReference().trim() : claim.getBankStatementRef());
+        claim.setVerificationNotes(req.verificationNotes() != null && !req.verificationNotes().isBlank()
+                ? req.verificationNotes().trim() : claim.getVerificationNotes());
+        claim.setReviewedBy(actor);
+        claim.setReviewedAt(Instant.now());
+
+        if ("VERIFIED".equals(decision)) {
+            if (claim.getClaimedAmount().compareTo(donation.getAmount()) != 0) {
+                donation.setAmount(claim.getClaimedAmount());
+            }
+            manualClaimRepository.save(claim);
+
+            Payment payment = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(donation.getId())
+                    .filter(p -> "SBI_DIRECT".equals(p.getProvider()))
+                    .orElseGet(Payment::new);
+            payment.setDonation(donation);
+            payment.setProvider("SBI_DIRECT");
+            payment.setProviderOrderId(claim.getClaimReference());
+            payment.setProviderPaymentId(claim.getUtrNormalized());
+            payment.setBankReference(claim.getUtrNormalized());
+            payment.setPaymentGroup("SBI_DIRECT_TRANSFER");
+            payment.setGatewayRawStatus("VERIFIED");
+            payment.setAmount(donation.getAmount());
+            payment.setCurrency(donation.getCurrency());
+            payment.setStatus("SUCCESSFUL");
+            payment.setVerifiedAt(Instant.now());
+            payment = paymentRepository.save(payment);
+
+            donation.setStatus("SUCCESSFUL");
+            donation.setPaymentMethod("SBI_DIRECT");
+            if (donation.getConfirmedAt() == null) {
+                donation.setConfirmedAt(Instant.now());
+            }
+            donationRepository.save(donation);
+
+            recordReconciliation(donation, payment, prevDonationStatus, "SUCCESSFUL", "ADMIN_SBI_VERIFICATION", actor,
+                    "Verified SBI UTR " + claim.getUtrNormalized()
+                            + (claim.getBankStatementRef() != null ? " / BankRef=" + claim.getBankStatementRef() : ""));
+
+            grantDonorRoleAndIssueReceiptAndNotify(donation, payment, actor);
+        } else {
+            manualClaimRepository.save(claim);
+            String targetDonationStatus = "REJECTED".equals(decision) ? "FAILED" : "PENDING_VERIFICATION";
+            donation.setStatus(targetDonationStatus);
+            donationRepository.save(donation);
+
+            Payment payment = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(donation.getId()).orElse(null);
+            if (payment != null) {
+                payment.setStatus(targetDonationStatus);
+                payment.setGatewayRawStatus(decision);
+                paymentRepository.save(payment);
+                recordReconciliation(donation, payment, prevDonationStatus, targetDonationStatus, "ADMIN_SBI_REVIEW", actor,
+                        "Claim " + prevClaimStatus + " -> " + decision
+                                + (req.verificationNotes() != null ? ": " + req.verificationNotes() : ""));
+            }
+        }
+
+        auditLogService.record(actor, "MANUAL_SBI_CLAIM_" + decision, "MANUAL_BANK_TRANSFER_CLAIM",
+                claimReference, clientIp, "UTR=" + claim.getUtrNormalized() + ", Donation=" + donation.getDonationReference());
+
+        return mapManualClaim(claim);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Map<String, Object>> listManualSbiClaims(String statusFilter) {
+        var pageReq = PageRequest.of(0, 200);
+        List<ManualBankTransferClaim> claims = (statusFilter == null || statusFilter.isBlank() || "ALL".equalsIgnoreCase(statusFilter))
+                ? manualClaimRepository.findAllByOrderByCreatedAtDesc(pageReq).getContent()
+                : manualClaimRepository.findByStatusOrderByCreatedAtDesc(statusFilter.trim().toUpperCase(Locale.ROOT), pageReq).getContent();
+        return claims.stream().map(this::mapManualClaim).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public Map<String, Object> getAdminDonationSummary() {
+        List<Donation> all = donationRepository.findAll();
+        BigDecimal totalVerified = BigDecimal.ZERO;
+        BigDecimal cashfreeVerified = BigDecimal.ZERO;
+        BigDecimal sbiVerified = BigDecimal.ZERO;
+        long verifiedCount = 0;
+        long pendingGatewayCount = 0;
+        long pendingVerificationCount = 0;
+        long failedOrExpiredCount = 0;
+
+        for (Donation d : all) {
+            if ("SUCCESSFUL".equals(d.getStatus())) {
+                verifiedCount++;
+                totalVerified = totalVerified.add(d.getAmount());
+                if ("SBI_DIRECT".equalsIgnoreCase(d.getPaymentMethod())) {
+                    sbiVerified = sbiVerified.add(d.getAmount());
+                } else {
+                    cashfreeVerified = cashfreeVerified.add(d.getAmount());
+                }
+            } else if ("PENDING_VERIFICATION".equals(d.getStatus())) {
+                pendingVerificationCount++;
+            } else if ("PENDING".equals(d.getStatus()) || "CREATED".equals(d.getStatus())) {
+                pendingGatewayCount++;
+            } else if ("FAILED".equals(d.getStatus()) || "EXPIRED".equals(d.getStatus())) {
+                failedOrExpiredCount++;
+            }
+        }
+
+        Instant thirtyDaysAgo = Instant.now().minus(30, ChronoUnit.DAYS);
+        BigDecimal last30DaysAmount = donationRepository.sumSuccessfulAmountSince(thirtyDaysAgo);
+        long utrSubmittedQueue = manualClaimRepository.countByStatus("UTR_SUBMITTED")
+                + manualClaimRepository.countByStatus("UNDER_REVIEW")
+                + manualClaimRepository.countByStatus("NEEDS_REVIEW");
+
+        Map<String, Object> summary = new LinkedHashMap<>();
+        summary.put("totalVerifiedAmount", totalVerified);
+        summary.put("last30DaysVerifiedAmount", last30DaysAmount);
+        summary.put("cashfreeVerifiedAmount", cashfreeVerified);
+        summary.put("sbiVerifiedAmount", sbiVerified);
+        summary.put("verifiedDonationCount", verifiedCount);
+        summary.put("pendingVerificationCount", pendingVerificationCount);
+        summary.put("utrReviewQueueCount", utrSubmittedQueue);
+        summary.put("pendingGatewayCount", pendingGatewayCount);
+        summary.put("failedOrExpiredCount", failedOrExpiredCount);
+        summary.put("activeProgrammeCount", programmeRepository.findByActiveTrueOrderByDisplayOrderAsc().size());
+        return summary;
+    }
+
+    private Map<String, Object> mapManualClaim(ManualBankTransferClaim c) {
+        Donation d = c.getDonation();
+        DonationReceipt receipt = receiptRepository.findByDonationId(d.getId()).orElse(null);
+        Map<String, Object> m = new LinkedHashMap<>();
+        m.put("claimReference", c.getClaimReference());
+        m.put("donationReference", d.getDonationReference());
+        m.put("programmeName", d.getProgramme().getName());
+        m.put("donorName", d.getDonorName());
+        m.put("donorEmail", d.getDonorEmail());
+        m.put("donorPhone", d.getDonorPhone());
+        m.put("utrReference", c.getUtrNumber());
+        m.put("utrNormalized", c.getUtrNormalized());
+        m.put("claimedAmount", c.getClaimedAmount());
+        m.put("transferDate", c.getTransferDate());
+        m.put("paymentModeNote", c.getRemitterName());
+        m.put("proofSummary", c.getProofReference());
+        m.put("status", c.getStatus());
+        m.put("donationStatus", d.getStatus());
+        m.put("bankStatementReference", c.getBankStatementRef());
+        m.put("verificationNotes", c.getVerificationNotes());
+        m.put("reviewedBy", c.getReviewedBy());
+        m.put("reviewedAt", c.getReviewedAt());
+        m.put("receiptNumber", receipt != null ? receipt.getReceiptNumber() : null);
+        m.put("createdAt", c.getCreatedAt());
+        return m;
     }
 
     private void recordReconciliation(Donation d, Payment p, String prev, String next, String source, String actor, String note) {

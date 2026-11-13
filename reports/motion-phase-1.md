@@ -28,3 +28,4 @@
   - `BUNDLE_BUDGET`: **PASS** (0)
 - **Home (`/`) First-Load JS:** `284.04 KB` gzipped (baseline `279.75 KB`, delta `+4.29 KB`, well within `<= +60.00 KB` budget)
 - **Screenshots:** `reports/shots/m1-home-desktop.png`, `reports/shots/m1-home-mobile.png`
+

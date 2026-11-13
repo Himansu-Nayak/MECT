@@ -35,3 +35,4 @@ Open CONFIRM items: 10 numbered items remain open in `content/todo-confirm.md` (
 Risks and notes:
 - Phase 1 Gate is **PASS** across all Phase 1 criteria (brand unification, single `SiteLayout` + header/footer label consistency, metadata/canonicals/OG images, `content/org.ts` single source of truth, and normalized `tel:` hrefs).
 Next: Phase 2
+

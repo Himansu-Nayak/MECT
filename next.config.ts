@@ -7,6 +7,7 @@ const withBundleAnalyzer = createBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   reactStrictMode: true,
   outputFileTracingRoot: path.resolve(process.cwd()),
   images: {

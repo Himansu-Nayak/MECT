@@ -205,8 +205,8 @@ export function SbiDonationSection({
               </li>
               <li>
                 Submit your remittance details on our{" "}
-                <Link href="/donate#receipt-claim" className="text-terracotta-dark font-bold underline hover:text-forest">
-                  Donor Receipt Desk
+                <Link href="/donate?method=SBI_DIRECT" className="text-terracotta-dark font-bold underline hover:text-forest">
+                  Unified Donation &amp; UTR Desk
                 </Link>{" "}
                 or write to <span className="font-semibold">{TRUST_CONFIG.contact.emails.official}</span> for an official acknowledgement receipt.
               </li>
@@ -215,7 +215,7 @@ export function SbiDonationSection({
 
           {/* Primary Donate CTA */}
           <div className="pt-1 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
-            <Link href="/donate#receipt-claim" className="w-full sm:flex-1 sm:min-w-[200px]">
+            <Link href="/donate?method=SBI_DIRECT" className="w-full sm:flex-1 sm:min-w-[200px]">
               <Button variant="primary" size="lg" className="w-full justify-center font-bold shadow-lg text-sm sm:whitespace-nowrap">
                 <Heart className="w-4 h-4 mr-2 fill-current shrink-0" aria-hidden="true" />
                 <span>Donate &amp; Record UTR</span>

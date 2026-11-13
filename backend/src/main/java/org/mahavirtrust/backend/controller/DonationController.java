@@ -3,14 +3,17 @@ package org.mahavirtrust.backend.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.mahavirtrust.backend.dto.donation.InitiateDonationRequest;
+import org.mahavirtrust.backend.dto.donation.SubmitManualSbiUtrRequest;
 import org.mahavirtrust.backend.dto.donation.VerifyGatewayPaymentRequest;
 import org.mahavirtrust.backend.security.PortalUserDetailsService.PortalPrincipal;
 import org.mahavirtrust.backend.service.donation.DonationLifecycleService;
+import org.mahavirtrust.backend.service.donation.PaymentConfigurationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +22,22 @@ import java.util.Map;
 public class DonationController {
 
     private final DonationLifecycleService donationService;
+    private final PaymentConfigurationService paymentConfigurationService;
 
-    public DonationController(DonationLifecycleService donationService) {
+    public DonationController(
+            DonationLifecycleService donationService,
+            PaymentConfigurationService paymentConfigurationService) {
         this.donationService = donationService;
+        this.paymentConfigurationService = paymentConfigurationService;
+    }
+
+    @GetMapping("/config")
+    public ResponseEntity<Map<String, Object>> publicConfig() {
+        Map<String, Object> res = new LinkedHashMap<>();
+        res.put("programmes", donationService.listActiveProgrammes());
+        res.put("gatewayStatus", donationService.getGatewayStatus());
+        res.put("config", paymentConfigurationService.getPublicConfigMap());
+        return ResponseEntity.ok(res);
     }
 
     @GetMapping("/programmes")
@@ -60,6 +76,18 @@ public class DonationController {
                 ? p.getId()
                 : null;
         return ResponseEntity.ok(donationService.verifyGatewayCheckoutCallback(portalUserId, request, getClientIp(httpRequest)));
+    }
+
+    @PostMapping("/sbi/submit-utr")
+    public ResponseEntity<Map<String, Object>> submitSbiUtrClaim(
+            @Valid @RequestBody SubmitManualSbiUtrRequest request,
+            Authentication authentication,
+            HttpServletRequest httpRequest) {
+        Long portalUserId = (authentication != null && authentication.getPrincipal() instanceof PortalPrincipal p)
+                ? p.getId()
+                : null;
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(donationService.submitManualSbiUtrClaim(portalUserId, request, getClientIp(httpRequest)));
     }
 
     private String getClientIp(HttpServletRequest request) {

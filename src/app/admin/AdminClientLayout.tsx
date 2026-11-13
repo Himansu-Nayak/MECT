@@ -12,6 +12,9 @@ import {
   ShieldAlert,
   UserCog,
   HandHeart,
+  SlidersHorizontal,
+  FileEdit,
+  Image as ImageIcon,
   LogOut,
   ExternalLink,
   Shield,
@@ -54,15 +57,40 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
     return null;
   }
 
-  const navItems = [
-    { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-    { label: "Donors & Ledger", href: "/admin/donors", icon: HandHeart },
-    { label: "Scholarships", href: "/admin/scholarships", icon: GraduationCap },
-    { label: "Volunteers", href: "/admin/volunteers", icon: Users },
-    { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
-    { label: "Audit Logs", href: "/admin/audit-logs", icon: ShieldAlert },
-    { label: "Staff & Users", href: "/admin/users", icon: UserCog },
+  const role = user?.role || "";
+  const allNavItems = [
+    { label: "Dashboard", href: "/admin", icon: LayoutDashboard, roles: null },
+    {
+      label: "Donations & UTR Queue",
+      href: "/admin/donors",
+      icon: HandHeart,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_DONATION_VERIFICATION_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
+      label: "Payment & 80G Settings",
+      href: "/admin/settings",
+      icon: SlidersHorizontal,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
+      label: "CMS Pages",
+      href: "/admin/cms",
+      icon: FileEdit,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_CONTENT_ADMIN", "ROLE_AUDITOR"],
+    },
+    {
+      label: "Media Library",
+      href: "/admin/media",
+      icon: ImageIcon,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_CONTENT_ADMIN", "ROLE_AUDITOR"],
+    },
+    { label: "Scholarships", href: "/admin/scholarships", icon: GraduationCap, roles: null },
+    { label: "Volunteers", href: "/admin/volunteers", icon: Users, roles: null },
+    { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare, roles: null },
+    { label: "Audit Logs", href: "/admin/audit-logs", icon: ShieldAlert, roles: null },
+    { label: "Staff & Users", href: "/admin/users", icon: UserCog, roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN"] },
   ];
+  const navItems = allNavItems.filter((item) => !item.roles || item.roles.includes(role));
 
   return (
     <div className="min-h-screen bg-cream flex flex-col md:flex-row">
@@ -82,9 +110,8 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
 
       {/* Admin Sidebar Navigation */}
       <aside
-        className={`w-full md:w-64 bg-forest text-white flex flex-col shrink-0 border-r border-sand/20 ${
-          mobileNavOpen ? "block" : "hidden md:flex"
-        }`}
+        className={`w-full md:w-64 bg-forest text-white flex flex-col shrink-0 border-r border-sand/20 ${mobileNavOpen ? "block" : "hidden md:flex"
+          }`}
       >
         <div className="p-6 border-b border-white/10 hidden md:block">
           <div className="flex items-center space-x-3">
@@ -129,11 +156,10 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileNavOpen(false)}
-                className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all ${
-                  isActive
+                className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all ${isActive
                     ? "bg-sand text-forest-deep font-semibold shadow-sm"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
-                }`}
+                  }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? "text-ink" : "text-cream"}`} />
                 <span>{item.label}</span>

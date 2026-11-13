@@ -1,17 +1,26 @@
 // motion: owner = Motion
 "use client";
 
-import React, { useState } from "react";
+import React, { useSyncExternalStore, useState } from "react";
 import Link from "next/link";
 import { useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { ORG } from "@content/org";
 import { ShieldCheck, PhoneCall, FileText, Heart, Pause, Play } from "lucide-react";
 
+const emptySubscribe = () => () => {};
+
 export function StatutoryTicker() {
   const [isPaused, setIsPaused] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const shouldReduceMotion = useReducedMotion();
-  const isStatic = Boolean(shouldReduceMotion) || isPaused;
+
+  const effectiveReduceMotion = mounted && Boolean(shouldReduceMotion);
+  const isStatic = effectiveReduceMotion || isPaused;
 
   const credentials = [
     `Regd. Public Charitable Trust (Deed No. ${ORG.trustDeed.deedNumber})`,
@@ -37,7 +46,7 @@ export function StatutoryTicker() {
               <span>Statutory</span>
             </span>
 
-            {!shouldReduceMotion && (
+            {!effectiveReduceMotion && (
               <button
                 type="button"
                 onClick={() => setIsPaused((prev) => !prev)}

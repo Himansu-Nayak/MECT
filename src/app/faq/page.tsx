@@ -177,7 +177,7 @@ const DONATIONS_FAQS: FAQItem[] = [
     category: "Donations",
     question: "Can I make a monetary donation online today?",
     answer:
-      "On this pre-launch informational platform, online payment gateways are inactive pending formal regulatory gazetting. Philanthropists and CSR partners may record an intent of endowment directly with the Secretariat.",
+      "Yes. You can contribute directly on our unified /donate page using Cashfree (UPI, cards, net banking) as the primary gateway, or via verified State Bank of India (SBI) UPI / QR / bank transfer with UTR verification.",
   },
   {
     category: "Donations",
@@ -315,7 +315,7 @@ export default function FAQPage() {
                   <Badge variant="gold">3 Questions</Badge>
                 </div>
                 <p className="text-xs text-ink-sand leading-relaxed">
-                  Zero commission policy, pre-launch endowments, 80G tax deductions, and CSR collaboration.
+                  Zero commission policy, online &amp; SBI contributions, 80G tax deductions, and CSR collaboration.
                 </p>
               </Card>
             </a>
@@ -468,7 +468,7 @@ export default function FAQPage() {
 
             <div className="pt-4 border-t border-white/10 text-[11px] text-white/60">
               <ShieldCheck className="w-3.5 h-3.5 text-cream inline mr-1 -mt-0.5" />
-              Direct Secretariat Helpline: <strong>+91 671 234 5678</strong> (Mon–Fri, 10:00 AM – 5:00 PM IST)
+              Direct Secretariat Desk: <strong>trust.mect@gmail.com</strong> (Mon–Fri, 10:00 AM – 5:00 PM IST)
             </div>
           </Card>
         </Container>

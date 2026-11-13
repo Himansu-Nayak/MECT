@@ -113,7 +113,7 @@ export function FreeEducationSection() {
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                <Link href="/#donate-sbi">
+                <Link href="/donate?programme=EDUCATION_LEARNING">
                   <Button variant="primary" size="lg" className="font-bold shadow-md">
                     <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
                     <span>Donate for Education</span>

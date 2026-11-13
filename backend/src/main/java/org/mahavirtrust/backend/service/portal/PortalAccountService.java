@@ -31,6 +31,7 @@ public class PortalAccountService {
     private final DonationRepository donationRepository;
     private final PaymentRepository paymentRepository;
     private final DonationReceiptRepository receiptRepository;
+    private final ManualBankTransferClaimRepository manualClaimRepository;
     private final NotificationOutboxService outboxService;
     private final EmailTemplateRenderer emailRenderer;
     private final AuditLogService auditLogService;
@@ -45,6 +46,7 @@ public class PortalAccountService {
             DonationRepository donationRepository,
             PaymentRepository paymentRepository,
             DonationReceiptRepository receiptRepository,
+            ManualBankTransferClaimRepository manualClaimRepository,
             NotificationOutboxService outboxService,
             EmailTemplateRenderer emailRenderer,
             AuditLogService auditLogService) {
@@ -57,6 +59,7 @@ public class PortalAccountService {
         this.donationRepository = donationRepository;
         this.paymentRepository = paymentRepository;
         this.receiptRepository = receiptRepository;
+        this.manualClaimRepository = manualClaimRepository;
         this.outboxService = outboxService;
         this.emailRenderer = emailRenderer;
         this.auditLogService = auditLogService;
@@ -90,15 +93,20 @@ public class PortalAccountService {
         List<Donation> donations = donationRepository.findByPortalUserIdOrderByCreatedAtDesc(portalUserId);
         BigDecimal totalSuccessfulAmount = donationRepository.sumSuccessfulAmountByUserId(portalUserId);
         long successfulCount = donationRepository.countSuccessfulByUserId(portalUserId);
-        long pendingCount = donations.stream().filter(d -> "PENDING".equals(d.getStatus()) || "CREATED".equals(d.getStatus())).count();
+        long pendingCount = donations.stream()
+                .filter(d -> "PENDING".equals(d.getStatus()) || "CREATED".equals(d.getStatus()) || "PENDING_VERIFICATION".equals(d.getStatus()))
+                .count();
         long failedCount = donations.stream().filter(d -> "FAILED".equals(d.getStatus()) || "EXPIRED".equals(d.getStatus())).count();
 
         List<Map<String, Object>> history = new ArrayList<>();
+        List<Map<String, Object>> manualClaims = new ArrayList<>();
         Map<String, Object> latestSuccessful = null;
 
         for (Donation d : donations) {
             Payment payment = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(d.getId()).orElse(null);
             DonationReceipt receipt = receiptRepository.findByDonationId(d.getId()).orElse(null);
+            List<ManualBankTransferClaim> claims = manualClaimRepository.findByDonationIdOrderByCreatedAtDesc(d.getId());
+            ManualBankTransferClaim latestClaim = claims.isEmpty() ? null : claims.get(0);
 
             Map<String, Object> row = new LinkedHashMap<>();
             row.put("donationReference", d.getDonationReference());
@@ -112,17 +120,36 @@ public class PortalAccountService {
             row.put("status", d.getStatus());
             row.put("anonymous", d.isAnonymous());
             row.put("dedicationMessage", d.getDedicationMessage());
-            row.put("provider", payment != null ? payment.getProvider() : null);
+            row.put("provider", payment != null ? payment.getProvider() : ("SBI_DIRECT".equals(d.getPaymentMethod()) ? "SBI_DIRECT" : null));
             row.put("providerOrderId", payment != null ? payment.getProviderOrderId() : null);
             row.put("providerPaymentId", payment != null ? payment.getProviderPaymentId() : null);
+            row.put("bankReference", payment != null ? payment.getBankReference() : (latestClaim != null ? latestClaim.getUtrNormalized() : null));
+            row.put("claimReference", latestClaim != null ? latestClaim.getClaimReference() : null);
+            row.put("claimStatus", latestClaim != null ? latestClaim.getStatus() : null);
             row.put("receiptNumber", receipt != null ? receipt.getReceiptNumber() : null);
             row.put("receiptAvailable", receipt != null);
 
             history.add(row);
+            if (latestClaim != null) {
+                Map<String, Object> cm = new LinkedHashMap<>();
+                cm.put("claimReference", latestClaim.getClaimReference());
+                cm.put("donationReference", d.getDonationReference());
+                cm.put("programmeName", d.getProgramme().getName());
+                cm.put("utrNormalized", latestClaim.getUtrNormalized());
+                cm.put("claimedAmount", latestClaim.getClaimedAmount());
+                cm.put("transferDate", latestClaim.getTransferDate());
+                cm.put("status", latestClaim.getStatus());
+                cm.put("verificationNotes", latestClaim.getVerificationNotes());
+                cm.put("createdAt", latestClaim.getCreatedAt());
+                cm.put("reviewedAt", latestClaim.getReviewedAt());
+                manualClaims.add(cm);
+            }
             if (latestSuccessful == null && "SUCCESSFUL".equals(d.getStatus())) {
                 latestSuccessful = row;
             }
         }
+
+        int claimableGuestCount = findUnlinkedDonationsForVerifiedContacts(portalUserId).size();
 
         Map<String, Object> profileMap = null;
         if (profile != null) {
@@ -165,13 +192,74 @@ public class PortalAccountService {
         summary.put("successfulCount", successfulCount);
         summary.put("pendingCount", pendingCount);
         summary.put("failedCount", failedCount);
+        summary.put("claimableGuestDonationsCount", claimableGuestCount);
         summary.put("latestDonation", latestSuccessful);
 
         return Map.of(
                 "account", accountOverview,
                 "donationSummary", summary,
-                "donationHistory", history
+                "donationHistory", history,
+                "manualClaims", manualClaims
         );
+    }
+
+    @Transactional
+    public Map<String, Object> claimGuestDonations(Long portalUserId, String clientIp) {
+        PortalUser user = userRepository.findById(portalUserId)
+                .orElseThrow(() -> new ResourceNotFoundException("Portal user not found"));
+
+        List<Donation> matches = findUnlinkedDonationsForVerifiedContacts(portalUserId);
+        List<String> claimedRefs = new ArrayList<>();
+        boolean hasVerifiedDonation = false;
+
+        for (Donation d : matches) {
+            d.setPortalUser(user);
+            donationRepository.save(d);
+            claimedRefs.add(d.getDonationReference());
+            if ("SUCCESSFUL".equals(d.getStatus())) {
+                hasVerifiedDonation = true;
+            }
+        }
+
+        if (hasVerifiedDonation && !roleRepository.existsByPortalUserIdAndRoleName(portalUserId, PortalRoleName.ROLE_DONOR)) {
+            roleRepository.save(new PortalUserRole(user, PortalRoleName.ROLE_DONOR));
+        }
+
+        if (!claimedRefs.isEmpty()) {
+            auditLogService.record(
+                    "portal:" + user.getUserUuid(),
+                    "GUEST_DONATIONS_CLAIMED",
+                    "DONATION",
+                    String.join(",", claimedRefs),
+                    clientIp,
+                    "Claimed " + claimedRefs.size() + " guest donation(s) matching verified contacts"
+            );
+        }
+
+        Map<String, Object> res = new LinkedHashMap<>();
+        res.put("claimedCount", claimedRefs.size());
+        res.put("claimedReferences", claimedRefs);
+        res.put("message", claimedRefs.isEmpty()
+                ? "No unlinked guest donations matched your verified email or mobile number."
+                : "Linked " + claimedRefs.size() + " previous donation(s) to your account.");
+        return res;
+    }
+
+    private List<Donation> findUnlinkedDonationsForVerifiedContacts(Long portalUserId) {
+        List<PortalVerifiedContact> verified = contactRepository.findByPortalUserIdOrderByVerifiedAtAsc(portalUserId);
+        Map<Long, Donation> dedup = new LinkedHashMap<>();
+        for (PortalVerifiedContact vc : verified) {
+            if ("EMAIL".equalsIgnoreCase(vc.getContactType()) && vc.getContactValue() != null) {
+                for (Donation d : donationRepository.findByDonorEmailIgnoreCaseAndPortalUserIsNull(vc.getContactValue().trim())) {
+                    dedup.put(d.getId(), d);
+                }
+            } else if ("PHONE".equalsIgnoreCase(vc.getContactType()) && vc.getContactValue() != null) {
+                for (Donation d : donationRepository.findByDonorPhoneAndPortalUserIsNull(vc.getContactValue().trim())) {
+                    dedup.put(d.getId(), d);
+                }
+            }
+        }
+        return new ArrayList<>(dedup.values());
     }
 
     @Transactional
