@@ -55,3 +55,4 @@ docker exec mect-postgres psql -U mect_user -d postgres -c "DROP DATABASE ${TEST
 rm -f "${DUMP_FILE}"
 
 echo "=== DRILL COMPLETE & CLEANED ==="
+

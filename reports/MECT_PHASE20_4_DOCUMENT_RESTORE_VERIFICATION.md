@@ -69,3 +69,4 @@ Zero test databases or temporary files remain on the production VPS.
 
 1. **Document Durability Proven:** PostgreSQL `bytea` and custom compressed dumps preserve binary data with 100% cryptographic integrity.
 2. **Unified Recovery:** In the event of a catastrophic disaster, restoring the single `.dump` file fully reconstitutes all historical receipt PDFs, verification documents, and CMS media assets.
+

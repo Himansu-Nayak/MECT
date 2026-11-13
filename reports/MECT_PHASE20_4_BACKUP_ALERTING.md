@@ -70,3 +70,4 @@ if [ -z "${LATEST_DUMP}" ]; then
     /opt/mect/scripts/send-alert.sh "CRITICAL: No fresh MECT backup found in the last 24 hours!"
 fi
 ```
+

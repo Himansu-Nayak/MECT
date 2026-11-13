@@ -65,3 +65,4 @@ In strict adherence to honest and verifiable engineering standards, every system
 ## 5. Formal Handover Sign-Off
 
 The Mahaveer Educational & Charitable Trust (MECT) production platform at **https://mect.org.in/** is fully operational, stabilized, and handed over for live institutional operations.
+

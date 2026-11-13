@@ -176,3 +176,4 @@ curl -I http://127.0.0.1:3001/
      ```sql
      docker exec mect-postgres psql -U mect_user -d mect_db -c "SELECT * FROM audit_logs ORDER BY id DESC LIMIT 50;"
      ```
+
