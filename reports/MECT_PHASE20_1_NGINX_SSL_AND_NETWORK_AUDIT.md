@@ -91,3 +91,4 @@ server {
   - Containers communicate on a private bridge network (`172.x.x.x`).
   - Container ports are strictly bound to `127.0.0.1` loopback on the host (`127.0.0.1:3001`, `127.0.0.1:8081`, `127.0.0.1:5433`).
   - None of the container ports are exposed to `0.0.0.0` or external public interfaces.
+

@@ -68,3 +68,4 @@ $$\begin{aligned}
 ## 5. Certification Sign-Off
 
 The Mahaveer Educational & Charitable Trust (MECT) production platform is certified **STABLE, SECURE, ACCESSIBLE, AND RELEASE-READY**.
+

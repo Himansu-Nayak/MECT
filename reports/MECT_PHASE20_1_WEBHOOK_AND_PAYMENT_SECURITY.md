@@ -47,3 +47,4 @@ $$\text{Signature} = \text{HMAC-SHA256}(\text{raw\_payload} + \text{timestamp}, 
   - Not checked into git repository (verified via `git status` and `.gitignore`).
 - **Secret Distribution:** Environment variables injected into containers strictly at runtime via Docker Compose secrets/env blocks.
 - **Log Sanitation:** Sensitive API credentials (`CASHFREE_CLIENT_SECRET`, `JWT_SECRET`, `POSTGRES_PASSWORD`) are omitted from all application and container logs.
+

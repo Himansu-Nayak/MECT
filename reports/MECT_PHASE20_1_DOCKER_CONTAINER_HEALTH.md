@@ -61,3 +61,4 @@ mect-postgres   0.01%     59.55MiB / 15.61GiB   0.37%     296kB / 417kB     8.19
 
 - **Policy:** `restart: unless-stopped` configured on all services.
 - **Failure Recovery:** Tested via explicit restart commands (`docker restart mect-frontend`, `docker restart mect-backend`). Both containers recovered to `healthy` state automatically within 5s and 25s respectively.
+

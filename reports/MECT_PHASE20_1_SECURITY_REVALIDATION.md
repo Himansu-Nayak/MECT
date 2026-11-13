@@ -46,3 +46,4 @@ content-type: text/html; charset=utf-8
 2. **MIME Confusion Attacks:** Neutralized via `X-Content-Type-Options: nosniff`.
 3. **Database Injection:** Neutralized via Spring Data JPA parameterized queries and strict Hibernate entity validation.
 4. **Privilege Escalation:** Neutralized via container non-root users (`mect`, `nextjs`) with restricted permissions and read-only host mounts where applicable.
+

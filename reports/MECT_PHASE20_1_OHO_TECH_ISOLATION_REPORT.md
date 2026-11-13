@@ -58,3 +58,4 @@ Live telemetry from `pm2 list` and `netstat -tulpn`:
 ## 4. Isolation Verdict
 
 Complete process, network, and database isolation between MECT and OHO TECH is mathematically and forensically confirmed. OHO TECH experienced zero disruption or downtime.
+

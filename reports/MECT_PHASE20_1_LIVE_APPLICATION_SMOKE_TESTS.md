@@ -55,3 +55,4 @@ Executed via automated test suite against the live production origin:
 - **Hydration:** Zero hydration mismatch errors.
 - **Static Assets:** CSS bundles (`/_next/static/css/...`) and JS chunks (`/_next/static/chunks/...`) serve with `Cache-Control: public, max-age=31536000, immutable`.
 - **Favicon & Meta:** Favicon and OpenGraph metadata serve with HTTP 200 OK.
+

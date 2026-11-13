@@ -45,3 +45,4 @@ MECT utilizes a hybrid persistence architecture combining PostgreSQL transaction
 - **Anti-Loss Configuration:**
   - `docker-compose.production.yaml` defines `external: false` with persistent top-level volume definitions.
   - No prune scripts or automated volume cleanups exist on the host.
+

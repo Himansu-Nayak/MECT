@@ -33,3 +33,4 @@ docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\
 
 echo "=== 7. DOCKER HEALTH STATUS ==="
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+

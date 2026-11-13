@@ -49,3 +49,4 @@ Measured from client edge over HTTPS (Cloudflare CDN):
 
 - With the MECT stack consuming only 552 MiB out of 15.61 GiB RAM, the VPS has **13+ GiB of free memory headroom**.
 - The platform can comfortably sustain a 25x increase in concurrent donor traffic without requiring any hardware tier upgrade.
+

@@ -45,3 +45,4 @@ Validate container resiliency, health recovery times, database reconnection hand
 | `mect-backend` | `docker restart` | ~22 seconds | Yes (100% autonomous) | `healthy` |
 | `mect-frontend` | `docker restart` | ~5 seconds | Yes (100% autonomous) | `healthy` |
 | `mect-postgres` | Pre-verified | Immediate (WAL flush) | Yes (100% autonomous) | `healthy` |
+

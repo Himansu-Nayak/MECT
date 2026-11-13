@@ -78,3 +78,4 @@ To prove disaster recovery readiness without impacting the live database, an iso
 ### Disaster Recovery Risk Disclosure:
 - **Single-Server Risk:** Backups currently reside locally on the Hostinger VPS at `/var/backups/mect/`. If the physical Hostinger VPS instance suffers catastrophic hardware loss, local backups would be destroyed.
 - **Remediation Recommendation:** Configure automated off-site synchronization of `/var/backups/mect/*.dump` to an external encrypted destination (e.g., Cloudflare R2, AWS S3, or Google Cloud Storage) using a lightweight daily cron job.
+

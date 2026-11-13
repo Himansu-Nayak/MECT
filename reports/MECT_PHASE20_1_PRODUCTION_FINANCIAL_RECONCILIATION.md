@@ -99,3 +99,4 @@ The financial database is in absolute balance:
 $$\text{Total Realized Donations} = \sum_{\text{status}=\text{SUCCESSFUL}} \text{Amount} = ₹1.00 + ₹1.00 + ₹5.00 = ₹7.00$$
 $$\text{Total Issued Receipts} = \sum \text{Receipt Amount} = ₹1.00 + ₹1.00 + ₹5.00 = ₹7.00$$
 $$\text{Discrepancy} = ₹0.00$$
+
