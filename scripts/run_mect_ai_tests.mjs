@@ -5,7 +5,7 @@ import path from 'path';
 const mectKnowledgeTs = fs.readFileSync(path.resolve('src/lib/ai/mect-knowledge.ts'), 'utf8');
 
 // Build prompt using the source definition
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "[REDACTED_GROQ_KEY]";
+const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
 
 function getSystemPrompt(lang = 'en') {
   const langText = lang === 'or' ? 'Odia (ଓଡ଼ିଆ)' : lang === 'hi' ? 'Hindi (हिन्दी)' : 'English';
