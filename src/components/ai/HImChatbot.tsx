@@ -111,6 +111,7 @@ export function HImChatbot() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [lastFailedPrompt, setLastFailedPrompt] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -132,6 +133,19 @@ export function HImChatbot() {
       sessionStorage.setItem("mect_him_lang", lang);
     } catch {
       // ignore
+    }
+    // Update initial greeting if user hasn't started a custom chat yet
+    if (messages.length === 1 && messages[0].role === "assistant") {
+      const updatedWelcome: Message[] = [
+        {
+          id: messages[0].id,
+          role: "assistant",
+          content: INITIAL_GREETINGS[lang],
+          timestamp: messages[0].timestamp,
+        },
+      ];
+      setMessages(updatedWelcome);
+      persistMessages(updatedWelcome);
     }
   };
 
@@ -316,12 +330,14 @@ export function HImChatbot() {
         content: streamAccumulatorRef.current,
         timestamp: getFormattedTime(),
       };
+      setLastFailedPrompt(null);
       persistMessages([...updatedWithUser, finalAssistantMsg]);
     } catch (err: unknown) {
       if ((err as Error)?.name === "AbortError") {
         return;
       }
       console.error("[HIm Chat Client Error]:", err);
+      setLastFailedPrompt(query);
       const fallbackText =
         language === "or"
           ? "କ୍ଷମା କରିବେ, ଏହି ମୁହୂର୍ତ୍ତରେ ସର୍ଭର ସଂଯୋଗରେ ସମସ୍ୟା ହେଉଛି। ଦୟାକରି କିଛି ସମୟ ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା contact@mect.org.in ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
@@ -567,6 +583,18 @@ export function HImChatbot() {
                     msg.content ? (
                       <div className="space-y-2">
                         {renderFormattedContent(msg.content)}
+                        {lastFailedPrompt && msg.content.includes("contact@mect.org.in") && (
+                          <div className="pt-2">
+                            <button
+                              type="button"
+                              onClick={() => handleSendMessage(lastFailedPrompt)}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-terracotta text-white hover:bg-terracotta-dark transition-all shadow-xs"
+                            >
+                              <RotateCcw className="w-3.5 h-3.5" />
+                              <span>Retry Question</span>
+                            </button>
+                          </div>
+                        )}
                         {msg.id !== "msg-welcome" && (
                           <div className="pt-1.5 border-t border-border-warm/60 flex flex-wrap items-center gap-1.5 text-[10px]">
                             <span className="font-semibold text-ink-sand">Sources:</span>

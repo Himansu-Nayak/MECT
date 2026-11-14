@@ -6,3 +6,4 @@ SET password_hash = '$2b$12$SRzQWbragzf8WJkfQjkreeoWjGwKaMpvBDWlHCpP02qP7BJN9TGA
     failed_login_attempts = 0,
     locked_until = NULL,
     updated_at = NOW();
+

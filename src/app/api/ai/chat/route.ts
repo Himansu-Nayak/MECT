@@ -79,9 +79,14 @@ const INTERNAL_AI_SECRET = process.env.INTERNAL_AI_SECRET || "";
 const AI_ENGINE_MODE = process.env.AI_ENGINE_MODE || "local_with_fallback";
 
 export async function POST(req: NextRequest) {
+  const correlationId = crypto.randomUUID();
+
   // 1. Check for client pre-abort
   if (req.signal.aborted) {
-    return new Response(null, { status: 499 }); // Client Closed Request
+    return new Response(null, {
+      status: 499,
+      headers: { "X-Correlation-Id": correlationId },
+    });
   }
 
   try {
@@ -93,8 +98,12 @@ export async function POST(req: NextRequest) {
         {
           error:
             "Too many requests from this IP. Please wait a minute before sending another message.",
+          correlationId,
         },
-        { status: 429 }
+        {
+          status: 429,
+          headers: { "X-Correlation-Id": correlationId },
+        }
       );
     }
 
@@ -104,8 +113,14 @@ export async function POST(req: NextRequest) {
 
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
-        { error: "Invalid request payload. 'messages' must be a non-empty array." },
-        { status: 400 }
+        {
+          error: "Invalid request payload. 'messages' must be a non-empty array.",
+          correlationId,
+        },
+        {
+          status: 400,
+          headers: { "X-Correlation-Id": correlationId },
+        }
       );
     }
 
@@ -131,8 +146,14 @@ export async function POST(req: NextRequest) {
 
     if (sanitizedMessages.length === 0) {
       return NextResponse.json(
-        { error: "No valid messages found in the request." },
-        { status: 400 }
+        {
+          error: "No valid messages found in the request.",
+          correlationId,
+        },
+        {
+          status: 400,
+          headers: { "X-Correlation-Id": correlationId },
+        }
       );
     }
 
@@ -209,6 +230,7 @@ export async function POST(req: NextRequest) {
           Connection: "keep-alive",
           "X-Accel-Buffering": "no",
           "X-MECT-Engine": "local-independent-qwen",
+          "X-Correlation-Id": correlationId,
         },
       });
     }
@@ -239,7 +261,7 @@ export async function POST(req: NextRequest) {
           controller.close();
         } catch (streamError: unknown) {
           if (!req.signal.aborted) {
-            console.error("[Groq Fallback Stream Error]:", streamError);
+            console.error(`[Groq Fallback Stream Error] [${correlationId}]:`, streamError);
             const errPayload = `data: ${JSON.stringify({
               error: "An error occurred while streaming response.",
             })}\n\n`;
@@ -260,21 +282,29 @@ export async function POST(req: NextRequest) {
         Connection: "keep-alive",
         "X-Accel-Buffering": "no",
         "X-MECT-Engine": "groq-cloud-fallback",
+        "X-Correlation-Id": correlationId,
       },
     });
   } catch (err: unknown) {
     if (req.signal.aborted) {
-      return new Response(null, { status: 499 });
+      return new Response(null, {
+        status: 499,
+        headers: { "X-Correlation-Id": correlationId },
+      });
     }
     const error = err as { message?: string };
-    console.error("[API AI Chat Gateway Exception]:", error?.message || err);
+    console.error(`[API AI Chat Gateway Exception] [${correlationId}]:`, error?.message || err);
 
     return NextResponse.json(
       {
         error:
           "HIm assistant is temporarily experiencing technical difficulties. Please try again shortly or contact contact@mect.org.in directly.",
+        correlationId,
       },
-      { status: 503 }
+      {
+        status: 503,
+        headers: { "X-Correlation-Id": correlationId },
+      }
     );
   }
 }
