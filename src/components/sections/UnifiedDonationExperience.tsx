@@ -528,10 +528,10 @@ export function UnifiedDonationExperience() {
                   key={prog.code}
                   type="button"
                   onClick={() => setSelectedCode(prog.code)}
-                  className={`text-left p-4 rounded-xs border transition-all ${
+                  className={`text-left p-4 rounded-xs border transition-all duration-150 active:scale-[0.99] cursor-pointer ${
                     selected
-                      ? "border-forest bg-forest/5 ring-2 ring-forest/20"
-                      : "border-border-soft bg-cream/30 hover:border-forest/40"
+                      ? "border-forest bg-forest/5 ring-2 ring-forest/20 shadow-xs"
+                      : "border-border-soft bg-cream/30 hover:border-forest/40 hover:bg-cream/60"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
@@ -590,10 +590,10 @@ export function UnifiedDonationExperience() {
                     setAmount(val);
                     setCustomAmountStr(String(val));
                   }}
-                  className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all ${
+                  className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all duration-150 active:scale-[0.98] cursor-pointer ${
                     active
                       ? "bg-forest text-white border-forest shadow-sm"
-                      : "bg-cream/40 text-forest border-border-soft hover:border-forest/50"
+                      : "bg-cream/40 text-forest border-border-soft hover:border-forest/50 hover:bg-cream"
                   }`}
                 >
                   ₹{val.toLocaleString("en-IN")}
@@ -656,23 +656,26 @@ export function UnifiedDonationExperience() {
                 id="donor-full-name"
                 value={donorName}
                 onChange={(e) => setDonorName(e.target.value)}
-                placeholder="e.g. Rajesh Kumar Jain"
+                placeholder="Enter your full name"
                 required
               />
             </div>
 
             <div>
               <label htmlFor="donor-email" className="block text-xs font-semibold text-forest mb-1">
-                Email Address (for PDF receipt) <span className="text-red-600">*</span>
+                Email Address <span className="text-red-600">*</span>
               </label>
               <Input
                 id="donor-email"
                 type="email"
                 value={donorEmail}
                 onChange={(e) => setDonorEmail(e.target.value)}
-                placeholder="name@example.com"
+                placeholder="name@domain.com"
                 required
               />
+              <p className="text-[11px] text-ink-muted mt-1">
+                Receipts are immediately available in your Donor Portal; an electronic copy is queued to this address.
+              </p>
             </div>
 
             <div>
@@ -690,7 +693,7 @@ export function UnifiedDonationExperience() {
 
             <div>
               <label htmlFor="donor-pan" className="block text-xs font-semibold text-forest mb-1">
-                PAN (Optional — for statutory Form 10BD records)
+                PAN (Optional — Statutory Returns)
               </label>
               <Input
                 id="donor-pan"
@@ -700,6 +703,9 @@ export function UnifiedDonationExperience() {
                 placeholder="ABCDE1234F"
                 className="font-mono uppercase"
               />
+              <p className="text-[11px] text-ink-muted mt-1">
+                80G claims are pending CA confirmation. Optional PAN is recorded solely for future statutory filings if approved.
+              </p>
             </div>
 
             <div className="md:col-span-2">
@@ -795,49 +801,20 @@ export function UnifiedDonationExperience() {
             <div className="text-xs font-semibold uppercase tracking-wider text-forest">Select Payment Channel</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {config?.cashfreeEnabled && (
-                <button
-                  type="button"
-                  onClick={() => setPaymentChannel("CASHFREE")}
-                  className={`p-4 rounded-xs border text-left transition-all ${
-                    paymentChannel === "CASHFREE"
-                      ? "border-forest bg-forest/5 ring-2 ring-forest/20"
-                      : "border-border-soft bg-white hover:border-forest/40"
-                  }`}
+                <div
+                  className="p-4 rounded-xs border border-forest bg-forest/5 ring-2 ring-forest/20 text-left"
                 >
                   <div className="flex items-center justify-between">
                     <span className="inline-flex items-center gap-2 font-serif font-bold text-forest">
                       <CreditCard className="w-4 h-4 text-terracotta-dark" />
                       <span>Cashfree Online Checkout</span>
                     </span>
-                    <Badge variant="forest" size="sm">Primary</Badge>
+                    <Badge variant="forest" size="sm">Authorized Online Channel</Badge>
                   </div>
                   <p className="text-xs text-ink-muted mt-1.5">
                     Instant UPI, Cards, NetBanking &amp; Wallets with automatic server-verified PDF receipt.
                   </p>
-                </button>
-              )}
-
-              {config?.sbiQrEnabled && (
-                <button
-                  type="button"
-                  onClick={() => setPaymentChannel("SBI_DIRECT")}
-                  className={`p-4 rounded-xs border text-left transition-all ${
-                    paymentChannel === "SBI_DIRECT"
-                      ? "border-forest bg-forest/5 ring-2 ring-forest/20"
-                      : "border-border-soft bg-white hover:border-forest/40"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 font-serif font-bold text-forest">
-                      <Landmark className="w-4 h-4 text-terracotta-dark" />
-                      <span>SBI Direct UPI / Bank Transfer</span>
-                    </span>
-                    <Badge variant="gold" size="sm">Verified Manual</Badge>
-                  </div>
-                  <p className="text-xs text-ink-muted mt-1.5">
-                    Pay directly via SBI UPI QR / NEFT / IMPS and submit your UTR for accounts verification.
-                  </p>
-                </button>
+                </div>
               )}
             </div>
           </div>
@@ -882,9 +859,14 @@ export function UnifiedDonationExperience() {
                     <strong>₹{gatewayStatusResult.amount.toLocaleString("en-IN")}</strong> ({gatewayStatusResult.programmeName}) is confirmed.
                   </p>
                   {gatewayStatusResult.receiptNumber && (
-                    <p className="text-xs text-emerald-900 mt-1 font-mono">
-                      Official Receipt: <strong>{gatewayStatusResult.receiptNumber}</strong>
-                    </p>
+                    <div className="mt-1 space-y-0.5">
+                      <p className="text-xs text-emerald-900 font-mono">
+                        Official Receipt: <strong>{gatewayStatusResult.receiptNumber}</strong>
+                      </p>
+                      <p className="text-[11px] text-emerald-800">
+                        Cryptographic SHA-256 verified &amp; immutable. Queued to transactional outbox and permanently preserved in your portal.
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
@@ -904,10 +886,13 @@ export function UnifiedDonationExperience() {
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
                     <h2 className="font-serif text-xl font-bold text-amber-950">
-                      SBI Transfer Claim Submitted — Pending Verification
+                      Bank Transfer Verification Pending
                     </h2>
                     <Badge variant="gold" size="sm">{sbiSubmitted.claimStatus}</Badge>
                   </div>
+                  <p className="text-xs text-amber-800 font-semibold mt-1">
+                    UTR submission is a payment claim, not proof of settled funds. An official receipt will be generated only after verified credit in MECT&apos;s bank statement.
+                  </p>
                   <p className="text-sm text-amber-900 mt-1.5 leading-relaxed">{sbiSubmitted.message}</p>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs bg-white/80 border border-amber-200 rounded-xs p-3 font-mono">
                     <div>Claim Ref: <strong>{sbiSubmitted.claimReference}</strong></div>
@@ -1072,152 +1057,6 @@ export function UnifiedDonationExperience() {
                       )}
                     </Button>
                   </div>
-                </div>
-              )}
-
-              {paymentChannel === "SBI_DIRECT" && config?.sbiQrEnabled && (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  {/* Left: Official SBI QR & Bank Details */}
-                  <div className="lg:col-span-5 space-y-4 bg-cream/40 border border-border-soft rounded-xs p-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
-                        <QrCode className="w-4 h-4 text-terracotta-dark" />
-                        <span>Official SBI UPI QR</span>
-                      </span>
-                      <a
-                        href={config.sbiQrImageUrl}
-                        download="mect-sbi-upi-qr.png"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:text-forest underline"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>Download QR</span>
-                      </a>
-                    </div>
-
-                    <div className="bg-white border border-border-soft rounded-xs p-3 flex justify-center">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={config.sbiQrImageUrl}
-                        alt="Official State Bank of India UPI QR for Mahaveer Educational & Charitable Trust"
-                        className="w-48 h-48 object-contain"
-                      />
-                    </div>
-
-                    <div className="bg-amber-50 border border-amber-200 rounded-xs p-3 text-xs text-amber-950 leading-relaxed">
-                      <strong>Beneficiary Verification Warning:</strong> {config.paymentInstructions}
-                    </div>
-
-                    <div className="space-y-2 text-xs">
-                      {[
-                        { key: "upi", label: "UPI ID", value: config.sbiUpiId },
-                        { key: "holder", label: "Account Name", value: config.sbiAccountName },
-                        { key: "acct", label: "Account Number", value: config.sbiAccountNumber },
-                        { key: "ifsc", label: "IFSC Code", value: config.sbiIfsc },
-                        { key: "branch", label: "Branch", value: `${config.sbiBankName} — ${config.sbiBranch}` },
-                      ].map((item) => (
-                        <div key={item.key} className="flex items-center justify-between gap-2 bg-white border border-border-soft rounded-xs px-2.5 py-2">
-                          <div className="min-w-0">
-                            <div className="text-[10px] uppercase text-ink-muted">{item.label}</div>
-                            <div className="font-mono font-semibold text-forest truncate">{item.value}</div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => copyValue(item.key, item.value)}
-                            className="p-1.5 text-ink-muted hover:text-forest shrink-0"
-                            aria-label={`Copy ${item.label}`}
-                          >
-                            {copiedKey === item.key ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right: Structured UTR Submission Form */}
-                  <form onSubmit={handleSubmitSbiUtr} className="lg:col-span-7 space-y-4">
-                    <div>
-                      <h3 className="font-serif font-bold text-forest text-lg">
-                        Submit Your SBI UTR / Bank Reference
-                      </h3>
-                      <p className="text-xs text-ink-muted mt-1">
-                        After transferring <strong>₹{amount.toLocaleString("en-IN")}</strong>, enter your UTR below. MECT Finance will verify the credit against our SBI statement before issuing your official PDF receipt.
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <div className="sm:col-span-2">
-                        <label htmlFor="sbi-utr" className="block text-xs font-semibold text-forest mb-1">
-                          UTR / UPI Transaction Reference <span className="text-red-600">*</span>
-                        </label>
-                        <Input
-                          id="sbi-utr"
-                          value={utrReference}
-                          onChange={(e) => setUtrReference(e.target.value.toUpperCase())}
-                          placeholder="e.g. 412345678901 or SBINR52026..."
-                          className="font-mono uppercase"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="sbi-date" className="block text-xs font-semibold text-forest mb-1">
-                          Transfer Date <span className="text-red-600">*</span>
-                        </label>
-                        <Input
-                          id="sbi-date"
-                          type="date"
-                          max={new Date().toISOString().slice(0, 10)}
-                          value={transferDate}
-                          onChange={(e) => setTransferDate(e.target.value)}
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="sbi-mode" className="block text-xs font-semibold text-forest mb-1">
-                          Transfer Channel / Remitter Name
-                        </label>
-                        <Input
-                          id="sbi-mode"
-                          value={paymentModeNote}
-                          onChange={(e) => setPaymentModeNote(e.target.value)}
-                          placeholder="UPI App / NEFT / IMPS"
-                        />
-                      </div>
-
-                      <div className="sm:col-span-2">
-                        <label htmlFor="sbi-proof" className="block text-xs font-semibold text-forest mb-1">
-                          Additional Payment Reference / Notes (Optional)
-                        </label>
-                        <Input
-                          id="sbi-proof"
-                          value={proofSummary}
-                          onChange={(e) => setProofSummary(e.target.value)}
-                          placeholder="Bank app transaction ID or remitter bank name"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-                      <Button type="button" variant="outline" onClick={() => setStep(4)}>
-                        <ArrowLeft className="w-4 h-4 mr-1.5" />
-                        <span>Back to Review</span>
-                      </Button>
-                      <Button type="submit" variant="primary" size="lg" disabled={submitting}>
-                        {submitting ? (
-                          <>
-                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            <span>Submitting UTR...</span>
-                          </>
-                        ) : (
-                          <>
-                            <ShieldCheck className="w-4 h-4 mr-2" />
-                            <span>Submit UTR for Verification</span>
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                  </form>
                 </div>
               )}
             </Card>

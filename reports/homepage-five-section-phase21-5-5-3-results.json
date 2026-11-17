@@ -1,0 +1,162 @@
+{
+  "timestamp": "2026-11-16T17:09:43.953Z",
+  "sectionCountAudit": {
+    "totalSectionsFound": 5,
+    "exactFiveCount": true,
+    "sectionDetails": [
+      {
+        "index": 1,
+        "id": "hero",
+        "ariaLabel": "Institutional Introduction",
+        "ariaLabelledby": null,
+        "visible": true
+      },
+      {
+        "index": 2,
+        "id": "institutional-intro",
+        "ariaLabel": null,
+        "ariaLabelledby": "institutional-intro-title",
+        "visible": true
+      },
+      {
+        "index": 3,
+        "id": "development-pillars",
+        "ariaLabel": null,
+        "ariaLabelledby": "pillars-section-title",
+        "visible": true
+      },
+      {
+        "index": 4,
+        "id": "stories",
+        "ariaLabel": null,
+        "ariaLabelledby": "field-dispatches-heading",
+        "visible": true
+      },
+      {
+        "index": 5,
+        "id": "institutional-impact",
+        "ariaLabel": null,
+        "ariaLabelledby": "impact-heading",
+        "visible": true
+      }
+    ],
+    "expectedIds": [
+      "hero",
+      "institutional-intro",
+      "development-pillars",
+      "stories",
+      "institutional-impact"
+    ],
+    "actualIds": [
+      "hero",
+      "institutional-intro",
+      "development-pillars",
+      "stories",
+      "institutional-impact"
+    ],
+    "orderMatches": true,
+    "noObsoleteSections": true
+  },
+  "relocatedContentAudit": {
+    "aboutPage": {
+      "hasHowMectWorks": true,
+      "has5Stages": true,
+      "hasCSR1": true
+    },
+    "scholarshipsPage": {
+      "hasCalculator": true,
+      "hasSchemeExplorer": true,
+      "hasDisbursalFlowchart": true
+    },
+    "programmesPage": {
+      "hasFreeEducation": true
+    },
+    "csrPage": {
+      "hasCsrFramework": true
+    },
+    "volunteerPage": {
+      "hasVolunteerForm": true
+    },
+    "contactPage": {
+      "hasInquiryForm": true
+    }
+  },
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPx": 0,
+      "errors": []
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "overflowPx": 0,
+      "errors": []
+    }
+  ],
+  "reducedMotionTest": {
+    "h1Opacity": "1",
+    "sectionsVisible": true,
+    "sectionCount": 5
+  },
+  "consoleErrors": []
+}

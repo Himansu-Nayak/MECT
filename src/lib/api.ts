@@ -208,6 +208,7 @@ export interface AdminInquiry {
   phone: string;
   category: string;
   message: string;
+  status?: string;
   createdAt: string;
 }
 
@@ -514,6 +515,26 @@ export async function getAdminInquiries(
   return safeParseResponse<AdminInquiry[]>(
     response,
     "Failed to load inquiries"
+  );
+}
+
+export async function updateAdminInquiryStatus(
+  id: number,
+  status: string,
+  token: string
+): Promise<AdminInquiry> {
+  const response = await fetch(`${API_BASE_URL}/admin/inquiries/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ status }),
+  });
+
+  return safeParseResponse<AdminInquiry>(
+    response,
+    "Failed to update inquiry status"
   );
 }
 

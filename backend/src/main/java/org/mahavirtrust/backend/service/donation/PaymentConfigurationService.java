@@ -157,22 +157,36 @@ public class PaymentConfigurationService {
     private Map<String, Object> toConfigMap(PaymentConfiguration cfg, boolean includeAuditMeta) {
         Map<String, Object> m = new LinkedHashMap<>();
         m.put("cashfreeEnabled", cfg.isCashfreeEnabled());
-        m.put("sbiQrEnabled", cfg.isSbiQrEnabled());
+        m.put("himEnabled", cfg.isHimEnabled());
         m.put("primaryMethod", cfg.getPrimaryMethod());
         m.put("fallbackEnabled", cfg.isFallbackEnabled());
         m.put("minAmount", cfg.getMinAmount());
         m.put("maxAmount", cfg.getMaxAmount());
         m.put("presetAmounts", parsePresets(cfg.getSuggestedAmounts()));
         m.put("generalFundEnabled", cfg.isGeneralFundEnabled());
-        m.put("sbiBankName", cfg.getSbiBankName());
-        m.put("sbiAccountName", cfg.getSbiAccountName());
-        m.put("sbiAccountNumber", cfg.getSbiAccountNumber());
-        m.put("sbiIfsc", cfg.getSbiIfsc());
-        m.put("sbiBranch", cfg.getSbiBranch());
-        m.put("sbiUpiId", cfg.getSbiUpiId());
-        m.put("sbiQrImageUrl", cfg.getSbiQrImageUrl());
-        m.put("paymentInstructions", cfg.getPaymentInstructions());
-        m.put("gatewayNoticeText", cfg.getGatewayNoticeText());
+
+        // Internal banking credentials are strictly restricted to authenticated administrative sessions (Part 7)
+        if (includeAuditMeta) {
+            m.put("sbiQrEnabled", cfg.isSbiQrEnabled());
+            m.put("sbiBankName", cfg.getSbiBankName());
+            m.put("sbiAccountName", cfg.getSbiAccountName());
+            m.put("sbiAccountNumber", cfg.getSbiAccountNumber());
+            m.put("sbiIfsc", cfg.getSbiIfsc());
+            m.put("sbiBranch", cfg.getSbiBranch());
+            m.put("sbiUpiId", cfg.getSbiUpiId());
+            m.put("sbiQrImageUrl", cfg.getSbiQrImageUrl());
+            m.put("himUpiId", cfg.getHimUpiId());
+            m.put("himMerchantName", cfg.getHimMerchantName());
+            m.put("himInstructions", cfg.getHimInstructions());
+            m.put("himVerificationMode", cfg.getHimVerificationMode());
+            m.put("paymentInstructions", cfg.getPaymentInstructions());
+            m.put("gatewayNoticeText", cfg.getGatewayNoticeText());
+        } else {
+            // Public endpoint suppresses all static bank transfer credentials, IFSC, UPI, QR images and manual UTR instructions
+            m.put("sbiQrEnabled", false);
+            m.put("paymentInstructions", "All contributions are processed securely online through authorized payment gateways. Digital receipts are issued immediately upon transaction confirmation.");
+            m.put("gatewayNoticeText", "Online payments are processed securely via authorized payment gateways. MECT operates strictly through verified digital banking channels.");
+        }
         m.put("statutoryStatus", cfg.getStatutoryStatus());
         m.put("statutoryFinancialYear", cfg.getStatutoryFinancialYear());
         m.put("statutoryEffectiveDate", cfg.getStatutoryEffectiveDate());

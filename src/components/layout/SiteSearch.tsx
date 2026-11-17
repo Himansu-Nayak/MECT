@@ -67,7 +67,7 @@ const VERIFIED_SEARCH_ROUTES: SearchRouteItem[] = [
     label: "Donate (SBI NEFT / UPI)",
     href: "/donate",
     group: "Support",
-    keywords: ["sbi", "bank", "ifsc", "upi", "qr", "donation", "receipt"],
+    keywords: ["donation", "support", "online", "receipt"],
     icon: <Heart className="w-4 h-4 text-terracotta" aria-hidden="true" />,
   },
   {
@@ -298,7 +298,7 @@ export function SiteSearchTrigger() {
                       navigateTo(filtered[activeIndex].href);
                     }
                   }}
-                  placeholder="Search pages, programmes, SBI details, 12A/80G..."
+                  placeholder="Search programmes, statutory disclosures, governance..."
                   aria-label="Search pages and statutory disclosures"
                   className="w-full bg-transparent text-sm text-ink placeholder:text-ink-secondary focus:outline-none"
                 />

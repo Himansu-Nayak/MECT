@@ -7,6 +7,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card, Badge } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/Accordion";
+import { SchemeExplorer } from "@/components/SchemeExplorer";
+import { EligibilityCalculator } from "@/components/EligibilityCalculator";
+import { DirectDisbursalFlowchart } from "@/components/DirectDisbursalFlowchart";
 import { TRUST_CONFIG } from "@/lib/config";
 import {
   CheckCircle2,
@@ -242,6 +245,9 @@ export default function ScholarshipsPage() {
         </Container>
       </section>
 
+      {/* 2B. Interactive Scheme Explorer */}
+      <SchemeExplorer />
+
       {/* 3. Four-Step Application & Appraisal Workflow */}
       <section className="py-20 bg-sand-light border-y border-border-warm">
         <Container size="default" className="space-y-14">
@@ -286,6 +292,9 @@ export default function ScholarshipsPage() {
           </div>
         </Container>
       </section>
+
+      {/* 3B. Direct Disbursal Standard & Flowchart */}
+      <DirectDisbursalFlowchart />
 
       {/* 4. Required Document Checklist */}
       <section id="checklist" className="py-20 md:py-28 bg-cream border-b border-border-warm">
@@ -353,6 +362,9 @@ export default function ScholarshipsPage() {
         </Container>
       </section>
 
+      {/* 4B. Interactive Eligibility Calculator */}
+      <EligibilityCalculator />
+
       {/* 5. Frequently Asked Questions */}
       <section className="py-20 bg-sand-light border-b border-border-warm">
         <Container size="narrow" className="space-y-12">
@@ -392,7 +404,7 @@ export default function ScholarshipsPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
-            <Link href="/#eligibility-calculator">
+            <Link href="#eligibility-calculator">
               <Button variant="gold" size="md">
                 <span>Use Eligibility Calculator</span>
                 <ArrowRight className="w-4 h-4 ml-1" />

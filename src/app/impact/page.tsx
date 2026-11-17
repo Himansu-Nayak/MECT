@@ -48,28 +48,28 @@ export default function ImpactPage() {
   const verifiedImpactMetrics = [
     {
       title: "Education & Learning",
-      metric: "350+ Students",
-      subtext: "Balangir & Puintala Blocks",
+      metric: "350+",
+      subtext: "Recorded student participation entries (FY 2023–24)",
       description:
-        "Daily after-school tutoring in math, science, and English, paired with free textbooks to prevent secondary dropouts.",
+        "Daily after-school tutoring in math, science, and English, paired with free scholastic study materials (350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported).",
       icon: GraduationCap,
       badge: "Shiksha Setu",
     },
     {
       title: "Women Empowerment & Livelihoods",
-      metric: "120+ Women Skilled",
-      subtext: "Certified 6-Month Courses",
+      metric: "120+",
+      subtext: "Cumulative vocational course enrolments (FY 2021–23)",
       description:
-        "Technical apparel fabrication instruction, sewing machine toolkits, and micro-enterprise creation for rural women and SHGs.",
+        "Technical apparel fabrication instruction, sewing machine toolkits, and micro-enterprise mentoring (120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women).",
       icon: Scissors,
       badge: "Swavalamban",
     },
     {
       title: "Safe Water & Community Wellbeing",
-      metric: "10,000+ Citizens Served",
-      subtext: "Western Odisha Summer Relief",
+      metric: "10,000+",
+      subtext: "Recorded water and relief service instances",
       description:
-        "Clean, purified cold drinking water stations and heatwave electrolyte distribution across transit points and hospitals.",
+        "Clean, purified cold drinking water stations and heatwave electrolyte distribution across transit points (10,000+ recorded water and relief service instances, not 10,000 unique citizens).",
       icon: Droplets,
       badge: "Jal & Arogya",
     },

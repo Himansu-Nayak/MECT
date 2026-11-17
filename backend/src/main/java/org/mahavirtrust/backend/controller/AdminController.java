@@ -15,6 +15,7 @@ import org.mahavirtrust.backend.repository.ScholarshipApplicationRepository;
 import org.mahavirtrust.backend.repository.VolunteerRegistrationRepository;
 import org.mahavirtrust.backend.service.AdminUserService;
 import org.mahavirtrust.backend.service.AuditLogService;
+import org.mahavirtrust.backend.service.PublicInquiryService;
 import org.mahavirtrust.backend.service.ScholarshipApplicationService;
 import org.mahavirtrust.backend.service.VolunteerRegistrationService;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,7 @@ public class AdminController {
     private final AdminUserService adminUserService;
     private final AdminUserRepository adminUserRepository;
     private final PublicInquiryRepository inquiryRepository;
+    private final PublicInquiryService inquiryService;
     private final VolunteerRegistrationRepository volunteerRepository;
     private final ScholarshipApplicationRepository scholarshipRepository;
     private final AuditLogService auditLogService;
@@ -43,6 +45,7 @@ public class AdminController {
     public AdminController(AdminUserService adminUserService,
                            AdminUserRepository adminUserRepository,
                            PublicInquiryRepository inquiryRepository,
+                           PublicInquiryService inquiryService,
                            VolunteerRegistrationRepository volunteerRepository,
                            ScholarshipApplicationRepository scholarshipRepository,
                            AuditLogService auditLogService,
@@ -51,6 +54,7 @@ public class AdminController {
         this.adminUserService = adminUserService;
         this.adminUserRepository = adminUserRepository;
         this.inquiryRepository = inquiryRepository;
+        this.inquiryService = inquiryService;
         this.volunteerRepository = volunteerRepository;
         this.scholarshipRepository = scholarshipRepository;
         this.auditLogService = auditLogService;
@@ -151,6 +155,21 @@ public class AdminController {
     @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN', 'APPLICATION_REVIEWER')")
     public ResponseEntity<List<PublicInquiry>> getAllInquiries() {
         return ResponseEntity.ok(inquiryRepository.findAll());
+    }
+
+    @PatchMapping("/inquiries/{id}/status")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN', 'APPLICATION_REVIEWER')")
+    public ResponseEntity<PublicInquiry> updateInquiryStatus(
+            @PathVariable Long id,
+            @RequestBody Map<String, String> body,
+            Authentication authentication) {
+        String actor = authentication != null ? authentication.getName() : "ADMIN";
+        String newStatus = body != null ? body.get("status") : null;
+        if (newStatus == null || newStatus.isBlank()) {
+            return ResponseEntity.badRequest().build();
+        }
+        PublicInquiry updated = inquiryService.updateInquiryStatus(id, newStatus, actor);
+        return ResponseEntity.ok(updated);
     }
 
     @GetMapping("/volunteers")

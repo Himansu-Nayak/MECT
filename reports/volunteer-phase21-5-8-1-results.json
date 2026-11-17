@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-11-16T19:33:42.998Z",
+  "volunteerPageAudit": {
+    "httpStatus": 200,
+    "heroTitle": "Bring Your Time. Share Your Skills. Strengthen a Community.",
+    "hasCorrectHeading": true,
+    "allChecksPassed": true
+  },
+  "opportunityClassificationAudit": {
+    "opportunityCount": 6,
+    "badgesFound": [
+      "INTEREST REGISTRATION",
+      "INTEREST REGISTRATION",
+      "INTEREST REGISTRATION",
+      "INTEREST REGISTRATION",
+      "PLANNED",
+      "PLANNED"
+    ],
+    "badgesAreValid": true,
+    "interestRegistrationCount": 4,
+    "plannedCount": 2,
+    "titlesMatch": true,
+    "titlesFound": [
+      "Remedial Education Mentor",
+      "Digital Skills Guide",
+      "Women's SHG Mentor",
+      "Field Documentation Fellow",
+      "Seasonal Jal Seva Kiosk Volunteer",
+      "District Community Reading Hub Steward"
+    ]
+  },
+  "lifecycleReconciliationAudit": {
+    "hasReconciledHeading": true,
+    "mentionsAwaitingOrientation": true,
+    "mentionsUnderReview": true,
+    "mentionsOrientationCompleted": true,
+    "mentionsActiveMentor": true,
+    "clarifiesNoSelfServiceTracking": true
+  },
+  "safeguardingAudit": {
+    "hasNonCommercialClause": true,
+    "hasSupervisionClause": true,
+    "hasDataPrivacyClause": true,
+    "hasContactRoute": true
+  },
+  "formContractValidationAudit": {
+    "totalFields": 10,
+    "fieldNames": [
+      "fullName",
+      "email",
+      "phone",
+      "district",
+      "roleInterest",
+      "qualification",
+      "availability",
+      "engagementMode",
+      "backgroundNotes",
+      "consentDeclared"
+    ],
+    "noSensitiveFields": true,
+    "hasMandatoryConsent": true,
+    "roleOptionsMaxLen": 40,
+    "roleWithinLimit": true,
+    "modeOptionsMaxLen": 26,
+    "modeWithinLimit": true,
+    "availOptionsMaxLen": 34,
+    "availWithinLimit": true,
+    "dataMinimizationBadge": true
+  },
+  "homepageFiveSectionAudit": {
+    "totalSectionsFound": 5,
+    "exactFiveCount": true,
+    "actualIds": [
+      "hero",
+      "institutional-intro",
+      "development-pillars",
+      "stories",
+      "institutional-impact"
+    ],
+    "expectedIds": [
+      "hero",
+      "institutional-intro",
+      "development-pillars",
+      "stories",
+      "institutional-impact"
+    ],
+    "orderMatches": true,
+    "noSixthSection": true
+  },
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_320px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_360px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_390px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_430px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_768px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_1024px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_1280px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_1440px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_1920px.png",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "overflowPx": 0,
+      "screenshot": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_5_8_1\\volunteer_landscape_844px.png",
+      "status": "PASS"
+    }
+  ],
+  "reducedMotionTest": {
+    "reducedMotionEnabled": true,
+    "activeLongAnimations": 0,
+    "status": "PASS"
+  },
+  "consoleErrors": []
+}

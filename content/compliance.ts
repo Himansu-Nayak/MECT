@@ -16,7 +16,7 @@ export const COMPLIANCE = {
 
   trustDeedWording:
     "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar",
-  panAllotmentConfirmation: "{{CONFIRM: PAN allotment date vs deed date}}",
+  panAllotmentConfirmation: "Allotment Date: 09-08-2023",
 
   historicalOrderSummary: `Order dated ${ORG.ids.taxOrderDate}, covering ${ORG.ids.taxOrderValidityPeriod}`,
   historical12ASummary: `Historical Form 10AC Section 12A Order (URN: ${ORG.ids.urn12A}, dated ${ORG.ids.taxOrderDate}, covering ${ORG.ids.taxOrderValidityPeriod})`,
@@ -24,8 +24,8 @@ export const COMPLIANCE = {
 
   taxStatusNotice: {
     heading: "Tax & Registration Status Notice (FY 2026-27)",
-    summary: `The 80G and 12A orders on file cover ${ORG.ids.taxOrderValidityPeriod} (order dated ${ORG.ids.taxOrderDate}). The position for FY 2026-27 is being confirmed with the Trust's Chartered Accountant.`,
-    caConfirmMarker: "{{CONFIRM: 80G notice wording}}",
+    summary:
+      "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. No current-year deduction is represented on this page.",
     disclosuresLabel: "View Statutory Disclosures",
     disclosuresHref: "/statutory-disclosures",
   },

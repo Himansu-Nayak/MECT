@@ -40,12 +40,9 @@ export interface MECTKnowledge {
     auditPolicy: string;
   };
   bankingDetails: {
-    bankName: string;
-    branch: string;
-    accountName: string;
-    accountNumber: string;
-    ifsc: string;
+    channel: string;
     donationNote: string;
+    portalUrl: string;
   };
   geographicScope: {
     target: string;
@@ -119,18 +116,15 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     darpanId: "OR/2024/0466491",
     mosjeNumber: "OR/00040466",
     taxExemption80GNotice:
-      "MECT holds documented historical Form 10AC approval under legacy Section 80G (URN: AADTM5474FF20241, DIN: AADTM5474FF2024101, dated 29-01-2024) covering AY 2024-25 to AY 2026-27 (FY 2023-24 to FY 2025-26), alongside Form 10AC Section 12A URN AADTM5474FE20231. Under the Income-tax Act, 2025 (Section 133, Section 354 Form 105/107, Section 536), current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
+      "MECT holds documented historical Form 10AC approval under legacy Section 80G (URN: AADTM5474FF20241, DIN: AADTM5474FF2024101, dated 29-01-2024) covering AY 2024-25 to AY 2026-27 (FY 2023-24 to FY 2025-26), alongside Form 10AC Section 12A URN AADTM5474FE20231. Under the Income-tax Act, 2025 (Section 133, Section 354 Form 105/107, Section 536(2)(j)), current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
     disbursalPolicy: "100% Direct-to-College Tuition Disbursal. Grant funds are remitted electronically to accredited institution bank accounts, never paid in cash or private cheques to individual students.",
     cashPolicy: "Zero Cash Handling. No cash transactions, no commercial brokers, no commissions, and zero application fees.",
     auditPolicy: "Statutory accounts are audited annually by independent Chartered Accountants and maintained at the Balangir registered office.",
   },
   bankingDetails: {
-    bankName: "State Bank of India",
-    branch: "Rajendra College Square, Bolangir",
-    accountName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
-    accountNumber: "33341302498",
-    ifsc: "SBIN0001701",
-    donationNote: "Official verified institutional bank account for donations and statutory remittances.",
+    channel: "Verified Online Gateway & Reconciliation Portal",
+    donationNote: "Voluntary contributions are processed securely online through MECT's verified payment portal at /donate with instant cryptographic receipt generation. Direct institutional bank transfer references (UTR) can be submitted for verification.",
+    portalUrl: "/donate",
   },
   geographicScope: {
     target: "All 30 Districts of Odisha, India",
@@ -241,7 +235,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     "NEVER claim regular 80G approval for Tax Year 2026-27 (AY 2027-28) without citing confirmation from the applicable Form 107 approval order. Always distinguish historical AY 2024-25 to 2026-27 coverage from Tax Year 2026-27.",
     "NEVER ask for or accept bank account passwords, UPI PINs, or money. Applications are 100% free.",
     "NEVER promise direct cash payments to students or parents; reiterating the direct-to-college policy is mandatory.",
-    "Always provide verified SBI donation bank credentials only: State Bank of India, Account No. 33341302498, IFSC SBIN0001701 (never cite deprecated Union Bank accounts or unverified UPI QR codes).",
+    "Direct all donation inquiries to the official verified portal at https://mect.org.in/donate for secure online checkout and instant official PDF receipting.",
     "Respond in the user's language: if addressed in Odia, answer in Odia; if in Hindi, answer in Hindi; if in English, answer in English.",
   ],
 };
@@ -285,7 +279,7 @@ VERIFIED INSTITUTIONAL FACTS:
   * "Project Samarth [Draft Proposal]": Community study centers & reference libraries (Pilot: Khordha District).
 - Student Eligibility: Odisha resident; minimum 60% marks in 10th/12th/Diploma; annual family income typically under ₹2,50,000/- (verified via Revenue Authority certificate); enrolled in recognized college.
 - Volunteering & Mentorship: Professionals, educators, and alumni can mentor students in Odisha (academic coaching, career guidance, doubt-clearing). To apply, email profile/CV to ${k.organization.generalEmail}.
-- Donations: Official State Bank of India account — Account Name: MAHAVEER EDUCATIONAL & CHARITABLE TRUST, Account No: ${k.bankingDetails.accountNumber}, IFSC: ${k.bankingDetails.ifsc}, Branch: Rajendra College Square, Bolangir.
+- Donations: Contributions are received securely through MECT's verified online payment portal at https://mect.org.in/donate, supporting Education, Scholarships, and the proposed Grand Hanuman Murti campaign. Instant serialized PDF receipts are issued in the Donor Portal.
 - Statutory Disclosures: PAN: ${k.regulatoryStatus.pan}; CSR: ${k.regulatoryStatus.csrNumber}; NITI Aayog Darpan: ${k.regulatoryStatus.darpanId}; MoSJE: ${k.regulatoryStatus.mosjeNumber}. Historical Form 10AC Section 12A/80G approvals covered AY 2024-25 to AY 2026-27. Current Tax Year 2026-27 approval under Income-tax Act, 2025 is pending official order.
 
 SECURITY & INTEGRITY GUARDRAILS:

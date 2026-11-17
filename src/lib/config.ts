@@ -173,7 +173,7 @@ export const TRUST_CONFIG = {
         {
           label: "Civic Programmes",
           href: "/programmes",
-          description: "Education for 200 students, women's vocational training, Jal Seva water kiosks, and Jan Ahar relief.",
+          description: "Proposed education target for up to 200 students, women's vocational training, Jal Seva water kiosks, and Jan Ahar relief.",
         },
         {
           label: "Higher Education Scholarships",
@@ -207,8 +207,8 @@ export const TRUST_CONFIG = {
         {
           label: "Donate Now",
           href: "/donate",
-          description: "Direct bank transfers to State Bank of India and donation receipt verification.",
-          badge: "SBI Verified",
+          description: "Direct contribution support and official donation receipting.",
+          badge: "Verified",
         },
         {
           label: "Donor & Supporter Portal",
@@ -284,9 +284,9 @@ export const TRUST_CONFIG = {
   // Quantified Verified Impact Highlights
   impactHighlights: [
     { figure: "13+", label: "Years of Civic Service", subtext: "Established by registered Trust Deed in 2013" },
-    { figure: "350+", label: "Rural Students Supported", subtext: "Free remedial coaching & scholastic books" },
-    { figure: "120+", label: "Women Skilled in Tailoring", subtext: "Vocational certificates & livelihood tooling" },
-    { figure: "10,000+", label: "Citizens Reached", subtext: "Jal Seva drinking water & emergency relief" },
+    { figure: "350+", label: "Student Participation Entries", subtext: "Recorded participation entries (FY 2023–24), not necessarily unique students" },
+    { figure: "120+", label: "Vocational Course Enrolments", subtext: "Cumulative enrolments (FY 2021–23), not necessarily uniquely certified women" },
+    { figure: "10,000+", label: "Water & Relief Service Instances", subtext: "Recorded service instances, not necessarily unique citizens" },
   ],
 
   // Guiding Institutional Perspectives

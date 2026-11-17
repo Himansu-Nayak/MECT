@@ -115,16 +115,16 @@ export function PageHero({
           {/* Title & Subtext */}
           <HeroEntrance className="max-w-3xl space-y-4">
             {badge && (
-              <div>
+              <div className="leading-none">
                 <Badge variant={badgeVariant} size="md">
                   {badge}
                 </Badge>
               </div>
             )}
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-white tracking-tight leading-[1.12]">
+            <h1 className="type-h1 text-white">
               {title}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-cream leading-relaxed font-sans max-w-2xl">
+            <p className="type-body-lead text-cream/95 max-w-[65ch]">
               {description}
             </p>
             {actions && <div className="pt-2 flex flex-wrap gap-3">{actions}</div>}

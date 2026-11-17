@@ -24,10 +24,14 @@ export function Accordion({ items }: { items: FAQItem[] }) {
     <div className="divide-y divide-border-warm border-y border-border-warm">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
+        const panelId = `accordion-panel-${index}`;
+        const buttonId = `accordion-btn-${index}`;
         return (
           <div key={index} className="py-4">
             <button
               type="button"
+              id={buttonId}
+              aria-controls={panelId}
               onClick={() => toggle(index)}
               className="flex w-full items-center justify-between text-left gap-4 font-serif text-base sm:text-lg font-bold text-forest hover:text-terracotta-dark transition-colors cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-terracotta"
               aria-expanded={isOpen}
@@ -44,10 +48,16 @@ export function Accordion({ items }: { items: FAQItem[] }) {
               {isOpen && (
                 <m.div
                   key={`panel-${index}`}
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
                   initial={shouldReduceMotion ? false : { opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
-                  transition={{ duration: 0.18 }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0 : 0.22,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   className="pt-3 pr-6 text-xs sm:text-sm text-ink-sand leading-relaxed"
                 >
                   <p>{item.answer}</p>

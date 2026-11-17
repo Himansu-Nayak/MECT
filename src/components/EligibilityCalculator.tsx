@@ -68,7 +68,7 @@ export function EligibilityCalculator() {
         <div className="max-w-4xl mx-auto bg-white border border-border-warm border-l-4 border-l-terracotta p-4 rounded-xs text-xs text-ink flex items-start gap-3">
           <Info className="w-5 h-5 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
           <p className="leading-relaxed font-sans">
-            <strong>Preliminary Discovery Notice:</strong> This interactive calculator is an exploratory self-assessment tool. Indicative scheme matching does not constitute an official grant sanction, eligibility confirmation, or binding financial commitment. Formal awards are contingent upon verified income certificates, accredited college enrollment, and independent Scrutiny Committee approval under the Trust Deed.
+            <strong>Preliminary Discovery Notice:</strong> This interactive calculator is an exploratory self-assessment tool. Indicative scheme matching does not constitute an official grant sanction, eligibility confirmation, or binding financial commitment. Formal awards are contingent upon verified income certificates, verified educational institution enrollment, and approval by the authorized body under the Trust Deed.
           </p>
         </div>
 
@@ -202,7 +202,7 @@ export function EligibilityCalculator() {
                   </Badge>
                 </div>
                 <p className="text-xs text-ink-secondary leading-relaxed font-sans">
-                  Proposed higher education tuition fee grants remitted directly to accredited colleges in Odisha. Designed for students from households with verified annual income under ₹2,50,000.
+                  Proposed higher education tuition fee grants remitted directly to verified educational institutions in Odisha. Designed for students from households with verified annual income under ₹2,50,000.
                 </p>
                 <div className="pt-1 flex flex-wrap items-center justify-between gap-2 text-xs border-t border-border-warm">
                   <span className="text-[11px] text-forest font-bold">

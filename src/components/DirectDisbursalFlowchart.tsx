@@ -51,7 +51,11 @@ export function DirectDisbursalFlowchart() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-forest text-cream border-b border-sand/25 relative overflow-hidden">
+    <section
+      id="direct-disbursal"
+      aria-label="Direct Disbursal Standard"
+      className="py-20 md:py-28 bg-forest text-cream border-b border-sand/25 relative overflow-hidden"
+    >
       {/* Subtle Architectural Texture Pattern */}
       <div
         className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(#E5C499_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"

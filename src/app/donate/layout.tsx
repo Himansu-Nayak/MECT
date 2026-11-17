@@ -1,9 +1,9 @@
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Donate — Direct State Bank of India Transfer & Receipt Desk",
+  title: "Donate — Unified Contribution & Transparent Receipting Portal",
   description:
-    "Support education and community programmes of Mahaveer Educational & Charitable Trust (MECT) via State Bank of India NEFT, RTGS, IMPS or SBI UPI.",
+    "Support education, scholarships, community welfare, and the proposed Grand Hanuman Murti initiative of Mahaveer Educational & Charitable Trust (MECT) with secure online checkout and instant verified receipting.",
   path: "/donate",
   ogImage: "/images/og-donate.png",
 });

@@ -87,8 +87,8 @@ export function SchemeExplorer() {
 
   return (
     <section
-      id="programs"
-      className="py-20 md:py-28 bg-white border-y border-border-warm"
+      id="scheme-explorer"
+      className="py-20 md:py-28 bg-white border-y border-border-warm scroll-mt-24"
       aria-label="Institutional Initiatives and Schemes Explorer"
     >
       <Container size="default" className="space-y-12">

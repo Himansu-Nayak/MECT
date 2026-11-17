@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-11-17T10:37:16.433Z",
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 110,
+      "logoVisible": true,
+      "logoWidth": 34,
+      "donateVisible": true,
+      "screenshot": "header-320px.png"
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 110,
+      "logoVisible": true,
+      "logoWidth": 34,
+      "donateVisible": true,
+      "screenshot": "header-360px.png"
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 110,
+      "logoVisible": true,
+      "logoWidth": 34,
+      "donateVisible": true,
+      "screenshot": "header-390px.png"
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 110,
+      "logoVisible": true,
+      "logoWidth": 34,
+      "donateVisible": true,
+      "screenshot": "header-430px.png"
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-768px.png"
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-1024px.png"
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-1280px.png"
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-1440px.png"
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-1920px.png"
+    },
+    {
+      "viewport": "landscape-844px",
+      "width": 844,
+      "height": 390,
+      "overflowPass": true,
+      "isSticky": true,
+      "headerHeight": 114,
+      "logoVisible": true,
+      "logoWidth": 42,
+      "donateVisible": true,
+      "screenshot": "header-landscape-844px.png"
+    }
+  ],
+  "dropdownTest": {
+    "openState": {
+      "ariaExpanded": "true",
+      "flyoutVisible": true,
+      "childLinksCount": 3,
+      "childLinks": [
+        "About the TrustOur 13+ year history, multi-sector mission, leadership, and operational footprint in Odisha.",
+        "Governance & BoardRegistered Trust Deed, managing trustee, and honorary fiduciary code.",
+        "Statutory DisclosuresVerified12A, 80G, NGO Darpan & MoSJE certificates and official filings."
+      ]
+    },
+    "escapeDismissal": true
+  },
+  "overlayDesktopTest": {
+    "openState": {
+      "overlayVisible": true,
+      "role": "dialog",
+      "ariaModal": "true",
+      "ariaLabelledBy": "institutional-nav-title",
+      "hasAccessibleName": true,
+      "bodyOverflowLocked": true,
+      "charterHeading": "Dignified Education, Community Healthcare & L",
+      "institutionalGivingCardPresent": true,
+      "navLinksCount": 25,
+      "closeButtonFocused": true
+    },
+    "closeState": {
+      "overlayClosed": true,
+      "bodyScrollRestored": true
+    }
+  },
+  "overlayMobileTest": {
+    "360px": {
+      "openCheck": {
+        "overlayVisible": true,
+        "horizontalOverflow": false,
+        "touchTargetViolations": 0,
+        "donateNowVisible": true
+      }
+    },
+    "390px": {
+      "openCheck": {
+        "overlayVisible": true,
+        "horizontalOverflow": false,
+        "touchTargetViolations": 0,
+        "donateNowVisible": true
+      }
+    }
+  },
+  "scrollResponsiveTest": {
+    "initial": {
+      "paddingTop": "14px",
+      "paddingBottom": "14px",
+      "height": 73
+    },
+    "scrolled": {
+      "paddingTop": "11.6197px",
+      "paddingBottom": "11.6197px",
+      "height": 66,
+      "backdropFilter": "blur(7.14078px)",
+      "boxShadow": "none"
+    },
+    "compressionDelta": 7,
+    "hasElevation": false
+  },
+  "reducedMotionTest": {
+    "overlayImmediateOpacity": "1",
+    "overlayImmediateTransform": "none",
+    "overlayVisible": true
+  },
+  "routeRegression": [
+    {
+      "name": "Home",
+      "path": "/",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "About",
+      "path": "/about",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Programmes",
+      "path": "/programmes",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Impact",
+      "path": "/impact",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Governance",
+      "path": "/governance",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "CSR Partnerships",
+      "path": "/csr-partnerships",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Scholarships",
+      "path": "/scholarships",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Volunteer",
+      "path": "/volunteer",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Reports",
+      "path": "/reports",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Donate",
+      "path": "/donate",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Contact",
+      "path": "/contact",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Statutory Disclosures",
+      "path": "/statutory-disclosures",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Donor Portal Login",
+      "path": "/portal/login",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "FAQ",
+      "path": "/faq",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    },
+    {
+      "name": "Accessibility",
+      "path": "/accessibility",
+      "status": 200,
+      "headerPresent": true,
+      "overflowPass": true
+    }
+  ],
+  "performance": {},
+  "consoleErrors": []
+}

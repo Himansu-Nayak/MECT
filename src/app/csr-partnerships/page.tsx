@@ -15,6 +15,7 @@ import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
 import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
 import { DotField } from "@/components/motion/DotField";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import {
   Briefcase,
   ShieldCheck,
@@ -80,9 +81,9 @@ export default function CSRPartnershipsPage() {
     {
       sector: "Schedule VII (ii)",
       title: "Remedial Rural Education & Digital Learning Labs",
-      partnerValue: "Prevents Secondary Dropouts • 350+ Students per Cluster",
+      partnerValue: "Prevents Secondary Dropouts • 350+ Participation Entries",
       description:
-        "Sponsor after-school remedial coaching centres, supply STEM textbook libraries, and deploy computer learning labs in rural Balangir and Western Odisha blocks.",
+        "Sponsor after-school remedial coaching centres, supply STEM textbook libraries, and deploy computer learning labs in rural Balangir and Western Odisha blocks (350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported).",
       deliverables: [
         "Branded rural coaching centres equipped with desks and teaching aids",
         "Free student study kits (textbooks, notebooks, geometry sets)",
@@ -94,9 +95,9 @@ export default function CSRPartnershipsPage() {
     {
       sector: "Schedule VII (iii)",
       title: "Women's Vocational Tailoring & Livelihood Centers",
-      partnerValue: "Empowers 120+ Rural Women • Sustainable Micro-Enterprises",
+      partnerValue: "Empowers Rural Women • 120+ Enrolments",
       description:
-        "Fund 6-month intensive tailoring, garment design, and craft workshops. Equip certified women graduates with sewing machine toolkits for home-based micro-enterprises.",
+        "Fund intensive tailoring, garment design, and craft workshops. Equip certified women graduates with sewing machine toolkits for home-based micro-enterprises (120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women).",
       deliverables: [
         "Fully equipped stitching centers with pedal and electric sewing machines",
         "Master trainer honorariums and certified syllabus execution",
@@ -108,9 +109,9 @@ export default function CSRPartnershipsPage() {
     {
       sector: "Schedule VII (i)",
       title: "Safe Drinking Water Purification (Jal Seva)",
-      partnerValue: "10,000+ Citizens Served • Eradicates Summer Heat Exhaustion",
+      partnerValue: "10,000+ Service Instances • Summer Hydration Relief",
       description:
-        "Establish permanent community RO/UV drinking water kiosks in rural transit hubs and hospital zones, complemented by annual summer heatwave hydration stations.",
+        "Establish community drinking water kiosks in rural transit hubs and hospital zones, complemented by annual summer heatwave hydration stations (10,000+ recorded water and relief service instances, not 10,000 unique citizens).",
       deliverables: [
         "Solar-backed water purification units with daily quality testing",
         "Hygienic stainless steel and earthen storage distribution kiosks",
@@ -174,67 +175,68 @@ export default function CSRPartnershipsPage() {
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.08}>
             {csrTracks.map((track, idx) => {
               const Icon = track.icon;
               return (
-                <Card
-                  key={idx}
-                  variant="elevated"
-                  className="p-8 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-5 flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-border-warm">
-                      <span className="text-xs font-bold text-forest bg-forest/10 px-2.5 py-0.5 rounded-xs font-mono">
-                        {track.sector}
-                      </span>
-                      <span className="text-[11px] font-semibold text-forest">
-                        ✓ {track.partnerValue}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 border border-sand/40">
-                        <Icon className="w-5 h-5 text-cream" />
+                <StaggerItem key={idx}>
+                  <Card
+                    variant="elevated"
+                    className="p-8 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-5 flex flex-col justify-between h-full"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                        <span className="text-xs font-bold text-forest bg-forest/10 px-2.5 py-0.5 rounded-xs font-mono">
+                          {track.sector}
+                        </span>
+                        <span className="text-[11px] font-semibold text-forest">
+                          ✓ {track.partnerValue}
+                        </span>
                       </div>
-                      <div>
-                        <h3 className="font-serif text-xl font-bold text-terracotta-dark">
-                          {track.title}
-                        </h3>
-                        <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
-                          {track.description}
-                        </p>
+
+                      <div className="flex items-start gap-4">
+                        <div className="w-11 h-11 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 border border-sand/40">
+                          <Icon className="w-5 h-5 text-cream" />
+                        </div>
+                        <div>
+                          <h3 className="font-serif text-xl font-bold text-terracotta-dark">
+                            {track.title}
+                          </h3>
+                          <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
+                            {track.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Key Deliverables */}
+                      <div className="p-4 bg-sand-light rounded-xs border border-border-warm space-y-2 font-sans">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">
+                          Corporate Deliverables &amp; Auditing
+                        </span>
+                        <ul className="space-y-1.5 text-xs text-ink">
+                          {track.deliverables.map((d, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0 mt-0.5" />
+                              <span>{d}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
-                    {/* Key Deliverables */}
-                    <div className="p-4 bg-sand-light rounded-xs border border-border-warm space-y-2 font-sans">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">
-                        Corporate Deliverables &amp; Auditing
-                      </span>
-                      <ul className="space-y-1.5 text-xs text-ink">
-                        {track.deliverables.map((d, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0 mt-0.5" />
-                            <span>{d}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="pt-2">
+                      <Link href="#inquiry">
+                        <Button variant="secondary" size="sm" className="w-full justify-center text-xs">
+                          <span>Partner on this Project</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </Button>
+                      </Link>
                     </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <Link href="#inquiry">
-                      <Button variant="secondary" size="sm" className="w-full justify-center text-xs">
-                        <span>Partner on this Project</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
+                  </Card>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -250,37 +252,43 @@ export default function CSRPartnershipsPage() {
             theme="dark"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <FileCheck className="w-8 h-8 text-cream" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Utilization Certificates &amp; Vouchers
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Project disbursements are reconciled with bills, vouchers, and vendor invoices, with Utilization Certificates (UC) prepared for corporate CSR partners.
-              </p>
-            </div>
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.08}>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <FileCheck className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Utilization Certificates &amp; Vouchers
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Project disbursements are reconciled with bills, vouchers, and vendor invoices, with Utilization Certificates (UC) prepared for corporate CSR partners.
+                </p>
+              </div>
+            </StaggerItem>
 
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <ShieldCheck className="w-8 h-8 text-cream" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Milestone-Based Tranche Disbursal
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Project capital is released in tranches linked to verified field milestones (e.g. classroom setup, machine delivery, graduation exams), ensuring complete programmatic alignment.
-              </p>
-            </div>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <ShieldCheck className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Milestone-Based Tranche Disbursal
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Project capital is released in tranches linked to verified field milestones (e.g. classroom setup, machine delivery, graduation exams), ensuring complete programmatic alignment.
+                </p>
+              </div>
+            </StaggerItem>
 
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <Landmark className="w-8 h-8 text-cream" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Co-Branded Impact Recognition
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Centres, water kiosks, and learning kits carry co-branded corporate signage in compliance with CSR norms, accompanied by high-resolution photographic and video audit assets.
-              </p>
-            </div>
-          </div>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <Landmark className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Co-Branded Impact Recognition
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Centres, water kiosks, and learning kits carry co-branded corporate signage in compliance with CSR norms, accompanied by high-resolution photographic and video audit assets.
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerGroup>
         </Container>
       </section>
 
@@ -351,7 +359,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    placeholder="e.g. Jindal Steel / Tata Power"
+                    placeholder="Enter enterprise or corporate name"
                   />
                   <Input
                     id="csr-contact"
@@ -359,7 +367,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    placeholder="e.g. Rajesh Mohanty"
+                    placeholder="Enter contact person's name"
                   />
                 </div>
 
@@ -370,7 +378,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.designation}
                     onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
-                    placeholder="e.g. Head of CSR / VP HR"
+                    placeholder="Enter designation (e.g. CSR Lead / Director)"
                   />
                   <Input
                     id="csr-email"
@@ -379,7 +387,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="rajesh@enterprise.com"
+                    placeholder="corporate@domain.com"
                   />
                 </div>
 
@@ -391,7 +399,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 98XXXXXXXX"
                   />
                   <Select
                     id="csr-budget"

@@ -25,12 +25,12 @@ export const TRUSTEES: TrusteeProfile[] = [
   },
   {
     id: "other-trustees",
-    name: "Additional Trustees ({{CONFIRM: trustee list}})",
+    name: "Additional Trustees (Under Trustee Confirmation)",
     initials: "BT",
     role: "Honorary Board of Trustees (3–9 Members per Deed)",
     deedClause: "Clause 8(1) & Section 9 Clause XVI",
     details:
-      "Under Clause 8 of the registered Trust Deed, the Board comprises 3 to 9 honorary trustees serving without salary or remuneration. Full names, designations, and consented biographies of additional trustees will be published here upon confirmation ({{CONFIRM: trustee list}}).",
+      "Under Clause 8 of the registered Trust Deed, the Board comprises 3 to 9 honorary trustees serving without salary or remuneration. Full names, designations, and consented biographies of additional trustees will be published here upon secretarial confirmation.",
     status: "Awaiting Trustee Confirmation",
     isConfirmed: false,
   },

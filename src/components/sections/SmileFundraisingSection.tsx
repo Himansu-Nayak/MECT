@@ -93,7 +93,7 @@ export function SmileFundraisingSection() {
                   <ul className="space-y-2 text-xs text-ink font-sans">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
-                      <span>Remit via NEFT, RTGS, or IMPS to the Trust&apos;s State Bank of India account.</span>
+                      <span>Contribute securely through our verified online donation portal at /donate.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />

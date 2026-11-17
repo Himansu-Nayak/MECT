@@ -9,6 +9,10 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
+  experimental: {
+    cpus: 1,
+    workerThreads: false,
+  },
   outputFileTracingRoot: path.resolve(process.cwd()),
   images: {
     formats: ["image/avif", "image/webp"],

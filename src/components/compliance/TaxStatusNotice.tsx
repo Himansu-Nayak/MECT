@@ -59,10 +59,7 @@ export function TaxStatusNotice({
               isDark ? "text-cream/95" : "text-ink-sand",
             ].join(" ")}
           >
-            {COMPLIANCE.taxStatusNotice.summary}{" "}
-            <span className="font-mono text-[11px] opacity-85">
-              {COMPLIANCE.taxStatusNotice.caConfirmMarker}
-            </span>
+            {COMPLIANCE.taxStatusNotice.summary}
           </p>
         </div>
       </div>

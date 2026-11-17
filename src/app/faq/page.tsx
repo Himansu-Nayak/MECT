@@ -177,13 +177,13 @@ const DONATIONS_FAQS: FAQItem[] = [
     category: "Donations",
     question: "Can I make a monetary donation online today?",
     answer:
-      "Yes. You can contribute directly on our unified /donate page using Cashfree (UPI, cards, net banking) as the primary gateway, or via verified State Bank of India (SBI) UPI / QR / bank transfer with UTR verification.",
+      "Yes. You can contribute directly on our unified /donate page using authorized online checkout via Cashfree (UPI, cards, net banking) with instant automated digital receipting and payment acknowledgement.",
   },
   {
     category: "Donations",
-    question: "Will donations be eligible for Section 80G tax deductions?",
+    question: "Are donations eligible for Section 80G tax deductions?",
     answer:
-      "Yes. Following completion of statutory certifications, all eligible donations will receive formal Section 80G tax deduction receipts with QR-coded digital audit verification.",
+      "Historical statutory registration documents are available in the disclosures archive. Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. No current-year deduction is represented on this page.",
   },
   {
     category: "Donations",
@@ -315,7 +315,7 @@ export default function FAQPage() {
                   <Badge variant="gold">3 Questions</Badge>
                 </div>
                 <p className="text-xs text-ink-sand leading-relaxed">
-                  Zero commission policy, online &amp; SBI contributions, 80G tax deductions, and CSR collaboration.
+                  Zero commission policy, authorized online checkout, statutory disclosure archive, and CSR collaboration.
                 </p>
               </Card>
             </a>
@@ -421,7 +421,7 @@ export default function FAQPage() {
                   <SectionHeader
                     badge="Transparency & Donors"
                     title="Endowments & Non-Intermediary Pledge"
-                    subtitle="Zero commission principles, Section 80G tax deductions, and CSR collaboration protocols."
+                    subtitle="Zero commission principles, statutory transparency guidelines, and CSR collaboration protocols."
                   />
                   <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">
                     <Accordion items={DONATIONS_FAQS} />

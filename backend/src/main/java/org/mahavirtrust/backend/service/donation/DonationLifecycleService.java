@@ -1077,8 +1077,8 @@ public class DonationLifecycleService {
 
     @Transactional
     public Map<String, Object> submitManualSbiUtrClaim(Long optionalPortalUserId, SubmitManualSbiUtrRequest req, String clientIp) {
-        Map<String, Object> publicConfig = paymentConfigurationService.getPublicConfigMap();
-        if (!Boolean.TRUE.equals(publicConfig.get("sbiQrEnabled"))) {
+        PaymentConfiguration paymentConfig = paymentConfigurationService.getOrCreateConfig();
+        if (!paymentConfig.isSbiQrEnabled()) {
             throw new IllegalArgumentException("Manual SBI bank/UPI transfer claims are currently disabled.");
         }
         paymentConfigurationService.validateDonationAmount(req.amount());
@@ -1086,7 +1086,7 @@ public class DonationLifecycleService {
         DonationProgramme programme = programmeRepository.findByCode(req.programmeCode().trim())
                 .filter(DonationProgramme::isActive)
                 .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
-        if (programme.isGeneralFund() && !Boolean.TRUE.equals(publicConfig.get("generalFundEnabled"))) {
+        if (programme.isGeneralFund() && !paymentConfig.isGeneralFundEnabled()) {
             throw new IllegalArgumentException("General Fund contributions are currently disabled by MECT administration.");
         }
 

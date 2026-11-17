@@ -696,7 +696,12 @@ export function HImChatbot() {
 
             {/* Quick Starter Prompts */}
             {messages.length === 1 && (
-              <div className="pt-2 pb-1 space-y-2 animate-in fade-in duration-300">
+              <m.div
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="pt-2 pb-1 space-y-2"
+              >
                 <span className="text-[11px] font-semibold text-forest uppercase tracking-wider block">
                   Suggested Queries:
                 </span>
@@ -713,7 +718,7 @@ export function HImChatbot() {
                     </button>
                   ))}
                 </div>
-              </div>
+              </m.div>
             )}
 
             <div ref={messagesEndRef} />

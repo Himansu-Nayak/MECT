@@ -2,88 +2,38 @@ import React from "react";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
-import { Reveal } from "@/components/motion/Reveal";
 import { ScrollIndex } from "@/components/motion/ScrollIndex";
-import { EmptyState } from "@/components/motion/EmptyState";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { TRUST_CONFIG } from "@/lib/config";
+import { ReportsLibrarySection } from "@/components/sections/ReportsLibrarySection";
 import {
   FileText,
   ShieldCheck,
   CheckCircle2,
-  Download,
   Calendar,
   FileCheck,
   Scale,
   ArrowRight,
-  ExternalLink,
   Receipt,
   Heart,
   Landmark,
+  Building2,
+  BookOpen,
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Annual Reports & Financial Disclosures",
+  title: "Institutional Transparency & Public Records Library",
   description:
-    "Annual activity summaries (FY 2021–2024), expenditure stewardship principles, and Secretariat inspection procedures for Mahaveer Educational & Charitable Trust (MECT).",
+    "An Account of Our Work. A Record of Our Responsibility. Access verified annual activity reports, statutory registrations, and governance policies for Mahaveer Educational & Charitable Trust (MECT).",
   path: "/reports",
   ogImage: "/images/og-disclosures.png",
 });
 
 export default function ReportsPage() {
-  const annualReports = [
-    {
-      year: "FY 2023–24",
-      title: "Annual Activity & Statutory Progress Report (FY 2023-24)",
-      referenceCode: "AR-2023-24-MECT",
-      status: "Activity Summary on Record",
-      summary:
-        "Covers the issuance of CBDT Form 10AC historical Section 12A & 80G orders (AY 2024-25 to AY 2026-27), continuation of the Balangir Community Learning Centre, remedial coaching across Balangir and Puintala blocks, and seasonal Jal Seva water stations.",
-      highlights: [
-        "Income Tax Form 10AC 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241) recorded (dated 29-01-2024)",
-        "Balangir Community Learning Centre learning & resource sessions (established Feb 2023)",
-        "350+ rural students coached across Balangir and Puintala remedial centres",
-        "10,000+ documented beneficiary hydration events during peak Western Odisha summers",
-      ],
-      auditStatus: "Signed CA audit statements retained at Secretariat for public inspection",
-    },
-    {
-      year: "FY 2022–23",
-      title: "Annual Activity & Vocational Livelihood Report (FY 2022-23)",
-      referenceCode: "AR-2022-23-MECT",
-      status: "Activity Summary on Record",
-      summary:
-        "Documents training batches at the Women's Vocational Tailoring & Livelihood Centre in Balangir, graduating over 120 rural women across 6-month stitching courses, alongside Jan Ahar food distribution near Balangir District Headquarters Hospital.",
-      highlights: [
-        "120+ rural women graduated in vocational tailoring and garment cutting cohorts",
-        "Sewing machine toolkits distributed to support home-based stitching livelihoods",
-        "Cooked Jan Ahar meal distribution for hospital patient attendants in Balangir",
-        "Summer hydration points and ORS distribution during high-temperature periods",
-      ],
-      auditStatus: "Annual accounts & ITR retained at Balangir Trust Office for inspection",
-    },
-    {
-      year: "FY 2021–22",
-      title: "Annual Activity & Educational Recovery Report (FY 2021-22)",
-      referenceCode: "AR-2021-22-MECT",
-      status: "Activity Summary on Record",
-      summary:
-        "Focused on post-pandemic scholastic continuity for rural students in Balangir, reopening remedial coaching centres, distributing textbook and stationery kits, and supplying dry-ration relief to daily-wage and destitute households.",
-      highlights: [
-        "Remedial coaching centres reopened across Puintala and Balangir rural clusters",
-        "Textbook, notebook, and stationery kits distributed across school batches (over 280 kits recorded)",
-        "Seasonal essential commodity and food relief for destitute rural households",
-        "Strict adherence to honorary non-remunerative trustee service under Deed Clause XVI",
-      ],
-      auditStatus: "Full expenditure registers reconciled and maintained at Balangir Secretariat",
-    },
-  ];
-
-  const financialStandards = [
+  const fiduciarySafeguards = [
     {
       title: "Direct Programme Allocation Focus",
       description:
@@ -93,74 +43,108 @@ export default function ReportsPage() {
     {
       title: "Zero Trustee Remuneration",
       description:
-        "In strict adherence to Trust Deed Clause XVI, all trustees serve purely in an honorary capacity with zero salary, sitting fees, or personal commissions.",
+        "In strict adherence to registered Trust Deed Clause XVI, all trustees serve purely in an honorary capacity with zero salary, sitting fees, or personal commissions.",
       icon: Scale,
     },
     {
       title: "Statutory Audit Process",
       description:
-        "Trust accounts are prepared under Trust Deed Clause 16; certified audit statements are published in the archive below as they are finalized ({{CONFIRM: audited accounts and Form 10B}}).",
+        "Trust accounts are prepared annually under Deed Clause XVI; certified audit statements are finalized with our Chartered Accountant for statutory compliance under the Indian Trusts Act, 1882.",
       icon: ShieldCheck,
     },
     {
       title: "Public Inspection Rights",
       description:
-        "Certified copies of annual balance sheets and expenditure ledgers are open for public examination at our Balangir Registered Office and Bhubaneswar Secretariat.",
+        "Certified copies of annual balance sheets and expenditure ledgers are open for physical examination at our Balangir Registered Office and Bhubaneswar Corporate Secretariat.",
       icon: Landmark,
     },
+  ];
+
+  const reportingOverviewStats = [
+    { label: "Published Institutional Records", value: "10", detail: "On official record" },
+    { label: "Reporting Periods Covered", value: "2013–2024", detail: "Founding to FY 2023–24" },
+    { label: "Physical Archive Locations", value: "2 Desks", detail: "Balangir HQ & Bhubaneswar" },
+    { label: "Remuneration Drawn by Trustees", value: "₹0", detail: "Clause XVI Non-remunerative" },
   ];
 
   return (
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Public Accountability Archive • Audited Statements"
-        title="Annual Activity Reports, Audited Balance Sheets & Financial Disclosures"
-        description="Transparent stewardship is non-negotiable. Mahaveer Educational & Charitable Trust (MECT) publishes certified annual reports, financial audits, and project outcomes for open public inspection."
-        breadcrumbs={[{ label: "Impact", href: "/impact" }, { label: "Annual Reports" }]}
+        badge="Institutional Transparency • Public Records Archive"
+        title="An Account of Our Work. A Record of Our Responsibility."
+        description="Public philanthropy requires complete documentary accountability. Mahaveer Educational & Charitable Trust (MECT) publishes authentic annual activity summaries, government registration credentials, and governance policies on official record."
+        breadcrumbs={[{ label: "Governance", href: "/governance" }, { label: "Public Records Library" }]}
         actions={
           <>
-            <Link href="#archive">
+            <Link href="#library">
               <Button variant="gold" size="sm">
-                <span>View Reports Archive</span>
+                <span>Explore Records Library</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
             <Link href="/statutory-disclosures">
               <Button variant="dark-outline" size="sm">
                 <ShieldCheck className="w-3.5 h-3.5 mr-1 text-cream" />
-                <span>Statutory Compliance Vault</span>
+                <span>Statutory Registrations Vault</span>
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* 2. Fiduciary Standards Strip */}
+      {/* 2. Scroll Index Navigation */}
       <ScrollIndex
         items={[
-          { id: "standards", label: "Fiduciary Safeguards" },
-          { id: "archive", label: "Annual Reports Archive" },
-          { id: "news-updates", label: "News & Press Releases" },
+          { id: "overview", label: "Reporting Overview" },
+          { id: "safeguards", label: "Fiduciary Safeguards" },
+          { id: "library", label: "Records Library" },
+          { id: "inspection", label: "Inspection Rights" },
         ]}
       />
-      <section id="standards" className="py-20 bg-cream border-b border-border-warm scroll-mt-24">
+
+      {/* 3. Factual Reporting Overview Bar */}
+      <section id="overview" className="py-12 bg-cream border-b border-border-warm scroll-mt-24">
+        <Container size="default">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {reportingOverviewStats.map((stat, idx) => (
+              <div
+                key={idx}
+                className="p-5 bg-white border border-border-warm rounded-xs shadow-xs space-y-1 text-center font-sans"
+              >
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-forest block">
+                  {stat.value}
+                </span>
+                <span className="text-xs font-semibold text-terracotta-dark block">
+                  {stat.label}
+                </span>
+                <span className="text-[11px] text-ink-sand block">
+                  {stat.detail}
+                </span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. Fiduciary Safeguards Section */}
+      <section id="safeguards" className="py-20 bg-white border-b border-border-warm scroll-mt-24">
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Fiduciary Safeguards"
-            title="Accounting Standards & Fiscal Integrity"
-            subtitle="Every rupee entrusted to MECT is managed under multi-tier auditing and transparent statutory governance."
+            title="Accounting Standards &amp; Fiscal Integrity"
+            subtitle="Every contribution entrusted to MECT is governed by registered Trust Deed guidelines and multi-tier institutional accountability."
             align="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {financialStandards.map((item, idx) => {
+            {fiduciarySafeguards.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <Card
                   key={idx}
                   variant="elevated"
-                  className="p-6 bg-white border-border-warm shadow-xs space-y-3 font-sans"
+                  className="p-6 bg-cream border-border-warm shadow-xs space-y-3 font-sans"
                 >
                   <div className="w-10 h-10 rounded-xs bg-terracotta text-white flex items-center justify-center border border-sand/40">
                     <Icon className="w-5 h-5 text-cream" />
@@ -178,129 +162,33 @@ export default function ReportsPage() {
         </Container>
       </section>
 
-      {/* 3. Filterable Fiscal Year Reports Archive */}
-      <section id="archive" className="py-20 md:py-28 bg-white" aria-label="Annual Reports Archive">
-        <Container size="default" className="space-y-14">
-          <SectionHeader
-            badge="Verified Records Archive"
-            title="Annual Reports & Activity Summaries (FY 2021–2024)"
-            subtitle="Explore certified annual progress logs documenting ground operations in Balangir and Western Odisha."
-            align="center"
-          />
+      {/* 5. Filterable Public Records & Transparency Library */}
+      <ReportsLibrarySection />
 
-          <div className="space-y-8">
-            {annualReports.map((report, idx) => (
-              <Reveal key={report.referenceCode} delay={idx * 0.06}>
-              <Card
-                variant="elevated"
-                className="p-8 sm:p-10 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-6"
-              >
-                {/* Header Strip */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="font-serif text-2xl font-bold text-terracotta-dark">
-                      {report.year}
-                    </span>
-                    <Badge variant="contrast-gold">
-                      {report.referenceCode}
-                    </Badge>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-forest font-bold font-sans">
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>{report.status}</span>
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-terracotta-dark">
-                    {report.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-ink-sand mt-2 leading-relaxed font-sans">
-                    {report.summary}
-                  </p>
-                </div>
-
-                {/* Highlights Grid */}
-                <div className="p-5 bg-cream rounded-xs border border-border-warm space-y-2.5 font-sans">
-                  <span className="text-xs font-bold uppercase tracking-wider text-terracotta-dark block">
-                    Key Audited Milestones &amp; Operations
-                  </span>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-ink-sand">
-                    {report.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0 mt-0.5" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Footer Strip */}
-                <div className="pt-3 border-t border-border-warm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans">
-                  <span className="text-ink-sand font-medium">
-                    Audit Status: <strong className="text-terracotta-dark">{report.auditStatus}</strong>
-                  </span>
-                  <Link href="/contact?subject=Annual%20Report%20Inspection%20Request">
-                    <Button variant="secondary" size="sm" className="gap-1.5 text-xs">
-                      <Download className="w-3.5 h-3.5 text-terracotta-dark" />
-                      <span>Request Official Audit Copy</span>
-                    </Button>
-                  </Link>
-                </div>
-              </Card>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 3B. News & Press Releases Empty State */}
-      <section id="news-updates" className="py-16 bg-cream border-t border-border-warm scroll-mt-24">
-        <Container size="narrow" className="space-y-6">
-          <SectionHeader
-            badge="Public Notices"
-            title="News &amp; Press Releases"
-            subtitle="Official announcements and field updates verified by the Trust Secretariat."
-            align="center"
-          />
-          <EmptyState
-            title="No press releases currently published"
-            description="Verified institutional circulars and annual activity summaries are published in the Reports Archive above or inspected via the Trust Secretariat."
-            action={
-              <Link href="/contact">
-                <Button variant="outline" size="sm">
-                  Contact Trust Secretariat
-                </Button>
-              </Link>
-            }
-          />
-        </Container>
-      </section>
-
-      {/* 4. Inspection Rights & Fiduciary Reassurance */}
-      <section className="py-20 bg-sand-light text-ink border-t border-border-warm">
+      {/* 6. Inspection Rights & Public Secretariat Access */}
+      <section id="inspection" className="py-20 bg-sand-light text-ink border-t border-border-warm scroll-mt-24">
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6 bg-white border border-border-warm rounded-xs p-8 sm:p-10 shadow-xs">
-            <Badge variant="contrast-gold">
-              Statutory Transparency Guarantee
+            <Badge variant="forest">
+              Statutory Transparency Right
             </Badge>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight">
               Right to Inspect Certified Trust Financials
             </h2>
             <p className="text-sm text-ink leading-relaxed font-sans max-w-2xl mx-auto">
-              In accordance with Indian non-profit standards and public trust governance, any citizen, donor, or CSR partner is entitled to inspect physical audited ledgers at our Balangir Registered Office and Bhubaneswar Corporate Secretariat.
+              In accordance with Indian non-profit standards and public trust governance under the Indian Trusts Act, 1882, any citizen, donor, or CSR partner is entitled to inspect physical audited ledgers at our Balangir Registered Office and Bhubaneswar Corporate Secretariat.
             </p>
             <div className="pt-2 flex flex-wrap justify-center gap-4">
               <Link href="/statutory-disclosures">
                 <Button variant="gold" size="lg" className="shadow-sm font-bold">
                   <FileCheck className="w-4 h-4 mr-2" />
-                  <span>View 12A, 80G &amp; CSR-1 Credentials</span>
+                  <span>View Statutory Disclosures Vault</span>
                 </Button>
               </Link>
-              <Link href="/donate">
+              <Link href="/contact?subject=Document%20Inspection%20Appointment">
                 <Button variant="outline" size="lg" className="font-semibold">
-                  <Heart className="w-4 h-4 mr-1.5" />
-                  <span>Support Our Mission — Donate</span>
+                  <Calendar className="w-4 h-4 mr-1.5" />
+                  <span>Schedule Physical Inspection</span>
                 </Button>
               </Link>
             </div>

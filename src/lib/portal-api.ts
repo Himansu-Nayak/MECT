@@ -878,4 +878,117 @@ export async function deleteAdminMedia(token: string, assetKey: string): Promise
   if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to delete media asset."));
 }
 
+export interface PublicDocumentDto {
+  id: number;
+  documentKey: string;
+  title: string;
+  category: string;
+  financialYear: string;
+  issueDate?: string | null;
+  publicationDate: string;
+  version: string;
+  issuingAuthority: string;
+  summary: string;
+  fileName?: string | null;
+  contentType: string;
+  fileSize: number;
+  sha256Hash?: string | null;
+  status: string;
+  visibility: string;
+  storageType: string;
+  hasDownload: boolean;
+  downloadUrl?: string | null;
+  uploadedBy: string;
+  approvedBy?: string | null;
+  approvedAt?: string | null;
+  withdrawalReason?: string | null;
+  displayOrder: number;
+  createdAt: string;
+}
+
+export interface DocumentUploadPayload {
+  documentKey?: string;
+  title: string;
+  category: string;
+  financialYear: string;
+  issueDate?: string;
+  publicationDate?: string;
+  version?: string;
+  issuingAuthority: string;
+  summary: string;
+  visibility?: string;
+  status?: string;
+}
+
+export async function fetchPublicDocuments(
+  category?: string,
+  financialYear?: string,
+  query?: string
+): Promise<PublicDocumentDto[]> {
+  const params = new URLSearchParams();
+  if (category && category !== "ALL") params.append("category", category);
+  if (financialYear && financialYear !== "ALL") params.append("financialYear", financialYear);
+  if (query && query.trim()) params.append("q", query.trim());
+
+  const qs = params.toString();
+  const url = `${API_BASE_URL}/public/documents${qs ? `?${qs}` : ""}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load public documents."));
+  return res.json();
+}
+
+export async function fetchAdminDocuments(token: string): Promise<PublicDocumentDto[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/documents`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load admin document library."));
+  return res.json();
+}
+
+export async function uploadAdminDocument(
+  token: string,
+  file: File | null,
+  meta: DocumentUploadPayload
+): Promise<PublicDocumentDto> {
+  const form = new FormData();
+  if (file) form.append("file", file);
+  if (meta.documentKey) form.append("documentKey", meta.documentKey);
+  form.append("title", meta.title);
+  form.append("category", meta.category);
+  form.append("financialYear", meta.financialYear);
+  if (meta.issueDate) form.append("issueDate", meta.issueDate);
+  if (meta.publicationDate) form.append("publicationDate", meta.publicationDate);
+  if (meta.version) form.append("version", meta.version);
+  form.append("issuingAuthority", meta.issuingAuthority);
+  form.append("summary", meta.summary);
+  if (meta.visibility) form.append("visibility", meta.visibility);
+  if (meta.status) form.append("status", meta.status);
+
+  const res = await fetch(`${API_BASE_URL}/admin/documents`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: form,
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to upload document."));
+  return res.json();
+}
+
+export async function updateAdminDocumentStatus(
+  token: string,
+  id: number,
+  status: string,
+  withdrawalReason?: string
+): Promise<PublicDocumentDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/documents/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status, withdrawalReason }),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to update document status."));
+  return res.json();
+}
+
 

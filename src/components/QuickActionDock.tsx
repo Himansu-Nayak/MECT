@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import {
   Heart,
   Briefcase,
@@ -20,6 +21,7 @@ export function QuickActionDock() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Show compact mobile dock after scrolling past hero actions, and auto-tuck away when reaching footer
   useEffect(() => {
@@ -171,13 +173,19 @@ export function QuickActionDock() {
 
       {/* Mobile Floating Action Button & Accessible Modal Sheet (print:hidden) */}
       <div className="xl:hidden print:hidden">
-        {isOpen && (
-          <div
-            className="fixed inset-0 bg-forest-deep/55 backdrop-blur-xs z-40 transition-opacity animate-in fade-in duration-200"
-            onClick={() => setIsOpen(false)}
-            aria-hidden="true"
-          />
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <m.div
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              className="fixed inset-0 bg-forest-deep/55 backdrop-blur-xs z-40 transition-opacity"
+              onClick={() => setIsOpen(false)}
+              aria-hidden="true"
+            />
+          )}
+        </AnimatePresence>
 
         {((showMobileDock && !isNearFooter) || isOpen) && (
           <div className="fixed bottom-[max(0.625rem,env(safe-area-inset-bottom))] right-[62px] sm:bottom-5 sm:right-20 z-40">
@@ -199,15 +207,20 @@ export function QuickActionDock() {
           </div>
         )}
 
-        {isOpen && (
-          <div
-            ref={modalRef}
-            id="mobile-quick-actions-sheet"
-            className="fixed bottom-18 sm:bottom-20 right-4 sm:right-5 w-[calc(100vw-2rem)] max-w-xs bg-forest text-cream border border-sand/40 rounded-md shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile Quick Access Services"
-          >
+        <AnimatePresence>
+          {isOpen && (
+            <m.div
+              ref={modalRef}
+              id="mobile-quick-actions-sheet"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed bottom-18 sm:bottom-20 right-4 sm:right-5 w-[calc(100vw-2rem)] max-w-xs bg-forest text-cream border border-sand/40 rounded-md shadow-2xl p-3 z-50"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile Quick Access Services"
+            >
             <div className="px-2 py-1.5 border-b border-white/15 mb-2 flex items-center justify-between">
               <span className="text-[10px] uppercase font-bold tracking-wider text-sand">
                 Quick Institutional Access
@@ -246,8 +259,9 @@ export function QuickActionDock() {
                 );
               })}
             </div>
-          </div>
+          </m.div>
         )}
+        </AnimatePresence>
       </div>
     </>
   );

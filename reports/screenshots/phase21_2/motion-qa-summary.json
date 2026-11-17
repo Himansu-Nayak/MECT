@@ -1,0 +1,430 @@
+{
+  "timestamp": "2026-11-16T07:07:27.629Z",
+  "consoleErrors": [],
+  "results": [
+    {
+      "viewport": "320px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-320px-normal.png"
+    },
+    {
+      "viewport": "320px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-320px-normal.png"
+    },
+    {
+      "viewport": "320px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-320px-normal.png"
+    },
+    {
+      "viewport": "320px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-320px-normal.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-360px-normal.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-360px-normal.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-360px-normal.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-360px-normal.png"
+    },
+    {
+      "viewport": "390px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-390px-normal.png"
+    },
+    {
+      "viewport": "390px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-390px-normal.png"
+    },
+    {
+      "viewport": "390px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "131",
+        "131",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-390px-normal.png"
+    },
+    {
+      "viewport": "390px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-390px-normal.png"
+    },
+    {
+      "viewport": "768px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-768px-normal.png"
+    },
+    {
+      "viewport": "768px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-768px-normal.png"
+    },
+    {
+      "viewport": "768px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-768px-normal.png"
+    },
+    {
+      "viewport": "768px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-768px-normal.png"
+    },
+    {
+      "viewport": "1024px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-1024px-normal.png"
+    },
+    {
+      "viewport": "1024px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-1024px-normal.png"
+    },
+    {
+      "viewport": "1024px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "138",
+        "138",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-1024px-normal.png"
+    },
+    {
+      "viewport": "1024px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-1024px-normal.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-1440px-normal.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-1440px-normal.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "126",
+        "126",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-1440px-normal.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-1440px-normal.png"
+    },
+    {
+      "viewport": "1920px",
+      "mode": "normal-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Stronger communities begin with opportun",
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-1920px-normal.png"
+    },
+    {
+      "viewport": "1920px",
+      "mode": "normal-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Strengthening People, Families & Communi",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-1920px-normal.png"
+    },
+    {
+      "viewport": "1920px",
+      "mode": "normal-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Education, Livelihoods & Community Wellb",
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-1920px-normal.png"
+    },
+    {
+      "viewport": "1920px",
+      "mode": "normal-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "h1Text": "Corporate Partnerships for Community Dev",
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-1920px-normal.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "reduced-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-360px-reduced.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "reduced-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-360px-reduced.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "reduced-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-360px-reduced.png"
+    },
+    {
+      "viewport": "360px",
+      "mode": "reduced-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-360px-reduced.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "reduced-motion",
+      "page": "/",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [
+        "13+ Years",
+        "350+",
+        "120+"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\home-1440px-reduced.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "reduced-motion",
+      "page": "/about",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\about-1440px-reduced.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "reduced-motion",
+      "page": "/programmes",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [
+        "200",
+        "200",
+        "200"
+      ],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\programmes-1440px-reduced.png"
+    },
+    {
+      "viewport": "1440px",
+      "mode": "reduced-motion",
+      "page": "/csr-partnerships",
+      "overflow": true,
+      "h1Visible": true,
+      "statSample": [],
+      "screenshotPath": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\reports\\screenshots\\phase21_2\\csr-1440px-reduced.png"
+    }
+  ]
+}

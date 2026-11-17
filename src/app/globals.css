@@ -4,37 +4,175 @@
 
 @layer base {
   :root {
-    /* Official Institutional Colour System — Terracotta, Warm Sand & Forest Charcoal */
-    --color-primary: #A45E44;
-    --color-primary-dark: #874A35;
+    /* =========================================================================
+       1. Core Brand Colour System (Authoritative MECT Identity)
+       ========================================================================= */
+    --color-primary: #A45E44;         /* Terracotta Primary Accent */
+    --color-primary-dark: #874A35;    /* Deep Terracotta (WCAG AA text/links on Cream/Sand) */
 
-    --color-sand: #E5C499;
-    --color-sand-light: #F0DEC5;
+    --color-sand: #E5C499;           /* Warm Sand Accent */
+    --color-sand-light: #F0DEC5;     /* Light Sand (Bands, Callouts) */
 
-    --color-forest: #283730;
-    --color-forest-deep: #1D2924;
+    --color-forest: #283730;         /* Forest Charcoal (Headings, PageHero, Footer) */
+    --color-forest-deep: #1D2924;    /* Deep Forest Charcoal (Tickers, High-contrast dark) */
 
-    --color-sage: #D2D6C8;
-    --color-cream: #F3E4D2;
+    --color-sage: #D2D6C8;           /* Muted Sage (Institutional Accent & Strip) */
+    --color-cream: #F3E4D2;          /* Warm Cream Canvas (Global Background) */
 
-    --color-white: #FFFFFF;
-    --color-text: #26332E;
-    --color-text-secondary: #66736C;
-    /* Documented WCAG 2.2 AA adjustment for muted body text rendered on Sand/Cream/Sage (>= 4.56:1) */
-    --color-text-on-sand: #4B5751;
+    --color-white: #FFFFFF;          /* Pure White (Card Elevated Surfaces) */
+    --color-text: #26332E;           /* Primary Ink (7.95:1–13.16:1 Contrast) */
+    --color-text-secondary: #66736C; /* Secondary Ink (4.96:1 on Pure White) */
+    --color-text-on-sand: #4B5751;   /* Calibrated WCAG 2.2 AA Secondary Ink on Sand/Cream/Sage (>= 4.56:1) */
 
-    --color-border: #DDD4C7;
+    --color-border: #DDD4C7;         /* Standard Hairline Border */
+    --color-border-subtle: rgba(221, 212, 199, 0.55);
     --color-border-accent: rgba(164, 94, 68, 0.35);
+    --color-border-dark: rgba(229, 196, 153, 0.25);
 
     /* Semantic Feedback Tokens */
     --color-crimson: #991B1B;
     --color-crimson-dark: #7F1D1D;
+    --color-success: #1E6B47;
+    --color-success-bg: #E8F5EE;
+    --color-warning: #92540F;
+    --color-warning-bg: #FEF6EB;
+    --color-info: #1B5E78;
+    --color-info-bg: #EDF7FA;
+
+    /* =========================================================================
+       2. Semantic Surface Hierarchy
+       ========================================================================= */
+    --surface-canvas: var(--color-cream);
+    --surface-card: var(--color-white);
+    --surface-card-subtle: rgba(243, 228, 210, 0.65);
+    --surface-sand: var(--color-sand);
+    --surface-sand-light: var(--color-sand-light);
+    --surface-sage: var(--color-sage);
+    --surface-dark: var(--color-forest);
+    --surface-dark-deep: var(--color-forest-deep);
+    --surface-accent: var(--color-primary);
+    --surface-accent-dark: var(--color-primary-dark);
+
+    /* =========================================================================
+       3. Semantic Text Hierarchy
+       ========================================================================= */
+    --text-primary: var(--color-text);
+    --text-secondary: var(--color-text-secondary);
+    --text-on-sand: var(--color-text-on-sand);
+    --text-on-dark: var(--color-white);
+    --text-on-dark-secondary: var(--color-cream);
+    --text-on-dark-muted: rgba(243, 228, 210, 0.85);
+    --text-accent: var(--color-primary);
+    --text-accent-dark: var(--color-primary-dark);
+
+    /* =========================================================================
+       4. Fluid Typography Scale (Desktop 1440px to Mobile 360px via clamp)
+       ========================================================================= */
+    /* Display / Hero Landmark */
+    --type-display-size: clamp(2.25rem, 1.8rem + 2vw, 3.625rem);
+    --type-display-line-height: 1.12;
+    --type-display-tracking: -0.025em;
+    --type-display-weight: 600;
+
+    /* Heading 1 (Page Titles & Major Features) */
+    --type-h1-size: clamp(1.875rem, 1.55rem + 1.45vw, 2.75rem);
+    --type-h1-line-height: 1.16;
+    --type-h1-tracking: -0.02em;
+    --type-h1-weight: 600;
+
+    /* Heading 2 (Section Headers & Component Anchors) */
+    --type-h2-size: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+    --type-h2-line-height: 1.22;
+    --type-h2-tracking: -0.018em;
+    --type-h2-weight: 600;
+
+    /* Heading 3 (Cards, Module Headers & Sub-sections) */
+    --type-h3-size: clamp(1.25rem, 1.125rem + 0.55vw, 1.5rem);
+    --type-h3-line-height: 1.28;
+    --type-h3-tracking: -0.012em;
+    --type-h3-weight: 600;
+
+    /* Heading 4 (Minor Subheadings, Form Titles & Metrics) */
+    --type-h4-size: clamp(1.0625rem, 1rem + 0.28vw, 1.2rem);
+    --type-h4-line-height: 1.35;
+    --type-h4-tracking: -0.005em;
+    --type-h4-weight: 600;
+
+    /* Body Large (Lead / Introductory Paragraphs / Hero Descriptions) */
+    --type-body-lead-size: clamp(1.0625rem, 1rem + 0.28vw, 1.1875rem);
+    --type-body-lead-line-height: 1.62;
+    --type-body-lead-tracking: 0em;
+
+    /* Standard Body (Primary Content & Paragraph Copy) */
+    --type-body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+    --type-body-line-height: 1.65;
+    --type-body-tracking: -0.005em;
+
+    /* Supporting Body (Cards, Lists, Footers, Sub-descriptions) */
+    --type-body-sm-size: clamp(0.8125rem, 0.78rem + 0.12vw, 0.875rem);
+    --type-body-sm-line-height: 1.55;
+    --type-body-sm-tracking: 0em;
+
+    /* Eyebrow / Overline (Badges, Category Headers, Structural Tags) */
+    --type-eyebrow-size: clamp(0.6875rem, 0.65rem + 0.12vw, 0.75rem);
+    --type-eyebrow-line-height: 1.4;
+    --type-eyebrow-tracking: 0.08em;
+    --type-eyebrow-weight: 600;
+
+    /* Caption / Metadata (Legal, Timestamps, Disclaimers) */
+    --type-caption-size: clamp(0.6875rem, 0.65rem + 0.1vw, 0.75rem);
+    --type-caption-line-height: 1.45;
+    --type-caption-tracking: 0.03em;
+
+    /* Optimal Editorial Paragraph Measure (Line Lengths) */
+    --measure-prose: 65ch;
+    --measure-narrow: 50ch;
+    --measure-wide: 75ch;
+
+    /* =========================================================================
+       5. Spatial Hierarchy (4/8-point Grid)
+       ========================================================================= */
+    --space-1: 0.25rem;    /* 4px */
+    --space-2: 0.5rem;     /* 8px */
+    --space-3: 0.75rem;    /* 12px */
+    --space-4: 1rem;       /* 16px */
+    --space-5: 1.25rem;    /* 20px */
+    --space-6: 1.5rem;     /* 24px */
+    --space-8: 2rem;       /* 32px */
+    --space-10: 2.5rem;    /* 40px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+    --space-20: 5rem;      /* 80px */
+    --space-24: 6rem;      /* 96px */
+
+    /* Fluid Section Vertical Rhythm */
+    --section-padding-y: clamp(3rem, 2rem + 3.5vw, 6rem);
+    --section-padding-y-compact: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+
+    /* =========================================================================
+       6. Disciplined Institutional Border Radii
+       ========================================================================= */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+
+    /* =========================================================================
+       7. Editorial Soft Surface Elevation (Physical Paper / Matte Layers)
+       ========================================================================= */
+    --shadow-subtle: 0 1px 3px 0 rgba(29, 41, 36, 0.05), 0 1px 2px -1px rgba(29, 41, 36, 0.04);
+    --shadow-card: 0 4px 12px -2px rgba(29, 41, 36, 0.06), 0 2px 4px -2px rgba(29, 41, 36, 0.04);
+    --shadow-elevated: 0 12px 28px -6px rgba(29, 41, 36, 0.08), 0 4px 12px -4px rgba(29, 41, 36, 0.05);
+    --shadow-float: 0 20px 36px -8px rgba(29, 41, 36, 0.12), 0 8px 16px -6px rgba(29, 41, 36, 0.06);
   }
 
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 7.25rem;
     overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   @media (min-width: 1024px) {
@@ -61,13 +199,21 @@
   .font-serif,
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+    font-weight: 600;
     letter-spacing: -0.015em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   .font-mono,
   code {
     font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
   }
 
   ::selection {
@@ -77,6 +223,10 @@
 }
 
 @theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
   --color-terracotta: var(--color-primary);
   --color-terracotta-dark: var(--color-primary-dark);
   --color-sand: var(--color-sand);
@@ -89,6 +239,21 @@
   --color-ink-secondary: var(--color-text-secondary);
   --color-ink-sand: var(--color-text-on-sand);
   --color-border-warm: var(--color-border);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-accent: var(--color-border-accent);
+  --color-border-dark: var(--color-border-dark);
+  --color-surface-canvas: var(--color-cream);
+  --color-surface-card: var(--color-white);
+  --color-surface-sand: var(--color-sand);
+  --color-surface-sand-light: var(--color-sand-light);
+  --color-surface-sage: var(--color-sage);
+  --color-surface-dark: var(--color-forest);
+  --color-surface-dark-deep: var(--color-forest-deep);
+  --color-surface-accent: var(--color-primary);
+  --color-surface-accent-dark: var(--color-primary-dark);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-info: var(--color-info);
   --color-chart-line-primary: var(--chart-line-primary);
   --color-chart-line-secondary: var(--chart-line-secondary);
   --color-chart-brush-border: var(--chart-brush-border);
@@ -230,6 +395,194 @@
   border-color: var(--color-border-accent);
 }
 
+/* =========================================================================
+   Fluid Editorial Typography Utilities
+   ========================================================================= */
+@utility type-display {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-line-height);
+  letter-spacing: var(--type-display-tracking);
+  font-weight: var(--type-display-weight);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+@utility type-h1 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-line-height);
+  letter-spacing: var(--type-h1-tracking);
+  font-weight: var(--type-h1-weight);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+@utility type-h2 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-line-height);
+  letter-spacing: var(--type-h2-tracking);
+  font-weight: var(--type-h2-weight);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+@utility type-h3 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-tracking);
+  font-weight: var(--type-h3-weight);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+@utility type-h4 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h4-size);
+  line-height: var(--type-h4-line-height);
+  letter-spacing: var(--type-h4-tracking);
+  font-weight: var(--type-h4-weight);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+@utility type-body-lead {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-lead-size);
+  line-height: var(--type-body-lead-line-height);
+  letter-spacing: var(--type-body-lead-tracking);
+  text-wrap: pretty;
+}
+
+@utility type-body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  letter-spacing: var(--type-body-tracking);
+  text-wrap: pretty;
+}
+
+@utility type-body-sm {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line-height);
+  letter-spacing: var(--type-body-sm-tracking);
+  text-wrap: pretty;
+}
+
+@utility type-eyebrow {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-eyebrow-size);
+  line-height: var(--type-eyebrow-line-height);
+  letter-spacing: var(--type-eyebrow-tracking);
+  font-weight: var(--type-eyebrow-weight);
+  text-transform: uppercase;
+}
+
+@utility type-caption {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-line-height);
+  letter-spacing: var(--type-caption-tracking);
+}
+
+@utility type-numeral {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+@utility prose-measure {
+  max-width: var(--measure-prose);
+}
+
+@utility section-rhythm {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+@utility section-rhythm-compact {
+  padding-top: var(--section-padding-y-compact);
+  padding-bottom: var(--section-padding-y-compact);
+}
+
+@utility border-subtle {
+  border-color: var(--color-border-subtle);
+}
+
+@utility border-dark {
+  border-color: var(--color-border-dark);
+}
+
+@utility bg-surface-canvas {
+  background-color: var(--surface-canvas);
+}
+
+@utility bg-surface-card {
+  background-color: var(--surface-card);
+}
+
+@utility bg-surface-dark {
+  background-color: var(--surface-dark);
+}
+
+@utility bg-surface-dark-deep {
+  background-color: var(--surface-dark-deep);
+}
+
+/* =========================================================================
+   Lightweight GPU CSS Entrance Utilities (Zero Dependencies)
+   Fixes no-op animate-in / fade-in / slide-in utilities across interactive modals
+   ========================================================================= */
+@keyframes mect-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mect-slide-in-bottom-2 {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-in {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+@utility fade-in {
+  animation-name: mect-fade-in;
+}
+
+@utility slide-in-from-bottom-2 {
+  animation-name: mect-slide-in-bottom-2;
+}
+
+.animate-in {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: mect-fade-in;
+}
+
+.slide-in-from-bottom-2 {
+  animation-name: mect-slide-in-bottom-2;
+}
+
 /* Floating Action & Chatbot Safe-Area Clearance on Mobile */
 .pb-floating-clearance {
   padding-bottom: max(6.5rem, calc(env(safe-area-inset-bottom, 20px) + 5rem));
@@ -264,6 +617,8 @@ select:focus-visible {
 .animate-marquee {
   display: inline-block;
   animation: marquee 38s linear infinite;
+  contain: layout;
+  will-change: transform;
 }
 
 .animate-marquee:hover,
@@ -404,6 +759,14 @@ select:focus-visible {
     .hero-bg-secondary-slide {
       display: none !important;
     }
+  }
+
+  .animate-in,
+  .fade-in,
+  .slide-in-from-bottom-2 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   *,

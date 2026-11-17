@@ -1,0 +1,236 @@
+{
+  "timestamp": "2026-11-16T11:20:53.980Z",
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "33.792px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Free Education & Higher Learning Scholarship Showcase",
+      "h2FontSize": "37.136px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "schemesVerified": true,
+      "fiveStagesVerified": true,
+      "dotGridVerified": true,
+      "zeroCashVerified": true,
+      "advisoryNoticeVerified": true,
+      "errors": []
+    }
+  ],
+  "ctaVerification": [
+    {
+      "text": "Explore Educational Scope",
+      "href": "/programmes#free-education-200"
+    },
+    {
+      "text": "Support a Student",
+      "href": "/donate?programme=EDUCATION_LEARNING"
+    },
+    {
+      "text": "Review Scheme Proposal",
+      "href": "/scholarships"
+    },
+    {
+      "text": "Review Fellowship Draft",
+      "href": "/scholarships"
+    },
+    {
+      "text": "Explore Hub Objectives",
+      "href": "/programmes"
+    },
+    {
+      "text": "Join Mentorship Circle",
+      "href": "/volunteer"
+    },
+    {
+      "text": "Explore Self-Assessment",
+      "href": "#eligibility-calculator"
+    },
+    {
+      "text": "View Disbursal Policy",
+      "href": "/scholarships"
+    },
+    {
+      "text": "Submit Financial Aid Dossier",
+      "href": "/scholarships/apply"
+    },
+    {
+      "text": "Track Application Status",
+      "href": "/scholarships/track"
+    },
+    {
+      "text": "Check Indicative Criteria",
+      "href": "#eligibility-calculator"
+    }
+  ],
+  "reducedMotionTest": {
+    "h2Opacity": "1",
+    "imgOpacity": "1"
+  },
+  "consoleErrors": []
+}

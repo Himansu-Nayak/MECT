@@ -86,6 +86,24 @@ public class PaymentConfiguration {
     @Column(name = "statutory_disclosure_text", nullable = false, columnDefinition = "TEXT")
     private String statutoryDisclosureText = "Historical Form 10AC Section 12A (URN: AADTM5474FE20231) and Section 80G (URN: AADTM5474FF20241) orders dated 29-01-2024 covered AY 2024-25 to AY 2026-27. Current tax year 2026-27 eligibility is pending Chartered Accountant confirmation.";
 
+    @Column(name = "him_enabled", nullable = false)
+    private boolean himEnabled = false;
+
+    @Column(name = "him_upi_id", nullable = false, length = 120)
+    private String himUpiId = "86971610172@sbi";
+
+    @Column(name = "him_merchant_name", nullable = false, length = 160)
+    private String himMerchantName = "MAHAVEER EDUCATIONAL & CHARITABLE TRUST";
+
+    @Column(name = "him_instructions", nullable = false, columnDefinition = "TEXT")
+    private String himInstructions = "Pay using HIM Secure UPI. Scan the dynamic QR or transfer to verified VPA in any UPI app, then submit your 12-digit UTR for verification.";
+
+    @Column(name = "him_verification_mode", nullable = false, length = 40)
+    private String himVerificationMode = "MANUAL_VERIFICATION";
+
+    @Column(name = "him_webhook_secret", length = 120)
+    private String himWebhookSecret = "";
+
     @Column(name = "updated_by", nullable = false, length = 100)
     private String updatedBy = "SYSTEM";
 
@@ -152,6 +170,18 @@ public class PaymentConfiguration {
     public void setStatutoryClaimApproved(boolean statutoryClaimApproved) { this.statutoryClaimApproved = statutoryClaimApproved; }
     public String getStatutoryDisclosureText() { return statutoryDisclosureText; }
     public void setStatutoryDisclosureText(String statutoryDisclosureText) { this.statutoryDisclosureText = statutoryDisclosureText; }
+    public boolean isHimEnabled() { return himEnabled; }
+    public void setHimEnabled(boolean himEnabled) { this.himEnabled = himEnabled; }
+    public String getHimUpiId() { return himUpiId; }
+    public void setHimUpiId(String himUpiId) { this.himUpiId = himUpiId; }
+    public String getHimMerchantName() { return himMerchantName; }
+    public void setHimMerchantName(String himMerchantName) { this.himMerchantName = himMerchantName; }
+    public String getHimInstructions() { return himInstructions; }
+    public void setHimInstructions(String himInstructions) { this.himInstructions = himInstructions; }
+    public String getHimVerificationMode() { return himVerificationMode; }
+    public void setHimVerificationMode(String himVerificationMode) { this.himVerificationMode = himVerificationMode; }
+    public String getHimWebhookSecret() { return himWebhookSecret; }
+    public void setHimWebhookSecret(String himWebhookSecret) { this.himWebhookSecret = himWebhookSecret; }
     public String getUpdatedBy() { return updatedBy; }
     public void setUpdatedBy(String updatedBy) { this.updatedBy = updatedBy; }
     public Long getVersion() { return version; }

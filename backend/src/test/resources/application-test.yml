@@ -21,6 +21,8 @@ spring:
     locations: classpath:db/migration
 
 app:
+  rate-limiting:
+    enabled: false
   cors:
     allowed-origins: http://localhost:3000
   jwt:

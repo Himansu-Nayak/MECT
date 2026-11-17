@@ -39,18 +39,18 @@ export const HOMEPAGE_CONTENT = {
       },
       {
         value: "350+",
-        label: "Students Supported",
-        subtext: "Free remedial coaching & study support",
+        label: "Participation Entries",
+        subtext: "350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported.",
       },
       {
         value: "120+",
-        label: "Women Skilled",
-        subtext: "Certified tailoring & livelihood tooling",
+        label: "Course Enrolments",
+        subtext: "120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women.",
       },
       {
         value: "10,000+",
-        label: "Citizens Reached",
-        subtext: "Jal Seva drinking water & emergency relief",
+        label: "Service Instances",
+        subtext: "10,000+ recorded water and relief service instances, not 10,000 unique citizens.",
       },
     ] as MetricCard[],
     ctas: {
@@ -116,7 +116,7 @@ export const HOMEPAGE_CONTENT = {
       description:
         "Remedial tuition, exam coaching and scholastic materials for underserved rural and tribal students in Balangir and Puintala.",
       href: "/programmes#education",
-      stat: "350+ Coached",
+      stat: "350+ Entries",
     },
     {
       number: "02",
@@ -125,7 +125,7 @@ export const HOMEPAGE_CONTENT = {
       description:
         "Tailoring, embroidery and handicraft training designed to strengthen women's skills, confidence and livelihood options.",
       href: "/programmes#women-empowerment",
-      stat: "120+ Artisans",
+      stat: "120+ Enrolments",
     },
     {
       number: "03",
@@ -134,7 +134,7 @@ export const HOMEPAGE_CONTENT = {
       description:
         "Jal Seva drinking-water points, summer hydration kiosks and community sanitation activities that support everyday wellbeing.",
       href: "/programmes#water",
-      stat: "10,000+ Served",
+      stat: "10,000+ Instances",
     },
     {
       number: "04",
@@ -223,12 +223,12 @@ export const HOMEPAGE_CONTENT = {
   // PHASE 3: Flagship Initiative — Free Education for 200 Students
   freeEducation200: {
     badge: "Flagship Priority Initiative",
-    heading: "FREE EDUCATION FOR 200 STUDENTS",
+    heading: "PROPOSED TARGET: FREE EDUCATION FOR UP TO 200 STUDENTS",
     supportingHeadline: "EDUCATION TODAY. A BETTER TOMORROW.",
     supportingStatement:
       "Expanding access to educational support for children from underserved communities.",
     targetCount: "200",
-    programmeStatus: "Approved Priority Initiative • Target Cohort: 200 Students (Enrolment Open by Phased Intake)",
+    programmeStatus: "Proposed Target — Up to 200 Students (Subject to Formal Sanction & Confirmed Funding)",
     objective:
       "Prevent economic dropouts and expand structured academic access for up to 200 underserved students across Odisha by removing tuition, study-material, and remedial coaching barriers.",
     supportPillars: [
@@ -271,13 +271,13 @@ export const HOMEPAGE_CONTENT = {
       },
       {
         label: "Current Cohort Note",
-        value: "200 students is the sanctioned target cohort capacity for phased delivery; the trust does not claim 200 students are already enrolled.",
+        value: "Proposed target — up to 200 students, subject to formal board sanction and confirmed funding. Confirmed funded places currently stand at zero, based on the existing programme record.",
       },
     ],
     beneficiaryScope:
       "Targeted toward verified students from economically disadvantaged, rural, agrarian, and daily-wage households in Balangir and underserved clusters of Odisha (beneficiary registers maintained directly at the Balangir Trust Office).",
     fundraisingPurpose:
-      "Public and institutional contributions toward this initiative directly fund faculty instruction, textbooks, stationery kits, and accredited school/college fees through verifiable State Bank of India transfers.",
+      "Public and institutional contributions toward this initiative directly fund faculty instruction, textbooks, stationery kits, and verified educational institution fees through verifiable banking transfers.",
   },
 
   // PHASE 4: Educational Resource Mobilisation Appeal
@@ -299,7 +299,7 @@ export const HOMEPAGE_CONTENT = {
       },
       {
         title: "Transparent Direct Banking",
-        detail: "Contributions are received directly in MECT's State Bank of India trust account with verifiable bank references.",
+        detail: "Contributions are received directly in MECT's registered trust account with verifiable bank references.",
       },
     ],
     beneficiaries:

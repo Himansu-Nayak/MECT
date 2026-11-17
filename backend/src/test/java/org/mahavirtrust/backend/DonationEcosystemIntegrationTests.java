@@ -109,14 +109,17 @@ public class DonationEcosystemIntegrationTests {
     void publicConfigAndAdminLimitsValidation() throws Exception {
         MvcResult configRes = mockMvc.perform(get("/public/donations/config"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.config.sbiAccountNumber").value("33341302498"))
-                .andExpect(jsonPath("$.config.sbiIfsc").value("SBIN0001701"))
-                .andExpect(jsonPath("$.config.sbiUpiId").value("86971610172@sbi"))
+                .andExpect(jsonPath("$.config.sbiAccountNumber").doesNotExist())
+                .andExpect(jsonPath("$.config.sbiIfsc").doesNotExist())
+                .andExpect(jsonPath("$.config.sbiUpiId").doesNotExist())
+                .andExpect(jsonPath("$.config.sbiQrEnabled").value(false))
                 .andExpect(jsonPath("$.config.statutoryClaimApproved").value(false))
                 .andExpect(jsonPath("$.config.generalFundEnabled").value(false))
                 .andReturn();
 
         JsonNode body = objectMapper.readTree(configRes.getResponse().getContentAsString());
+        assertThat(body.get("config").get("paymentInstructions").asText()).doesNotContain("SBI").doesNotContain("UTR");
+        assertThat(body.get("config").get("gatewayNoticeText").asText()).doesNotContain("SBI").doesNotContain("UTR");
         List<String> codes = new java.util.ArrayList<>();
         for (JsonNode p : body.get("programmes")) {
             codes.add(p.get("code").asString());

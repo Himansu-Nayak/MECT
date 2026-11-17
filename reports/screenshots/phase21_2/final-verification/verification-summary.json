@@ -1,0 +1,191 @@
+{
+  "timestamp": "2026-11-16T07:18:09.991Z",
+  "primitives": {
+    "heroEntrance": {
+      "exists": true,
+      "opacity": "1",
+      "transform": "none",
+      "h1Visible": true
+    },
+    "reveal": {
+      "up": {
+        "exists": true,
+        "opacity": "1",
+        "visible": true,
+        "transform": "none"
+      },
+      "down": {
+        "exists": true,
+        "opacity": "1",
+        "visible": true,
+        "transform": "none"
+      },
+      "left": {
+        "exists": true,
+        "opacity": "1",
+        "visible": true,
+        "transform": "none"
+      },
+      "right": {
+        "exists": true,
+        "opacity": "1",
+        "visible": true,
+        "transform": "none"
+      },
+      "fade": {
+        "exists": true,
+        "opacity": "1",
+        "visible": true,
+        "transform": "none"
+      }
+    },
+    "stagger": {
+      "allExist": true,
+      "count": 4
+    },
+    "editorialTextReveal": {
+      "h2Exists": true,
+      "h2Overflow": "hidden",
+      "h2Opacity": "1",
+      "pExists": true,
+      "pOverflow": "hidden",
+      "pOpacity": "1"
+    },
+    "imageReveal": {
+      "beforeScrollOpacity": "0",
+      "imgContainerOverflow": "hidden",
+      "imgVisibleAfterScroll": "1",
+      "galleryContainerOverflow": "hidden",
+      "galleryVisibleAfterScroll": "1"
+    }
+  },
+  "parallax": {
+    "desktop": {
+      "beforeScroll": "matrix(1, 0, 0, 1, 0, 8.16929)",
+      "afterScroll": "matrix(1, 0, 0, 1, 0, 25)",
+      "hasMovement": true
+    },
+    "cleanUnmount": true,
+    "mobile": {
+      "beforeScroll": "none",
+      "afterScroll": "none",
+      "disabledOrSuppressed": true
+    }
+  },
+  "countUp": {
+    "normalMotion": {
+      "years": "13+",
+      "scholarships": "350+",
+      "patients": "1,000+",
+      "families": "10,000+",
+      "aid": "₹50,000",
+      "lakhs": "1,00,000+",
+      "rate": "99.5%"
+    }
+  },
+  "reducedMotion": {
+    "instantStats": {
+      "years": "13+",
+      "scholarships": "350+",
+      "patients": "1,000+",
+      "families": "10,000+",
+      "aid": "₹50,000",
+      "lakhs": "1,00,000+",
+      "rate": "99.5%"
+    },
+    "elements": {
+      "heroOpacity": "1",
+      "heroTransform": "none",
+      "h2Opacity": "1",
+      "imgVisible": "1",
+      "parallaxTransform": "matrix(1, 0, 0, 1, 0, -25)",
+      "cssAnimAnimation": "none",
+      "cssAnimOpacity": "1"
+    }
+  },
+  "cssAnimations": {
+    "normalMotion": {
+      "animationDuration": "0.24s",
+      "animationTimingFunction": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "animationFillMode": "both",
+      "opacity": "1"
+    }
+  },
+  "responsive": {
+    "320px": {
+      "viewport": {
+        "name": "320px",
+        "width": 320,
+        "height": 640
+      },
+      "pass": true,
+      "docWidth": 320,
+      "winWidth": 320
+    },
+    "360px": {
+      "viewport": {
+        "name": "360px",
+        "width": 360,
+        "height": 740
+      },
+      "pass": true,
+      "docWidth": 360,
+      "winWidth": 360
+    },
+    "390px": {
+      "viewport": {
+        "name": "390px",
+        "width": 390,
+        "height": 844
+      },
+      "pass": true,
+      "docWidth": 390,
+      "winWidth": 390
+    },
+    "768px": {
+      "viewport": {
+        "name": "768px",
+        "width": 768,
+        "height": 1024
+      },
+      "pass": true,
+      "docWidth": 768,
+      "winWidth": 768
+    },
+    "1024px": {
+      "viewport": {
+        "name": "1024px",
+        "width": 1024,
+        "height": 768
+      },
+      "pass": true,
+      "docWidth": 1024,
+      "winWidth": 1024
+    },
+    "1440px": {
+      "viewport": {
+        "name": "1440px",
+        "width": 1440,
+        "height": 900
+      },
+      "pass": true,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "1920px": {
+      "viewport": {
+        "name": "1920px",
+        "width": 1920,
+        "height": 1080
+      },
+      "pass": true,
+      "docWidth": 1920,
+      "winWidth": 1920
+    }
+  },
+  "performance": {
+    "cumulativeLayoutShift": 0.0011457000439386146,
+    "longTasksCount": 0
+  },
+  "consoleErrors": []
+}

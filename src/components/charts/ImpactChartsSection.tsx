@@ -50,23 +50,23 @@ export function ImpactChartsSection() {
       <ImpactChartCard
         title="Education & Vocational Reach"
         badge="Confirmed Activity Records"
-        summary="Reported beneficiary counts across Balangir remedial coaching (350+ students), the 200-student free education target cohort, and women's tailoring (120+ artisans)."
+        summary="Reported counts across Balangir remedial coaching (350+ recorded student participation entries, FY 2023–24, not necessarily 350 unique students supported), the proposed 200-student target (0 confirmed funded places currently), and women's tailoring (120+ cumulative vocational course enrolments, FY 2021–23, not necessarily 120 uniquely certified women)."
         sourceLabel="MECT Balangir Centre Registers"
         rows={[
           {
-            label: "Students Coached",
+            label: "Participation Entries",
             value: "350+",
-            note: "Free remedial tuition & books",
+            note: "350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported",
           },
           {
             label: "200-Student Target",
             value: FREE_EDUCATION_200.targetCount,
-            note: "Free Education cohort capacity",
+            note: "Proposed target — up to 200 students, subject to formal board sanction and confirmed funding (0 confirmed funded places currently)",
           },
           {
-            label: "Women Skilled",
+            label: "Course Enrolments",
             value: "120+",
-            note: "Certified 6-month tailoring courses",
+            note: "120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women",
           },
         ]}
       >
@@ -137,8 +137,8 @@ export function ImpactChartsSection() {
         rows={[
           {
             label: "Jal Seva Drinking Water",
-            value: "10,000+ citizens",
-            note: "Cumulative summer relief figure",
+            value: "10,000+ instances",
+            note: "10,000+ recorded water and relief service instances, not 10,000 unique citizens",
           },
           {
             label: "Annual Breakdown (FY 2023–26)",

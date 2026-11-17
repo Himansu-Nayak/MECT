@@ -163,7 +163,7 @@ export const ABOUT_CONTENT = {
         badge: "Inception",
         title: "Registration of Trust Deed in Balangir",
         description:
-          "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar (Doc No. 40311302194). PAN card issued (AADTM5474F) {{CONFIRM: PAN allotment date vs deed date}}.",
+          "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar (Doc No. 40311302194). PAN card issued (AADTM5474F).",
       },
       {
         year: "2014–2020",
@@ -212,6 +212,6 @@ export const ABOUT_CONTENT = {
     badge: "Public Participation",
     title: "Join Us in Advancing Educational Dignity & Rural Welfare Across Odisha",
     subtitle:
-      "Whether you are a CSR leader, an aspiring volunteer mentor, an educator, or a donor seeking 80G tax exemption, your partnership strengthens our collective mission.",
+      "Whether you are a CSR leader, an aspiring volunteer mentor, an educator, or a prospective donor, your partnership strengthens our collective mission.",
   },
 };

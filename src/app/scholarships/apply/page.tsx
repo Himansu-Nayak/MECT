@@ -468,7 +468,7 @@ export default function ScholarshipApplyPage() {
                 <Input
                   label="Full Name (As per Certificates)"
                   name="fullName"
-                  placeholder="e.g. Priyabrata Nayak"
+                  placeholder="Enter student full name"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   error={stepErrors.fullName}

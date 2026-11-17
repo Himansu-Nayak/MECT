@@ -48,7 +48,7 @@ export function CsrRegistrationSection() {
     {
       label: "Permanent Account Number (PAN)",
       value: TRUST_CONFIG.statutory.pan,
-      sub: `Issued ${TRUST_CONFIG.statutory.panIssueDate} {{CONFIRM: PAN allotment date vs deed date}}`,
+      sub: `Allotment Date: ${TRUST_CONFIG.statutory.panIssueDate} • Verified Official Document`,
       highlight: false,
     },
     {

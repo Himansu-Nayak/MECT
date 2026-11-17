@@ -723,7 +723,7 @@ export function SmartDonationCheckout() {
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-border-warm">
               <span className="text-xs text-ink-sand">
-                Or contribute directly via SBI UPI QR (<strong>86971610172@sbi</strong>) or NEFT/IMPS/RTGS to SBI Account <strong>33341302498</strong> below.
+                Contributions are processed through secure, encrypted payment channels with instant verification.
               </span>
               <Button type="submit" variant="primary" size="lg" disabled={isInitiating}>
                 {gatewayStatus?.provider === "CASHFREE" ? (

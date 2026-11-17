@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { TRUST_CONFIG } from "@/lib/config";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
+import { Reveal, CountUpStat } from "@/components/ui/MotionPrimitives";
 import {
   PillarIllustration,
   CommunityWelfareHouseIllustration,
@@ -35,7 +36,7 @@ import {
 export const metadata = createPageMetadata({
   title: "Our Work & Community Development Programmes",
   description:
-    "Explore MECT's documented programme areas across education, Free Education for 200 Students, women's livelihoods, safe-water access, sanitation and nutrition relief in Odisha.",
+    "Explore MECT's documented programme areas across education, proposed Free Education target for up to 200 students, women's livelihoods, safe-water access, sanitation and nutrition relief in Odisha.",
   path: "/programmes",
   ogImage: "/images/og-programmes.png",
 });
@@ -50,9 +51,9 @@ export default function ProgrammesPage() {
       name: "Education & Learning Support",
       tagline: "Bridging Secondary Dropout Gaps for Underprivileged & Tribal Students in Balangir",
       overview:
-        "Following trust establishment under the 2013 Deed, MECT has operated community after-school remedial coaching hubs in Balangir and Puintala blocks. These hubs provide scholastic reinforcement, textbook sets, and exam preparation for students from economically weaker sections and daily-wage households.",
+        "Following trust establishment under the 2013 Deed, MECT has operated community after-school remedial coaching hubs in Balangir and Puintala blocks. These hubs provide scholastic reinforcement, textbook sets, and exam preparation for students from economically weaker sections and daily-wage households (350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported).",
       metrics: [
-        { label: "Active Students Coached", value: "350+ Annually" },
+        { label: "Participation Entries", value: "350+ (FY 2023–24)" },
         { label: "Key Operating Blocks", value: "Balangir & Puintala" },
         { label: "Scholastic Focus", value: "Class 8–10 & +2 Science/Arts" },
         { label: "Zero Cost Guarantee", value: "100% Free Tuition & Books" },
@@ -74,10 +75,10 @@ export default function ProgrammesPage() {
       name: "Women's Vocational Skills & Livelihood Training",
       tagline: "Empowering Rural Women Toward Financial Self-Reliance & Entrepreneurship",
       overview:
-        "Operating out of our Balangir training center, MECT provides intensive 6-month certified vocational training courses in modern tailoring, garment cutting, embroidery, and craft fabrication for rural women, young widows, and Self-Help Group (SHG) members.",
+        "Operating out of our Balangir training center, MECT provides intensive certified vocational training courses in modern tailoring, garment cutting, embroidery, and craft fabrication for rural women, young widows, and Self-Help Group (SHG) members (120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women).",
       metrics: [
-        { label: "Graduated Artisans", value: "120+ Rural Women" },
-        { label: "Course Duration", value: "6 Months Intensive" },
+        { label: "Course Enrolments", value: "120+ (FY 2021–23)" },
+        { label: "Course Focus", value: "Apparel & Garment Cutting" },
         { label: "Tooling Support", value: "Sewing Machine Toolkits" },
         { label: "Livelihood Outcome", value: "Independent Income & Micro-SHGs" },
       ],
@@ -98,9 +99,9 @@ export default function ProgrammesPage() {
       name: "Jal Seva: Safe Water & Summer Hydration",
       tagline: "Drinking Water Points & Hydration Support During Severe Summer Heatwaves",
       overview:
-        "Western Odisha experiences extreme summer heatwaves exceeding 45°C. MECT deploys seasonal Jal Seva drinking water stations at major transit intersections, bus stands, and hospital premises in Balangir, supplying filtered drinking water to over 10,000 documented beneficiaries and hospital visitors.",
+        "Western Odisha experiences extreme summer heatwaves exceeding 45°C. MECT deploys seasonal Jal Seva drinking water stations at major transit intersections, bus stands, and hospital premises in Balangir (10,000+ recorded water and relief service instances, not 10,000 unique citizens).",
       metrics: [
-        { label: "Citizens Served", value: "10,000+ Beneficiaries" },
+        { label: "Service Instances", value: "10,000+ Instances" },
         { label: "Summer Kiosks", value: "Multiple High-Footfall Points" },
         { label: "Water Quality", value: "Hygienically Filtered Water" },
         { label: "Public Health", value: "Heatstroke Prevention & ORS Kits" },
@@ -169,13 +170,13 @@ export default function ProgrammesPage() {
       {/* 1. Page Hero */}
       <PageHero
         title="Education, Livelihoods & Community Wellbeing"
-        description="Explore MECT's current programme areas: Free Education for 200 Students, learning support, women's vocational livelihoods, safe-water and sanitation initiatives, and food and nutrition relief."
+        description="Explore MECT's current programme areas: proposed Free Education target for up to 200 students, learning support, women's vocational livelihoods, safe-water and sanitation initiatives, and food and nutrition relief."
         breadcrumbs={[{ label: "Programmes" }]}
         actions={
           <>
             <Link href="#free-education-200">
               <Button variant="gold" size="sm">
-                <span>Free Education (200 Students)</span>
+                <span>Free Education (Target: Up to 200)</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
@@ -195,8 +196,8 @@ export default function ProgrammesPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {TRUST_CONFIG.impactHighlights.map((item, idx) => (
               <div key={idx} className="space-y-1 border-r border-border-warm last:border-r-0 pr-4 last:pr-0">
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-forest">
-                  {item.figure}
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-forest tabular-nums">
+                  <CountUpStat value={item.figure} />
                 </span>
                 <p className="text-xs font-bold text-forest uppercase tracking-wider font-sans">
                   {item.label}
@@ -227,12 +228,12 @@ export default function ProgrammesPage() {
             {verifiedPillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <Card
-                  key={pillar.id}
-                  id={pillar.id}
-                  variant="elevated"
-                  className="p-8 sm:p-10 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-6 scroll-mt-24"
-                >
+                <Reveal key={pillar.id} direction="up">
+                  <Card
+                    id={pillar.id}
+                    variant="elevated"
+                    className="p-8 sm:p-10 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-6 scroll-mt-24"
+                  >
                   {/* Top Bar */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-warm gap-3">
                     <div className="flex items-center gap-3">
@@ -319,8 +320,111 @@ export default function ProgrammesPage() {
                     </div>
                   </div>
                 </Card>
-              );
-            })}
+              </Reveal>
+            );
+          })}
+          </div>
+        </Container>
+      </section>
+
+      {/* 3.1. Sports, Athletics & Extracurricular Excellence (Director Guidance) */}
+      <section
+        id="sports-extracurricular"
+        className="py-16 md:py-20 bg-cream/60 border-t border-border-warm scroll-mt-24"
+      >
+        <Container size="default" className="space-y-10">
+          <SectionHeader
+            badge="Holistic Youth Development"
+            title="Sports, Athletics &amp; Extracurricular Programmes"
+            subtitle="Fostering physical discipline, creative talent, leadership, and community sports participation alongside academic excellence."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: Sports & Athletic Participation */}
+            <Card variant="elevated" className="p-6 bg-white border-border-warm space-y-4">
+              <div className="w-10 h-10 rounded-xs bg-forest/10 flex items-center justify-center text-forest">
+                <Award className="w-5 h-5 text-forest" />
+              </div>
+              <h3 className="font-serif text-xl font-bold text-forest">
+                1. Youth Sports &amp; Athletics
+              </h3>
+              <p className="text-xs text-ink-sand leading-relaxed">
+                Organizing inter-school athletics, rural football, volleyball, and traditional regional sports tournaments in Balangir. Encouraging daily fitness, teamwork, and healthy lifestyle habits among rural youth.
+              </p>
+              <ul className="text-xs text-ink space-y-1.5 pt-2 border-t border-border-warm">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>Annual Balangir rural youth sports meets</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>Sports kit and athletic footwear distribution</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>Physical fitness and nutrition coaching</span>
+                </li>
+              </ul>
+            </Card>
+
+            {/* Card 2: Extracurricular & Cultural Activities */}
+            <Card variant="elevated" className="p-6 bg-white border-border-warm space-y-4">
+              <div className="w-10 h-10 rounded-xs bg-terracotta/10 flex items-center justify-center text-terracotta-dark">
+                <Sparkles className="w-5 h-5 text-terracotta-dark" />
+              </div>
+              <h3 className="font-serif text-xl font-bold text-forest">
+                2. Cultural &amp; Creative Arts
+              </h3>
+              <p className="text-xs text-ink-sand leading-relaxed">
+                Cultivating self-expression, public speaking, and regional heritage through debate competitions, science exhibitions, folk dance workshops, painting festivals, and literacy contests for students.
+              </p>
+              <ul className="text-xs text-ink space-y-1.5 pt-2 border-t border-border-warm">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-terracotta-dark shrink-0" />
+                  <span>Inter-school debates and essay competitions</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-terracotta-dark shrink-0" />
+                  <span>Science project exhibitions &amp; model fairs</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-terracotta-dark shrink-0" />
+                  <span>Odishan cultural music &amp; folk dance events</span>
+                </li>
+              </ul>
+            </Card>
+
+            {/* Card 3: Talent Management & Leadership Development */}
+            <Card variant="elevated" className="p-6 bg-white border-border-warm space-y-4">
+              <div className="w-10 h-10 rounded-xs bg-sand/30 flex items-center justify-center text-forest">
+                <Users className="w-5 h-5 text-forest" />
+              </div>
+              <h3 className="font-serif text-xl font-bold text-forest">
+                3. Talent Management &amp; Mentoring
+              </h3>
+              <p className="text-xs text-ink-sand leading-relaxed">
+                Identifying gifted rural students early to provide personalized academic roadmaps, leadership development seminars, career counseling, and university scholarship linkages.
+              </p>
+              <ul className="text-xs text-ink space-y-1.5 pt-2 border-t border-border-warm">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>1-on-1 mentorship by professional volunteers</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>Career orientation for polytechnic &amp; degree paths</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                  <span>Specialized scholarship guidance gateway</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          {/* Institutional Transparency & Confirmation Register Callout */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xs p-4 text-xs text-amber-950 space-y-1">
+            <strong>Director Guidance &amp; Institutional Review Note:</strong> The director&apos;s handwritten planning notes reference a <em>&ldquo;70% &rarr; Sports&rdquo;</em> allocation and stream figures (Arts: 256, Science: 128, Commerce: 64). These entries are recorded in MECT&apos;s internal verification register and remain subject to formal trustee confirmation regarding specific budget denominators and enrollment caps.
           </div>
         </Container>
       </section>

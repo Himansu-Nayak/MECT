@@ -18,7 +18,11 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StatutoryTicker } from "@/components/layout/StatutoryTicker";
 import { SiteSearchTrigger } from "@/components/layout/SiteSearch";
-import { MOTION_EASING, MOTION_DURATION, MOTION_STAGGER } from "@/components/ui/MotionPrimitives";
+import {
+  MOTION_EASING,
+  MOTION_DURATION,
+  MOTION_STAGGER,
+} from "@/components/ui/MotionPrimitives";
 import {
   Menu,
   X,
@@ -26,69 +30,88 @@ import {
   ArrowRight,
   Heart,
   UserCheck,
+  Building2,
+  FileText,
+  PhoneCall,
+  ShieldCheck,
+  Compass,
 } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [overlayOpen, setOverlayOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [expandedMobileGroups, setExpandedMobileGroups] = useState<Record<string, boolean>>({
+    About: true,
+    "Our Work": true,
+  });
+
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
+
   const navRef = useRef<HTMLElement>(null);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
-  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileHamburgerRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
+  const previousOverflow = useRef<string>("");
 
-  // Monitor scroll using Motion useScroll for header backdrop elevation
+  // Monitor scroll for header backdrop elevation and compression
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
   });
 
-  // Close menus on route change and restore focus if drawer was open
+  // Close menus on route change
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (prevPathname !== pathname) {
     setPrevPathname(pathname);
-    setMobileMenuOpen(false);
+    setOverlayOpen(false);
     setOpenDropdown(null);
   }
 
-  // Manage body scroll and focus when mobile menu opens/closes
+  // Manage body scroll and focus when overlay opens/closes
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (overlayOpen) {
       previousActiveElement.current = document.activeElement as HTMLElement;
+      previousOverflow.current = document.body.style.overflow;
       document.body.style.overflow = "hidden";
       const timer = setTimeout(() => {
         closeButtonRef.current?.focus();
       }, 50);
       return () => {
         clearTimeout(timer);
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = previousOverflow.current;
       };
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow.current;
       if (previousActiveElement.current) {
         previousActiveElement.current.focus();
         previousActiveElement.current = null;
       }
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow.current;
     };
-  }, [mobileMenuOpen]);
+  }, [overlayOpen]);
 
-  // Trap focus inside mobile drawer and handle Escape key
+  // Trap focus inside overlay and handle Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpenDropdown(null);
-        setMobileMenuOpen(false);
-        return;
+        if (openDropdown) {
+          setOpenDropdown(null);
+          return;
+        }
+        if (overlayOpen) {
+          setOverlayOpen(false);
+          return;
+        }
       }
 
-      if (mobileMenuOpen && e.key === "Tab" && drawerRef.current) {
-        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+      if (overlayOpen && e.key === "Tab" && overlayRef.current) {
+        const focusable = overlayRef.current.querySelectorAll<HTMLElement>(
           'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
         );
         if (focusable.length === 0) return;
@@ -107,7 +130,7 @@ export function Header() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [mobileMenuOpen]);
+  }, [overlayOpen, openDropdown]);
 
   // Dismiss dropdown on outside click
   useEffect(() => {
@@ -120,30 +143,41 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const toggleMobileGroup = (label: string) => {
+    setExpandedMobileGroups((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300">
+    <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top Statutory Ticker Bar */}
       <StatutoryTicker />
 
-      {/* Main Navigation Bar */}
+      {/* Main Institutional Navigation Masthead */}
       <nav
         ref={navRef}
-        className={`w-full transition-all duration-200 border-b ${
+        className={`w-full transition-all duration-300 border-b ${
           isScrolled
-            ? "bg-cream/95 backdrop-blur-md border-border-warm shadow-sm py-2.5"
-            : "bg-cream border-border-warm py-3.5"
+            ? "bg-cream/92 backdrop-blur-md border-border-warm/90 shadow-subtle py-2 sm:py-2.5"
+            : "bg-cream border-border-warm/75 py-3 sm:py-3.5"
         }`}
         aria-label="Main Navigation"
       >
-        <Container size="default">
-          <div className="flex items-center justify-between">
+        <Container size="wide" className="max-w-[1600px]">
+          <div className="flex items-center justify-between gap-1.5 sm:gap-4 min-w-0 w-full">
             {/* Institutional Brand / Official Emblem */}
             <Link
               href="/"
-              className="flex items-center space-x-1.5 sm:space-x-3 group focus-visible:outline-2 focus-visible:outline-terracotta min-w-0 shrink sm:shrink-0"
+              className="flex items-center gap-1.5 min-[360px]:gap-2 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-terracotta rounded-xs min-w-0"
               aria-label="Mahaveer Educational & Charitable Trust Homepage"
             >
-              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-terracotta bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square">
+              <div
+                className={`rounded-full overflow-hidden border-2 border-terracotta/90 bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square transition-all duration-300 ${
+                  isScrolled ? "w-8 h-8 sm:w-10 sm:h-10" : "w-9 h-9 sm:w-11 sm:h-11"
+                }`}
+              >
                 <Image
                   src={ORG.branding.logoPath}
                   alt={ORG.branding.logoAlt}
@@ -153,13 +187,18 @@ export function Header() {
                   priority
                 />
               </div>
-              <span className="font-serif font-bold text-[10.5px] min-[375px]:text-[11.5px] sm:text-sm xl:text-[13px] 2xl:text-[15.5px] tracking-normal sm:tracking-tight text-forest group-hover:text-terracotta-dark leading-tight transition-colors max-w-[140px] min-[375px]:max-w-[180px] sm:max-w-[240px] xl:max-w-[260px] 2xl:max-w-none 2xl:whitespace-nowrap">
-                {ORG.name}
-              </span>
+              <div className="flex flex-col min-w-0">
+                <span className="font-serif font-bold text-[11px] min-[360px]:text-xs sm:text-base xl:text-[13.5px] 2xl:text-[16px] text-forest group-hover:text-terracotta-dark leading-tight tracking-tight transition-colors line-clamp-2 sm:line-clamp-none sm:whitespace-nowrap">
+                  {ORG.name}
+                </span>
+                <span className="hidden sm:block xl:hidden 2xl:block text-[9px] 2xl:text-[10px] font-mono tracking-widest text-ink-muted uppercase mt-0.5 whitespace-nowrap">
+                  Regd. Public Charitable Trust • Estd. 2013
+                </span>
+              </div>
             </Link>
 
-            {/* Desktop Primary Navigation — WAI-ARIA Disclosure Navigation Pattern */}
-            <div className="hidden xl:flex items-center space-x-0.5 2xl:space-x-1.5 shrink-0">
+            {/* Desktop Primary Navigation Links with Restrained Active Indicator */}
+            <div className="hidden xl:flex items-center space-x-0 2xl:space-x-1 shrink-0">
               {TRUST_CONFIG.navigation.map((item) => {
                 const hasChildren = item.children && item.children.length > 0;
                 const isActive =
@@ -171,8 +210,12 @@ export function Header() {
                         (c.href !== "/" && pathname.startsWith(c.href))
                     ));
                 const isItemOpen = openDropdown === item.label;
-                const disclosureId = `nav-disclosure-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-                const toggleId = `nav-toggle-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+                const disclosureId = `nav-disclosure-${item.label
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")}`;
+                const toggleId = `nav-toggle-${item.label
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")}`;
 
                 return (
                   <div
@@ -190,22 +233,23 @@ export function Header() {
                       <Link
                         href={item.href}
                         aria-current={isActive ? "page" : undefined}
-                        className={`relative whitespace-nowrap px-1 xl:px-2 2xl:px-3 py-2 text-[11.5px] xl:text-[12.5px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta ${
+                        className={`relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta ${
                           isActive
-                            ? "text-terracotta-dark font-bold bg-sand/55"
-                            : "text-forest hover:text-forest-deep hover:bg-sage/65"
+                            ? "text-terracotta-dark font-bold bg-sand/40"
+                            : "text-forest hover:text-forest-deep hover:bg-sage/40"
                         }`}
                       >
                         <span>{item.label}</span>
                         {isActive && (
                           <m.span
-                            initial={shouldReduceMotion ? false : { scaleX: 0, opacity: 0 }}
-                            animate={{ scaleX: 1, opacity: 1 }}
+                            layoutId="active-nav-indicator"
+                            initial={shouldReduceMotion ? false : { opacity: 0 }}
+                            animate={{ opacity: 1 }}
                             transition={{
                               duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
                               ease: MOTION_EASING.institutional,
                             }}
-                            className="absolute inset-x-1 bottom-0 h-0.5 origin-left bg-terracotta rounded-full"
+                            className="absolute inset-x-2 bottom-0 h-0.5 bg-terracotta rounded-full"
                             aria-hidden="true"
                           />
                         )}
@@ -217,17 +261,19 @@ export function Header() {
                           aria-expanded={isItemOpen}
                           aria-controls={disclosureId}
                           aria-label={`${item.label} sub-navigation menu`}
-                          onClick={() => setOpenDropdown(isItemOpen ? null : item.label)}
+                          onClick={() =>
+                            setOpenDropdown(isItemOpen ? null : item.label)
+                          }
                           onKeyDown={(e) => {
                             if (e.key === "Escape") {
                               setOpenDropdown(null);
                             }
                           }}
-                          className="min-w-[24px] min-h-[24px] p-1 inline-flex items-center justify-center text-forest/75 hover:text-terracotta-dark rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta transition-colors"
+                          className="min-w-[24px] min-h-[24px] p-1 inline-flex items-center justify-center text-forest/70 hover:text-terracotta-dark rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta transition-colors"
                         >
                           <ChevronDown
                             className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                              isItemOpen ? "rotate-180" : ""
+                              isItemOpen ? "rotate-180 text-terracotta" : ""
                             }`}
                             aria-hidden="true"
                           />
@@ -248,7 +294,7 @@ export function Header() {
                             duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
                             ease: MOTION_EASING.institutional,
                           }}
-                          className="absolute top-full left-0 bg-white border border-border-warm rounded-xs shadow-2xl p-3 z-50 w-80 space-y-1"
+                          className="absolute top-full left-0 bg-cream/98 backdrop-blur-md border border-border-warm rounded-md shadow-elevated p-3 z-50 w-80 space-y-1"
                           onKeyDown={(e) => {
                             if (e.key === "Escape") {
                               setOpenDropdown(null);
@@ -257,24 +303,31 @@ export function Header() {
                             }
                           }}
                         >
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-forest px-2 block mb-1 font-sans">
-                            {item.label} Overview
-                          </span>
+                          <div className="flex items-center justify-between px-2 pt-1 pb-1.5 border-b border-border-warm/50 mb-1">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-terracotta">
+                              {item.label} Directory
+                            </span>
+                            <span className="text-[10px] font-mono text-ink-muted">
+                              MECT Charter
+                            </span>
+                          </div>
                           {item.children?.map((subItem) => (
                             <Link
                               key={subItem.label}
                               href={subItem.href}
-                              className="block p-2 rounded-xs hover:bg-cream/65 transition-colors group/sub focus-visible:outline-2 focus-visible:outline-terracotta"
+                              className="block p-2 rounded-xs hover:bg-sand/40 transition-colors group/sub focus-visible:outline-2 focus-visible:outline-terracotta"
                             >
-                              <div className="flex items-center justify-between text-xs font-semibold text-terracotta-dark group-hover/sub:text-forest-deep">
-                                <span>{subItem.label}</span>
+                              <div className="flex items-center justify-between text-xs font-semibold text-forest group-hover/sub:text-terracotta-dark">
+                                <span className="group-hover/sub:translate-x-0.5 transition-transform">
+                                  {subItem.label}
+                                </span>
                                 {subItem.badge && (
                                   <Badge variant="forest" size="sm">
                                     {subItem.badge}
                                   </Badge>
                                 )}
                               </div>
-                              <p className="text-[11px] text-ink-secondary mt-0.5 leading-snug font-sans">
+                              <p className="text-[11px] text-ink-muted mt-0.5 leading-snug font-sans">
                                 {subItem.description}
                               </p>
                             </Link>
@@ -287,51 +340,73 @@ export function Header() {
               })}
             </div>
 
-            {/* Desktop Direct Action Buttons — Approved Terracotta & Forest Charcoal Palette */}
-            <div className="hidden xl:flex items-center space-x-1.5 2xl:space-x-2 shrink-0">
+            {/* Desktop Direct Action Buttons & Editorial Menu Trigger */}
+            <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2 shrink-0">
               <SiteSearchTrigger />
+
               <Link
                 href="/portal/login"
                 aria-label="Donor Portal"
-                className="whitespace-nowrap px-2 2xl:px-3.5 py-1.5 text-[11px] 2xl:text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/55 rounded-xs transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                className="flex whitespace-nowrap px-2 2xl:px-3 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
               >
                 <UserCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
                 <span>Donor Portal</span>
               </Link>
+
+              {/* Editorial Fullscreen Navigation Trigger */}
+              <button
+                ref={menuTriggerRef}
+                type="button"
+                onClick={() => setOverlayOpen(true)}
+                className="whitespace-nowrap px-2 2xl:px-3 py-1.5 text-xs font-semibold text-forest bg-sage/35 hover:bg-forest hover:text-cream border border-forest/25 rounded-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                aria-haspopup="dialog"
+                aria-expanded={overlayOpen}
+                aria-controls="fullscreen-editorial-overlay"
+                aria-label="Open comprehensive institutional menu"
+              >
+                <Compass className="w-3.5 h-3.5 text-terracotta group-hover:text-sand" aria-hidden="true" />
+                <span>Menu</span>
+              </button>
+
+              {/* Primary Donation Action */}
               <Link
                 href="/donate"
-                aria-label="Donate Now"
-                className="whitespace-nowrap px-2.5 2xl:px-4 py-1.5 text-[11px] 2xl:text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
+                aria-label="Donate Now to Mahaveer Trust"
+                className="whitespace-nowrap px-2.5 2xl:px-4 py-1.5 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
                 <span>Donate Now</span>
               </Link>
             </div>
 
-            {/* Mobile / Tablet Menu Hamburger & Quick Donate Button */}
+            {/* Mobile / Tablet Header Controls */}
             <div className="flex xl:hidden items-center space-x-1 sm:space-x-2 shrink-0">
+              <SiteSearchTrigger />
+
               <Link
                 href="/donate"
-                className="min-h-[44px] px-2.5 sm:px-3.5 py-2 text-[11px] sm:text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest"
+                aria-label="Donate to Mahaveer Trust"
+                className="min-h-[38px] min-w-[38px] px-2 sm:px-3 py-1 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center justify-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
-                <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" aria-hidden="true" />
-                <span>Donate</span>
+                <Heart className="w-3.5 h-3.5 fill-current shrink-0" aria-hidden="true" />
+                <span className="hidden min-[360px]:inline">Donate</span>
               </Link>
+
               <button
-                ref={hamburgerRef}
+                ref={mobileHamburgerRef}
                 type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="min-h-[44px] min-w-[40px] sm:min-w-[44px] p-2 text-forest hover:bg-sage/60 rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta flex items-center justify-center transition-colors"
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-navigation-drawer"
-                aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                onClick={() => setOverlayOpen(!overlayOpen)}
+                className="min-h-[44px] min-w-[44px] p-2 text-forest hover:bg-sage/40 rounded-xs focus-visible:outline-2 focus-visible:outline-terracotta flex items-center justify-center transition-colors"
+                aria-expanded={overlayOpen}
+                aria-controls="fullscreen-editorial-overlay"
+                aria-label={overlayOpen ? "Close navigation menu" : "Open navigation menu"}
               >
                 <span
                   className={`inline-flex transition-transform duration-200 ${
-                    mobileMenuOpen ? "rotate-90" : "rotate-0"
+                    overlayOpen ? "rotate-90" : "rotate-0"
                   }`}
                 >
-                  {mobileMenuOpen ? (
+                  {overlayOpen ? (
                     <X className="w-6 h-6" aria-hidden="true" />
                   ) : (
                     <Menu className="w-6 h-6" aria-hidden="true" />
@@ -343,137 +418,253 @@ export function Header() {
         </Container>
       </nav>
 
-      {/* Mobile Drawer Navigation (print:hidden) */}
+      {/* Fullscreen Editorial Navigation Overlay (Desktop & Mobile) */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {overlayOpen && (
           <m.div
-            ref={drawerRef}
-            id="mobile-navigation-drawer"
-            initial={shouldReduceMotion ? false : { opacity: 0, x: 16 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 16 }}
+            ref={overlayRef}
+            id="fullscreen-editorial-overlay"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{
               duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
               ease: MOTION_EASING.institutional,
             }}
-            className="fixed inset-0 z-50 bg-cream lg:hidden flex flex-col pt-16 px-6 pb-8 overflow-y-auto print:hidden"
+            className="fixed inset-0 z-50 bg-forest-deep text-cream flex flex-col overflow-y-auto print:hidden"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobile Navigation Menu"
+            aria-labelledby="institutional-nav-title"
           >
-            {/* Drawer Top Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-border-warm">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-terracotta bg-white flex items-center justify-center shrink-0 aspect-square shadow-xs">
-                  <Image
-                    src="/images/mect-official-emblem.png"
-                    alt="Mahaveer Educational & Charitable Trust Official Emblem"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-cover scale-[1.06]"
-                  />
-                </div>
-                <span className="font-serif font-bold text-sm text-forest leading-tight">
-                  Mahaveer Educational &amp; Charitable Trust
-                </span>
-              </div>
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[44px] min-w-[44px] p-2.5 text-forest hover:bg-sage/60 rounded-xs flex items-center justify-center focus-visible:outline-2 focus-visible:outline-terracotta transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" aria-hidden="true" />
-              </button>
-            </div>
-
-            {/* Navigation Links List with Restrained Stagger */}
-            <div className="py-4 space-y-1 divide-y divide-border-warm">
-              {TRUST_CONFIG.navigation.map((item, idx) => (
-                <m.div
-                  key={item.label}
-                  initial={shouldReduceMotion ? false : { opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
-                    delay: shouldReduceMotion ? 0 : idx * MOTION_STAGGER.nav,
-                    ease: MOTION_EASING.institutional,
-                  }}
-                  className="pt-2"
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between min-h-[44px] py-2 text-base font-semibold text-forest hover:text-terracotta-dark"
-                  >
-                    <span>{item.label}</span>
-                    <ArrowRight className="w-4 h-4 text-terracotta" aria-hidden="true" />
-                  </Link>
-                  {item.children && (
-                    <div className="pl-3 pb-2 space-y-1">
-                      {item.children.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center justify-between min-h-[44px] py-1.5 px-2 text-xs text-ink-sand hover:text-terracotta-dark hover:bg-white/60 rounded-xs transition-colors"
-                        >
-                          <div className="flex flex-col">
-                            <span className="font-medium text-ink">{sub.label}</span>
-                            <span className="text-[11px] text-ink-sand">{sub.description}</span>
-                          </div>
-                          {sub.badge && (
-                            <Badge variant="forest" size="sm" className="shrink-0 ml-2">
-                              {sub.badge}
-                            </Badge>
-                          )}
-                        </Link>
-                      ))}
+            {/* Overlay Masthead Bar */}
+            <div className="w-full border-b border-sand/20 py-4 shrink-0 bg-forest-deep/95 backdrop-blur-md sticky top-0 z-20">
+              <Container size="default">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-sand bg-white flex items-center justify-center shrink-0 aspect-square shadow-sm">
+                      <Image
+                        src={ORG.branding.logoPath}
+                        alt="MECT Official Emblem"
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover scale-[1.06]"
+                      />
                     </div>
-                  )}
-                </m.div>
-              ))}
+                    <div className="flex flex-col">
+                      <span id="institutional-nav-title" className="font-serif font-bold text-sm sm:text-base text-cream leading-tight">
+                        {ORG.name}
+                      </span>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-sand">
+                        Institutional Navigation Index
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="hidden sm:inline-block text-[11px] font-mono text-sand/70 uppercase">
+                      Press [Esc] to close
+                    </span>
+                    <button
+                      ref={closeButtonRef}
+                      type="button"
+                      onClick={() => setOverlayOpen(false)}
+                      className="min-h-[44px] min-w-[44px] p-2.5 text-cream hover:text-sand hover:bg-forest rounded-xs flex items-center justify-center focus-visible:outline-2 focus-visible:outline-sand transition-colors"
+                      aria-label="Close institutional menu"
+                    >
+                      <X className="w-6 h-6" aria-hidden="true" />
+                    </button>
+                  </div>
+                </div>
+              </Container>
             </div>
 
-            {/* Mobile Secondary Actions & Statutory Highlight */}
-            <div className="mt-auto pt-6 border-t border-border-warm space-y-3">
-              <div className="grid grid-cols-2 gap-2">
-                <Link
-                  href="/portal/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center gap-1.5 transition-colors"
-                >
-                  <UserCheck className="w-3.5 h-3.5 text-terracotta" aria-hidden="true" />
-                  <span>Donor Portal</span>
-                </Link>
-                <Link
-                  href="/volunteer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full min-h-[44px] py-2.5 text-center text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/50 rounded-xs flex items-center justify-center transition-colors"
-                >
-                  Volunteer
-                </Link>
-              </div>
+            {/* Overlay Main Body Content */}
+            <div className="flex-1 py-8 sm:py-12">
+              <Container size="default">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                  {/* Left Column: Institutional Charter & Quick Support Details (Desktop: 4 cols) */}
+                  <div className="lg:col-span-4 space-y-6 lg:border-r lg:border-sand/15 lg:pr-8">
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-sand block mb-2">
+                        Institutional Charter
+                      </span>
+                      <h3 className="font-serif text-xl sm:text-2xl font-bold text-cream leading-snug">
+                        Dignified Education, Community Healthcare & Livelihood Upliftment.
+                      </h3>
+                      <p className="text-xs text-cream/75 mt-2 leading-relaxed font-sans">
+                        Founded in 2013 under registered public trust deed (Doc No. {ORG.trustDeed.deedNumber}),
+                        serving rural and tribal communities across Balangir and Odisha.
+                      </p>
+                    </div>
 
-              <div className="bg-forest text-white p-3 rounded-xs text-xs space-y-1">
-                <div className="flex items-center justify-between text-white font-semibold">
-                  <span>State Bank of India</span>
-                  <span className="text-[10px] bg-sand text-forest-deep px-1.5 rounded-xs font-bold">SBI Direct</span>
+                    {/* Institutional Contribution & Tax Exemption Notice */}
+                    <div className="bg-forest/80 border border-sand/25 p-4 rounded-xs space-y-2.5">
+                      <div className="flex items-center justify-between text-xs font-semibold text-cream">
+                        <span className="font-serif">Institutional Giving</span>
+                        <span className="text-[10px] bg-sand/90 text-forest-deep px-1.5 py-0.5 rounded-xs font-bold uppercase font-mono tracking-wider">
+                          80G Tax Benefit
+                        </span>
+                      </div>
+                      <p className="text-xs text-cream/80 leading-relaxed font-sans">
+                        Contributions to Mahaveer Trust support verified charitable programmes. Instant electronic payment confirmations and serialized PDF receipts are maintained in our official Donor Portal.
+                      </p>
+                      <div className="pt-1.5 border-t border-sand/15">
+                        <Link
+                          href="/donate"
+                          onClick={() => setOverlayOpen(false)}
+                          className="min-h-[44px] py-2 inline-flex items-center gap-1.5 text-xs font-semibold text-sand hover:text-white transition-colors group/link focus-visible:outline-2 focus-visible:outline-sand"
+                        >
+                          <span>View Official Bank Transfer Credentials</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Helpline & Quick Links */}
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center gap-2 text-cream/90 min-h-[44px]">
+                        <PhoneCall className="w-4 h-4 text-sand shrink-0" aria-hidden="true" />
+                        <span>Helpline: </span>
+                        <a
+                          href={ORG.helpline.href}
+                          className="font-mono text-sand hover:underline font-semibold inline-flex items-center min-h-[44px] py-2"
+                        >
+                          {ORG.helpline.display}
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-2 text-cream/90 min-h-[36px]">
+                        <Building2 className="w-4 h-4 text-sand shrink-0" aria-hidden="true" />
+                        <span>Registered Office: Balangir, Odisha</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-cream/90 min-h-[36px]">
+                        <ShieldCheck className="w-4 h-4 text-sand shrink-0" aria-hidden="true" />
+                        <span>Darpan: {ORG.ids.darpan} • CSR-1: {ORG.ids.csr1}</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <Link
+                        id="overlay-primary-donate-cta"
+                        href="/donate"
+                        onClick={() => setOverlayOpen(false)}
+                        className="w-full min-h-[44px] py-3 text-center text-sm font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs flex items-center justify-center gap-2 transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                      >
+                        <Heart className="w-4 h-4 fill-current" aria-hidden="true" />
+                        <span>Support the Mission — Donate Now</span>
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Structured Navigation Grid (Desktop: 8 cols) */}
+                  <div className="lg:col-span-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {TRUST_CONFIG.navigation.map((group, groupIdx) => {
+                        const isExpanded = expandedMobileGroups[group.label] ?? true;
+
+                        return (
+                          <m.div
+                            key={group.label}
+                            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: shouldReduceMotion ? 0 : MOTION_DURATION.fast,
+                              delay: shouldReduceMotion ? 0 : groupIdx * MOTION_STAGGER.cards,
+                              ease: MOTION_EASING.institutional,
+                            }}
+                            className="border-b border-sand/15 pb-6 lg:border-b-0 lg:pb-0"
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <Link
+                                href={group.href}
+                                onClick={() => setOverlayOpen(false)}
+                                className="font-mono text-xs uppercase tracking-widest text-sand hover:text-cream transition-colors inline-flex items-center gap-1.5 group/header min-h-[44px] py-2"
+                              >
+                                <span>{group.label}</span>
+                                <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/header:opacity-100 group-hover/header:translate-x-1 transition-all" aria-hidden="true" />
+                              </Link>
+                              {group.children && (
+                                <button
+                                  type="button"
+                                  onClick={() => toggleMobileGroup(group.label)}
+                                  className="lg:hidden min-h-[44px] min-w-[44px] p-2 text-sand hover:text-cream flex items-center justify-center rounded-xs focus-visible:outline-2 focus-visible:outline-sand"
+                                  aria-label={`Toggle ${group.label} sub-links`}
+                                >
+                                  <ChevronDown
+                                    className={`w-4 h-4 transition-transform ${
+                                      isExpanded ? "rotate-180" : ""
+                                    }`}
+                                    aria-hidden="true"
+                                  />
+                                </button>
+                              )}
+                            </div>
+
+                            {/* Sub-links */}
+                            {group.children && (
+                              <div
+                                className={`space-y-3 pl-1 ${
+                                  isExpanded ? "block" : "hidden lg:block"
+                                }`}
+                              >
+                                {group.children.map((sub) => (
+                                  <Link
+                                    key={sub.label}
+                                    href={sub.href}
+                                    onClick={() => setOverlayOpen(false)}
+                                    className="group/link block min-h-[44px] py-1.5 focus-visible:outline-2 focus-visible:outline-sand rounded-xs transition-colors"
+                                  >
+                                    <div className="flex items-center justify-between text-sm sm:text-base font-serif font-semibold text-cream group-hover/link:text-sand transition-colors">
+                                      <span>{sub.label}</span>
+                                      {sub.badge && (
+                                        <Badge variant="gold" size="sm" className="shrink-0 ml-2">
+                                          {sub.badge}
+                                        </Badge>
+                                      )}
+                                    </div>
+                                    <p className="text-xs text-cream/65 font-sans mt-0.5 leading-snug group-hover/link:text-cream/85 transition-colors">
+                                      {sub.description}
+                                    </p>
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </m.div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Additional Institutional Fast-Links Row */}
+                    <div className="mt-8 pt-6 border-t border-sand/20 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      <Link
+                        href="/portal/login"
+                        onClick={() => setOverlayOpen(false)}
+                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                      >
+                        <span className="font-semibold text-sand">Donor Portal</span>
+                        <span className="text-[11px] text-cream/70">OTP receipts & logs</span>
+                      </Link>
+
+                      <Link
+                        href="/statutory-disclosures"
+                        onClick={() => setOverlayOpen(false)}
+                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                      >
+                        <span className="font-semibold text-sand">Statutory Filings</span>
+                        <span className="text-[11px] text-cream/70">12A, 80G, CSR-1</span>
+                      </Link>
+
+                      <Link
+                        href="/accessibility"
+                        onClick={() => setOverlayOpen(false)}
+                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px] col-span-2 sm:col-span-1"
+                      >
+                        <span className="font-semibold text-sand">Accessibility</span>
+                        <span className="text-[11px] text-cream/70">WCAG 2.2 AAA features</span>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[11px] text-cream font-mono">
-                  A/C: {TRUST_CONFIG.bank.accountNumber} • IFSC: {TRUST_CONFIG.bank.ifsc}
-                </p>
-              </div>
-
-              <Link
-                href="/donate"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full min-h-[44px] py-3 text-center text-sm font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-forest"
-              >
-                <Heart className="w-4 h-4 fill-current" aria-hidden="true" />
-                <span>Donate Now</span>
-              </Link>
+              </Container>
             </div>
           </m.div>
         )}
