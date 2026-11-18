@@ -84,6 +84,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
+      url: `${baseUrl}/memories-gallery`,
+      lastModified: buildDate,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/campaigns/hanuman-murti`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: buildDate,
       changeFrequency: "monthly",

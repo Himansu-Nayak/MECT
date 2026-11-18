@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/MotionPrimitives";
+import { CompactHowMectWorks } from "@/components/sections/CompactHowMectWorks";
 import { ABOUT_CONTENT } from "@/lib/about-content";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -250,6 +251,9 @@ export default function AboutPage() {
             </div>
           </Container>
         </section>
+
+        {/* Operating Sequence: How MECT Works */}
+        <CompactHowMectWorks />
 
         {/* SECTION 5: Multi-Tier Governance & Oversight Architecture */}
         <section

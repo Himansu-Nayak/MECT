@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/MotionPrimitives";
 import { TRUST_CONFIG } from "@/lib/config";
 import { ImpactChartsSection } from "@/components/charts/ImpactChartsSection";
+import { OdishaImpactSphere3D } from "@/components/charts/OdishaImpactSphere3D";
 import { OdishaDistrictGrid } from "@/components/motion/OdishaDistrictGrid";
 import { LightboxGrid } from "@/components/motion/LightboxGrid";
 import {
@@ -238,6 +239,9 @@ export default function ImpactPage() {
             subtitle="The map of activity must distinguish established programme locations, liaison offices, outreach areas and planned expansion. A listed district is not automatically an active project location."
             align="center"
           />
+
+          {/* Interactive 3D Geographical Reach & Operational Hubs Sphere */}
+          <OdishaImpactSphere3D />
 
           {/* 30-District Odisha Matrix (Anime.js stagger, includes Angul & Dhenkanal) */}
           <OdishaDistrictGrid />

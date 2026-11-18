@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShieldCheck,
   FileCheck2,
@@ -9,7 +10,12 @@ import {
   Camera,
   Heart,
   Landmark,
+  MapPin,
+  Calendar,
+  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
+import { FIELD_DISPATCHES } from "@content/stories";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -97,32 +103,130 @@ export default function MemoriesGalleryPage() {
         </Container>
       </section>
 
-      {/* 4. Complementary Links (Field Dispatches & Disclosures) */}
-      <section className="py-12 bg-cream border-t border-border-warm" aria-label="Related Documentary Records">
+      {/* 4. Integrated Documentary Field Dispatches Archive */}
+      <section
+        id="field-dispatches"
+        className="py-16 md:py-24 bg-white border-t border-border-warm scroll-mt-24"
+        aria-label="Verified Documentary Field Dispatches"
+      >
+        <Container size="default" className="space-y-12 md:space-y-16">
+          <div className="max-w-3xl space-y-3">
+            <div className="flex items-center gap-2">
+              <Badge variant="forest">Archival Chronicles</Badge>
+              <Badge variant="neutral">Western Odisha Operations</Badge>
+            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-forest">
+              Field Dispatches — People, Places &amp; Purpose
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-secondary font-sans leading-relaxed">
+              Factual operational chronicles from the Balangir Community Learning Centre, Vocational Training Centre, and seasonal Jal Seva kiosks, supported directly by institutional attendance registers.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {FIELD_DISPATCHES.map((dispatch, index) => (
+              <article
+                key={dispatch.id}
+                id={dispatch.slug}
+                className="scroll-mt-28 rounded-xs border border-border-warm bg-sand-light/20 shadow-xs overflow-hidden"
+              >
+                {/* Header Strip */}
+                <div className="bg-cream/90 px-6 py-4 border-b border-border-warm flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-terracotta" aria-hidden="true" />
+                    <span className="font-bold text-forest uppercase tracking-widest text-[11px]">
+                      {dispatch.editorialLabel} • RECORD 0{index + 1}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="forest" size="sm">
+                      {dispatch.evidenceClassification}
+                    </Badge>
+                    <Badge variant="neutral" size="sm">
+                      {dispatch.programme}
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-8 space-y-6">
+                  <div className="space-y-2 max-w-4xl">
+                    <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-forest">
+                      {dispatch.title}
+                    </h3>
+                    <p className="font-serif italic text-sm sm:text-base text-ink-secondary">
+                      {dispatch.subtitle}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-4 pt-2 text-[11px] font-mono text-ink-sand border-t border-border-warm/60 mt-3 pt-3">
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-terracotta" aria-hidden="true" />
+                        <span>{dispatch.location}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-forest" aria-hidden="true" />
+                        <span>{dispatch.period}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <FileCheck2 className="w-3.5 h-3.5 text-forest" aria-hidden="true" />
+                        <span>Source: {dispatch.sourceReference}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
+                    <div className="lg:col-span-8 space-y-3.5 text-xs sm:text-sm text-ink leading-relaxed font-sans">
+                      {dispatch.fullNarrative.map((paragraph, pIdx) => (
+                        <p key={pIdx}>{paragraph}</p>
+                      ))}
+                    </div>
+
+                    <div className="lg:col-span-4 bg-white p-5 rounded-xs border border-border-warm space-y-3">
+                      <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-forest">
+                        Documented Highlights
+                      </h4>
+                      <ul className="space-y-2 text-xs text-ink-secondary font-sans">
+                        {dispatch.highlights.map((item, hIdx) => (
+                          <li key={hIdx} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0 mt-0.5" aria-hidden="true" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. Statutory Transparency Strip */}
+      <section className="py-10 bg-cream border-t border-border-warm" aria-label="Statutory Links">
         <Container size="default">
           <div className="max-w-4xl mx-auto rounded-xs border border-border-warm bg-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center md:text-left">
               <span className="text-[11px] font-bold uppercase tracking-wider text-terracotta-dark font-sans block">
-                Complementary Field Evidence
+                Fiduciary Oversight
               </span>
               <h3 className="font-serif text-lg sm:text-xl font-bold text-forest">
-                Explore In-Depth Documentary Field Dispatches
+                Verify Official Trust Filings &amp; Audited Statements
               </h3>
               <p className="text-xs sm:text-sm text-ink-secondary font-sans max-w-xl">
-                Read detailed operational narratives from the Balangir Community Learning Centre, Vocational Training Centre, and Summer Hydration Taskforce registers.
+                Access certified copies of the 2013 Trust Deed, Section 12A/80G orders, and annual audited balance sheets.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <Link href="/stories">
+              <Link href="/statutory-disclosures">
                 <Button variant="primary" size="md">
-                  <BookOpen className="w-4 h-4 mr-2" aria-hidden="true" />
-                  <span>Field Dispatches</span>
+                  <Landmark className="w-4 h-4 mr-2" aria-hidden="true" />
+                  <span>Statutory Records</span>
                 </Button>
               </Link>
-              <Link href="/statutory-disclosures">
+              <Link href="/reports">
                 <Button variant="outline" size="md">
-                  <Landmark className="w-4 h-4 mr-2 text-forest" aria-hidden="true" />
-                  <span>Public Records</span>
+                  <FileCheck2 className="w-4 h-4 mr-2 text-forest" aria-hidden="true" />
+                  <span>Annual Reports</span>
                 </Button>
               </Link>
             </div>

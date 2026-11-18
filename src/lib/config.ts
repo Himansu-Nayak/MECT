@@ -205,7 +205,7 @@ export const TRUST_CONFIG = {
         },
         {
           label: "Field Dispatches",
-          href: "/stories",
+          href: "/memories-gallery#field-dispatches",
           description: "Authentic community narratives and verified field documentation.",
         },
       ],
