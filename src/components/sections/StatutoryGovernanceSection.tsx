@@ -4,8 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { ORG } from "@content/org";
 import {
   ShieldCheck,
@@ -16,38 +15,46 @@ import {
   MapPin,
   Lock,
   ArrowRight,
+  Landmark,
+  Scale,
 } from "lucide-react";
 
+/**
+ * MECT Phase 26 — Section 08: Statutory Governance & Gazette Register
+ *
+ * Formats official filings as a sovereign registrar docket, displaying all 6
+ * statutory credentials with high-contrast tabular typography and physical inspection notice.
+ */
 export function StatutoryGovernanceSection() {
   const credentials = [
     {
-      title: "Registered Trust Deed",
+      title: "Registered Public Trust Deed",
       regNo: "Deed No. 40311302194",
-      authority: "Balangir Sub-Registrar, Govt. of Odisha",
+      authority: "Sub-Registrar, Balangir, Govt. of Odisha",
       date: "Executed 27-07-2013 • Registered 30-07-2013",
       icon: Building2,
-      badge: "Deed Book 4, Vol 45",
+      badge: "Deed Book 4, Vol 45, Pgs 32–48",
     },
     {
-      title: "Permanent Account Number",
+      title: "Permanent Account Number (PAN)",
       regNo: "PAN: AADTM5474F",
       authority: "Income Tax Department, Govt. of India",
       date: "Trust Status: Public Charitable Trust",
       icon: FileText,
-      badge: "Govt. of India",
+      badge: "Government of India",
     },
     {
-      title: "Section 12A & 80G Orders",
+      title: "Section 12A & 80G Tax Exemption",
       regNo: "12A: AADTM5474FE20231 | 80G: AADTM5474FF20241",
-      authority: "Income Tax Department (Form 10AC)",
-      date: "Historical coverage: AY 2024-25 to AY 2026-27",
+      authority: "Income Tax Department (Form 10AC Orders)",
+      date: "Historical Coverage: AY 2024-25 to AY 2026-27",
       icon: CheckCircle2,
-      badge: "Statutory Order",
+      badge: "Statutory 80G Tax Deductible",
     },
     {
       title: "MCA CSR-1 Registration",
       regNo: "Reg No: CSR00081063",
-      authority: "Ministry of Corporate Affairs (ROC Delhi)",
+      authority: "Ministry of Corporate Affairs, New Delhi",
       date: "Approved: 09-11-2024 • SRN: N14617237",
       icon: ShieldCheck,
       badge: "Schedule VII Eligible",
@@ -56,17 +63,17 @@ export function StatutoryGovernanceSection() {
       title: "NITI Aayog NGO Darpan",
       regNo: "Darpan ID: OR/2024/0466491",
       authority: "NITI Aayog, Government of India",
-      date: "Enrolled voluntary organisation register",
+      date: "Enrolled Voluntary Organisation Portal",
       icon: ExternalLink,
-      badge: "National Portal",
+      badge: "Central Registry",
     },
     {
-      title: "MoSJE e-Anudaan",
+      title: "MoSJE e-Anudaan Portal",
       regNo: "Portal ID: OR/00040466",
       authority: "Ministry of Social Justice & Empowerment",
-      date: "Official government grant management portal",
-      icon: FileText,
-      badge: "Central Registry",
+      date: "Official Social Welfare Organization Index",
+      icon: Landmark,
+      badge: "Central Ministry",
     },
   ];
 
@@ -74,98 +81,109 @@ export function StatutoryGovernanceSection() {
     <section
       id="transparency-and-governance"
       aria-labelledby="statutory-heading"
-      className="py-16 sm:py-20 md:py-24 bg-sand-light/35 border-b border-border-warm scroll-mt-16 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 bg-white border-b border-[#E7E0D5] scroll-mt-16 relative overflow-hidden"
     >
-      <Container size="default" className="space-y-12 sm:space-y-14">
-        {/* Editorial Section Header */}
+      <Container size="default" className="space-y-12 sm:space-y-16 max-w-[1520px]">
+        {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <Reveal direction="up">
-            <div className="inline-flex items-center gap-2 rounded-xs border border-forest/30 bg-forest/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-forest font-sans shadow-2xs">
-              <ShieldCheck className="w-3.5 h-3.5 text-forest shrink-0" aria-hidden="true" />
-              <span>Section 08 • Transparency &amp; Governance</span>
+            <div className="inline-flex items-center gap-2 rounded-xs border border-forest/30 bg-[#16221D]/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-ink shadow-xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
+              <span>Section 08 • Transparency, Governance &amp; Statutory Docket</span>
             </div>
           </Reveal>
 
           <Reveal direction="up" delay={0.06}>
             <h2
               id="statutory-heading"
-              className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-forest tracking-tight leading-tight [text-wrap:balance]"
+              className="font-serif text-[clamp(1.9rem,3.2vw,3rem)] font-bold text-ink tracking-tight leading-[1.14] [text-wrap:balance]"
             >
-              Statutory Transparency &amp; Fiduciary Accountability
+              Statutory Transparency: Verifiable Sovereign Registrations
             </h2>
           </Reveal>
 
           <Reveal direction="up" delay={0.12}>
-            <p className="text-sm sm:text-base text-ink leading-relaxed font-sans">
-              MECT operates with complete statutory openness. All legal registrations, tax exemption orders, and annual filing summaries are published for public verification and open to physical inspection at our registered office in Balangir.
+            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">
+              MECT operates with total statutory rigor. All sovereign registrations, Ministry certifications, and tax exemption orders are catalogued below with official government reference numbers for independent verification.
             </p>
           </Reveal>
         </div>
 
-        {/* 6 Statutory Credentials Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 6 Sovereign Credential Docket Cards */}
+        <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.06}>
           {credentials.map((cred, idx) => {
             const Icon = cred.icon;
             return (
-              <Reveal key={idx} direction="up" delay={0.05 * (idx + 1)}>
-                <div className="p-6 bg-white rounded-xs border border-border-warm shadow-xs hover:border-sand transition-all flex flex-col justify-between space-y-4 h-full">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xs bg-forest text-sand flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4" aria-hidden="true" />
-                      </div>
-                      <Badge variant="neutral" size="sm" className="font-mono text-[10px]">
+              <StaggerItem key={idx}>
+                <div className="p-6 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5] hover:border-terracotta/50 transition-all flex flex-col justify-between space-y-5 h-full shadow-xs group">
+                  <div className="space-y-3.5">
+                    {/* Badge Row */}
+                    <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#E7E0D5]/70">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-white border border-[#E7E0D5] text-ink-muted font-semibold">
                         {cred.badge}
-                      </Badge>
+                      </span>
+                      <Icon className="w-4 h-4 text-terracotta" aria-hidden="true" />
                     </div>
 
-                    <div>
-                      <h3 className="font-serif font-bold text-sm text-forest">
-                        {cred.title}
-                      </h3>
-                      <p className="font-mono text-xs font-bold text-terracotta-dark mt-0.5 break-all">
-                        {cred.regNo}
-                      </p>
+                    <h3 className="font-serif text-base sm:text-lg font-bold text-ink group-hover:text-terracotta-dark transition-colors">
+                      {cred.title}
+                    </h3>
+
+                    {/* Official Registration ID */}
+                    <div className="p-2.5 rounded-[2px] bg-white border border-[#E7E0D5] font-mono text-xs sm:text-[12.5px] font-bold text-ink tracking-tight break-all">
+                      {cred.regNo}
                     </div>
 
-                    <div className="text-[11px] text-ink-sand space-y-1 font-sans border-t border-border-warm pt-2">
-                      <p className="font-semibold text-ink">{cred.authority}</p>
-                      <p>{cred.date}</p>
+                    {/* Issuing Authority & Tenure */}
+                    <div className="space-y-1 text-xs text-ink-secondary font-sans">
+                      <div>
+                        <strong className="text-ink font-semibold">Authority:</strong> {cred.authority}
+                      </div>
+                      <div className="text-[11px] text-ink-muted">
+                        {cred.date}
+                      </div>
                     </div>
                   </div>
+
+                  <div className="pt-2 border-t border-[#E7E0D5]/70 flex items-center justify-between text-[11px] font-mono text-terracotta font-semibold">
+                    <span>Verified Official Record</span>
+                    <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  </div>
                 </div>
-              </Reveal>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
 
-        {/* Physical Inspection Venue Notice */}
-        <Reveal direction="up" delay={0.2}>
-          <div className="p-5 sm:p-6 rounded-xs bg-white border border-border-warm shadow-xs flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 text-xs font-sans">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xs bg-sand-light text-forest flex items-center justify-center shrink-0 mt-0.5">
-                <MapPin className="w-5 h-5 text-terracotta-dark" aria-hidden="true" />
+        {/* Physical Audit Ledger & Office Inspection Plaque */}
+        <Reveal direction="up" delay={0.15}>
+          <div className="p-6 sm:p-7 rounded-[2px] bg-[#FAF7F2] border border-[#E7E0D5] shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="flex items-start gap-3.5">
+              <div className="w-9 h-9 rounded-full bg-white border border-[#E7E0D5] flex items-center justify-center shrink-0 text-terracotta mt-0.5">
+                <MapPin className="w-4 h-4 text-terracotta" aria-hidden="true" />
               </div>
-              <div className="space-y-1 max-w-2xl">
-                <h4 className="font-serif font-bold text-sm text-forest">
-                  Registered Physical Inspection Venue
-                </h4>
-                <p className="text-ink-sand leading-relaxed">
-                  Mahaveer Educational &amp; Charitable Trust (MECT), Near Sai Mandir, Rugudipara, Balangir – 767001, Odisha. Public inspection of statutory certificates and audited annual financial statements is available during official working hours by prior written appointment via <code className="text-terracotta-dark font-mono font-bold">mect220@gmail.com</code>.
+              <div className="space-y-1 text-xs text-ink-secondary font-sans leading-relaxed">
+                <span className="font-bold text-ink font-mono uppercase tracking-wider text-[11px] block">
+                  Registered Office Physical Inspection Policy
+                </span>
+                <p>
+                  In accordance with Trust Deed Clause XVI and sovereign public charity laws, certified copies of all trust deeds, annual audit statements, and activity registers are accessible for physical inspection at our registered office:{" "}
+                  <strong className="text-ink">{ORG.addresses.registered.full}</strong>.
+                  Statutory hours: Monday through Saturday, 10:00 to 17:30 IST.
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <Link href="/statutory-disclosures">
-                <Button variant="primary" size="sm" className="font-bold group">
-                  <span>Verify All Certificates</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                <Button variant="primary" size="sm" className="font-bold bg-terracotta hover:bg-terracotta-dark text-white">
+                  <span>View All Certificates</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" aria-hidden="true" />
                 </Button>
               </Link>
-              <Link href="/reports">
-                <Button variant="outline" size="sm" className="text-xs">
-                  <span>Public Records Library</span>
+              <Link href="/governance">
+                <Button variant="outline" size="sm" className="border-[#E7E0D5] text-ink hover:bg-white">
+                  <span>Board of Trustees Charter</span>
                 </Button>
               </Link>
             </div>

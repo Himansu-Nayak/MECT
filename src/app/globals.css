@@ -5,29 +5,35 @@
 @layer base {
   :root {
     /* =========================================================================
-       1. Core Brand Colour System (Authoritative MECT Identity)
+       1. Core Brand Colour System (Phase 26 Documentary Editorial Architecture)
        ========================================================================= */
-    --color-primary: #A45E44;         /* Terracotta Primary Accent */
-    --color-primary-dark: #874A35;    /* Deep Terracotta (WCAG AA text/links on Cream/Sand) */
+    --color-primary: #B85D3B;         /* Sunbaked Terracotta Primary */
+    --color-primary-dark: #8E3E24;    /* Deep Terracotta (WCAG AAA text/links) */
 
-    --color-sand: #E5C499;           /* Warm Sand Accent */
-    --color-sand-light: #F0DEC5;     /* Light Sand (Bands, Callouts) */
+    --color-sand: #EFE6D9;           /* Refined Warm Sand */
+    --color-sand-light: #F7F2EA;     /* Light Sand / Soft Ivory */
 
-    --color-forest: #283730;         /* Forest Charcoal (Headings, PageHero, Footer) */
-    --color-forest-deep: #1D2924;    /* Deep Forest Charcoal (Tickers, High-contrast dark) */
+    --color-forest: #16221D;         /* Deep Slate Charcoal (Masthead & Colophon) */
+    --color-forest-deep: #0D1612;    /* High-contrast Deep Slate */
 
-    --color-sage: #D2D6C8;           /* Muted Sage (Institutional Accent & Strip) */
-    --color-cream: #F3E4D2;          /* Warm Cream Canvas (Global Background) */
+    --color-sage: #D8DDD6;           /* Subtle Muted Sage */
+    --color-cream: #FAF7F2;          /* Archival Alabaster Canvas (Global Background) */
+    --color-alabaster: #FAF7F2;      /* Archival Alabaster Token */
 
-    --color-white: #FFFFFF;          /* Pure White (Card Elevated Surfaces) */
-    --color-text: #26332E;           /* Primary Ink (7.95:1–13.16:1 Contrast) */
-    --color-text-secondary: #66736C; /* Secondary Ink (4.96:1 on Pure White) */
-    --color-text-on-sand: #4B5751;   /* Calibrated WCAG 2.2 AA Secondary Ink on Sand/Cream/Sage (>= 4.56:1) */
+    --color-ochre: #C4924A;          /* Burnished Brass / Ochre Accent */
+    --color-ochre-light: #F6EDE0;    /* Soft Ochre Tint */
 
-    --color-border: #DDD4C7;         /* Standard Hairline Border */
-    --color-border-subtle: rgba(221, 212, 199, 0.55);
-    --color-border-accent: rgba(164, 94, 68, 0.35);
-    --color-border-dark: rgba(229, 196, 153, 0.25);
+    --color-white: #FFFFFF;          /* Pure Museum White (Card Elevated Surfaces) */
+    --color-text: #0F1714;           /* Deep Carbon Basalt Ink (16.2:1 AAA Contrast) */
+    --color-text-secondary: #4A5852; /* Editorial Secondary Ink (6.4:1 AA Contrast) */
+    --color-text-on-sand: #3D4843;   /* Calibrated WCAG 2.2 AA Secondary Ink */
+    --color-ink-muted: #6C7A74;      /* Archival Metadata & Caption Ink */
+
+    --color-border: #E7E0D5;         /* Razor Hairline Border */
+    --color-border-hairline: #E7E0D5;
+    --color-border-subtle: rgba(231, 224, 213, 0.7);
+    --color-border-accent: rgba(184, 93, 59, 0.35);
+    --color-border-dark: rgba(255, 255, 255, 0.14);
 
     /* Semantic Feedback Tokens */
     --color-crimson: #991B1B;
@@ -235,10 +241,15 @@
   --color-forest-deep: var(--color-forest-deep);
   --color-sage: var(--color-sage);
   --color-cream: var(--color-cream);
+  --color-alabaster: var(--color-alabaster);
+  --color-ochre: var(--color-ochre);
+  --color-ochre-light: var(--color-ochre-light);
   --color-ink: var(--color-text);
   --color-ink-secondary: var(--color-text-secondary);
   --color-ink-sand: var(--color-text-on-sand);
+  --color-ink-muted: var(--color-ink-muted);
   --color-border-warm: var(--color-border);
+  --color-border-hairline: var(--color-border-hairline);
   --color-border-subtle: var(--color-border-subtle);
   --color-border-accent: var(--color-border-accent);
   --color-border-dark: var(--color-border-dark);
