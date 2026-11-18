@@ -19,6 +19,7 @@ export interface MECTKnowledge {
     state: string;
     country: string;
     pin: string;
+    phone?: string;
     generalEmail: string;
     scholarshipEmail: string;
   };
@@ -100,8 +101,9 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     state: "Odisha",
     country: "India",
     pin: "767001 / 751014",
-    generalEmail: "contact@mect.org.in",
-    scholarshipEmail: "scholarships@mect.org.in",
+    phone: "9853608113",
+    generalEmail: "mect220@gmail.com",
+    scholarshipEmail: "mect220@gmail.com",
   },
   assistant: {
     name: "HIm",
@@ -185,8 +187,8 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
       "District Field Volunteer (student outreach, document verification assistance)"
     ],
     eligibility: "Educators, working professionals, college faculty, and alumni passionate about educational equity in Odisha. Subject-matter proficiency and commitment to child safety standards required.",
-    applicationProcess: "Email your CV/profile and areas of mentoring interest to contact@mect.org.in with subject line 'Volunteer/Mentor Application'. The Secretariat reviews applications and conducts an orientation session.",
-    contactEmail: "contact@mect.org.in",
+    applicationProcess: "Email your CV/profile and areas of mentoring interest to mect220@gmail.com with subject line 'Volunteer/Mentor Application'. The Secretariat reviews applications and conducts an orientation session.",
+    contactEmail: "mect220@gmail.com",
   },
   eligibilityGuidelines: {
     domicile: "Must be a bona fide resident of Odisha (permanent domicile certificate or Odisha schooling).",
@@ -221,7 +223,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
       "Never repeat the user's question back to them.",
       "Never generate generic motivational filler or redundant summaries.",
       "If follow-up questions are asked ('What should I do?', 'What documents?'), directly continue the existing conversation context.",
-      "Always provide authentic contact details (contact@mect.org.in, https://mect.org.in/) when official steps are needed."
+      "Always provide authentic contact details (mect220@gmail.com, phone: 9853608113, https://mect.org.in/) when official steps are needed."
     ],
     lengthTargets: {
       simple: "1-3 sentences (20-50 words)",

@@ -569,7 +569,7 @@ export default function GovernancePage() {
                 <p className="text-ink leading-relaxed">
                   Mahaveer Educational &amp; Charitable Trust (MECT)<br />
                   Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001<br />
-                  Physical inspection available by prior written appointment via contact@mect.org.in.
+                  Physical inspection available by prior written appointment via mect220@gmail.com.
                 </p>
               </div>
 

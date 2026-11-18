@@ -47,12 +47,12 @@ export default function DonatePage() {
               <h3 className="font-serif font-bold text-forest text-sm">Fund Administration &amp; Processing</h3>
               <p className="leading-relaxed">
                 Donations are administered in accordance with MECT&apos;s charitable objectives and applicable donation terms. Applicable bank or payment processing charges may apply. If you encounter any payment error, double-debit, or UTR reconciliation inquiry, contact MECT Accounts directly at{" "}
-                <a href="mailto:donations@mect.org.in" className="text-terracotta-dark font-semibold underline hover:text-forest">
-                  donations@mect.org.in
+                <a href="mailto:mect220@gmail.com" className="text-terracotta-dark font-semibold underline hover:text-forest">
+                  mect220@gmail.com
                 </a>{" "}
                 or call{" "}
-                <a href="tel:+919437123616" className="text-terracotta-dark font-semibold underline hover:text-forest">
-                  +91 94371 23616
+                <a href="tel:+919853608113" className="text-terracotta-dark font-semibold underline hover:text-forest">
+                  9853608113
                 </a>.
               </p>
             </div>

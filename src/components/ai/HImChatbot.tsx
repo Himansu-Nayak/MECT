@@ -340,10 +340,10 @@ export function HImChatbot() {
       setLastFailedPrompt(query);
       const fallbackText =
         language === "or"
-          ? "କ୍ଷମା କରିବେ, ଏହି ମୁହୂର୍ତ୍ତରେ ସର୍ଭର ସଂଯୋଗରେ ସମସ୍ୟା ହେଉଛି। ଦୟାକରି କିଛି ସମୟ ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା contact@mect.org.in ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
+          ? "କ୍ଷମା କରିବେ, ଏହି ମୁହୂର୍ତ୍ତରେ ସର୍ଭର ସଂଯୋଗରେ ସମସ୍ୟା ହେଉଛି। ଦୟାକରି କିଛି ସମୟ ପରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା mect220@gmail.com ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ।"
           : language === "hi"
-          ? "क्षमा करें, सर्वर कनेक्शन में अस्थायी समस्या आ रही है। कृपया कुछ क्षण बाद पुनः प्रयास करें या contact@mect.org.in पर संपर्क करें।"
-          : "I apologize, but I am experiencing temporary connectivity difficulties. Please try again in a few moments or email the Secretariat at contact@mect.org.in.";
+          ? "क्षमा करें, सर्वर कनेक्शन में अस्थायी समस्या आ रही है। कृपया कुछ क्षण बाद पुनः प्रयास करें या mect220@gmail.com पर संपर्क करें।"
+          : "I apologize, but I am experiencing temporary connectivity difficulties. Please try again in a few moments or email the Secretariat at mect220@gmail.com.";
 
       const errorAssistantMsg: Message = {
         id: assistantId,
@@ -583,7 +583,7 @@ export function HImChatbot() {
                     msg.content ? (
                       <div className="space-y-2">
                         {renderFormattedContent(msg.content)}
-                        {lastFailedPrompt && msg.content.includes("contact@mect.org.in") && (
+                        {lastFailedPrompt && msg.content.includes("mect220@gmail.com") && (
                           <div className="pt-2">
                             <button
                               type="button"

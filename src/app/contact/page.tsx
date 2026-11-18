@@ -155,10 +155,10 @@ export default function ContactPage() {
                     Direct Email
                   </span>
                   <a
-                    href="mailto:scholarships@mect.org.in"
+                    href="mailto:mect220@gmail.com"
                     className="text-terracotta-dark font-medium underline hover:text-forest break-all block"
                   >
-                    scholarships@mect.org.in
+                    mect220@gmail.com
                   </a>
                 </div>
               </div>
@@ -187,10 +187,10 @@ export default function ContactPage() {
                     Direct Email
                   </span>
                   <a
-                    href="mailto:donations@mect.org.in"
+                    href="mailto:mect220@gmail.com"
                     className="text-terracotta-dark font-medium underline hover:text-forest break-all block"
                   >
-                    donations@mect.org.in
+                    mect220@gmail.com
                   </a>
                 </div>
               </div>
@@ -592,7 +592,7 @@ export default function ContactPage() {
                 Direct Trust Follow-Up
               </h3>
               <p className="text-xs text-ink-sand leading-relaxed">
-                Responses are communicated directly through verified Trust email addresses (<code>@mect.org.in</code>) or registered office telephone lines. No third parties or touts are engaged.
+                Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>9853608113</code>). No third parties or touts are engaged.
               </p>
               <div className="text-[11px] text-forest pt-2 border-t border-border-warm font-medium">
                 Standard: Authentic institutional channels without middlemen.
@@ -620,7 +620,7 @@ export default function ContactPage() {
             <div className="flex items-center gap-2">
               <Compass className="w-4 h-4 text-terracotta shrink-0" />
               <span>
-                <strong>Deed:</strong> Balangir Sub-Registrar Doc No. 40311302194 | <strong>PAN:</strong> AAATM8998D | <strong>MCA CSR:</strong> CSR00081063
+                <strong>Deed:</strong> Balangir Sub-Registrar Doc No. 40311302194 | <strong>PAN:</strong> AADTM5474F | <strong>MCA CSR:</strong> CSR00081063
               </span>
             </div>
             <div className="flex items-center gap-4 text-terracotta-dark font-semibold">

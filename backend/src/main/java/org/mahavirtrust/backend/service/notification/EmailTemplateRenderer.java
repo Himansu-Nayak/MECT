@@ -325,7 +325,7 @@ public class EmailTemplateRenderer {
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="background-color:#F0DEC5;border-left:3px solid #A45E44;">
                   <tr>
                     <td style="padding:12px 14px;font-size:13px;line-height:1.55;color:#26332E;">
-                      If you did not authorise this change, please contact Mahaveer Educational &amp; Charitable Trust immediately at contact@mect.org.in or +91 94371 23616.
+                      If you did not authorise this change, please contact Mahaveer Educational &amp; Charitable Trust immediately at mect220@gmail.com or 9853608113.
                     </td>
                   </tr>
                 </table>
@@ -398,8 +398,8 @@ public class EmailTemplateRenderer {
                               <div style="color:#66736C;">Near Sai Mandir, Rugudipara, Balangir &ndash; 767001, Odisha, India</div>
                               <div style="color:#66736C;margin-top:4px;">
                                 Website: <a href="%s" style="color:#874A35;text-decoration:underline;">%s</a>
-                                &bull; Email: <a href="mailto:contact@mect.org.in" style="color:#874A35;text-decoration:underline;">contact@mect.org.in</a>
-                                &bull; Phone: +91 94371 23616
+                                &bull; Email: <a href="mailto:mect220@gmail.com" style="color:#874A35;text-decoration:underline;">mect220@gmail.com</a>
+                                &bull; Phone: 9853608113
                               </div>
                               %s
                             </td>

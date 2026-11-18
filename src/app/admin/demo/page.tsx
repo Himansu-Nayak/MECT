@@ -167,7 +167,7 @@ const INITIAL_DEMO_STATE: DemoState = {
     },
     {
       id: "OUT-02",
-      recipient: "+91 94371 XXXXX",
+      recipient: "+91 98536 XXXXX",
       subject: "Receipt notification for ₹5,000 contribution to Hanuman Murti Project",
       status: "DISPATCHED",
       channel: "WHATSAPP",

@@ -237,7 +237,7 @@ const FAQ_ITEMS = [
   {
     question: "What happens if my availability changes after I register?",
     answer:
-      "Participation is entirely voluntary. If your availability, location, or professional commitments change, simply notify the Secretariat at contact@mect.org.in to pause, update, or withdraw your registry entry at any time.",
+      "Participation is entirely voluntary. If your availability, location, or professional commitments change, simply notify the Secretariat at mect220@gmail.com to pause, update, or withdraw your registry entry at any time.",
   },
 ];
 
@@ -614,7 +614,7 @@ export default function VolunteerPage() {
 
             <div className="pt-4 border-t border-sand/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-sand">
               <p>
-                Ethics disclosures or safeguarding queries: <a href="mailto:contact@mect.org.in" className="underline text-cream hover:text-sand">contact@mect.org.in</a>
+                Ethics disclosures or safeguarding queries: <a href="mailto:mect220@gmail.com" className="underline text-cream hover:text-sand">mect220@gmail.com</a>
               </p>
               <Link href="/statutory-disclosures">
                 <Button variant="gold" size="sm">

@@ -63,18 +63,18 @@ export const ORG = {
     },
   },
   helpline: {
-    display: "+91 94371 23616",
-    e164: "+919437123616",
-    href: "tel:+919437123616",
+    display: "9853608113",
+    e164: "+919853608113",
+    href: "tel:+919853608113",
     hours: "Monday-Saturday, 10:00-17:30 IST",
   },
   emails: {
-    official: "mect27072013@gmail.com",
-    general: "contact@mect.org.in",
-    scholarships: "scholarships@mect.org.in",
-    grievance: "contact@mect.org.in",
-    secretariatAlt: "Kampabbsr@gmail.com",
-    fieldUnit: "mectpuintala@gmail.com",
+    official: "mect220@gmail.com",
+    general: "mect220@gmail.com",
+    scholarships: "mect220@gmail.com",
+    grievance: "mect220@gmail.com",
+    secretariatAlt: "mect220@gmail.com",
+    fieldUnit: "mect220@gmail.com",
   },
   bank: {
     bankName: "Authorized Online Payment Gateway (Cashfree)",
@@ -104,7 +104,7 @@ export const ORG = {
   scholarshipIntake: {
     intakeOpen: false,
     statusNote:
-      "Online document upload is currently paused pending the next Trust intake window announcement. Please direct scholarship queries to scholarships@mect.org.in.",
+      "Online document upload is currently paused pending the next Trust intake window announcement. Please direct scholarship queries to mect220@gmail.com.",
   },
 } as const;
 

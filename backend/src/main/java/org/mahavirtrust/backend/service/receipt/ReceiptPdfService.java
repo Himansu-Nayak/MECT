@@ -53,7 +53,7 @@ public class ReceiptPdfService {
 
             Paragraph pTitle = new Paragraph("MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)", orgTitleFont);
             Paragraph pSub = new Paragraph(
-                    "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: +91 94371 23616  |  donations@mect.org.in",
+                    "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: 9853608113  |  mect220@gmail.com",
                     subFont
             );
             Paragraph pDoc = new Paragraph(

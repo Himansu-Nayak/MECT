@@ -60,7 +60,7 @@ export function HelpfulRating({ itemLabel }: HelpfulRatingProps) {
             >
               {vote === "yes"
                 ? "Thank you for your feedback."
-                : "Noted — contact contact@mect.org.in for clarification."}
+                : "Noted — contact mect220@gmail.com for clarification."}
             </m.span>
           )}
         </AnimatePresence>

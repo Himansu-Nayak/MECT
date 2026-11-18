@@ -51,6 +51,28 @@ export function CompactFinalCtaSection() {
             </Button>
           </Link>
         </Reveal>
+
+        {/* Direct Institutional Contact Strip */}
+        <Reveal direction="up" delay={0.15} className="pt-4 border-t border-white/10 max-w-xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-sand">
+            <div>
+              <span className="text-cream/70">Helpline: </span>
+              <a href="tel:+919853608113" className="font-bold text-white hover:text-sand underline">
+                9853608113
+              </a>
+            </div>
+            <span className="text-white/20 hidden sm:inline">•</span>
+            <div>
+              <span className="text-cream/70">Official Email: </span>
+              <a href="mailto:mect220@gmail.com" className="font-bold text-white hover:text-sand underline">
+                mect220@gmail.com
+              </a>
+            </div>
+          </div>
+          <p className="text-[11px] text-cream/60 font-sans mt-2">
+            Registered Office: Near Sai Mandir, Rugudipara, Balangir – 767001, Odisha
+          </p>
+        </Reveal>
       </Container>
     </section>
   );
