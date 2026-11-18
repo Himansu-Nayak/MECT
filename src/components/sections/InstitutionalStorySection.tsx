@@ -1,11 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  ImageReveal,
+} from "@/components/ui/MotionPrimitives";
 import {
   Landmark,
   ArrowRight,
@@ -15,17 +20,21 @@ import {
   Users,
   Building,
   FileCheck,
+  ChevronDown,
+  Calendar,
 } from "lucide-react";
 
 /**
- * MECT Phase 26 — Section 02: Institutional Story & Historical Manifesto
+ * MECT Phase 27 — Section 02: Institutional Story & Historical Manifesto
  *
- * Transforms the institutional story into a high-elegance editorial layout:
- * - Wide literary statement describing the 2013 founding in Balangir.
- * - Archival ledger presenting the 3 non-negotiable fiduciary commitments.
- * - Authenticated documentary field photograph from Puīntalā campus.
+ * Immersive upgrade with:
+ * - Sequenced stagger for the 3 core fiduciary covenants
+ * - ImageReveal with subtle zoom-settling for the campus photograph
+ * - Interactive chronological deed milestones drawer
  */
 export function InstitutionalStorySection() {
+  const [showMilestones, setShowMilestones] = useState(false);
+
   const corePrinciples = [
     {
       number: "01",
@@ -100,36 +109,35 @@ export function InstitutionalStorySection() {
                 Unlike entities that rely on distant fundraising intermediaries, MECT was founded by local educators, legal advocates, and community elders who live and work directly in Balangir. Every programme is governed by three non-negotiable statutory principles:
               </p>
 
-              {/* Ledger Principles */}
-              <div className="space-y-4 pt-2">
+              {/* Staggered Ledger Principles */}
+              <StaggerGroup className="space-y-4 pt-2" staggerDelay={0.08}>
                 {corePrinciples.map((item) => (
-                  <div
-                    key={item.number}
-                    className="p-5 rounded-[2px] bg-white border border-[#E7E0D5] hover:border-terracotta/40 transition-colors shadow-xs group"
-                  >
-                    <div className="flex items-start gap-4">
-                      <span className="font-mono text-base font-bold text-terracotta shrink-0 pt-0.5">
-                        {item.number}
-                      </span>
-                      <div className="space-y-1.5 flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2 flex-wrap">
-                          <h3 className="font-serif text-base sm:text-lg font-bold text-ink group-hover:text-terracotta-dark transition-colors">
-                            {item.title}
-                          </h3>
-                          <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-sand/40 text-ink-secondary font-semibold">
-                            {item.badge}
-                          </span>
+                  <StaggerItem key={item.number}>
+                    <div className="p-5 rounded-[2px] bg-white border border-[#E7E0D5] hover:border-terracotta/50 transition-all shadow-xs group">
+                      <div className="flex items-start gap-4">
+                        <span className="font-mono text-base font-bold text-terracotta shrink-0 pt-0.5">
+                          {item.number}
+                        </span>
+                        <div className="space-y-1.5 flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <h3 className="font-serif text-base sm:text-lg font-bold text-ink group-hover:text-terracotta-dark transition-colors">
+                              {item.title}
+                            </h3>
+                            <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-sand/40 text-ink-secondary font-semibold">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
+                            {item.detail}
+                          </p>
                         </div>
-                        <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
-                          {item.detail}
-                        </p>
                       </div>
                     </div>
-                  </div>
+                  </StaggerItem>
                 ))}
-              </div>
+              </StaggerGroup>
 
-              {/* Action Buttons */}
+              {/* Action Buttons & Interactive Milestones Trigger */}
               <div className="pt-3 flex flex-wrap items-center gap-3.5">
                 <Link href="/about">
                   <Button variant="primary" size="md" className="font-bold group bg-terracotta hover:bg-terracotta-dark text-white">
@@ -137,42 +145,71 @@ export function InstitutionalStorySection() {
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                   </Button>
                 </Link>
-                <Link href="/governance">
-                  <Button variant="outline" size="md" className="border-[#E7E0D5] text-ink hover:bg-white">
-                    <ShieldCheck className="w-4 h-4 mr-2 text-terracotta" aria-hidden="true" />
-                    <span>Trustees &amp; Governance Charter</span>
-                  </Button>
-                </Link>
+                <button
+                  type="button"
+                  onClick={() => setShowMilestones(!showMilestones)}
+                  className="px-4 py-2.5 rounded-sm border border-[#E7E0D5] text-xs font-mono font-bold text-ink hover:bg-white transition-colors flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-terracotta"
+                  aria-expanded={showMilestones}
+                >
+                  <Calendar className="w-4 h-4 text-terracotta" />
+                  <span>{showMilestones ? "Hide Deed Milestones" : "View Deed Milestones"}</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showMilestones ? "rotate-180" : ""}`} />
+                </button>
               </div>
+
+              {/* Expandable Chronological Deed Milestones */}
+              {showMilestones && (
+                <div className="p-4 rounded-[2px] bg-white border border-[#E7E0D5] space-y-2 text-xs font-sans animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-bold">
+                    Official Sub-Registrar Chronology
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-ink-secondary font-mono">
+                    <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
+                      <span className="text-ink font-bold block">27 July 2013</span>
+                      <span className="text-[10px] text-ink-muted">Deed Execution by Settler Founder</span>
+                    </div>
+                    <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
+                      <span className="text-ink font-bold block">30 July 2013</span>
+                      <span className="text-[10px] text-ink-muted">Official Registration (Doc 40311302194)</span>
+                    </div>
+                    <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
+                      <span className="text-ink font-bold block">Book 4, Vol 45</span>
+                      <span className="text-[10px] text-ink-muted">Sub-Registrar Balangir Registry</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </Reveal>
           </div>
 
           {/* Right Column: Documentary Field Photograph & Docket Plaque (Col 8-12) */}
           <div className="lg:col-span-5 relative w-full">
             <Reveal direction="up" delay={0.15} className="relative group">
-              <div className="relative w-full aspect-[4/3] rounded-[2px] overflow-hidden border border-[#E7E0D5] shadow-md bg-[#16221D]">
-                <Image
-                  src="/images/hero/mect-faculty-puintala-campus.jpg"
-                  alt="MECT faculty members and trustees gathered at the rural Puīntalā campus in Balangir"
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 1023px) 100vw, 42vw"
-                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-28 pointer-events-none bg-gradient-to-t from-[#0D1512]/95 via-[#0D1512]/50 to-transparent"
-                />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-cream font-sans">
-                  <div className="inline-flex items-center gap-1.5 text-xs bg-[#0D1512]/90 px-2.5 py-1 rounded-[2px] border border-white/15 backdrop-blur-xs">
-                    <MapPin className="w-3.5 h-3.5 text-[#C4924A] shrink-0" aria-hidden="true" />
-                    <span>Puīntalā Faculty Centre, Balangir</span>
+              <ImageReveal scaleFrom={1.03} className="rounded-[2px] border border-[#E7E0D5] shadow-md bg-[#16221D]">
+                <div className="relative w-full aspect-[4/3]">
+                  <Image
+                    src="/images/hero/mect-faculty-puintala-campus.jpg"
+                    alt="MECT faculty members and trustees gathered at the rural Puīntalā campus in Balangir"
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 1023px) 100vw, 42vw"
+                    className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-28 pointer-events-none bg-gradient-to-t from-[#0D1512]/95 via-[#0D1512]/50 to-transparent"
+                  />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-cream font-sans">
+                    <div className="inline-flex items-center gap-1.5 text-xs bg-[#0D1512]/90 px-2.5 py-1 rounded-[2px] border border-white/15 backdrop-blur-xs">
+                      <MapPin className="w-3.5 h-3.5 text-[#C4924A] shrink-0" aria-hidden="true" />
+                      <span>Puīntalā Faculty Centre, Balangir</span>
+                    </div>
+                    <span className="text-[10px] uppercase font-mono tracking-wider text-[#E5C499] font-semibold">
+                      REGD. 2013
+                    </span>
                   </div>
-                  <span className="text-[10px] uppercase font-mono tracking-wider text-[#E5C499] font-semibold">
-                    REGD. 2013
-                  </span>
                 </div>
-              </div>
+              </ImageReveal>
 
               {/* Physical Audit Ledger Plaque */}
               <div className="mt-4 p-4 rounded-[2px] bg-white border border-[#E7E0D5] shadow-xs flex items-start gap-3">

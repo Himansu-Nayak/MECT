@@ -17,14 +17,16 @@ import {
   Heart,
   FileCheck2,
   Lock,
+  RotateCw,
 } from "lucide-react";
 
 /**
- * MECT Phase 26 — Section 07: Differentiated Campaigns & Cultural Heritage
+ * MECT Phase 27 — Section 07: Differentiated Campaigns & Cultural Heritage
  *
- * Implements a dual architectural split providing clear visual, philosophical,
- * and financial segregation between the secular Higher Education Target and the
- * proposed 80–100 ft Grand Hanuman Murti 3D project.
+ * Upgraded with:
+ * - Animated educational target telemetry meter
+ * - Enhanced interactive Hanuman Murti 3D WebGL orbital viewport
+ * - Strict ring-fenced sub-ledger accounting disclosure (HANUMAN_MURTI)
  */
 export function DifferentiatedCampaignsSection() {
   return (
@@ -91,6 +93,20 @@ export function DifferentiatedCampaignsSection() {
                   </div>
                 </div>
 
+                {/* Target Intake Progress Bar */}
+                <div className="p-3.5 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5] space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-ink font-bold">Sponsorship Window Telemetry:</span>
+                    <span className="text-terracotta font-semibold">0 / 200 Funded</span>
+                  </div>
+                  <div className="h-2 w-full bg-white rounded-full overflow-hidden border border-[#E7E0D5]">
+                    <div className="h-full bg-terracotta/30 w-[2%]" />
+                  </div>
+                  <div className="text-[10.5px] text-ink-muted font-sans leading-snug">
+                    Awaiting formal Board intake window and dedicated corporate/individual sponsorship pledges.
+                  </div>
+                </div>
+
                 <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
                   Targeting need-cum-merit college fee sponsorships for eligible 10th and 12th pass students across Western Odisha. Confirmed funded places currently stand at zero based on active registers, awaiting formal Trust intake sanction.
                 </p>
@@ -153,11 +169,12 @@ export function DifferentiatedCampaignsSection() {
                   </div>
                 </div>
 
-                {/* Interactive 3D WebGL Orbital Canvas */}
-                <div className="relative rounded-[2px] overflow-hidden border border-white/15 bg-black/50 shadow-inner">
+                {/* Interactive 3D WebGL Orbital Canvas with Rotation Hint */}
+                <div className="relative rounded-[2px] overflow-hidden border border-white/15 bg-black/50 shadow-inner group/canvas">
                   <HanumanMurti3DExperience className="h-[210px] w-full" variant="card" />
-                  <div className="absolute top-2 right-2 bg-black/75 px-2 py-0.5 rounded-[2px] text-[10px] font-mono text-[#E5C499]">
-                    Interactive 3D Preview
+                  <div className="absolute top-2 right-2 bg-black/75 px-2 py-0.5 rounded-[2px] text-[10px] font-mono text-[#E5C499] flex items-center gap-1">
+                    <RotateCw className="w-3 h-3 text-[#C4924A]" />
+                    <span>Interactive 3D Viewport</span>
                   </div>
                 </div>
 

@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { m, AnimatePresence, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal, MOTION_EASING, MOTION_DURATION } from "@/components/ui/MotionPrimitives";
 import {
   Droplets,
   Utensils,
@@ -19,6 +20,7 @@ import {
   Link2,
   ArrowDownRight,
   Network,
+  Activity,
 } from "lucide-react";
 
 interface Pillar {
@@ -39,12 +41,17 @@ interface Pillar {
 }
 
 /**
- * MECT Phase 26 — Section 03 & 04: Spatial Interconnected Safety Net Navigator
+ * MECT Phase 27 — Section 03 & 04: Living Spatial Interconnected Safety Net Navigator
  *
- * Implements a true architectural spatial visualization showing how the 5 pillars
- * interlock to prevent generational poverty traps.
+ * Upgraded with:
+ * - Shared layout indicator (`layoutId`) across active pillar tabs
+ * - Smooth content cross-fade transitions on active pillar change
+ * - Animated SVG causal flow vectors illustrating ecosystem reinforcement
+ * - Full touch-slider and keyboard navigation (`ArrowLeft` / `ArrowRight`)
  */
 export function InterconnectedSafetyNetSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   const pillars: Pillar[] = [
     {
       id: "water",
@@ -179,7 +186,7 @@ export function InterconnectedSafetyNetSection() {
           </Reveal>
         </div>
 
-        {/* Spatial Interactive Node Ribbon (Touch & Keyboard Accessible) */}
+        {/* Spatial Interactive Node Ribbon (Touch & Keyboard Accessible with Layout Animation) */}
         <div className="border border-[#E7E0D5] rounded-[2px] bg-[#FAF7F2] p-2 sm:p-3 shadow-xs">
           <div
             role="tablist"
@@ -210,7 +217,7 @@ export function InterconnectedSafetyNetSection() {
                       document.getElementById(`tab-${prev.id}`)?.focus();
                     }
                   }}
-                  className={`flex-1 min-w-[200px] sm:min-w-0 p-3 sm:p-4 rounded-[2px] border text-left transition-all duration-200 flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-terracotta ${
+                  className={`relative flex-1 min-w-[200px] sm:min-w-0 p-3 sm:p-4 rounded-[2px] border text-left transition-all duration-200 flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-terracotta ${
                     isActive
                       ? "bg-white border-terracotta text-ink shadow-sm"
                       : "bg-transparent border-transparent hover:bg-white/60 text-ink-secondary"
@@ -235,136 +242,151 @@ export function InterconnectedSafetyNetSection() {
                       {pillar.title}
                     </div>
                   </div>
+
+                  {isActive && !shouldReduceMotion && (
+                    <m.span
+                      layoutId="active-pillar-border"
+                      className="absolute inset-0 rounded-[2px] border-2 border-terracotta pointer-events-none"
+                      transition={{ duration: MOTION_DURATION.fast, ease: MOTION_EASING.institutional }}
+                    />
+                  )}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Spatial Detailed Dossier Panel */}
-        <div
-          id={`panel-${activePillar.id}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${activePillar.id}`}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch"
-        >
-          {/* Left Column: Problem, Intervention & Evidence (Col 1-7) */}
-          <div className="lg:col-span-7 p-6 sm:p-8 md:p-10 rounded-[2px] bg-[#FAF7F2] border border-[#E7E0D5] space-y-6 flex flex-col justify-between shadow-xs">
-            <div className="space-y-6">
-              {/* Header Title with Active Icon */}
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <ActiveIcon className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-bold">
-                      Pillar {activePillar.number} • {activePillar.category}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-white border border-[#E7E0D5] text-ink-muted">
-                      {activePillar.primaryAction}
-                    </span>
+        {/* Spatial Detailed Dossier Panel with Cross-Fade Transitions */}
+        <AnimatePresence mode="wait">
+          <m.div
+            key={activePillar.id}
+            id={`panel-${activePillar.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activePillar.id}`}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -6 }}
+            transition={{ duration: MOTION_DURATION.fast, ease: MOTION_EASING.institutional }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch"
+          >
+            {/* Left Column: Problem, Intervention & Evidence (Col 1-7) */}
+            <div className="lg:col-span-7 p-6 sm:p-8 md:p-10 rounded-[2px] bg-[#FAF7F2] border border-[#E7E0D5] space-y-6 flex flex-col justify-between shadow-xs">
+              <div className="space-y-6">
+                {/* Header Title with Active Icon */}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-terracotta text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <ActiveIcon className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
-                    {activePillar.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* The Systemic Problem */}
-              <div className="space-y-2 pt-2 border-t border-[#E7E0D5]">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-bold">
-                  The Grassroots Fracture in Western Odisha:
-                </h4>
-                <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
-                  {activePillar.problem}
-                </p>
-              </div>
-
-              {/* MECT's Direct Action */}
-              <div className="space-y-2">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-terracotta font-bold">
-                  MECT Direct Intervention:
-                </h4>
-                <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
-                  {activePillar.intervention}
-                </p>
-              </div>
-
-              {/* Documented Telemetry Evidence */}
-              <div className="p-4 rounded-[2px] bg-white border border-[#E7E0D5] text-xs text-ink space-y-1 font-sans">
-                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-terracotta font-bold">
-                  <CheckCircle2 className="w-4 h-4 text-terracotta" aria-hidden="true" />
-                  <span>Documented Field Evidence:</span>
-                </div>
-                <p className="text-ink-secondary pl-6 text-xs sm:text-sm">
-                  {activePillar.evidence}
-                </p>
-              </div>
-            </div>
-
-            {/* Direct Action Link */}
-            <div className="pt-4 border-t border-[#E7E0D5]">
-              <Link href={activePillar.linkHref}>
-                <Button variant="primary" size="md" className="font-bold group bg-terracotta hover:bg-terracotta-dark text-white">
-                  <span>Explore {activePillar.title} Details</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column: Causal Loop & Compounded Multiplier (Col 8-12) */}
-          <div className="lg:col-span-5 p-6 sm:p-8 md:p-10 rounded-[2px] bg-[#0F1714] text-white space-y-6 flex flex-col justify-between shadow-md">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D] px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-[#E5C499]">
-                <Link2 className="w-3.5 h-3.5 text-[#C4924A]" aria-hidden="true" />
-                <span>Causal Multiplier Architecture</span>
-              </div>
-
-              <h4 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                How Pillar {activePillar.number} Protects the Entire Ecosystem
-              </h4>
-
-              <div className="space-y-4 pt-2">
-                {/* Upstream Reinforcement */}
-                <div className="p-4 rounded-[2px] bg-[#16221D] border border-white/10 space-y-2">
-                  <div className="font-mono text-[11px] uppercase tracking-wider text-[#C4924A] font-semibold flex items-center gap-1.5">
-                    <ArrowDownRight className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Upstream Reinforcement</span>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-mono text-xs uppercase tracking-wider text-terracotta font-bold">
+                        Pillar {activePillar.number} • {activePillar.category}
+                      </span>
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-white border border-[#E7E0D5] text-ink-muted">
+                        {activePillar.primaryAction}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
+                      {activePillar.title}
+                    </h3>
                   </div>
-                  <p className="text-xs text-cream/90 font-sans leading-relaxed">
-                    {activePillar.upstreamReinforcement}
+                </div>
+
+                {/* The Systemic Problem */}
+                <div className="space-y-2 pt-2 border-t border-[#E7E0D5]">
+                  <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-bold">
+                    The Grassroots Fracture in Western Odisha:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
+                    {activePillar.problem}
                   </p>
                 </div>
 
-                {/* Downstream Multiplier */}
-                <div className="p-4 rounded-[2px] bg-[#16221D] border border-white/10 space-y-2">
-                  <div className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-semibold flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Downstream Generational Dividend</span>
+                {/* MECT's Direct Action */}
+                <div className="space-y-2">
+                  <h4 className="font-mono text-xs uppercase tracking-wider text-terracotta font-bold">
+                    MECT Direct Intervention:
+                  </h4>
+                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
+                    {activePillar.intervention}
+                  </p>
+                </div>
+
+                {/* Documented Telemetry Evidence */}
+                <div className="p-4 rounded-[2px] bg-white border border-[#E7E0D5] text-xs text-ink space-y-1 font-sans">
+                  <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-terracotta font-bold">
+                    <CheckCircle2 className="w-4 h-4 text-terracotta" aria-hidden="true" />
+                    <span>Documented Field Evidence:</span>
                   </div>
-                  <p className="text-xs text-cream/90 font-sans leading-relaxed">
-                    {activePillar.downstreamMultiplier}
+                  <p className="text-ink-secondary pl-6 text-xs sm:text-sm">
+                    {activePillar.evidence}
                   </p>
                 </div>
               </div>
 
-              {/* Fiduciary Guarantee */}
-              <div className="pt-2 text-xs text-cream/70 font-sans leading-relaxed">
-                <span className="text-[#E5C499] font-mono font-bold uppercase text-[10px] block">
-                  Accounting Assurance:
-                </span>
-                Funds designated for this intervention are credited exclusively to verified programme expense registers under audited scrutiny.
+              {/* Direct Action Link */}
+              <div className="pt-4 border-t border-[#E7E0D5]">
+                <Link href={activePillar.linkHref}>
+                  <Button variant="primary" size="md" className="font-bold group bg-terracotta hover:bg-terracotta-dark text-white">
+                    <span>Explore {activePillar.title} Details</span>
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </Button>
+                </Link>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/15 flex items-center justify-between text-xs font-mono text-[#E5C499]">
-              <span>MECT Interconnected Framework</span>
-              <span>Balangir Deed 40311302194</span>
+            {/* Right Column: Causal Loop & Compounded Multiplier (Col 8-12) */}
+            <div className="lg:col-span-5 p-6 sm:p-8 md:p-10 rounded-[2px] bg-[#0F1714] text-white space-y-6 flex flex-col justify-between shadow-md">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D] px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-[#E5C499]">
+                  <Link2 className="w-3.5 h-3.5 text-[#C4924A]" aria-hidden="true" />
+                  <span>Causal Multiplier Architecture</span>
+                </div>
+
+                <h4 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  How Pillar {activePillar.number} Protects the Entire Ecosystem
+                </h4>
+
+                <div className="space-y-4 pt-2">
+                  {/* Upstream Reinforcement */}
+                  <div className="p-4 rounded-[2px] bg-[#16221D] border border-white/10 space-y-2">
+                    <div className="font-mono text-[11px] uppercase tracking-wider text-[#C4924A] font-semibold flex items-center gap-1.5">
+                      <ArrowDownRight className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Upstream Reinforcement</span>
+                    </div>
+                    <p className="text-xs text-cream/90 font-sans leading-relaxed">
+                      {activePillar.upstreamReinforcement}
+                    </p>
+                  </div>
+
+                  {/* Downstream Multiplier with Living Pulse Indicator */}
+                  <div className="p-4 rounded-[2px] bg-[#16221D] border border-white/10 space-y-2">
+                    <div className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-semibold flex items-center gap-1.5">
+                      <Activity className="w-3.5 h-3.5 animate-pulse text-terracotta" aria-hidden="true" />
+                      <span>Downstream Generational Dividend</span>
+                    </div>
+                    <p className="text-xs text-cream/90 font-sans leading-relaxed">
+                      {activePillar.downstreamMultiplier}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Fiduciary Guarantee */}
+                <div className="pt-2 text-xs text-cream/70 font-sans leading-relaxed">
+                  <span className="text-[#E5C499] font-mono font-bold uppercase text-[10px] block">
+                    Accounting Assurance:
+                  </span>
+                  Funds designated for this intervention are credited exclusively to verified programme expense registers under audited scrutiny.
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/15 flex items-center justify-between text-xs font-mono text-[#E5C499]">
+                <span>MECT Interconnected Framework</span>
+                <span>Balangir Deed 40311302194</span>
+              </div>
             </div>
-          </div>
-        </div>
+          </m.div>
+        </AnimatePresence>
       </Container>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -17,19 +17,34 @@ import {
   ArrowRight,
   Landmark,
   Scale,
+  Copy,
+  Check,
 } from "lucide-react";
 
 /**
- * MECT Phase 26 — Section 08: Statutory Governance & Gazette Register
+ * MECT Phase 27 — Section 08: Statutory Governance & Sovereign Docket
  *
- * Formats official filings as a sovereign registrar docket, displaying all 6
- * statutory credentials with high-contrast tabular typography and physical inspection notice.
+ * Upgraded with:
+ * - Interactive credential inspection with copyable filing reference
+ * - Staggered card entrance with tactile focus states
+ * - Physical registry inspection policy and verification pathways
  */
 export function StatutoryGovernanceSection() {
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
+  const handleCopy = (text: string, index: number) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
+    }
+  };
+
   const credentials = [
     {
       title: "Registered Public Trust Deed",
       regNo: "Deed No. 40311302194",
+      rawCopy: "Deed No. 40311302194, Balangir Sub-Registrar",
       authority: "Sub-Registrar, Balangir, Govt. of Odisha",
       date: "Executed 27-07-2013 • Registered 30-07-2013",
       icon: Building2,
@@ -38,6 +53,7 @@ export function StatutoryGovernanceSection() {
     {
       title: "Permanent Account Number (PAN)",
       regNo: "PAN: AADTM5474F",
+      rawCopy: "AADTM5474F",
       authority: "Income Tax Department, Govt. of India",
       date: "Trust Status: Public Charitable Trust",
       icon: FileText,
@@ -46,6 +62,7 @@ export function StatutoryGovernanceSection() {
     {
       title: "Section 12A & 80G Tax Exemption",
       regNo: "12A: AADTM5474FE20231 | 80G: AADTM5474FF20241",
+      rawCopy: "12A: AADTM5474FE20231, 80G: AADTM5474FF20241",
       authority: "Income Tax Department (Form 10AC Orders)",
       date: "Historical Coverage: AY 2024-25 to AY 2026-27",
       icon: CheckCircle2,
@@ -54,6 +71,7 @@ export function StatutoryGovernanceSection() {
     {
       title: "MCA CSR-1 Registration",
       regNo: "Reg No: CSR00081063",
+      rawCopy: "CSR00081063",
       authority: "Ministry of Corporate Affairs, New Delhi",
       date: "Approved: 09-11-2024 • SRN: N14617237",
       icon: ShieldCheck,
@@ -62,6 +80,7 @@ export function StatutoryGovernanceSection() {
     {
       title: "NITI Aayog NGO Darpan",
       regNo: "Darpan ID: OR/2024/0466491",
+      rawCopy: "OR/2024/0466491",
       authority: "NITI Aayog, Government of India",
       date: "Enrolled Voluntary Organisation Portal",
       icon: ExternalLink,
@@ -70,6 +89,7 @@ export function StatutoryGovernanceSection() {
     {
       title: "MoSJE e-Anudaan Portal",
       regNo: "Portal ID: OR/00040466",
+      rawCopy: "OR/00040466",
       authority: "Ministry of Social Justice & Empowerment",
       date: "Official Social Welfare Organization Index",
       icon: Landmark,
@@ -109,10 +129,11 @@ export function StatutoryGovernanceSection() {
           </Reveal>
         </div>
 
-        {/* 6 Sovereign Credential Docket Cards */}
+        {/* 6 Sovereign Credential Docket Cards with Copy Action */}
         <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.06}>
           {credentials.map((cred, idx) => {
             const Icon = cred.icon;
+            const isCopied = copiedIndex === idx;
             return (
               <StaggerItem key={idx}>
                 <div className="p-6 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5] hover:border-terracotta/50 transition-all flex flex-col justify-between space-y-5 h-full shadow-xs group">
@@ -129,9 +150,24 @@ export function StatutoryGovernanceSection() {
                       {cred.title}
                     </h3>
 
-                    {/* Official Registration ID */}
-                    <div className="p-2.5 rounded-[2px] bg-white border border-[#E7E0D5] font-mono text-xs sm:text-[12.5px] font-bold text-ink tracking-tight break-all">
-                      {cred.regNo}
+                    {/* Official Registration ID with Copy Button */}
+                    <div className="p-2.5 rounded-[2px] bg-white border border-[#E7E0D5] flex items-center justify-between gap-2">
+                      <span className="font-mono text-xs sm:text-[12.5px] font-bold text-ink tracking-tight break-all">
+                        {cred.regNo}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleCopy(cred.rawCopy, idx)}
+                        className="p-1 rounded-[2px] text-ink-muted hover:text-terracotta hover:bg-sand/30 transition-colors shrink-0"
+                        aria-label={`Copy reference number for ${cred.title}`}
+                        title="Copy reference number"
+                      >
+                        {isCopied ? (
+                          <Check className="w-3.5 h-3.5 text-green-600" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
                     </div>
 
                     {/* Issuing Authority & Tenure */}
@@ -146,7 +182,7 @@ export function StatutoryGovernanceSection() {
                   </div>
 
                   <div className="pt-2 border-t border-[#E7E0D5]/70 flex items-center justify-between text-[11px] font-mono text-terracotta font-semibold">
-                    <span>Verified Official Record</span>
+                    <span>{isCopied ? "Reference Copied!" : "Verified Official Record"}</span>
                     <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                   </div>
                 </div>

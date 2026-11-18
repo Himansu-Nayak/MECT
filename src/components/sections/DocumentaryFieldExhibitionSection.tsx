@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/MotionPrimitives";
+import { Reveal, ImageReveal } from "@/components/ui/MotionPrimitives";
 import {
   Camera,
   ArrowRight,
@@ -15,6 +15,8 @@ import {
   Calendar,
   Maximize2,
   FileCheck,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 interface ExhibitionItem {
@@ -30,10 +32,13 @@ interface ExhibitionItem {
 }
 
 /**
- * MECT Phase 26 — Section 06: Documentary Field Exhibition
+ * MECT Phase 27 — Section 06: Documentary Field Exhibition & Museum Lightbox
  *
- * Museum-grade photo-essay featuring authentic field records from Balangir,
- * archival catalog metadata, and an interactive keyboard-accessible lightbox.
+ * Upgraded with:
+ * - Keyboard-controlled lightbox modal (ArrowLeft, ArrowRight, Escape)
+ * - Previous/Next slide triggers and sequence counter (e.g., 2 / 5)
+ * - ImageReveal zoom-settling for all thumbnails
+ * - Sharp high-resolution WebP delivery and Child Safeguarding verification
  */
 export function DocumentaryFieldExhibitionSection() {
   const exhibitionRecords: ExhibitionItem[] = [
@@ -99,7 +104,39 @@ export function DocumentaryFieldExhibitionSection() {
     },
   ];
 
-  const [activeModalItem, setActiveModalItem] = useState<ExhibitionItem | null>(null);
+  const [activeModalIndex, setActiveModalIndex] = useState<number | null>(null);
+
+  const activeItem = activeModalIndex !== null ? exhibitionRecords[activeModalIndex] : null;
+
+  const handleNext = useCallback(() => {
+    if (activeModalIndex !== null) {
+      setActiveModalIndex((activeModalIndex + 1) % exhibitionRecords.length);
+    }
+  }, [activeModalIndex, exhibitionRecords.length]);
+
+  const handlePrev = useCallback(() => {
+    if (activeModalIndex !== null) {
+      setActiveModalIndex((activeModalIndex - 1 + exhibitionRecords.length) % exhibitionRecords.length);
+    }
+  }, [activeModalIndex, exhibitionRecords.length]);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (activeModalIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveModalIndex(null);
+      } else if (e.key === "ArrowRight") {
+        handleNext();
+      } else if (e.key === "ArrowLeft") {
+        handlePrev();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeModalIndex, handleNext, handlePrev]);
 
   return (
     <section
@@ -146,7 +183,7 @@ export function DocumentaryFieldExhibitionSection() {
           <div className="md:col-span-7 flex flex-col">
             <button
               type="button"
-              onClick={() => setActiveModalItem(exhibitionRecords[0])}
+              onClick={() => setActiveModalIndex(0)}
               className="group relative flex-1 min-h-[340px] sm:min-h-[420px] rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-[#0F1714] shadow-xs text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta block w-full"
             >
               <Image
@@ -188,11 +225,11 @@ export function DocumentaryFieldExhibitionSection() {
 
           {/* Secondary 2-Card Stack (Col 8-12) */}
           <div className="md:col-span-5 grid grid-cols-1 gap-6">
-            {exhibitionRecords.slice(1, 3).map((item) => (
+            {exhibitionRecords.slice(1, 3).map((item, idx) => (
               <button
                 key={item.id}
                 type="button"
-                onClick={() => setActiveModalItem(item)}
+                onClick={() => setActiveModalIndex(idx + 1)}
                 className="group relative h-[200px] sm:h-[220px] rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-[#0F1714] shadow-xs text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta block w-full"
               >
                 <Image
@@ -227,11 +264,11 @@ export function DocumentaryFieldExhibitionSection() {
 
           {/* Bottom 2-Column Wide Split (Col 1-12) */}
           <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            {exhibitionRecords.slice(3, 5).map((item) => (
+            {exhibitionRecords.slice(3, 5).map((item, idx) => (
               <button
                 key={item.id}
                 type="button"
-                onClick={() => setActiveModalItem(item)}
+                onClick={() => setActiveModalIndex(idx + 3)}
                 className="group relative h-[210px] sm:h-[230px] rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-[#0F1714] shadow-xs text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta block w-full"
               >
                 <Image
@@ -281,65 +318,91 @@ export function DocumentaryFieldExhibitionSection() {
         </Reveal>
       </Container>
 
-      {/* Accessible Museum Lightbox Modal */}
-      {activeModalItem && (
+      {/* Accessible Interactive Museum Lightbox Modal */}
+      {activeItem && activeModalIndex !== null && (
         <div
           role="dialog"
           aria-modal="true"
           aria-labelledby="lightbox-title"
-          className="fixed inset-0 z-50 bg-[#0D1512]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setActiveModalItem(null)}
-          onKeyDown={(e) => {
-            if (e.key === "Escape") setActiveModalItem(null);
-          }}
+          className="fixed inset-0 z-50 bg-[#0D1512]/96 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+          onClick={() => setActiveModalIndex(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-[#16221D] border border-white/20 rounded-[2px] overflow-hidden shadow-2xl flex flex-col text-white"
+            className="relative max-w-4xl w-full bg-[#16221D] border border-white/20 rounded-[2px] overflow-hidden shadow-2xl flex flex-col text-white animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
+            {/* Modal Top Masthead */}
             <div className="p-4 border-b border-white/15 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#C4924A] font-bold">
-                  {activeModalItem.archiveId}
+                  {activeItem.archiveId}
                 </span>
                 <span className="text-white/40">•</span>
-                <span className="text-xs font-sans text-cream/80">{activeModalItem.category}</span>
+                <span className="text-xs font-sans text-cream/80">{activeItem.category}</span>
+                <span className="text-white/40 hidden sm:inline">•</span>
+                <span className="text-xs font-mono text-cream/60 hidden sm:inline">
+                  {activeModalIndex + 1} of {exhibitionRecords.length}
+                </span>
               </div>
-              <button
-                type="button"
-                onClick={() => setActiveModalItem(null)}
-                className="p-1.5 text-cream/70 hover:text-white rounded-[2px] hover:bg-white/10 transition-colors focus-visible:outline-2 focus-visible:outline-[#C4924A]"
-                aria-label="Close photo preview"
-              >
-                <X className="w-5 h-5" aria-hidden="true" />
-              </button>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono text-white/50 uppercase hidden sm:inline">
+                  [← / → Navigate | Esc Close]
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setActiveModalIndex(null)}
+                  className="p-1.5 text-cream/70 hover:text-white rounded-[2px] hover:bg-white/10 transition-colors focus-visible:outline-2 focus-visible:outline-[#C4924A]"
+                  aria-label="Close photo preview"
+                >
+                  <X className="w-5 h-5" aria-hidden="true" />
+                </button>
+              </div>
             </div>
 
-            {/* Modal Image */}
+            {/* Modal Image Viewport with Previous/Next Arrows */}
             <div className="relative w-full aspect-[16/10] bg-black">
               <Image
-                src={activeModalItem.src}
-                alt={activeModalItem.title}
+                src={activeItem.src}
+                alt={activeItem.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 896px"
                 className="object-contain"
               />
+
+              {/* Previous Button */}
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center border border-white/20 transition-transform active:scale-95"
+                aria-label="Previous photograph"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Next Button */}
+              <button
+                type="button"
+                onClick={handleNext}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center border border-white/20 transition-transform active:scale-95"
+                aria-label="Next photograph"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
 
             {/* Modal Caption Details */}
             <div className="p-5 sm:p-6 space-y-2 bg-[#0F1714]">
               <div className="flex items-center gap-2 text-xs text-[#E5C499] font-mono">
                 <MapPin className="w-3.5 h-3.5 text-[#C4924A]" />
-                <span>{activeModalItem.location}</span>
+                <span>{activeItem.location}</span>
                 <span className="text-white/40">•</span>
-                <span>{activeModalItem.period}</span>
+                <span>{activeItem.period}</span>
               </div>
               <h3 id="lightbox-title" className="font-serif text-lg sm:text-xl font-bold text-white">
-                {activeModalItem.title}
+                {activeItem.title}
               </h3>
               <p className="text-xs sm:text-sm text-cream/90 font-sans leading-relaxed">
-                {activeModalItem.caption}
+                {activeItem.caption}
               </p>
             </div>
           </div>
