@@ -5,20 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
+import { Reveal } from "@/components/ui/MotionPrimitives";
 import { Camera, ArrowRight, ShieldCheck, MapPin } from "lucide-react";
 import { getPublishedGalleryItems } from "@content/gallery";
 
-export function CompactMemoriesSection() {
+export function DocumentaryFieldExhibitionSection() {
   const allPublished = getPublishedGalleryItems();
-  // Curate 5 distinct items for an asymmetric editorial layout
   const featured = allPublished[0];
   const secondaryItems = allPublished.slice(1, 5);
 
   return (
     <section
-      id="memories-preview"
-      aria-labelledby="memories-preview-title"
+      id="field-exhibition"
+      aria-labelledby="exhibition-title"
       className="py-16 sm:py-20 md:py-24 bg-sand-light/40 border-b border-border-warm scroll-mt-16"
     >
       <Container size="default" className="space-y-12">
@@ -27,16 +26,16 @@ export function CompactMemoriesSection() {
           <Reveal direction="up" className="max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-terracotta/10 text-terracotta-dark text-[11px] font-bold uppercase tracking-wider">
               <Camera className="w-3.5 h-3.5 text-terracotta-dark" aria-hidden="true" />
-              <span>Archival Field Records</span>
+              <span>Section 06 • Real Stories, Real People</span>
             </div>
             <h2
-              id="memories-preview-title"
+              id="exhibition-title"
               className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-forest tracking-tight leading-tight"
             >
-              Documentary Memories &amp; Field Records
+              Documentary Field Dispatches &amp; Archival Records
             </h2>
             <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans max-w-xl">
-              Authentic photographic chronicles of MECT&apos;s educational coaching, vocational training, clean water points, and community relief across Western Odisha.
+              Authentic photographic chronicles of MECT&apos;s educational coaching, vocational tailoring, clean water kiosks, and hospital corridor relief across Western Odisha.
             </p>
           </Reveal>
 
@@ -44,7 +43,7 @@ export function CompactMemoriesSection() {
             <Link href="/memories-gallery">
               <Button variant="primary" size="md" className="font-bold group">
                 <Camera className="w-4 h-4 mr-2" aria-hidden="true" />
-                <span>Explore All Memories</span>
+                <span>Explore Full Archival Gallery</span>
                 <ArrowRight
                   className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true"
@@ -139,13 +138,13 @@ export function CompactMemoriesSection() {
           </div>
         </div>
 
-        {/* Safeguarding Footer Note */}
+        {/* Child Safeguarding Charter Disclosure */}
         <Reveal direction="up" delay={0.2}>
           <div className="rounded-xs border border-border-warm/80 bg-white/70 px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-ink-sand font-sans">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-forest shrink-0" aria-hidden="true" />
               <span>
-                <strong>Institutional Safeguarding Standard:</strong> All media complies strictly with MECT Child Safeguarding Charter (DOC-POL-SAFEGUARDING-2024). Verified written guardian consent is mandatory prior to public display.
+                <strong>Institutional Safeguarding Standard:</strong> All field media complies strictly with MECT Child Safeguarding Charter (DOC-POL-SAFEGUARDING-2024). Verified written guardian consent is mandatory prior to public display; zero student roll numbers or private residential addresses are published.
               </span>
             </div>
             <Link

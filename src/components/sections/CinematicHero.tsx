@@ -53,7 +53,7 @@ export function CinematicHero() {
               {/* Institutional Eyebrow Badge */}
               <div className="inline-flex items-center gap-2 rounded-xs border border-sand/45 bg-forest/80 backdrop-blur-xs px-3.5 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-sand font-sans shadow-xs">
                 <ShieldCheck className="w-3.5 h-3.5 text-sand shrink-0" aria-hidden="true" />
-                <span>Mahaveer Educational &amp; Charitable Trust • Estd. 2013</span>
+                <span>Mahaveer Educational &amp; Charitable Trust • Estd. 2013 • Balangir, Odisha</span>
               </div>
 
               {/* Main Headline */}
@@ -66,7 +66,7 @@ export function CinematicHero() {
 
               {/* Concise Description */}
               <p className="text-[15px] sm:text-base md:text-lg text-cream/90 font-sans leading-relaxed max-w-2xl">
-                Mahaveer Educational &amp; Charitable Trust works with communities through education, women&apos;s livelihoods, safe water, nutrition and community welfare.
+                In Western Odisha, where agrarian distress and seasonal hardship test rural families, Mahaveer Educational &amp; Charitable Trust (MECT) builds an interconnected safety net through education, women&apos;s vocational livelihoods, safe drinking water, hospital nutrition, and community welfare.
               </p>
 
               {/* Two Primary Actions */}

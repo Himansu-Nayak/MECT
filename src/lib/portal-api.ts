@@ -314,7 +314,7 @@ export async function logoutPortal(token: string): Promise<void> {
   await fetch(`${API_BASE_URL}/portal/auth/logout`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
-  }).catch(() => {});
+  }).catch(() => { });
 }
 
 export async function fetchPortalDashboard(token: string): Promise<PortalDashboardData> {

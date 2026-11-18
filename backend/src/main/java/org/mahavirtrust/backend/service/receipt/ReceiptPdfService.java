@@ -54,12 +54,10 @@ public class ReceiptPdfService {
             Paragraph pTitle = new Paragraph("MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)", orgTitleFont);
             Paragraph pSub = new Paragraph(
                     "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: 9853608113  |  mect220@gmail.com",
-                    subFont
-            );
+                    subFont);
             Paragraph pDoc = new Paragraph(
                     "Registered Public Charitable Trust (Balangir Deed No. 40311302194)  |  Trust PAN: AADTM5474F  |  CSR-1: CSR00081063",
-                    badgeFont
-            );
+                    badgeFont);
             pDoc.setSpacingBefore(6f);
 
             headerCell.addElement(pTitle);
@@ -69,7 +67,8 @@ public class ReceiptPdfService {
             document.add(header);
 
             Font sectionTitleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, FOREST);
-            Paragraph receiptHeading = new Paragraph("OFFICIAL DONATION RECEIPT & PAYMENT ACKNOWLEDGEMENT", sectionTitleFont);
+            Paragraph receiptHeading = new Paragraph("OFFICIAL DONATION RECEIPT & PAYMENT ACKNOWLEDGEMENT",
+                    sectionTitleFont);
             receiptHeading.setSpacingBefore(16f);
             receiptHeading.setSpacingAfter(10f);
             document.add(receiptHeading);
@@ -77,7 +76,7 @@ public class ReceiptPdfService {
             // Key-Value Metadata & Financial Details Table
             PdfPTable table = new PdfPTable(2);
             table.setWidthPercentage(100);
-            table.setWidths(new float[]{38f, 62f});
+            table.setWidths(new float[] { 38f, 62f });
 
             addRow(table, "Receipt Number", receiptNumber);
             addRow(table, "Donation Reference", donation.getDonationReference());
@@ -91,7 +90,8 @@ public class ReceiptPdfService {
                 addRow(table, "Donor PAN (Declared)", donation.getDonorPan());
             }
             addRow(table, "Programme / Purpose", donation.getProgramme().getName());
-            addRow(table, "Contribution Amount", "INR " + donation.getAmount().toPlainString() + " (" + donation.getCurrency() + ")");
+            addRow(table, "Contribution Amount",
+                    "INR " + donation.getAmount().toPlainString() + " (" + donation.getCurrency() + ")");
             addRow(table, "Frequency", "ONE-TIME VOLUNTARY CONTRIBUTION");
             addRow(table, "Payment Method", donation.getPaymentMethod());
             addRow(table, "Gateway / Provider", payment.getProvider());
@@ -124,10 +124,10 @@ public class ReceiptPdfService {
 
             Font footerFont = FontFactory.getFont(FontFactory.HELVETICA, 8, MUTED);
             Paragraph footer = new Paragraph(
-                    "\nComputer-generated official acknowledgement issued by Mahaveer Educational & Charitable Trust (" +
+                    "\nComputer-generated official acknowledgement issued by Mahaveer Educational & Charitable Trust ("
+                            +
                             receiptNumber + "). Verified record stored in MECT Financial Ledger.",
-                    footerFont
-            );
+                    footerFont);
             footer.setSpacingBefore(12f);
             document.add(footer);
 
@@ -156,4 +156,3 @@ public class ReceiptPdfService {
         table.addCell(c2);
     }
 }
-
