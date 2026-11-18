@@ -55,7 +55,7 @@ export function InstitutionalIdentityTrustSection() {
             <Reveal direction="up" className="relative group">
               <div className="relative w-full aspect-[4/3] rounded-xs overflow-hidden border border-sand/40 shadow-lg bg-forest">
                 <Image
-                  src="/images/hero/mect-trustees-field-review.webp"
+                  src="/images/hero/mect-trustees-campus-walk.webp"
                   alt="MECT trustees and facilitators reviewing community learning operations in Balangir"
                   fill
                   loading="lazy"
