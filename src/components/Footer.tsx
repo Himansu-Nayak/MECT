@@ -216,6 +216,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/memories-gallery"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Memories &amp; Archival Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/reports#library"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >

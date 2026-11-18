@@ -109,12 +109,21 @@ export async function POST(req: NextRequest) {
 
     // 3. Body Parsing & Strict Schema Validation
     const body = await req.json();
-    const { messages, preferredLanguage = "en" } = body;
+    const { messages, message, preferredLanguage = "en", stream } = body;
+    const acceptHeader = req.headers.get("accept") || "";
 
-    if (!Array.isArray(messages) || messages.length === 0) {
+    // Determine if client specifically requests non-streaming JSON
+    const wantsJson = stream === false || (acceptHeader.includes("application/json") && !acceptHeader.includes("text/event-stream"));
+
+    let rawMessages: unknown[] = [];
+    if (Array.isArray(messages) && messages.length > 0) {
+      rawMessages = messages;
+    } else if (typeof message === "string" && message.trim().length > 0) {
+      rawMessages = [{ role: "user", content: message.trim() }];
+    } else {
       return NextResponse.json(
         {
-          error: "Invalid request payload. 'messages' must be a non-empty array.",
+          error: "Invalid request payload. 'messages' must be a non-empty array or 'message' must be a non-empty string.",
           correlationId,
         },
         {
@@ -125,20 +134,23 @@ export async function POST(req: NextRequest) {
     }
 
     const sanitizedMessages: ChatMessage[] = [];
-    for (const msg of messages) {
+    for (const msg of rawMessages) {
       if (
         typeof msg !== "object" ||
         !msg ||
-        (msg.role !== "user" && msg.role !== "assistant") ||
-        typeof msg.content !== "string"
+        (typeof (msg as { role?: string }).role === "string" &&
+          (msg as { role?: string }).role !== "user" &&
+          (msg as { role?: string }).role !== "assistant") ||
+        typeof (msg as { content?: string }).content !== "string"
       ) {
         continue;
       }
 
-      const boundedContent = msg.content.trim().slice(0, 1500);
+      const role = ((msg as { role?: string }).role as "user" | "assistant") || "user";
+      const boundedContent = ((msg as { content?: string }).content || "").trim().slice(0, 1500);
       if (boundedContent.length > 0) {
         sanitizedMessages.push({
-          role: msg.role,
+          role,
           content: boundedContent,
         });
       }
@@ -240,6 +252,36 @@ export async function POST(req: NextRequest) {
       messages: sanitizedMessages,
       preferredLanguage: validLang,
     });
+
+    // 7. Non-streaming JSON response branch (for direct API clients / non-SSE consumers)
+    if (wantsJson) {
+      let fullReply = "";
+      try {
+        for await (const chunk of fallbackStream) {
+          if (req.signal.aborted) break;
+          const content = chunk.choices[0]?.delta?.content || "";
+          if (content) fullReply += content;
+        }
+      } catch (streamError) {
+        console.error(`[Groq Fallback Stream Error] [${correlationId}]:`, streamError);
+      }
+      return NextResponse.json(
+        {
+          reply: fullReply,
+          engine: "groq-cloud-fallback",
+          correlationId,
+          timestamp: new Date().toISOString(),
+        },
+        {
+          status: 200,
+          headers: {
+            "Content-Type": "application/json",
+            "X-MECT-Engine": "groq-cloud-fallback",
+            "X-Correlation-Id": correlationId,
+          },
+        }
+      );
+    }
 
     const encoder = new TextEncoder();
 

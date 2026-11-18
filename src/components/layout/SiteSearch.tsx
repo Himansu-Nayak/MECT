@@ -7,6 +7,7 @@ import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import {
   BookOpen,
   Building2,
+  Camera,
   FileText,
   Heart,
   HelpCircle,
@@ -64,11 +65,19 @@ const VERIFIED_SEARCH_ROUTES: SearchRouteItem[] = [
   },
   {
     id: "donate",
-    label: "Donate (SBI NEFT / UPI)",
+    label: "Donate Online & Support",
     href: "/donate",
     group: "Support",
-    keywords: ["donation", "support", "online", "receipt"],
+    keywords: ["donation", "support", "online", "receipt", "cashfree"],
     icon: <Heart className="w-4 h-4 text-terracotta" aria-hidden="true" />,
+  },
+  {
+    id: "gallery",
+    label: "Documentary Memories & Archival Gallery",
+    href: "/memories-gallery",
+    group: "Impact & Accountability",
+    keywords: ["gallery", "memories", "photos", "archive", "documentary", "field", "balangir"],
+    icon: <Camera className="w-4 h-4 text-forest" aria-hidden="true" />,
   },
   {
     id: "csr",

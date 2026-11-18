@@ -296,12 +296,19 @@ export default function ImpactPage() {
       {/* 4B. Field Documentation Gallery */}
       <section id="gallery" className="py-16 md:py-24 bg-cream border-t border-border-warm scroll-mt-24" aria-label="Field Documentation Gallery">
         <Container size="default" className="space-y-10">
-          <SectionHeader
-            badge="Field Records"
-            title="Community Outreach &amp; Field Documentation"
-            subtitle="Photographic records from MECT's community classrooms, Jal Seva water stations, and women's vocational seminars in Odisha."
-            align="center"
-          />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <SectionHeader
+              badge="Field Records"
+              title="Community Outreach &amp; Field Documentation"
+              subtitle="Photographic records from MECT's community classrooms, Jal Seva water stations, and women's vocational seminars in Odisha."
+            />
+            <Link href="/memories-gallery" className="shrink-0 mb-2">
+              <Button variant="primary" size="sm" className="font-bold">
+                <span>View Full Archival Gallery</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+              </Button>
+            </Link>
+          </div>
           <LightboxGrid />
         </Container>
       </section>

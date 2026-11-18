@@ -66,7 +66,7 @@ export function CinematicHero() {
 
               {/* Concise Description */}
               <p className="text-[15px] sm:text-base md:text-lg text-cream/90 font-sans leading-relaxed max-w-2xl">
-                Mahaveer Educational &amp; Charitable Trust works to strengthen communities through education, women&apos;s livelihoods, safe-water initiatives, nutrition and grassroots welfare.
+                Mahaveer Educational &amp; Charitable Trust works with communities through education, women&apos;s livelihoods, safe water, nutrition and community welfare.
               </p>
 
               {/* Two Primary Actions */}

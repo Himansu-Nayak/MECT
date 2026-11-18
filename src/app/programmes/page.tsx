@@ -27,6 +27,7 @@ import {
   Droplets,
   Utensils,
   Heart,
+  HeartHandshake,
   Briefcase,
   MapPin,
   Calendar,
@@ -139,6 +140,30 @@ export default function ProgrammesPage() {
       icon: Utensils,
       accentColor: "border-[#991B1B]",
     },
+    {
+      id: "community-welfare",
+      number: "05",
+      badge: "Grassroots Welfare",
+      tag: "Samaj Kalyan",
+      name: "Community Welfare & Seasonal Relief",
+      tagline: "Winter Warmth, Emergency Disaster Aid & Grassroots Legal Rights Literacy",
+      overview:
+        "Extending direct aid to vulnerable rural elders, tribal families, and daily-wage earners through winter warm clothing drives, flood relief essentials, and grassroots welfare rights seminars across Western Odisha.",
+      metrics: [
+        { label: "Target Groups", value: "Elders, Widows & Daily Wage Earners" },
+        { label: "Seasonal Aid", value: "Blankets, Warm Clothes & Relief Kits" },
+        { label: "Legal Literacy", value: "Panchayat Welfare Entitlement Camps" },
+        { label: "Operating Ethos", value: "Direct Hand-to-Hand Distribution" },
+      ],
+      objectives: [
+        "Distribute heavy winter blankets and thermal clothing to homeless elders and pavement dwellers in Balangir",
+        "Conduct village-level legal awareness camps informing citizens of government welfare schemes and pension rights",
+        "Maintain rapid-response volunteer clusters for emergency flood and disaster relief across Western Odisha",
+        "Partner with village panchayats to identify and assist destitute families with zero social security",
+      ],
+      icon: HeartHandshake,
+      accentColor: "border-sand",
+    },
   ];
 
   const futureExpansion = [
@@ -214,12 +239,12 @@ export default function ProgrammesPage() {
       {/* Flagship Programme: Free Education for 200 Students */}
       <FreeEducationSection />
 
-      {/* 3. The Four Core Pillars in Depth */}
+      {/* 3. The Five Core Pillars in Depth */}
       <section id="pillars" className="py-20 md:py-28 bg-sand-light">
         <Container size="default" className="space-y-16">
           <SectionHeader
             badge="Verified Core Interventions"
-            title="Four Connected Areas of Community Work"
+            title="Five Connected Areas of Community Work"
             subtitle="Each programme responds to a practical community need. Learn what MECT does, where it works and how people and institutions can participate."
             align="center"
           />

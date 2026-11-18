@@ -6,8 +6,6 @@ import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { DeveloperCreditCard } from "@/components/DeveloperCreditCard";
-import { HowMectWorksSection } from "@/components/sections/HowMectWorksSection";
 import { Reveal } from "@/components/ui/MotionPrimitives";
 import { ABOUT_CONTENT } from "@/lib/about-content";
 import { createPageMetadata } from "@/lib/seo";
@@ -407,13 +405,7 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* SECTION 7: Institutional Operating Model — How MECT Works */}
-        <HowMectWorksSection />
-
-        {/* SECTION 8: Developer Credit Card — Himansu Nayak */}
-        <DeveloperCreditCard />
-
-        {/* SECTION 9: Institutional Engagement Call-to-Action */}
+        {/* SECTION 7: Institutional Engagement Call-to-Action */}
         <section
           className="py-20 bg-sand-light text-ink border-t border-border-warm relative overflow-hidden"
           aria-label="Institutional Engagement Call to Action"

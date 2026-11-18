@@ -180,6 +180,12 @@ export const TRUST_CONFIG = {
           href: "/scholarships",
           description: "Merit-cum-means financial aid and direct institution grants for underprivileged youth.",
         },
+        {
+          label: "Memories & Gallery",
+          href: "/memories-gallery",
+          description: "Verified documentary photography and archival field records across Western Odisha.",
+          badge: "Archival",
+        },
       ],
     },
     {
@@ -196,6 +202,11 @@ export const TRUST_CONFIG = {
           label: "Annual Reports & Audits",
           href: "/reports",
           description: "Audited financial statements, activity summaries, and downloadable annual reports.",
+        },
+        {
+          label: "Field Dispatches",
+          href: "/stories",
+          description: "Authentic community narratives and verified field documentation.",
         },
       ],
     },
