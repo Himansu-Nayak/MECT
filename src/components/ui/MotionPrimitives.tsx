@@ -56,8 +56,8 @@ export const MOTION_DISTANCE = {
 
 export const MOTION_VIEWPORT = {
   once: true,
-  amount: 0.12,
-  margin: "0px 0px -40px 0px",
+  amount: 0.08,
+  margin: "0px 0px 60px 0px",
 } as const;
 
 export interface RevealProps {

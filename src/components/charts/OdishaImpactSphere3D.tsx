@@ -281,10 +281,46 @@ export function OdishaImpactSphere3D({
         ctx.lineWidth = 1.8 * pt.scale;
         ctx.stroke();
 
-        // Node Label
-        ctx.font = `bold ${Math.max(9, Math.round(10 * pt.scale))}px sans-serif`;
-        ctx.fillStyle = isSelected ? "#1D2924" : "#4B5751";
-        ctx.fillText(hub.name, pt.px + 10 * pt.scale, pt.py + 3 * pt.scale);
+        // Render high-contrast callout pill exclusively for the active selected hub
+        // (prevents central text collision across clustered Western Odisha coordinates)
+        if (isSelected) {
+          const fontSize = Math.max(10, Math.round(11 * pt.scale));
+          ctx.font = `bold ${fontSize}px sans-serif`;
+          const textMetrics = ctx.measureText(hub.name);
+          const textW = textMetrics.width;
+          const padX = 8;
+          const padY = 4;
+          const pillX = pt.px - textW / 2 - padX;
+          const pillY = pt.py - radius - 24;
+          const pillW = textW + padX * 2;
+          const pillH = fontSize + padY * 2;
+
+          // Callout pill backdrop
+          ctx.beginPath();
+          if (typeof ctx.roundRect === "function") {
+            ctx.roundRect(pillX, pillY, pillW, pillH, 3);
+          } else {
+            ctx.rect(pillX, pillY, pillW, pillH);
+          }
+          ctx.fillStyle = "rgba(255, 255, 255, 0.96)";
+          ctx.fill();
+          ctx.strokeStyle = "rgba(184, 93, 59, 0.8)";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+
+          // Pointer tick pointing to pin
+          ctx.beginPath();
+          ctx.moveTo(pt.px - 3, pillY + pillH);
+          ctx.lineTo(pt.px + 3, pillY + pillH);
+          ctx.lineTo(pt.px, pillY + pillH + 3.5);
+          ctx.closePath();
+          ctx.fillStyle = "#B85D3B";
+          ctx.fill();
+
+          // Label text
+          ctx.fillStyle = "#0F1714";
+          ctx.fillText(hub.name, pillX + padX, pillY + padY + fontSize - 2);
+        }
       });
 
       ctx.restore();

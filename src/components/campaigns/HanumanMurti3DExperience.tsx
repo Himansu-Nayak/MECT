@@ -430,20 +430,24 @@ export function HanumanMurti3DExperience({
       className={`relative overflow-hidden rounded-xs bg-gradient-to-b from-[#18211D] via-[#24312A] to-[#121815] border border-sand/35 shadow-elevated flex flex-col items-center justify-center p-4 sm:p-6 text-center select-none ${className}`}
       aria-label="Interactive 3D Conceptual Architectural Visualization of the Proposed 80 to 100-Foot Grand Hanuman Murti Project"
     >
-      {/* Top Credentials & Badges */}
-      <div className="absolute top-3 left-3 z-20 flex items-center gap-2">
-        <Badge variant="forest">Proposed Monument • 80–100 Ft</Badge>
-        <span className="hidden sm:inline-flex text-[10px] font-mono text-sand/80 px-2 py-0.5 rounded-xs bg-forest-deep/80 border border-sand/25">
-          Segregated Ledger: HANUMAN_MURTI
-        </span>
-      </div>
+      {/* Top Credentials & Badges (Rendered for hero and full variants; omitted in card variant to avoid parent container collision) */}
+      {variant !== "card" && (
+        <>
+          <div className="absolute top-3 left-3 z-20 flex items-center gap-2">
+            <Badge variant="forest">Proposed Monument • 80–100 Ft</Badge>
+            <span className="hidden sm:inline-flex text-[10px] font-mono text-sand/80 px-2 py-0.5 rounded-xs bg-forest-deep/80 border border-sand/25">
+              Segregated Ledger: HANUMAN_MURTI
+            </span>
+          </div>
 
-      <div className="absolute top-3 right-3 z-20">
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs bg-amber-950/80 border border-amber-500/40 text-[9px] font-mono uppercase tracking-wider text-amber-200">
-          <Sparkles className="w-2.5 h-2.5 text-amber-300" aria-hidden="true" />
-          <span>Interactive 3D Preview</span>
-        </span>
-      </div>
+          <div className="absolute top-3 right-3 z-20">
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs bg-amber-950/80 border border-amber-500/40 text-[9px] font-mono uppercase tracking-wider text-amber-200">
+              <Sparkles className="w-2.5 h-2.5 text-amber-300" aria-hidden="true" />
+              <span>Interactive 3D Preview</span>
+            </span>
+          </div>
+        </>
+      )}
 
       {/* 3D Canvas / Static Vector Progressive Enhancement Fallback */}
       <div
@@ -532,18 +536,20 @@ export function HanumanMurti3DExperience({
         </div>
       )}
 
-      {/* Legal & Architectural Disclosure Caption */}
-      <div className="relative z-20 mt-3 space-y-1 text-center">
-        <h3 className="font-serif font-bold text-base sm:text-lg text-sand tracking-wide">
-          The Grand Hanuman Murti Project
-        </h3>
-        <p className="text-[11px] font-sans text-cream/80 max-w-sm mx-auto">
-          Proposed 80–100-Foot Monument of Faith, Devotion &amp; Community Participation
-        </p>
-        <p className="text-[10px] font-mono text-sand/70 pt-0.5">
-          Conceptual Architectural Visualization — Proposed Initiative • Strict Project Sub-Ledger Segregation
-        </p>
-      </div>
+      {/* Legal & Architectural Disclosure Caption (Rendered for standalone and full pages; omitted in card variant where outer card provides narrative) */}
+      {variant !== "card" && (
+        <div className="relative z-20 mt-3 space-y-1 text-center">
+          <h3 className="font-serif font-bold text-base sm:text-lg text-sand tracking-wide">
+            The Grand Hanuman Murti Project
+          </h3>
+          <p className="text-[11px] font-sans text-cream/80 max-w-sm mx-auto">
+            Proposed 80–100-Foot Monument of Faith, Devotion &amp; Community Participation
+          </p>
+          <p className="text-[10px] font-mono text-sand/70 pt-0.5">
+            Conceptual Architectural Visualization — Proposed Initiative • Strict Project Sub-Ledger Segregation
+          </p>
+        </div>
+      )}
     </div>
   );
 }

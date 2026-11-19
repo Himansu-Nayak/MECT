@@ -1,0 +1,212 @@
+[
+  {
+    "path": "/",
+    "name": "Homepage",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/about",
+    "name": "About Us",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/programmes",
+    "name": "Programmes",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/impact",
+    "name": "Impact",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/governance",
+    "name": "Governance",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/reports",
+    "name": "Reports Library",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/campaigns",
+    "name": "Campaigns Directory",
+    "status": 200,
+    "hasCriticalContent": false,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": false,
+    "consoleErrors": []
+  },
+  {
+    "path": "/campaigns/hanuman-murti",
+    "name": "Hanuman Murti 3D",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 5,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/csr-partnerships",
+    "name": "CSR Partnerships",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 1,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/donate",
+    "name": "Unified Donation Portal",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 1,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/scholarships",
+    "name": "Higher Education Scholarships",
+    "status": 200,
+    "hasCriticalContent": false,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 1,
+    "passed": false,
+    "consoleErrors": []
+  },
+  {
+    "path": "/volunteer",
+    "name": "Volunteer Fellowship",
+    "status": 200,
+    "hasCriticalContent": false,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": false,
+    "consoleErrors": []
+  },
+  {
+    "path": "/contact",
+    "name": "Contact & Secretariat",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 1,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/faq",
+    "name": "Frequently Asked Questions",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/statutory-disclosures",
+    "name": "Statutory Disclosures",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/memories-gallery",
+    "name": "Memories & Dispatches",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/privacy",
+    "name": "Privacy Policy",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/terms",
+    "name": "Terms of Service",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/accessibility",
+    "name": "Accessibility Statement",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/robots.txt",
+    "name": "Robots.txt",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 4,
+    "passed": true,
+    "consoleErrors": []
+  },
+  {
+    "path": "/sitemap.xml",
+    "name": "Sitemap XML",
+    "status": 200,
+    "hasCriticalContent": true,
+    "consoleErrorsCount": 0,
+    "failedRequestsCount": 0,
+    "passed": true,
+    "consoleErrors": []
+  }
+]
