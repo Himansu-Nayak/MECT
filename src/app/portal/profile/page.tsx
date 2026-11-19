@@ -90,6 +90,7 @@ function PortalProfileEditor({
   const [fullName, setFullName] = useState(p?.fullName || "");
   const [addressLine, setAddressLine] = useState(p?.addressLine || "");
   const [city, setCity] = useState(p?.city || "");
+  const [district, setDistrict] = useState(p?.district || "");
   const [stateName, setStateName] = useState(p?.state || "");
   const [pinCode, setPinCode] = useState(p?.pinCode || "");
   const [country, setCountry] = useState(p?.country || "India");
@@ -140,6 +141,7 @@ function PortalProfileEditor({
         fullName: fullName.trim(),
         addressLine: addressLine.trim(),
         city: city.trim(),
+        district: district.trim(),
         state: stateName.trim(),
         pinCode: pinCode.trim(),
         country: country.trim() || "India",
@@ -432,13 +434,19 @@ function PortalProfileEditor({
                   required
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <Input
                     label="City / Town"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="e.g. Balangir"
                     required
+                  />
+                  <Input
+                    label="District"
+                    value={district}
+                    onChange={(e) => setDistrict(e.target.value)}
+                    placeholder="e.g. Balangir"
                   />
                   <Input
                     label="State"

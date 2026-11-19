@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Input } from "@/components/ui/Input";
+import { DonationProgrammeCard } from "./DonationProgrammeCard";
 import {
   DonationProgrammeItem,
   DonationStatusResponse,
@@ -15,11 +16,15 @@ import {
   PaymentConfigurationDto,
   PublicDonationConfigResponse,
   SubmitSbiUtrResponse,
+  downloadPortalReceiptPdf,
   fetchDonationStatus,
   fetchPublicDonationConfig,
   initiateDonation,
+  requestPortalOtp,
   submitManualSbiUtrClaim,
+  updatePortalProfile,
   verifyCashfreePayment,
+  verifyPortalOtp,
 } from "@/lib/portal-api";
 import { usePortalAuth } from "@/context/PortalAuthContext";
 import {
@@ -32,13 +37,19 @@ import {
   Copy,
   CreditCard,
   Download,
+  FileText,
   Heart,
   Landmark,
   Loader2,
   Lock,
+  Phone,
   QrCode,
   RefreshCw,
+  RotateCcw,
+  ShieldAlert,
   ShieldCheck,
+  Sparkles,
+  User,
   UserCheck,
 } from "lucide-react";
 
@@ -85,12 +96,47 @@ function ensureCashfreeSdkLoaded(): Promise<void> {
   return cashfreeScriptPromise;
 }
 
+const ODISHA_DISTRICTS = [
+  "Balangir",
+  "Bargarh",
+  "Sambalpur",
+  "Sonepur (Subarnapur)",
+  "Kalahandi",
+  "Nuapada",
+  "Jharsuguda",
+  "Deogarh",
+  "Sundargarh",
+  "Boudh",
+  "Angul",
+  "Cuttack",
+  "Khordha (Bhubaneswar)",
+  "Puri",
+  "Ganjam",
+  "Koraput",
+  "Rayagada",
+  "Nabarangpur",
+  "Malkangiri",
+  "Kandhamal",
+  "Nayagarh",
+  "Kendrapara",
+  "Jagatsinghpur",
+  "Jajpur",
+  "Bhadrak",
+  "Balasore",
+  "Mayurbhanj",
+  "Keonjhar",
+  "Dhenkanal",
+  "Gajapati",
+  "Other / Outside Odisha",
+];
+
 const STEPS = [
-  { id: 1, label: "Programme" },
-  { id: 2, label: "Amount" },
-  { id: 3, label: "Donor Info" },
-  { id: 4, label: "Review" },
-  { id: 5, label: "Payment" },
+  { id: 1, label: "Programmes", title: "Explore Programmes" },
+  { id: 2, label: "Amount", title: "Select Contribution" },
+  { id: 3, label: "Verification", title: "Donor Authentication" },
+  { id: 4, label: "Donor Profile", title: "Profile & Tax Details" },
+  { id: 5, label: "Review", title: "Review & Statutory Disclosure" },
+  { id: 6, label: "Payment", title: "Secure Payment & Receipt" },
 ] as const;
 
 const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
@@ -98,8 +144,8 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     {
       id: 1,
       code: "SCHOLARSHIPS",
-      name: "Higher Education Tuition Assistance",
-      tagline: "Direct-to-college tuition fee sponsorship for merit scholars",
+      name: "Higher Education Tuition Assistance (Shiksha Setu)",
+      tagline: "Direct-to-college tuition fee sponsorship for merit scholars across Western Odisha",
       description: "Direct-to-college tuition assistance for economically challenged undergraduate and polytechnic scholars across Western Odisha.",
       generalFund: false,
       active: true,
@@ -118,7 +164,7 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     {
       id: 3,
       code: "WOMEN_LIVELIHOOD",
-      name: "Women's Vocational Tailoring & Skilling",
+      name: "Women's Vocational Tailoring & Skilling (Swavalamban)",
       tagline: "Practical sewing craftsmanship and micro-enterprise development",
       description: "Certified garment construction, machine operation, and self-help tailoring training for rural women.",
       generalFund: false,
@@ -128,8 +174,8 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     {
       id: 4,
       code: "GENERAL_CHARITY",
-      name: "Essential Community Welfare & Relief",
-      tagline: "Winter blankets, disaster response, and destitute patient aid",
+      name: "Essential Community Welfare & Relief (Samaj Kalyan)",
+      tagline: "Winter blankets, disaster response, and destitute patient aid at District Hospital",
       description: "Rapid relief, winter thermal distributions, and emergency patient attendant meals at Balangir District Hospital.",
       generalFund: true,
       active: true,
@@ -172,7 +218,7 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     paymentInstructions: "Please transfer the contribution directly using UPI or NEFT/RTGS to our official State Bank of India account. Enter your 12-digit UTR/transaction reference below for verified computer-signed 80G receipting.",
     gatewayNoticeText: "Direct Verified Bank Transfer & UPI Mode Active. Offline reconciliation enabled.",
     statutoryStatus: "Valid AY 2024-25 to AY 2026-27 (Order dated 29-01-2024)",
-    statutoryFinancialYear: "2025-26",
+    statutoryFinancialYear: "2026-27",
     statutoryUrn80g: "AADTM5474FF20241",
     statutoryUrn12a: "AADTM5474FE20231",
     statutoryClaimApproved: true,
@@ -182,29 +228,50 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
 
 export function UnifiedDonationExperience() {
   const searchParams = useSearchParams();
-  const { token: portalToken, dashboard: portalDashboard } = usePortalAuth();
+  const { token: portalToken, dashboard: portalDashboard, isAuthenticated, setSessionFromOtp, logout } = usePortalAuth();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [programmes, setProgrammes] = useState<DonationProgrammeItem[]>([]);
   const [gatewayStatus, setGatewayStatus] = useState<GatewayStatusResponse | null>(null);
   const [config, setConfig] = useState<PaymentConfigurationDto | null>(null);
-  const signedInIdentity = portalDashboard?.account?.primaryEmail || portalDashboard?.account?.primaryPhone || null;
 
+  // Journey navigation
   const [step, setStep] = useState<number>(1);
   const [selectedCode, setSelectedCode] = useState<string>("");
-  const [amount, setAmount] = useState<number>(1500);
-  const [customAmountStr, setCustomAmountStr] = useState<string>("1500");
+  const [frequency, setFrequency] = useState<"ONE_TIME" | "MONTHLY">("ONE_TIME");
+  const [amount, setAmount] = useState<number>(1000);
+  const [customAmountStr, setCustomAmountStr] = useState<string>("1000");
 
+  // Authentication states (Step 3)
+  const [phoneInput, setPhoneInput] = useState("");
+  const [otpCode, setOtpCode] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpCooldown, setOtpCooldown] = useState(0);
+  const [requestingOtp, setRequestingOtp] = useState(false);
+  const [verifyingOtp, setVerifyingOtp] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  // Donor profile & tax information (Step 4)
   const [donorName, setDonorName] = useState("");
   const [donorEmail, setDonorEmail] = useState("");
   const [donorPhone, setDonorPhone] = useState("");
+  const [addressLine, setAddressLine] = useState("");
+  const [city, setCity] = useState("Balangir");
+  const [district, setDistrict] = useState("Balangir");
+  const [stateName, setStateName] = useState("Odisha");
+  const [pinCode, setPinCode] = useState("767001");
+  const [country, setCountry] = useState("India");
   const [donorPan, setDonorPan] = useState("");
-  const [donorAddress, setDonorAddress] = useState("");
   const [dedicationMessage, setDedicationMessage] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [communicationConsent, setCommunicationConsent] = useState(true);
+  const [savingProfile, setSavingProfile] = useState(false);
 
+  // Review & terms (Step 5)
+  const [termsAccepted, setTermsAccepted] = useState(true);
+
+  // Payment states (Step 6)
   const [paymentChannel, setPaymentChannel] = useState<"CASHFREE" | "SBI_DIRECT">("CASHFREE");
   const [submitting, setSubmitting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -214,6 +281,7 @@ export function UnifiedDonationExperience() {
   const [initiated, setInitiated] = useState<InitiatedDonationResponse | null>(null);
   const [gatewayStatusResult, setGatewayStatusResult] = useState<DonationStatusResponse | null>(null);
   const [refreshingStatus, setRefreshingStatus] = useState(false);
+  const [downloadingReceipt, setDownloadingReceipt] = useState(false);
 
   // Manual SBI UTR states
   const [utrReference, setUtrReference] = useState("");
@@ -222,6 +290,7 @@ export function UnifiedDonationExperience() {
   const [proofSummary, setProofSummary] = useState("");
   const [sbiSubmitted, setSbiSubmitted] = useState<SubmitSbiUtrResponse | null>(null);
 
+  // Load public donation configuration & handle callback
   useEffect(() => {
     let active = true;
 
@@ -251,11 +320,11 @@ export function UnifiedDonationExperience() {
           setPaymentChannel(res.config.primaryMethod === "SBI_QR" ? "SBI_DIRECT" : "CASHFREE");
         }
 
-        // Check return callback from Cashfree
+        // Return callback check from payment gateway
         const returnRef = searchParams.get("donationRef");
         const returnOrder = searchParams.get("orderId");
         if (returnRef || returnOrder) {
-          setStep(5);
+          setStep(6);
           try {
             const verified = returnOrder
               ? await verifyCashfreePayment(returnOrder)
@@ -270,8 +339,6 @@ export function UnifiedDonationExperience() {
         }
       } catch {
         if (!active) return;
-        // Institutional fallback: Ensure donation experience remains fully functional
-        // with verified State Bank of India direct transfer & UPI even if gateway API is offline
         const res = FALLBACK_PUBLIC_CONFIG;
         setProgrammes(res.programmes);
         setGatewayStatus(res.gatewayStatus);
@@ -299,8 +366,8 @@ export function UnifiedDonationExperience() {
     };
   }, [searchParams]);
 
+  // Sync profile data from authenticated account
   const prefilledAccountRef = useRef<string | null>(null);
-
   useEffect(() => {
     if (!portalDashboard?.account) return;
     const acc = portalDashboard.account;
@@ -309,36 +376,43 @@ export function UnifiedDonationExperience() {
     prefilledAccountRef.current = accountKey;
 
     let active = true;
-    Promise.resolve().then(() => {
+    queueMicrotask(() => {
       if (!active) return;
-      if (acc.profile?.fullName) setDonorName((prev) => prev || acc.profile?.fullName || "");
+      const p = acc.profile;
+      if (p?.fullName) setDonorName((prev) => prev || p.fullName || "");
       if (acc.primaryEmail) setDonorEmail((prev) => prev || acc.primaryEmail || "");
-      if (acc.primaryPhone) setDonorPhone((prev) => prev || acc.primaryPhone || "");
-      if (acc.profile?.addressLine) {
-        const formatted = [
-          acc.profile.addressLine,
-          acc.profile.city,
-          acc.profile.state,
-          acc.profile.pinCode,
-        ]
-          .filter(Boolean)
-          .join(", ");
-        setDonorAddress((prev) => prev || formatted);
+      if (acc.primaryPhone) {
+        setDonorPhone((prev) => prev || acc.primaryPhone || "");
+        setPhoneInput((prev) => prev || acc.primaryPhone?.replace("+91", "") || "");
       }
+      if (p?.addressLine) setAddressLine((prev) => prev || p.addressLine || "");
+      if (p?.city) setCity((prev) => prev || p.city || "");
+      if (p?.district) setDistrict((prev) => prev || p.district || "");
+      if (p?.state) setStateName((prev) => prev || p.state || "");
+      if (p?.pinCode) setPinCode((prev) => prev || p.pinCode || "");
     });
     return () => {
       active = false;
     };
   }, [portalDashboard]);
 
+  // OTP resend timer countdown
+  useEffect(() => {
+    if (otpCooldown <= 0) return;
+    const timer = setInterval(() => {
+      setOtpCooldown((c) => Math.max(0, c - 1));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [otpCooldown]);
+
   const selectedProgramme = useMemo(
     () => programmes.find((p) => p.code === selectedCode) || null,
     [programmes, selectedCode]
   );
 
-  const presets = config?.presetAmounts?.length ? config.presetAmounts : [500, 1000, 1500, 3000, 5000, 10000];
-  const minAmount = config?.minAmount ?? 1;
-  const maxAmount = config?.maxAmount ?? 10000000;
+  const presets = config?.presetAmounts?.length ? config.presetAmounts : [500, 1000, 2500, 5000, 10000];
+  const minAmount = config?.minAmount ?? 100;
+  const maxAmount = config?.maxAmount ?? 5000000;
 
   const copyValue = async (key: string, value: string) => {
     try {
@@ -350,32 +424,82 @@ export function UnifiedDonationExperience() {
     }
   };
 
+  const normalizePhone = (raw: string): string => {
+    const cleaned = raw.trim().replace(/\D/g, "");
+    if (cleaned.length === 10) return `+91${cleaned}`;
+    if (cleaned.length === 12 && cleaned.startsWith("91")) return `+${cleaned}`;
+    if (cleaned.length > 10 && raw.startsWith("+")) return raw.trim();
+    return cleaned.length === 10 ? `+91${cleaned}` : raw.trim();
+  };
+
+  // Step validation
   const validateStep = (targetStep: number): boolean => {
     setActionError(null);
+    setAuthError(null);
+
+    // Step 1: Must select a programme
     if (targetStep >= 2 && !selectedCode) {
-      setActionError("Please select a charitable programme.");
+      setActionError("Please select a charitable programme to continue.");
       return false;
     }
+
+    // Step 2: Must select a valid amount
     if (targetStep >= 3) {
       if (!Number.isFinite(amount) || amount < minAmount || amount > maxAmount) {
         setActionError(`Please enter a contribution between ₹${minAmount.toLocaleString("en-IN")} and ₹${maxAmount.toLocaleString("en-IN")}.`);
         return false;
       }
     }
+
+    // Step 3: Must be authenticated via mobile OTP
     if (targetStep >= 4) {
-      if (!donorName.trim()) {
-        setActionError("Please enter your full name for accounting records.");
-        return false;
-      }
-      if (!donorEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(donorEmail.trim())) {
-        setActionError("Please enter a valid email address so we can deliver your receipt.");
-        return false;
-      }
-      if (donorPan.trim() && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(donorPan.trim().toUpperCase())) {
-        setActionError("Optional PAN must be 10 characters (e.g. ABCDE1234F).");
+      if (!isAuthenticated || !portalToken) {
+        setAuthError("Mobile OTP authentication is required. Please verify your mobile number to proceed.");
+        setStep(3);
         return false;
       }
     }
+
+    // Step 4: Profile validation
+    if (targetStep >= 5) {
+      if (!donorName.trim()) {
+        setActionError("Please enter your legal full name for tax accounting records.");
+        return false;
+      }
+      if (!donorEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(donorEmail.trim())) {
+        setActionError("Please enter a valid email address so we can deliver your instant official receipt.");
+        return false;
+      }
+      if (!addressLine.trim()) {
+        setActionError("Please enter your postal address for Section 80G statutory receipting.");
+        return false;
+      }
+      if (!city.trim()) {
+        setActionError("Please enter your city/town.");
+        return false;
+      }
+      if (!district.trim()) {
+        setActionError("Please select or enter your district.");
+        return false;
+      }
+      if (!pinCode.trim() || !/^\d{6}$/.test(pinCode.trim())) {
+        setActionError("Please enter a valid 6-digit postal PIN code.");
+        return false;
+      }
+      if (donorPan.trim() && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(donorPan.trim().toUpperCase())) {
+        setActionError("Optional PAN must be exactly 10 characters (e.g. ABCDE1234F).");
+        return false;
+      }
+    }
+
+    // Step 5: Terms accepted
+    if (targetStep >= 6) {
+      if (!termsAccepted) {
+        setActionError("Please confirm your acceptance of MECT contribution terms and statutory disclosures.");
+        return false;
+      }
+    }
+
     return true;
   };
 
@@ -385,8 +509,102 @@ export function UnifiedDonationExperience() {
     }
   };
 
+  // OTP Handling (Step 3)
+  const handleRequestOtp = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setAuthError(null);
+    const normalized = normalizePhone(phoneInput);
+    if (!/^\+91[6-9]\d{9}$/.test(normalized)) {
+      setAuthError("Please enter a valid 10-digit Indian mobile number (e.g. 9853608113).");
+      return;
+    }
+
+    setRequestingOtp(true);
+    try {
+      const res = await requestPortalOtp({
+        channel: "PHONE",
+        target: normalized,
+        purpose: "LOGIN",
+      });
+      setOtpSent(true);
+      setOtpCooldown(res.cooldownSeconds || 60);
+      setDonorPhone(normalized);
+    } catch (err) {
+      setAuthError(err instanceof Error ? err.message : "Failed to send verification OTP.");
+    } finally {
+      setRequestingOtp(false);
+    }
+  };
+
+  const handleVerifyOtp = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setAuthError(null);
+    const normalized = normalizePhone(phoneInput);
+    const cleanedOtp = otpCode.trim();
+
+    if (!/^\d{6}$/.test(cleanedOtp)) {
+      setAuthError("Please enter the 6-digit verification code sent to your phone.");
+      return;
+    }
+
+    setVerifyingOtp(true);
+    try {
+      const authRes = await verifyPortalOtp({
+        channel: "PHONE",
+        target: normalized,
+        otpCode: cleanedOtp,
+        purpose: "LOGIN",
+      });
+
+      await setSessionFromOtp(authRes);
+      setDonorPhone(normalized);
+      if (authRes.fullName) setDonorName(authRes.fullName);
+      if (authRes.primaryEmail) setDonorEmail(authRes.primaryEmail);
+
+      // Successfully authenticated -> advance to Step 4
+      setStep(4);
+    } catch (err) {
+      setAuthError(err instanceof Error ? err.message : "Invalid or expired verification code.");
+    } finally {
+      setVerifyingOtp(false);
+    }
+  };
+
+  // Save profile & advance from Step 4 to Step 5
+  const handleSaveProfileAndContinue = async () => {
+    if (!validateStep(5)) return;
+    if (!portalToken) return;
+
+    setSavingProfile(true);
+    setActionError(null);
+    try {
+      await updatePortalProfile(portalToken, {
+        fullName: donorName.trim(),
+        addressLine: addressLine.trim(),
+        city: city.trim(),
+        district: district.trim(),
+        state: stateName.trim(),
+        pinCode: pinCode.trim(),
+        country: country.trim() || "India",
+        panOptional: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
+      });
+      setStep(5);
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Could not update donor profile.");
+    } finally {
+      setSavingProfile(false);
+    }
+  };
+
+  // Cashfree Checkout (Step 6)
   const handleCashfreeCheckout = async () => {
-    if (!validateStep(4)) return;
+    if (!validateStep(6)) return;
+    if (!portalToken) {
+      setStep(3);
+      setAuthError("Please complete mobile OTP authentication before paying.");
+      return;
+    }
+
     setSubmitting(true);
     setActionError(null);
 
@@ -398,7 +616,7 @@ export function UnifiedDonationExperience() {
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           donorPhone: donorPhone.trim() || undefined,
-          donorAddress: donorAddress.trim() || undefined,
+          donorAddress: `${addressLine.trim()}, ${city.trim()}, ${district.trim()}, ${stateName.trim()} - ${pinCode.trim()}`,
           donorPan: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
           dedicationMessage: dedicationMessage.trim() || undefined,
           anonymous,
@@ -421,7 +639,6 @@ export function UnifiedDonationExperience() {
               redirectTarget: "_modal",
             });
             if (outcome?.error) {
-              // Refresh backend status before concluding failure
               const latest = await verifyCashfreePayment(
                 resp.orderId || resp.providerOrderId || resp.donationReference
               ).catch(() => fetchDonationStatus(resp.donationReference));
@@ -433,7 +650,7 @@ export function UnifiedDonationExperience() {
           setActionError(
             sdkErr instanceof Error
               ? sdkErr.message
-              : "Online gateway checkout could not open. You can retry or use our verified SBI bank transfer option."
+              : "Online checkout modal could not open. You can retry or use our verified SBI direct transfer option."
           );
         }
       }
@@ -443,7 +660,7 @@ export function UnifiedDonationExperience() {
       ).catch(() => fetchDonationStatus(resp.donationReference));
       setGatewayStatusResult(latest);
     } catch (err) {
-      setActionError(err instanceof Error ? err.message : "Unable to initiate online payment.");
+      setActionError(err instanceof Error ? err.message : "Unable to initiate payment session.");
     } finally {
       setSubmitting(false);
     }
@@ -467,13 +684,21 @@ export function UnifiedDonationExperience() {
     }
   };
 
+  // Submit SBI UTR claim
   const handleSubmitSbiUtr = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateStep(4)) return;
+    if (!validateStep(6)) return;
+    if (!portalToken) {
+      setStep(3);
+      setAuthError("Please complete mobile OTP authentication before submitting a UTR claim.");
+      return;
+    }
+
     if (!utrReference.trim() || utrReference.trim().length < 8) {
       setActionError("Please enter a valid 8–40 character UTR / bank transaction reference.");
       return;
     }
+
     setSubmitting(true);
     setActionError(null);
     try {
@@ -484,7 +709,7 @@ export function UnifiedDonationExperience() {
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           donorPhone: donorPhone.trim() || undefined,
-          donorAddress: donorAddress.trim() || undefined,
+          donorAddress: `${addressLine.trim()}, ${city.trim()}, ${district.trim()}, ${stateName.trim()} - ${pinCode.trim()}`,
           donorPan: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
           dedicationMessage: dedicationMessage.trim() || undefined,
           anonymous,
@@ -505,11 +730,24 @@ export function UnifiedDonationExperience() {
     }
   };
 
+  const handleDownloadReceipt = async (receiptNum: string) => {
+    if (!portalToken) return;
+    setDownloadingReceipt(true);
+    try {
+      await downloadPortalReceiptPdf(portalToken, receiptNum);
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Unable to download PDF receipt.");
+    } finally {
+      setDownloadingReceipt(false);
+    }
+  };
+
   if (loading) {
     return (
-      <Card padding="lg" className="border-border-soft bg-white text-center py-14">
-        <Loader2 className="w-7 h-7 animate-spin text-forest mx-auto mb-3" />
-        <p className="text-sm text-ink-muted">Loading MECT verified donation channels and programmes...</p>
+      <Card padding="lg" className="border-[#E6E1D8] bg-white text-center py-16 shadow-sm">
+        <Loader2 className="w-8 h-8 animate-spin text-forest mx-auto mb-3.5" />
+        <h3 className="font-serif font-bold text-forest text-lg">Loading MECT Donation Platform</h3>
+        <p className="text-xs text-ink-muted mt-1">Connecting to verified statutory programmes and payment channels...</p>
       </Card>
     );
   }
@@ -536,68 +774,99 @@ export function UnifiedDonationExperience() {
     ["PENDING", "CREATED"].includes(gatewayStatusResult.status);
   const isGatewaySuccess = gatewayStatusResult?.status === "SUCCESSFUL";
 
+  const fullDonorAddress = [addressLine, city, district, stateName, pinCode]
+    .filter(Boolean)
+    .join(", ");
+
   return (
     <div className="space-y-6">
-      {/* Top Identity / Guest vs Signed-In Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-border-soft rounded-xs px-4 py-3 shadow-xs">
+      {/* Top Identity / Authentication Status Banner */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-[#E6E1D8] rounded-xs px-4 py-3.5 shadow-xs">
         <div className="flex items-center gap-2.5 text-xs text-ink">
-          {signedInIdentity ? (
+          {isAuthenticated && portalDashboard?.account ? (
             <>
-              <UserCheck className="w-4 h-4 text-emerald-700 shrink-0" />
-              <span>
-                Signed in as <strong className="text-forest">{signedInIdentity}</strong> — this contribution will automatically link to your Donor Portal.
-              </span>
+              <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-800">
+                <UserCheck className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="font-bold text-forest">Authenticated Donor: </span>
+                <span className="font-mono text-ink">
+                  {portalDashboard.account.primaryPhone || portalDashboard.account.primaryEmail}
+                </span>
+                {donorName && <span className="text-ink-muted ml-1.5">({donorName})</span>}
+                <span className="text-emerald-700 font-semibold ml-2">✓ Verified Mobile Identity</span>
+              </div>
             </>
           ) : (
             <>
-              <ShieldCheck className="w-4 h-4 text-terracotta-dark shrink-0" />
-              <span>
-                <strong>Guest Checkout Enabled</strong> — no account required. Existing donors can{" "}
-                <Link href="/portal/login?next=/donate" className="text-terracotta-dark font-bold underline hover:text-forest">
-                  sign in via OTP
-                </Link>{" "}
-                or claim guest receipts later.
-              </span>
+              <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-amber-800">
+                <Lock className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="font-bold text-forest">Mandatory Mobile OTP Verification: </span>
+                <span className="text-ink-muted">
+                  Contributions require mobile authentication in Step 3 to ensure auditable statutory accounting.
+                </span>
+              </div>
             </>
           )}
         </div>
-        <Badge variant={config?.statutoryClaimApproved ? "forest" : "gold"} size="sm">
-          {config?.statutoryFinancialYear || "FY 2026-27"} ·{" "}
-          {config?.statutoryClaimApproved ? "80G Active" : "Institutional Receipt"}
-        </Badge>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <Badge variant={config?.statutoryClaimApproved ? "forest" : "gold"} size="sm">
+            {config?.statutoryFinancialYear || "FY 2026-27"} ·{" "}
+            {config?.statutoryClaimApproved ? "Section 80G Active" : "Official Receipt"}
+          </Badge>
+          {isAuthenticated && (
+            <button
+              type="button"
+              onClick={logout}
+              className="text-[11px] font-semibold text-terracotta-dark hover:text-forest underline ml-1"
+            >
+              Sign out
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* 5-Step Progress Indicator */}
-      <nav aria-label="Donation progress" className="bg-white border border-border-soft rounded-xs p-3 sm:p-4">
-        <ol className="grid grid-cols-5 gap-1.5 sm:gap-3">
+      {/* 6-Step Progress Indicator */}
+      <nav aria-label="Donation progress" className="bg-white border border-[#E6E1D8] rounded-xs p-3 sm:p-4 shadow-xs">
+        <ol className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-2.5">
           {STEPS.map((s) => {
-            const done = step > s.id || isGatewaySuccess || Boolean(sbiSubmitted);
-            const current = step === s.id && !isGatewaySuccess && !sbiSubmitted;
+            const isCompleted = step > s.id || isGatewaySuccess || Boolean(sbiSubmitted);
+            const isCurrent = step === s.id && !isGatewaySuccess && !sbiSubmitted;
             return (
               <li key={s.id}>
                 <button
                   type="button"
                   onClick={() => !sbiSubmitted && !isGatewaySuccess && goToStep(s.id)}
-                  className={`w-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1.5 px-2 py-2 rounded-xs border text-center sm:text-left transition-colors ${
-                    current
-                      ? "bg-forest text-white border-forest font-bold"
-                      : done
-                      ? "bg-emerald-50 text-emerald-900 border-emerald-200 font-semibold"
-                      : "bg-cream/50 text-ink-muted border-border-soft"
+                  className={`w-full flex flex-col items-center sm:items-start p-2 rounded-xs border text-left transition-all ${
+                    isCurrent
+                      ? "bg-forest text-white border-forest font-bold shadow-xs"
+                      : isCompleted
+                      ? "bg-emerald-50 text-emerald-950 border-emerald-200 font-semibold"
+                      : "bg-[#FAF7F2]/50 text-ink-muted border-[#E6E1D8] hover:bg-[#FAF7F2]"
                   }`}
                 >
-                  <span
-                    className={`w-5 h-5 rounded-full text-[11px] flex items-center justify-center shrink-0 font-mono ${
-                      current
-                        ? "bg-white text-forest"
-                        : done
-                        ? "bg-emerald-600 text-white"
-                        : "bg-white border border-border-soft text-ink-muted"
-                    }`}
-                  >
-                    {done ? <Check className="w-3 h-3" /> : s.id}
+                  <div className="flex items-center gap-1.5 w-full">
+                    <span
+                      className={`w-5 h-5 rounded-full text-[11px] flex items-center justify-center shrink-0 font-mono ${
+                        isCurrent
+                          ? "bg-white text-forest"
+                          : isCompleted
+                          ? "bg-emerald-700 text-white"
+                          : "bg-white border border-[#D4CEBE] text-ink-muted"
+                      }`}
+                    >
+                      {isCompleted ? <Check className="w-3 h-3 stroke-[3]" /> : s.id}
+                    </span>
+                    <span className="text-[11px] font-mono hidden sm:inline opacity-80">
+                      Step {s.id}
+                    </span>
+                  </div>
+                  <span className="text-[11px] sm:text-xs truncate mt-1 w-full text-center sm:text-left">
+                    {s.label}
                   </span>
-                  <span className="text-[11px] sm:text-xs truncate">{s.label}</span>
                 </button>
               </li>
             );
@@ -605,202 +874,507 @@ export function UnifiedDonationExperience() {
         </ol>
       </nav>
 
+      {/* Action / Error Banner */}
       {actionError && (
-        <div role="alert" className="bg-red-50 border border-red-200 rounded-xs p-4 flex items-start gap-3 text-sm text-red-900">
+        <div role="alert" className="bg-red-50 border border-red-200 rounded-xs p-4 flex items-start gap-3 text-sm text-red-900 shadow-xs">
           <AlertCircle className="w-5 h-5 text-red-700 shrink-0 mt-0.5" />
-          <div className="flex-1">{actionError}</div>
+          <div className="flex-1 font-medium">{actionError}</div>
         </div>
       )}
 
-      {/* STEP 1: Select Programme */}
+      {/* =========================================================================
+          STEP 1: EXPLORE CHARITABLE PROGRAMMES
+          ========================================================================= */}
       {step === 1 && (
-        <Card padding="lg" className="bg-white border-border-soft space-y-5">
-          <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-              Step 1 — Select Charitable Programme
+        <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+          <div className="border-b border-[#E6E1D8] pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+              Step 1 of 6 · Programme Selection
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+              Explore Approved Charitable Programmes
             </h2>
-            <p className="text-xs sm:text-sm text-ink-muted mt-1">
-              Choose the MECT programme your voluntary contribution will support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-            {programmes.map((prog) => {
-              const selected = prog.code === selectedCode;
-              return (
-                <button
-                  key={prog.code}
-                  type="button"
-                  onClick={() => setSelectedCode(prog.code)}
-                  className={`text-left p-4 rounded-xs border transition-all duration-150 active:scale-[0.99] cursor-pointer ${
-                    selected
-                      ? "border-forest bg-forest/5 ring-2 ring-forest/20 shadow-xs"
-                      : "border-border-soft bg-cream/30 hover:border-forest/40 hover:bg-cream/60"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="font-serif font-bold text-forest text-base">{prog.name}</div>
-                      {prog.tagline && (
-                        <div className="text-xs font-semibold text-terracotta-dark mt-0.5">{prog.tagline}</div>
-                      )}
-                    </div>
-                    <span
-                      className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${
-                        selected ? "bg-forest border-forest text-white" : "border-border-soft bg-white"
-                      }`}
-                    >
-                      {selected && <Check className="w-3 h-3" />}
-                    </span>
-                  </div>
-                  {prog.description && (
-                    <p className="text-xs text-ink-muted mt-2 leading-relaxed">{prog.description}</p>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-end pt-2">
-            <Button type="button" variant="primary" size="lg" onClick={() => goToStep(2)}>
-              <span>Continue to Amount</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        </Card>
-      )}
-
-      {/* STEP 2: Select Amount */}
-      {step === 2 && (
-        <Card padding="lg" className="bg-white border-border-soft space-y-5">
-          <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-              Step 2 — Select Contribution Amount
-            </h2>
-            <p className="text-xs sm:text-sm text-ink-muted mt-1">
-              Supporting <strong>{selectedProgramme?.name}</strong>. Permitted single contribution: ₹
-              {minAmount.toLocaleString("en-IN")} – ₹{maxAmount.toLocaleString("en-IN")}.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {presets.map((val) => {
-              const active = amount === val;
-              return (
-                <button
-                  key={val}
-                  type="button"
-                  onClick={() => {
-                    setAmount(val);
-                    setCustomAmountStr(String(val));
-                  }}
-                  className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all duration-150 active:scale-[0.98] cursor-pointer ${
-                    active
-                      ? "bg-forest text-white border-forest shadow-sm"
-                      : "bg-cream/40 text-forest border-border-soft hover:border-forest/50 hover:bg-cream"
-                  }`}
-                >
-                  ₹{val.toLocaleString("en-IN")}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="max-w-sm space-y-1.5">
-            <label htmlFor="custom-donation-amount" className="block text-xs font-semibold text-forest uppercase tracking-wider">
-              Or Enter Custom Amount (INR)
-            </label>
-            <Input
-              id="custom-donation-amount"
-              type="number"
-              min={minAmount}
-              max={maxAmount}
-              step="1"
-              value={customAmountStr}
-              onChange={(e) => {
-                setCustomAmountStr(e.target.value);
-                const parsed = Number(e.target.value);
-                setAmount(Number.isFinite(parsed) ? parsed : 0);
-              }}
-              className="font-mono text-base font-bold"
-            />
-          </div>
-
-          <div className="flex items-center justify-between pt-2">
-            <Button type="button" variant="outline" onClick={() => setStep(1)}>
-              <ArrowLeft className="w-4 h-4 mr-1.5" />
-              <span>Back</span>
-            </Button>
-            <Button type="button" variant="primary" size="lg" onClick={() => goToStep(3)}>
-              <span>Continue to Donor Info</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        </Card>
-      )}
-
-      {/* STEP 3: Donor Information */}
-      {step === 3 && (
-        <Card padding="lg" className="bg-white border-border-soft space-y-5">
-          <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-              Step 3 — Donor Information
-            </h2>
-            <p className="text-xs sm:text-sm text-ink-muted mt-1">
-              We collect only the details needed for your official receipt and statutory ledger.
+            <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
+              Every rupee donated to MECT is allocated strictly according to statutory trust provisions. Choose the specific initiative you wish to sponsor, or contribute to our General Community Welfare fund.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="donor-full-name" className="block text-xs font-semibold text-forest mb-1">
-                Full Name <span className="text-red-600">*</span>
-              </label>
+            {programmes.map((prog) => (
+              <DonationProgrammeCard
+                key={prog.code}
+                programme={prog}
+                selected={prog.code === selectedCode}
+                onSelect={(code) => setSelectedCode(code)}
+                onPresetSelect={(preset) => {
+                  setAmount(preset);
+                  setCustomAmountStr(String(preset));
+                  goToStep(2);
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+            <span className="text-xs text-ink-muted">
+              Selected: <strong className="text-forest">{selectedProgramme?.name}</strong>
+            </span>
+            <Button
+              type="button"
+              variant="primary"
+              size="lg"
+              onClick={() => goToStep(2)}
+              className="shadow-sm"
+            >
+              <span>Continue to Contribution Amount</span>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </Card>
+      )}
+
+      {/* =========================================================================
+          STEP 2: SELECT CONTRIBUTION AMOUNT & FREQUENCY
+          ========================================================================= */}
+      {step === 2 && (
+        <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+          <div className="border-b border-[#E6E1D8] pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+              Step 2 of 6 · Contribution Sizing
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+              Choose Contribution Amount &amp; Frequency
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1">
+              Supporting: <strong className="text-forest">{selectedProgramme?.name}</strong>. Permitted single contribution: ₹
+              {minAmount.toLocaleString("en-IN")} – ₹{maxAmount.toLocaleString("en-IN")}.
+            </p>
+          </div>
+
+          {/* Frequency Toggle */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-forest">
+              Contribution Frequency
+            </label>
+            <div className="grid grid-cols-2 max-w-sm gap-2">
+              <button
+                type="button"
+                onClick={() => setFrequency("ONE_TIME")}
+                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${
+                  frequency === "ONE_TIME"
+                    ? "bg-forest text-white border-forest shadow-xs"
+                    : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
+                }`}
+              >
+                One-Time Gift
+              </button>
+              <button
+                type="button"
+                onClick={() => setFrequency("MONTHLY")}
+                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${
+                  frequency === "MONTHLY"
+                    ? "bg-forest text-white border-forest shadow-xs"
+                    : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
+                }`}
+              >
+                Monthly Commitment
+              </button>
+            </div>
+            {frequency === "MONTHLY" && (
+              <p className="text-[11px] text-terracotta-dark font-medium mt-1">
+                Monthly commitments help us plan ongoing scholarships and seasonal kiosks in advance.
+              </p>
+            )}
+          </div>
+
+          {/* Amount Presets */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-forest">
+              Select Preset Amount (INR)
+            </label>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              {presets.map((val) => {
+                const active = amount === val;
+                return (
+                  <button
+                    key={val}
+                    type="button"
+                    onClick={() => {
+                      setAmount(val);
+                      setCustomAmountStr(String(val));
+                    }}
+                    className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all duration-150 cursor-pointer ${
+                      active
+                        ? "bg-forest text-white border-forest shadow-sm scale-[1.02]"
+                        : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/60 hover:bg-[#FAF7F2]/80"
+                    }`}
+                  >
+                    ₹{val.toLocaleString("en-IN")}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Custom Amount */}
+          <div className="max-w-md space-y-1.5 pt-2">
+            <label htmlFor="custom-amount-input" className="block text-xs font-bold uppercase tracking-wider text-forest">
+              Or Enter Custom Amount (INR)
+            </label>
+            <div className="relative">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono font-bold text-ink-muted">
+                ₹
+              </span>
               <Input
-                id="donor-full-name"
-                value={donorName}
-                onChange={(e) => setDonorName(e.target.value)}
-                placeholder="Enter your full name"
-                required
+                id="custom-amount-input"
+                type="number"
+                min={minAmount}
+                max={maxAmount}
+                step="1"
+                value={customAmountStr}
+                onChange={(e) => {
+                  setCustomAmountStr(e.target.value);
+                  const parsed = Number(e.target.value);
+                  setAmount(Number.isFinite(parsed) ? parsed : 0);
+                }}
+                className="pl-8 font-mono text-lg font-bold"
+                placeholder="1000"
               />
             </div>
+            <p className="text-[11px] text-ink-muted">
+              Minimum ₹{minAmount.toLocaleString("en-IN")} · Maximum ₹{maxAmount.toLocaleString("en-IN")}
+            </p>
+          </div>
 
+          {/* Allocation Transparency Callout */}
+          <div className="p-4 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] text-xs text-ink space-y-1">
+            <div className="font-bold text-forest flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-terracotta" />
+              <span>Direct Institutional Allocation Guarantee</span>
+            </div>
+            <p className="text-ink-muted leading-relaxed">
+              100% of your voluntary contribution of <strong>₹{amount.toLocaleString("en-IN")}</strong> is credited directly to <strong>{selectedProgramme?.name}</strong>. No middleman deductions or administrative skimming.
+            </p>
+          </div>
+
+          <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+            <Button type="button" variant="outline" onClick={() => setStep(1)}>
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>Back to Programmes</span>
+            </Button>
+            <Button type="button" variant="primary" size="lg" onClick={() => goToStep(3)}>
+              <span>Continue to Donor Verification</span>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </Card>
+      )}
+
+      {/* =========================================================================
+          STEP 3: MANDATORY MOBILE OTP AUTHENTICATION
+          ========================================================================= */}
+      {step === 3 && (
+        <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+          <div className="border-b border-[#E6E1D8] pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+              Step 3 of 6 · Mandatory Security Verification
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+              Donor Mobile Authentication
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1">
+              To safeguard trust funds and comply with statutory donor verification mandates, every contribution must be authenticated via Mobile OTP.
+            </p>
+          </div>
+
+          {authError && (
+            <div role="alert" className="p-4 rounded-xs bg-red-50 border border-red-200 text-xs text-red-900 flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-red-700 shrink-0 mt-0.5" />
+              <div className="flex-1 font-medium">{authError}</div>
+            </div>
+          )}
+
+          {/* Scenario A: Already Authenticated */}
+          {isAuthenticated && portalDashboard?.account ? (
+            <div className="p-5 rounded-xs bg-emerald-50/60 border border-emerald-300 space-y-4">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-emerald-950 text-base">
+                    Donor Identity Verified &amp; Active
+                  </h3>
+                  <p className="text-xs text-emerald-900 mt-1 leading-relaxed">
+                    You are logged in as{" "}
+                    <strong className="font-mono">
+                      {portalDashboard.account.primaryPhone || portalDashboard.account.primaryEmail}
+                    </strong>
+                    . This contribution of <strong>₹{amount.toLocaleString("en-IN")}</strong> will automatically generate an official cryptographic PDF receipt linked directly to your Donor Portal.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button
+                  type="button"
+                  variant="primary"
+                  onClick={() => goToStep(4)}
+                  className="bg-emerald-800 hover:bg-emerald-900"
+                >
+                  <span>Continue to Donor Profile</span>
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={async () => {
+                    await logout();
+                    setOtpSent(false);
+                    setPhoneInput("");
+                    setOtpCode("");
+                  }}
+                  className="text-xs"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+                  <span>Use Another Mobile Number</span>
+                </Button>
+              </div>
+            </div>
+          ) : (
+            /* Scenario B: Not Authenticated -> Mobile OTP Form */
+            <div className="max-w-md space-y-5">
+              {!otpSent ? (
+                <form onSubmit={handleRequestOtp} className="space-y-4">
+                  <div>
+                    <label htmlFor="donor-mobile-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                      Enter Your 10-Digit Mobile Number
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <div className="h-11 px-3.5 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs font-mono font-bold text-sm text-forest flex items-center shrink-0">
+                        +91 (India)
+                      </div>
+                      <Input
+                        id="donor-mobile-input"
+                        type="tel"
+                        maxLength={10}
+                        value={phoneInput}
+                        onChange={(e) => setPhoneInput(e.target.value.replace(/\D/g, ""))}
+                        placeholder="9853608113"
+                        className="font-mono text-base font-bold flex-1"
+                        autoFocus
+                        required
+                      />
+                    </div>
+                    <p className="text-[11px] text-ink-muted mt-1.5">
+                      We will send a 6-digit one-time password (OTP) via SMS to verify your donor identity.
+                    </p>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    disabled={requestingOtp || phoneInput.length < 10}
+                    className="w-full"
+                  >
+                    {requestingOtp ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <span>Sending Verification Code...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Phone className="w-4 h-4 mr-2" />
+                        <span>Send Verification Code</span>
+                      </>
+                    )}
+                  </Button>
+                </form>
+              ) : (
+                /* OTP Input Form */
+                <form onSubmit={handleVerifyOtp} className="space-y-4">
+                  <div className="p-3.5 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted block">
+                        OTP Sent To
+                      </span>
+                      <span className="font-mono font-bold text-forest text-sm">
+                        {normalizePhone(phoneInput)}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOtpSent(false);
+                        setOtpCode("");
+                        setAuthError(null);
+                      }}
+                      className="text-xs text-terracotta-dark hover:text-forest font-semibold underline"
+                    >
+                      Change Number
+                    </button>
+                  </div>
+
+                  <div>
+                    <label htmlFor="otp-digit-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                      Enter 6-Digit Verification Code
+                    </label>
+                    <Input
+                      id="otp-digit-input"
+                      type="text"
+                      maxLength={6}
+                      value={otpCode}
+                      onChange={(e) => {
+                        const val = e.target.value.replace(/\D/g, "");
+                        setOtpCode(val);
+                        if (val.length === 6) {
+                          // Auto submit on 6 digits
+                          setTimeout(() => {
+                            const btn = document.getElementById("submit-otp-button");
+                            btn?.click();
+                          }, 100);
+                        }
+                      }}
+                      placeholder="• • • • • •"
+                      className="font-mono text-center text-2xl tracking-[0.5em] font-bold h-13"
+                      autoFocus
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    id="submit-otp-button"
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    disabled={verifyingOtp || otpCode.length !== 6}
+                    className="w-full"
+                  >
+                    {verifyingOtp ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <span>Verifying Code...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Check className="w-4 h-4 mr-2 stroke-[3]" />
+                        <span>Verify &amp; Continue</span>
+                      </>
+                    )}
+                  </Button>
+
+                  <div className="flex items-center justify-between text-xs pt-1">
+                    <span className="text-ink-muted">Didn&apos;t receive code?</span>
+                    {otpCooldown > 0 ? (
+                      <span className="font-mono text-ink-muted">Resend in {otpCooldown}s</span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={handleRequestOtp}
+                        disabled={requestingOtp}
+                        className="text-terracotta-dark font-bold hover:text-forest underline"
+                      >
+                        Resend Code
+                      </button>
+                    )}
+                  </div>
+                </form>
+              )}
+            </div>
+          )}
+
+          <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+            <Button type="button" variant="outline" onClick={() => setStep(2)}>
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>Back to Amount</span>
+            </Button>
+            {isAuthenticated && (
+              <Button type="button" variant="primary" size="lg" onClick={() => goToStep(4)}>
+                <span>Continue to Profile</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            )}
+          </div>
+        </Card>
+      )}
+
+      {/* =========================================================================
+          STEP 4: DONOR PROFILE & TAX INFORMATION
+          ========================================================================= */}
+      {step === 4 && (
+        <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+          <div className="border-b border-[#E6E1D8] pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+              Step 4 of 6 · Donor Profile &amp; Statutory Receipting
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+              Donor Information &amp; Address
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
+              Under Indian Income-tax Act provisions, official donation receipts require legal name, postal address, and contact details. This data is securely preserved for statutory tax filings.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Full Name */}
             <div>
-              <label htmlFor="donor-email" className="block text-xs font-semibold text-forest mb-1">
-                Email Address <span className="text-red-600">*</span>
+              <label htmlFor="donor-legal-name" className="block text-xs font-bold text-forest mb-1">
+                Legal Full Name <span className="text-red-600">*</span>
               </label>
               <Input
-                id="donor-email"
-                type="email"
-                value={donorEmail}
-                onChange={(e) => setDonorEmail(e.target.value)}
-                placeholder="name@domain.com"
+                id="donor-legal-name"
+                value={donorName}
+                onChange={(e) => setDonorName(e.target.value)}
+                placeholder="e.g. Ramesh Kumar Patel"
                 required
               />
               <p className="text-[11px] text-ink-muted mt-1">
-                Receipts are immediately available in your Donor Portal; an electronic copy is queued to this address.
+                As stated on your official government identification / PAN card.
               </p>
             </div>
 
+            {/* Email Address */}
             <div>
-              <label htmlFor="donor-phone" className="block text-xs font-semibold text-forest mb-1">
-                Mobile Number (Optional)
+              <label htmlFor="donor-receipt-email" className="block text-xs font-bold text-forest mb-1">
+                Receipt Delivery Email <span className="text-red-600">*</span>
               </label>
               <Input
-                id="donor-phone"
-                type="tel"
-                value={donorPhone}
-                onChange={(e) => setDonorPhone(e.target.value)}
-                placeholder="+91 98XXXXXXXX"
+                id="donor-receipt-email"
+                type="email"
+                value={donorEmail}
+                onChange={(e) => setDonorEmail(e.target.value)}
+                placeholder="ramesh.patel@example.org"
+                required
               />
+              <p className="text-[11px] text-ink-muted mt-1">
+                Your computer-signed PDF receipt will be instantly dispatched here.
+              </p>
             </div>
 
+            {/* Verified Phone (Locked) */}
             <div>
-              <label htmlFor="donor-pan" className="block text-xs font-semibold text-forest mb-1">
-                PAN (Optional — Statutory Returns)
+              <label htmlFor="donor-phone-locked" className="block text-xs font-bold text-forest mb-1">
+                Verified Mobile Number <span className="text-emerald-700 font-semibold">(Verified ✓)</span>
               </label>
               <Input
-                id="donor-pan"
+                id="donor-phone-locked"
+                value={donorPhone || phoneInput}
+                disabled
+                className="bg-[#FAF7F2] font-mono text-forest cursor-not-allowed"
+              />
+              <p className="text-[11px] text-emerald-800 mt-1">
+                Authenticated via 6-digit OTP in Step 3.
+              </p>
+            </div>
+
+            {/* Optional PAN */}
+            <div>
+              <label htmlFor="donor-pan-field" className="block text-xs font-bold text-forest mb-1">
+                Permanent Account Number (PAN) <span className="text-ink-muted font-normal">(Optional for 80G)</span>
+              </label>
+              <Input
+                id="donor-pan-field"
                 value={donorPan}
                 onChange={(e) => setDonorPan(e.target.value.toUpperCase())}
                 maxLength={10}
@@ -808,37 +1382,105 @@ export function UnifiedDonationExperience() {
                 className="font-mono uppercase"
               />
               <p className="text-[11px] text-ink-muted mt-1">
-                80G claims are pending CA confirmation. Optional PAN is recorded solely for future statutory filings if approved.
+                Required only if claiming Section 80G income-tax deduction in India.
               </p>
             </div>
 
+            {/* Street Address */}
             <div className="md:col-span-2">
-              <label htmlFor="donor-address" className="block text-xs font-semibold text-forest mb-1">
-                Postal Address (Optional)
+              <label htmlFor="donor-street-address" className="block text-xs font-bold text-forest mb-1">
+                Postal Address / Locality <span className="text-red-600">*</span>
               </label>
               <Input
-                id="donor-address"
-                value={donorAddress}
-                onChange={(e) => setDonorAddress(e.target.value)}
-                placeholder="House/Street, City, State, PIN Code"
+                id="donor-street-address"
+                value={addressLine}
+                onChange={(e) => setAddressLine(e.target.value)}
+                placeholder="House No., Street Name, Landmark / Village"
+                required
               />
             </div>
 
-            <div className="md:col-span-2">
-              <label htmlFor="donor-dedication" className="block text-xs font-semibold text-forest mb-1">
-                Dedication / Purpose Note (Optional)
+            {/* City / Town */}
+            <div>
+              <label htmlFor="donor-city-field" className="block text-xs font-bold text-forest mb-1">
+                City / Town <span className="text-red-600">*</span>
               </label>
               <Input
-                id="donor-dedication"
+                id="donor-city-field"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Balangir"
+                required
+              />
+            </div>
+
+            {/* District */}
+            <div>
+              <label htmlFor="donor-district-select" className="block text-xs font-bold text-forest mb-1">
+                District <span className="text-red-600">*</span>
+              </label>
+              <select
+                id="donor-district-select"
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+                className="w-full h-10 px-3 text-sm bg-white border border-[#D4CEBE] rounded-xs text-forest focus:outline-none focus:ring-2 focus:ring-forest"
+                required
+              >
+                {ODISHA_DISTRICTS.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* State */}
+            <div>
+              <label htmlFor="donor-state-field" className="block text-xs font-bold text-forest mb-1">
+                State <span className="text-red-600">*</span>
+              </label>
+              <Input
+                id="donor-state-field"
+                value={stateName}
+                onChange={(e) => setStateName(e.target.value)}
+                placeholder="Odisha"
+                required
+              />
+            </div>
+
+            {/* PIN Code */}
+            <div>
+              <label htmlFor="donor-pincode-field" className="block text-xs font-bold text-forest mb-1">
+                PIN Code <span className="text-red-600">*</span>
+              </label>
+              <Input
+                id="donor-pincode-field"
+                value={pinCode}
+                onChange={(e) => setPinCode(e.target.value.replace(/\D/g, ""))}
+                maxLength={6}
+                placeholder="767001"
+                className="font-mono"
+                required
+              />
+            </div>
+
+            {/* Dedication Note */}
+            <div className="md:col-span-2">
+              <label htmlFor="donor-dedication-note" className="block text-xs font-bold text-forest mb-1">
+                Dedication / In Memoriam / Purpose Note (Optional)
+              </label>
+              <Input
+                id="donor-dedication-note"
                 value={dedicationMessage}
                 onChange={(e) => setDedicationMessage(e.target.value)}
                 maxLength={250}
-                placeholder="In memory of / dedicated to..."
+                placeholder="e.g. In loving memory of late parents / for student exam fees"
               />
             </div>
           </div>
 
-          <div className="space-y-2.5 pt-2 border-t border-border-soft text-xs text-ink">
+          {/* Privacy & Consent Options */}
+          <div className="space-y-3 pt-3 border-t border-[#E6E1D8] text-xs text-ink">
             <label className="flex items-start gap-2.5 cursor-pointer">
               <input
                 type="checkbox"
@@ -846,8 +1488,11 @@ export function UnifiedDonationExperience() {
                 onChange={(e) => setAnonymous(e.target.checked)}
                 className="mt-0.5 accent-forest"
               />
-              <span>Display my public acknowledgement as <strong>Anonymous Donor</strong> (internal accounting still retains my verified name).</span>
+              <span>
+                Display my public acknowledgement as <strong>Anonymous Donor</strong> on the public wall (your statutory identity is securely retained for tax and audit purposes).
+              </span>
             </label>
+
             <label className="flex items-start gap-2.5 cursor-pointer">
               <input
                 type="checkbox"
@@ -855,167 +1500,228 @@ export function UnifiedDonationExperience() {
                 onChange={(e) => setCommunicationConsent(e.target.checked)}
                 className="mt-0.5 accent-forest"
               />
-              <span>I consent to receive donation receipt confirmations and programme impact updates in accordance with MECT&apos;s Privacy Policy.</span>
+              <span>
+                I consent to receive electronic donation receipts and programme impact reports from MECT in accordance with the Trust Privacy Policy.
+              </span>
             </label>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <Button type="button" variant="outline" onClick={() => setStep(2)}>
+          <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+            <Button type="button" variant="outline" onClick={() => setStep(3)}>
               <ArrowLeft className="w-4 h-4 mr-1.5" />
-              <span>Back</span>
+              <span>Back to Verification</span>
             </Button>
-            <Button type="button" variant="primary" size="lg" onClick={() => goToStep(4)}>
-              <span>Review Donation</span>
+            <Button
+              type="button"
+              variant="primary"
+              size="lg"
+              disabled={savingProfile}
+              onClick={handleSaveProfileAndContinue}
+            >
+              {savingProfile ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <span>Saving Profile...</span>
+                </>
+              ) : (
+                <>
+                  <span>Review Contribution</span>
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </>
+              )}
+            </Button>
+          </div>
+        </Card>
+      )}
+
+      {/* =========================================================================
+          STEP 5: REVIEW & STATUTORY DISCLOSURE
+          ========================================================================= */}
+      {step === 5 && (
+        <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+          <div className="border-b border-[#E6E1D8] pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+              Step 5 of 6 · Review &amp; Statutory Disclosures
+            </span>
+            <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+              Confirm Contribution Details
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1">
+              Please review your contribution summary and statutory tax disclosures before proceeding to payment.
+            </p>
+          </div>
+
+          {/* Breakdown Summary Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs p-5">
+            <div className="space-y-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                Contribution Allocation
+              </span>
+              <div className="font-serif font-bold text-forest text-lg">
+                {selectedProgramme?.name}
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono font-bold text-3xl text-terracotta-dark">
+                  ₹{amount.toLocaleString("en-IN")}
+                </span>
+                <span className="text-xs text-ink-muted">
+                  ({frequency === "MONTHLY" ? "Monthly Commitment" : "One-Time Contribution"})
+                </span>
+              </div>
+              {selectedProgramme?.code === "HANUMAN_MURTI" ? (
+                <Badge variant="gold" size="sm">Segregated Sub-Ledger Guarantee</Badge>
+              ) : (
+                <Badge variant="forest" size="sm">100% Direct Programme Allocation</Badge>
+              )}
+            </div>
+
+            <div className="space-y-1.5 text-xs border-t md:border-t-0 md:border-l border-[#E6E1D8] pt-3 md:pt-0 md:pl-5">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                Donor Profile
+              </span>
+              <div>
+                <strong className="text-forest text-sm">{donorName}</strong>{" "}
+                {anonymous && <span className="text-ink-muted italic">(Publicly Anonymous)</span>}
+              </div>
+              <div className="text-ink font-mono">{donorPhone || phoneInput}</div>
+              <div className="text-ink">{donorEmail}</div>
+              <div className="text-ink-muted leading-relaxed">{fullDonorAddress}</div>
+              {donorPan ? (
+                <div className="font-mono text-forest font-semibold mt-1">
+                  PAN: {donorPan} (80G Eligible)
+                </div>
+              ) : (
+                <div className="text-ink-muted mt-1">PAN: Not provided (General Receipt)</div>
+              )}
+              {dedicationMessage && (
+                <div className="italic text-ink-muted mt-1 border-t border-[#E6E1D8] pt-1">
+                  &ldquo;{dedicationMessage}&rdquo;
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Statutory Tax Disclosure Box */}
+          <div className="p-4 rounded-xs bg-amber-50/70 border border-amber-200 text-xs text-amber-950 space-y-2">
+            <div className="font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5 text-amber-900">
+              <ShieldCheck className="w-4 h-4 text-amber-800" />
+              <span>Statutory Compliance &amp; Tax Deductibility ({config?.statutoryFinancialYear || "2026-27"})</span>
+            </div>
+            <p className="leading-relaxed">
+              Mahaveer Educational &amp; Charitable Trust (MECT) holds statutory registration under Section 12A (URN:{" "}
+              <strong className="font-mono">AADTM5474FE20231</strong>) and Section 80G (URN:{" "}
+              <strong className="font-mono">AADTM5474FF20241</strong>) with Trust PAN{" "}
+              <strong className="font-mono">AADTM5474F</strong>. Under Section 354 and Rule 190 of the Income-tax Act, formal statutory certificates (Form 114) follow annual statements (Form 113).
+            </p>
+            <p className="text-[11px] text-amber-900/90 font-mono">
+              Trust Deed Reg: No. 41042300063 / 2023, Balangir, Odisha.
+            </p>
+          </div>
+
+          {/* Terms Acceptance */}
+          <label className="flex items-start gap-2.5 p-3 rounded-xs border border-[#E6E1D8] bg-[#FAF7F2]/60 text-xs text-ink cursor-pointer">
+            <input
+              type="checkbox"
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
+              className="mt-0.5 accent-forest"
+            />
+            <span className="leading-relaxed">
+              I confirm that this voluntary contribution is made exclusively from genuine domestic Indian bank funds, in compliance with the Indian Trusts Act and applicable taxation laws. I accept MECT&apos;s published charitable objectives and terms of donation.
+            </span>
+          </label>
+
+          <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+            <Button type="button" variant="outline" onClick={() => setStep(4)}>
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>Edit Details</span>
+            </Button>
+            <Button
+              type="button"
+              variant="primary"
+              size="lg"
+              disabled={!termsAccepted}
+              onClick={() => goToStep(6)}
+              className="shadow-sm"
+            >
+              <Lock className="w-4 h-4 mr-2" />
+              <span>Proceed to Payment (₹{amount.toLocaleString("en-IN")})</span>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </Card>
       )}
 
-      {/* STEP 4: Review & Choose Payment Channel */}
-      {step === 4 && (
-        <Card padding="lg" className="bg-white border-border-soft space-y-5">
-          <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-              Step 4 — Review &amp; Payment Method
-            </h2>
-            <p className="text-xs sm:text-sm text-ink-muted mt-1">
-              Verify your contribution details and statutory disclosure before proceeding to payment.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-cream/40 border border-border-soft rounded-xs p-4 text-sm">
-            <div className="space-y-1.5">
-              <div className="text-[11px] uppercase tracking-wider font-semibold text-ink-muted">Programme &amp; Amount</div>
-              <div className="font-serif font-bold text-forest text-base">{selectedProgramme?.name}</div>
-              <div className="font-mono font-bold text-2xl text-terracotta-dark">₹{amount.toLocaleString("en-IN")}</div>
-            </div>
-            <div className="space-y-1 text-xs text-ink">
-              <div className="text-[11px] uppercase tracking-wider font-semibold text-ink-muted">Donor Details</div>
-              <div><strong>{donorName}</strong> {anonymous ? "(Publicly Anonymous)" : ""}</div>
-              <div>{donorEmail}</div>
-              {donorPhone && <div>{donorPhone}</div>}
-              {donorPan && <div className="font-mono">PAN: {donorPan}</div>}
-              {donorAddress && <div className="text-ink-muted">{donorAddress}</div>}
-            </div>
-          </div>
-
-          {/* Payment Method Selection */}
-          <div className="space-y-2.5">
-            <div className="text-xs font-semibold uppercase tracking-wider text-forest">Select Payment Channel</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {config?.cashfreeEnabled && (
-                <div
-                  className="p-4 rounded-xs border border-forest bg-forest/5 ring-2 ring-forest/20 text-left"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 font-serif font-bold text-forest">
-                      <CreditCard className="w-4 h-4 text-terracotta-dark" />
-                      <span>Cashfree Online Checkout</span>
-                    </span>
-                    <Badge variant="forest" size="sm">Authorized Online Channel</Badge>
-                  </div>
-                  <p className="text-xs text-ink-muted mt-1.5">
-                    Instant UPI, Cards, NetBanking &amp; Wallets with automatic server-verified PDF receipt.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Statutory Eligibility Disclosure */}
-          <div className="bg-amber-50/70 border border-amber-200 rounded-xs p-3.5 text-xs text-amber-950 space-y-1">
-            <div className="font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-amber-800" />
-              <span>Statutory &amp; Processing Disclosure ({config?.statutoryFinancialYear})</span>
-            </div>
-            <p className="leading-relaxed">{config?.statutoryDisclosureText}</p>
-            <p className="text-amber-900/90">{config?.gatewayNoticeText}</p>
-          </div>
-
-          <div className="flex items-center justify-between pt-2">
-            <Button type="button" variant="outline" onClick={() => setStep(3)}>
-              <ArrowLeft className="w-4 h-4 mr-1.5" />
-              <span>Edit Info</span>
-            </Button>
-            <Button type="button" variant="primary" size="lg" onClick={() => setStep(5)}>
-              <Lock className="w-4 h-4 mr-2" />
-              <span>Proceed to Payment</span>
-            </Button>
-          </div>
-        </Card>
-      )}
-
-      {/* STEP 5: Payment & Verification */}
-      {step === 5 && (
-        <div className="space-y-5">
-          {/* Verified Success Screen (Cashfree) */}
+      {/* =========================================================================
+          STEP 6: SECURE PAYMENT & DIGITAL RECEIPT
+          ========================================================================= */}
+      {step === 6 && (
+        <div className="space-y-6">
+          {/* 1. Verified Success Screen (Instant Official Receipt) */}
           {isGatewaySuccess && gatewayStatusResult && (
-            <Card padding="lg" className="bg-emerald-50/70 border-emerald-300 space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-7 h-7 text-emerald-700 shrink-0 mt-0.5" />
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-emerald-950">
-                    Thank You — Donation Verified
+            <Card padding="lg" className="bg-emerald-50/70 border-emerald-300 space-y-5 shadow-sm">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <h2 className="font-serif text-2xl font-bold text-emerald-950">
+                    Thank You — Contribution Verified
                   </h2>
-                  <p className="text-sm text-emerald-900 mt-1">
-                    Reference <strong className="font-mono">{gatewayStatusResult.donationReference}</strong> for{" "}
-                    <strong>₹{gatewayStatusResult.amount.toLocaleString("en-IN")}</strong> ({gatewayStatusResult.programmeName}) is confirmed.
+                  <p className="text-sm text-emerald-900 leading-relaxed">
+                    Your contribution of <strong>₹{gatewayStatusResult.amount.toLocaleString("en-IN")}</strong> to{" "}
+                    <strong>{gatewayStatusResult.programmeName}</strong> has been successfully reconciled and settled.
                   </p>
-                  {gatewayStatusResult.receiptNumber && (
-                    <div className="mt-1 space-y-0.5">
-                      <p className="text-xs text-emerald-900 font-mono">
-                        Official Receipt: <strong>{gatewayStatusResult.receiptNumber}</strong>
-                      </p>
-                      <p className="text-[11px] text-emerald-800">
-                        Cryptographic SHA-256 verified &amp; immutable. Queued to transactional outbox and permanently preserved in your portal.
-                      </p>
-                    </div>
-                  )}
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <Link href="/portal/dashboard">
-                  <Button variant="primary">Open Donor Portal &amp; Download Receipt</Button>
-                </Link>
-              </div>
-            </Card>
-          )}
 
-          {/* SBI UTR Submission Success (Pending Verification, NOT Final Receipt) */}
-          {sbiSubmitted && (
-            <Card padding="lg" className="bg-amber-50/80 border-amber-300 space-y-4">
-              <div className="flex items-start gap-3">
-                <Clock className="w-7 h-7 text-amber-800 shrink-0 mt-0.5" />
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h2 className="font-serif text-xl font-bold text-amber-950">
-                      Bank Transfer Verification Pending
-                    </h2>
-                    <Badge variant="gold" size="sm">{sbiSubmitted.claimStatus}</Badge>
-                  </div>
-                  <p className="text-xs text-amber-800 font-semibold mt-1">
-                    UTR submission is a payment claim, not proof of settled funds. An official receipt will be generated only after verified credit in MECT&apos;s bank statement.
-                  </p>
-                  <p className="text-sm text-amber-900 mt-1.5 leading-relaxed">{sbiSubmitted.message}</p>
-                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs bg-white/80 border border-amber-200 rounded-xs p-3 font-mono">
-                    <div>Claim Ref: <strong>{sbiSubmitted.claimReference}</strong></div>
-                    <div>Donation Ref: <strong>{sbiSubmitted.donationReference}</strong></div>
-                    <div>UTR: <strong>{sbiSubmitted.utrNormalized}</strong></div>
-                  </div>
+              {/* Receipt Details Box */}
+              <div className="p-4 rounded-xs bg-white border border-emerald-200 text-xs font-mono space-y-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-100 pb-2">
+                  <span className="text-emerald-900">
+                    Official Receipt: <strong>{gatewayStatusResult.receiptNumber || "Generated"}</strong>
+                  </span>
+                  <Badge variant="forest" size="sm">Cryptographic SHA-256 Verified</Badge>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-ink">
+                  <div>Donation Reference: <strong>{gatewayStatusResult.donationReference}</strong></div>
+                  <div>Settled At: <strong>{gatewayStatusResult.confirmedAt ? new Date(gatewayStatusResult.confirmedAt).toLocaleString("en-IN") : "Just now"}</strong></div>
+                  <div>Payment Method: <strong>{gatewayStatusResult.paymentMethod}</strong></div>
+                  <div>Donor Name: <strong>{donorName}</strong></div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3">
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                {gatewayStatusResult.receiptNumber && (
+                  <Button
+                    type="button"
+                    variant="primary"
+                    disabled={downloadingReceipt}
+                    onClick={() => handleDownloadReceipt(gatewayStatusResult.receiptNumber!)}
+                    className="bg-emerald-800 hover:bg-emerald-900"
+                  >
+                    {downloadingReceipt ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <span>Downloading PDF...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4 mr-2" />
+                        <span>Download Official PDF Receipt</span>
+                      </>
+                    )}
+                  </Button>
+                )}
                 <Link href="/portal/dashboard">
-                  <Button variant="primary">Track Verification in Donor Portal</Button>
+                  <Button variant="outline">Go to My Donor Dashboard</Button>
                 </Link>
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => {
-                    setSbiSubmitted(null);
-                    setInitiated(null);
                     setGatewayStatusResult(null);
+                    setInitiated(null);
                     setStep(1);
                   }}
                 >
@@ -1025,119 +1731,139 @@ export function UnifiedDonationExperience() {
             </Card>
           )}
 
-          {/* Cashfree Pending / Unknown Reconciliation View */}
+          {/* 2. SBI UTR Submitted Screen */}
+          {sbiSubmitted && (
+            <Card padding="lg" className="bg-amber-50/80 border-amber-300 space-y-5 shadow-sm">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-amber-700 text-white flex items-center justify-center shrink-0">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h2 className="font-serif text-2xl font-bold text-amber-950">
+                      Bank Transfer Claim Recorded
+                    </h2>
+                    <Badge variant="gold" size="sm">{sbiSubmitted.claimStatus}</Badge>
+                  </div>
+                  <p className="text-xs text-amber-800 font-semibold mt-0.5">
+                    UTR submission is a payment claim, not proof of settled funds. An official receipt will be generated automatically upon bank statement verification.
+                  </p>
+                  <p className="text-sm text-amber-900 mt-1 leading-relaxed">{sbiSubmitted.message}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs bg-white/90 border border-amber-200 rounded-xs p-3.5 font-mono">
+                <div>Claim Ref: <strong className="text-amber-950">{sbiSubmitted.claimReference}</strong></div>
+                <div>Donation Ref: <strong className="text-amber-950">{sbiSubmitted.donationReference}</strong></div>
+                <div>UTR: <strong className="text-amber-950">{sbiSubmitted.utrNormalized}</strong></div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Link href="/portal/dashboard">
+                  <Button variant="primary" className="bg-amber-800 hover:bg-amber-900">
+                    Track Claim in Donor Dashboard
+                  </Button>
+                </Link>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setSbiSubmitted(null);
+                    setStep(1);
+                  }}
+                >
+                  Make Another Contribution
+                </Button>
+              </div>
+            </Card>
+          )}
+
+          {/* 3. Reconciling / Pending Gateway State */}
           {!isGatewaySuccess && !sbiSubmitted && isGatewayPending && gatewayStatusResult && (
             <Card padding="lg" className="bg-blue-50/70 border-blue-200 space-y-4">
               <div className="flex items-start gap-3">
                 <Clock className="w-6 h-6 text-blue-700 shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-serif font-bold text-blue-950 text-lg">
-                    Payment Processing — Please Do Not Pay Twice
+                    Payment Processing — Reconciling with Bank
                   </h3>
                   <p className="text-xs sm:text-sm text-blue-900 mt-1">
                     Donation reference <strong className="font-mono">{gatewayStatusResult.donationReference}</strong> is currently{" "}
-                    <strong>{gatewayStatusResult.status}</strong>. Check status below before attempting any new payment.
+                    <strong>{gatewayStatusResult.status}</strong>. Please do not initiate a double transfer.
                   </p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button type="button" variant="primary" onClick={handleRefreshGatewayStatus} disabled={refreshingStatus}>
                   <RefreshCw className={`w-4 h-4 mr-2 ${refreshingStatus ? "animate-spin" : ""}`} />
-                  <span>{refreshingStatus ? "Reconciling..." : "Reconcile Payment Status"}</span>
+                  <span>{refreshingStatus ? "Reconciling..." : "Check Status Again"}</span>
                 </Button>
               </div>
             </Card>
           )}
 
-          {/* Cashfree Intelligent Failure Fallback */}
-          {!isGatewaySuccess && !sbiSubmitted && isGatewayFailed && gatewayStatusResult && (
-            <Card padding="lg" className="bg-red-50/70 border-red-200 space-y-4">
-              <div className="flex items-start gap-3">
-                <AlertCircle className="w-6 h-6 text-red-700 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-serif font-bold text-red-950 text-lg">
-                    Your payment could not be completed. You can try again or use our verified SBI bank transfer option.
-                  </h3>
-                  <p className="text-xs text-red-900 mt-1">
-                    Original reference: <strong className="font-mono">{gatewayStatusResult.donationReference}</strong> (Status:{" "}
-                    {gatewayStatusResult.status}). If money was debited, click Reconcile first before paying again.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button type="button" variant="outline" onClick={handleRefreshGatewayStatus} disabled={refreshingStatus}>
-                  <RefreshCw className={`w-4 h-4 mr-1.5 ${refreshingStatus ? "animate-spin" : ""}`} />
-                  <span>Reconcile First</span>
-                </Button>
-                <Button type="button" variant="primary" onClick={handleCashfreeCheckout} disabled={submitting}>
-                  <span>Retry Cashfree</span>
-                </Button>
-                {config?.sbiQrEnabled && (
-                  <Button type="button" variant="secondary" onClick={() => setPaymentChannel("SBI_DIRECT")}>
-                    <Landmark className="w-4 h-4 mr-1.5" />
-                    <span>Switch to Verified SBI Transfer</span>
-                  </Button>
-                )}
-              </div>
-            </Card>
-          )}
-
-          {/* Active Payment Channel Cards */}
+          {/* 4. Active Payment Channel Interface */}
           {!isGatewaySuccess && !sbiSubmitted && (
-            <Card padding="lg" className="bg-white border-border-soft space-y-5">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-soft pb-3">
+            <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E6E1D8] pb-4">
                 <div>
-                  <h2 className="font-serif text-xl font-bold text-forest">
-                    Step 5 — Complete Contribution (₹{amount.toLocaleString("en-IN")})
+                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-terracotta">
+                    Step 6 of 6 · Payment Completion
+                  </span>
+                  <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
+                    Complete Contribution (₹{amount.toLocaleString("en-IN")})
                   </h2>
-                  <p className="text-xs text-ink-muted">
-                    {selectedProgramme?.name} · {donorName} ({donorEmail})
+                  <p className="text-xs text-ink-muted mt-0.5">
+                    {selectedProgramme?.name} · {donorName} ({donorPhone || phoneInput})
                   </p>
                 </div>
-                <div className="flex gap-2">
+
+                {/* Channel Switcher */}
+                <div className="flex gap-2 p-1 bg-[#FAF7F2] rounded-xs border border-[#E6E1D8]">
                   {config?.cashfreeEnabled && (
                     <button
                       type="button"
                       onClick={() => setPaymentChannel("CASHFREE")}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-xs border ${
+                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${
                         paymentChannel === "CASHFREE"
-                          ? "bg-forest text-white border-forest"
-                          : "bg-cream/50 text-forest border-border-soft"
+                          ? "bg-forest text-white shadow-xs"
+                          : "text-forest hover:bg-white"
                       }`}
                     >
-                      Cashfree
+                      Online Gateway
                     </button>
                   )}
                   {config?.sbiQrEnabled && (
                     <button
                       type="button"
                       onClick={() => setPaymentChannel("SBI_DIRECT")}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-xs border ${
+                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${
                         paymentChannel === "SBI_DIRECT"
-                          ? "bg-forest text-white border-forest"
-                          : "bg-cream/50 text-forest border-border-soft"
+                          ? "bg-forest text-white shadow-xs"
+                          : "text-forest hover:bg-white"
                       }`}
                     >
-                      SBI Direct / UTR
+                      SBI Direct Bank Transfer / UTR
                     </button>
                   )}
                 </div>
               </div>
 
+              {/* PAYMENT CHANNEL 1: CASHFREE GATEWAY */}
               {paymentChannel === "CASHFREE" && config?.cashfreeEnabled && (
-                <div className="space-y-4">
-                  <div className="bg-cream/40 border border-border-soft rounded-xs p-4 text-xs sm:text-sm text-ink space-y-2">
-                    <div className="font-semibold text-forest flex items-center gap-2">
-                      <CreditCard className="w-4 h-4 text-terracotta-dark" />
-                      <span>Cashfree Secure Payment Gateway ({gatewayStatus?.checkoutEnvironment || "production"})</span>
+                <div className="space-y-5">
+                  <div className="p-4 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] space-y-2 text-xs text-ink">
+                    <div className="font-bold text-forest text-sm flex items-center gap-2">
+                      <CreditCard className="w-4 h-4 text-terracotta" />
+                      <span>Instant Gateway Checkout (Cards, UPI QR, NetBanking)</span>
                     </div>
-                    <p className="text-ink-muted">
-                      Your order is created and verified exclusively on MECT&apos;s server. Receipts are issued only after authenticated gateway verification.
+                    <p className="text-ink-muted leading-relaxed">
+                      Secured by 256-bit TLS encryption. Upon successful payment verification, your official serialized receipt with cryptographic SHA-256 seal is generated immediately.
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <Button type="button" variant="outline" onClick={() => setStep(4)}>
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                    <Button type="button" variant="outline" onClick={() => setStep(5)}>
                       <ArrowLeft className="w-4 h-4 mr-1.5" />
                       <span>Back to Review</span>
                     </Button>
@@ -1145,22 +1871,222 @@ export function UnifiedDonationExperience() {
                       type="button"
                       variant="primary"
                       size="lg"
-                      onClick={handleCashfreeCheckout}
                       disabled={submitting}
+                      onClick={handleCashfreeCheckout}
+                      className="shadow-sm"
                     >
                       {submitting ? (
                         <>
                           <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          <span>Opening Secure Checkout...</span>
+                          <span>Opening Secure Gateway...</span>
                         </>
                       ) : (
                         <>
                           <Heart className="w-4 h-4 mr-2 fill-current" />
-                          <span>Pay ₹{amount.toLocaleString("en-IN")} via Cashfree</span>
+                          <span>Pay ₹{amount.toLocaleString("en-IN")} via Gateway</span>
                         </>
                       )}
                     </Button>
                   </div>
+                </div>
+              )}
+
+              {/* PAYMENT CHANNEL 2: STATE BANK OF INDIA DIRECT TRANSFER */}
+              {(paymentChannel === "SBI_DIRECT" || !config?.cashfreeEnabled) && config?.sbiQrEnabled && (
+                <div className="space-y-6">
+                  {/* Official SBI Bank Coordinates */}
+                  <div className="p-5 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] space-y-4">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <Landmark className="w-5 h-5 text-forest" />
+                        <h3 className="font-serif font-bold text-forest text-base">
+                          State Bank of India — Official Trust Account
+                        </h3>
+                      </div>
+                      <Badge variant="forest" size="sm">Verified Primary Account</Badge>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                      {/* Account Number */}
+                      <div className="p-3 rounded-xs bg-white border border-[#E6E1D8] space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                          Account Number
+                        </span>
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-mono font-bold text-forest text-sm">
+                            {config.sbiAccountNumber || "33091993247"}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyValue("acc", config.sbiAccountNumber || "33091993247")}
+                            className="text-terracotta hover:text-forest p-1"
+                            title="Copy Account Number"
+                          >
+                            {copiedKey === "acc" ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* IFSC Code */}
+                      <div className="p-3 rounded-xs bg-white border border-[#E6E1D8] space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                          IFSC Code
+                        </span>
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-mono font-bold text-forest text-sm">
+                            {config.sbiIfsc || "SBIN0000048"}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyValue("ifsc", config.sbiIfsc || "SBIN0000048")}
+                            className="text-terracotta hover:text-forest p-1"
+                            title="Copy IFSC Code"
+                          >
+                            {copiedKey === "ifsc" ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* UPI ID */}
+                      <div className="p-3 rounded-xs bg-white border border-[#E6E1D8] space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                          UPI VPA
+                        </span>
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-mono font-bold text-forest text-sm">
+                            {config.sbiUpiId || "mect@sbi"}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyValue("upi", config.sbiUpiId || "mect@sbi")}
+                            className="text-terracotta hover:text-forest p-1"
+                            title="Copy UPI ID"
+                          >
+                            {copiedKey === "upi" ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Branch Name */}
+                      <div className="p-3 rounded-xs bg-white border border-[#E6E1D8] space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                          Branch
+                        </span>
+                        <div className="font-medium text-forest truncate text-xs">
+                          {config.sbiBranch || "Balangir Main Branch, Odisha"}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-[11px] text-ink-muted leading-relaxed">
+                      Account Name: <strong>{config.sbiAccountName || "Mahaveer Educational & Charitable Trust"}</strong> · Transfer using Google Pay, PhonePe, Paytm, or your banking app. Once completed, enter the 12-digit UTR reference below.
+                    </p>
+                  </div>
+
+                  {/* Manual UTR Submission Form */}
+                  <form onSubmit={handleSubmitSbiUtr} className="space-y-4 pt-2">
+                    <div className="border-b border-[#E6E1D8] pb-2">
+                      <h3 className="font-serif font-bold text-forest text-base">
+                        Record Bank UTR / Transaction Reference
+                      </h3>
+                      <p className="text-xs text-ink-muted mt-0.5">
+                        Your UTR enables our accounts desk to match your payment in our daily SBI bank statement and issue your official tax receipt.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* UTR Reference Input */}
+                      <div>
+                        <label htmlFor="sbi-utr-input" className="block text-xs font-bold text-forest mb-1">
+                          12-Digit UTR / Transaction Reference <span className="text-red-600">*</span>
+                        </label>
+                        <Input
+                          id="sbi-utr-input"
+                          value={utrReference}
+                          onChange={(e) => setUtrReference(e.target.value.toUpperCase())}
+                          placeholder="e.g. 412345678901 or SBIN12345678"
+                          className="font-mono text-base font-bold uppercase"
+                          required
+                        />
+                        <p className="text-[11px] text-ink-muted mt-1">
+                          Found on your UPI confirmation screen or bank SMS.
+                        </p>
+                      </div>
+
+                      {/* Transfer Date */}
+                      <div>
+                        <label htmlFor="sbi-date-input" className="block text-xs font-bold text-forest mb-1">
+                          Date of Transfer <span className="text-red-600">*</span>
+                        </label>
+                        <Input
+                          id="sbi-date-input"
+                          type="date"
+                          value={transferDate}
+                          onChange={(e) => setTransferDate(e.target.value)}
+                          max={new Date().toISOString().slice(0, 10)}
+                          required
+                        />
+                      </div>
+
+                      {/* Payment Mode */}
+                      <div>
+                        <label htmlFor="sbi-mode-input" className="block text-xs font-bold text-forest mb-1">
+                          Payment Mode
+                        </label>
+                        <select
+                          id="sbi-mode-input"
+                          value={paymentModeNote}
+                          onChange={(e) => setPaymentModeNote(e.target.value)}
+                          className="w-full h-10 px-3 text-sm bg-white border border-[#D4CEBE] rounded-xs text-forest focus:outline-none focus:ring-2 focus:ring-forest"
+                        >
+                          <option value="UPI App Transfer">UPI (GPay / PhonePe / Paytm / BHIM)</option>
+                          <option value="NEFT">NEFT (National Electronic Funds Transfer)</option>
+                          <option value="RTGS">RTGS (Real Time Gross Settlement)</option>
+                          <option value="IMPS">IMPS (Immediate Payment Service)</option>
+                          <option value="SBI Branch Deposit">Direct Cash / Cheque Deposit at Branch</option>
+                        </select>
+                      </div>
+
+                      {/* Remitter / Note */}
+                      <div>
+                        <label htmlFor="sbi-proof-input" className="block text-xs font-bold text-forest mb-1">
+                          Remitter Bank / Note (Optional)
+                        </label>
+                        <Input
+                          id="sbi-proof-input"
+                          value={proofSummary}
+                          onChange={(e) => setProofSummary(e.target.value)}
+                          placeholder="e.g. Transferred from HDFC A/c ending 1234"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-[#E6E1D8]">
+                      <Button type="button" variant="outline" onClick={() => setStep(5)}>
+                        <ArrowLeft className="w-4 h-4 mr-1.5" />
+                        <span>Back to Review</span>
+                      </Button>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        size="lg"
+                        disabled={submitting || !utrReference.trim()}
+                        className="shadow-sm"
+                      >
+                        {submitting ? (
+                          <>
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                            <span>Submitting Claim...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Landmark className="w-4 h-4 mr-2" />
+                            <span>Submit SBI Bank Transfer Reference</span>
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </form>
                 </div>
               )}
             </Card>
