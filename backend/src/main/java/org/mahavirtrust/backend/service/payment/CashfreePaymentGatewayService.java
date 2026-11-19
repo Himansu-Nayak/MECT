@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
@@ -87,7 +88,10 @@ public class CashfreePaymentGatewayService implements PaymentGatewayProvider {
             @Value("${app.payment.sandbox-mode:false}") boolean sandboxMode
     ) {
         this.objectMapper = objectMapper;
-        this.restClient = RestClient.create();
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(Duration.ofSeconds(5));
+        requestFactory.setReadTimeout(Duration.ofSeconds(10));
+        this.restClient = RestClient.builder().requestFactory(requestFactory).build();
         this.appId = appId != null ? appId.trim() : "";
         this.secretKey = secretKey != null ? secretKey.trim() : "";
         this.environment = environment != null ? environment.trim().toUpperCase() : "SANDBOX";

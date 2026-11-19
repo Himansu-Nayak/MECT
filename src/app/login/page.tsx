@@ -21,6 +21,7 @@ import {
   Landmark,
   Loader2,
   Lock,
+  Mail,
   Phone,
   RotateCcw,
   ShieldCheck,
@@ -33,16 +34,27 @@ function LoginContent() {
   const searchParams = useSearchParams();
   const nextParam = searchParams.get("next");
   const phoneParam = searchParams.get("phone");
+  const emailParam = searchParams.get("email");
+  const channelParam = searchParams.get("channel");
+
+  const initialChannel: "PHONE" | "EMAIL" =
+    channelParam?.toUpperCase() === "EMAIL" || (Boolean(emailParam) && !phoneParam)
+      ? "EMAIL"
+      : "PHONE";
+
   const { isAuthenticated, isLoading, setSessionFromOtp } = usePortalAuth();
 
+  const [channel, setChannel] = useState<"PHONE" | "EMAIL">(initialChannel);
   const [phone, setPhone] = useState(phoneParam?.replace(/\D/g, "").slice(-10) || "");
+  const [email, setEmail] = useState(emailParam?.trim() || "");
   const [otpCode, setOtpCode] = useState("");
-  const [step, setStep] = useState<"PHONE" | "OTP">("PHONE");
+  const [step, setStep] = useState<"INPUT" | "OTP">("INPUT");
   const [cooldown, setCooldown] = useState(0);
   const [requesting, setRequesting] = useState(false);
   const [verifying, setVerifying] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
+  const [suggestEmailOtp, setSuggestEmailOtp] = useState(false);
 
   const otpInputRef = useRef<HTMLInputElement>(null);
 
@@ -74,30 +86,54 @@ function LoginContent() {
     if (e) e.preventDefault();
     setErrorMsg(null);
     setStatusMsg(null);
+    setSuggestEmailOtp(false);
 
-    let cleaned = phone.replace(/\D/g, "");
-    if (cleaned.length === 12 && cleaned.startsWith("91")) {
-      cleaned = cleaned.slice(2);
-    }
-    if (cleaned.length !== 10 || !/^[6-9]/.test(cleaned)) {
-      setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
-      return;
+    let target = "";
+    if (channel === "PHONE") {
+      let cleaned = phone.replace(/\D/g, "");
+      if (cleaned.length === 12 && cleaned.startsWith("91")) {
+        cleaned = cleaned.slice(2);
+      }
+      if (cleaned.length !== 10 || !/^[6-9]/.test(cleaned)) {
+        setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
+        return;
+      }
+      target = `+91${cleaned}`;
+    } else {
+      const trimmedEmail = email.trim().toLowerCase();
+      if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+        setErrorMsg("Please enter a valid email address (e.g. donor@example.org).");
+        return;
+      }
+      target = trimmedEmail;
     }
 
-    const normalized = `+91${cleaned}`;
     setRequesting(true);
     try {
       const res = await requestPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel,
+        target,
         purpose: "LOGIN",
       });
       setStep("OTP");
       setCooldown(res.cooldownSeconds || 60);
-      setStatusMsg(`Verification code sent to ${normalized}. Enter the 6-digit code below.`);
+      setStatusMsg(
+        channel === "EMAIL"
+          ? `Verification code sent to ${target}. Please check your inbox (and spam/junk folder).`
+          : `Verification code sent via SMS to ${target}. Enter the 6-digit code below.`
+      );
       setTimeout(() => otpInputRef.current?.focus(), 100);
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Failed to send verification code. Please try again.");
+      const msg = err instanceof Error ? err.message : "Failed to send verification code. Please try again.";
+      setErrorMsg(msg);
+      if (
+        channel === "PHONE" &&
+        (msg.toLowerCase().includes("sms") ||
+          msg.toLowerCase().includes("unavailable") ||
+          msg.toLowerCase().includes("email otp"))
+      ) {
+        setSuggestEmailOtp(true);
+      }
     } finally {
       setRequesting(false);
     }
@@ -114,12 +150,12 @@ function LoginContent() {
       return;
     }
 
-    const normalized = normalizePhone(phone);
+    const target = channel === "EMAIL" ? email.trim().toLowerCase() : normalizePhone(phone);
     setVerifying(true);
     try {
       const auth = await verifyPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel,
+        target,
         otpCode: cleanedOtp,
         purpose: "LOGIN",
       });
@@ -135,8 +171,8 @@ function LoginContent() {
   };
 
   const registerHref = nextParam
-    ? `/register?next=${encodeURIComponent(nextParam)}&phone=${encodeURIComponent(phone)}`
-    : `/register?phone=${encodeURIComponent(phone)}`;
+    ? `/register?next=${encodeURIComponent(nextParam)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&channel=${channel.toLowerCase()}`
+    : `/register?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&channel=${channel.toLowerCase()}`;
 
   return (
     <div className="bg-[#FAF7F2] min-h-[calc(100vh-80px)] py-10 md:py-16">
@@ -209,7 +245,7 @@ function LoginContent() {
             {/* Fiduciary Assurance Footer */}
             <div className="pt-6 border-t border-white/15 relative z-10 text-[11px] text-cream/70 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-sand shrink-0" />
-              <span>Zero-trust mobile authentication ensures auditable transparency.</span>
+              <span>Multi-channel zero-trust OTP authentication ensures auditable transparency.</span>
             </div>
           </div>
 
@@ -227,7 +263,7 @@ function LoginContent() {
                   Sign In to MECT
                 </h1>
                 <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
-                  Enter your verified Indian mobile number to log in via one-time verification password.
+                  Enter your registered Indian mobile number or email address to receive a secure 6-digit one-time password.
                 </p>
               </div>
 
@@ -246,55 +282,136 @@ function LoginContent() {
                 </div>
               )}
 
-              {/* Step 1: Mobile Input Form */}
-              {step === "PHONE" && (
-                <form onSubmit={handleSendOtp} className="space-y-4 pt-1">
-                  <div>
-                    <label htmlFor="login-mobile-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
-                      Mobile Number
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <div className="h-11 px-3.5 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs font-mono font-bold text-sm text-forest flex items-center shrink-0">
-                        +91 (India)
-                      </div>
-                      <Input
-                        id="login-mobile-input"
-                        type="tel"
-                        maxLength={10}
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
-                        placeholder="9853608113"
-                        className="font-mono text-base font-bold flex-1"
-                        autoFocus
-                        required
-                      />
-                    </div>
-                    <p className="text-[11px] text-ink-muted mt-1.5">
-                      We will send a 6-digit OTP code to verify your supporter identity.
-                    </p>
+              {/* Step 1: Input Form (Mobile or Email) */}
+              {step === "INPUT" && (
+                <div className="space-y-4 pt-1">
+                  {/* Channel Switcher Tabs */}
+                  <div className="grid grid-cols-2 p-1 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setChannel("PHONE");
+                        setErrorMsg(null);
+                        setStatusMsg(null);
+                        setSuggestEmailOtp(false);
+                      }}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                        channel === "PHONE"
+                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                          : "text-ink-muted hover:text-forest"
+                      }`}
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Mobile OTP</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setChannel("EMAIL");
+                        setErrorMsg(null);
+                        setStatusMsg(null);
+                        setSuggestEmailOtp(false);
+                      }}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                        channel === "EMAIL"
+                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                          : "text-ink-muted hover:text-forest"
+                      }`}
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Email OTP</span>
+                    </button>
                   </div>
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    disabled={requesting || phone.length < 10}
-                    className="w-full shadow-sm"
-                  >
-                    {requesting ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        <span>Sending Verification Code...</span>
-                      </>
+                  {suggestEmailOtp && (
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-xs text-xs text-amber-950 flex items-center justify-between gap-2">
+                      <span className="leading-snug">SMS service unavailable? Use Email OTP to sign in immediately.</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setChannel("EMAIL");
+                          setErrorMsg(null);
+                          setSuggestEmailOtp(false);
+                        }}
+                        className="shrink-0 px-2.5 py-1 bg-forest text-white font-bold rounded-xs hover:bg-forest-dark text-[11px]"
+                      >
+                        Switch to Email
+                      </button>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSendOtp} className="space-y-4">
+                    {channel === "PHONE" ? (
+                      <div>
+                        <label htmlFor="login-mobile-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                          Mobile Number
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <div className="h-11 px-3.5 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs font-mono font-bold text-sm text-forest flex items-center shrink-0">
+                            +91 (India)
+                          </div>
+                          <Input
+                            id="login-mobile-input"
+                            type="tel"
+                            maxLength={10}
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                            placeholder="9853608113"
+                            className="font-mono text-base font-bold flex-1"
+                            autoFocus
+                            required
+                          />
+                        </div>
+                        <p className="text-[11px] text-ink-muted mt-1.5">
+                          We will send a 6-digit OTP code to verify your supporter identity.
+                        </p>
+                      </div>
                     ) : (
-                      <>
-                        <Phone className="w-4 h-4 mr-2" />
-                        <span>Send Login OTP</span>
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </>
+                      <div>
+                        <label htmlFor="login-email-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                          Email Address
+                        </label>
+                        <div className="relative">
+                          <Input
+                            id="login-email-input"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="donor@example.org"
+                            className="font-mono text-base font-medium pl-10"
+                            autoFocus
+                            required
+                          />
+                          <Mail className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        </div>
+                        <p className="text-[11px] text-ink-muted mt-1.5">
+                          We will send a 6-digit verification code directly to your email inbox.
+                        </p>
+                      </div>
                     )}
-                  </Button>
-                </form>
+
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      size="lg"
+                      disabled={requesting || (channel === "PHONE" ? phone.length < 10 : !email.trim())}
+                      className="w-full shadow-sm"
+                    >
+                      {requesting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          <span>Sending Verification Code...</span>
+                        </>
+                      ) : (
+                        <>
+                          {channel === "PHONE" ? <Phone className="w-4 h-4 mr-2" /> : <Mail className="w-4 h-4 mr-2" />}
+                          <span>Send {channel === "PHONE" ? "Mobile" : "Email"} OTP</span>
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </div>
               )}
 
               {/* Step 2: OTP Verification Form */}
@@ -303,23 +420,23 @@ function LoginContent() {
                   <div className="p-3 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] flex items-center justify-between text-xs">
                     <div>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-ink-muted block">
-                        Verifying Number
+                        Verifying {channel === "EMAIL" ? "Email Address" : "Mobile Number"}
                       </span>
                       <span className="font-mono font-bold text-forest text-sm">
-                        +91 {phone}
+                        {channel === "EMAIL" ? email.trim().toLowerCase() : `+91 ${phone}`}
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => {
-                        setStep("PHONE");
+                        setStep("INPUT");
                         setOtpCode("");
                         setErrorMsg(null);
                       }}
                       className="text-xs text-terracotta-dark hover:text-forest font-semibold underline flex items-center gap-1"
                     >
                       <RotateCcw className="w-3 h-3" />
-                      <span>Change Number</span>
+                      <span>Change {channel === "EMAIL" ? "Email" : "Number"}</span>
                     </button>
                   </div>
 
@@ -348,6 +465,11 @@ function LoginContent() {
                       autoFocus
                       required
                     />
+                    <p className="text-[11px] text-ink-muted mt-1.5">
+                      {channel === "EMAIL"
+                        ? "Check your email inbox or spam folder for the one-time code from MECT."
+                        : "Check your SMS messages for the one-time verification password."}
+                    </p>
                   </div>
 
                   <Button

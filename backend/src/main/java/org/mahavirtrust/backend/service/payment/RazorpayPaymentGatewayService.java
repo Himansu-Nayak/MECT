@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import tools.jackson.databind.JsonNode;
@@ -15,6 +16,7 @@ import tools.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
@@ -29,7 +31,7 @@ public class RazorpayPaymentGatewayService implements PaymentGatewayProvider {
     private final String webhookSecret;
     private final DynamicQrSvgService qrSvgService;
     private final ObjectMapper objectMapper;
-    private final RestClient restClient = RestClient.create();
+    private final RestClient restClient;
 
     public RazorpayPaymentGatewayService(
             @Value("${app.payment.sandbox-mode:false}") boolean sandboxMode,
@@ -44,6 +46,10 @@ public class RazorpayPaymentGatewayService implements PaymentGatewayProvider {
         this.webhookSecret = webhookSecret != null ? webhookSecret.trim() : "";
         this.qrSvgService = qrSvgService;
         this.objectMapper = objectMapper;
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(Duration.ofSeconds(5));
+        requestFactory.setReadTimeout(Duration.ofSeconds(10));
+        this.restClient = RestClient.builder().requestFactory(requestFactory).build();
     }
 
     @Override

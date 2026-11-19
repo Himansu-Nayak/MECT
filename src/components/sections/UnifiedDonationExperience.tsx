@@ -42,6 +42,7 @@ import {
   Landmark,
   Loader2,
   Lock,
+  Mail,
   Phone,
   QrCode,
   RefreshCw,
@@ -244,7 +245,9 @@ export function UnifiedDonationExperience() {
   const [customAmountStr, setCustomAmountStr] = useState<string>("1000");
 
   // Authentication states (Step 3)
+  const [authChannel, setAuthChannel] = useState<"PHONE" | "EMAIL">("PHONE");
   const [phoneInput, setPhoneInput] = useState("");
+  const [authEmailInput, setAuthEmailInput] = useState("");
   const [otpCode, setOtpCode] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [otpCooldown, setOtpCooldown] = useState(0);
@@ -540,24 +543,49 @@ export function UnifiedDonationExperience() {
   const handleRequestOtp = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setAuthError(null);
-    const normalized = normalizePhone(phoneInput);
-    if (!/^\+91[6-9]\d{9}$/.test(normalized)) {
-      setAuthError("Please enter a valid 10-digit Indian mobile number (e.g. 9853608113).");
-      return;
+
+    let target = "";
+    if (authChannel === "PHONE") {
+      const normalized = normalizePhone(phoneInput);
+      if (!/^\+91[6-9]\d{9}$/.test(normalized)) {
+        setAuthError("Please enter a valid 10-digit Indian mobile number (e.g. 9853608113).");
+        return;
+      }
+      target = normalized;
+    } else {
+      const cleanedEmail = (authEmailInput || donorEmail).trim().toLowerCase();
+      if (!cleanedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanedEmail)) {
+        setAuthError("Please enter a valid email address (e.g. donor@example.org).");
+        return;
+      }
+      target = cleanedEmail;
     }
 
     setRequestingOtp(true);
     try {
       const res = await requestPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel: authChannel,
+        target,
         purpose: "LOGIN",
       });
       setOtpSent(true);
       setOtpCooldown(res.cooldownSeconds || 60);
-      setDonorPhone(normalized);
+      if (authChannel === "PHONE") {
+        setDonorPhone(target);
+      } else {
+        setDonorEmail(target);
+      }
     } catch (err) {
-      setAuthError(err instanceof Error ? err.message : "Failed to send verification OTP.");
+      const msg = err instanceof Error ? err.message : "Failed to send verification OTP.";
+      setAuthError(msg);
+      if (
+        authChannel === "PHONE" &&
+        (msg.toLowerCase().includes("sms") ||
+          msg.toLowerCase().includes("unavailable") ||
+          msg.toLowerCase().includes("email otp"))
+      ) {
+        setAuthChannel("EMAIL");
+      }
     } finally {
       setRequestingOtp(false);
     }
@@ -566,27 +594,31 @@ export function UnifiedDonationExperience() {
   const handleVerifyOtp = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setAuthError(null);
-    const normalized = normalizePhone(phoneInput);
     const cleanedOtp = otpCode.trim();
 
     if (!/^\d{6}$/.test(cleanedOtp)) {
-      setAuthError("Please enter the 6-digit verification code sent to your phone.");
+      setAuthError("Please enter the 6-digit verification code.");
       return;
     }
+
+    const target =
+      authChannel === "EMAIL"
+        ? (authEmailInput || donorEmail).trim().toLowerCase()
+        : normalizePhone(phoneInput);
 
     setVerifyingOtp(true);
     try {
       const authRes = await verifyPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel: authChannel,
+        target,
         otpCode: cleanedOtp,
         purpose: "LOGIN",
       });
 
       await setSessionFromOtp(authRes);
-      setDonorPhone(normalized);
-      if (authRes.fullName) setDonorName(authRes.fullName);
+      if (authRes.primaryPhone) setDonorPhone(authRes.primaryPhone);
       if (authRes.primaryEmail) setDonorEmail(authRes.primaryEmail);
+      if (authRes.fullName) setDonorName(authRes.fullName);
 
       // Successfully authenticated -> advance to Step 4
       setStep(4);
@@ -1098,7 +1130,7 @@ export function UnifiedDonationExperience() {
       )}
 
       {/* =========================================================================
-          STEP 3: MANDATORY MOBILE OTP AUTHENTICATION
+          STEP 3: MANDATORY DONOR OTP AUTHENTICATION
           ========================================================================= */}
       {step === 3 && (
         <Card padding="lg" className="bg-white border-[#E6E1D8] space-y-6 shadow-xs">
@@ -1107,10 +1139,10 @@ export function UnifiedDonationExperience() {
               Step 3 of 6 · Mandatory Security Verification
             </span>
             <h2 className="font-serif text-2xl font-bold text-forest mt-0.5">
-              Donor Mobile Authentication
+              Donor Authentication
             </h2>
             <p className="text-xs sm:text-sm text-ink-muted mt-1">
-              To safeguard trust funds and comply with statutory donor verification mandates, every contribution must be authenticated via Mobile OTP.
+              To safeguard trust funds and comply with statutory donor verification mandates, every contribution must be authenticated via Mobile or Email OTP.
             </p>
           </div>
 
@@ -1159,65 +1191,138 @@ export function UnifiedDonationExperience() {
                     await logout();
                     setOtpSent(false);
                     setPhoneInput("");
+                    setAuthEmailInput("");
                     setOtpCode("");
                   }}
                   className="text-xs"
                 >
                   <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
-                  <span>Use Another Mobile Number</span>
+                  <span>Use Another Account</span>
                 </Button>
               </div>
             </div>
           ) : (
-            /* Scenario B: Not Authenticated -> Mobile OTP Form */
+            /* Scenario B: Not Authenticated -> Mobile / Email OTP Form */
             <div className="max-w-md space-y-5">
               {!otpSent ? (
-                <form onSubmit={handleRequestOtp} className="space-y-4">
-                  <div>
-                    <label htmlFor="donor-mobile-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
-                      Enter Your 10-Digit Mobile Number
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <div className="h-11 px-3.5 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs font-mono font-bold text-sm text-forest flex items-center shrink-0">
-                        +91 (India)
-                      </div>
-                      <Input
-                        id="donor-mobile-input"
-                        type="tel"
-                        maxLength={10}
-                        value={phoneInput}
-                        onChange={(e) => setPhoneInput(e.target.value.replace(/\D/g, ""))}
-                        placeholder="9853608113"
-                        className="font-mono text-base font-bold flex-1"
-                        autoFocus
-                        required
-                      />
-                    </div>
-                    <p className="text-[11px] text-ink-muted mt-1.5">
-                      We will send a 6-digit one-time password (OTP) via SMS to verify your donor identity.
-                    </p>
+                <div className="space-y-4">
+                  {/* Channel Switcher Tabs */}
+                  <div className="grid grid-cols-2 p-1 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthChannel("PHONE");
+                        setAuthError(null);
+                      }}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                        authChannel === "PHONE"
+                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                          : "text-ink-muted hover:text-forest"
+                      }`}
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Mobile OTP</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthChannel("EMAIL");
+                        setAuthError(null);
+                      }}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                        authChannel === "EMAIL"
+                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                          : "text-ink-muted hover:text-forest"
+                      }`}
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Email OTP</span>
+                    </button>
                   </div>
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    disabled={requestingOtp || phoneInput.length < 10}
-                    className="w-full"
-                  >
-                    {requestingOtp ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        <span>Sending Verification Code...</span>
-                      </>
+                  <form onSubmit={handleRequestOtp} className="space-y-4">
+                    {authChannel === "PHONE" ? (
+                      <div>
+                        <label htmlFor="donor-mobile-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                          Enter Your 10-Digit Mobile Number
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <div className="h-11 px-3.5 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs font-mono font-bold text-sm text-forest flex items-center shrink-0">
+                            +91 (India)
+                          </div>
+                          <Input
+                            id="donor-mobile-input"
+                            type="tel"
+                            maxLength={10}
+                            value={phoneInput}
+                            onChange={(e) => setPhoneInput(e.target.value.replace(/\D/g, ""))}
+                            placeholder="9853608113"
+                            className="font-mono text-base font-bold flex-1"
+                            autoFocus
+                            required
+                          />
+                        </div>
+                        <p className="text-[11px] text-ink-muted mt-1.5">
+                          We will send a 6-digit one-time password (OTP) via SMS to verify your donor identity.
+                        </p>
+                      </div>
                     ) : (
-                      <>
-                        <Phone className="w-4 h-4 mr-2" />
-                        <span>Send Verification Code</span>
-                      </>
+                      <div>
+                        <label htmlFor="donor-email-auth-input" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                          Enter Your Email Address
+                        </label>
+                        <div className="relative">
+                          <Input
+                            id="donor-email-auth-input"
+                            type="email"
+                            value={authEmailInput || donorEmail}
+                            onChange={(e) => {
+                              setAuthEmailInput(e.target.value);
+                              setDonorEmail(e.target.value);
+                            }}
+                            placeholder="donor@example.org"
+                            className="font-mono text-base font-medium pl-10"
+                            autoFocus
+                            required
+                          />
+                          <Mail className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        </div>
+                        <p className="text-[11px] text-ink-muted mt-1.5">
+                          We will dispatch a 6-digit verification code directly to your email inbox.
+                        </p>
+                      </div>
                     )}
-                  </Button>
-                </form>
+
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      size="lg"
+                      disabled={
+                        requestingOtp ||
+                        (authChannel === "PHONE"
+                          ? phoneInput.length < 10
+                          : !(authEmailInput || donorEmail).trim())
+                      }
+                      className="w-full"
+                    >
+                      {requestingOtp ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          <span>Sending Verification Code...</span>
+                        </>
+                      ) : (
+                        <>
+                          {authChannel === "PHONE" ? (
+                            <Phone className="w-4 h-4 mr-2" />
+                          ) : (
+                            <Mail className="w-4 h-4 mr-2" />
+                          )}
+                          <span>Send {authChannel === "PHONE" ? "Mobile" : "Email"} Verification Code</span>
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </div>
               ) : (
                 /* OTP Input Form */
                 <form onSubmit={handleVerifyOtp} className="space-y-4">
@@ -1227,7 +1332,9 @@ export function UnifiedDonationExperience() {
                         OTP Sent To
                       </span>
                       <span className="font-mono font-bold text-forest text-sm">
-                        {normalizePhone(phoneInput)}
+                        {authChannel === "EMAIL"
+                          ? (authEmailInput || donorEmail).trim().toLowerCase()
+                          : normalizePhone(phoneInput)}
                       </span>
                     </div>
                     <button
@@ -1239,7 +1346,7 @@ export function UnifiedDonationExperience() {
                       }}
                       className="text-xs text-terracotta-dark hover:text-forest font-semibold underline"
                     >
-                      Change Number
+                      Change {authChannel === "EMAIL" ? "Email" : "Number"}
                     </button>
                   </div>
 
@@ -1399,19 +1506,35 @@ export function UnifiedDonationExperience() {
               </p>
             </div>
 
-            {/* Verified Phone (Locked) */}
+            {/* Verified Phone or Optional Phone */}
             <div>
-              <label htmlFor="donor-phone-locked" className="block text-xs font-bold text-forest mb-1">
-                Verified Mobile Number <span className="text-emerald-700 font-semibold">(Verified ✓)</span>
+              <label htmlFor="donor-phone-input" className="block text-xs font-bold text-forest mb-1">
+                Mobile Number{" "}
+                {donorPhone ? (
+                  <span className="text-emerald-700 font-semibold">(Verified ✓)</span>
+                ) : (
+                  <span className="text-ink-muted font-normal">(Optional)</span>
+                )}
               </label>
               <Input
-                id="donor-phone-locked"
+                id="donor-phone-input"
+                type="tel"
                 value={donorPhone || phoneInput}
-                disabled
-                className="bg-[#FAF7F2] font-mono text-forest cursor-not-allowed"
+                disabled={Boolean(donorPhone && authChannel === "PHONE")}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/\D/g, "");
+                  setPhoneInput(val);
+                  if (val.length === 10) setDonorPhone(`+91${val}`);
+                }}
+                placeholder="9853608113"
+                className={`font-mono text-forest ${
+                  donorPhone && authChannel === "PHONE" ? "bg-[#FAF7F2] cursor-not-allowed" : ""
+                }`}
               />
-              <p className="text-[11px] text-emerald-800 mt-1">
-                Authenticated via 6-digit OTP in Step 3.
+              <p className="text-[11px] text-ink-muted mt-1">
+                {donorPhone && authChannel === "PHONE"
+                  ? "Authenticated via 6-digit OTP in Step 3."
+                  : "Enter a 10-digit mobile number for statutory updates and SMS receipt confirmation."}
               </p>
             </div>
 

@@ -26,6 +26,7 @@ import {
   Landmark,
   Loader2,
   Lock,
+  Mail,
   Phone,
   RotateCcw,
   ShieldCheck,
@@ -72,12 +73,17 @@ function RegisterContent() {
   const searchParams = useSearchParams();
   const nextParam = searchParams.get("next");
   const phoneParam = searchParams.get("phone");
+  const emailParam = searchParams.get("email");
+  const channelParam = searchParams.get("channel");
   const { isAuthenticated, isLoading, setSessionFromOtp } = usePortalAuth();
 
   // Registration Fields
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState(phoneParam?.replace(/\D/g, "").slice(-10) || "");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(emailParam?.trim() || "");
+  const [verificationChannel, setVerificationChannel] = useState<"PHONE" | "EMAIL">(
+    channelParam?.toUpperCase() === "EMAIL" ? "EMAIL" : "PHONE"
+  );
   const [addressLine, setAddressLine] = useState("");
   const [city, setCity] = useState("Balangir");
   const [district, setDistrict] = useState("Balangir");
@@ -180,21 +186,37 @@ function RegisterContent() {
     if (e) e.preventDefault();
     if (!validateDetails()) return;
 
-    const normalized = `+91${phone.replace(/\D/g, "")}`;
+    const normalizedPhone = normalizePhone(phone);
+    const normalizedEmail = email.trim().toLowerCase();
+    const target = verificationChannel === "EMAIL" ? normalizedEmail : normalizedPhone;
+
     setRequesting(true);
     setErrorMsg(null);
     try {
       const res = await requestPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel: verificationChannel,
+        target,
         purpose: "LOGIN",
       });
       setStep("OTP");
       setCooldown(res.cooldownSeconds || 60);
-      setStatusMsg(`Verification code sent to ${normalized}. Enter the 6-digit code below.`);
+      setStatusMsg(
+        verificationChannel === "EMAIL"
+          ? `Verification code sent to ${normalizedEmail}. Please check your inbox (and spam folder).`
+          : `Verification code sent via SMS to ${normalizedPhone}. Enter the 6-digit code below.`
+      );
       setTimeout(() => otpInputRef.current?.focus(), 100);
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Failed to send verification code. Please try again.");
+      const msg = err instanceof Error ? err.message : "Failed to send verification code. Please try again.";
+      setErrorMsg(msg);
+      if (
+        verificationChannel === "PHONE" &&
+        (msg.toLowerCase().includes("sms") ||
+          msg.toLowerCase().includes("unavailable") ||
+          msg.toLowerCase().includes("email otp"))
+      ) {
+        setVerificationChannel("EMAIL");
+      }
     } finally {
       setRequesting(false);
     }
@@ -211,13 +233,13 @@ function RegisterContent() {
       return;
     }
 
-    const normalized = normalizePhone(phone);
+    const target = verificationChannel === "EMAIL" ? email.trim().toLowerCase() : normalizePhone(phone);
     setVerifying(true);
     try {
       // 1. Verify OTP and authenticate session
       const auth = await verifyPortalOtp({
-        channel: "PHONE",
-        target: normalized,
+        channel: verificationChannel,
+        target,
         otpCode: cleanedOtp,
         purpose: "LOGIN",
       });
@@ -248,8 +270,8 @@ function RegisterContent() {
   };
 
   const loginHref = nextParam
-    ? `/login?next=${encodeURIComponent(nextParam)}&phone=${encodeURIComponent(phone)}`
-    : `/login?phone=${encodeURIComponent(phone)}`;
+    ? `/login?next=${encodeURIComponent(nextParam)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&channel=${verificationChannel.toLowerCase()}`
+    : `/login?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&channel=${verificationChannel.toLowerCase()}`;
 
   return (
     <div className="bg-[#FAF7F2] min-h-[calc(100vh-80px)] py-10 md:py-16">
@@ -532,11 +554,59 @@ function RegisterContent() {
                     </label>
                   </div>
 
+                  {/* Verification Channel Preference */}
+                  <div className="pt-2">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+                      Verification Method
+                    </label>
+                    <div className="grid grid-cols-2 p-1 bg-[#FAF7F2] border border-[#E6E1D8] rounded-xs text-xs font-semibold">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setVerificationChannel("PHONE");
+                          setErrorMsg(null);
+                        }}
+                        className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                          verificationChannel === "PHONE"
+                            ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                            : "text-ink-muted hover:text-forest"
+                        }`}
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                        <span>Mobile OTP</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setVerificationChannel("EMAIL");
+                          setErrorMsg(null);
+                        }}
+                        className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
+                          verificationChannel === "EMAIL"
+                            ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                            : "text-ink-muted hover:text-forest"
+                        }`}
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>Email OTP</span>
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-ink-muted mt-1.5">
+                      {verificationChannel === "PHONE"
+                        ? "We will dispatch an SMS verification code to +91 " + (phone || "your mobile number") + "."
+                        : "We will dispatch an email verification code to " + (email || "your email address") + "."}
+                    </p>
+                  </div>
+
                   <Button
                     type="submit"
                     variant="primary"
                     size="lg"
-                    disabled={requesting || !termsAccepted || phone.length < 10}
+                    disabled={
+                      requesting ||
+                      !termsAccepted ||
+                      (verificationChannel === "PHONE" ? phone.length < 10 : !email.trim())
+                    }
                     className="w-full shadow-sm mt-2"
                   >
                     {requesting ? (
@@ -546,8 +616,14 @@ function RegisterContent() {
                       </>
                     ) : (
                       <>
-                        <Phone className="w-4 h-4 mr-2" />
-                        <span>Verify Mobile &amp; Create Account</span>
+                        {verificationChannel === "PHONE" ? (
+                          <Phone className="w-4 h-4 mr-2" />
+                        ) : (
+                          <Mail className="w-4 h-4 mr-2" />
+                        )}
+                        <span>
+                          Verify {verificationChannel === "PHONE" ? "Mobile" : "Email"} &amp; Create Account
+                        </span>
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </>
                     )}
@@ -555,16 +631,20 @@ function RegisterContent() {
                 </form>
               )}
 
-              {/* STEP 2: Mobile OTP Verification */}
+              {/* STEP 2: OTP Verification */}
               {step === "OTP" && (
                 <form onSubmit={handleVerifyAndRegister} className="space-y-4 pt-1">
                   <div className="p-3.5 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] space-y-2 text-xs">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-forest">Verifying Mobile Number:</span>
-                      <span className="font-mono font-bold text-forest">+91 {phone}</span>
+                      <span className="font-bold text-forest">
+                        Verifying {verificationChannel === "EMAIL" ? "Email Address" : "Mobile Number"}:
+                      </span>
+                      <span className="font-mono font-bold text-forest">
+                        {verificationChannel === "EMAIL" ? email.trim().toLowerCase() : `+91 ${phone}`}
+                      </span>
                     </div>
                     <div className="text-ink-muted">
-                      Supporter Name: <strong>{fullName}</strong> ({email})
+                      Supporter Name: <strong>{fullName}</strong> ({verificationChannel === "EMAIL" ? `+91 ${phone}` : email})
                     </div>
                     <button
                       type="button"
@@ -605,6 +685,11 @@ function RegisterContent() {
                       autoFocus
                       required
                     />
+                    <p className="text-[11px] text-ink-muted mt-1.5">
+                      {verificationChannel === "EMAIL"
+                        ? "Check your email inbox or spam folder for the one-time code from MECT."
+                        : "Check your SMS messages for the one-time verification password."}
+                    </p>
                   </div>
 
                   <Button
