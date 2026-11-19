@@ -29,7 +29,7 @@ function PortalWelcomeInner() {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace("/portal/login?next=/portal/welcome");
+      router.replace("/login?next=/portal/welcome");
     }
   }, [isLoading, isAuthenticated, router]);
 

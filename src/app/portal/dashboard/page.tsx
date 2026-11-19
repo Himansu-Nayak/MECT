@@ -58,7 +58,7 @@ export default function PortalDashboardPage() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      router.replace("/portal/login?next=/portal/dashboard");
+      router.replace("/login?next=/portal/dashboard");
     }
   }, [loading, isAuthenticated, router]);
 
@@ -93,7 +93,7 @@ export default function PortalDashboardPage() {
 
   const logout = () => {
     authLogout();
-    router.push("/portal/login");
+    router.push("/login");
   };
 
   const filteredHistory = useMemo(() => {

@@ -94,7 +94,7 @@ export function PortalAuthProvider({ children }: { children: React.ReactNode }) 
     setSession(null);
     setToken(null);
     setDashboard(null);
-    router.push("/portal/login");
+    router.push("/login");
   };
 
   return (

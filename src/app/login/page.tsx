@@ -75,7 +75,10 @@ function LoginContent() {
     setErrorMsg(null);
     setStatusMsg(null);
 
-    const cleaned = phone.replace(/\D/g, "");
+    let cleaned = phone.replace(/\D/g, "");
+    if (cleaned.length === 12 && cleaned.startsWith("91")) {
+      cleaned = cleaned.slice(2);
+    }
     if (cleaned.length !== 10 || !/^[6-9]/.test(cleaned)) {
       setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
       return;

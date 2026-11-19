@@ -129,7 +129,10 @@ function RegisterContent() {
       return false;
     }
 
-    const cleanedPhone = phone.replace(/\D/g, "");
+    let cleanedPhone = phone.replace(/\D/g, "");
+    if (cleanedPhone.length === 12 && cleanedPhone.startsWith("91")) {
+      cleanedPhone = cleanedPhone.slice(2);
+    }
     if (cleanedPhone.length !== 10 || !/^[6-9]/.test(cleanedPhone)) {
       setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
       return false;

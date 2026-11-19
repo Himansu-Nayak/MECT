@@ -223,7 +223,7 @@ export const TRUST_CONFIG = {
         },
         {
           label: "Donor & Supporter Portal",
-          href: "/portal/login",
+          href: "/login",
           description: "OTP login, donation history, official PDF receipts, and consent preferences.",
           badge: "OTP Portal",
         },

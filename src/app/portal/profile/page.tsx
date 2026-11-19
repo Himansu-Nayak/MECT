@@ -43,7 +43,7 @@ function PortalProfileInner() {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace("/portal/login?next=/portal/profile");
+      router.replace("/login?next=/portal/profile");
     }
   }, [isLoading, isAuthenticated, router]);
 
