@@ -106,13 +106,20 @@ export function TailoredParticipationPathwaysSection() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#E7E0D5]">
+              <div className="pt-4 border-t border-[#E7E0D5] flex flex-wrap items-center gap-3">
                 <Link href="/donate">
                   <Button variant="primary" size="md" className="w-full sm:w-auto font-bold bg-terracotta hover:bg-terracotta-dark text-white">
                     <Heart className="w-4 h-4 mr-2 fill-white/20" />
                     <span>Donate Online (Instant Receipt)</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
+                </Link>
+                <Link
+                  href="/login?next=/portal/dashboard"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-forest hover:text-terracotta-dark hover:bg-sand/30 rounded-xs border border-forest/20 transition-colors"
+                >
+                  <span>Donor Portal &amp; 80G</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

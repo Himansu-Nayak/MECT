@@ -273,10 +273,26 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/portal/login"
+                  href="/login"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
-                  Donor &amp; Supporter Portal
+                  Donor Sign In
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/register"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Create Supporter Account
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/portal/dashboard"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Donor Portal &amp; 80G Receipts
                 </Link>
               </li>
               <li>

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { UnifiedDonationExperience } from "@/components/sections/UnifiedDonationExperience";
-import { PortalAuthProvider } from "@/context/PortalAuthContext";
 
 export default function DonatePage() {
   return (
@@ -22,9 +21,7 @@ export default function DonatePage() {
               </div>
             }
           >
-            <PortalAuthProvider>
-              <UnifiedDonationExperience />
-            </PortalAuthProvider>
+            <UnifiedDonationExperience />
           </Suspense>
 
           {/* Institutional Transparency & Statutory Receipting Information */}

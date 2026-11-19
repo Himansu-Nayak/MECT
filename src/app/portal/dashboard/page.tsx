@@ -12,6 +12,7 @@ import {
   downloadPortalReceiptPdf,
 } from "@/lib/portal-api";
 import { usePortalAuth } from "@/context/PortalAuthContext";
+import { PortalNav } from "@/components/portal/PortalNav";
 import {
   AlertCircle,
   CheckCircle2,
@@ -135,8 +136,10 @@ export default function PortalDashboardPage() {
   const claimableCount = donationSummary.claimableGuestDonationsCount || 0;
 
   return (
-    <div className="bg-cream min-h-screen py-10 md:py-14">
-      <Container className="space-y-8">
+    <>
+      <PortalNav />
+      <div className="bg-cream min-h-screen py-10 md:py-14">
+        <Container className="space-y-8">
         {/* Welcome Header */}
         <Card padding="lg" className="bg-forest text-white border-none shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -503,5 +506,6 @@ export default function PortalDashboardPage() {
         </div>
       </Container>
     </div>
+    </>
   );
 }

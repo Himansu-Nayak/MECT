@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Input } from "@/components/ui/Input";
 import { usePortalAuth } from "@/context/PortalAuthContext";
+import { PortalNav } from "@/components/portal/PortalNav";
 import {
   requestPortalOtp,
   requestPortalDeletion,
@@ -282,7 +283,9 @@ function PortalProfileEditor({
   const firstName = account.profile?.fullName?.split(" ")[0] || "Supporter";
 
   return (
-    <div className="bg-cream min-h-screen py-10 md:py-14">
+    <>
+      <PortalNav />
+      <div className="bg-cream min-h-screen py-10 md:py-14">
       <Container className="max-w-5xl space-y-6">
         {/* Institutional Page Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-5 rounded-xs border border-border-warm">
@@ -790,6 +793,7 @@ function PortalProfileEditor({
         </div>
       </Container>
     </div>
+    </>
   );
 }
 

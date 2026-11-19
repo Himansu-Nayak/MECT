@@ -35,9 +35,16 @@ import {
   PhoneCall,
   ShieldCheck,
   Compass,
+  LogOut,
+  Receipt,
+  FileDown,
+  UserPlus,
 } from "lucide-react";
+import { usePortalAuth } from "@/context/PortalAuthContext";
 
 export function Header() {
+  const { isAuthenticated, dashboard, logout } = usePortalAuth();
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -344,14 +351,101 @@ export function Header() {
             <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2 shrink-0">
               <SiteSearchTrigger />
 
-              <Link
-                href="/portal/login"
-                aria-label="Donor Portal"
-                className="flex whitespace-nowrap px-2 2xl:px-3 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
-              >
-                <UserCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
-                <span>Donor Portal</span>
-              </Link>
+              {isAuthenticated ? (
+                <div
+                  className="relative shrink-0"
+                  onMouseEnter={() => setAccountDropdownOpen(true)}
+                  onMouseLeave={() => setAccountDropdownOpen(false)}
+                >
+                  <Link
+                    href="/portal/dashboard"
+                    aria-label="Donor Portal Dashboard"
+                    className="flex whitespace-nowrap px-2 2xl:px-3 py-1.5 text-xs font-semibold text-forest bg-sand/50 border border-terracotta/40 hover:bg-sand/80 rounded-xs transition-colors items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
+                    <span>{dashboard?.account?.profile?.fullName?.split(" ")[0] || "My Portal"}</span>
+                    <ChevronDown className="w-3 h-3 text-forest/70" aria-hidden="true" />
+                  </Link>
+
+                  <AnimatePresence>
+                    {accountDropdownOpen && (
+                      <m.div
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 4 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute right-0 top-full mt-1 w-56 bg-white border border-border-warm rounded-md shadow-elevated p-2 z-50 space-y-1"
+                      >
+                        <div className="px-2.5 py-1.5 border-b border-border-warm/60 mb-1">
+                          <p className="text-[11px] font-bold text-forest truncate">
+                            {dashboard?.account?.profile?.fullName || "Supporter"}
+                          </p>
+                          <p className="text-[10px] text-ink-muted truncate font-mono">
+                            {dashboard?.account?.primaryPhone || dashboard?.account?.primaryEmail || "Verified Account"}
+                          </p>
+                        </div>
+                        <Link
+                          href="/portal/dashboard"
+                          className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-forest hover:bg-cream rounded-xs transition-colors font-medium"
+                        >
+                          <Compass className="w-3.5 h-3.5 text-terracotta" />
+                          <span>Dashboard Overview</span>
+                        </Link>
+                        <Link
+                          href="/portal/donations"
+                          className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-forest hover:bg-cream rounded-xs transition-colors font-medium"
+                        >
+                          <Receipt className="w-3.5 h-3.5 text-terracotta" />
+                          <span>Donation History</span>
+                        </Link>
+                        <Link
+                          href="/portal/receipts"
+                          className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-forest hover:bg-cream rounded-xs transition-colors font-medium"
+                        >
+                          <FileDown className="w-3.5 h-3.5 text-terracotta" />
+                          <span>Official 80G Receipts</span>
+                        </Link>
+                        <Link
+                          href="/portal/profile"
+                          className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-forest hover:bg-cream rounded-xs transition-colors font-medium"
+                        >
+                          <UserCheck className="w-3.5 h-3.5 text-terracotta" />
+                          <span>Profile &amp; Settings</span>
+                        </Link>
+                        <div className="border-t border-border-warm/60 pt-1 mt-1">
+                          <button
+                            type="button"
+                            onClick={logout}
+                            className="w-full flex items-center gap-2 px-2.5 py-1.5 text-xs text-red-700 hover:bg-red-50 rounded-xs transition-colors font-medium text-left"
+                          >
+                            <LogOut className="w-3.5 h-3.5 text-red-600" />
+                            <span>Sign Out</span>
+                          </button>
+                        </div>
+                      </m.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-1 shrink-0">
+                  <Link
+                    href="/login"
+                    aria-label="Sign in to Donor Portal"
+                    className="flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                  >
+                    <UserCheck className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
+                    <span>Sign In</span>
+                  </Link>
+                  <Link
+                    href="/register"
+                    aria-label="Create Donor Account"
+                    className="hidden 2xl:flex whitespace-nowrap px-2.5 py-1.5 text-xs font-semibold text-terracotta-dark border border-terracotta/30 hover:bg-sand/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0"
+                  >
+                    <UserPlus className="w-3.5 h-3.5 text-terracotta shrink-0" aria-hidden="true" />
+                    <span>Register</span>
+                  </Link>
+                </div>
+              )}
 
               {/* Editorial Fullscreen Navigation Trigger */}
               <button
@@ -634,33 +728,81 @@ export function Header() {
                     </div>
 
                     {/* Additional Institutional Fast-Links Row */}
-                    <div className="mt-8 pt-6 border-t border-sand/20 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      <Link
-                        href="/portal/login"
-                        onClick={() => setOverlayOpen(false)}
-                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
-                      >
-                        <span className="font-semibold text-sand">Donor Portal</span>
-                        <span className="text-[11px] text-cream/70">OTP receipts & logs</span>
-                      </Link>
-
-                      <Link
-                        href="/statutory-disclosures"
-                        onClick={() => setOverlayOpen(false)}
-                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
-                      >
-                        <span className="font-semibold text-sand">Statutory Filings</span>
-                        <span className="text-[11px] text-cream/70">12A, 80G, CSR-1</span>
-                      </Link>
-
-                      <Link
-                        href="/accessibility"
-                        onClick={() => setOverlayOpen(false)}
-                        className="p-3 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px] col-span-2 sm:col-span-1"
-                      >
-                        <span className="font-semibold text-sand">Accessibility</span>
-                        <span className="text-[11px] text-cream/70">WCAG 2.2 AAA features</span>
-                      </Link>
+                    <div className="mt-8 pt-6 border-t border-sand/20 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                      {isAuthenticated ? (
+                        <>
+                          <Link
+                            href="/portal/dashboard"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">My Dashboard</span>
+                            <span className="text-[10px] text-cream/70">Overview &amp; status</span>
+                          </Link>
+                          <Link
+                            href="/portal/donations"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">Donation History</span>
+                            <span className="text-[10px] text-cream/70">All contributions</span>
+                          </Link>
+                          <Link
+                            href="/portal/receipts"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">80G Receipts</span>
+                            <span className="text-[10px] text-cream/70">Download verified PDFs</span>
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setOverlayOpen(false);
+                              logout();
+                            }}
+                            className="p-2.5 bg-red-950/40 border border-red-500/30 rounded hover:bg-red-900/50 transition-colors text-xs flex flex-col justify-center min-h-[44px] text-left"
+                          >
+                            <span className="font-semibold text-red-300">Sign Out</span>
+                            <span className="text-[10px] text-red-200/70">End secure session</span>
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <Link
+                            href="/login"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">Sign In</span>
+                            <span className="text-[10px] text-cream/70">OTP login for donors</span>
+                          </Link>
+                          <Link
+                            href="/register"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">Create Account</span>
+                            <span className="text-[10px] text-cream/70">Register with mobile</span>
+                          </Link>
+                          <Link
+                            href="/statutory-disclosures"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">Statutory Filings</span>
+                            <span className="text-[10px] text-cream/70">12A, 80G, CSR-1</span>
+                          </Link>
+                          <Link
+                            href="/accessibility"
+                            onClick={() => setOverlayOpen(false)}
+                            className="p-2.5 bg-forest/80 border border-sand/20 rounded hover:border-sand hover:bg-forest transition-colors text-xs flex flex-col justify-center min-h-[44px]"
+                          >
+                            <span className="font-semibold text-sand">Accessibility</span>
+                            <span className="text-[10px] text-cream/70">WCAG 2.2 AAA features</span>
+                          </Link>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

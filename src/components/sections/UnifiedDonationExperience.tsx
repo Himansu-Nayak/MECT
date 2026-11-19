@@ -309,9 +309,23 @@ export function UnifiedDonationExperience() {
           : null;
         setSelectedCode(matchedProg?.code || res.programmes[0]?.code || "");
 
-        const defaultPreset = res.config.presetAmounts?.[1] || res.config.presetAmounts?.[0] || 1000;
-        setAmount(defaultPreset);
-        setCustomAmountStr(String(defaultPreset));
+        const paramAmount = searchParams.get("amount");
+        const parsedAmount = paramAmount ? parseInt(paramAmount, 10) : NaN;
+        const initialAmount =
+          !isNaN(parsedAmount) && parsedAmount > 0
+            ? parsedAmount
+            : res.config.presetAmounts?.[1] || res.config.presetAmounts?.[0] || 1000;
+        setAmount(initialAmount);
+        setCustomAmountStr(String(initialAmount));
+
+        // Advance step if returning from authentication with preselected parameters
+        if (paramProg || paramAmount) {
+          if (portalToken) {
+            setStep(4);
+          } else if (paramAmount) {
+            setStep(3);
+          }
+        }
 
         const paramMethod = searchParams.get("method");
         if (paramMethod === "SBI_DIRECT" || (!res.config.cashfreeEnabled && res.config.sbiQrEnabled)) {
@@ -350,9 +364,22 @@ export function UnifiedDonationExperience() {
           : null;
         setSelectedCode(matchedProg?.code || res.programmes[0]?.code || "");
 
-        const defaultPreset = res.config.presetAmounts?.[1] || 1000;
-        setAmount(defaultPreset);
-        setCustomAmountStr(String(defaultPreset));
+        const paramAmount = searchParams.get("amount");
+        const parsedAmount = paramAmount ? parseInt(paramAmount, 10) : NaN;
+        const initialAmount =
+          !isNaN(parsedAmount) && parsedAmount > 0
+            ? parsedAmount
+            : res.config.presetAmounts?.[1] || 1000;
+        setAmount(initialAmount);
+        setCustomAmountStr(String(initialAmount));
+
+        if (paramProg || paramAmount) {
+          if (portalToken) {
+            setStep(4);
+          } else if (paramAmount) {
+            setStep(3);
+          }
+        }
         setPaymentChannel("SBI_DIRECT");
         setLoadError(null);
       } finally {
@@ -364,7 +391,7 @@ export function UnifiedDonationExperience() {
     return () => {
       active = false;
     };
-  }, [searchParams]);
+  }, [searchParams, portalToken]);
 
   // Sync profile data from authenticated account
   const prefilledAccountRef = useRef<string | null>(null);
@@ -1281,6 +1308,26 @@ export function UnifiedDonationExperience() {
                   </div>
                 </form>
               )}
+
+              {/* Dedicated Sign-In & Registration Quick Links */}
+              <div className="pt-3 border-t border-[#E6E1D8] flex flex-wrap items-center justify-between gap-2 text-xs text-ink-muted">
+                <span>Prefer using your registered account?</span>
+                <div className="flex items-center gap-2 font-semibold">
+                  <Link
+                    href={`/login?next=${encodeURIComponent(`/donate?programme=${selectedCode}&amount=${amount}`)}`}
+                    className="text-terracotta-dark hover:underline"
+                  >
+                    Sign In &rarr;
+                  </Link>
+                  <span className="text-ink-muted/50">&bull;</span>
+                  <Link
+                    href={`/register?next=${encodeURIComponent(`/donate?programme=${selectedCode}&amount=${amount}`)}`}
+                    className="text-forest hover:underline"
+                  >
+                    Create Account &rarr;
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
 
