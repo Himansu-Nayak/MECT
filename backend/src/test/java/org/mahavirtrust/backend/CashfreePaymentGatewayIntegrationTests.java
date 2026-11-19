@@ -16,6 +16,11 @@ import org.mahavirtrust.backend.service.notification.ProviderDispatchResult;
 import org.mahavirtrust.backend.service.notification.WhatsAppProvider;
 import org.mahavirtrust.backend.service.payment.CashfreePaymentGatewayService;
 import org.mahavirtrust.backend.util.HmacCryptoUtil;
+import org.mahavirtrust.backend.entity.PortalRoleName;
+import org.mahavirtrust.backend.entity.PortalUser;
+import org.mahavirtrust.backend.entity.PortalUserRole;
+import org.mahavirtrust.backend.repository.PortalUserRepository;
+import org.mahavirtrust.backend.repository.PortalUserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
@@ -79,6 +84,22 @@ public class CashfreePaymentGatewayIntegrationTests {
     @Autowired private AdminUserRepository adminUserRepository;
     @Autowired private PasswordEncoder passwordEncoder;
     @Autowired private JwtTokenProvider jwtTokenProvider;
+    @Autowired private PortalUserRepository portalUserRepository;
+    @Autowired private PortalUserRoleRepository portalUserRoleRepository;
+
+    private String getOrCreateTestDonorToken() {
+        PortalUser u = portalUserRepository.findByPrimaryPhone("+919123456789").orElseGet(() -> {
+            PortalUser user = new PortalUser();
+            user.setPrimaryPhone("+919123456789");
+            user.setPrimaryEmail("ananya@example.org");
+            user.setProfileCompleted(true);
+            return portalUserRepository.save(user);
+        });
+        if (!portalUserRoleRepository.existsByPortalUserIdAndRoleName(u.getId(), PortalRoleName.ROLE_GENERAL_USER)) {
+            portalUserRoleRepository.save(new PortalUserRole(u, PortalRoleName.ROLE_GENERAL_USER));
+        }
+        return jwtTokenProvider.generatePortalAccessToken(u.getUserUuid(), java.util.List.of("ROLE_GENERAL_USER"));
+    }
 
     @MockitoBean private EmailProvider emailProvider;
     @MockitoBean private WhatsAppProvider whatsAppProvider;
@@ -458,6 +479,7 @@ public class CashfreePaymentGatewayIntegrationTests {
                 "GATEWAY_CHECKOUT"
         );
         MvcResult init = mockMvc.perform(post("/public/donations/initiate")
+                        .header("Authorization", "Bearer " + getOrCreateTestDonorToken())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
                 .andExpect(status().isCreated())

@@ -483,6 +483,7 @@ public class DonationFinancialIntegrityPhase21_5_9_1Tests {
      */
     @Test
     void testDuplicateUtrSubmissionIsRejected() throws Exception {
+        String token = loginPortalUser("remitter2@example.org", "Remitter Two");
         SubmitManualSbiUtrRequest utrReq = new SubmitManualSbiUtrRequest(
                 "EDUCATION_LEARNING",
                 new BigDecimal("1000.00"),
@@ -496,12 +497,14 @@ public class DonationFinancialIntegrityPhase21_5_9_1Tests {
 
         // First submission succeeds
         mockMvc.perform(post("/public/donations/sbi/submit-utr")
+                        .header("Authorization", "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(utrReq)))
                 .andExpect(status().isCreated());
 
         // Duplicate submission of the exact same UTR returns 409 Conflict
         mockMvc.perform(post("/public/donations/sbi/submit-utr")
+                        .header("Authorization", "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(utrReq)))
                 .andExpect(status().isConflict());

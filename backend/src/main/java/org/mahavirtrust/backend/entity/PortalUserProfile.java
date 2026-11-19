@@ -25,6 +25,9 @@ public class PortalUserProfile {
     @Column(nullable = false, length = 100)
     private String city;
 
+    @Column(length = 100)
+    private String district;
+
     @Column(nullable = false, length = 100)
     private String state;
 
@@ -63,6 +66,8 @@ public class PortalUserProfile {
     public void setAddressLine(String addressLine) { this.addressLine = addressLine; }
     public String getCity() { return city; }
     public void setCity(String city) { this.city = city; }
+    public String getDistrict() { return district; }
+    public void setDistrict(String district) { this.district = district; }
     public String getState() { return state; }
     public void setState(String state) { this.state = state; }
     public String getPinCode() { return pinCode; }

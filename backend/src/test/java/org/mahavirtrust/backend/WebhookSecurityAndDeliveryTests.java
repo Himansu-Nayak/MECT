@@ -11,6 +11,12 @@ import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
 import org.mahavirtrust.backend.service.notification.ResendEmailService;
 import org.mahavirtrust.backend.util.HmacCryptoUtil;
+import org.mahavirtrust.backend.entity.PortalRoleName;
+import org.mahavirtrust.backend.entity.PortalUser;
+import org.mahavirtrust.backend.entity.PortalUserRole;
+import org.mahavirtrust.backend.repository.PortalUserRepository;
+import org.mahavirtrust.backend.repository.PortalUserRoleRepository;
+import org.mahavirtrust.backend.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -48,6 +54,22 @@ public class WebhookSecurityAndDeliveryTests {
     @Autowired private NotificationOutboxRepository outboxRepository;
     @Autowired private NotificationDeliveryLogRepository deliveryLogRepository;
     @Autowired private NotificationOutboxService outboxService;
+    @Autowired private PortalUserRepository portalUserRepository;
+    @Autowired private PortalUserRoleRepository portalUserRoleRepository;
+    @Autowired private JwtTokenProvider jwtTokenProvider;
+
+    private String createTestDonorToken(String phone) {
+        PortalUser u = portalUserRepository.findByPrimaryPhone(phone).orElseGet(() -> {
+            PortalUser user = new PortalUser();
+            user.setPrimaryPhone(phone);
+            user.setProfileCompleted(true);
+            return portalUserRepository.save(user);
+        });
+        if (!portalUserRoleRepository.existsByPortalUserIdAndRoleName(u.getId(), PortalRoleName.ROLE_GENERAL_USER)) {
+            portalUserRoleRepository.save(new PortalUserRole(u, PortalRoleName.ROLE_GENERAL_USER));
+        }
+        return jwtTokenProvider.generatePortalAccessToken(u.getUserUuid(), List.of("ROLE_GENERAL_USER"));
+    }
 
     @Value("${app.payment.razorpay-webhook-secret}")
     private String razorpayWebhookSecret;
@@ -81,7 +103,9 @@ public class WebhookSecurityAndDeliveryTests {
                 false,
                 "UPI_QR"
         );
+        String token = createTestDonorToken("+919876543211");
         MvcResult init = mockMvc.perform(post("/public/donations/initiate")
+                        .header("Authorization", "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
                 .andExpect(status().isCreated())
@@ -170,7 +194,9 @@ public class WebhookSecurityAndDeliveryTests {
         assertThat(paymentAfterRefund.getRefundedAmount()).isEqualByComparingTo("1500.00");
 
         // 7. Payment failure webhook on a second fresh order marks FAILED with zero receipt
+        String token2 = createTestDonorToken("+919876543212");
         MvcResult init2 = mockMvc.perform(post("/public/donations/initiate")
+                        .header("Authorization", "Bearer " + token2)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
                 .andExpect(status().isCreated())

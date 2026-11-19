@@ -54,6 +54,7 @@ public class DonationEcosystemIntegrationTests {
     @Autowired private PaymentEventRepository paymentEventRepository;
     @Autowired private PaymentRepository paymentRepository;
     @Autowired private DonationRepository donationRepository;
+    @Autowired private DonationProgrammeRepository programmeRepository;
     @Autowired private PortalVerifiedContactRepository contactRepository;
     @Autowired private PortalUserRoleRepository portalUserRoleRepository;
     @Autowired private PortalUserRepository portalUserRepository;
@@ -103,6 +104,22 @@ public class DonationEcosystemIntegrationTests {
             return adminUserRepository.save(u);
         });
         return jwtTokenProvider.generateAccessToken(admin.getUsername(), admin.getRole().name());
+    }
+
+    private String ensureDonorToken(String email, String phone) {
+        PortalUser user = portalUserRepository.findByPrimaryEmailIgnoreCase(email).orElseGet(() -> {
+            PortalUser u = new PortalUser();
+            u.setUserUuid(UUID.randomUUID().toString());
+            u.setPrimaryEmail(email);
+            u.setPrimaryPhone(phone);
+            u.setStatus("ACTIVE");
+            u.setProfileCompleted(true);
+            return portalUserRepository.save(u);
+        });
+        if (!portalUserRoleRepository.existsByPortalUserIdAndRoleName(user.getId(), PortalRoleName.ROLE_GENERAL_USER)) {
+            portalUserRoleRepository.save(new PortalUserRole(user, PortalRoleName.ROLE_GENERAL_USER));
+        }
+        return jwtTokenProvider.generatePortalAccessToken(user.getUserUuid(), List.of("ROLE_GENERAL_USER"));
     }
 
     @Test
@@ -159,7 +176,9 @@ public class DonationEcosystemIntegrationTests {
                 "EDUCATION_LEARNING", new BigDecimal("50.00"), "Test Donor", "low@example.org",
                 "9876543210", null, null, null, false, "GATEWAY_CHECKOUT", true
         );
+        String donorTokenLow = ensureDonorToken("low@example.org", "+919876543210");
         mockMvc.perform(post("/public/donations/initiate")
+                        .header("Authorization", "Bearer " + donorTokenLow)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(tooLow)))
                 .andExpect(status().isBadRequest());
@@ -185,7 +204,9 @@ public class DonationEcosystemIntegrationTests {
                 null
         );
 
+        String donorTokenSbi = ensureDonorToken("suresh.patnaik@example.org", "+919876501234");
         MvcResult submitRes = mockMvc.perform(post("/public/donations/sbi/submit-utr")
+                        .header("Authorization", "Bearer " + donorTokenSbi)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(utrReq)))
                 .andExpect(status().isCreated())
@@ -203,6 +224,7 @@ public class DonationEcosystemIntegrationTests {
 
         // Duplicate UTR must return 409 Conflict and not create a second donation
         mockMvc.perform(post("/public/donations/sbi/submit-utr")
+                        .header("Authorization", "Bearer " + donorTokenSbi)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(utrReq)))
                 .andExpect(status().isConflict());
@@ -247,29 +269,19 @@ public class DonationEcosystemIntegrationTests {
 
     @Test
     void authenticatedPortalUserCanClaimVerifiedGuestDonations() throws Exception {
-        SubmitManualSbiUtrRequest guestUtr = new SubmitManualSbiUtrRequest(
-                "EDUCATION_LEARNING",
-                new BigDecimal("1000.00"),
-                "Guest Donor",
-                "claim.me@example.org",
-                null, null, null, null, false, true,
-                "UTRCLAIM99887766",
-                LocalDate.now(),
-                "NEFT", null, null
-        );
-        MvcResult res = mockMvc.perform(post("/public/donations/sbi/submit-utr")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(guestUtr)))
-                .andExpect(status().isCreated())
-                .andReturn();
-        String claimRef = objectMapper.readTree(res.getResponse().getContentAsString()).get("claimReference").asString();
+        DonationProgramme prog = programmeRepository.findByCode("EDUCATION_LEARNING").orElseThrow();
 
-        mockMvc.perform(post("/admin/manual-claims/" + claimRef + "/review")
-                        .header("Authorization", "Bearer " + verificationOfficerToken)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(
-                                new ReviewManualSbiClaimRequest("VERIFIED", "STMT-1", "Verified"))))
-                .andExpect(status().isOk());
+        Donation legacyDonation = new Donation();
+        legacyDonation.setDonationReference("DON-LEGACY-CLAIM-01");
+        legacyDonation.setProgramme(prog);
+        legacyDonation.setAmount(new BigDecimal("1000.00"));
+        legacyDonation.setCurrency("INR");
+        legacyDonation.setDonorName("Guest Donor");
+        legacyDonation.setDonorEmail("claim.me@example.org");
+        legacyDonation.setPaymentMethod("SBI_MANUAL");
+        legacyDonation.setStatus("SUCCESSFUL");
+        legacyDonation.setPortalUser(null);
+        donationRepository.save(legacyDonation);
 
         PortalUser user = new PortalUser();
         user.setUserUuid(UUID.randomUUID().toString());

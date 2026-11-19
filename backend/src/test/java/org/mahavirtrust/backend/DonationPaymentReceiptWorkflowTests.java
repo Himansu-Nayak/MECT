@@ -256,7 +256,10 @@ public class DonationPaymentReceiptWorkflowTests {
 
     @Test
     void testAnonymousDonationPrivacyEmailRetryAndAdminCsvExportAuthorization() throws Exception {
-        // Anonymous guest donation (no portal token) + simulate Resend failure & retry recovery
+        String anonToken = loginPortalUser("anon.donor@example.org", false);
+        outboxRepository.deleteAll();
+
+        // Simulate Resend failure on donation receipt & retry recovery
         when(emailProvider.sendEmail(anyString(), anyString(), anyString(), anyString(), any(), any(), anyMap()))
                 .thenReturn(ProviderDispatchResult.failed("Temporary upstream 502"))
                 .thenReturn(ProviderDispatchResult.sent("re_retry_ok", "{}"));
@@ -274,6 +277,7 @@ public class DonationPaymentReceiptWorkflowTests {
                 "UPI_QR"
         );
         MvcResult initRes = mockMvc.perform(post("/public/donations/initiate")
+                        .header("Authorization", "Bearer " + anonToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(anonReq)))
                 .andExpect(status().isCreated())

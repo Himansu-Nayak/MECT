@@ -19,6 +19,9 @@ public record UpdatePortalProfileRequest(
         @Size(max = 100)
         String city,
 
+        @Size(max = 100)
+        String district,
+
         @NotBlank(message = "State is required")
         @Size(max = 100)
         String state,
@@ -46,5 +49,12 @@ public record UpdatePortalProfileRequest(
         Boolean whatsappOptIn,
         String whatsappPhoneNumber,
         String whatsappConsentVersion
-) {}
+) {
+    public UpdatePortalProfileRequest(
+            String fullName, String addressLine, String city, String state, String pinCode,
+            String country, LocalDate dateOfBirth, String avatarUrl, String preferredLanguage,
+            String panOptional, Boolean whatsappOptIn, String whatsappPhoneNumber, String whatsappConsentVersion) {
+        this(fullName, addressLine, city, null, state, pinCode, country, dateOfBirth, avatarUrl, preferredLanguage, panOptional, whatsappOptIn, whatsappPhoneNumber, whatsappConsentVersion);
+    }
+}
 

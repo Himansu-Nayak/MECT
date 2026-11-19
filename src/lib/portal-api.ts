@@ -32,6 +32,7 @@ export interface PortalUserProfileData {
   fullName: string;
   addressLine: string;
   city: string;
+  district?: string | null;
   state: string;
   pinCode: string;
   country: string;
@@ -173,6 +174,7 @@ export interface UpdatePortalProfilePayload {
   fullName: string;
   addressLine: string;
   city: string;
+  district?: string;
   state: string;
   pinCode: string;
   country: string;

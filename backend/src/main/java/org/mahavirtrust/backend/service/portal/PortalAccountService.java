@@ -157,6 +157,7 @@ public class PortalAccountService {
             profileMap.put("fullName", profile.getFullName());
             profileMap.put("addressLine", profile.getAddressLine());
             profileMap.put("city", profile.getCity());
+            profileMap.put("district", profile.getDistrict());
             profileMap.put("state", profile.getState());
             profileMap.put("pinCode", profile.getPinCode());
             profileMap.put("country", profile.getCountry());
@@ -279,6 +280,9 @@ public class PortalAccountService {
         profile.setFullName(req.fullName().trim());
         profile.setAddressLine(req.addressLine().trim());
         profile.setCity(req.city().trim());
+        if (req.district() != null && !req.district().isBlank()) {
+            profile.setDistrict(req.district().trim());
+        }
         profile.setState(req.state().trim());
         profile.setPinCode(req.pinCode().trim());
         profile.setCountry(req.country().trim());
