@@ -628,7 +628,7 @@ export function ReportsLibrarySection({ initialDocuments }: ReportsLibrarySectio
         {/* Secretariat Inspection Pathway */}
         <div className="p-8 bg-forest text-white rounded-xs border border-border-warm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <Badge variant="forest" size="sm" className="bg-white/10 text-cream border-white/20">
+            <Badge variant="forest-dark" size="sm">
               Institutional Fiduciary Right
             </Badge>
             <h3 className="font-serif text-2xl font-bold text-white">

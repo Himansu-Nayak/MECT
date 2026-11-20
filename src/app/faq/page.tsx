@@ -5,7 +5,6 @@ import { PageHero } from "@/components/PageHero";
 import { ReadingProgress } from "@/components/motion/ReadingProgress";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -502,7 +501,7 @@ export default function FAQPage() {
       </section>
 
       {/* Statutory Disclosures & Transparency Strip */}
-      <StatutoryStrip />
+      
     </div>
   );
 }

@@ -54,14 +54,15 @@ export function StatutoryTicker() {
 
   return (
     <div
-      className="bg-forest-deep text-cream border-b border-sand/25 text-xs py-1.5 transition-colors print:hidden overflow-clip w-full max-w-full relative [contain:paint_layout]"
+      id="statutory-ticker"
+      className="bg-[#0D1612] bg-forest-deep text-cream border-b border-sand/25 text-xs h-[36px] min-h-[36px] max-h-[36px] flex items-center transition-colors print:hidden overflow-hidden w-full max-w-full relative"
       role="region"
       aria-label="Institutional Announcements and Campaign Desk"
     >
-      <Container size="wide" className="max-w-[1600px] overflow-clip relative [contain:paint_layout]">
-        <div className="flex items-center justify-between gap-3 sm:gap-4 min-w-0 w-full overflow-clip">
+      <Container size="wide" className="max-w-[1600px] overflow-hidden relative">
+        <div className="flex items-center justify-between gap-3 sm:gap-4 min-w-0 w-full overflow-hidden">
           {/* Left: Ticker Badge, Pause Toggle & Continuous Announcement Ticker */}
-          <div className="group flex items-center gap-2 sm:gap-3 overflow-clip min-w-0 flex-1 relative [contain:paint_layout]">
+          <div className="group flex items-center gap-2 sm:gap-3 overflow-hidden min-w-0 flex-1 relative bg-[#0D1612]">
             <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-sand text-forest-deep text-[10px] font-bold uppercase tracking-wider shadow-xs">
               <Bell className="w-3 h-3 text-forest-deep" aria-hidden="true" />
               <span>Announcements</span>
@@ -89,10 +90,10 @@ export function StatutoryTicker() {
             )}
 
             {isStatic ? (
-              <div className="text-[11px] sm:text-xs text-white/95 min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 font-medium">
+              <div className="text-[11px] sm:text-xs text-white/95 min-w-0 flex-1 overflow-hidden">
+                <div className="flex items-center gap-x-3 whitespace-nowrap overflow-hidden font-medium">
                   {APPROVED_ANNOUNCEMENTS.map((item, idx) => (
-                    <span key={item.id} className="inline-flex items-center">
+                    <span key={item.id} className="inline-flex items-center shrink-0">
                       {idx > 0 && (
                         <span className="mr-3 text-sand/85" aria-hidden="true">
                           •
@@ -111,9 +112,9 @@ export function StatutoryTicker() {
                 </div>
               </div>
             ) : (
-              <div className="relative overflow-clip whitespace-nowrap text-[11px] sm:text-xs text-white/95 min-w-0 flex-1 [contain:paint_layout] [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+              <div className="relative overflow-hidden whitespace-nowrap text-[11px] sm:text-xs text-white/95 min-w-0 flex-1">
                 <div
-                  className="inline-flex items-center gap-6 animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] font-medium [contain:layout]"
+                  className="inline-flex items-center gap-6 animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] font-medium"
                   style={{ animationPlayState: isPaused ? "paused" : undefined }}
                 >
                   {APPROVED_ANNOUNCEMENTS.map((item, idx) => (

@@ -21,7 +21,7 @@ export function HelpfulRating({ itemLabel }: HelpfulRatingProps) {
           type="button"
           onClick={() => setVote("yes")}
           aria-pressed={vote === "yes"}
-          aria-label={`Mark "${itemLabel}" as helpful`}
+          aria-label={`Yes, mark "${itemLabel}" as helpful`}
           className={`inline-flex items-center gap-1 rounded-xs border px-2 py-1 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta ${
             vote === "yes"
               ? "border-forest bg-forest text-cream"
@@ -35,7 +35,7 @@ export function HelpfulRating({ itemLabel }: HelpfulRatingProps) {
           type="button"
           onClick={() => setVote("no")}
           aria-pressed={vote === "no"}
-          aria-label={`Mark "${itemLabel}" as not helpful`}
+          aria-label={`No, mark "${itemLabel}" as not helpful`}
           className={`inline-flex items-center gap-1 rounded-xs border px-2 py-1 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta ${
             vote === "no"
               ? "border-terracotta bg-terracotta text-white"

@@ -450,8 +450,14 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* SECTION 8: Statutory Disclosures & Transparency Strip */}
-        <StatutoryStrip />
+        {/* SECTION 8: Institutional Technology Acknowledgement */}
+        <section id="developer-credit" className="py-8 bg-cream border-t border-border-warm text-center scroll-mt-20">
+          <Container size="narrow">
+            <p className="text-xs text-ink-muted">
+              Digital Platform Architect &amp; Systems Engineer: <strong>Himansu Nayak</strong>. Built for public charitable transparency, high-performance static rendering, and strict data dignity under the MECT Honorary Charter.
+            </p>
+          </Container>
+        </section>
       </div>
     </>
   );

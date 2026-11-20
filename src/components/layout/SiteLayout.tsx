@@ -1,8 +1,8 @@
 import React from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { QuickActionDock } from "@/components/QuickActionDock";
-import { HImChatbot } from "@/components/ai/HImChatbot";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
+import { ClientSupportWidgets } from "@/components/layout/ClientSupportWidgets";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,10 +15,9 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
         {children}
       </main>
-      <QuickActionDock />
-      <HImChatbot />
+      <ClientSupportWidgets />
+      <StatutoryStrip />
       <Footer />
     </>
   );
 }
-

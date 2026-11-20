@@ -313,9 +313,9 @@ export function DonationClaimSection() {
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form id="donation-claim-form" action="/api/donations/claim" method="POST" onSubmit={handleSubmit} className="space-y-4">
             {errorMessage && (
-              <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+              <div role="alert" className="p-3 rounded-md bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                 <span>{errorMessage}</span>
               </div>
@@ -323,10 +323,12 @@ export function DonationClaimSection() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="donorName" className="block text-xs font-bold text-forest mb-1">
                   Full Name <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="donorName"
+                  name="donorName"
                   required
                   placeholder="e.g. Ramesh Kumar"
                   value={donorName}
@@ -335,10 +337,12 @@ export function DonationClaimSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="donorEmail" className="block text-xs font-bold text-forest mb-1">
                   Email Address (For Receipt Delivery) <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="donorEmail"
+                  name="donorEmail"
                   required
                   type="email"
                   placeholder="e.g. donor@example.com"
@@ -350,10 +354,12 @@ export function DonationClaimSection() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="donorPhone" className="block text-xs font-bold text-forest mb-1">
                   Mobile Number <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="donorPhone"
+                  name="donorPhone"
                   required
                   type="tel"
                   placeholder="+91 98XXXXXXXX"
@@ -363,10 +369,12 @@ export function DonationClaimSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="amount" className="block text-xs font-bold text-forest mb-1">
                   Amount Donated (INR) <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="amount"
+                  name="amount"
                   required
                   type="number"
                   min="1"
@@ -378,10 +386,12 @@ export function DonationClaimSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="donorPan" className="block text-xs font-bold text-forest mb-1">
                   PAN <span className="text-ink-muted font-normal">(Optional)</span>
                 </label>
                 <Input
+                  id="donorPan"
+                  name="donorPan"
                   placeholder="ABCDE1234F"
                   maxLength={10}
                   value={donorPan}
@@ -392,10 +402,12 @@ export function DonationClaimSection() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="utrReference" className="block text-xs font-bold text-forest mb-1">
                   UTR / Transaction ID <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="utrReference"
+                  name="utrReference"
                   required
                   placeholder="e.g. 412345678901 or SBIN12345678"
                   value={utrReference}
@@ -407,10 +419,12 @@ export function DonationClaimSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-forest mb-1">
+                <label htmlFor="transferDate" className="block text-xs font-bold text-forest mb-1">
                   Transfer Date <span className="text-red-600">*</span>
                 </label>
                 <Input
+                  id="transferDate"
+                  name="transferDate"
                   required
                   type="date"
                   value={transferDate}
@@ -420,10 +434,12 @@ export function DonationClaimSection() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-forest mb-1">
+              <label htmlFor="notes" className="block text-xs font-bold text-forest mb-1">
                 Optional Notes / Dedication
               </label>
               <Input
+                id="notes"
+                name="notes"
                 placeholder="e.g. In memory of late grandparents / Balangir education support"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}

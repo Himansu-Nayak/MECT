@@ -361,8 +361,8 @@ export function InterconnectedSafetyNetSection() {
 
                   {/* Downstream Multiplier with Living Pulse Indicator */}
                   <div className="p-4 rounded-[2px] bg-[#16221D] border border-white/10 space-y-2">
-                    <div className="font-mono text-[11px] uppercase tracking-wider text-terracotta font-semibold flex items-center gap-1.5">
-                      <Activity className="w-3.5 h-3.5 animate-pulse text-terracotta" aria-hidden="true" />
+                    <div className="font-mono text-[11px] uppercase tracking-wider text-[#E5C499] font-semibold flex items-center gap-1.5">
+                      <Activity className="w-3.5 h-3.5 animate-pulse text-[#E5C499]" aria-hidden="true" />
                       <span>Downstream Generational Dividend</span>
                     </div>
                     <p className="text-xs text-cream/90 font-sans leading-relaxed">

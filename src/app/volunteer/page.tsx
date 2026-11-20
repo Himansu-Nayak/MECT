@@ -6,7 +6,6 @@ import { useReducedMotion } from "motion/react";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card, Badge } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -318,7 +317,7 @@ export default function VolunteerPage() {
         badgeVariant="forest-dark"
         title="Bring Your Time. Share Your Skills. Strengthen a Community."
         description="Participation takes many forms. Whether through teaching, community support, professional knowledge or practical assistance, your interest can help MECT understand how people would like to contribute to its charitable programmes."
-        breadcrumbs={[{ label: "Get Involved", href: "/#development-pillars" }, { label: "Volunteer Registry" }]}
+        breadcrumbs={[{ label: "Get Involved", href: "/#participate-in-mission" }, { label: "Volunteer Registry" }]}
         actions={
           <>
             <a href="#opportunities">
@@ -917,7 +916,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* Statutory Disclosures & Transparency Strip */}
-      <StatutoryStrip />
+      
     </div>
   );
 }

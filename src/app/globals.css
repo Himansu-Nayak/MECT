@@ -7,8 +7,8 @@
     /* =========================================================================
        1. Core Brand Colour System (Phase 26 Documentary Editorial Architecture)
        ========================================================================= */
-    --color-primary: #B85D3B;         /* Sunbaked Terracotta Primary */
-    --color-primary-dark: #8E3E24;    /* Deep Terracotta (WCAG AAA text/links) */
+    --color-primary: #B25430;         /* Calibrated Sunbaked Terracotta (4.9:1 WCAG AA with white, 4.6:1 with cream) */
+    --color-primary-dark: #8E3E24;    /* Deep Terracotta (WCAG AAA text/links: 7.5:1) */
 
     --color-sand: #EFE6D9;           /* Refined Warm Sand */
     --color-sand-light: #F7F2EA;     /* Light Sand / Soft Ivory */
@@ -27,7 +27,7 @@
     --color-text: #0F1714;           /* Deep Carbon Basalt Ink (16.2:1 AAA Contrast) */
     --color-text-secondary: #4A5852; /* Editorial Secondary Ink (6.4:1 AA Contrast) */
     --color-text-on-sand: #3D4843;   /* Calibrated WCAG 2.2 AA Secondary Ink */
-    --color-ink-muted: #6C7A74;      /* Archival Metadata & Caption Ink */
+    --color-ink-muted: #4E5B55;      /* Calibrated WCAG 2.2 AA (6.6:1 AAA/AA Contrast) */
 
     --color-border: #E7E0D5;         /* Razor Hairline Border */
     --color-border-hairline: #E7E0D5;
@@ -207,12 +207,7 @@
     font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
     font-weight: 600;
     letter-spacing: -0.015em;
-    text-wrap: balance;
     overflow-wrap: break-word;
-  }
-
-  p {
-    text-wrap: pretty;
   }
 
   .font-mono,
@@ -339,7 +334,7 @@
 
 /* Central Semantic Utilities mapped directly to :root custom properties */
 @utility text-terracotta {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
 @utility text-terracotta-dark {
@@ -415,7 +410,6 @@
   line-height: var(--type-display-line-height);
   letter-spacing: var(--type-display-tracking);
   font-weight: var(--type-display-weight);
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -425,7 +419,6 @@
   line-height: var(--type-h1-line-height);
   letter-spacing: var(--type-h1-tracking);
   font-weight: var(--type-h1-weight);
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -435,7 +428,6 @@
   line-height: var(--type-h2-line-height);
   letter-spacing: var(--type-h2-tracking);
   font-weight: var(--type-h2-weight);
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -445,7 +437,6 @@
   line-height: var(--type-h3-line-height);
   letter-spacing: var(--type-h3-tracking);
   font-weight: var(--type-h3-weight);
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -455,7 +446,6 @@
   line-height: var(--type-h4-line-height);
   letter-spacing: var(--type-h4-tracking);
   font-weight: var(--type-h4-weight);
-  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -464,7 +454,6 @@
   font-size: var(--type-body-lead-size);
   line-height: var(--type-body-lead-line-height);
   letter-spacing: var(--type-body-lead-tracking);
-  text-wrap: pretty;
 }
 
 @utility type-body {
@@ -472,7 +461,6 @@
   font-size: var(--type-body-size);
   line-height: var(--type-body-line-height);
   letter-spacing: var(--type-body-tracking);
-  text-wrap: pretty;
 }
 
 @utility type-body-sm {
@@ -480,7 +468,6 @@
   font-size: var(--type-body-sm-size);
   line-height: var(--type-body-sm-line-height);
   letter-spacing: var(--type-body-sm-tracking);
-  text-wrap: pretty;
 }
 
 @utility type-eyebrow {

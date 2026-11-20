@@ -5,7 +5,6 @@ import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
@@ -607,7 +606,7 @@ export default function GovernancePage() {
       </section>
 
       {/* Statutory Disclosures & Transparency Strip */}
-      <StatutoryStrip />
+      
     </div>
   );
 }

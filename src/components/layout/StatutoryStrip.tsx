@@ -10,7 +10,11 @@ export interface StatutoryStripProps {
 
 export function StatutoryStrip({ className = "" }: StatutoryStripProps) {
   return (
-    <section className={`py-10 bg-sand/15 border-t border-sand/30 print:hidden ${className}`}>
+    <section
+      id="statutory-strip"
+      aria-label="Institutional Statutory Transparency"
+      className={`py-10 bg-sand/15 border-t border-sand/30 print:hidden ${className}`}
+    >
       <Container size="default">
         <div className="rounded-xl border border-sand/40 bg-cream p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
           <div className="space-y-2 max-w-3xl">

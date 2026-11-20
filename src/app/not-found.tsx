@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   Home,
   BookOpen,
@@ -133,7 +132,7 @@ export default function NotFound() {
         </Container>
       </section>
 
-      <StatutoryStrip />
+      
     </div>
   );
 }

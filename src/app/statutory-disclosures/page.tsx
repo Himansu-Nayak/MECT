@@ -302,7 +302,7 @@ export default function StatutoryDisclosuresPage() {
       </section>
 
       {/* 5. Statutory Tax & 80G Disclaimer (CA-Approved Wording) */}
-      <section id="tax-disclaimer" className="py-20 bg-terracotta text-white border-y border-sand/30 scroll-mt-24" aria-label="Tax Exemption Disclosure">
+      <section id="tax-disclaimer" className="py-20 bg-forest text-cream border-y border-sand/30 scroll-mt-24" aria-label="Tax Exemption Disclosure">
         <Container size="default" className="space-y-10">
           <SectionHeader
             badge="Direct Tax Disclosures"

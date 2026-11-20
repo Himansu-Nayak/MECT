@@ -88,7 +88,7 @@ export function DirectDisbursalFlowchart() {
                 key={item.stepNumber}
                 className={`relative p-6 sm:p-7 rounded-xs border transition-all duration-300 flex flex-col justify-between ${
                   item.highlight
-                    ? "bg-terracotta border-sand shadow-xl"
+                    ? "bg-terracotta-dark border-sand shadow-xl"
                     : "bg-forest-deep border-white/15 hover:border-sand/45"
                 }`}
               >
