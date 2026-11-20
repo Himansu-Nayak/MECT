@@ -20,9 +20,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Institutional Campaigns & Special Initiatives | MECT",
+  title: "Campaigns & Initiatives",
   description:
-    "Explore active and proposed institutional campaigns of Mahaveer Educational & Charitable Trust, including the proposed 80–100-foot Hanuman Murti initiative and proposed Free Education target for up to 200 Students.",
+    "Explore institutional initiatives of Mahaveer Educational & Charitable Trust, including the proposed Hanuman Murti project and higher education support.",
   path: "/campaigns",
   ogImage: "/images/og-default.png",
 });

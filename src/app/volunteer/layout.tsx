@@ -1,10 +1,9 @@
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Volunteer & Community Participation Registry",
-  ogTitle: "Volunteer & Community Participation Registry — Mahaveer Educational & Charitable Trust",
+  title: "Volunteer & Community Registry",
   description:
-    "Explore verified volunteer opportunities, academic mentorship tracks, and community participation pathways with Mahaveer Educational & Charitable Trust (MECT) across Western Odisha.",
+    "Explore volunteer opportunities, academic mentorship, and community participation pathways with Mahaveer Educational & Charitable Trust in Odisha.",
   path: "/volunteer",
   ogImage: "/images/og-disclosures.png",
 });

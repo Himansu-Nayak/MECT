@@ -28,9 +28,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Statutory Disclosures & Regulatory Registration Register",
+  title: "Statutory Disclosures & Register",
   description:
-    "Official Government registration credentials, Income Tax Section 12A/80G orders, MCA CSR-1 registration, and Trust Deed documentation for Mahaveer Educational & Charitable Trust (MECT).",
+    "Official Government registration credentials, 12A/80G status, MCA CSR-1, and Trust Deed documentation for Mahaveer Educational & Charitable Trust.",
   path: "/statutory-disclosures",
   ogImage: "/images/og-disclosures.png",
 });

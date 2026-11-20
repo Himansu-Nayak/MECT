@@ -1,9 +1,9 @@
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Donate — Support MECT Programmes",
+  title: "Donate — Support Programmes",
   description:
-    "Support education, scholarships, community welfare, and the proposed Grand Hanuman Murti initiative of Mahaveer Educational & Charitable Trust (MECT) via direct State Bank of India bank transfer or UPI with official verified receipting.",
+    "Support education, scholarships, and community welfare with MECT via direct SBI bank transfer or UPI with official verified receipting.",
   path: "/donate",
   ogImage: "/images/og-donate.png",
 });

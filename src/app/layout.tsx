@@ -32,17 +32,17 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(ORG.branding.canonicalOrigin),
   title: {
-    default: `Home | ${ORG.legalName}`,
-    template: `%s | ${ORG.legalName}`,
+    default: ORG.legalName,
+    template: `%s | ${ORG.shortName}`,
   },
   description:
-    "Official website of Mahaveer Educational & Charitable Trust (MECT), Odisha. Explore our work in education, women's livelihoods, safe water, nutrition and community welfare, alongside governance and statutory disclosures.",
+    "Official portal of Mahaveer Educational & Charitable Trust (MECT), Odisha. Education, women's empowerment, safe water, and community welfare initiatives.",
   authors: [{ name: `${ORG.shortName} Board of Trustees` }],
   alternates: {
     canonical: ORG.branding.canonicalOrigin,
   },
   openGraph: {
-    title: `Home | ${ORG.legalName}`,
+    title: ORG.legalName,
     description:
       "A registered charitable trust rooted in Odisha, working across education, women's livelihoods, safe water, nutrition and community welfare.",
     url: ORG.branding.canonicalOrigin,
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Home | ${ORG.legalName}`,
+    title: ORG.legalName,
     description:
-      "A registered public charitable trust supporting education, livelihoods, safe water, nutrition and community wellbeing across Odisha.",
+      "Registered public charitable trust supporting education, livelihoods, safe water, and community welfare in Odisha.",
     images: [ORG.branding.ogDefaultImagePath],
   },
   robots: {

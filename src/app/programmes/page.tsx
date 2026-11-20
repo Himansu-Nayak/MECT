@@ -31,9 +31,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Our Work & Community Programmes",
+  title: "Our Work & Programmes",
   description:
-    "Explore MECT's verified community programmes: education, women's livelihoods, sports, safe drinking water, food relief, community welfare, and higher education in Odisha.",
+    "Explore MECT's verified community programmes: education, women's livelihoods, safe drinking water, food relief, and community welfare in Odisha.",
   path: "/programmes",
   ogImage: "/images/og-programmes.png",
 });

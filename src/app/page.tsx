@@ -1,4 +1,6 @@
 import React from "react";
+import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import { CinematicHero } from "@/components/sections/CinematicHero";
 import { InstitutionalStorySection } from "@/components/sections/InstitutionalStorySection";
 import { InterconnectedSafetyNetSection } from "@/components/sections/InterconnectedSafetyNetSection";
@@ -23,6 +25,13 @@ import { ClosingFiduciaryPledgeSection } from "@/components/sections/ClosingFidu
  * 8. SECTION 09 — Participate in the Mission: Six tailored pathways (Donors, Volunteers, CSR, Educational Partners, Community, Collaborators)
  * 9. SECTION 10 — The Closing Message: Earned fiduciary pledge, registered office in Balangir, canonical phone 9853608113 & email mect220@gmail.com
  */
+export const metadata: Metadata = createPageMetadata({
+  title: "Empowering Communities Across Odisha",
+  description:
+    "Mahaveer Educational & Charitable Trust (MECT) is a registered public charitable trust dedicated to education, women's livelihoods, safe water, and welfare.",
+  path: "/",
+});
+
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full bg-cream">

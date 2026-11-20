@@ -1,9 +1,9 @@
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Public Secretariat Inquiry & Guidance Desk",
+  title: "Contact & Secretariat",
   description:
-    "Official administrative communications, scholarship guidance, and public inquiry portal for Mahaveer Educational & Charitable Trust (MECT) in Balangir and Bhubaneswar, Odisha.",
+    "Contact Mahaveer Educational & Charitable Trust (MECT) in Balangir and Bhubaneswar, Odisha for inquiries, student guidance, and administrative support.",
   path: "/contact",
 });
 

@@ -28,9 +28,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "The Grand Hanuman Murti Project — Proposed 80–100-Foot Monument | MECT",
+  title: "Grand Hanuman Murti Project",
   description:
-    "A Monumental Vision of Faith, Devotion and Community Participation. Join Mahaveer Educational & Charitable Trust in supporting the proposed 80–100-foot Hanuman Murti initiative with transparent, segregated project accounting.",
+    "Proposed 80–100-foot Hanuman Murti initiative in Western Odisha by Mahaveer Educational & Charitable Trust with transparent, dedicated project accounting.",
   path: "/campaigns/hanuman-murti",
   ogImage: "/images/og-default.png",
 });

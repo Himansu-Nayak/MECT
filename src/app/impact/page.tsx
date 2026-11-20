@@ -39,9 +39,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Community Impact & Programme Outcomes",
+  title: "Community Impact & Outcomes",
   description:
-    "Documented programme reach across education, women's livelihoods, safe-water initiatives, and nutrition relief alongside Balangir and Bhubaneswar operating locations.",
+    "Documented reach across education, women's livelihoods, safe-water access, and nutrition relief in Balangir and surrounding districts of Odisha.",
   path: "/impact",
   ogImage: "/images/og-programmes.png",
 });

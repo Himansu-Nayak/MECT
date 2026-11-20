@@ -29,7 +29,7 @@ export function createPageMetadata({
   noIndex = false,
 }: PageMetadataOptions): Metadata {
   const canonicalUrl = buildCanonicalUrl(path);
-  const socialTitle = ogTitle ?? `${title} | ${ORG.legalName}`;
+  const socialTitle = ogTitle ?? (title.includes(ORG.shortName) ? title : `${title} | ${ORG.shortName}`);
 
   const base: Metadata = {
     title,
@@ -49,7 +49,7 @@ export function createPageMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${title} — ${ORG.legalName}`,
+          alt: `${title} — ${ORG.shortName}`,
         },
       ],
     },

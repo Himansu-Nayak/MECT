@@ -24,9 +24,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Institutional Leadership, Governance Charter & Stewardship",
+  title: "Governance Charter & Board",
   description:
-    "Institutional leadership framework, Institutional Stewardship Statement, registered Trust Deed No. 40311302194, Clause XVI honorary governance code, and statutory compliance for Mahaveer Educational & Charitable Trust (MECT).",
+    "Governance framework, registered Trust Deed No. 40311302194, Clause XVI honorary code, and statutory compliance for MECT in Odisha.",
   path: "/governance",
   ogImage: "/images/og-disclosures.png",
 });

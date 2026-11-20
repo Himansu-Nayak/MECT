@@ -23,7 +23,7 @@ import {
 export const metadata = createPageMetadata({
   title: "Accessibility Statement",
   description:
-    "Commitment to digital accessibility, WCAG 2.2 Level AA support, keyboard navigation, and reduced-motion support on the MECT website.",
+    "Commitment to digital accessibility, WCAG 2.2 AA support, keyboard navigation, and reduced-motion support across the MECT web platform.",
   path: "/accessibility",
 });
 

@@ -21,9 +21,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "About Us & Institutional Heritage",
+  title: "About Us & Heritage",
   description:
-    "Learn about MECT's heritage, mission, governance and multi-sector work across education, women's livelihoods, safe water, nutrition and community welfare in Odisha.",
+    "Learn about MECT's heritage, honorary trusteeship, and community work across education, women's livelihoods, safe water, and relief in Odisha.",
   path: "/about",
 });
 

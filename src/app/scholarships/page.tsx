@@ -22,9 +22,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Scholarship Grants, Schemes & Appraisal Norms",
+  title: "Scholarship Grants & Schemes",
   description:
-    "Explore higher education tuition grants, scheme comparison matrices, required document checklists, and application guidelines for Odisha students.",
+    "Higher education tuition grants, scheme comparison matrices, required document checklists, and application guidelines for Odisha students.",
   path: "/scholarships",
   ogImage: "/images/og-programmes.png",
 });

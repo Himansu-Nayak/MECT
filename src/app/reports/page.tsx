@@ -25,9 +25,9 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Institutional Transparency & Public Records Library",
+  title: "Annual Reports & Records",
   description:
-    "An Account of Our Work. A Record of Our Responsibility. Access verified annual activity reports, statutory registrations, and governance policies for Mahaveer Educational & Charitable Trust (MECT).",
+    "Access verified annual activity reports, financial disclosures, and governance documentation for Mahaveer Educational & Charitable Trust (MECT).",
   path: "/reports",
   ogImage: "/images/og-disclosures.png",
 });

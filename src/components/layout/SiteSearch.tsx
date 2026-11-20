@@ -65,10 +65,10 @@ const VERIFIED_SEARCH_ROUTES: SearchRouteItem[] = [
   },
   {
     id: "donate",
-    label: "Donate Online & Support",
+    label: "Donate & Bank Transfer",
     href: "/donate",
     group: "Support",
-    keywords: ["donation", "support", "online", "receipt", "cashfree"],
+    keywords: ["donation", "support", "sbi", "transfer", "upi", "receipt"],
     icon: <Heart className="w-4 h-4 text-terracotta" aria-hidden="true" />,
   },
   {
@@ -116,7 +116,7 @@ const VERIFIED_SEARCH_ROUTES: SearchRouteItem[] = [
     label: "Governance & Board of Trustees",
     href: "/governance",
     group: "Governance & Compliance",
-    keywords: ["board", "trustees", "chairman", "fiduciary"],
+    keywords: ["board", "trustees", "chairman", "stewardship"],
     icon: <ShieldCheck className="w-4 h-4 text-forest" aria-hidden="true" />,
   },
   {

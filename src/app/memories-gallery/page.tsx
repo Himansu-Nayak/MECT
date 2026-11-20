@@ -24,9 +24,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
 export const metadata = createPageMetadata({
-  title: "Documentary Memories & Archival Gallery",
+  title: "Documentary Archival Gallery",
   description:
-    "Verified documentary photography and archival field records from Mahaveer Educational & Charitable Trust (MECT) covering education, women's livelihoods, safe water, and civic welfare in Western Odisha.",
+    "Photographic archive and field records of Mahaveer Educational & Charitable Trust covering education, women's livelihoods, and water in Western Odisha.",
   path: "/memories-gallery",
   ogImage: "/images/og-default.png",
 });

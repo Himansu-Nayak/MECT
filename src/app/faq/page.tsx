@@ -28,7 +28,7 @@ import {
 export const metadata = createPageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers regarding MECT programmes, donations, governance, statutory disclosures, scholarships, and volunteering.",
+    "Common questions regarding MECT programmes, SBI bank donations, governance, statutory disclosures, scholarships, and volunteering in Odisha.",
   path: "/faq",
 });
 
