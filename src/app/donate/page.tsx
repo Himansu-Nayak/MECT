@@ -1,61 +1,158 @@
-import React, { Suspense } from "react";
+import React from "react";
+import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
-import { UnifiedDonationExperience } from "@/components/sections/UnifiedDonationExperience";
+import { Badge } from "@/components/ui/Badge";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
+import { DonationClaimSection } from "@/components/donation/DonationClaimSection";
+import { MECT_ORG } from "@/config/org";
+import { Building2, ShieldCheck, QrCode, ArrowRight, HelpCircle } from "lucide-react";
 
 export default function DonatePage() {
   return (
-    <div className="bg-cream min-h-screen">
+    <div className="bg-cream min-h-screen text-ink flex flex-col">
+      {/* 1. Page Hero */}
       <PageHero
-        title="Give With Purpose. Support Work That Matters."
-        description="Your contribution supports MECT's documented charitable activities and programme objectives. Choose how you would like to participate and review the applicable donation terms before proceeding."
+        title="Support Our Work Across Odisha"
+        description="Every contribution directly supports education, women's vocational livelihoods, safe drinking water, food security, and community relief in Western Odisha."
         breadcrumbs={[{ label: "Donate" }]}
       />
 
-      <section className="py-10 sm:py-14">
-        <Container size="default" className="max-w-5xl space-y-10">
-          <Suspense
-            fallback={
-              <div className="bg-white border border-border-soft rounded-xs p-10 text-center text-sm text-ink-muted">
-                Loading unified donation portal...
+      <section className="py-10 sm:py-16 flex-1">
+        <Container size="default" className="max-w-5xl space-y-12">
+          {/* Plain Language Donation Policy Notice */}
+          <div className="p-5 sm:p-6 bg-sand/20 rounded-xl border border-sand/40 space-y-2">
+            <div className="flex items-center gap-2 text-forest font-bold text-xs uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4 text-forest" />
+              <span>Institutional Contribution Policy</span>
+            </div>
+            <p className="text-sm sm:text-base font-semibold text-forest leading-relaxed">
+              Donations are accepted by bank transfer / UPI. A receipt is issued after the Trust verifies the transfer.
+            </p>
+            <p className="text-xs text-ink-muted leading-relaxed">
+              MECT does not operate online payment gateway checkouts. All contributions are received directly into the Trust&apos;s verified State Bank of India account without private payment processor intermediaries.
+            </p>
+          </div>
+
+          {/* Server-Rendered Bank Credentials (100% Accessible with JS Disabled) */}
+          <div className="p-6 sm:p-8 bg-white rounded-xl border border-sand/40 shadow-xs space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-sand/30">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-forest text-cream flex items-center justify-center shrink-0">
+                  <Building2 className="w-5 h-5 text-sand" />
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-forest tracking-wider block">
+                    Official Trust Account
+                  </span>
+                  <h2 className="font-serif text-xl sm:text-2xl font-bold text-forest">
+                    {MECT_ORG.bank.bankName}
+                  </h2>
+                </div>
               </div>
-            }
-          >
-            <UnifiedDonationExperience />
-          </Suspense>
+              <Badge variant="forest" size="md">
+                Verified Domestic Account
+              </Badge>
+            </div>
 
-          {/* Institutional Transparency & Statutory Receipting Information */}
-          <div className="border-t border-border-soft pt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-ink-muted">
-            <div className="bg-white border border-border-soft rounded-xs p-5 space-y-2">
-              <h3 className="font-serif font-bold text-forest text-sm">Receipt &amp; Acknowledgment</h3>
+            {/* Semantic Table of Bank Credentials */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm font-sans">
+                <tbody className="divide-y divide-sand/20">
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest w-1/3">
+                      Account Name:
+                    </th>
+                    <td className="py-3 text-ink font-semibold">
+                      {MECT_ORG.bank.accountHolder}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                      Account Number:
+                    </th>
+                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
+                      {MECT_ORG.bank.accountNumber}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                      IFSC Code:
+                    </th>
+                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
+                      {MECT_ORG.bank.ifsc}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                      Bank Branch:
+                    </th>
+                    <td className="py-3 text-ink">
+                      {MECT_ORG.bank.branch}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                      Account Type:
+                    </th>
+                    <td className="py-3 text-ink">
+                      {MECT_ORG.bank.accountType}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                      UPI ID (VPA):
+                    </th>
+                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base">
+                      {MECT_ORG.bank.upiId}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Direct UPI Scan / Deep Link */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-sand/15 rounded-lg border border-sand/30 text-xs">
+              <div className="flex items-center gap-2">
+                <QrCode className="w-4 h-4 text-forest shrink-0" />
+                <span className="text-ink-muted">
+                  Transfer via Google Pay, PhonePe, Paytm, BHIM, or any UPI app using VPA:{" "}
+                  <strong className="text-forest font-mono">{MECT_ORG.bank.upiId}</strong>
+                </span>
+              </div>
+              <a
+                href={`upi://pay?pa=${MECT_ORG.bank.upiId}&pn=${encodeURIComponent(MECT_ORG.bank.accountHolder)}&cu=INR`}
+                className="px-4 py-2 rounded-md bg-forest text-cream font-semibold hover:bg-forest-deep transition-colors whitespace-nowrap shadow-xs"
+              >
+                Open UPI App
+              </a>
+            </div>
+          </div>
+
+          {/* Interactive Programme Selector and "I Have Donated" Form */}
+          <DonationClaimSection />
+
+          {/* Institutional Transparency & Verification Notice */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-ink-muted pt-4">
+            <div className="bg-white border border-sand/30 rounded-xl p-5 space-y-2">
+              <h3 className="font-serif font-bold text-forest text-sm">Receipt Verification Process</h3>
               <p className="leading-relaxed">
-                Every verified contribution generates an auditable, serialized <strong>Official Donation Receipt &amp; Payment Acknowledgement (PDF)</strong> with a cryptographic SHA-256 hash. Receipts are queued to our transactional outbox for email delivery and permanently accessible in your authenticated Donor Portal.
+                Our accounts team reconciles incoming transfers against our daily State Bank of India ledger. An official receipt is dispatched to your registered email address upon verification.
               </p>
             </div>
 
-            <div className="bg-white border border-border-soft rounded-xs p-5 space-y-2">
-              <h3 className="font-serif font-bold text-forest text-sm">Statutory Tax Reporting Policy</h3>
+            <div className="bg-white border border-sand/30 rounded-xl p-5 space-y-2">
+              <h3 className="font-serif font-bold text-forest text-sm">Tax Treatment Notice</h3>
               <p className="leading-relaxed">
-                MECT holds historical registration orders under Section 12A (URN: AADTM5474FE20231) and Section 80G (URN: AADTM5474FF20241). Under the Income-tax Act, 2025 (Section 354, Rule 190), statutory certificates (Form 114) are generated following electronic filing of the donation statement (Form 113). Current tax year 80G claims remain subject to Chartered Accountant verification.
-              </p>
-            </div>
-
-            <div className="bg-white border border-border-soft rounded-xs p-5 space-y-2">
-              <h3 className="font-serif font-bold text-forest text-sm">Fund Administration &amp; Processing</h3>
-              <p className="leading-relaxed">
-                Donations are administered in accordance with MECT&apos;s charitable objectives and applicable donation terms. Applicable bank or payment processing charges may apply. If you encounter any payment error, double-debit, or UTR reconciliation inquiry, contact MECT Accounts directly at{" "}
-                <a href="mailto:mect220@gmail.com" className="text-terracotta-dark font-semibold underline hover:text-forest">
-                  mect220@gmail.com
-                </a>{" "}
-                or call{" "}
-                <a href="tel:+919853608113" className="text-terracotta-dark font-semibold underline hover:text-forest">
-                  9853608113
-                </a>.
+                {MECT_ORG.taxNotice} Historical registration orders (12A &amp; 80G) are catalogued in the public disclosures vault for factual review.
               </p>
             </div>
           </div>
         </Container>
       </section>
+
+      {/* Statutory Disclosures Strip */}
+      <StatutoryStrip />
     </div>
   );
 }
