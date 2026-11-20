@@ -105,9 +105,9 @@ export const ABOUT_CONTENT = {
       tag: "Ethos",
     },
     {
-      title: "Non-Sectarian Universality",
+      title: "Universal Civic Inclusion",
       description:
-        "Strictly neutral and non-denominational. Open to all deserving citizens across Odisha regardless of caste, creed, gender, or background.",
+        "Open to all beneficiaries across Odisha regardless of caste, creed, or gender, ensuring equal access to education, water, livelihoods, and relief.",
       icon: Users,
       tag: "Inclusion",
     },
@@ -117,10 +117,10 @@ export const ABOUT_CONTENT = {
     {
       tier: "Tier 1",
       title: "Board of Trustees",
-      role: "Fiduciary Stewardship & Charter Custodians",
+      role: "Trustee Stewardship & Charter Custodians",
       description:
         "Led by Settler Founder & Chairman cum Managing Trustee Er. Japabandhu Kampa alongside the Honorary Board of Trustees under registered Trust Deed No. 40311302194.",
-      status: "Honorary Fiduciary Governance (Deed Clause XVI)",
+      status: "Honorary Trustee Governance (Deed Clause XVI)",
       icon: Landmark,
     },
     {

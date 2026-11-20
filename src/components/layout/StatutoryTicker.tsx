@@ -18,47 +18,25 @@ export interface TickerAnnouncement {
 
 export const APPROVED_ANNOUNCEMENTS: TickerAnnouncement[] = [
   {
-    id: "ann-01",
-    text: "A Divine Vision in Progress — Proposed 80–100-Foot Hanuman Murti Project.",
-    href: "/campaigns/hanuman-murti",
-    isHighlight: true,
-  },
-  {
-    id: "ann-02",
-    text: "Join Mahaveer Educational & Charitable Trust in Supporting the Proposed Grand Hanuman Murti Initiative.",
-    href: "/campaigns/hanuman-murti",
-    isHighlight: true,
-  },
-  {
-    id: "ann-03",
-    text: "Be Part of Our Collective Vision — Support the Hanuman Murti Fundraising Campaign.",
-    href: "/donate?programme=HANUMAN_MURTI",
-  },
-  {
-    id: "ann-04",
-    text: "Every Contribution Matters — Support This Proposed Monumental Initiative.",
-    href: "/donate?programme=HANUMAN_MURTI",
-  },
-  {
-    id: "ann-05",
-    text: "Faith, Devotion and Community Participation — Join the Journey of the Proposed Hanuman Murti Project.",
-    href: "/campaigns/hanuman-murti",
-    isHighlight: true,
-  },
-  {
-    id: "ann-06",
-    text: "Explore Our Educational, Sports and Community Welfare Initiatives.",
-    href: "/programmes",
-  },
-  {
-    id: "ann-07",
-    text: "Proposed Target — Up to 200 Students, Subject to Formal Board Sanction and Confirmed Funding.",
+    id: "ann-edu",
+    text: "Education & Learning — Remedial tuition hubs and study materials for rural Balangir students.",
     href: "/programmes#education",
   },
   {
-    id: "ann-08",
-    text: "Discover MECT's Education, Sports and Extracurricular Activities.",
-    href: "/programmes#sports-extracurricular",
+    id: "ann-water-food",
+    text: "Jal Seva & Jan Ahar — Safe summer drinking water and hospital food relief in Odisha.",
+    href: "/programmes#water",
+  },
+  {
+    id: "ann-women",
+    text: "Swavalamban — Certified vocational tailoring and self-reliance skills for rural women.",
+    href: "/programmes#women-empowerment",
+  },
+  {
+    id: "ann-murti",
+    text: "Shri Hanuman Murti — Proposed 80–100-foot cultural landmark (feasibility stage).",
+    href: "/campaigns/hanuman-murti",
+    isHighlight: true,
   },
 ];
 
@@ -135,32 +113,24 @@ export function StatutoryTicker() {
             ) : (
               <div className="relative overflow-clip whitespace-nowrap text-[11px] sm:text-xs text-white/95 min-w-0 flex-1 [contain:paint_layout] [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
                 <div
-                  className="inline-flex items-center animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] font-medium [contain:layout]"
+                  className="inline-flex items-center gap-6 animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] font-medium [contain:layout]"
                   style={{ animationPlayState: isPaused ? "paused" : undefined }}
                 >
-                  {[0, 1].map((dup) => (
-                    <span
-                      key={dup}
-                      aria-hidden={dup === 1}
-                      inert={dup === 1 ? true : undefined}
-                      className="inline-flex items-center shrink-0 pr-6"
-                    >
-                      {APPROVED_ANNOUNCEMENTS.map((item) => (
-                        <span key={`${dup}-${item.id}`} className="inline-flex items-center">
-                          <span className="mx-3 text-sand/85" aria-hidden="true">
-                            •
-                          </span>
-                          <Link
-                            href={item.href}
-                            tabIndex={dup === 1 ? -1 : 0}
-                            className={`hover:text-sand transition-colors ${
-                              item.isHighlight ? "font-semibold text-sand-light" : "text-white/95"
-                            }`}
-                          >
-                            {item.text}
-                          </Link>
+                  {APPROVED_ANNOUNCEMENTS.map((item, idx) => (
+                    <span key={item.id} className="inline-flex items-center shrink-0">
+                      {idx > 0 && (
+                        <span className="mx-3 text-sand/85" aria-hidden="true">
+                          •
                         </span>
-                      ))}
+                      )}
+                      <Link
+                        href={item.href}
+                        className={`hover:text-sand transition-colors ${
+                          item.isHighlight ? "font-semibold text-sand-light" : "text-white/95"
+                        }`}
+                      >
+                        {item.text}
+                      </Link>
                     </span>
                   ))}
                 </div>
