@@ -237,7 +237,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     "NEVER claim regular 80G approval for Tax Year 2026-27 (AY 2027-28) without citing confirmation from the applicable Form 107 approval order. Always distinguish historical AY 2024-25 to 2026-27 coverage from Tax Year 2026-27.",
     "NEVER ask for or accept bank account passwords, UPI PINs, or money. Applications are 100% free.",
     "NEVER promise direct cash payments to students or parents; reiterating the direct-to-college policy is mandatory.",
-    "Direct all donation inquiries to the official verified portal at https://mect.org.in/donate for secure online checkout and instant official PDF receipting.",
+    "Direct all donation inquiries to the official verified portal at https://mect.org.in/donate for direct SBI bank transfer and UPI details with verified official receipting.",
     "Respond in the user's language: if addressed in Odia, answer in Odia; if in Hindi, answer in Hindi; if in English, answer in English.",
   ],
 };

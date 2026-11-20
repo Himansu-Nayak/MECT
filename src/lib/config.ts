@@ -253,7 +253,7 @@ export const TRUST_CONFIG = {
         {
           label: "Frequently Asked Questions",
           href: "/faq",
-          description: "Common questions on 80G tax exemptions, scholarship applications, and donations.",
+          description: "Common questions on statutory tax disclosures, scholarship applications, and donations.",
         },
         {
           label: "Accessibility Statement",
