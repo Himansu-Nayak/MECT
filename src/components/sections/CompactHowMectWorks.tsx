@@ -65,7 +65,7 @@ export function CompactHowMectWorks() {
             How MECT Works
           </h2>
           <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
-            A disciplined four-step operating approach connecting grassroots community needs with fiduciary governance and transparent field execution.
+            A disciplined four-step operating approach connecting grassroots community needs with responsible trustee governance and transparent field execution.
           </p>
         </Reveal>
 
@@ -105,7 +105,7 @@ export function CompactHowMectWorks() {
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-terracotta-dark hover:text-forest transition-colors font-sans"
           >
             <ShieldCheck className="w-4 h-4 text-terracotta" aria-hidden="true" />
-            <span>Read our complete Fiduciary Charter &amp; Governance Code</span>
+            <span>Read our complete Governance Charter &amp; Trust Code</span>
             <ArrowRight className="w-3.5 h-3.5 ml-0.5" aria-hidden="true" />
           </Link>
         </div>

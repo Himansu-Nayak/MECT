@@ -371,7 +371,7 @@ export function InterconnectedSafetyNetSection() {
                   </div>
                 </div>
 
-                {/* Fiduciary Guarantee */}
+                {/* Trust Guarantee */}
                 <div className="pt-2 text-xs text-cream/70 font-sans leading-relaxed">
                   <span className="text-[#E5C499] font-mono font-bold uppercase text-[10px] block">
                     Accounting Assurance:

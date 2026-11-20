@@ -110,7 +110,7 @@ export default function AboutPage() {
             <>
               <Link href="/governance">
                 <Button variant="gold" size="sm">
-                  <span>Fiduciary Governance</span>
+                  <span>Trustee Governance</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
                 </Button>
               </Link>
@@ -265,7 +265,7 @@ export default function AboutPage() {
         >
           <Container size="default" className="space-y-14">
             <SectionHeader
-              badge="Fiduciary Governance Structure"
+              badge="Trustee Governance Structure"
               title="Organizational & Oversight Architecture"
               subtitle="Mahaveer Educational & Charitable Trust (MECT) operates under a multi-tier governance model designed to prevent conflict of interest, eliminate administrative bias, and guarantee institutional accountability."
               align="center"
@@ -326,7 +326,7 @@ export default function AboutPage() {
               </div>
               <Link href="/governance" className="shrink-0">
                 <Button variant="secondary" size="sm">
-                  <span>View Fiduciary Charter</span>
+                  <span>View Governance Charter</span>
                   <ChevronRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
                 </Button>
               </Link>

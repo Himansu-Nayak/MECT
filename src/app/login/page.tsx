@@ -242,7 +242,7 @@ function LoginContent() {
               </div>
             </div>
 
-            {/* Fiduciary Assurance Footer */}
+            {/* Trust Assurance Footer */}
             <div className="pt-6 border-t border-white/15 relative z-10 text-[11px] text-cream/70 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-sand shrink-0" />
               <span>Multi-channel zero-trust OTP authentication ensures auditable transparency.</span>

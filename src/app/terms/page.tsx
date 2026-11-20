@@ -65,7 +65,7 @@ const CLAUSES = [
   },
   {
     number: "07",
-    title: "Limitation of Fiduciary Liability & Dispute Jurisdiction",
+    title: "Limitation of Liability & Dispute Jurisdiction",
     summary:
       "To the maximum extent permitted by applicable Indian law, Mahaveer Educational & Charitable Trust (MECT), its Board of Trustees, and executive officers shall not be held liable for indirect or consequential damages arising from website technical interruptions, third-party internet disruptions, or delays in institutional verification. All disputes arising from trust operations shall fall within the exclusive jurisdiction of the competent courts in Bhubaneswar or Cuttack, Odisha.",
   },
@@ -115,7 +115,7 @@ export default function TermsPage() {
       <section className="py-16 md:py-24 bg-cream">
         <Container size="narrow">
           <SectionHeader
-            badge="Fiduciary Governance"
+            badge="Trustee Governance"
             title="Institutional Clauses of Engagement"
             subtitle="Please review these foundational understandings prior to applying for scholarships or utilizing Trust services."
           />

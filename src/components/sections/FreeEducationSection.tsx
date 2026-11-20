@@ -560,12 +560,12 @@ export function FreeEducationSection() {
               })}
             </div>
 
-            {/* Fiduciary Disbursal Standard Callout */}
+            {/* Direct Disbursal Standard Callout */}
             <div className="p-4 rounded-xs bg-sand-light/60 border border-sand text-xs font-sans text-forest flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-start gap-2.5">
                 <Landmark className="w-4 h-4 text-terracotta-dark shrink-0 mt-0.5" aria-hidden="true" />
                 <p className="leading-relaxed">
-                  <strong>Strict Zero-Cash Fiduciary Standard:</strong> No scholarship disbursements are made in cash or handed to students or intermediaries. Approved tuition fee assistance is remitted directly to the verified official bank account of the educational institution.
+                  <strong>Strict Zero-Cash Standard:</strong> No scholarship disbursements are made in cash or handed to students or intermediaries. Approved tuition fee assistance is remitted directly to the verified official bank account of the educational institution.
                 </p>
               </div>
               <Link href="/scholarships" className="shrink-0 text-terracotta-dark hover:text-forest font-bold inline-flex items-center gap-1 transition-colors">

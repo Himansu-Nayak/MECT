@@ -629,7 +629,7 @@ export function ReportsLibrarySection({ initialDocuments }: ReportsLibrarySectio
         <div className="p-8 bg-forest text-white rounded-xs border border-border-warm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <Badge variant="forest-dark" size="sm">
-              Institutional Fiduciary Right
+              Statutory Transparency Right
             </Badge>
             <h3 className="font-serif text-2xl font-bold text-white">
               Official Document Inspection at the Trust Secretariat

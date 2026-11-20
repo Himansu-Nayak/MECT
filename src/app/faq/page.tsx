@@ -102,7 +102,7 @@ const GOVERNANCE_FAQS: FAQItem[] = [
     category: "Governance",
     question: "What is the statutory and legal registration status of the Trust?",
     answer:
-      "Mahaveer Educational & Charitable Trust (MECT) is established as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882, governed by a public Fiduciary Deed with registration under Sections 12AB and 80G of the Income-tax Act, 1961.",
+      "Mahaveer Educational & Charitable Trust (MECT) is established as an irrevocable public charitable educational trust under the Indian Trusts Act, 1882, governed by a registered public Trust Deed with registration under Sections 12AB and 80G of the Income-tax Act, 1961.",
   },
   {
     category: "Governance",
@@ -395,7 +395,7 @@ export default function FAQPage() {
                 <Container size="narrow">
                   <SectionHeader
                     badge="Statutory Governance & Audit"
-                    title="Fiduciary Oversight & Impartiality"
+                    title="Independent Oversight & Impartiality"
                     subtitle="Legal registration, non-conflict charters, Form 10B public audits, and Trustee governance."
                   />
                   <div className="mt-8 bg-cream p-6 sm:p-8 rounded-xs border border-border-warm shadow-sm">

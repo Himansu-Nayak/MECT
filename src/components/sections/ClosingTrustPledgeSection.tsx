@@ -18,12 +18,12 @@ import {
 } from "lucide-react";
 
 /**
- * MECT Phase 26 — Section 10: Closing Institutional Fiduciary Manifesto
+ * MECT Phase 26 — Section 10: Closing Institutional Trust Commitment
  *
  * Concludes the homepage with a solemn editorial composition, displaying
- * the Board's fiduciary pledge, canonical contact coordinates, and clear actions.
+ * the Board's institutional pledge, canonical contact coordinates, and clear actions.
  */
-export function ClosingFiduciaryPledgeSection() {
+export function ClosingTrustPledgeSection() {
   return (
     <section
       id="closing-pledge"

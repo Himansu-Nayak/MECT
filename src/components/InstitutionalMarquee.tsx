@@ -40,7 +40,7 @@ export function InstitutionalMarquee() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-[10px] uppercase font-bold tracking-widest text-forest">
-              Statutory Accreditations &amp; Fiduciary Standards
+              Statutory Accreditations &amp; Public Standards
             </span>
             {!shouldReduceMotion && (
               <button

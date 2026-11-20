@@ -28,7 +28,7 @@ import {
  * MECT Phase 27 — Section 02: Institutional Story & Historical Manifesto
  *
  * Immersive upgrade with:
- * - Sequenced stagger for the 3 core fiduciary covenants
+ * - Sequenced stagger for the 3 core trustee covenants
  * - ImageReveal with subtle zoom-settling for the campus photograph
  * - Interactive chronological deed milestones drawer
  */
@@ -71,7 +71,7 @@ export function InstitutionalStorySection() {
           <Reveal direction="up">
             <div className="inline-flex items-center gap-2 rounded-xs border border-terracotta/30 bg-terracotta/10 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-terracotta-dark shadow-xs">
               <Landmark className="w-3.5 h-3.5 text-terracotta-dark shrink-0" aria-hidden="true" />
-              <span>Section 02 • Institutional Heritage &amp; Fiduciary Roots</span>
+              <span>Section 02 • Institutional Heritage &amp; Founding Values</span>
             </div>
           </Reveal>
 
@@ -102,7 +102,7 @@ export function InstitutionalStorySection() {
 
         {/* Main Narrative & Photographic Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          {/* Left Column: Core Fiduciary Ledger (Col 1-7) */}
+          {/* Left Column: Core Governance Ledger (Col 1-7) */}
           <div className="lg:col-span-7 space-y-6">
             <Reveal direction="up" delay={0.12} className="space-y-5">
               <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">

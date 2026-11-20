@@ -63,7 +63,7 @@ export const HOMEPAGE_CONTENT = {
         href: "/programmes",
       },
       governance: {
-        text: "Fiduciary Charter & Board",
+        text: "Governance Charter & Board",
         href: "/governance",
       },
       csr: {
@@ -101,7 +101,7 @@ export const HOMEPAGE_CONTENT = {
       iconName: "School",
     },
     {
-      title: "Honorary Fiduciary Board",
+      title: "Honorary Board of Trustees",
       subtitle: "Non-Remunerative Governance (Clause XVI)",
       iconName: "CheckCircle2",
     },
@@ -331,7 +331,7 @@ export const HOMEPAGE_CONTENT = {
     },
     {
       step: "04",
-      title: "Fiduciary Oversight & Audit",
+      title: "Independent Oversight & Audit",
       description:
         "Direct institutional bank disbursal, annual independent chartered accountant auditing, and statutory compliance.",
       iconName: "ShieldCheck",

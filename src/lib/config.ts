@@ -156,7 +156,7 @@ export const TRUST_CONFIG = {
         {
           label: "Governance & Board",
           href: "/governance",
-          description: "Registered Trust Deed, managing trustee, and honorary fiduciary code.",
+          description: "Registered Trust Deed, managing trustee, and honorary governance code.",
         },
         {
           label: "Statutory Disclosures",

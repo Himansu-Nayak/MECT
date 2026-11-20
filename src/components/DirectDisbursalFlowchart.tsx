@@ -69,7 +69,7 @@ export function DirectDisbursalFlowchart() {
             variant="gold-dark"
             icon={<Lock className="w-3.5 h-3.5 text-sand" aria-hidden="true" />}
           >
-            Zero-Cash Policy • Fiduciary Integrity
+            Zero-Cash Policy • Complete Financial Integrity
           </Badge>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
             Direct-to-College Disbursal Standard
@@ -144,7 +144,7 @@ export function DirectDisbursalFlowchart() {
         <div className="bg-forest-deep border border-sand/30 rounded-xs p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-md">
           <div className="space-y-1.5 text-center lg:text-left">
             <span className="text-xs uppercase font-bold tracking-widest text-sand block">
-              Fiduciary Commitment
+              Trust Commitment
             </span>
             <h4 className="font-serif text-xl sm:text-2xl font-bold text-white">
               No Intermediary Agents. Zero Processing Commissions.
@@ -157,7 +157,7 @@ export function DirectDisbursalFlowchart() {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/governance">
               <Button variant="gold" size="md">
-                <span>View Fiduciary Charter</span>
+                <span>View Governance Charter</span>
                 <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
               </Button>
             </Link>

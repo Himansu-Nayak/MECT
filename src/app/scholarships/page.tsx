@@ -96,7 +96,7 @@ export default function ScholarshipsPage() {
       title: "4. Direct Bank Disbursal",
       description:
         "100% of the approved grant is remitted directly to the college bursar via bank RTGS. The official receipt is confirmed and mentor paired with scholar.",
-      detail: "Fiduciary zero-cash policy strictly enforced.",
+      detail: "Strict zero-cash policy enforced.",
     },
   ];
 
@@ -141,7 +141,7 @@ export default function ScholarshipsPage() {
     {
       question: "How is the scholarship fee disbursed?",
       answer:
-        "Under our strict fiduciary charter, 100% of approved tuition fee assistance is remitted directly via bank RTGS/NEFT to the accredited college or university account where the scholar is enrolled. No cash is ever transferred to students, family members, or third-party intermediaries.",
+        "Under our strict governance charter, 100% of approved tuition fee assistance is remitted directly via bank RTGS/NEFT to the accredited college or university account where the scholar is enrolled. No cash is ever transferred to students, family members, or third-party intermediaries.",
     },
     {
       question: "Are there any application or registration fees charged by MECT?",

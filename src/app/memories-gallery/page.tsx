@@ -207,7 +207,7 @@ export default function MemoriesGalleryPage() {
           <div className="max-w-4xl mx-auto rounded-xs border border-border-warm bg-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center md:text-left">
               <span className="text-[11px] font-bold uppercase tracking-wider text-terracotta-dark font-sans block">
-                Fiduciary Oversight
+                Independent Oversight
               </span>
               <h3 className="font-serif text-lg sm:text-xl font-bold text-forest">
                 Verify Official Trust Filings &amp; Audited Statements

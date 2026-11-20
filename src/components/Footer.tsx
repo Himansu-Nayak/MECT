@@ -30,7 +30,7 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-bold text-white tracking-wider uppercase text-[11px] font-sans">
-                    Statutory &amp; Fiduciary Disclosure (Govt. of India / Govt. of Odisha)
+                    Statutory &amp; Institutional Disclosure (Govt. of India / Govt. of Odisha)
                   </span>
                   <Badge variant="gold-dark" size="sm">
                     12A &amp; 80G Recorded
@@ -372,7 +372,7 @@ export function Footer() {
               href="/governance"
               className="inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
             >
-              Fiduciary Charter
+              Governance Charter
             </Link>
           </div>
         </div>

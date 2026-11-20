@@ -574,7 +574,7 @@ export default function AdminAutomatedDemoPage() {
               Public Documents &amp; Statutory Records Lifecycle
             </h3>
             <p className="text-xs text-ink-muted">
-              Documents advance through a strict multi-stage fiduciary lifecycle before publication.
+              Documents advance through a strict multi-stage governance lifecycle before publication.
             </p>
           </div>
 
@@ -617,7 +617,7 @@ export default function AdminAutomatedDemoPage() {
         <Card padding="lg" className="bg-white border-border-warm space-y-5">
           <div>
             <h3 className="font-serif font-bold text-forest text-lg">
-              Notification Outbox &amp; Fiduciary Audit Logs
+              Notification Outbox &amp; System Audit Logs
             </h3>
             <p className="text-xs text-ink-muted">
               Transactional receipts and system administrative events are preserved in immutable outbox logs.

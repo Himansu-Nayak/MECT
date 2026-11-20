@@ -84,7 +84,7 @@ export default function PrivacyPage() {
       <PageHero
         badge="Data Protection & Ethics"
         title="Privacy & Student Confidentiality Policy"
-        description="Our fiduciary commitment to safeguarding student data, applicant economic records, and communication integrity in accordance with the Digital Personal Data Protection Act, 2023."
+        description="Our institutional commitment to safeguarding student data, applicant economic records, and communication integrity in accordance with the Digital Personal Data Protection Act, 2023."
         breadcrumbs={[{ label: "Privacy Policy" }]}
       />
 
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
       <section className="py-16 md:py-24 bg-cream">
         <Container size="narrow">
           <SectionHeader
-            badge="Fiduciary Safeguards"
+            badge="Privacy & Accountability Safeguards"
             title="Data Governance & Confidentiality Framework"
             subtitle="Transparent guidelines governing how applicant data is collected, processed, and safeguarded across all Trust operations."
           />

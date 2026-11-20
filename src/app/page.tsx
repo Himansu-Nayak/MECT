@@ -9,7 +9,7 @@ import { DocumentaryFieldExhibitionSection } from "@/components/sections/Documen
 import { DifferentiatedCampaignsSection } from "@/components/sections/DifferentiatedCampaignsSection";
 import { StatutoryGovernanceSection } from "@/components/sections/StatutoryGovernanceSection";
 import { TailoredParticipationPathwaysSection } from "@/components/sections/TailoredParticipationPathwaysSection";
-import { ClosingFiduciaryPledgeSection } from "@/components/sections/ClosingFiduciaryPledgeSection";
+import { ClosingTrustPledgeSection } from "@/components/sections/ClosingTrustPledgeSection";
 
 /**
  * Mahaveer Educational & Charitable Trust (MECT) — Institutional Master Homepage
@@ -60,7 +60,7 @@ export default function HomePage() {
       <TailoredParticipationPathwaysSection />
 
       {/* SECTION 10: The Closing Message (Earned Institutional Statement & Canonical Contact) */}
-      <ClosingFiduciaryPledgeSection />
+      <ClosingTrustPledgeSection />
     </div>
   );
 }

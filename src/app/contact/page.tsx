@@ -530,7 +530,7 @@ export default function ContactPage() {
 
                 <p className="text-[11px] text-ink-sand text-center pt-2 leading-relaxed">
                   <ShieldCheck className="w-3.5 h-3.5 text-terracotta-dark inline mr-1 -mt-0.5" />
-                  <strong>Statutory Privacy Guarantee:</strong> Mahaveer Educational &amp; Charitable Trust (MECT) never shares, sells, or monetizes inquiry data. All submissions are processed strictly for educational administration and statutory fiduciary compliance.
+                  <strong>Statutory Privacy Guarantee:</strong> Mahaveer Educational &amp; Charitable Trust (MECT) never shares, sells, or monetizes inquiry data. All submissions are processed strictly for educational administration and statutory compliance and public accountability.
                 </p>
               </form>
             )}

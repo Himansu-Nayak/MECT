@@ -186,7 +186,7 @@ export default function HanumanMurtiCampaignPage() {
                 </div>
 
                 <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xs text-xs text-amber-950 space-y-1">
-                  <strong>Fiduciary Truth in Disclosures:</strong> This project is currently in the conceptual design, land appraisal, and architectural feasibility phase. Civil construction has not yet commenced. MECT makes no unverified claims regarding height superlatives and operates strictly within documented institutional milestones.
+                  <strong>Honesty &amp; Transparency in Disclosures:</strong> This project is currently in the conceptual design, land appraisal, and architectural feasibility phase. Civil construction has not yet commenced. MECT makes no unverified claims regarding height superlatives and operates strictly within documented institutional milestones.
                 </div>
               </Reveal>
             </div>

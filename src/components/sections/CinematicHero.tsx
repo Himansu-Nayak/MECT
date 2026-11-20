@@ -192,7 +192,7 @@ export function CinematicHero() {
                 </div>
               </div>
 
-              {/* Floating Fiduciary Guarantee Plaque with Delayed Stagger */}
+              {/* Floating Trust Guarantee Plaque with Delayed Stagger */}
               <div
                 className="hidden sm:flex absolute -bottom-5 -left-5 xl:-bottom-6 xl:-left-6 max-w-xs p-3.5 rounded-[2px] bg-[#16221D]/96 border border-[#C4924A]/40 shadow-xl backdrop-blur-md z-20 items-start gap-3 pointer-events-none"
               >

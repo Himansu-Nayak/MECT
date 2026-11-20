@@ -240,12 +240,12 @@ export default function CSRPartnershipsPage() {
         </Container>
       </section>
 
-      {/* 4. Corporate Governance & Fiduciary Assurance */}
+      {/* 4. Corporate Governance & Financial Assurance */}
       <section className="relative overflow-hidden py-20 bg-terracotta text-white border-y border-sand/30">
         <DotField />
         <Container size="default" className="relative z-10 space-y-12">
           <SectionHeader
-            badge="Fiduciary Integrity"
+            badge="Financial Integrity & Trust"
             title="The MECT Corporate Governance Guarantee"
             subtitle="Built to satisfy corporate CSR committees, board oversight panels, and statutory auditors."
             align="center"

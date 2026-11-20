@@ -31,7 +31,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function GovernancePage() {
-  const fiduciaryPrinciples = [
+  const governancePrinciples = [
     {
       title: "Charitable Purpose Exclusivity",
       clause: "Deed Clauses 23, 24 & 25",
@@ -400,7 +400,7 @@ export default function GovernancePage() {
 
       {/* 5. Section 03: The Governance Charter & Fundamental Principles */}
       <section
-        id="fiduciary-charter"
+        id="governance-charter"
         className="py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-20"
         aria-label="Governance Charter"
       >
@@ -413,7 +413,7 @@ export default function GovernancePage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {fiduciaryPrinciples.map((item, index) => {
+            {governancePrinciples.map((item, index) => {
               const Icon = item.icon;
               return (
                 <Card

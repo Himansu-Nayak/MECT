@@ -53,7 +53,7 @@ export const ABOUT_CONTENT = {
     ],
     safeguards: [
       {
-        title: "100% Direct Disbursals & Fiduciary Integrity",
+        title: "100% Direct Disbursals & Financial Integrity",
         description:
           "All educational scholarship subsidies are remitted directly to accredited institutions via verified bank transfers under a strict zero-cash policy.",
       },
@@ -84,7 +84,7 @@ export const ABOUT_CONTENT = {
 
   values: [
     {
-      title: "Fiduciary Integrity",
+      title: "Financial Integrity & Trust",
       description:
         "100% of approved scholarship subsidies are remitted directly to accredited colleges. Governed by registered deed with mandatory annual audits.",
       icon: ShieldCheck,
