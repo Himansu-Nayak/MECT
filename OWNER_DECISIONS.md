@@ -62,14 +62,13 @@ Locations updated and logged for CA verification:
 
 ## 3. Photographs & Field Media Inventory
 
-Per Hard Constraint 4 and P1-5, no stock photos have been added. The following placeholders/Wikimedia hero images require authentic field photography replacements:
+Per Hard Constraint 4 and P1-5, no stock photos have been added. Full public media audit is registered in `audit/PHOTO_INVENTORY.md`. The following illustrative/placeholder assets require authentic field photography replacements from Trust field operations:
 
-- [ ] **Homepage Hero Banner:** Currently uses verified regional photography. Needs high-resolution photo of MECT community activities in Balangir.
-- [ ] **Education & Learning Section:** Needs authentic photos of MECT remedial classes / tribal students receiving learning materials.
-- [ ] **Women Empowerment Section:** Needs authentic photos of the Swavalamban tailoring / vocational training centre in Rugudipara.
-- [ ] **Safe Water (Jal Seva) Section:** Needs authentic photos of Jal Seva summer drinking water booths.
-- [ ] **Food Relief (Jan Ahar) Section:** Needs authentic photos of community meal distribution at Balangir hospital / rural settlements.
-- [ ] **Shri Hanuman Murti (Cultural Landmark):** Currently labeled "Proposed / Feasibility Stage". Needs architectural sketch or site location photo when available.
+- [ ] **Needs real field photo from Balangir Library / Community Learning Centre:** currently using `/images/hero/illustrative-community-library-reading.webp` in `FreeEducationSection.tsx` and `/programmes`.
+- [ ] **Needs real field photo from Balangir Child Outreach:** currently using `/images/hero/illustrative-child-support-outreach.webp`.
+- [ ] **Needs real field photo from Women SHG Cluster:** currently using `/images/hero/illustrative-women-self-help-group.webp` in `/programmes`.
+- [ ] **Needs real field photo from Shri Hanuman Murti proposed site:** currently in architectural 3D feasibility modeling stage.
+- [ ] **High-Resolution Field Archive Batch:** Request high-resolution camera originals from Balangir and Rayagada field units for future exhibition expansion.
 
 ---
 
