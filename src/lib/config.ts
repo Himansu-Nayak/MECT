@@ -52,7 +52,7 @@ export const TRUST_CONFIG = {
     section80GUrn: ORG.ids.urn80G,
     section80GDin: ORG.ids.din80G,
     section80GOrderDate: ORG.ids.taxOrderDate,
-    section80GValidity: `${ORG.ids.taxOrderValidityPeriod} (50% Income Tax Exemption for Donors)`,
+    section80GValidity: ORG.ids.taxOrderValidityPeriod,
     ngoDarpanId: ORG.ids.darpan,
     mosjeAnudaanId: ORG.ids.eAnudaan,
   },
@@ -129,7 +129,8 @@ export const TRUST_CONFIG = {
     upiId: ORG.bank.upiId,
     upiBeneficiaryDisplay: ORG.bank.upiBeneficiaryDisplay,
     verifiedQrSrc: ORG.bank.verifiedQrSrc,
-    taxBenefit: `Historical approval under legacy Section 80G(5)(vi) covered ${ORG.ids.taxOrderValidityPeriod} (URN: ${ORG.ids.urn80G}, dated ${ORG.ids.taxOrderDate}). Current position for FY 2026-27 is under Chartered Accountant confirmation.`,
+    taxBenefit:
+      "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility.",
   },
 
   // Legal & Compliance Transparency Statement
