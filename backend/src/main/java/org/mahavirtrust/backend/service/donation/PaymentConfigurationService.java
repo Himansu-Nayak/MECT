@@ -1,10 +1,13 @@
 package org.mahavirtrust.backend.service.donation;
 
+import jakarta.annotation.PostConstruct;
 import org.mahavirtrust.backend.dto.donation.UpdatePaymentConfigurationRequest;
 import org.mahavirtrust.backend.entity.PaymentConfiguration;
 import org.mahavirtrust.backend.repository.DonationProgrammeRepository;
 import org.mahavirtrust.backend.repository.PaymentConfigurationRepository;
 import org.mahavirtrust.backend.service.AuditLogService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class PaymentConfigurationService {
+
+    private static final Logger log = LoggerFactory.getLogger(PaymentConfigurationService.class);
+
+    public static final String STATUTORY_BANK_NAME = "State Bank of India";
+    public static final String STATUTORY_ACCOUNT_NAME = "MAHAVEER EDUCATIONAL & CHARITABLE TRUST";
+    public static final String STATUTORY_ACCOUNT_NUMBER = "33341302498";
+    public static final String STATUTORY_IFSC = "SBIN0001701";
+    public static final String STATUTORY_UPI_ID = "86971610172@sbi";
 
     private static final List<Integer> DEFAULT_PRESETS = List.of(500, 1000, 1500, 3000, 5000, 10000);
 
@@ -28,6 +39,32 @@ public class PaymentConfigurationService {
         this.configRepository = configRepository;
         this.programmeRepository = programmeRepository;
         this.auditLogService = auditLogService;
+    }
+
+    @PostConstruct
+    public void validateStatutoryConfiguration() {
+        try {
+            PaymentConfiguration cfg = configRepository.findById(1L).orElse(null);
+            if (cfg != null) {
+                boolean accountMismatch = !STATUTORY_ACCOUNT_NUMBER.equals(cfg.getSbiAccountNumber());
+                boolean ifscMismatch = !STATUTORY_IFSC.equalsIgnoreCase(cfg.getSbiIfsc());
+                boolean upiMismatch = !STATUTORY_UPI_ID.equalsIgnoreCase(cfg.getSbiUpiId());
+
+                if (accountMismatch || ifscMismatch || upiMismatch) {
+                    log.error("CRITICAL STATUTORY MISMATCH: Database payment configuration differs from official Trust statutory passbook! "
+                            + "DB Account: {}, Expected: {}; DB IFSC: {}, Expected: {}; DB UPI: {}, Expected: {}. "
+                            + "Public pages are locked to statutory configuration.",
+                            cfg.getSbiAccountNumber(), STATUTORY_ACCOUNT_NUMBER,
+                            cfg.getSbiIfsc(), STATUTORY_IFSC,
+                            cfg.getSbiUpiId(), STATUTORY_UPI_ID);
+                } else {
+                    log.info("Payment configuration verified against Trust statutory bank configuration: SBI A/C {} / IFSC {}",
+                            STATUTORY_ACCOUNT_NUMBER, STATUTORY_IFSC);
+                }
+            }
+        } catch (Exception e) {
+            log.warn("Could not execute startup validation of payment configuration: {}", e.getMessage());
+        }
     }
 
     @Transactional

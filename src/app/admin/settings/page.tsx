@@ -216,7 +216,18 @@ export default function AdminPaymentSettingsPage() {
 
         {/* Official SBI Details */}
         <Card padding="lg" className="bg-white border-border-warm space-y-4">
-          <h2 className="font-serif font-bold text-forest text-lg">2. Official SBI Bank &amp; QR Configuration</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border-warm pb-3">
+            <h2 className="font-serif font-bold text-forest text-lg">2. Official SBI Bank &amp; QR Configuration</h2>
+            <Badge variant="terracotta" size="sm">Locked Public Page</Badge>
+          </div>
+
+          <div role="alert" className="p-3.5 rounded-xs bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+            <Lock className="w-4 h-4 shrink-0 text-amber-700 mt-0.5" />
+            <div>
+              <strong className="font-semibold block mb-0.5">Statutory Banking Guard:</strong>
+              Public bank details are locked to the Trust&apos;s statutory configuration. Editing here does not change the public page.
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-forest mb-1">Bank Name</label>
