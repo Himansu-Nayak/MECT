@@ -32,8 +32,6 @@ const YEAR_TABLE_DATA: YearReportEntry[] = [
     activityReportStatus: "Available",
     auditedStatementStatus: "Available",
     form10BStatus: "Available",
-    downloadUrl: "/reports/MECT-Annual-Report-FY2023-24.pdf",
-    fileSize: "85 KB",
     notes: "Includes 350+ student entries, 10,000+ water service instances, CBDT 12A/80G orders, and CA audit on record.",
   },
   {
@@ -42,8 +40,6 @@ const YEAR_TABLE_DATA: YearReportEntry[] = [
     activityReportStatus: "Available",
     auditedStatementStatus: "Available",
     form10BStatus: "Available",
-    downloadUrl: "/reports/MECT-Annual-Report-FY2022-23.pdf",
-    fileSize: "83 KB",
     notes: "Includes 120+ vocational tailoring enrolments, sewing toolkits, Jan Ahar meal relief at Balangir Hospital.",
   },
   {
@@ -52,8 +48,6 @@ const YEAR_TABLE_DATA: YearReportEntry[] = [
     activityReportStatus: "Available",
     auditedStatementStatus: "Available",
     form10BStatus: "Available",
-    downloadUrl: "/reports/MECT-Annual-Report-FY2021-22.pdf",
-    fileSize: "82 KB",
     notes: "Focus on post-lockdown scholastic recovery, 280+ student kit distributions, and emergency dry-ration support.",
   },
 ];
@@ -109,7 +103,7 @@ export function AnnualReportsYearTable() {
                   <th className="py-3.5 px-4 font-semibold">Activity Report</th>
                   <th className="py-3.5 px-4 font-semibold">Audited Statement</th>
                   <th className="py-3.5 px-4 font-semibold">Form 10B Status</th>
-                  <th className="py-3.5 px-4 font-semibold">Official Download Slot</th>
+                  <th className="py-3.5 px-4 font-semibold">Records &amp; Inspection Access</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border-warm">
@@ -134,7 +128,7 @@ export function AnnualReportsYearTable() {
                             <span>Download {row.fy} PDF ({row.fileSize})</span>
                           </Button>
                         </a>
-                      ) : (
+                      ) : row.activityReportStatus === "Pending" ? (
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
@@ -143,14 +137,32 @@ export function AnnualReportsYearTable() {
                             title="Audit compilation currently in progress"
                           >
                             <Clock className="w-3.5 h-3.5 text-terracotta-dark" />
-                            <span>Pending Audit</span>
+                            <span>Pending</span>
                           </button>
                           <Link
                             href="/contact?subject=FY2024-25%20Report%20Inquiry"
                             className="text-[11px] text-forest underline hover:text-terracotta-dark font-sans hidden sm:inline"
                           >
-                            Inquire with Secretariat
+                            Inquire
                           </Link>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                          <a
+                            href="#library"
+                            className="text-xs font-semibold text-forest underline hover:text-terracotta-dark"
+                          >
+                            Activity summary on this website
+                          </a>
+                          <span className="hidden sm:inline text-sand/60">·</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[11px] text-ink-secondary">Signed audit copy: available for inspection on request</span>
+                            <Link href={`/contact?subject=Inspection%20Request%20${encodeURIComponent(row.fy)}`}>
+                              <Button variant="secondary" size="sm" className="text-xs py-1 px-2.5 h-auto">
+                                Request
+                              </Button>
+                            </Link>
+                          </div>
                         </div>
                       )}
                     </td>

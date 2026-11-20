@@ -92,11 +92,11 @@ Per P1-9, Odia language toggle (`locales/or.json`) provides community access for
 
 ---
 
-## 5. Annual Reports & Statutory Filings (FY 2024-25)
+## 5. Annual Reports & Statutory Filings (FY 2021–25)
 
-- [x] **FY 2021–22 Annual Activity Report:** Verified and published (`/reports/MECT-Annual-Report-FY2021-22.pdf`). Form 10B on file.
-- [x] **FY 2022–23 Annual Activity Report:** Verified and published (`/reports/MECT-Annual-Report-FY2022-23.pdf`). Form 10B on file.
-- [x] **FY 2023–24 Annual Activity Report:** Verified and published (`/reports/MECT-Annual-Report-FY2023-24.pdf`). Form 10B on file.
+- [ ] **FY 2021–22 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
+- [ ] **FY 2022–23 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
+- [ ] **FY 2023–24 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
 - [ ] **FY 2024–25 Annual Activity Report & Financial Accounts:** Marked **"Pending"** across Activity Report, Audited Statement, and Form 10B. Financial accounts are currently undergoing annual reconciliation and statutory preparation by the Chartered Accountant. Download slot in `/public/reports/` is reserved and will be activated upon audit sign-off.
 
 ---
