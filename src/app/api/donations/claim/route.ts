@@ -1,16 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// In-memory sliding window rate-limiter (5 requests per 60 seconds per client IP)
+/**
+ * MECT Public Donation Verification Claim Endpoint (`POST /api/donations/claim`)
+ *
+ * Architecture & Governance Documentation:
+ * 1. Storage & Table:
+ *    - Persisted into Spring Boot backend entity `SbiDonationClaim` (`sbi_donation_claims` table)
+ *      or recorded in local verified log when backend runs decoupled.
+ * 2. Lifecycle Status:
+ *    - Initial status is strictly `UNVERIFIED` (pending bank reconciliation).
+ *    - Under NO circumstances is an official 80G/12A statutory donation receipt issued
+ *      prior to manual verification against the official State Bank of India statement.
+ * 3. IP Rate Limiter:
+ *    - Sliding-window in-memory rate limiter enforcing max 5 requests per 60 seconds per IP.
+ *    - Client IP is extracted from trusted reverse proxy headers (`x-forwarded-for` or `x-real-ip`).
+ *    - IMPORTANT: The in-memory limiter resets upon server process restart. For multi-node
+ *      deployments, an external Redis-backed token bucket is recommended.
+ */
+
 const rateLimitMap = new Map<string, number[]>();
 const MAX_REQUESTS_PER_MINUTE = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 
+function _resetRateLimitsForTesting() {
+  rateLimitMap.clear();
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const forwardedHeader = request.headers.get("x-forwarded-for");
+    const realIpHeader = request.headers.get("x-real-ip");
     const clientIp =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.headers.get("x-real-ip") ||
-      "anonymous-client";
+      (forwardedHeader ? forwardedHeader.split(",")[0]?.trim() : null) ||
+      realIpHeader ||
+      "127.0.0.1";
 
     const now = Date.now();
     const timestamps = rateLimitMap.get(clientIp) || [];
@@ -20,7 +43,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Too many submissions received in a short interval. Please wait 60 seconds before submitting another donation verification claim.",
+            "Too many submissions received from this IP address. Please wait 60 seconds before submitting another donation verification claim.",
         },
         { status: 429 }
       );
@@ -83,6 +106,7 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now();
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
     const claimReference = `MECT-SBI-${timestamp.toString().slice(-6)}-${randomSuffix}`;
+    let finalClaimRef = claimReference;
 
     // Forward to Spring Boot backend if running
     const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8081";
@@ -106,13 +130,9 @@ export async function POST(request: NextRequest) {
 
       if (backendRes.ok) {
         const backendData = await backendRes.json();
-        return NextResponse.json({
-          success: true,
-          claimReference: backendData.claimReference || claimReference,
-          status: "PENDING_VERIFICATION",
-          message:
-            "Your transfer details have been submitted to the MECT accounts desk. An official receipt will be issued once the transfer is verified against our State Bank of India statement.",
-        });
+        if (backendData?.claimReference) {
+          finalClaimRef = backendData.claimReference;
+        }
       }
     } catch {
       // Backend offline or unreachable in local build; fallback to direct acknowledged record
@@ -120,10 +140,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      claimReference,
-      status: "PENDING_VERIFICATION",
-      message:
-        "Your transfer details have been submitted to the MECT accounts desk. An official receipt will be issued once the transfer is verified against our State Bank of India statement.",
+      claimReference: finalClaimRef,
+      status: "UNVERIFIED",
+      message: `Claim received. Reference: ${finalClaimRef}. The Trust will check your transfer against its bank records before issuing a receipt.`,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Internal server error";

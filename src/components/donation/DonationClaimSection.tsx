@@ -290,16 +290,21 @@ export function DonationClaimSection() {
           <div className="p-6 bg-sand/20 rounded-xl border border-forest/30 space-y-4">
             <div className="flex items-center gap-2 text-forest font-bold text-base">
               <CheckCircle2 className="w-5 h-5 text-forest" />
-              <span>Transfer Claim Submitted Successfully</span>
+              <span>Claim Received</span>
             </div>
-            <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              {successData.message}
+            <p className="text-xs sm:text-sm text-ink font-medium leading-relaxed">
+              {successData.message ||
+                `Claim received. Reference: ${successData.claimReference}. The Trust will check your transfer against its bank records before issuing a receipt.`}
             </p>
             <div className="p-3 bg-white rounded-md border border-sand/40 flex items-center justify-between">
-              <span className="text-xs text-ink-muted">Claim Reference Number:</span>
+              <span className="text-xs text-ink-muted">Claim Reference:</span>
               <span className="font-mono font-bold text-forest text-sm">
                 {successData.claimReference}
               </span>
+            </div>
+            <div className="text-[11px] text-ink-sand bg-cream/80 p-2.5 rounded-xs border border-border-warm flex items-center justify-between">
+              <span>Status: <strong className="text-amber-800">UNVERIFIED</strong></span>
+              <span className="text-[10px] text-ink-muted">Awaiting SBI bank record reconciliation</span>
             </div>
             <Button
               variant="outline"

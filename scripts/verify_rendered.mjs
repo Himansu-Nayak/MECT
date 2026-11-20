@@ -326,7 +326,7 @@ async function verifyDonationClaimApi() {
   const validPayload = {
     donorName: "Ananya Patnaik",
     donorEmail: "ananya@example.com",
-    donorPhone: "9853608113",
+    donorPhone: "9437123616",
     donorPan: "ABCDE1234F",
     amount: 5000,
     utrReference: "SBI49827361920",
@@ -343,6 +343,15 @@ async function verifyDonationClaimApi() {
   const validData = await validRes.json();
   console.log(`[API VALID] Status: ${validRes.status}`, validData);
 
+  if (validData.status !== "UNVERIFIED") {
+    throw new Error(`[A6 Assertion Failed] Expected claim status UNVERIFIED, got '${validData.status}'`);
+  }
+  const expectedMsgPrefix = "Claim received. Reference: ";
+  const expectedMsgSuffix = ". The Trust will check your transfer against its bank records before issuing a receipt.";
+  if (!validData.message?.startsWith(expectedMsgPrefix) || !validData.message?.endsWith(expectedMsgSuffix)) {
+    throw new Error(`[A6 Assertion Failed] Message does not match canonical wording: '${validData.message}'`);
+  }
+
   // 2. Invalid data
   const invalidRes = await fetch(apiUrl, {
     method: "POST",
@@ -352,7 +361,7 @@ async function verifyDonationClaimApi() {
   const invalidData = await invalidRes.json();
   console.log(`[API INVALID] Status: ${invalidRes.status}`, invalidData);
 
-  // 3. 6 requests burst from same IP
+  // 3. 6 requests burst from same IP (testing rate limiter)
   const burstResults = [];
   const burstIp = "203.0.113.99";
   for (let i = 1; i <= 6; i++) {
@@ -364,11 +373,29 @@ async function verifyDonationClaimApi() {
     burstResults.push({ attempt: i, status: res.status });
   }
   console.log("[API BURST RESULTS]:", burstResults);
+  if (burstResults[5].status !== 429) {
+    throw new Error(`[A6 Assertion Failed] Expected 6th request from burst IP to return 429, got ${burstResults[5].status}`);
+  }
+
+  // 4. Distinct IP test (testing IP isolation: rate limits are not shared across distinct IPs)
+  const distinctIp = "203.0.113.100";
+  const distinctRes = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Forwarded-For": distinctIp },
+    body: JSON.stringify({ ...validPayload, utrReference: "DISTINCT123456" }),
+  });
+  const distinctData = await distinctRes.json();
+  console.log(`[API DISTINCT IP] Status: ${distinctRes.status}`, distinctData);
+  if (distinctRes.status !== 200 || distinctData.status !== "UNVERIFIED") {
+    throw new Error(`[A6 Assertion Failed] Distinct IP throttled or failed; expected 200 UNVERIFIED, got ${distinctRes.status}`);
+  }
+  console.log("✓ Distinct client IPs maintain independent rate limit counters.");
 
   return {
     valid: { status: validRes.status, data: validData },
     invalid: { status: invalidRes.status, data: invalidData },
     burst: burstResults,
+    distinctIp: { status: distinctRes.status, data: distinctData },
   };
 }
 

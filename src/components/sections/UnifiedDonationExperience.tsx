@@ -1912,14 +1912,13 @@ export function UnifiedDonationExperience() {
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h2 className="font-serif text-2xl font-bold text-amber-950">
-                      Bank Transfer Claim Recorded
+                      Claim Received
                     </h2>
-                    <Badge variant="gold" size="sm">{sbiSubmitted.claimStatus}</Badge>
+                    <Badge variant="gold" size="sm">UNVERIFIED</Badge>
                   </div>
-                  <p className="text-xs text-amber-800 font-semibold mt-0.5">
-                    UTR submission is a payment claim, not proof of settled funds. An official receipt will be generated automatically upon bank statement verification.
+                  <p className="text-sm text-amber-900 mt-1 leading-relaxed">
+                    Claim received. Reference: {sbiSubmitted.claimReference}. The Trust will check your transfer against its bank records before issuing a receipt.
                   </p>
-                  <p className="text-sm text-amber-900 mt-1 leading-relaxed">{sbiSubmitted.message}</p>
                 </div>
               </div>
 
