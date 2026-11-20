@@ -76,6 +76,10 @@ The following 12 items are prioritized in strict order of operational and statut
 - **Status:** Gated behind `NEXT_PUBLIC_ENABLE_ODIA="true"` (currently default off). Community translation draft provided in `locales/or.json` with strict guardrails ensuring all statutory, legal, and tax terms remain in English.
 - **Owner Action:** Review Odia strings with a native Odia speaker for dialectal appropriateness in Western Odisha (Kosali / Sambalpuri / Standard Odia) before enabling publicly.
 
+### 13. Secretariat Email Notifications & Intake Monitoring
+- **Status:** Neither SMTP nor Resend email credentials are configured in production for inbound inquiry/claim notifications. Intake submissions are safely recorded in the database queue (`manual_bank_transfer_claims` and `public_inquiries`).
+- **Owner Action:** Provide official SMTP/mail credentials (or Resend API key), or decide who checks the admin portal intake lists (`/admin/donors` and `/admin/inquiries`) and how often (e.g., daily desk roster).
+
 ---
 
 ## Supplementary Reference: Needs a Documentary Source Before Publishing

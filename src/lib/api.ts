@@ -137,6 +137,7 @@ export interface AdminDashboardStats {
   pendingVolunteers: number;
   approvedVolunteers: number;
   totalInquiries: number;
+  pendingInquiries?: number;
   totalScholarships: number;
   submittedScholarships: number;
   underScrutinyScholarships: number;

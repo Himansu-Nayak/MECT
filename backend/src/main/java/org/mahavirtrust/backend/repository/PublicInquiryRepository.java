@@ -10,4 +10,5 @@ import java.util.List;
 public interface PublicInquiryRepository extends JpaRepository<PublicInquiry, Long> {
     List<PublicInquiry> findByEmailOrderByIdDesc(String email);
     List<PublicInquiry> findByEmailOrderByCreatedAtDesc(String email);
+    long countByStatus(String status);
 }

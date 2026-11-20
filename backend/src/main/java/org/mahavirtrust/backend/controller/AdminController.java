@@ -71,6 +71,7 @@ public class AdminController {
         stats.setApprovedVolunteers(volunteerRepository.countByVerificationStatus("ACTIVE_MENTOR"));
 
         stats.setTotalInquiries(inquiryRepository.count());
+        stats.setPendingInquiries(inquiryRepository.countByStatus("PENDING_REVIEW"));
 
         stats.setTotalScholarships(scholarshipRepository.count());
         stats.setSubmittedScholarships(scholarshipRepository.countByStatus(ApplicationStatus.SUBMITTED));

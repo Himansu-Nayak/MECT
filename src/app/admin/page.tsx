@@ -208,8 +208,13 @@ export default function AdminDashboardPage() {
           </div>
           <div className="mt-4">
             <div className="text-2xl font-black text-terracotta-dark">{stats?.totalInquiries ?? 0}</div>
-            <div className="text-[11px] text-ink-sand mt-1">
-              Active Admin Staff: <span className="font-bold text-ink">{stats?.totalAdminUsers ?? 1}</span>
+            <div className="text-[11px] text-ink-sand mt-1 flex items-center justify-between">
+              <span className="text-terracotta-dark font-semibold">
+                {stats?.pendingInquiries ?? 0} Pending Review
+              </span>
+              <Link href="/admin/inquiries" className="text-xs font-bold text-forest underline">
+                Open Desk &rarr;
+              </Link>
             </div>
           </div>
         </Card>
