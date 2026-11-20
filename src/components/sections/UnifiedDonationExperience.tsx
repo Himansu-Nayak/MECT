@@ -27,6 +27,7 @@ import {
   verifyPortalOtp,
 } from "@/lib/portal-api";
 import { usePortalAuth } from "@/context/PortalAuthContext";
+import { MECT_ORG } from "@/config/org";
 import {
   AlertCircle,
   ArrowLeft,
@@ -209,12 +210,12 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     maxAmount: 5000000,
     presetAmounts: [500, 1000, 2500, 5000, 10000],
     generalFundEnabled: true,
-    sbiBankName: "State Bank of India",
-    sbiAccountName: "Mahaveer Educational & Charitable Trust",
-    sbiAccountNumber: "33091993247",
-    sbiIfsc: "SBIN0000048",
-    sbiBranch: "Balangir Main Branch, Odisha",
-    sbiUpiId: "mect@sbi",
+    sbiBankName: MECT_ORG.bank.bankName,
+    sbiAccountName: MECT_ORG.bank.accountHolder,
+    sbiAccountNumber: MECT_ORG.bank.accountNumber,
+    sbiIfsc: MECT_ORG.bank.ifsc,
+    sbiBranch: MECT_ORG.bank.branch,
+    sbiUpiId: MECT_ORG.bank.upiId,
     sbiQrImageUrl: "",
     paymentInstructions: "Please transfer the contribution directly using UPI or NEFT/RTGS to our official State Bank of India account. Enter your 12-digit UTR/transaction reference below for verified computer-signed 80G receipting.",
     gatewayNoticeText: "Direct Verified Bank Transfer & UPI Mode Active. Offline reconciliation enabled.",
@@ -2104,11 +2105,11 @@ export function UnifiedDonationExperience() {
                         </span>
                         <div className="flex items-center justify-between gap-1">
                           <span className="font-mono font-bold text-forest text-sm">
-                            {config.sbiIfsc || "SBIN0000048"}
+                            {config.sbiIfsc || MECT_ORG.bank.ifsc}
                           </span>
                           <button
                             type="button"
-                            onClick={() => copyValue("ifsc", config.sbiIfsc || "SBIN0000048")}
+                            onClick={() => copyValue("ifsc", config.sbiIfsc || MECT_ORG.bank.ifsc)}
                             className="text-terracotta hover:text-forest p-1"
                             title="Copy IFSC Code"
                           >

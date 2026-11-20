@@ -215,6 +215,29 @@ async function verifyPagesAndLinks(browser, routes) {
     }
   }
 
+  // Assert bank details consistency across all crawled pages
+  console.log("\n[VERIFY] Checking bank details consistency across all crawled pages...");
+  const bankDiscrepancies = [];
+  for (const [route, { bodyText }] of crawledPages.entries()) {
+    if (bodyText.includes("33091993247") || bodyText.includes("43849182390")) {
+      bankDiscrepancies.push(`${route}: Contains deprecated or unverified bank account number`);
+    }
+    if (bodyText.includes("SBIN0000048")) {
+      bankDiscrepancies.push(`${route}: Contains deprecated IFSC SBIN0000048 instead of SBIN0001701`);
+    }
+    if (bodyText.includes("State Bank of India") && bodyText.includes("Account Number")) {
+      if (!bodyText.includes("33341302498") || !bodyText.includes("SBIN0001701")) {
+        bankDiscrepancies.push(`${route}: Missing authentic account number 33341302498 or IFSC SBIN0001701`);
+      }
+    }
+  }
+  if (bankDiscrepancies.length > 0) {
+    console.error("[BANK DISCREPANCIES FOUND]:", bankDiscrepancies);
+    throw new Error(`Bank details discrepancy detected: ${bankDiscrepancies.join(", ")}`);
+  } else {
+    console.log("[PASS] Bank details consistency verified across all rendered pages: 33341302498 / SBIN0001701 / 86971610172@sbi.");
+  }
+
   await context.close();
   return { pageMetrics, brokenAnchors };
 }
@@ -278,10 +301,11 @@ async function verifyDonateWithNoJs(browser) {
   const html = await page.content();
   const checks = {
     bankName: html.includes("State Bank of India"),
-    accountHolder: html.includes("Mahaveer Educational & Charitable Trust"),
-    accountNumber: html.includes("33091993247"),
-    ifsc: html.includes("SBIN0000048"),
-    upiId: html.includes("mect@sbi"),
+    accountHolder: html.includes("MAHAVEER EDUCATIONAL & CHARITABLE TRUST"),
+    accountNumber: html.includes("33341302498"),
+    ifsc: html.includes("SBIN0001701"),
+    branch: html.includes("Rajendra College Square, Bolangir"),
+    upiId: html.includes("86971610172@sbi"),
     donorNameField: html.includes('name="donorName"'),
     donorEmailField: html.includes('name="donorEmail"'),
     donorPhoneField: html.includes('name="donorPhone"'),

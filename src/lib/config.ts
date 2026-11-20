@@ -7,6 +7,7 @@
  */
 
 import { ORG } from "@content/org";
+import { MECT_ORG } from "@/config/org";
 
 export interface NavChildItem {
   label: string;
@@ -118,17 +119,17 @@ export const TRUST_CONFIG = {
     hours: ORG.helpline.hours,
   },
 
-  // Official Domestic Bank Account & UPI QR (single-sourced from content/org.ts)
+  // Official Domestic Bank Account & UPI QR (single-sourced from src/config/org.ts)
   bank: {
-    bankName: ORG.bank.bankName,
-    branch: ORG.bank.branch,
-    accountName: ORG.bank.accountName,
-    accountNumber: ORG.bank.accountNumber,
-    ifsc: ORG.bank.ifsc,
-    accountType: ORG.bank.accountType,
-    upiId: ORG.bank.upiId,
-    upiBeneficiaryDisplay: ORG.bank.upiBeneficiaryDisplay,
-    verifiedQrSrc: ORG.bank.verifiedQrSrc,
+    bankName: MECT_ORG.bank.bankName,
+    branch: MECT_ORG.bank.branch,
+    accountName: MECT_ORG.bank.accountHolder,
+    accountNumber: MECT_ORG.bank.accountNumber,
+    ifsc: MECT_ORG.bank.ifsc,
+    accountType: MECT_ORG.bank.accountType,
+    upiId: MECT_ORG.bank.upiId,
+    upiBeneficiaryDisplay: MECT_ORG.bank.upiBeneficiaryName,
+    verifiedQrSrc: "/images/donate/mect-sbi-qr.png",
     taxBenefit:
       "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility.",
   },

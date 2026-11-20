@@ -151,13 +151,13 @@ export const MECT_ORG: MECTOrgConfig = {
 
   bank: {
     bankName: "State Bank of India",
-    accountHolder: "Mahaveer Educational & Charitable Trust",
-    accountNumber: "33091993247",
-    ifsc: "SBIN0000048",
-    branch: "Balangir Main Branch (Code: 00048)",
+    accountHolder: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+    accountNumber: "33341302498",
+    ifsc: "SBIN0001701",
+    branch: "Rajendra College Square, Bolangir",
     accountType: "Current Account",
-    upiId: "mect@sbi",
-    upiBeneficiaryName: "Mahaveer Educational & Charitable Trust",
+    upiId: "86971610172@sbi",
+    upiBeneficiaryName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
     donationPolicyNotice:
       "Donations are accepted by bank transfer / UPI. A receipt is issued after the Trust verifies the transfer.",
   },

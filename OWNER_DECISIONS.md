@@ -1,3 +1,5 @@
+# MUST CONFIRM account number, IFSC, UPI ID against the bank passbook BEFORE any deployment.
+
 # MECT.ORG.IN — OWNER DECISIONS & FACT RECONCILIATION REGISTRY
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT)  
@@ -9,7 +11,16 @@
 
 ## 1. Facts to Confirm & Known Conflicts
 
-Where the codebase or existing site had conflicting information, the value present on the majority of modern pages was selected for `src/config/org.ts` as the baseline. The conflicts are logged below for official confirmation:
+- [ ] **CRITICAL: Official State Bank of India Account & UPI Credentials:**
+  - *Current Baseline in `src/config/org.ts` (aligned with live site mect.org.in):*
+    - Bank: **State Bank of India**
+    - Account Holder: **MAHAVEER EDUCATIONAL & CHARITABLE TRUST**
+    - Account Number: `33341302498`
+    - IFSC Code: `SBIN0001701`
+    - Branch: **Rajendra College Square, Bolangir**
+    - UPI ID (VPA): `86971610172@sbi`
+  - *Owner Action:* **MUST physically inspect the official SBI passbook/chequebook** to verify that Account `33341302498`, IFSC `SBIN0001701`, and UPI `86971610172@sbi` match the current operative account before any live release.
+
 
 - [ ] **NGO Darpan Unique ID:**
   - *Conflict:* `OR/2024/0466491` (used across majority of new pages) vs `OD/2021/0285141` (present on legacy headers/statutory disclosures).

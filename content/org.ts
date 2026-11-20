@@ -5,6 +5,8 @@
  * Values match documentary records verbatim per AUDIT SOURCE OF TRUTH.
  */
 
+import { MECT_ORG } from "@/config/org";
+
 export const ORG = {
   legalName: "Mahaveer Educational & Charitable Trust (MECT)",
   name: "Mahaveer Educational & Charitable Trust",
@@ -77,15 +79,15 @@ export const ORG = {
     fieldUnit: "mect220@gmail.com",
   },
   bank: {
-    bankName: "State Bank of India",
-    accountName: "Mahaveer Educational & Charitable Trust",
-    accountType: "Current Account",
-    accountNumber: "33091993247",
-    ifsc: "SBIN0000048",
-    branch: "Balangir Main Branch (Code: 00048)",
-    upiId: "mect@sbi",
-    upiBeneficiaryDisplay: "Mahaveer Educational & Charitable Trust",
-    verifiedQrSrc: "/images/sbi-upi-qr.png",
+    bankName: MECT_ORG.bank.bankName,
+    accountName: MECT_ORG.bank.accountHolder,
+    accountType: MECT_ORG.bank.accountType,
+    accountNumber: MECT_ORG.bank.accountNumber,
+    ifsc: MECT_ORG.bank.ifsc,
+    branch: MECT_ORG.bank.branch,
+    upiId: MECT_ORG.bank.upiId,
+    upiBeneficiaryDisplay: MECT_ORG.bank.upiBeneficiaryName,
+    verifiedQrSrc: "/images/donate/mect-sbi-qr.png",
   },
   chairman: {
     name: "Er. Japabandhu Kampa",

@@ -124,8 +124,8 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     auditPolicy: "Statutory accounts are audited annually by independent Chartered Accountants and maintained at the Balangir registered office.",
   },
   bankingDetails: {
-    channel: "Verified Online Gateway & Reconciliation Portal",
-    donationNote: "Voluntary contributions are processed securely online through MECT's verified payment portal at /donate with instant cryptographic receipt generation. Direct institutional bank transfer references (UTR) can be submitted for verification.",
+    channel: "Direct State Bank of India Bank Transfer & Official UPI (No Payment Gateway)",
+    donationNote: "Voluntary contributions are accepted exclusively via direct State Bank of India bank transfer or UPI at /donate. The Trust verifies transfers against its bank records before issuing an official receipt.",
     portalUrl: "/donate",
   },
   geographicScope: {
@@ -237,7 +237,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     "NEVER claim regular 80G approval for Tax Year 2026-27 (AY 2027-28) without citing confirmation from the applicable Form 107 approval order. Always distinguish historical AY 2024-25 to 2026-27 coverage from Tax Year 2026-27.",
     "NEVER ask for or accept bank account passwords, UPI PINs, or money. Applications are 100% free.",
     "NEVER promise direct cash payments to students or parents; reiterating the direct-to-college policy is mandatory.",
-    "Direct all donation inquiries to the official verified portal at https://mect.org.in/donate for direct SBI bank transfer and UPI details with verified official receipting.",
+    "Direct all donation inquiries to https://mect.org.in/donate for direct SBI bank transfer and UPI details. The Trust verifies transfers against its bank records before issuing an official receipt.",
     "Respond in the user's language: if addressed in Odia, answer in Odia; if in Hindi, answer in Hindi; if in English, answer in English.",
   ],
 };
