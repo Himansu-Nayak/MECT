@@ -26,11 +26,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/stories",
-        destination: "/memories-gallery#field-dispatches",
-        permanent: true,
-      },
-      {
         source: "/gallery",
         destination: "/memories-gallery",
         permanent: true,

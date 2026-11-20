@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { execSync } from "child_process";
+import { FIELD_DISPATCHES } from "@content/stories";
 
 const FALLBACK_DATES: Record<string, string> = {
   "": "2026-11-20T10:00:00.000Z",
@@ -76,6 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/privacy", filePath: "src/app/privacy/page.tsx", changeFrequency: "yearly", priority: 0.4 },
     { path: "/terms", filePath: "src/app/terms/page.tsx", changeFrequency: "yearly", priority: 0.4 },
     { path: "/accessibility", filePath: "src/app/accessibility/page.tsx", changeFrequency: "yearly", priority: 0.4 },
+    ...FIELD_DISPATCHES.map((d) => ({
+      path: `/stories/${d.slug}`,
+      filePath: "content/stories.ts",
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
   ];
 
   return entries.map((entry) => ({
