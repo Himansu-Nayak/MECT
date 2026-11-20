@@ -150,7 +150,43 @@ Before replacing the live production frontend container:
    ```bash
    TEST_BASE_URL=http://127.0.0.1:3002 npm run verify
    ```
-3. Only upon 100% pass, proceed to Step 6. Stop and remove staging container:
+3. **MANDATORY Real Backend End-to-End Submission & Database Verification:**
+   *(Required because local development workstation does not run the Docker daemon; must be proven in staging container environment)*:
+   
+   **A. Verify Donation Claim Intake -> DB Row & Admin Endpoint:**
+   - Submit test claim to staging intake proxy:
+     ```bash
+     curl -s -X POST http://127.0.0.1:3002/api/donations/claim \
+       -H "Content-Type: application/json" \
+       -d '{"donorName":"Staging Verification","donorEmail":"staging@mect.org.in","donorPhone":"9437123616","amount":500,"utrReference":"STAGINGSBI123456","transferDate":"2026-11-20","programmeCode":"GENERAL"}'
+     ```
+   - Expected response: HTTP 200 with JSON payload `{"success": true, "claimReference": "MECT-...", "status": "UNVERIFIED"}`.
+   - Assert database row exists in `manual_bank_transfer_claims` with matching reference:
+     ```bash
+     docker exec -i mect-postgres psql -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} -c \
+       "SELECT id, claim_reference, utr_normalized, claimed_amount, status, created_at FROM manual_bank_transfer_claims WHERE utr_normalized = 'STAGINGSBI123456';"
+     ```
+   - Assert visible through admin claims endpoint:
+     ```bash
+     curl -s -H "Authorization: Bearer <ADMIN_TOKEN>" http://127.0.0.1:8081/api/v1/admin/donations/claims | grep STAGINGSBI123456
+     ```
+   
+   **B. Verify Contact Form Intake -> DB Row & Admin Endpoint:**
+   - Submit test inquiry to staging intake proxy:
+     ```bash
+     curl -s -X POST http://127.0.0.1:3002/api/contact \
+       -H "Content-Type: application/json" \
+       -d '{"name":"Staging Verification","email":"staging@mect.org.in","phone":"9437123616","category":"General","message":"Staging end-to-end inquiry verification"}'
+     ```
+   - Expected response: HTTP 201 with JSON payload `{"success": true, "referenceId": "MECT-INQ-..."}`.
+   - Assert database row exists in `public_inquiries` with matching ticket number:
+     ```bash
+     docker exec -i mect-postgres psql -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} -c \
+       "SELECT id, ticket_number, full_name, email, status, created_at FROM public_inquiries WHERE email = 'staging@mect.org.in' ORDER BY id DESC LIMIT 1;"
+     ```
+   - Assert reference number returned matches the ticket number in the database row.
+
+4. Only upon 100% pass of all checks above, proceed to Step 6. Stop and remove staging container:
    ```bash
    docker stop mect-frontend-staging && docker rm mect-frontend-staging
    ```
