@@ -41,9 +41,32 @@ import {
   UserPlus,
 } from "lucide-react";
 import { usePortalAuth } from "@/context/PortalAuthContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
+
+const NAV_ODIA: Record<string, string> = {
+  "About": "ଆମ ବିଷୟରେ",
+  "Our Work": "କାର୍ଯ୍ୟକ୍ରମ",
+  "Impact & Accountability": "ସାମାଜିକ ପ୍ରଭାବ",
+  "Get Involved": "ସହଯୋଗ",
+  "About the Trust": "ଟ୍ରଷ୍ଟ ବିଷୟରେ",
+  "Governance & Board": "ଟ୍ରଷ୍ଟ ଶାସନ",
+  "Statutory Disclosures": "ବୈଧାନିକ ସୂଚନା",
+  "Civic Programmes": "ମୁଖ୍ୟ କାର୍ଯ୍ୟକ୍ରମ",
+  "Higher Education Scholarships": "ଉଚ୍ଚଶିକ୍ଷା ବୃତ୍ତି",
+  "Memories & Gallery": "ଚିତ୍ରଶାଳା",
+  "Our Impact": "ଆମର ପ୍ରଭାବ",
+  "Annual Reports & Audits": "ବାର୍ଷିକ ରିପୋର୍ଟ",
+  "Field Dispatches": "କ୍ଷେତ୍ର ବାର୍ତ୍ତା",
+  "Donate Now": "ଦାନ କରନ୍ତୁ",
+  "Sign In": "ଲଗ୍-ଇନ୍",
+  "Register": "ପଞ୍ଜୀକରଣ",
+  "Menu": "ମେନୁ",
+};
 
 export function Header() {
   const { isAuthenticated, dashboard, logout } = usePortalAuth();
+  const { locale } = useLanguage();
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [overlayOpen, setOverlayOpen] = useState(false);
@@ -246,7 +269,7 @@ export function Header() {
                             : "text-forest hover:text-forest-deep hover:bg-sage/40"
                         }`}
                       >
-                        <span>{item.label}</span>
+                        <span>{locale === "or" && NAV_ODIA[item.label] ? NAV_ODIA[item.label] : item.label}</span>
                         {isActive && (
                           <m.span
                             layoutId="active-nav-indicator"
@@ -326,7 +349,7 @@ export function Header() {
                             >
                               <div className="flex items-center justify-between text-xs font-semibold text-forest group-hover/sub:text-terracotta-dark">
                                 <span className="group-hover/sub:translate-x-0.5 transition-transform">
-                                  {subItem.label}
+                                  {locale === "or" && NAV_ODIA[subItem.label] ? NAV_ODIA[subItem.label] : subItem.label}
                                 </span>
                                 {subItem.badge && (
                                   <Badge variant="forest" size="sm">
@@ -349,6 +372,7 @@ export function Header() {
 
             {/* Desktop Direct Action Buttons & Editorial Menu Trigger */}
             <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2 shrink-0">
+              <LanguageToggle />
               <SiteSearchTrigger />
 
               {isAuthenticated ? (
@@ -475,6 +499,7 @@ export function Header() {
 
             {/* Mobile / Tablet Header Controls */}
             <div className="flex xl:hidden items-center space-x-1 sm:space-x-2 shrink-0">
+              <LanguageToggle />
               <SiteSearchTrigger />
 
               <Link
@@ -554,7 +579,8 @@ export function Header() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <LanguageToggle variant="overlay" />
                     <span className="hidden sm:inline-block text-[11px] font-mono text-sand/70 uppercase">
                       Press [Esc] to close
                     </span>

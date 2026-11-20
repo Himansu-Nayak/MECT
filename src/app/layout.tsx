@@ -5,6 +5,7 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { ToastProvider } from "@/components/ui/PromiseToast";
 import { PortalAuthProvider } from "@/context/PortalAuthContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { ORG } from "@content/org";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -175,11 +176,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-cream text-ink font-sans antialiased selection:bg-sand selection:text-forest-deep">
         <PortalAuthProvider>
-          <MotionProvider>
-            <ToastProvider>
-              <SiteLayout>{children}</SiteLayout>
-            </ToastProvider>
-          </MotionProvider>
+          <LanguageProvider>
+            <MotionProvider>
+              <ToastProvider>
+                <SiteLayout>{children}</SiteLayout>
+              </ToastProvider>
+            </MotionProvider>
+          </LanguageProvider>
         </PortalAuthProvider>
       </body>
     </html>

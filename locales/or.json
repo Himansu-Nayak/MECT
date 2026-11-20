@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "locale": "or",
+    "language": "Odia (ଓଡ଼ିଆ)",
+    "status": "needs human review",
+    "note": "Machine-drafted Odia translations for community accessibility across Balangir and Odisha. Legal, tax, and statutory deed citations intentionally preserved in English to prevent statutory misinterpretation."
+  },
+  "nav": {
+    "home": "ମୂଳପୃଷ୍ଠା",
+    "about": "ଆମ ବିଷୟରେ",
+    "programmes": "କାର୍ଯ୍ୟକ୍ରମ",
+    "scholarships": "ଉଚ୍ଚଶିକ୍ଷା ବୃତ୍ତି",
+    "impact": "ସାମାଜିକ ପ୍ରଭାବ",
+    "stories": "କ୍ଷେତ୍ର ବାର୍ତ୍ତା",
+    "governance": "ଟ୍ରଷ୍ଟ ଶାସନ",
+    "reports": "ବାର୍ଷିକ ରିପୋର୍ଟ",
+    "contact": "ଯୋଗାଯୋଗ",
+    "donate": "ଦାନ କରନ୍ତୁ",
+    "donateNow": "ଦାନ କରନ୍ତୁ",
+    "menu": "ମେନୁ",
+    "close": "ବନ୍ଦ କରନ୍ତୁ",
+    "search": "ସାଇଟରେ ଖୋଜନ୍ତୁ",
+    "signIn": "ଲଗ୍-ଇନ୍",
+    "portal": "ଦାତା ପୋର୍ଟାଲ",
+    "language": "ଭାଷା",
+    "english": "English",
+    "odia": "ଓଡ଼ିଆ"
+  },
+  "programmes": {
+    "title": "ଆମର ମୁଖ୍ୟ ସମାଜସେବା କାର୍ଯ୍ୟକ୍ରମ",
+    "subtitle": "ବଲାଙ୍ଗୀର ଏବଂ ପଶ୍ଚିମ ଓଡ଼ିଶାର ଗ୍ରାମୀଣ ତଥା ଜନଜାତି ଅଞ୍ଚଳରେ ଶିକ୍ଷା, ଜୀବିକା, ପାନୀୟ ଜଳ ଏବଂ ପୁଷ୍ଟିକର ଆହାର ଯୋଗାଣ।",
+    "shikshaSetu": "ଶିକ୍ଷା ସେତୁ (ଗ୍ରାମୀଣ ଟ୍ୟୁସନ ଓ ପାଠ୍ୟପୋଥକ)",
+    "swavalamban": "ସ୍ଵାବଲମ୍ବନ (ମହିଳା ସିଲେଇ ଓ ରୋଜଗାର ତାଲିମ)",
+    "jalSeva": "ଜଳ ସେବା (ଶୁଦ୍ଧ ପାନୀୟ ଜଳ ଓ ଖରାଦିନେ ଆଶ୍ଵସ୍ତି)",
+    "annadaan": "ଜନ ଆହାର (ଡାକ୍ତରଖାନା ରୋଗୀ ସହାୟକଙ୍କୁ ନିଶୁଳ୍କ ଭୋଜନ)",
+    "sports": "ଯୁବ କ୍ରୀଡ଼ା ଓ ନେତୃତ୍ଵ ବିକାଶ",
+    "murti": "ଶ୍ରୀ ହନୁମାନ ମୂର୍ତ୍ତି ସାଂସ୍କୃତିକ ପ୍ରକଳ୍ପ"
+  },
+  "donate": {
+    "title": "ଟ୍ରଷ୍ଟକୁ ସିଧାସଳଖ ସହାୟତା ପ୍ରଦାନ କରନ୍ତୁ",
+    "subtitle": "ବ୍ୟାଙ୍କ ଟ୍ରାନ୍ସଫର (NEFT/RTGS) କିମ୍ବା ସରକାରୀ UPI ମାଧ୍ୟମରେ ଦାନ କରନ୍ତୁ। କୌଣସି ମଧ୍ୟସ୍ଥି କିମ୍ବା ଅନଲାଇନ୍ ଗେଟୱେ ନାହିଁ।",
+    "sbiBankTransfer": "ଷ୍ଟେଟ୍ ବ୍ୟାଙ୍କ ଅଫ୍ ଇଣ୍ଡିଆ (SBI) ବ୍ୟାଙ୍କ ଟ୍ରାନ୍ସଫର",
+    "accountName": "ଖାତାଧାରୀଙ୍କ ନାମ",
+    "accountNumber": "ଖାତା ନମ୍ବର",
+    "ifscCode": "IFSC କୋଡ଼",
+    "bankBranch": "ଶାଖା: ବଲାଙ୍ଗୀର ମୁଖ୍ୟ ଶାଖା",
+    "upiId": "ଅଫିସିଆଲ୍ UPI ଆଇଡି",
+    "claimFormTitle": "ଦାନ ରସିଦ ନିଶ୍ଚିତକରଣ ଫର୍ମ",
+    "claimFormSubtitle": "ଆପଣ ବ୍ୟାଙ୍କ ବା UPI ରେ ଦାନ କରିବା ପରେ, ତଳ ଫର୍ମ ପୂରଣ କରନ୍ତୁ ଯାହାଦ୍ଵାରା ଆମେ ଆପଣଙ୍କୁ ଅଫିସିଆଲ୍ ରସିଦ ପଠାଇପାରିବୁ।",
+    "donorName": "ଆପଣଙ୍କ ପୂରା ନାମ",
+    "donorEmail": "ଇମେଲ୍ ଠିକଣା",
+    "donorPhone": "ମୋବାଇଲ୍ ନମ୍ବର",
+    "amount": "ଦାନ ରାଶି (ଟଙ୍କାରେ)",
+    "utrReference": "UTR / ବ୍ୟାଙ୍କ ଟ୍ରାଞ୍ଜାକସନ ନମ୍ବର",
+    "programme": "କାର୍ଯ୍ୟକ୍ରମ ବାଛନ୍ତୁ",
+    "submitClaim": "ଦାନ ବିବରଣୀ ଦାଖଲ କରନ୍ତୁ",
+    "statutoryNotice": "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility."
+  },
+  "contact": {
+    "title": "ଆମ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ",
+    "subtitle": "ବଲାଙ୍ଗୀର କାର୍ଯ୍ୟାଳୟ କିମ୍ବା ଭୁବନେଶ୍ୱର ସଚିବାଳୟ ସହିତ ସିଧାସଳଖ କଥାବାର୍ତ୍ତା କରନ୍ତୁ।",
+    "hqAddress": "ମୁଖ୍ୟ କାର୍ଯ୍ୟାଳୟ: ବଲାଙ୍ଗୀର, ଓଡ଼ିଶା - ୭୬୭୦୦୧",
+    "liaisonAddress": "ପ୍ରଶାସନିକ କାର୍ଯ୍ୟାଳୟ: ଲୁଇସ୍ ପ୍ଲାଜା, ବିଜେବି ନଗର, ଭୁବନେଶ୍ୱର - ୭୫୧୦୧୪",
+    "phone": "+91 98536 08113",
+    "email": "contact@mect.org.in",
+    "hours": "ସୋମବାର – ଶନିବାର: ସକାଳ ୧୦:୦୦ – ସନ୍ଧ୍ୟା ୫:୩୦",
+    "fullName": "ପୂରା ନାମ",
+    "subject": "ବିଷୟ",
+    "message": "ଆପଣଙ୍କ ବାର୍ତ୍ତା",
+    "send": "ବାର୍ତ୍ତା ପଠାନ୍ତୁ"
+  },
+  "home": {
+    "heroTag": "ସାମାଜିକ ଦାୟିତ୍ଵ ଓ ପ୍ରଗତିଶୀଳ ଓଡ଼ିଶା",
+    "heroHeadline": "ଗ୍ରାମୀଣ ଓଡ଼ିଶାର ଶିକ୍ଷା, ଜୀବିକା ଓ ଜନକଲ୍ୟାଣ ପାଇଁ ଆମର ପ୍ରତିବଦ୍ଧତା",
+    "heroDesc": "ମହାବୀର ଏଜୁକେସନାଲ ଆଣ୍ଡ ଚାରିଟେବୁଲ ଟ୍ରଷ୍ଟ (MECT) ୨୦୧୩ ମସିହାରୁ ବଲାଙ୍ଗୀର ଏବଂ ଆଖପାଖ ଜିଲ୍ଲାରେ ଗ୍ରାମୀଣ ଛାତ୍ରଛାତ୍ରୀ, ମହିଳା ଏବଂ ଗରିବ ପରିବାରଙ୍କ କଲ୍ୟାଣ ନିମନ୍ତେ କାର୍ଯ୍ୟରତ।",
+    "directAction": "ସିଧାସଳଖ ସହଯୋଗ",
+    "viewProgrammes": "କାର୍ଯ୍ୟକ୍ରମ ଦେଖନ୍ତୁ"
+  }
+}
