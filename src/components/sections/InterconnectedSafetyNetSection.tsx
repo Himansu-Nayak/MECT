@@ -89,7 +89,7 @@ export function InterconnectedSafetyNetSection() {
       evidence: "Documented seasonal relief drives and hospital corridor feeding records.",
       upstreamReinforcement: "Clean water kiosks supply hygienic water required for hot meal preparation.",
       downstreamMultiplier: "Protects family nutrition during acute crises, preventing distress asset liquidation.",
-      linkHref: "/programmes#hunger-relief",
+      linkHref: "/programmes#food-relief",
     },
     {
       id: "livelihoods",
@@ -146,7 +146,7 @@ export function InterconnectedSafetyNetSection() {
       evidence: "Continuous community awareness drives and emergency relief logs across Balangir blocks.",
       upstreamReinforcement: "Educated youth act as community para-volunteers facilitating government applications.",
       downstreamMultiplier: "Strengthens entire village resilience against external shocks and distress migration.",
-      linkHref: "/programmes#social-welfare",
+      linkHref: "/programmes#community-welfare",
     },
   ];
 

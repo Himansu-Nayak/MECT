@@ -142,7 +142,7 @@ export const HOMEPAGE_CONTENT = {
       tag: "Annadaan",
       description:
         "Jan Ahar food relief and nutritious meals for documented beneficiary groups, including hospital attendants and vulnerable community members.",
-      href: "/programmes#hunger-relief",
+      href: "/programmes#food-relief",
       stat: "Daily Relief",
     },
     {
@@ -151,7 +151,7 @@ export const HOMEPAGE_CONTENT = {
       tag: "Samaj Kalyan",
       description:
         "Seasonal essentials, emergency community assistance, and disaster resilience for vulnerable families in rural Western Odisha.",
-      href: "/programmes#pillars",
+      href: "/programmes#community-welfare",
       stat: "Direct Action",
     },
   ] as PillarCard[],

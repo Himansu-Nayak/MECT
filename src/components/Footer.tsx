@@ -142,15 +142,23 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/programmes#hunger-relief"
+                  href="/programmes#food-relief"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
-                  Food Security &amp; Jan Ahar Relief
+                  Food Relief &amp; Jan Ahar
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/scholarships"
+                  href="/programmes#community-welfare"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Community Welfare &amp; Rural Relief
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/programmes#higher-education"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
                   Higher Education Scholarships
@@ -175,7 +183,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/programmes#education"
+                  href="/programmes#free-education-200"
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
                   Free Education (Target: Up to 200)

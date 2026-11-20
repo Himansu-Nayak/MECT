@@ -58,8 +58,11 @@ def crawl_links_and_anchors():
                 try:
                     with open(p, 'r', encoding='utf-8') as fp:
                         txt = fp.read()
+                        # Match literal id="..." and id='...'
                         ids = set(re.findall(r'id=["\']([a-zA-Z0-9_\-]+)["\']', txt))
-                        page_ids[route] = ids
+                        # Match id: "..." in objects defined in the page (e.g. PROGRAMMES_DATA, FAQ sections)
+                        obj_ids = set(re.findall(r'\bid:\s*["\']([a-zA-Z0-9_\-]+)["\']', txt))
+                        page_ids[route] = ids | obj_ids
                 except Exception:
                     pass
 
@@ -71,8 +74,9 @@ def crawl_links_and_anchors():
                 try:
                     with open(p, 'r', encoding='utf-8') as fp:
                         txt = fp.read()
-                        ids = re.findall(r'id=["\']([a-zA-Z0-9_\-]+)["\']', txt)
-                        component_ids.update(ids)
+                        ids = set(re.findall(r'id=["\']([a-zA-Z0-9_\-]+)["\']', txt))
+                        obj_ids = set(re.findall(r'\bid:\s*["\']([a-zA-Z0-9_\-]+)["\']', txt))
+                        component_ids.update(ids | obj_ids)
                 except Exception:
                     pass
 
@@ -106,7 +110,8 @@ def crawl_links_and_anchors():
             r_clean = r.split('?', 1)[0]
             
             # Whitelist public assets, dynamic routes, and report docs
-            if r_clean != '' and r_clean not in known_routes and not r_clean.startswith('/images') and not r_clean.startswith('/api') and not r_clean.startswith('/reports/'):
+            is_static_file = os.path.exists(os.path.join('public', r_clean.lstrip('/')))
+            if r_clean != '' and r_clean not in known_routes and not is_static_file and not r_clean.startswith('/images') and not r_clean.startswith('/api') and not r_clean.startswith('/reports/'):
                 broken_links.append({'href': h, 'file': f, 'clean_route': r_clean})
             
             if anchor:
