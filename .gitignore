@@ -71,3 +71,6 @@ api keys.png
 *api*keys*.png
 APIKey (*).csv
 APIkey (*).CSV
+
+# Local deployment operator notes & unparameterized VPS credentials
+docs/local-deploy-notes.md

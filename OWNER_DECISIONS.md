@@ -84,6 +84,10 @@ The following 12 items are prioritized in strict order of operational and statut
 - **Status:** Privacy page (`/privacy`) has been updated to describe the exact intake data points (name, email, phone, amount, UTR, message), purpose, retention, access controls, and deletion procedure without making unverified statutory legal compliance claims.
 - **Owner Action:** Submit the privacy policy text to the Trust's legal counsel or Chartered Accountant for formal review and alignment with the Trust's operational guidelines.
 
+### 15. Founder / Trustee LinkedIn Profile URLs
+- **Status:** Developer and Trustee personal LinkedIn links remain removed from public pages to prevent broken, unverified, or bot-blocked external links.
+- **Owner Action:** Provide your verified official LinkedIn profile URL(s) if you want them shown in the site footer, About page, or governance roster.
+
 ---
 
 ## Supplementary Reference: Needs a Documentary Source Before Publishing
