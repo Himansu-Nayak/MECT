@@ -49,9 +49,9 @@ const STARTER_PROMPTS: Record<LanguageCode, string[]> = {
 };
 
 const INITIAL_GREETINGS: Record<LanguageCode, string> = {
-  en: "Hello! I am **HIm**, your MECT Intelligent Assistant. I can guide you through our higher education tuition grants, the 100% direct-to-college disbursal standard, eligibility guidelines across all 30 districts of Odisha, and how to volunteer as a mentor. How may I assist you today?",
-  or: "ନମସ୍କାର! ମୁଁ **HIm**, ମହାବୀର ଏଡ୍ୟୁକେସନାଲ ଆଣ୍ଡ ଚାରିଟେବୁଲ ଟ୍ରଷ୍ଟ (MECT) ର ଡିଜିଟାଲ୍ ସହାୟକ। ଓଡ଼ିଶାର ୩୦ଟି ଜିଲ୍ଲାର ମେଧାବୀ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ଶିକ୍ଷାବୃତ୍ତି, କଲେଜକୁ ସିଧାସଳଖ ଫିସ୍ ପ୍ରଦାନ ନୀତି ଏବଂ ମେଣ୍ଟରସିପ୍ କାର୍ଯ୍ୟକ୍ରମ ସମ୍ପର୍କରେ ମୁଁ ଆପଣଙ୍କୁ ସହାୟତା କରିପାରିବି। ଆଜି ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିବି?",
-  hi: "नमस्ते! मैं **HIm**, महावीर एजुकेशनल एंड चैरिटेबल ट्रस्ट (MECT) का डिजिटल सहायक हूं। मैं ओडिशा के सभी 30 जिलों के छात्रों के लिए उच्च शिक्षा अनुदान, सीधे कॉलेज फीस भुगतान नीति, पात्रता और मेंटरशिप के बारे में आपकी सहायता कर सकता हूं। आज मैं आपकी क्या सहायता कर सकता हूँ?",
+  en: "Hello! I am **Ask MECT**, your intelligent assistant for Mahaveer Educational & Charitable Trust. I can guide you through our education tutoring, women's livelihoods, safe drinking water, hospital nutrition relief, and statutory credentials. How may I assist you today?",
+  or: "ନମସ୍କାର! ମୁଁ **Ask MECT**, ମହାବୀର ଏଜୁକେସନାଲ ଆଣ୍ଡ ଚାରିଟେବୁଲ ଟ୍ରଷ୍ଟ (MECT) ର ଡିଜିଟାଲ୍ ସହାୟକ। ଗ୍ରାମୀଣ ଶିକ୍ଷା, ମହିଳା ସ୍ଵାବଲମ୍ବନ, ଜଳ ସେବା ଏବଂ ବାର୍ଷିକ ରିପୋର୍ଟ ସମ୍ପର୍କରେ ମୁଁ ଆପଣଙ୍କୁ ସହାୟତା କରିପାରିବି। ଆଜି ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିବି?",
+  hi: "नमस्ते! मैं **Ask MECT**, महावीर एजुकेशनल एंड चैरिटेबल ट्रस्ट (MECT) का डिजिटल सहायक हूं। मैं ग्रामीण शिक्षा, महिला स्वावलंबन, जल सेवा, अस्पताल भोजन और वैधानिक विवरणों के बारे में आपकी सहायता कर सकता हूं। आज मैं आपकी क्या सहायता कर सकता हूँ?",
 };
 
 function generateId(prefix: string): string {
@@ -452,7 +452,7 @@ export function HImChatbot() {
             onClick={() => setIsOpen(true)}
             aria-haspopup="dialog"
             aria-expanded={false}
-            aria-label="Open HIm — MECT AI Assistant"
+            aria-label="Open Ask MECT — AI Assistant"
             className="group relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 xl:w-14 xl:h-14 min-h-[44px] min-w-[44px] rounded-full bg-forest hover:bg-forest-deep text-cream border-2 border-sand shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
           >
             <div className="relative flex items-center justify-center">
@@ -461,7 +461,7 @@ export function HImChatbot() {
             </div>
 
             <span className="hidden lg:flex absolute right-16 px-3 py-1 bg-forest text-cream border border-sand/40 rounded-full text-xs font-semibold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none items-center gap-1.5">
-              <span>Ask HIm</span>
+              <span>Ask MECT</span>
               <span className="text-[10px] text-sand font-mono">(AI)</span>
             </span>
           </button>
@@ -474,7 +474,7 @@ export function HImChatbot() {
         <m.div
           ref={dialogRef}
           role="dialog"
-          aria-label="HIm — MECT Intelligent Assistant"
+          aria-label="Ask MECT — Intelligent Assistant"
           aria-modal="true"
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -492,7 +492,7 @@ export function HImChatbot() {
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-serif font-bold text-base text-white tracking-wide">
-                    HIm
+                    Ask MECT
                   </h3>
                   <span className="text-[10px] px-1.5 py-0.2 bg-terracotta text-white rounded-xs font-mono font-medium">
                     MECT AI
@@ -647,7 +647,7 @@ export function HImChatbot() {
                             />
                           ))}
                         </span>
-                        <span>HIm is consulting MECT knowledge...</span>
+                        <span>Ask MECT is consulting institutional knowledge...</span>
                       </div>
                     )
                   ) : (

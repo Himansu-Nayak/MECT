@@ -30,8 +30,11 @@ import {
   ShieldCheck,
   Compass,
   Users,
+  ExternalLink,
+  MessageCircle,
 } from "lucide-react";
 import { submitInquiry } from "@/lib/api";
+import { MECT_ORG } from "@/config/org";
 
 const INQUIRY_CATEGORIES: SelectOption[] = [
   { value: "General Institutional Inquiry", label: "General Institutional Inquiry" },
@@ -224,6 +227,15 @@ export default function ContactPage() {
                   >
                     {TRUST_CONFIG.contact.phones.helpline}
                   </a>
+                  <a
+                    href={MECT_ORG.contact.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>WhatsApp Secretariat Desk</span>
+                  </a>
                 </div>
               </div>
               <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
@@ -303,6 +315,17 @@ export default function ContactPage() {
                   <span className="font-semibold text-forest">Primary Channel:</span>
                   <span>Official Inquiry Desk or Scheduled Appointment</span>
                 </div>
+                <div className="pt-1">
+                  <a
+                    href={MECT_ORG.addresses.registered.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline"
+                  >
+                    <span>View Balangir Location on Google Maps</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
 
               <div className="pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-3 rounded-xs space-y-1">
@@ -341,6 +364,17 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2.5">
                   <span className="font-semibold text-forest">In-Person Coordination:</span>
                   <span>Available strictly by advance appointment for CSR &amp; academic partners</span>
+                </div>
+                <div className="pt-1">
+                  <a
+                    href={MECT_ORG.addresses.administrative.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline"
+                  >
+                    <span>View Bhubaneswar Office on Google Maps</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
 
