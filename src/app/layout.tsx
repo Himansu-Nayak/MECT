@@ -146,6 +146,11 @@ const organizationJsonLd = {
       availableLanguage: ["English", "Odia", "Hindi"],
     },
   ],
+  founder: {
+    "@type": "Person",
+    name: ORG.chairman.name,
+    jobTitle: ORG.chairman.role,
+  },
   funder: {
     "@type": "Person",
     name: ORG.chairman.name,

@@ -195,8 +195,34 @@ const DONATIONS_FAQS: FAQItem[] = [
 ];
 
 export default function FAQPage() {
+  const allFaqs = [
+    ...SCHOLARSHIP_FAQS,
+    ...MENTORSHIP_FAQS,
+    ...GOVERNANCE_FAQS,
+    ...STUDY_HUBS_FAQS,
+    ...VOLUNTEER_FAQS,
+    ...DONATIONS_FAQS,
+  ];
+
+  const faqPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: allFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
       <ReadingProgress />
       {/* 1. Page Hero */}
       <PageHero

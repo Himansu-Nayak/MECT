@@ -37,8 +37,37 @@ export function PageHero({
   breadcrumbs,
   actions,
 }: PageHeroProps) {
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://mect.org.in",
+      },
+      ...breadcrumbs.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: item.label,
+        ...(item.href
+          ? {
+              item: item.href.startsWith("http")
+                ? item.href
+                : `https://mect.org.in${item.href.startsWith("/") ? "" : "/"}${item.href}`,
+            }
+          : {}),
+      })),
+    ],
+  };
+
   return (
     <section className="relative overflow-hidden bg-forest text-cream pt-12 pb-16 md:pt-16 md:pb-20 border-b border-terracotta/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
       {/* Subtle Architectural Texture Pattern */}
       <div
         className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#E5C499_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"
