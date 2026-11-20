@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { ReadingProgress } from "@/components/motion/ReadingProgress";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -175,21 +176,21 @@ const VOLUNTEER_FAQS: FAQItem[] = [
 const DONATIONS_FAQS: FAQItem[] = [
   {
     category: "Donations",
-    question: "Can I make a monetary donation online today?",
+    question: "How can I make a donation to MECT?",
     answer:
-      "Yes. You can contribute directly on our unified /donate page using authorized online checkout via Cashfree (UPI, cards, net banking) with instant automated digital receipting and payment acknowledgement.",
+      "Donations are accepted by bank transfer / UPI to the Trust's verified State Bank of India account. Full bank account details, IFSC code, and verified UPI ID are published on our /donate page. An official receipt is issued after the Trust verifies the transfer.",
   },
   {
     category: "Donations",
-    question: "Are donations eligible for Section 80G tax deductions?",
+    question: "Are donations eligible for tax deductions?",
     answer:
-      "Historical statutory registration documents are available in the disclosures archive. Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. No current-year deduction is represented on this page.",
+      "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. Historical registration orders (12A & 80G) are archived in the Statutory Disclosures vault for public inspection.",
   },
   {
     category: "Donations",
     question: "Does the Trust employ fundraising agencies or pay commissions?",
     answer:
-      "Zero. Mahaveer Educational & Charitable Trust (MECT) strictly prohibits fundraising commissions, third-party telemarketing, and percentage-based donor fees. 100% of public endowments directly fund educational subsidies and community learning infrastructure.",
+      "Zero. Mahaveer Educational & Charitable Trust (MECT) strictly prohibits fundraising commissions, third-party telemarketing, and percentage-based donor fees. All public contributions directly support charitable activities and community learning infrastructure.",
   },
 ];
 
@@ -473,6 +474,9 @@ export default function FAQPage() {
           </Card>
         </Container>
       </section>
+
+      {/* Statutory Disclosures & Transparency Strip */}
+      <StatutoryStrip />
     </div>
   );
 }

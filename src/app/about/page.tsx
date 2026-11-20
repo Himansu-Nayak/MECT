@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -435,7 +436,7 @@ export default function AboutPage() {
                 </Link>
                 <Link href="/governance">
                   <Button variant="outline" size="md">
-                    <span>Review Fiduciary Charter</span>
+                    <span>Review Governance Charter</span>
                   </Button>
                 </Link>
                 <Link href="/volunteer">
@@ -448,6 +449,9 @@ export default function AboutPage() {
             </div>
           </Container>
         </section>
+
+        {/* SECTION 8: Statutory Disclosures & Transparency Strip */}
+        <StatutoryStrip />
       </div>
     </>
   );

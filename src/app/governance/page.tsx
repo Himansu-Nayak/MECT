@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
@@ -23,7 +24,7 @@ import {
 } from "lucide-react";
 
 export const metadata = createPageMetadata({
-  title: "Institutional Leadership, Fiduciary Charter & Governance",
+  title: "Institutional Leadership, Governance Charter & Stewardship",
   description:
     "Institutional leadership framework, Institutional Stewardship Statement, registered Trust Deed No. 40311302194, Clause XVI honorary governance code, and statutory compliance for Mahaveer Educational & Charitable Trust (MECT).",
   path: "/governance",
@@ -100,7 +101,7 @@ export default function GovernancePage() {
       clause: "Clause 8(1)",
       title: "Board Size (3–9 Trustees)",
       description:
-        "Per Trust Deed Clause 8(1), the Board comprises not less than three and not more than nine Trustees at any point of time, exercising collective fiduciary authority over Trust property and charitable administration.",
+        "Per Trust Deed Clause 8(1), the Board comprises not less than three and not more than nine Trustees at any point of time, exercising collective governance authority over Trust property and charitable administration.",
     },
     {
       clause: "Clause 8(2) & 10",
@@ -150,9 +151,9 @@ export default function GovernancePage() {
     <div className="flex flex-col w-full bg-cream">
       {/* 1. Page Hero Banner */}
       <PageHero
-        badge="Institutional Governance & Fiduciary Charter"
+        badge="Institutional Governance & Trustee Charter"
         badgeVariant="forest-dark"
-        title="Leadership, Stewardship & Fiduciary Governance"
+        title="Leadership, Stewardship & Board Governance"
         description="Public confidence is the cornerstone of enduring philanthropy. Mahaveer Educational & Charitable Trust (MECT) operates under registered deed governance, non-remunerative trustee stewardship, and complete statutory transparency."
         breadcrumbs={[{ label: "About Us", href: "/about" }, { label: "Governance" }]}
         actions={
@@ -307,7 +308,7 @@ export default function GovernancePage() {
                         3 to 9 Honorary Trustees per Deed
                       </p>
                       <p className="text-[11px] font-mono text-ink-secondary">
-                        Collective Fiduciary Authority
+                        Collective Board Authority
                       </p>
                     </div>
                   </div>
@@ -348,7 +349,7 @@ export default function GovernancePage() {
                   Institutional Stewardship Statement
                 </h2>
                 <p className="text-xs sm:text-sm text-ink-secondary font-mono">
-                  Formal declaration of operating ethics, fiduciary discipline, and community commitments adopted by Mahaveer Educational &amp; Charitable Trust.
+                  Formal declaration of operating ethics, governance discipline, and community commitments adopted by Mahaveer Educational &amp; Charitable Trust.
                 </p>
               </div>
               <div className="shrink-0 w-12 h-12 rounded-full bg-forest text-cream flex items-center justify-center border border-sand">
@@ -359,7 +360,7 @@ export default function GovernancePage() {
             {/* Statement Narrative Body */}
             <div className="space-y-5 text-sm sm:text-base text-ink leading-relaxed font-sans">
               <p className="font-serif font-medium text-base sm:text-lg text-forest leading-relaxed">
-                Mahaveer Educational &amp; Charitable Trust (MECT) operates under an institutional principle of stewardship: charitable contributions and endowments represent a fiduciary obligation to the public, requiring transparent administration, verifiable outcomes, and strict adherence to registered objects.
+                Mahaveer Educational &amp; Charitable Trust (MECT) operates under an institutional principle of stewardship: charitable contributions and endowments represent a solemn public trust, requiring transparent administration, verifiable outcomes, and strict adherence to registered objects.
               </p>
 
               <p>
@@ -398,15 +399,15 @@ export default function GovernancePage() {
         </Container>
       </section>
 
-      {/* 5. Section 03: The Fiduciary Charter & Fundamental Principles */}
+      {/* 5. Section 03: The Governance Charter & Fundamental Principles */}
       <section
         id="fiduciary-charter"
         className="py-20 md:py-28 bg-cream border-b border-border-warm scroll-mt-20"
-        aria-label="Fiduciary Charter"
+        aria-label="Governance Charter"
       >
         <Container size="default" className="space-y-14">
           <SectionHeader
-            badge="Fiduciary Charter"
+            badge="Governance Charter"
             title="Core Principles of Charitable Stewardship"
             subtitle="The registered Trust Deed establishes four non-negotiable operational and financial standards that govern every decision of the Board."
             align="center"
@@ -604,6 +605,9 @@ export default function GovernancePage() {
           </div>
         </Container>
       </section>
+
+      {/* Statutory Disclosures & Transparency Strip */}
+      <StatutoryStrip />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -322,7 +323,7 @@ export default function ImpactPage() {
         <Container size="default">
           <div className="max-w-3xl mx-auto text-center space-y-6 bg-white border border-border-warm rounded-xs p-8 sm:p-10 shadow-xs">
             <Badge variant="contrast-gold">
-              Public Fiduciary Archive
+              Public Accountability Archive
             </Badge>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest tracking-tight">
               Transparent, Audited Annual Reports &amp; Balance Sheets
@@ -346,6 +347,9 @@ export default function ImpactPage() {
           </div>
         </Container>
       </section>
+
+      {/* Statutory Disclosures & Transparency Strip */}
+      <StatutoryStrip />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { useReducedMotion } from "motion/react";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card, Badge } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -914,6 +915,9 @@ export default function VolunteerPage() {
           </Card>
         </Container>
       </section>
+
+      {/* Statutory Disclosures & Transparency Strip */}
+      <StatutoryStrip />
     </div>
   );
 }

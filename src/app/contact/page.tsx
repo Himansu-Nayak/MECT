@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -634,6 +635,9 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
+
+      {/* Statutory Disclosures & Transparency Strip */}
+      <StatutoryStrip />
     </div>
   );
 }
