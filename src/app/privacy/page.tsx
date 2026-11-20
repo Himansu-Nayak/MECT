@@ -37,7 +37,7 @@ const PRIVACY_SECTIONS = [
     number: "02",
     title: "Categories of Information Collected",
     content:
-      "Data collection through this portal is restricted to information voluntarily furnished by applicants, guardians, volunteer mentors, and institutional correspondents:",
+      "Data collection through this portal is restricted to information voluntarily furnished by applicants, guardians, volunteer mentors, donors, and institutional correspondents:",
     bullets: [
       "Contact Information: Full legal name, permanent address, verified email, and mobile telephone numbers.",
       "Academic Records: Enrollment registration numbers, course stream, university affiliation, and certified marksheets.",
@@ -47,6 +47,19 @@ const PRIVACY_SECTIONS = [
   },
   {
     number: "03",
+    title: "Donation Claim & Public Inquiry Intake Records",
+    content:
+      "When supporters submit a donation transfer claim or citizens send an inquiry through this website, the following records are received and processed:",
+    bullets: [
+      "Information Stored: For donation claims, we store the remitter's full name, email address, mobile telephone number, claimed transfer amount, bank UTR reference number, transfer date, programme code, and optional dedication message. For public contact inquiries, we store full name, email address, phone number, subject category, and message text.",
+      "Operational Purpose: Donation claim details are utilized exclusively by Trust administration to verify incoming credits against State Bank of India bank ledger statements and issue serialized donation payment acknowledgements. Inquiry details are used solely to review and respond to correspondence.",
+      "Access Controls: Access to intake records is restricted strictly to authorized Secretariat administrators and designated verification officers via password-authenticated administrative tools. Information is never monetized, rented, sold, or shared with commercial marketing entities.",
+      "Retention & Statutory Archiving: Records are retained for the duration required to complete inquiry follow-up, administer charitable programmes, and maintain mandatory financial accounting and statutory audit documentation under Indian trust laws.",
+      "Deletion & Rectification Requests: Anyone who has submitted information through our forms may request review, correction, or deletion of their contact records by emailing mect220@gmail.com with the subject tag [DATA_DELETION_REQUEST]. Statutory accounting records required for trust audit cannot be expunged prior to the expiration of mandatory statutory retention periods.",
+    ],
+  },
+  {
+    number: "04",
     title: "Lawful & Charitable Purpose of Processing",
     content:
       "Personal information is processed strictly by authorized secretariat coordinators and the Academic Advisory Committee for designated charitable purposes:",
@@ -58,22 +71,22 @@ const PRIVACY_SECTIONS = [
     ],
   },
   {
-    number: "04",
+    number: "05",
     title: "Inviolable Non-Commercialization Pledge",
     content:
-      "Mahaveer Educational & Charitable Trust (MECT) operates under a strict, absolute prohibition against data commercialization. We do not sell, rent, monetize, or trade applicant information with third-party advertisers, commercial education portals, or loan intermediaries. We do not deploy third-party behavioral advertising trackers on this portal.",
-  },
-  {
-    number: "05",
-    title: "Data Security Standards & Retention Protocols",
-    content:
-      "All electronic application data and contact submissions are protected through industry-standard encryption, strict role-based access controls, and periodic security reviews. Records are retained strictly for the duration necessary to satisfy educational grant administration and statutory non-profit audit obligations. Applicants hold the right to request verification, correction, or rectification of their records.",
+      "Mahaveer Educational & Charitable Trust (MECT) operates under a strict, absolute prohibition against data commercialization. We do not sell, rent, monetize, or trade applicant or donor information with third-party advertisers, commercial education portals, or loan intermediaries. We do not deploy third-party behavioral advertising trackers on this portal.",
   },
   {
     number: "06",
-    title: "Grievance Redressal & Data Protection Officer",
+    title: "Data Security Standards & Retention Protocols",
     content:
-      "In compliance with Indian data protection norms, Mahaveer Educational & Charitable Trust (MECT) has designated a Grievance Redressal Officer to handle data inquiries, correction requests, and privacy concerns. Formal communications can be addressed to the Secretariat with the subject tag [DATA_PRIVACY_QUERY].",
+      "All electronic application data and contact submissions are protected through industry-standard encryption, strict role-based access controls, and periodic security reviews. Records are retained strictly for the duration necessary to satisfy educational grant administration, statutory non-profit audit obligations, and inquiry resolution. Applicants and supporters hold the right to request verification, correction, or rectification of their records.",
+  },
+  {
+    number: "07",
+    title: "Grievance Redressal & Secretariat Contact Desk",
+    content:
+      "Mahaveer Educational & Charitable Trust (MECT) maintains an administrative desk to handle data questions, correction requests, and privacy inquiries. Formal communications can be addressed to the Secretariat at mect220@gmail.com with the subject tag [DATA_PRIVACY_QUERY].",
   },
 ];
 
@@ -84,7 +97,7 @@ export default function PrivacyPage() {
       <PageHero
         badge="Data Protection & Ethics"
         title="Privacy & Student Confidentiality Policy"
-        description="Our institutional commitment to safeguarding student data, applicant economic records, and communication integrity in accordance with the Digital Personal Data Protection Act, 2023."
+        description="Institutional guidelines and practices governing how personal information, donation transfer records, and student records are handled across Trust operations."
         breadcrumbs={[{ label: "Privacy Policy" }]}
       />
 

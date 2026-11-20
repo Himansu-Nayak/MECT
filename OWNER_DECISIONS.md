@@ -80,6 +80,10 @@ The following 12 items are prioritized in strict order of operational and statut
 - **Status:** Neither SMTP nor Resend email credentials are configured in production for inbound inquiry/claim notifications. Intake submissions are safely recorded in the database queue (`manual_bank_transfer_claims` and `public_inquiries`).
 - **Owner Action:** Provide official SMTP/mail credentials (or Resend API key), or decide who checks the admin portal intake lists (`/admin/donors` and `/admin/inquiries`) and how often (e.g., daily desk roster).
 
+### 14. Privacy Policy & Intake Retention Review
+- **Status:** Privacy page (`/privacy`) has been updated to describe the exact intake data points (name, email, phone, amount, UTR, message), purpose, retention, access controls, and deletion procedure without making unverified statutory legal compliance claims.
+- **Owner Action:** Submit the privacy policy text to the Trust's legal counsel or Chartered Accountant for formal review and alignment with the Trust's operational guidelines.
+
 ---
 
 ## Supplementary Reference: Needs a Documentary Source Before Publishing
