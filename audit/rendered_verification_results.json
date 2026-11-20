@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T09:23:33.003Z",
+  "timestamp": "2026-11-20T11:28:59.468Z",
   "part1_pages": [
     {
       "route": "/",
@@ -398,60 +398,6 @@
       "fiduciaryCount": 0
     },
     {
-      "route": "/stories/arogya-health-camp-rayagada",
-      "status": 200,
-      "finalUrl": "http://127.0.0.1:3000/stories/arogya-health-camp-rayagada",
-      "title": "Arogya Health Camp & Diagnostic Outreach | MECT Stories | MECT",
-      "titleLength": 62,
-      "titleValid": false,
-      "descLength": 152,
-      "descValid": true,
-      "canonical": "https://mect.org.in/stories/arogya-health-camp-rayagada",
-      "canonicalValid": true,
-      "ogImagePresent": true,
-      "keywordsAbsent": true,
-      "jsonLdValid": true,
-      "lang": "en",
-      "forbiddenStrings": [],
-      "fiduciaryCount": 0
-    },
-    {
-      "route": "/stories/scholarship-distribution-fy2024",
-      "status": 200,
-      "finalUrl": "http://127.0.0.1:3000/stories/scholarship-distribution-fy2024",
-      "title": "Annual Higher Education Scholarship Distribut... | MECT | MECT",
-      "titleLength": 62,
-      "titleValid": false,
-      "descLength": 152,
-      "descValid": true,
-      "canonical": "https://mect.org.in/stories/scholarship-distribution-fy2024",
-      "canonicalValid": true,
-      "ogImagePresent": true,
-      "keywordsAbsent": true,
-      "jsonLdValid": true,
-      "lang": "en",
-      "forbiddenStrings": [],
-      "fiduciaryCount": 0
-    },
-    {
-      "route": "/stories/emergency-relief-2024",
-      "status": 200,
-      "finalUrl": "http://127.0.0.1:3000/stories/emergency-relief-2024",
-      "title": "Emergency Summer Heatwave Relief & Jal Seva K... | MECT | MECT",
-      "titleLength": 62,
-      "titleValid": false,
-      "descLength": 152,
-      "descValid": true,
-      "canonical": "https://mect.org.in/stories/emergency-relief-2024",
-      "canonicalValid": true,
-      "ogImagePresent": true,
-      "keywordsAbsent": true,
-      "jsonLdValid": true,
-      "lang": "en",
-      "forbiddenStrings": [],
-      "fiduciaryCount": 0
-    },
-    {
       "route": "/stories/classroom",
       "status": 200,
       "finalUrl": "http://127.0.0.1:3000/stories/classroom",
@@ -479,6 +425,24 @@
       "descLength": 152,
       "descValid": true,
       "canonical": "https://mect.org.in/stories/workshop",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/stories/water-point",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/stories/water-point",
+      "title": "The Water Point | MECT Stories | MECT",
+      "titleLength": 37,
+      "titleValid": true,
+      "descLength": 152,
+      "descValid": true,
+      "canonical": "https://mect.org.in/stories/water-point",
       "canonicalValid": true,
       "ogImagePresent": true,
       "keywordsAbsent": true,
@@ -549,9 +513,10 @@
   ],
   "part3_donateNoJs": {
     "bankName": true,
-    "accountHolder": true,
+    "accountHolder": false,
     "accountNumber": true,
     "ifsc": true,
+    "branch": true,
     "upiId": true,
     "donorNameField": true,
     "donorEmailField": true,
@@ -564,9 +529,9 @@
       "status": 200,
       "data": {
         "success": true,
-        "claimReference": "MECT-SBI-399084-2878",
-        "status": "PENDING_VERIFICATION",
-        "message": "Your transfer details have been submitted to the MECT accounts desk. An official receipt will be issued once the transfer is verified against our State Bank of India statement."
+        "claimReference": "MECT-SBI-044449-4728",
+        "status": "UNVERIFIED",
+        "message": "Claim received. Reference: MECT-SBI-044449-4728. The Trust will check your transfer against its bank records before issuing a receipt."
       }
     },
     "invalid": {
@@ -600,7 +565,16 @@
         "attempt": 6,
         "status": 429
       }
-    ]
+    ],
+    "distinctIp": {
+      "status": 200,
+      "data": {
+        "success": true,
+        "claimReference": "MECT-SBI-044514-3128",
+        "status": "UNVERIFIED",
+        "message": "Claim received. Reference: MECT-SBI-044514-3128. The Trust will check your transfer against its bank records before issuing a receipt."
+      }
+    }
   },
   "part5_404": {
     "status": 404,
@@ -659,51 +633,51 @@
   },
   "part7_lighthouse": {
     "/": {
-      "perfScore": 68,
+      "perfScore": 92,
       "a11yScore": 100,
       "seoScore": 100,
       "lcp": "1.2 s",
-      "cls": "0.002",
+      "cls": "0",
       "inp": "N/A"
     },
     "/programmes": {
-      "perfScore": 65,
+      "perfScore": 98,
       "a11yScore": 100,
       "seoScore": 100,
-      "lcp": "2.8 s",
-      "cls": "0.002",
+      "lcp": "1.4 s",
+      "cls": "0",
       "inp": "N/A"
     },
     "/donate": {
-      "perfScore": 69,
+      "perfScore": 96,
       "a11yScore": 100,
       "seoScore": 100,
-      "lcp": "2.4 s",
-      "cls": "0.001",
+      "lcp": "1.2 s",
+      "cls": "0",
       "inp": "N/A"
     },
     "/about": {
-      "perfScore": 82,
+      "perfScore": 99,
       "a11yScore": 100,
       "seoScore": 100,
-      "lcp": "1.3 s",
+      "lcp": "1.2 s",
       "cls": "0.001",
       "inp": "N/A"
     },
     "/scholarships": {
-      "perfScore": 79,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.7 s",
-      "cls": "0.001",
-      "inp": "N/A"
-    },
-    "/contact": {
-      "perfScore": 77,
+      "perfScore": 98,
       "a11yScore": 100,
       "seoScore": 100,
       "lcp": "1.2 s",
-      "cls": "0.001",
+      "cls": "0.011",
+      "inp": "N/A"
+    },
+    "/contact": {
+      "perfScore": 98,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0",
       "inp": "N/A"
     }
   }

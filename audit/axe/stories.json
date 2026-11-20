@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T09:20:56.770Z",
+  "timestamp": "2026-11-20T11:27:42.925Z",
   "url": "http://127.0.0.1:3000/stories",
   "toolOptions": {
     "reporter": "v1"
@@ -1294,46 +1294,6 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            },
-            {
-              "id": "aria-allowed-attr-elm",
-              "data": null,
-              "relatedNodes": [],
-              "message": "ARIA attributes are allowed for this element",
-              "impact": "critical"
-            },
-            {
-              "id": "aria-no-deprecated-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "No deprecated ARIA attributes are used"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -1376,7 +1336,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -1814,9 +1774,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -2285,24 +2245,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -2323,7 +2265,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -2519,9 +2461,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -3289,38 +3231,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.text-terracotta-dark.w-3\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-search w-3.5 h-3.5 text-forest\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55 > .lucide-search.w-3\\.5.h-3\\.5"
@@ -3452,38 +3362,6 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:px-4 > .fill-current.lucide-heart.w-3\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".sm\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.text-terracotta-dark.w-3\\.5"
           ]
         },
         {
@@ -3867,7 +3745,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-3 h-3\" aria-hidden=\"true\">",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
           ]
         },
         {
@@ -3931,7 +3809,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/20...\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-...\" aria-hidden=\"true\">",
           "target": [
-            "article:nth-child(1) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
           ]
         },
         {
@@ -4027,7 +3905,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-3 h-3\" aria-hidden=\"true\">",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
           ]
         },
         {
@@ -4091,7 +3969,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/20...\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-...\" aria-hidden=\"true\">",
           "target": [
-            "article:nth-child(2) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
           ]
         },
         {
@@ -4187,7 +4065,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-3 h-3\" aria-hidden=\"true\">",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
           ]
         },
         {
@@ -4251,327 +4129,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/20...\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-...\" aria-hidden=\"true\">",
           "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"emergency-relief-2024\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div aria-hidden=\"true\" class=\"absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-forest-deep/90 via-forest-deep/40 to-transparent pointer-events-none\"></div>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .inset-x-0.bottom-0.h-24"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-map-pin w-3 h-3 text-sand shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .lucide-map-pin.w-3.h-3"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-3 h-3\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-check-corner lucide-file-check-2 w-3 h-3 text-forest shrink-0 mt-0.5\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .lucide-file-check-corner.lucide-file-check-2.mt-0\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/20...\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-...\" aria-hidden=\"true\">",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<div aria-hidden=\"true\" class=\"absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-forest-deep/90 via-forest-deep/40 to-transparent pointer-events-none\"></div>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .inset-x-0.bottom-0.h-24"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-map-pin w-3 h-3 text-sand shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .lucide-map-pin.w-3.h-3"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-calendar w-3 h-3\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > .lucide-calendar.w-3.h-3"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-check-corner lucide-file-check-2 w-3 h-3 text-forest shrink-0 mt-0.5\" aria-hidden=\"true\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .lucide-file-check-corner.lucide-file-check-2.mt-0\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/20...\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-...\" aria-hidden=\"true\">",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"water-point\"] > .group-hover\\:translate-x-1.lucide-arrow-right.duration-300"
           ]
         },
         {
@@ -4859,7 +4417,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right w-4 h-4\" aria-hidden=\"true\">",
           "target": [
-            ".w-4.h-4.lucide-arrow-right"
+            ".lucide-arrow-right.w-4.h-4"
           ]
         },
         {
@@ -4987,7 +4545,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current text-white\" aria-hidden=\"true\">",
           "target": [
-            ".fill-current.lucide-heart.text-white"
+            ".min-h-\\[40px\\] > .fill-current.lucide-heart.w-3\\.5"
           ]
         },
         {
@@ -5311,24 +4869,6 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -5349,7 +4889,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -5545,9 +5085,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -6168,38 +5708,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6234,7 +5742,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -6552,9 +6060,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -6913,24 +6421,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6951,7 +6441,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -7147,9 +6637,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -7398,38 +6888,6 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "aria-label attribute exists and is not empty"
-            },
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "button-has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has inner text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7568,33 +7026,21 @@
                   ]
                 },
                 {
-                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a></h2>",
+                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
                   "target": [
                     "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
                   ]
                 },
                 {
-                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a></h2>",
+                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a></h2>",
                   "target": [
                     "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
                   ]
                 },
                 {
-                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a></h2>",
+                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a></h2>",
                   "target": [
                     "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-                  ]
-                },
-                {
-                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
-                  "target": [
-                    "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-                  ]
-                },
-                {
-                  "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a></h2>",
-                  "target": [
-                    "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
                   ]
                 }
               ],
@@ -7926,31 +7372,6 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#16221d",
-                "bgColor": "#faf7f2",
-                "contrastRatio": 15.34,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 15.34"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
                 "bgColor": "#fefdfc",
                 "contrastRatio": 16.13,
                 "fontSize": "8.6pt (11.5px)",
@@ -7992,7 +7413,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"] > span"
+            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -8067,7 +7488,7 @@
           "impact": null,
           "html": "<span>Documentary Field Archive</span>",
           "target": [
-            ".select-none.border-sand\\/40.bg-forest > span"
+            ".select-none.border-sand\\/40.py-0\\.5 > span"
           ]
         },
         {
@@ -8140,7 +7561,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"leading-relaxed text-ink-secondary text-[11px] sm:text-xs\">",
+          "html": "<p class=\"leading-relaxed text-ink-secondary text-[11px] sm:text-xs\">Strictly zero fabricated quotations, unverified individual claims, or commercial endorsements. Field records reflect institutional attendance and activity logs with documented operating cycles.</p>",
           "target": [
             ".sm\\:text-xs.text-ink-secondary.leading-relaxed"
           ]
@@ -8151,331 +7572,6 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#b25430",
-                "bgColor": "#f8f4ed",
-                "contrastRatio": 4.55,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 4.55"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-mono text-terracotta\">[Name withheld for privacy]</span>",
-          "target": [
-            ".text-terracotta.font-mono"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#b25430",
-                "bgColor": "#ffffff",
-                "contrastRatio": 4.99,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 4.99"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">COMMUNITY DISPATCH</span>",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#ffffff",
-                "contrastRatio": 9.51,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 9.51"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>March 2024 (FY 2023–24)</span>",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "15.0pt (20px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "3:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a>",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4a5852",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.47,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.47"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4e5b55",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.11,
-                "fontSize": "7.5pt (10px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.11"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Rayagada Health Outreach Register (March 2024 Docket)</span>",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Read Complete Dispatch</span>",
-          "target": [
-            "article:nth-child(1) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#b25430",
-                "bgColor": "#ffffff",
-                "contrastRatio": 4.99,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 4.99"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">PROGRAMME RECORD</span>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#ffffff",
-                "contrastRatio": 9.51,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 9.51"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Academic Session FY 2024–25 (August 2024)</span>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "15.0pt (20px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "3:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4a5852",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.47,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.47"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">The Trust's academic review panel completed appraisal of rural student applications for FY 2024–25, approving direct-to-college RTGS fee disbursals for eligible undergraduate and technical degree candidates.</p>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4e5b55",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.11,
-                "fontSize": "7.5pt (10px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.11"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Higher Education Scholarship Committee Ledger (August 2024)</span>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Read Complete Dispatch</span>",
-          "target": [
-            "article:nth-child(2) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#b25430",
                 "bgColor": "#ffffff",
                 "contrastRatio": 4.99,
                 "fontSize": "8.3pt (11px)",
@@ -8492,157 +7588,7 @@
           "impact": null,
           "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#ffffff",
-                "contrastRatio": 9.51,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 9.51"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Summer Heatwave Cycle (April–June 2024)</span>",
-          "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "15.0pt (20px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "3:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a>",
-          "target": [
-            "h2 > a[href$=\"emergency-relief-2024\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4a5852",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.47,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.47"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">MECT volunteers operated clean drinking water points and oral rehydration kiosks across busy district transit nodes and outside the District Hospital during severe summer heatwave distress.</p>",
-          "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#4e5b55",
-                "bgColor": "#ffffff",
-                "contrastRatio": 7.11,
-                "fontSize": "7.5pt (10px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 7.11"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Summer Disaster Relief Taskforce Logs (FY 2024–25)</span>",
-          "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Read Complete Dispatch</span>",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"emergency-relief-2024\"] > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#b25430",
-                "bgColor": "#ffffff",
-                "contrastRatio": 4.99,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 4.99"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
           ]
         },
         {
@@ -8667,7 +7613,7 @@
           "impact": null,
           "html": "<span>FY 2021–24 Educational Cycles</span>",
           "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
           ]
         },
         {
@@ -8717,7 +7663,7 @@
           "impact": null,
           "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Volunteer educators conduct after-school learning circles focusing on basic numeracy, Odia literacy, and foundational science for students from rural government schools across Balangir and Puintala.</p>",
           "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
           ]
         },
         {
@@ -8742,7 +7688,7 @@
           "impact": null,
           "html": "<span class=\"line-clamp-1 italic\">Balangir Community Learning Centre Registers &amp; Annual Progress Reports (FY 2021–24)</span>",
           "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
           ]
         },
         {
@@ -8790,9 +7736,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">PROGRAMME RECORD</span>",
+          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
           "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
           ]
         },
         {
@@ -8815,9 +7761,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>FY 2022–24 Modular Cohorts</span>",
+          "html": "<span>FY 2021–24 Training Cycles</span>",
           "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
           ]
         },
         {
@@ -8840,7 +7786,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a>",
+          "html": "<a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a>",
           "target": [
             "h2 > a[href$=\"workshop\"]"
           ]
@@ -8865,9 +7811,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Structured 6-month modular training batches provide practical instruction in garment drafting, pattern cutting, machine operation, and stitching techniques at the Balangir centre.</p>",
+          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Practical garment cutting, drafting, and sewing machine operation sessions supporting self-reliance and home-based enterprise for women in rural Balangir.</p>",
           "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
           ]
         },
         {
@@ -8890,9 +7836,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Vocational Centre Attendance Logs &amp; FY 2022–23 / FY 2023–24 Activity Reports</span>",
+          "html": "<span class=\"line-clamp-1 italic\">Balangir Vocational Training Centre Course Logs &amp; Activity Reports</span>",
           "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
           ]
         },
         {
@@ -8918,6 +7864,156 @@
           "html": "<span>Read Complete Dispatch</span>",
           "target": [
             ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#b25430",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.99,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 4.99"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">COMMUNITY DISPATCH</span>",
+          "target": [
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#3d4843",
+                "bgColor": "#ffffff",
+                "contrastRatio": 9.51,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 9.51"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Summer Heatwave Cycles (April–June)</span>",
+          "target": [
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#ffffff",
+                "contrastRatio": 16.39,
+                "fontSize": "15.0pt (20px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "3:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.39"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a>",
+          "target": [
+            "h2 > a[href$=\"water-point\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#4a5852",
+                "bgColor": "#ffffff",
+                "contrastRatio": 7.47,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 7.47"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">During extreme summer months where temperatures frequently exceed 42°C, MECT coordinates volunteer-managed drinking-water points and oral rehydration kiosks across busy district corridors.</p>",
+          "target": [
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#4e5b55",
+                "bgColor": "#ffffff",
+                "contrastRatio": 7.11,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 7.11"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"line-clamp-1 italic\">MECT Summer Relief Taskforce Records &amp; FY 2022–24 Activity Logs</span>",
+          "target": [
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#ffffff",
+                "contrastRatio": 16.39,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.39"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Read Complete Dispatch</span>",
+          "target": [
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"water-point\"] > span"
           ]
         },
         {
@@ -8967,7 +8063,7 @@
           "impact": null,
           "html": "<p class=\"text-xs sm:text-sm text-ink-muted leading-relaxed\">",
           "target": [
-            ".max-w-3xl.space-y-2 > .sm\\:text-sm.leading-relaxed"
+            ".sm\\:text-sm.text-ink-muted.leading-relaxed"
           ]
         },
         {
@@ -9103,7 +8199,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -9121,7 +8217,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a></h2>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -9139,45 +8235,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a></h2>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "minor",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "minor",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a></h2>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
         }
       ]
@@ -9222,18 +8282,6 @@
                       "html > body > main:nth-child(4) > div > section:nth-child(2) > div > div > div:nth-child(2) > article:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > h2:nth-child(1)"
                     ],
                     "level": 2
-                  },
-                  {
-                    "ancestry": [
-                      "html > body > main:nth-child(4) > div > section:nth-child(2) > div > div > div:nth-child(2) > article:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > h2:nth-child(1)"
-                    ],
-                    "level": 2
-                  },
-                  {
-                    "ancestry": [
-                      "html > body > main:nth-child(4) > div > section:nth-child(2) > div > div > div:nth-child(2) > article:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > h2:nth-child(1)"
-                    ],
-                    "level": 2
                   }
                 ]
               },
@@ -9263,7 +8311,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -9281,7 +8329,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a></h2>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -9299,45 +8347,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a></h2>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "heading-order",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "Heading order valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "heading-order",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "Heading order valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a></h2>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
         }
       ]
@@ -9489,7 +8501,7 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Community health and...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -9515,7 +8527,7 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Students reviewing s...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -9544,58 +8556,6 @@
           "html": "<img alt=\"Volunteers preparing...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-alt",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has an alt attribute"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "alt-space-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a valid alt attribute value"
-            }
-          ],
-          "impact": null,
-          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-alt",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has an alt attribute"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "alt-space-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a valid alt attribute value"
-            }
-          ],
-          "impact": null,
-          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
         },
         {
@@ -9668,7 +8628,7 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Community health and...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -9686,7 +8646,7 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Students reviewing s...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -9707,42 +8667,6 @@
           "html": "<img alt=\"Volunteers preparing...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "duplicate-img-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "minor",
-              "message": "Element does not duplicate existing text in <img> alt text"
-            }
-          ],
-          "impact": null,
-          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "duplicate-img-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "minor",
-              "message": "Element does not duplicate existing text in <img> alt text"
-            }
-          ],
-          "impact": null,
-          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
         },
         {
@@ -9812,24 +8736,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "label-content-name-mismatch",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element contains visible text as part of its accessible name"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -9850,7 +8756,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -10361,9 +9267,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a>",
+          "html": "<a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
+            "h2 > a[href$=\"classroom\"]"
           ]
         },
         {
@@ -10386,9 +9292,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a>",
+          "html": "<a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
+            "h2 > a[href$=\"workshop\"]"
           ]
         },
         {
@@ -10411,59 +9317,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a>",
+          "html": "<a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a>",
           "target": [
-            "h2 > a[href$=\"emergency-relief-2024\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<div class=\"space-y-2\">",
-                  "target": [
-                    "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a>",
-          "target": [
-            "h2 > a[href$=\"classroom\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<div class=\"space-y-2\">",
-                  "target": [
-                    "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a>",
-          "target": [
-            "h2 > a[href$=\"workshop\"]"
+            "h2 > a[href$=\"water-point\"]"
           ]
         }
       ]
@@ -10892,7 +9748,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -11027,162 +9883,6 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a>",
-          "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/arogya-health-camp-rayagada\">",
-          "target": [
-            "article:nth-child(1) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a>",
-          "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/scholarship-distribution-fy2024\">",
-          "target": [
-            "article:nth-child(2) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a>",
-          "target": [
-            "h2 > a[href$=\"emergency-relief-2024\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/emergency-relief-2024\">",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"emergency-relief-2024\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
           "html": "<a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a>",
           "target": [
             "h2 > a[href$=\"classroom\"]"
@@ -11235,7 +9935,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a>",
+          "html": "<a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a>",
           "target": [
             "h2 > a[href$=\"workshop\"]"
           ]
@@ -11264,6 +9964,58 @@
           "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/workshop\">",
           "target": [
             ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a>",
+          "target": [
+            "h2 > a[href$=\"water-point\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/water-point\">",
+          "target": [
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"water-point\"]"
           ]
         },
         {
@@ -11426,9 +10178,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -12180,7 +10932,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Architect: Himansu Nayak (HN)</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Website developed by Himansu Nayak</a>",
           "target": [
             "a[href$=\"about#developer-credit\"]"
           ]
@@ -13144,24 +11896,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -13234,7 +11968,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Community health and...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -13252,7 +11986,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Students reviewing s...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -13273,42 +12007,6 @@
           "html": "<img alt=\"Volunteers preparing...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
         },
         {
@@ -14635,46 +13333,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -14737,7 +13395,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -14757,7 +13415,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"] > span"
+            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -15137,7 +13795,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-forest text-cream border border-sand/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Documentary Field Archive</span></span>",
           "target": [
-            ".select-none.border-sand\\/40.bg-forest"
+            ".select-none.border-sand\\/40.py-0\\.5"
           ]
         },
         {
@@ -15157,7 +13815,7 @@
           "impact": null,
           "html": "<span>Documentary Field Archive</span>",
           "target": [
-            ".select-none.border-sand\\/40.bg-forest > span"
+            ".select-none.border-sand\\/40.py-0\\.5 > span"
           ]
         },
         {
@@ -15217,7 +13875,7 @@
           "impact": null,
           "html": "<div class=\"pt-2 flex flex-wrap gap-3\">",
           "target": [
-            ".flex-wrap.pt-2.gap-3"
+            ".pt-2.flex-wrap.gap-3"
           ]
         },
         {
@@ -15237,7 +13895,7 @@
           "impact": null,
           "html": "<div class=\"flex flex-wrap items-center gap-3\">",
           "target": [
-            ".flex-wrap.pt-2.gap-3 > .flex-wrap.gap-3.flex"
+            ".pt-2.flex-wrap.gap-3 > .flex-wrap.gap-3.flex"
           ]
         },
         {
@@ -15495,29 +14153,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"leading-relaxed text-ink-secondary text-[11px] sm:text-xs\">",
+          "html": "<p class=\"leading-relaxed text-ink-secondary text-[11px] sm:text-xs\">Strictly zero fabricated quotations, unverified individual claims, or commercial endorsements. Field records reflect institutional attendance and activity logs with documented operating cycles.</p>",
           "target": [
             ".sm\\:text-xs.text-ink-secondary.leading-relaxed"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-mono text-terracotta\">[Name withheld for privacy]</span>",
-          "target": [
-            ".text-terracotta.font-mono"
           ]
         },
         {
@@ -15615,7 +14253,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Community health and...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -15635,9 +14273,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Healthcare</span></div>",
+          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span></div>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3"
+            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2"
           ]
         },
         {
@@ -15655,9 +14293,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Healthcare</span>",
+          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ]
         },
         {
@@ -15695,7 +14333,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"truncate\">Rayagada District, Southern Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir &amp; Puintala Blocks, Odisha</span>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ]
@@ -15737,7 +14375,7 @@
           "impact": null,
           "html": "<div class=\"flex items-center justify-between text-[11px] font-mono text-ink-muted border-b border-sand/30 pb-2.5\">",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30"
           ]
         },
         {
@@ -15755,9 +14393,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">COMMUNITY DISPATCH</span>",
+          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
           ]
         },
         {
@@ -15777,7 +14415,7 @@
           "impact": null,
           "html": "<span class=\"flex items-center gap-1 text-ink-sand\">",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex"
           ]
         },
         {
@@ -15795,9 +14433,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>March 2024 (FY 2023–24)</span>",
+          "html": "<span>FY 2021–24 Educational Cycles</span>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
+            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
           ]
         },
         {
@@ -15835,7 +14473,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -15855,9 +14493,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/arogya-health-camp-rayagada\">Arogya Health Camp &amp; Diagnostic Outreach</a>",
+          "html": "<a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
+            "h2 > a[href$=\"classroom\"]"
           ]
         },
         {
@@ -15875,7 +14513,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">",
+          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Volunteer educators conduct after-school learning circles focusing on basic numeracy, Odia literacy, and foundational science for students from rural government schools across Balangir and Puintala.</p>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
           ]
@@ -15915,7 +14553,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Rayagada Health Outreach Register (March 2024 Docket)</span>",
+          "html": "<span class=\"line-clamp-1 italic\">Balangir Community Learning Centre Registers &amp; Annual Progress Reports (FY 2021–24)</span>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
           ]
@@ -15955,9 +14593,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/arogya-health-camp-rayagada\">",
+          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/classroom\">",
           "target": [
-            "article:nth-child(1) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"]"
           ]
         },
         {
@@ -15977,7 +14615,7 @@
           "impact": null,
           "html": "<span>Read Complete Dispatch</span>",
           "target": [
-            "article:nth-child(1) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > span"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"] > span"
           ]
         },
         {
@@ -16055,7 +14693,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Students reviewing s...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
           ]
@@ -16075,9 +14713,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span></div>",
+          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span></div>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3"
+            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2"
           ]
         },
         {
@@ -16095,9 +14733,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
+          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ]
         },
         {
@@ -16135,7 +14773,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"truncate\">Balangir District, Western Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir Vocational Training Centre, Odisha</span>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ]
@@ -16177,7 +14815,7 @@
           "impact": null,
           "html": "<div class=\"flex items-center justify-between text-[11px] font-mono text-ink-muted border-b border-sand/30 pb-2.5\">",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30"
           ]
         },
         {
@@ -16195,9 +14833,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">PROGRAMME RECORD</span>",
+          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
           ]
         },
         {
@@ -16217,7 +14855,7 @@
           "impact": null,
           "html": "<span class=\"flex items-center gap-1 text-ink-sand\">",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex"
           ]
         },
         {
@@ -16235,9 +14873,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Academic Session FY 2024–25 (August 2024)</span>",
+          "html": "<span>FY 2021–24 Training Cycles</span>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
+            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
           ]
         },
         {
@@ -16275,7 +14913,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a></h2>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -16295,9 +14933,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/scholarship-distribution-fy2024\">Annual Higher Education Scholarship Distribution</a>",
+          "html": "<a href=\"/stories/workshop\">The Workshop: Technical Garment Fabrication &amp; Livelihoods</a>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2 > a"
+            "h2 > a[href$=\"workshop\"]"
           ]
         },
         {
@@ -16315,7 +14953,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">The Trust's academic review panel completed appraisal of rural student applications for FY 2024–25, approving direct-to-college RTGS fee disbursals for eligible undergraduate and technical degree candidates.</p>",
+          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Practical garment cutting, drafting, and sewing machine operation sessions supporting self-reliance and home-based enterprise for women in rural Balangir.</p>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
           ]
@@ -16355,7 +14993,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Higher Education Scholarship Committee Ledger (August 2024)</span>",
+          "html": "<span class=\"line-clamp-1 italic\">Balangir Vocational Training Centre Course Logs &amp; Activity Reports</span>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
           ]
@@ -16395,9 +15033,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/scholarship-distribution-fy2024\">",
+          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/workshop\">",
           "target": [
-            "article:nth-child(2) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"]"
           ]
         },
         {
@@ -16417,7 +15055,7 @@
           "impact": null,
           "html": "<span>Read Complete Dispatch</span>",
           "target": [
-            "article:nth-child(2) > .pt-0.border-sand\\/20.mt-4 > .pt-3.group-hover\\:text-terracotta-dark.justify-between > span"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"] > span"
           ]
         },
         {
@@ -16517,7 +15155,7 @@
           "impact": null,
           "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Relief</span></div>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3"
+            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2"
           ]
         },
         {
@@ -16537,7 +15175,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Relief</span>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ]
         },
         {
@@ -16575,7 +15213,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"truncate\">Balangir District &amp; Transit Corridors, Western Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir Town &amp; Transit Corridors, Western Odisha</span>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ]
@@ -16617,7 +15255,7 @@
           "impact": null,
           "html": "<div class=\"flex items-center justify-between text-[11px] font-mono text-ink-muted border-b border-sand/30 pb-2.5\">",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted"
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30"
           ]
         },
         {
@@ -16635,9 +15273,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
+          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">COMMUNITY DISPATCH</span>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-terracotta.tracking-wider.uppercase"
           ]
         },
         {
@@ -16657,7 +15295,7 @@
           "impact": null,
           "html": "<span class=\"flex items-center gap-1 text-ink-sand\">",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex"
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex"
           ]
         },
         {
@@ -16675,9 +15313,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Summer Heatwave Cycle (April–June 2024)</span>",
+          "html": "<span>Summer Heatwave Cycles (April–June)</span>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
+            "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.text-ink-muted.border-sand\\/30 > .text-ink-sand.gap-1.flex > span"
           ]
         },
         {
@@ -16715,7 +15353,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a></h2>",
+          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a></h2>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
           ]
@@ -16735,9 +15373,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"/stories/emergency-relief-2024\">Emergency Summer Heatwave Relief &amp; Jal Seva Kiosks</a>",
+          "html": "<a href=\"/stories/water-point\">The Water Point: Summer Hydration &amp; Public Relief</a>",
           "target": [
-            "h2 > a[href$=\"emergency-relief-2024\"]"
+            "h2 > a[href$=\"water-point\"]"
           ]
         },
         {
@@ -16755,7 +15393,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">MECT volunteers operated clean drinking water points and oral rehydration kiosks across busy district transit nodes and outside the District Hospital during severe summer heatwave distress.</p>",
+          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">During extreme summer months where temperatures frequently exceed 42°C, MECT coordinates volunteer-managed drinking-water points and oral rehydration kiosks across busy district corridors.</p>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
           ]
@@ -16795,7 +15433,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Summer Disaster Relief Taskforce Logs (FY 2024–25)</span>",
+          "html": "<span class=\"line-clamp-1 italic\">MECT Summer Relief Taskforce Records &amp; FY 2022–24 Activity Logs</span>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
           ]
@@ -16835,9 +15473,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/emergency-relief-2024\">",
+          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/water-point\">",
           "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"emergency-relief-2024\"]"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"water-point\"]"
           ]
         },
         {
@@ -16857,887 +15495,7 @@
           "impact": null,
           "html": "<span>Read Complete Dispatch</span>",
           "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"emergency-relief-2024\"] > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<article class=\"rounded-xs border border-border-warm bg-white shadow-xs overflow-hidden flex flex-col justify-between hover:border-sand transition-all duration-300 group\">",
-          "target": [
-            "article:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"relative aspect-[16/10] w-full overflow-hidden bg-forest-deep\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span></div>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"absolute bottom-2.5 left-3 right-3 text-[11px] text-cream/90 font-mono flex items-center gap-1.5\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"truncate\">Balangir &amp; Puintala Blocks, Odisha</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"p-6 space-y-4\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"flex items-center justify-between text-[11px] font-mono text-ink-muted border-b border-sand/30 pb-2.5\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">FIELD NOTE</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"flex items-center gap-1 text-ink-sand\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>FY 2021–24 Educational Cycles</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"space-y-2\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a></h2>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/classroom\">The Classroom: Foundation Learning &amp; Rural Mentorship</a>",
-          "target": [
-            "h2 > a[href$=\"classroom\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Volunteer educators conduct after-school learning circles focusing on basic numeracy, Odia literacy, and foundational science for students from rural government schools across Balangir and Puintala.</p>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"pt-2 text-[10px] font-mono text-ink-muted flex items-start gap-1.5\">",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">Balangir Community Learning Centre Registers &amp; Annual Progress Reports (FY 2021–24)</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"p-6 pt-0 border-t border-sand/20 mt-4\">",
-          "target": [
-            "article:nth-child(4) > .pt-0.border-sand\\/20.mt-4"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/classroom\">",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Read Complete Dispatch</span>",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"classroom\"] > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<article class=\"rounded-xs border border-border-warm bg-white shadow-xs overflow-hidden flex flex-col justify-between hover:border-sand transition-all duration-300 group\">",
-          "target": [
-            "article:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"relative aspect-[16/10] w-full overflow-hidden bg-forest-deep\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"absolute top-3 left-3 flex items-center gap-2\"><span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span></div>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"absolute bottom-2.5 left-3 right-3 text-[11px] text-cream/90 font-mono flex items-center gap-1.5\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"truncate\">Balangir Training Centre, Odisha</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"p-6 space-y-4\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"flex items-center justify-between text-[11px] font-mono text-ink-muted border-b border-sand/30 pb-2.5\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"uppercase font-bold text-terracotta tracking-wider\">PROGRAMME RECORD</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-terracotta.tracking-wider.uppercase"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"flex items-center gap-1 text-ink-sand\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>FY 2022–24 Modular Cohorts</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pb-2\\.5.border-sand\\/30.text-ink-muted > .text-ink-sand.gap-1.flex > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"space-y-2\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h2 class=\"font-serif text-lg sm:text-xl font-bold text-forest group-hover:text-terracotta-dark transition-colors line-clamp-2\"><a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a></h2>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > h2"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"/stories/workshop\">The Workshop: Practical Tailoring &amp; Garment Fabrication</a>",
-          "target": [
-            "h2 > a[href$=\"workshop\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans line-clamp-3\">Structured 6-month modular training batches provide practical instruction in garment drafting, pattern cutting, machine operation, and stitching techniques at the Balangir centre.</p>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .space-y-2 > .line-clamp-3.sm\\:text-sm.text-ink-secondary"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"pt-2 text-[10px] font-mono text-ink-muted flex items-start gap-1.5\">",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"line-clamp-1 italic\">MECT Vocational Centre Attendance Logs &amp; FY 2022–23 / FY 2023–24 Activity Reports</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .space-y-4.p-6 > .pt-2.items-start.text-ink-muted > .line-clamp-1.italic"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"p-6 pt-0 border-t border-sand/20 mt-4\">",
-          "target": [
-            "article:nth-child(5) > .pt-0.border-sand\\/20.mt-4"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"inline-flex items-center justify-between w-full pt-3 text-xs font-semibold text-forest group-hover:text-terracotta-dark transition-colors\" href=\"/stories/workshop\">",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Read Complete Dispatch</span>",
-          "target": [
-            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"workshop\"] > span"
+            ".pt-3.group-hover\\:text-terracotta-dark[href$=\"water-point\"] > span"
           ]
         },
         {
@@ -17935,9 +15693,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            "a[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -17957,7 +15715,7 @@
           "impact": null,
           "html": "<div class=\"w-8 h-8 rounded-xs bg-forest-deep border-sand/30 border flex items-center justify-center text-cream group-hover:scale-105 transition-transform shrink-0\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"] > .group-hover\\:scale-105.w-8.h-8"
+            "a[href=\"tel:+919437123616\"] > .group-hover\\:scale-105.w-8.h-8"
           ]
         },
         {
@@ -18217,7 +15975,7 @@
           "impact": null,
           "html": "<p class=\"text-xs sm:text-sm text-ink-muted leading-relaxed\">",
           "target": [
-            ".max-w-3xl.space-y-2 > .sm\\:text-sm.leading-relaxed"
+            ".sm\\:text-sm.text-ink-muted.leading-relaxed"
           ]
         },
         {
@@ -20035,7 +17793,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Architect: Himansu Nayak (HN)</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Website developed by Himansu Nayak</a>",
           "target": [
             "a[href$=\"about#developer-credit\"]"
           ]
@@ -20608,13 +18366,13 @@
               },
               "relatedNodes": [
                 {
-                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Healthcare</span>",
+                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
                   "target": [
-                    "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+                    "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
                   ]
                 },
                 {
-                  "html": "<img alt=\"Community health and...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+                  "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
                   "target": [
                     "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
                   ]
@@ -20627,9 +18385,9 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Healthcare</span>",
+          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
           "target": [
-            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
         },
@@ -20659,7 +18417,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"truncate\">Rayagada District, Southern Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir &amp; Puintala Blocks, Odisha</span>",
           "target": [
             "article:nth-child(1) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ],
@@ -20678,13 +18436,13 @@
               },
               "relatedNodes": [
                 {
-                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
+                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
                   "target": [
-                    "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+                    "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
                   ]
                 },
                 {
-                  "html": "<img alt=\"Students reviewing s...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+                  "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
                   "target": [
                     "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
                   ]
@@ -20697,9 +18455,9 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
+          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
           "target": [
-            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
         },
@@ -20729,7 +18487,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"truncate\">Balangir District, Western Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir Vocational Training Centre, Odisha</span>",
           "target": [
             "article:nth-child(2) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ],
@@ -20750,7 +18508,7 @@
                 {
                   "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Relief</span>",
                   "target": [
-                    "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+                    "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
                   ]
                 },
                 {
@@ -20769,7 +18527,7 @@
           "impact": "serious",
           "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Relief</span>",
           "target": [
-            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
+            "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.left-3.gap-2 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
         },
@@ -20799,149 +18557,9 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<span class=\"truncate\">Balangir District &amp; Transit Corridors, Western Odisha</span>",
+          "html": "<span class=\"truncate\">Balangir Town &amp; Transit Corridors, Western Odisha</span>",
           "target": [
             "article:nth-child(3) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "7.5pt (10px)",
-                "fontWeight": "normal",
-                "messageKey": "imgNode",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [
-                {
-                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
-                  "target": [
-                    "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-                  ]
-                },
-                {
-                  "html": "<img alt=\"Rural students and v...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-                  "target": [
-                    "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Element's background color could not be determined because element contains an image node"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Education</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "messageKey": "bgGradient",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [
-                {
-                  "html": "<div aria-hidden=\"true\" class=\"absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-forest-deep/90 via-forest-deep/40 to-transparent pointer-events-none\"></div>",
-                  "target": [
-                    "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .inset-x-0.bottom-0.h-24"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Element's background color could not be determined due to a background gradient"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<span class=\"truncate\">Balangir &amp; Puintala Blocks, Odisha</span>",
-          "target": [
-            "article:nth-child(4) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "7.5pt (10px)",
-                "fontWeight": "normal",
-                "messageKey": "imgNode",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [
-                {
-                  "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
-                  "target": [
-                    "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-                  ]
-                },
-                {
-                  "html": "<img alt=\"Rural women particip...\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover object-...\" style=\"position:absolute;he...\" sizes=\"(max-width: 640px) 1...\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-                  "target": [
-                    "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .object-center.duration-500.ease-out"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Element's background color could not be determined because element contains an image node"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<span class=\"inline-flex items-center px-2 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-forest-deep/90 text-sand border border-white/15 backdrop-blur-xs font-semibold\">Livelihoods</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .top-3.gap-2.left-3 > .bg-forest-deep\\/90.backdrop-blur-xs.border-white\\/15"
-          ],
-          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "contrastRatio": 0,
-                "fontSize": "8.3pt (11px)",
-                "fontWeight": "normal",
-                "messageKey": "bgGradient",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [
-                {
-                  "html": "<div aria-hidden=\"true\" class=\"absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-forest-deep/90 via-forest-deep/40 to-transparent pointer-events-none\"></div>",
-                  "target": [
-                    "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .inset-x-0.bottom-0.h-24"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Element's background color could not be determined due to a background gradient"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": "serious",
-          "html": "<span class=\"truncate\">Balangir Training Centre, Odisha</span>",
-          "target": [
-            "article:nth-child(5) > div:nth-child(1) > .aspect-\\[16\\/10\\].bg-forest-deep.overflow-hidden > .bottom-2\\.5.right-3.left-3 > .truncate"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
         }

@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T09:20:48.996Z",
+  "timestamp": "2026-11-20T11:27:41.007Z",
   "url": "http://127.0.0.1:3000/contact",
   "toolOptions": {
     "reporter": "v1"
@@ -1261,46 +1261,6 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            },
-            {
-              "id": "aria-allowed-attr-elm",
-              "data": null,
-              "relatedNodes": [],
-              "message": "ARIA attributes are allowed for this element",
-              "impact": "critical"
-            },
-            {
-              "id": "aria-no-deprecated-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "No deprecated ARIA attributes are used"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -1343,7 +1303,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -1701,7 +1661,7 @@
             }
           ],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -1741,7 +1701,7 @@
             }
           ],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -1981,9 +1941,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -2470,24 +2430,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -2508,7 +2450,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -2668,7 +2610,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -2686,7 +2628,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -2794,9 +2736,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -3406,7 +3348,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-about > .lucide-chevron-down.transition-transform.duration-200"
+            "#nav-toggle-about > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3438,7 +3380,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-our-work > .lucide-chevron-down.transition-transform.duration-200"
+            "#nav-toggle-our-work > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3470,7 +3412,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-impact-accountability > .lucide-chevron-down.transition-transform.duration-200"
+            "#nav-toggle-impact-accountability > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3502,7 +3444,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-get-involved > .lucide-chevron-down.transition-transform.duration-200"
+            "#nav-toggle-get-involved > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3566,39 +3508,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-resources-help > .lucide-chevron-down.transition-transform.duration-200"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
+            "#nav-toggle-resources-help > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3759,38 +3669,6 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:px-4 > .fill-current.lucide-heart.w-3\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".sm\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
           ]
         },
         {
@@ -4140,38 +4018,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-message-circle w-3.5 h-3.5 text-emerald-600\" aria-hidden=\"true\">",
-          "target": [
-            ".lucide-message-circle"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-check-corner lucide-file-check-2 w-5 h-5 text-terracotta-dark\" aria-hidden=\"true\">",
           "target": [
             ".lucide-file-check-corner"
@@ -4303,6 +4149,38 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-external-link w-3 h-3\" aria-hidden=\"true\">",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > .lucide-external-link.w-3.h-3"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<div style=\"display:none\" aria-hidden=\"true\"><label for=\"inquiry-gotcha\">Do not fill this field</label><input id=\"inquiry-gotcha\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\" name=\"_gotcha\" value=\"\"></div>",
+          "target": [
+            "form > div[aria-hidden=\"true\"]"
           ]
         },
         {
@@ -5380,24 +5258,6 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -5418,7 +5278,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -5578,7 +5438,7 @@
             }
           ],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -5596,7 +5456,7 @@
             }
           ],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -5704,9 +5564,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -6359,38 +6219,6 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6425,7 +6253,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -6679,7 +6507,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -6711,7 +6539,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -6903,9 +6731,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -7282,24 +7110,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -7320,7 +7130,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -7480,7 +7290,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -7498,7 +7308,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -7606,9 +7416,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -7840,38 +7650,6 @@
           "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
             "#nav-toggle-resources-help"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "button-has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has inner text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-label attribute exists and is not empty"
-            },
-            {
-              "id": "non-empty-title",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "Element has a title attribute"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
           ]
         },
         {
@@ -8493,31 +8271,6 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#16221d",
-                "bgColor": "#faf7f2",
-                "contrastRatio": 15.34,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 15.34"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
                 "bgColor": "#fefdfc",
                 "contrastRatio": 16.13,
                 "fontSize": "8.6pt (11.5px)",
@@ -8559,7 +8312,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"] > span"
+            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -9182,34 +8935,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"tel:+919853608113\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">9853608113</a>",
+          "html": "<a href=\"tel:+919437123616\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">+91 94371 23616</a>",
           "target": [
-            ".hover\\:text-forest.underline[href=\"tel:+919853608113\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#ffffff",
-                "contrastRatio": 16.39,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 16.39"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>WhatsApp Secretariat Desk</span>",
-          "target": [
-            "a[href=\"https://wa.me/919853608113\"] > span"
+            ".hover\\:text-forest.underline[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -10192,6 +9920,26 @@
             {
               "id": "color-contrast",
               "data": {
+                "messageKey": "hidden"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is hidden"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<input id=\"inquiry-gotcha\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\" name=\"_gotcha\" value=\"\">",
+          "target": [
+            "#inquiry-gotcha"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
                 "fgColor": "#16221d",
                 "bgColor": "#ffffff",
                 "contrastRatio": 16.39,
@@ -10457,7 +10205,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -10482,7 +10230,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -10507,7 +10255,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Include relevant student application numbers or institutional credentials if applicable.</p>",
+          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Maximum 1000 characters. Include relevant student application numbers or institutional credentials if applicable.</p>",
           "target": [
             "#inquiry-message-helper"
           ]
@@ -11032,7 +10780,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs text-ink-sand leading-relaxed\">Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>9853608113</code>). No third parties or touts are engaged.</p>",
+          "html": "<p class=\"text-xs text-ink-sand leading-relaxed\">Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>+91 94371 23616</code>). No third parties or touts are engaged.</p>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(3) > .leading-relaxed"
           ]
@@ -11082,7 +10830,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<code>9853608113</code>",
+          "html": "<code>+91 94371 23616</code>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(3) > .leading-relaxed > code:nth-child(2)"
           ]
@@ -11232,7 +10980,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<code class=\"text-cream font-mono underline\">9853608113</code>",
+          "html": "<code class=\"text-cream font-mono underline\">+91 94371 23616</code>",
           "target": [
             "code:nth-child(3)"
           ]
@@ -11548,6 +11296,24 @@
           "any": [
             {
               "id": "duplicate-id-aria",
+              "data": "inquiry-gotcha",
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Document has no elements referenced with ARIA or labels that share the same id attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<input id=\"inquiry-gotcha\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\" name=\"_gotcha\" value=\"\">",
+          "target": [
+            "#inquiry-gotcha"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "duplicate-id-aria",
               "data": "inquiry-name",
               "relatedNodes": [],
               "impact": "critical",
@@ -11647,7 +11413,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -11665,7 +11431,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Include relevant student application numbers or institutional credentials if applicable.</p>",
+          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Maximum 1000 characters. Include relevant student application numbers or institutional credentials if applicable.</p>",
           "target": [
             "#inquiry-message-helper"
           ]
@@ -12111,7 +11877,7 @@
             }
           ],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -12769,24 +12535,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "label-content-name-mismatch",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element contains visible text as part of its accessible name"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -12807,7 +12555,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -12944,7 +12692,7 @@
             }
           ],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -13153,7 +12901,7 @@
             }
           ],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -14030,7 +13778,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -14269,35 +14017,9 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"tel:+919853608113\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">9853608113</a>",
+          "html": "<a href=\"tel:+919437123616\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">+91 94371 23616</a>",
           "target": [
-            ".hover\\:text-forest.underline[href=\"tel:+919853608113\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"https://wa.me/919853608113\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1\">",
-          "target": [
-            "a[href=\"https://wa.me/919853608113\"]"
+            ".hover\\:text-forest.underline[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -14590,9 +14312,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -15344,7 +15066,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Architect: Himansu Nayak (HN)</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Website developed by Himansu Nayak</a>",
           "target": [
             "a[href$=\"about#developer-credit\"]"
           ]
@@ -16308,24 +16030,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -16434,9 +16138,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"General Institutional Inquiry\" selected=\"\">General Institutional Inquiry</option>",
+          "html": "<option value=\"General\" selected=\"\">General</option>",
           "target": [
-            "option[value=\"General Institutional Inquiry\"]"
+            "option[value=\"General\"]"
           ]
         },
         {
@@ -16452,9 +16156,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Education &amp; Learning Programmes\">Education &amp; Learning Programmes</option>",
+          "html": "<option value=\"Grievance\">Grievance</option>",
           "target": [
-            "option:nth-child(2)"
+            "option[value=\"Grievance\"]"
           ]
         },
         {
@@ -16470,9 +16174,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Scholarship Guidance &amp; Applications\">Scholarship Guidance &amp; Applications</option>",
+          "html": "<option value=\"RTI\">RTI</option>",
           "target": [
-            "option:nth-child(3)"
+            "option[value=\"RTI\"]"
           ]
         },
         {
@@ -16488,9 +16192,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Donations &amp; Receipts Assistance\">Donations &amp; Receipts Assistance</option>",
+          "html": "<option value=\"CSR\">CSR</option>",
           "target": [
-            "option:nth-child(4)"
+            "option[value=\"CSR\"]"
           ]
         },
         {
@@ -16506,9 +16210,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Volunteer &amp; Community Participation\">Volunteer &amp; Community Participation</option>",
+          "html": "<option value=\"Scholarship\">Scholarship</option>",
           "target": [
-            "option:nth-child(5)"
+            "option[value=\"Scholarship\"]"
           ]
         },
         {
@@ -16524,45 +16228,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"CSR &amp; Institutional Partnerships\">CSR &amp; Institutional Partnerships</option>",
+          "html": "<option value=\"Volunteer\">Volunteer</option>",
           "target": [
-            "option:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<option value=\"Governance &amp; Statutory Disclosures\">Governance &amp; Statutory Disclosures</option>",
-          "target": [
-            "option:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<option value=\"Feedback &amp; General Concerns\">Feedback &amp; General Concerns</option>",
-          "target": [
-            "option[value=\"Feedback & General Concerns\"]"
+            "option[value=\"Volunteer\"]"
           ]
         },
         {
@@ -17925,46 +17593,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -18027,7 +17655,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"]"
+            ".border-forest\\/30"
           ]
         },
         {
@@ -18047,7 +17675,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            "a[aria-label=\"Sign in to Donor Portal\"] > span"
+            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -19505,7 +19133,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-2 border-t border-border-warm text-xs space-y-1.5\">",
+          "html": "<div class=\"pt-2 border-t border-border-warm text-xs space-y-1.5\"><span class=\"text-[10px] uppercase font-bold tracking-wider text-forest block\">Contact Line</span><a href=\"tel:+919437123616\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">+91 94371 23616</a></div>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(3) > .space-y-3 > .space-y-1\\.5.pt-2.border-t"
           ]
@@ -19545,49 +19173,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"tel:+919853608113\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">9853608113</a>",
+          "html": "<a href=\"tel:+919437123616\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">+91 94371 23616</a>",
           "target": [
-            ".hover\\:text-forest.underline[href=\"tel:+919853608113\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://wa.me/919853608113\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1\">",
-          "target": [
-            "a[href=\"https://wa.me/919853608113\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>WhatsApp Secretariat Desk</span>",
-          "target": [
-            "a[href=\"https://wa.me/919853608113\"] > span"
+            ".hover\\:text-forest.underline[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -21207,7 +20795,7 @@
           "impact": null,
           "html": "<div class=\"grid grid-cols-1 sm:grid-cols-2 gap-6\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(1)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2)"
           ]
         },
         {
@@ -21227,7 +20815,7 @@
           "impact": null,
           "html": "<div class=\"w-full space-y-1\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(1) > .space-y-1.w-full:nth-child(1)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(1)"
           ]
         },
         {
@@ -21287,7 +20875,7 @@
           "impact": null,
           "html": "<div class=\"relative flex items-center\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(1) > .space-y-1.w-full:nth-child(1) > .relative.flex.items-center"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(1) > .relative.flex.items-center"
           ]
         },
         {
@@ -21327,7 +20915,7 @@
           "impact": null,
           "html": "<div class=\"w-full space-y-1\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(1) > .space-y-1.w-full:nth-child(2)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(2)"
           ]
         },
         {
@@ -21387,7 +20975,7 @@
           "impact": null,
           "html": "<div class=\"relative flex items-center\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(1) > .space-y-1.w-full:nth-child(2) > .relative.flex.items-center"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(2) > .relative.flex.items-center"
           ]
         },
         {
@@ -21427,7 +21015,7 @@
           "impact": null,
           "html": "<div class=\"grid grid-cols-1 sm:grid-cols-2 gap-6\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(3)"
           ]
         },
         {
@@ -21447,7 +21035,7 @@
           "impact": null,
           "html": "<div class=\"w-full space-y-1\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(1)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(3) > .space-y-1.w-full:nth-child(1)"
           ]
         },
         {
@@ -21507,7 +21095,7 @@
           "impact": null,
           "html": "<div class=\"relative flex items-center\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(1) > .relative.flex.items-center"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(3) > .space-y-1.w-full:nth-child(1) > .relative.flex.items-center"
           ]
         },
         {
@@ -21567,7 +21155,7 @@
           "impact": null,
           "html": "<div class=\"w-full space-y-1\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(2)"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(3) > .space-y-1.w-full:nth-child(2)"
           ]
         },
         {
@@ -21627,7 +21215,7 @@
           "impact": null,
           "html": "<div class=\"relative flex items-center\">",
           "target": [
-            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(2) > .space-y-1.w-full:nth-child(2) > .relative.flex.items-center"
+            ".sm\\:grid-cols-2.grid.grid-cols-1:nth-child(3) > .space-y-1.w-full:nth-child(2) > .relative.flex.items-center"
           ]
         },
         {
@@ -21665,9 +21253,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"General Institutional Inquiry\" selected=\"\">General Institutional Inquiry</option>",
+          "html": "<option value=\"General\" selected=\"\">General</option>",
           "target": [
-            "option[value=\"General Institutional Inquiry\"]"
+            "option[value=\"General\"]"
           ]
         },
         {
@@ -21685,9 +21273,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Education &amp; Learning Programmes\">Education &amp; Learning Programmes</option>",
+          "html": "<option value=\"Grievance\">Grievance</option>",
           "target": [
-            "option:nth-child(2)"
+            "option[value=\"Grievance\"]"
           ]
         },
         {
@@ -21705,9 +21293,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Scholarship Guidance &amp; Applications\">Scholarship Guidance &amp; Applications</option>",
+          "html": "<option value=\"RTI\">RTI</option>",
           "target": [
-            "option:nth-child(3)"
+            "option[value=\"RTI\"]"
           ]
         },
         {
@@ -21725,9 +21313,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Donations &amp; Receipts Assistance\">Donations &amp; Receipts Assistance</option>",
+          "html": "<option value=\"CSR\">CSR</option>",
           "target": [
-            "option:nth-child(4)"
+            "option[value=\"CSR\"]"
           ]
         },
         {
@@ -21745,9 +21333,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"Volunteer &amp; Community Participation\">Volunteer &amp; Community Participation</option>",
+          "html": "<option value=\"Scholarship\">Scholarship</option>",
           "target": [
-            "option:nth-child(5)"
+            "option[value=\"Scholarship\"]"
           ]
         },
         {
@@ -21765,49 +21353,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<option value=\"CSR &amp; Institutional Partnerships\">CSR &amp; Institutional Partnerships</option>",
+          "html": "<option value=\"Volunteer\">Volunteer</option>",
           "target": [
-            "option:nth-child(6)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<option value=\"Governance &amp; Statutory Disclosures\">Governance &amp; Statutory Disclosures</option>",
-          "target": [
-            "option:nth-child(7)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<option value=\"Feedback &amp; General Concerns\">Feedback &amp; General Concerns</option>",
-          "target": [
-            "option[value=\"Feedback & General Concerns\"]"
+            "option[value=\"Volunteer\"]"
           ]
         },
         {
@@ -21925,7 +21473,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->2000</span>",
+          "html": "<span class=\"text-[10px] text-ink-sand tabular-nums\" aria-live=\"off\">0<!-- -->/<!-- -->1000</span>",
           "target": [
             ".tabular-nums"
           ]
@@ -21965,7 +21513,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"2000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
+          "html": "<textarea id=\"inquiry-message\" rows=\"5\" required=\"\" aria-required=\"true\" maxlength=\"1000\" aria-invalid=\"false\" aria-describedby=\"inquiry-message-help...\" class=\"w-full rounded-xs bg...\" name=\"message\" placeholder=\"Please state the spe...\">",
           "target": [
             "#inquiry-message"
           ]
@@ -21985,7 +21533,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Include relevant student application numbers or institutional credentials if applicable.</p>",
+          "html": "<p id=\"inquiry-message-helper\" class=\"text-[11px] text-ink-sand pt-0.5\">Maximum 1000 characters. Include relevant student application numbers or institutional credentials if applicable.</p>",
           "target": [
             "#inquiry-message-helper"
           ]
@@ -22067,7 +21615,7 @@
           "impact": null,
           "html": "<div class=\"pt-2\">",
           "target": [
-            ".pt-2:nth-child(5)"
+            ".pt-2:nth-child(6)"
           ]
         },
         {
@@ -22785,7 +22333,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs text-ink-sand leading-relaxed\">Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>9853608113</code>). No third parties or touts are engaged.</p>",
+          "html": "<p class=\"text-xs text-ink-sand leading-relaxed\">Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>+91 94371 23616</code>). No third parties or touts are engaged.</p>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(3) > .leading-relaxed"
           ]
@@ -22825,7 +22373,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<code>9853608113</code>",
+          "html": "<code>+91 94371 23616</code>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(3) > .leading-relaxed > code:nth-child(2)"
           ]
@@ -23005,7 +22553,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<code class=\"text-cream font-mono underline\">9853608113</code>",
+          "html": "<code class=\"text-cream font-mono underline\">+91 94371 23616</code>",
           "target": [
             "code:nth-child(3)"
           ]
@@ -23385,9 +22933,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — 9...\" aria-label=\"Secretariat Desk — 9...\" href=\"tel:+919853608113\">",
+          "html": "<a class=\"flex items-center ga...\" title=\"Secretariat Desk — +...\" aria-label=\"Secretariat Desk — +...\" href=\"tel:+919437123616\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"]"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"]"
           ]
         },
         {
@@ -23407,7 +22955,7 @@
           "impact": null,
           "html": "<div class=\"w-8 h-8 rounded-xs bg-forest-deep border-sand/30 border flex items-center justify-center text-cream group-hover:scale-105 transition-transform shrink-0\">",
           "target": [
-            "a[title=\"Secretariat Desk — 9853608113\"] > .border-sand\\/30.group-hover\\:scale-105.w-8"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href=\"tel:+919437123616\"] > .border-sand\\/30.group-hover\\:scale-105.w-8"
           ]
         },
         {
@@ -25485,7 +25033,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Architect: Himansu Nayak (HN)</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand\" href=\"/about#developer-credit\">Website developed by Himansu Nayak</a>",
           "target": [
             "a[href$=\"about#developer-credit\"]"
           ]
