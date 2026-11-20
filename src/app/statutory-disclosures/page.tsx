@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { TRUST_CONFIG } from "@/lib/config";
+import { MECT_ORG } from "@/config/org";
 import {
   ShieldCheck,
   Building2,
@@ -361,11 +362,11 @@ export default function StatutoryDisclosuresPage() {
 
               <div className="space-y-3 text-xs font-sans text-white/90">
                 <p className="leading-relaxed">
-                  MECT maintains dedicated, audited banking channels at State Bank of India (Balangir). In accordance with institutional payment security guidelines, all contributions are received through encrypted online gateways or verified institutional wire transfers under strict reconciliation.
+                  MECT maintains dedicated, audited banking channels at State Bank of India (Rajendra College Square, Bolangir; A/C: {MECT_ORG.bank.accountNumber}, IFSC: {MECT_ORG.bank.ifsc}). In accordance with institutional guidelines, contributions are accepted strictly via direct bank transfer (NEFT/RTGS/IMPS) or verified UPI ({MECT_ORG.bank.upiId}) under accounts reconciliation. No commercial payment gateways are operated.
                 </p>
                 <div className="p-3 bg-white/10 rounded-xs space-y-1">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-sand">Receipting &amp; Accountability</div>
-                  <div className="text-xs text-white">Cryptographically verified (SHA-256) serialized receipts issued for all contributions. Zero cash collections.</div>
+                  <div className="text-xs text-white">Cryptographically verified (SHA-256) serialized receipts issued for verified contributions. Zero cash collections.</div>
                 </div>
               </div>
 
@@ -373,7 +374,7 @@ export default function StatutoryDisclosuresPage() {
                 <Link href="/donate" className="w-full">
                   <Button variant="gold" size="lg" className="w-full justify-center shadow-lg font-bold">
                     <Heart className="w-4 h-4 mr-2 fill-current" aria-hidden="true" />
-                    <span>Visit Secure Donation Portal</span>
+                    <span>View SBI Bank &amp; UPI Credentials</span>
                   </Button>
                 </Link>
               </div>
