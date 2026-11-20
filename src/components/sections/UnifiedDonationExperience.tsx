@@ -217,14 +217,14 @@ const FALLBACK_PUBLIC_CONFIG: PublicDonationConfigResponse = {
     sbiBranch: MECT_ORG.bank.branch,
     sbiUpiId: MECT_ORG.bank.upiId,
     sbiQrImageUrl: "",
-    paymentInstructions: "Please transfer the contribution directly using UPI or NEFT/RTGS to our official State Bank of India account. Enter your 12-digit UTR/transaction reference below for verified computer-signed 80G receipting.",
+    paymentInstructions: "Please transfer the contribution directly using UPI or NEFT/RTGS to our official State Bank of India account. Enter your 12-digit UTR/transaction reference below for verified receipt reconciliation.",
     gatewayNoticeText: "Direct Verified Bank Transfer & UPI Mode Active. Offline reconciliation enabled.",
     statutoryStatus: "Valid AY 2024-25 to AY 2026-27 (Order dated 29-01-2024)",
     statutoryFinancialYear: "2026-27",
     statutoryUrn80g: "AADTM5474FF20241",
     statutoryUrn12a: "AADTM5474FE20231",
     statutoryClaimApproved: true,
-    statutoryDisclosureText: "All contributions to MECT qualify for Section 80G tax deductions under the Income-tax Act. Official receipts with Trust PAN AADTM5474F are generated automatically upon reconciliation.",
+    statutoryDisclosureText: "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. Official receipts with Trust PAN AADTM5474F are generated upon bank verification.",
   },
 };
 
@@ -302,6 +302,35 @@ export function UnifiedDonationExperience() {
       try {
         const res = await fetchPublicDonationConfig();
         if (!active) return;
+
+        // Hardened Bank Credential Guard: If database returns stale/differing values,
+        // override with canonical src/config/org.ts and log warning
+        const canonicalBank = MECT_ORG.bank;
+        if (res?.config) {
+          if (
+            res.config.sbiAccountNumber !== canonicalBank.accountNumber ||
+            res.config.sbiIfsc !== canonicalBank.ifsc ||
+            res.config.sbiUpiId !== canonicalBank.upiId
+          ) {
+            console.warn(
+              "[MECT BANK SAFETY] Remote DB bank credentials differ from canonical src/config/org.ts. Overriding DB values with canonical org.ts.",
+              {
+                dbAccount: res.config.sbiAccountNumber,
+                canonicalAccount: canonicalBank.accountNumber,
+                dbIfsc: res.config.sbiIfsc,
+                canonicalIfsc: canonicalBank.ifsc,
+                dbUpi: res.config.sbiUpiId,
+                canonicalUpi: canonicalBank.upiId,
+              }
+            );
+            res.config.sbiAccountNumber = canonicalBank.accountNumber;
+            res.config.sbiIfsc = canonicalBank.ifsc;
+            res.config.sbiUpiId = canonicalBank.upiId;
+            res.config.sbiBankName = canonicalBank.bankName;
+            res.config.sbiAccountName = canonicalBank.accountHolder;
+            res.config.sbiBranch = canonicalBank.branch;
+          }
+        }
 
         setProgrammes(res.programmes);
         setGatewayStatus(res.gatewayStatus);
@@ -395,7 +424,7 @@ export function UnifiedDonationExperience() {
     return () => {
       active = false;
     };
-  }, [searchParams, portalToken]);
+  }, [searchParams]);
 
   // Sync profile data from authenticated account
   const prefilledAccountRef = useRef<string | null>(null);
@@ -900,23 +929,21 @@ export function UnifiedDonationExperience() {
                 <button
                   type="button"
                   onClick={() => !sbiSubmitted && !isGatewaySuccess && goToStep(s.id)}
-                  className={`w-full flex flex-col items-center sm:items-start p-2 rounded-xs border text-left transition-all ${
-                    isCurrent
-                      ? "bg-forest text-white border-forest font-bold shadow-xs"
-                      : isCompleted
+                  className={`w-full flex flex-col items-center sm:items-start p-2 rounded-xs border text-left transition-all ${isCurrent
+                    ? "bg-forest text-white border-forest font-bold shadow-xs"
+                    : isCompleted
                       ? "bg-emerald-50 text-emerald-950 border-emerald-200 font-semibold"
                       : "bg-[#FAF7F2]/50 text-ink-muted border-[#E6E1D8] hover:bg-[#FAF7F2]"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-1.5 w-full">
                     <span
-                      className={`w-5 h-5 rounded-full text-[11px] flex items-center justify-center shrink-0 font-mono ${
-                        isCurrent
-                          ? "bg-white text-forest"
-                          : isCompleted
+                      className={`w-5 h-5 rounded-full text-[11px] flex items-center justify-center shrink-0 font-mono ${isCurrent
+                        ? "bg-white text-forest"
+                        : isCompleted
                           ? "bg-emerald-700 text-white"
                           : "bg-white border border-[#D4CEBE] text-ink-muted"
-                      }`}
+                        }`}
                     >
                       {isCompleted ? <Check className="w-3 h-3 stroke-[3]" /> : s.id}
                     </span>
@@ -1020,22 +1047,20 @@ export function UnifiedDonationExperience() {
               <button
                 type="button"
                 onClick={() => setFrequency("ONE_TIME")}
-                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${
-                  frequency === "ONE_TIME"
-                    ? "bg-forest text-white border-forest shadow-xs"
-                    : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
-                }`}
+                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${frequency === "ONE_TIME"
+                  ? "bg-forest text-white border-forest shadow-xs"
+                  : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
+                  }`}
               >
                 One-Time Gift
               </button>
               <button
                 type="button"
                 onClick={() => setFrequency("MONTHLY")}
-                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${
-                  frequency === "MONTHLY"
-                    ? "bg-forest text-white border-forest shadow-xs"
-                    : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
-                }`}
+                className={`py-2.5 px-4 rounded-xs border text-xs font-bold transition-colors ${frequency === "MONTHLY"
+                  ? "bg-forest text-white border-forest shadow-xs"
+                  : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/50"
+                  }`}
               >
                 Monthly Commitment
               </button>
@@ -1063,11 +1088,10 @@ export function UnifiedDonationExperience() {
                       setAmount(val);
                       setCustomAmountStr(String(val));
                     }}
-                    className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all duration-150 cursor-pointer ${
-                      active
-                        ? "bg-forest text-white border-forest shadow-sm scale-[1.02]"
-                        : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/60 hover:bg-[#FAF7F2]/80"
-                    }`}
+                    className={`py-3.5 px-4 rounded-xs border font-mono font-bold text-base transition-all duration-150 cursor-pointer ${active
+                      ? "bg-forest text-white border-forest shadow-sm scale-[1.02]"
+                      : "bg-[#FAF7F2] text-forest border-[#E6E1D8] hover:border-forest/60 hover:bg-[#FAF7F2]/80"
+                      }`}
                   >
                     ₹{val.toLocaleString("en-IN")}
                   </button>
@@ -1215,11 +1239,10 @@ export function UnifiedDonationExperience() {
                         setAuthChannel("PHONE");
                         setAuthError(null);
                       }}
-                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
-                        authChannel === "PHONE"
-                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
-                          : "text-ink-muted hover:text-forest"
-                      }`}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${authChannel === "PHONE"
+                        ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                        : "text-ink-muted hover:text-forest"
+                        }`}
                     >
                       <Phone className="w-3.5 h-3.5" />
                       <span>Mobile OTP</span>
@@ -1230,11 +1253,10 @@ export function UnifiedDonationExperience() {
                         setAuthChannel("EMAIL");
                         setAuthError(null);
                       }}
-                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${
-                        authChannel === "EMAIL"
-                          ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
-                          : "text-ink-muted hover:text-forest"
-                      }`}
+                      className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xs transition-colors ${authChannel === "EMAIL"
+                        ? "bg-white text-forest shadow-xs font-bold border border-[#E6E1D8]"
+                        : "text-ink-muted hover:text-forest"
+                        }`}
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>Email OTP</span>
@@ -1528,9 +1550,8 @@ export function UnifiedDonationExperience() {
                   if (val.length === 10) setDonorPhone(`+91${val}`);
                 }}
                 placeholder="9853608113"
-                className={`font-mono text-forest ${
-                  donorPhone && authChannel === "PHONE" ? "bg-[#FAF7F2] cursor-not-allowed" : ""
-                }`}
+                className={`font-mono text-forest ${donorPhone && authChannel === "PHONE" ? "bg-[#FAF7F2] cursor-not-allowed" : ""
+                  }`}
               />
               <p className="text-[11px] text-ink-muted mt-1">
                 {donorPhone && authChannel === "PHONE"
@@ -1994,11 +2015,10 @@ export function UnifiedDonationExperience() {
                     <button
                       type="button"
                       onClick={() => setPaymentChannel("CASHFREE")}
-                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${
-                        paymentChannel === "CASHFREE"
-                          ? "bg-forest text-white shadow-xs"
-                          : "text-forest hover:bg-white"
-                      }`}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${paymentChannel === "CASHFREE"
+                        ? "bg-forest text-white shadow-xs"
+                        : "text-forest hover:bg-white"
+                        }`}
                     >
                       Online Gateway
                     </button>
@@ -2007,11 +2027,10 @@ export function UnifiedDonationExperience() {
                     <button
                       type="button"
                       onClick={() => setPaymentChannel("SBI_DIRECT")}
-                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${
-                        paymentChannel === "SBI_DIRECT"
-                          ? "bg-forest text-white shadow-xs"
-                          : "text-forest hover:bg-white"
-                      }`}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-xs transition-colors ${paymentChannel === "SBI_DIRECT"
+                        ? "bg-forest text-white shadow-xs"
+                        : "text-forest hover:bg-white"
+                        }`}
                     >
                       SBI Direct Bank Transfer / UTR
                     </button>
@@ -2084,11 +2103,11 @@ export function UnifiedDonationExperience() {
                         </span>
                         <div className="flex items-center justify-between gap-1">
                           <span className="font-mono font-bold text-forest text-sm">
-                            {config.sbiAccountNumber || "33091993247"}
+                            {config.sbiAccountNumber || MECT_ORG.bank.accountNumber}
                           </span>
                           <button
                             type="button"
-                            onClick={() => copyValue("acc", config.sbiAccountNumber || "33091993247")}
+                            onClick={() => copyValue("acc", config.sbiAccountNumber || MECT_ORG.bank.accountNumber)}
                             className="text-terracotta hover:text-forest p-1"
                             title="Copy Account Number"
                           >
@@ -2124,11 +2143,11 @@ export function UnifiedDonationExperience() {
                         </span>
                         <div className="flex items-center justify-between gap-1">
                           <span className="font-mono font-bold text-forest text-sm">
-                            {config.sbiUpiId || "mect@sbi"}
+                            {config.sbiUpiId || MECT_ORG.bank.upiId}
                           </span>
                           <button
                             type="button"
-                            onClick={() => copyValue("upi", config.sbiUpiId || "mect@sbi")}
+                            onClick={() => copyValue("upi", config.sbiUpiId || MECT_ORG.bank.upiId)}
                             className="text-terracotta hover:text-forest p-1"
                             title="Copy UPI ID"
                           >
@@ -2143,13 +2162,13 @@ export function UnifiedDonationExperience() {
                           Branch
                         </span>
                         <div className="font-medium text-forest truncate text-xs">
-                          {config.sbiBranch || "Balangir Main Branch, Odisha"}
+                          {config.sbiBranch || MECT_ORG.bank.branch}
                         </div>
                       </div>
                     </div>
 
                     <p className="text-[11px] text-ink-muted leading-relaxed">
-                      Account Name: <strong>{config.sbiAccountName || "Mahaveer Educational & Charitable Trust"}</strong> · Transfer using Google Pay, PhonePe, Paytm, or your banking app. Once completed, enter the 12-digit UTR reference below.
+                      Account Name: <strong>{config.sbiAccountName || MECT_ORG.bank.accountHolder}</strong> · Transfer using Google Pay, PhonePe, Paytm, or your banking app. Once completed, enter the 12-digit UTR reference below.
                     </p>
                   </div>
 

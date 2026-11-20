@@ -325,7 +325,9 @@ async function verifyDonateWithNoJs(browser) {
   const html = await page.content();
   const checks = {
     bankName: html.includes("State Bank of India"),
-    accountHolder: html.includes("MAHAVEER EDUCATIONAL & CHARITABLE TRUST"),
+    accountHolder:
+      html.includes("MAHAVEER EDUCATIONAL & CHARITABLE TRUST") ||
+      html.includes("MAHAVEER EDUCATIONAL &amp; CHARITABLE TRUST"),
     accountNumber: html.includes("33341302498"),
     ifsc: html.includes("SBIN0001701"),
     branch: html.includes("Rajendra College Square, Bolangir"),

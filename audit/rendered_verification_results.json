@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T11:28:59.468Z",
+  "timestamp": "2026-11-20T17:36:36.398Z",
   "part1_pages": [
     {
       "route": "/",
@@ -513,7 +513,7 @@
   ],
   "part3_donateNoJs": {
     "bankName": true,
-    "accountHolder": false,
+    "accountHolder": true,
     "accountNumber": true,
     "ifsc": true,
     "branch": true,
@@ -529,9 +529,9 @@
       "status": 200,
       "data": {
         "success": true,
-        "claimReference": "MECT-SBI-044449-4728",
+        "claimReference": "MECT-SBI-101726-8021",
         "status": "UNVERIFIED",
-        "message": "Claim received. Reference: MECT-SBI-044449-4728. The Trust will check your transfer against its bank records before issuing a receipt."
+        "message": "Claim received. Reference: MECT-SBI-101726-8021. The Trust will check your transfer against its bank records before issuing a receipt."
       }
     },
     "invalid": {
@@ -570,9 +570,9 @@
       "status": 200,
       "data": {
         "success": true,
-        "claimReference": "MECT-SBI-044514-3128",
+        "claimReference": "MECT-SBI-101850-9408",
         "status": "UNVERIFIED",
-        "message": "Claim received. Reference: MECT-SBI-044514-3128. The Trust will check your transfer against its bank records before issuing a receipt."
+        "message": "Claim received. Reference: MECT-SBI-101850-9408. The Trust will check your transfer against its bank records before issuing a receipt."
       }
     }
   },
@@ -641,19 +641,19 @@
       "inp": "N/A"
     },
     "/programmes": {
-      "perfScore": 98,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.4 s",
-      "cls": "0",
-      "inp": "N/A"
-    },
-    "/donate": {
-      "perfScore": 96,
+      "perfScore": 99,
       "a11yScore": 100,
       "seoScore": 100,
       "lcp": "1.2 s",
       "cls": "0",
+      "inp": "N/A"
+    },
+    "/donate": {
+      "perfScore": 99,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0.001",
       "inp": "N/A"
     },
     "/about": {
@@ -673,7 +673,7 @@
       "inp": "N/A"
     },
     "/contact": {
-      "perfScore": 98,
+      "perfScore": 85,
       "a11yScore": 100,
       "seoScore": 100,
       "lcp": "1.2 s",

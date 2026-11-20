@@ -5,110 +5,82 @@
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT)  
 **Branch:** `fix/audit-loop`  
 **Last Updated:** 2026-11-20  
-**Purpose:** This document tracks all institutional facts, conflicting data points, tax wording adjustments, photo requirements, and translation reviews that require explicit Trust Management / CA verification. Per Hard Constraint 4 and 5, no facts are invented.
+**Purpose:** This document tracks all institutional facts, conflicting data points, tax wording adjustments, photo requirements, and translation reviews that require explicit Trust Management / CA verification. Per Hard Constraints, no facts are invented.
 
 ---
 
-## 1. Facts to Confirm & Known Conflicts
+## BLOCKING OWNER DECISIONS (Must Be Confirmed Before Production Release)
 
-- [ ] **CRITICAL: Official State Bank of India Account & UPI Credentials:**
-  - *Current Baseline in `src/config/org.ts` (aligned with live site mect.org.in):*
-    - Bank: **State Bank of India**
-    - Account Holder: **MAHAVEER EDUCATIONAL & CHARITABLE TRUST**
-    - Account Number: `33341302498`
-    - IFSC Code: `SBIN0001701`
-    - Branch: **Rajendra College Square, Bolangir**
-    - UPI ID (VPA): `86971610172@sbi`
-  - *Owner Action:* **MUST physically inspect the official SBI passbook/chequebook** to verify that Account `33341302498`, IFSC `SBIN0001701`, and UPI `86971610172@sbi` match the current operative account before any live release.
+The following 12 items are prioritized in strict order of operational and statutory importance:
 
+### 1. Bank Details vs Physical Passbook (CRITICAL)
+- **Current Baseline in `src/config/org.ts` (aligned with live site `mect.org.in`):**
+  - Bank: **State Bank of India**
+  - Account Holder: **MAHAVEER EDUCATIONAL & CHARITABLE TRUST**
+  - Account Number: `33341302498`
+  - IFSC Code: `SBIN0001701`
+  - Branch: **Rajendra College Square, Bolangir**
+  - UPI ID (VPA): `86971610172@sbi`
+- **Owner Action:** **MUST physically inspect the official SBI passbook/chequebook** to verify that Account `33341302498`, IFSC `SBIN0001701`, and UPI `86971610172@sbi` match the current operative account before any live release.
 
-- [ ] **NGO Darpan Unique ID:**
-  - *Conflict:* `OR/2024/0466491` (used across majority of new pages) vs `OD/2021/0285141` (present on legacy headers/statutory disclosures).
-  - *Current Baseline in `org.ts`:* `OR/2024/0466491`.
-  - *Owner Action:* Confirm whether the NITI Aayog portal record is `OR/2024/0466491` or `OD/2021/0285141`.
+### 2. Helpline Phone Number (`+91 94371 23616`)
+- **Status:** Authentic live site helpline present across foundational releases since project inception (commits `287d8a6`, `0daa2bf`, `ea4ab59`).
+- **Owner Action:** Confirm whether `+91 94371 23616` is the sole authorized public telephone contact desk for incoming donor and beneficiary inquiries.
 
-- [ ] **Primary Helpline & Telephone Numbers:**
-  - *Conflict & Provenance:*
-    - `+91 94371 23616`: Authentic live site helpline present across foundational releases since project inception (commit `287d8a6`, `0daa2bf`, `ea4ab59`).
-    - `+91 98536 08113`: Introduced in commit `b294267` (Phase 24) without documentary passbook/telecom verification.
-    - Placeholder `+91 671` landline: eradicated.
-  - *Current Baseline in `org.ts`:* **`+91 94371 23616`** (official voice helpline). WhatsApp external direct link removed.
-  - *Owner Action:* Confirm whether `+91 94371 23616` remains the sole public desk number or whether `+91 98536 08113` should be registered as a secondary mobile contact.
+### 3. Ownership of Secondary Number (`+91 98536 08113`)
+- **Status:** Introduced in commit `b294267` (Phase 24) without accompanying passbook or telecom documentary verification. External WhatsApp direct links to this number have been removed from public pages.
+- **Owner Action:** Clarify who owns `+91 98536 08113` (e.g. personal mobile of a specific Trustee, field coordinator, or technical volunteer) and whether it should be registered as a secondary contact desk or omitted from public web pages.
 
-- [ ] **Secretariat Office Hours:**
-  - *Conflict:* `Mon–Sat, 10:00–17:30 IST` vs `Mon–Fri, 10:00–17:00 IST`.
-  - *Current Baseline in `org.ts`:* `Mon–Sat, 10:00–17:30 IST`.
-  - *Owner Action:* Confirm working days and hours for Balangir registered office and Bhubaneswar administrative office.
+### 4. NGO Darpan Unique ID
+- **Conflict:** `OR/2024/0466491` (used across majority of new pages) vs `OD/2021/0285141` (present on legacy headers/statutory disclosures).
+- **Current Baseline in `src/config/org.ts`:** `OR/2024/0466491`.
+- **Owner Action:** Confirm the exact unique registration number appearing on the NITI Aayog NGO Darpan portal certificate.
 
-- [ ] **Bhubaneswar Administrative Office Address:**
-  - *Current Address:* `A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014`.
-  - *Status:* Retained as stated in modern layout.
-  - *Owner Action:* Confirm exact physical suite/room number and whether mail should be received at this address or Balangir.
+### 5. Secretariat Office Hours
+- **Conflict:** `Mon–Sat, 10:00–17:30 IST` vs `Mon–Fri, 10:00–17:00 IST`.
+- **Current Baseline in `src/config/org.ts`:** `Mon–Sat, 10:00–17:30 IST`.
+- **Owner Action:** Confirm working days and hours for the Balangir registered office and Bhubaneswar administrative office.
 
-- [ ] **First Annual Audit vs Historical Reports:**
-  - *Conflict:* Impact page legacy copy stated "first annual audit scheduled" while Reports page hosts FY2021-22, FY2022-23, and FY2023-24 financial statements.
-  - *Current Baseline:* Removed "first annual audit scheduled" contradiction; aligned with historical reports from 2021 onward.
-  - *Owner Action:* Confirm availability and dates of external statutory audit certificates.
+### 6. Bhubaneswar Administrative Office Address
+- **Current Address in `src/config/org.ts`:** `A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014`.
+- **Owner Action:** Confirm exact physical room/suite number and whether official postal correspondence should be directed to Bhubaneswar or Balangir registered office (`At/Po: Puintala, Dist: Balangir, Odisha - 767002`).
 
-- [ ] **Board of Trustees & Leadership Disclosures:**
-  - *Conflict:* Governance page legacy layout stated "Trustee Names Pending Gazette Publication" while About page names Er. Japabandhu Kampa as Settler Founder & Managing Trustee.
-  - *Current Baseline:* Names Er. Japabandhu Kampa as Founder & Managing Trustee with Clause XVI honorary service notice. Removed "Pending Gazette" placeholder.
-  - *Owner Action:* Provide the full list of co-trustees for publication on the governance page if desired.
+### 7. Chartered Accountant (CA) Review of Statutory Tax Wording
+- **Status:** All promotional claims of "50% Tax Deduction Eligible", "100% Tax Exemption", "Form 10BE instant generation", and the illustrative ₹10,000 tax saving table have been removed and replaced with neutral statutory wording:
+  > *"Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility."*
+- **Owner Action:** Have the Trust's Chartered Accountant review Section 12A (`AADTM5474FE20231`) and Section 80G (`AADTM5474FF20241`) validity periods (AY 2024-25 to AY 2026-27) and confirm appropriate receipt disclosure notes.
 
----
+### 8. Real Field Photography Replacements
+- **Status:** Public media audit registered in `audit/PHOTO_INVENTORY.md`. Zero stock photos added. The following illustrative assets require authentic camera originals from Trust field operations:
+  - Balangir Community Library / Learning Centre (`FreeEducationSection.tsx`)
+  - Balangir Child Outreach
+  - Women SHG Vocational Skilling Cluster (`/programmes`)
+  - Shri Hanuman Murti proposed site (currently 3D architectural feasibility visualization)
+- **Owner Action:** Provide high-resolution camera originals from Balangir and Rayagada field units.
 
-## 2. Chartered Accountant (CA) & Tax Wording Review
+### 9. Real Signed Annual Report PDFs (FY 2021–22, FY 2022–23, FY 2023–24)
+- **Status:** All synthetic/generated PDFs have been purged from `public/reports/`. The multi-year reports table provides on-page activity summaries and directs donors to request physical inspection copies of signed balance sheets.
+- **Owner Action:** Supply scanned, official CA-signed copies of the annual audited statements for FY21-22, FY22-23, and FY23-24 to upload as real download files.
 
-Per Hard Constraint 5, all claims of "50% Tax Deduction Eligible", "100% Tax Exemption", "Form 10BE instant generation", and the illustrative Rs 10,000 tax saving calculation have been replaced with the neutral statutory text:
+### 10. FY 2024–25 Annual Accounts Status
+- **Status:** Marked **"Pending"** across Annual Reports table. Accounts are currently undergoing annual reconciliation and statutory audit preparation.
+- **Owner Action:** Confirm expected audit completion date with the CA and approve publication when signed.
 
-> *"Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility."*
+### 11. Newsletter & Updates Block (Owner Decision)
+- **Status:** Not built. Awaiting Trust Management determination.
+- **Owner Action:** **Does the Trust want an email signup / updates block?**
+  - If YES: Define privacy notice, list manager (e.g. self-hosted vs managed), and Secretariat dispatch frequency.
+  - If NO: Retain current structure where donors and citizens engage via direct contact form, telephone, and public statutory disclosures.
 
-Locations updated and logged for CA verification:
-
-- [ ] `/statutory-disclosures`: Removed tax saving percentage claims; retained factual historical URN/DIN table for Section 12A (`AADTM5474FE20231`) and Section 80G (`AADTM5474FF20241`) for AY 2024-25 to AY 2026-27.
-- [ ] `/donate`: Removed "50% Tax Deduction Eligible" green check badge, illustrative calculation table, and "Donate with 80G Tax Exemption" button copy. Replaced with neutral statutory note.
-- [ ] `/about`: Standardized tax notice in legal disclaimer banner.
-- [ ] `/reports`: Replaced tax deduction claims in financial disclosure summaries.
-- [ ] `/faq`: Replaced tax advice and tax deduction FAQs with neutral disclaimer instructing donors to consult their tax advisors.
-- [ ] Homepage & Global Footers: Removed 80G exemption promotional tags and badges.
-
----
-
-## 3. Photographs & Field Media Inventory
-
-Per Hard Constraint 4 and P1-5, no stock photos have been added. Full public media audit is registered in `audit/PHOTO_INVENTORY.md`. The following illustrative/placeholder assets require authentic field photography replacements from Trust field operations:
-
-- [ ] **Needs real field photo from Balangir Library / Community Learning Centre:** currently using `/images/hero/illustrative-community-library-reading.webp` in `FreeEducationSection.tsx` and `/programmes`.
-- [ ] **Needs real field photo from Balangir Child Outreach:** currently using `/images/hero/illustrative-child-support-outreach.webp`.
-- [ ] **Needs real field photo from Women SHG Cluster:** currently using `/images/hero/illustrative-women-self-help-group.webp` in `/programmes`.
-- [ ] **Needs real field photo from Shri Hanuman Murti proposed site:** currently in architectural 3D feasibility modeling stage.
-- [ ] **High-Resolution Field Archive Batch:** Request high-resolution camera originals from Balangir and Rayagada field units for future exhibition expansion.
+### 12. Odia Language Translation Review
+- **Status:** Gated behind `NEXT_PUBLIC_ENABLE_ODIA="true"` (currently default off). Community translation draft provided in `locales/or.json` with strict guardrails ensuring all statutory, legal, and tax terms remain in English.
+- **Owner Action:** Review Odia strings with a native Odia speaker for dialectal appropriateness in Western Odisha (Kosali / Sambalpuri / Standard Odia) before enabling publicly.
 
 ---
 
-## 4. Odia Language Translation Review
+## Supplementary Reference: Needs a Documentary Source Before Publishing
 
-Per P1-9, Odia language toggle (`locales/or.json`) provides community access for navigation, homepage, programmes, donate, and contact.
-
-- [ ] **Review `locales/or.json`:** Machine-drafted strings require review by an Odia native speaker for dialectal appropriateness in Western Odisha (Kosali / Sambalpuri / Standard Odia).
-- [ ] **Legal & Statutory Text:** Preserved in English across all language toggles to prevent legal misinterpretation.
-
----
-
-## 5. Annual Reports & Statutory Filings (FY 2021–25)
-
-- [ ] **FY 2021–22 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
-- [ ] **FY 2022–23 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
-- [ ] **FY 2023–24 Annual Activity Report & Financial Statement:** Upload the real signed PDF for each year when available. (On-page summary available; signed audit copy available for physical inspection on request).
-- [ ] **FY 2024–25 Annual Activity Report & Financial Accounts:** Marked **"Pending"** across Activity Report, Audited Statement, and Form 10B. Financial accounts are currently undergoing annual reconciliation and statutory preparation by the Chartered Accountant. Download slot in `/public/reports/` is reserved and will be activated upon audit sign-off.
-
----
-
-## 6. Needs a documentary source before publishing
-
-Per Loop 6 audit directive, all unverified dispatches, day-specific dates, and privacy markers have been completely removed from public pages:
-
-- [ ] **Arogya Diagnostic Camp at Rayagada:** Removed from `/stories`. Requires primary health camp docket, certified medical coordinator details, and government health department permissions before publishing.
-- [ ] **Higher Education Scholarship Distribution FY 2024–25:** Removed from `/stories`. Scholarship grants are currently proposed with zero funded places; cannot publish retrospective distribution stories without audited bank disbursal vouchers and sanction letters.
-- [ ] **Emergency Heatwave Relief 2024 (Day-Specific Accounts):** Removed invented daily counts. Restored documented seasonal Jal Seva dispatch covering documented April–June period with verified service instance caveats ("service instances, not unique-person census").
-
+Per Truth Audit directives, all unverified dispatches and day-specific claims have been removed from public pages:
+- **Arogya Diagnostic Camp at Rayagada:** Requires primary camp docket, certified medical coordinator details, and district permissions before publishing.
+- **Higher Education Scholarship Distribution FY 2024–25:** Grants are in proposed stage with zero funded places; cannot publish retrospective distribution stories without audited bank disbursal vouchers and sanction letters.
+- **Emergency Heatwave Relief 2024:** Daily headcounts removed. Documented seasonal Jal Seva dispatch restored with verified service instance caveats ("service instances, not unique-person census").

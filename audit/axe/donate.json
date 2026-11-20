@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T11:27:34.171Z",
+  "timestamp": "2026-11-20T17:35:10.904Z",
   "url": "http://127.0.0.1:3000/donate",
   "toolOptions": {
     "reporter": "v1"
@@ -4152,7 +4152,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current shrink-0\" aria-hidden=\"true\">",
           "target": [
-            ".min-h-\\[38px\\] > .fill-current.lucide-heart.w-3\\.5"
+            ".sm\\:px-3 > .fill-current.lucide-heart.w-3\\.5"
           ]
         },
         {
@@ -8955,7 +8955,7 @@
           "impact": null,
           "html": "<span>Announcements</span>",
           "target": [
-            ".bg-sand.text-forest-deep.py-0\\.5 > span"
+            ".bg-sand.text-forest-deep.px-2 > span"
           ]
         },
         {
@@ -16837,7 +16837,7 @@
           "impact": null,
           "html": "<span class=\"shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-xs bg-sand text-forest-deep text-[10px] font-bold uppercase tracking-wider shadow-xs\">",
           "target": [
-            ".bg-sand.text-forest-deep.py-0\\.5"
+            ".bg-sand.text-forest-deep.px-2"
           ]
         },
         {
@@ -16857,7 +16857,7 @@
           "impact": null,
           "html": "<span>Announcements</span>",
           "target": [
-            ".bg-sand.text-forest-deep.py-0\\.5 > span"
+            ".bg-sand.text-forest-deep.px-2 > span"
           ]
         },
         {

@@ -1,15 +1,30 @@
 import React from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { createPageMetadata } from "@/lib/seo";
 import { CinematicHero } from "@/components/sections/CinematicHero";
 import { InstitutionalStorySection } from "@/components/sections/InstitutionalStorySection";
 import { InterconnectedSafetyNetSection } from "@/components/sections/InterconnectedSafetyNetSection";
-import { AuditedImpactTelemetrySection } from "@/components/sections/AuditedImpactTelemetrySection";
-import { DocumentaryFieldExhibitionSection } from "@/components/sections/DocumentaryFieldExhibitionSection";
-import { DifferentiatedCampaignsSection } from "@/components/sections/DifferentiatedCampaignsSection";
-import { StatutoryGovernanceSection } from "@/components/sections/StatutoryGovernanceSection";
-import { TailoredParticipationPathwaysSection } from "@/components/sections/TailoredParticipationPathwaysSection";
-import { ClosingTrustPledgeSection } from "@/components/sections/ClosingTrustPledgeSection";
+
+// Dynamically load below-the-fold sections with SSR enabled to reduce initial client hydration TBT
+const AuditedImpactTelemetrySection = dynamic(() =>
+  import("@/components/sections/AuditedImpactTelemetrySection").then((m) => m.AuditedImpactTelemetrySection)
+);
+const DocumentaryFieldExhibitionSection = dynamic(() =>
+  import("@/components/sections/DocumentaryFieldExhibitionSection").then((m) => m.DocumentaryFieldExhibitionSection)
+);
+const DifferentiatedCampaignsSection = dynamic(() =>
+  import("@/components/sections/DifferentiatedCampaignsSection").then((m) => m.DifferentiatedCampaignsSection)
+);
+const StatutoryGovernanceSection = dynamic(() =>
+  import("@/components/sections/StatutoryGovernanceSection").then((m) => m.StatutoryGovernanceSection)
+);
+const TailoredParticipationPathwaysSection = dynamic(() =>
+  import("@/components/sections/TailoredParticipationPathwaysSection").then((m) => m.TailoredParticipationPathwaysSection)
+);
+const ClosingTrustPledgeSection = dynamic(() =>
+  import("@/components/sections/ClosingTrustPledgeSection").then((m) => m.ClosingTrustPledgeSection)
+);
 
 /**
  * Mahaveer Educational & Charitable Trust (MECT) — Institutional Master Homepage

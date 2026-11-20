@@ -505,7 +505,7 @@ export function Header() {
               <Link
                 href="/donate"
                 aria-label="Donate to Mahaveer Trust"
-                className="min-h-[38px] min-w-[38px] px-2 sm:px-3 py-1 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center justify-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
+                className="min-h-[44px] min-w-[44px] px-2.5 sm:px-3 py-1.5 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center justify-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current shrink-0" aria-hidden="true" />
                 <span className="hidden min-[360px]:inline">Donate</span>
@@ -617,16 +617,16 @@ export function Header() {
                       </p>
                     </div>
 
-                    {/* Institutional Contribution & Tax Exemption Notice */}
+                    {/* Institutional Contribution & Statutory Transparency Notice */}
                     <div className="bg-forest/80 border border-sand/25 p-4 rounded-xs space-y-2.5">
                       <div className="flex items-center justify-between text-xs font-semibold text-cream">
                         <span className="font-serif">Institutional Giving</span>
                         <span className="text-[10px] bg-sand/90 text-forest-deep px-1.5 py-0.5 rounded-xs font-bold uppercase font-mono tracking-wider">
-                          80G Tax Benefit
+                          Statutory Transparency
                         </span>
                       </div>
                       <p className="text-xs text-cream/80 leading-relaxed font-sans">
-                        Contributions to Mahaveer Trust support verified charitable programmes. Instant electronic payment confirmations and serialized PDF receipts are maintained in our official Donor Portal.
+                        Contributions to Mahaveer Trust support verified charitable programmes across Western Odisha. Tax treatment of contributions is subject to applicable law and confirmation of the Trust&apos;s current statutory eligibility.
                       </p>
                       <div className="pt-1.5 border-t border-sand/15">
                         <Link

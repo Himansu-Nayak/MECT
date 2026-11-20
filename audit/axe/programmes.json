@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T11:27:31.636Z",
+  "timestamp": "2026-11-20T17:35:08.407Z",
   "url": "http://127.0.0.1:3000/programmes",
   "toolOptions": {
     "reporter": "v1"
@@ -4023,7 +4023,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current shrink-0\" aria-hidden=\"true\">",
           "target": [
-            ".min-h-\\[38px\\] > .fill-current.lucide-heart.w-3\\.5"
+            ".sm\\:px-3 > .fill-current.lucide-heart.w-3\\.5"
           ]
         },
         {

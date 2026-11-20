@@ -4,6 +4,7 @@
 **Repository:** `Himansu-Nayak/MECT`  
 **Compose Specification:** `compose.production.yaml`  
 **Domain:** `https://mect.org.in/`  
+**Staging Target:** Staging container or subdomain prior to production switch  
 **Document Classification:** Confidential — Fiduciary Operations Runbook  
 **Last Revised:** 2026-11-20
 
@@ -23,6 +24,14 @@ Host-level reverse proxy (Nginx) terminates TLS for `https://mect.org.in/` and f
 - Web routes & assets: `http://127.0.0.1:3001`
 - REST API routes (`/api/v1/*`): `http://127.0.0.1:8081`
 
+### Reverse Proxy Trusted Header Configuration (Nginx):
+```nginx
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Proto $scheme;
+```
+
 ---
 
 ## 2. Infrastructure Placeholders & Variables
@@ -40,7 +49,7 @@ Never assume root credentials, specific host IPs, or arbitrary filesystem paths.
 
 ## 3. Pre-Deployment Safety Gates (MUST PASS BEFORE DEPLOY)
 
-Every release candidate must pass all four gates prior to touching production:
+Every release candidate must pass all five gates prior to touching production:
 
 - [ ] **Gate 1: Physical Passbook Reconciliation (CRITICAL)**
   - Physical inspection of the official State Bank of India passbook/chequebook confirming:
@@ -49,16 +58,31 @@ Every release candidate must pass all four gates prior to touching production:
     - Branch: **Rajendra College Square, Bolangir**
     - UPI ID: `86971610172@sbi`
     - Beneficiary: **MAHAVEER EDUCATIONAL & CHARITABLE TRUST**
-- [ ] **Gate 2: GitHub Pull Request & Clean Git State**
+- [ ] **Gate 2: Database Bank Credentials Pre-Deploy SQL Audit**
+  - Execute read-only query on production database to compare stored values against `src/config/org.ts`:
+    ```sql
+    docker exec -i mect-postgres psql -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} -c \
+    "SELECT id, sbi_bank_name, sbi_account_name, sbi_account_number, sbi_ifsc, sbi_branch, sbi_upi_id FROM payment_configurations WHERE id = 1;"
+    ```
+  - Expected values matching `src/config/org.ts`:
+    - `sbi_bank_name`: `'State Bank of India'`
+    - `sbi_account_name`: `'MAHAVEER EDUCATIONAL & CHARITABLE TRUST'`
+    - `sbi_account_number`: `'33341302498'`
+    - `sbi_ifsc`: `'SBIN0001701'`
+    - `sbi_branch`: `'Rajendra College Square, Bolangir, Odisha'`
+    - `sbi_upi_id`: `'86971610172@sbi'`
+  - *If stored DB values differ:* Reconcile and update table before deploying new frontend image.
+- [ ] **Gate 3: GitHub Pull Request & Clean Git State**
   - All changes merged to release branch via reviewed Pull Request on GitHub.
   - Working tree clean, zero uncommitted modifications.
   - Git commit signature verified.
-- [ ] **Gate 3: Automated Quality & Accessibility Gate**
+- [ ] **Gate 4: Automated Quality, Accessibility & Multi-Run Performance Gate**
   - `npm run build` passes with zero errors.
   - `npm run typecheck` (`tsc --noEmit`) passes with zero errors.
   - `npm run check:confirm` passes with zero unresolved confirmation blockers.
   - `npm run verify` passes: 0 broken links, 0 broken anchors, 0 serious/critical axe violations.
-- [ ] **Gate 4: Co-Hosted Workload Isolation**
+  - `npm run verify:perf` passes: 3-run Lighthouse median Performance >= 90, LCP <= 2.5s, CLS <= 0.1 across all 6 core pages.
+- [ ] **Gate 5: Co-Hosted Workload Isolation**
   - Verify that unrelated processes or containers on `<VPS_HOST>` (e.g., co-hosted websites or client workloads) share no docker volumes, ports, or networks with `mect`.
 
 ---
@@ -67,23 +91,13 @@ Every release candidate must pass all four gates prior to touching production:
 
 ```mermaid
 flowchart LR
-    Feature["feat/audit-loop\n(Local Branch)"] -->|Push| Fork["GitHub PR\n(Himansu-Nayak/MECT)"]
-    Fork -->|CI Verification| CI["Build, Typecheck\n& Playwright Tests"]
+    Feature["fix/audit-loop\n(Local Branch)"] -->|Push| PR["GitHub PR\n(Himansu-Nayak/MECT)"]
+    PR -->|CI Checks| CI["Build, Typecheck\n& Verify Scripts"]
     CI -->|Pass| Review["Peer & Owner Review\n(Documentary Verification)"]
     Review -->|Squash & Merge| Main["main Branch\n(Release Baseline)"]
-    Main -->|Trigger Tag| Deploy["Production Deploy\non <VPS_HOST>"]
+    Main -->|Staging Deploy| Staging["Staging Validation\n(Subdomain / Port 3002)"]
+    Staging -->|Verify Pass| Prod["Production Deploy\n(Port 3001)"]
 ```
-
-1. **Open Pull Request:**
-   ```bash
-   git push origin fix/audit-loop
-   # Open PR on GitHub: Himansu-Nayak/MECT
-   ```
-2. **Review & CI Checks:**
-   - Verify GitHub Actions workflow completes successfully.
-   - Ensure `OWNER_DECISIONS.md` has no unreviewed factual blockers.
-3. **Merge:**
-   - Squash and merge PR into `main`. Note the merge commit SHA.
 
 ---
 
@@ -107,7 +121,14 @@ ls -lh <BACKUP_DIR>/mect_db_pre_deploy_*.dump
 pg_restore -l <BACKUP_DIR>/mect_db_pre_deploy_*.dump | head -n 15
 ```
 
-### Step 3: Synchronize Repository
+### Step 3: Run Database Pre-Deploy Bank Comparison Query
+```bash
+docker exec -i mect-postgres psql -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} -c \
+"SELECT id, sbi_account_number, sbi_ifsc, sbi_upi_id FROM payment_configurations WHERE id = 1;"
+```
+Confirm: `33341302498` / `SBIN0001701` / `86971610172@sbi`.
+
+### Step 4: Synchronize Repository
 ```bash
 cd <APP_DIR>
 git fetch origin main
@@ -118,7 +139,23 @@ git pull origin main
 git rev-parse HEAD
 ```
 
-### Step 4: Build and Deploy Services
+### Step 5: Staging Deployment & Verification (MANDATORY BEFORE PROD REPLACEMENT)
+Before replacing the live production frontend container:
+1. Deploy to a staging port or container (e.g. `mect-frontend-staging` on port `3002`):
+   ```bash
+   docker build -t mect-frontend:staging .
+   docker run -d --name mect-frontend-staging --network mect-network -p 127.0.0.1:3002:3000 --env-file .env mect-frontend:staging
+   ```
+2. Run rendered verification against staging URL:
+   ```bash
+   TEST_BASE_URL=http://127.0.0.1:3002 npm run verify
+   ```
+3. Only upon 100% pass, proceed to Step 6. Stop and remove staging container:
+   ```bash
+   docker stop mect-frontend-staging && docker rm mect-frontend-staging
+   ```
+
+### Step 6: Deploy Production Services
 ```bash
 # Build production images cleanly
 docker compose -f compose.production.yaml build
@@ -127,7 +164,7 @@ docker compose -f compose.production.yaml build
 docker compose -f compose.production.yaml up -d --remove-orphans
 ```
 
-### Step 5: Post-Deployment Smoke Verification
+### Step 7: Post-Deployment Smoke Verification
 ```bash
 # 1. Check container health states
 docker compose -f compose.production.yaml ps
@@ -141,6 +178,14 @@ curl -I https://mect.org.in/
 curl -I https://mect.org.in/donate
 curl -I https://mect.org.in/programmes
 ```
+
+### Step 8: Production Google PageSpeed Insights Audit
+Run Google PageSpeed Insights (or Chrome DevTools Lighthouse with real network profile) against live production URLs:
+- `https://mect.org.in/`
+- `https://mect.org.in/programmes`
+- `https://mect.org.in/donate`
+
+Verify LCP < 2.5s and CLS < 0.1 over real CDN/TLS network.
 
 ---
 

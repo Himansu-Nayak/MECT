@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T11:27:36.453Z",
+  "timestamp": "2026-11-20T17:35:12.847Z",
   "url": "http://127.0.0.1:3000/about",
   "toolOptions": {
     "reporter": "v1"
@@ -3788,7 +3788,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current shrink-0\" aria-hidden=\"true\">",
           "target": [
-            ".min-h-\\[38px\\] > .fill-current.lucide-heart.w-3\\.5"
+            ".sm\\:px-3 > .fill-current.lucide-heart.w-3\\.5"
           ]
         },
         {
@@ -8055,7 +8055,7 @@
           "impact": null,
           "html": "<button class=\"group inline-flex it...\">",
           "target": [
-            "a[href$=\"governance\"] > .border-terracotta.px-5.min-h-\\[44px\\]"
+            "a[href$=\"governance\"] > .border-terracotta.px-5.transition-\\[color\\,background-color\\,border-color\\,box-shadow\\,transform\\]"
           ]
         },
         {
@@ -10255,7 +10255,7 @@
           "impact": null,
           "html": "<span>Review Governance Charter</span>",
           "target": [
-            "a[href$=\"governance\"] > .border-terracotta.px-5.min-h-\\[44px\\] > span"
+            "a[href$=\"governance\"] > .border-terracotta.px-5.transition-\\[color\\,background-color\\,border-color\\,box-shadow\\,transform\\] > span"
           ]
         },
         {
@@ -15420,7 +15420,7 @@
           "impact": null,
           "html": "<button class=\"group inline-flex it...\">",
           "target": [
-            "a[href$=\"governance\"] > .border-terracotta.px-5.min-h-\\[44px\\]"
+            "a[href$=\"governance\"] > .border-terracotta.px-5.transition-\\[color\\,background-color\\,border-color\\,box-shadow\\,transform\\]"
           ]
         },
         {
@@ -22767,7 +22767,7 @@
           "impact": null,
           "html": "<button class=\"group inline-flex it...\">",
           "target": [
-            "a[href$=\"governance\"] > .border-terracotta.px-5.min-h-\\[44px\\]"
+            "a[href$=\"governance\"] > .border-terracotta.px-5.transition-\\[color\\,background-color\\,border-color\\,box-shadow\\,transform\\]"
           ]
         },
         {
@@ -22787,7 +22787,7 @@
           "impact": null,
           "html": "<span>Review Governance Charter</span>",
           "target": [
-            "a[href$=\"governance\"] > .border-terracotta.px-5.min-h-\\[44px\\] > span"
+            "a[href$=\"governance\"] > .border-terracotta.px-5.transition-\\[color\\,background-color\\,border-color\\,box-shadow\\,transform\\] > span"
           ]
         },
         {
