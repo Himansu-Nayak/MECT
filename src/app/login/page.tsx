@@ -217,7 +217,7 @@ function LoginContent() {
                   Transparent Governance. Ground-Level Impact.
                 </p>
                 <p className="text-xs text-cream/80 leading-relaxed font-sans">
-                  Access your verified donor dashboard, download serialized official Section 80G tax receipts with cryptographic SHA-256 seals, track manual SBI transfers, and monitor your direct contribution impact.
+                  Access your verified donor dashboard, download serialized official donation payment receipts with cryptographic SHA-256 seals, track manual SBI transfers, and monitor your direct contribution impact.
                 </p>
               </div>
 
@@ -232,7 +232,7 @@ function LoginContent() {
                   <strong className="text-sand">AADTM5474FE20231</strong>
                 </div>
                 <div className="flex items-center justify-between text-cream/90">
-                  <span>Section 80G URN:</span>
+                  <span>Historical 80G URN:</span>
                   <strong className="text-sand">AADTM5474FF20241</strong>
                 </div>
                 <div className="flex items-center justify-between text-cream/90">

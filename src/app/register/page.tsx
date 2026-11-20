@@ -314,7 +314,7 @@ function RegisterContent() {
                   Create Your Supporter Account
                 </p>
                 <p className="text-xs text-cream/80 leading-relaxed font-sans">
-                  Registering a supporter account enables automatic linking of your contributions, instant Section 80G tax receipt PDF generation, personal contribution ledgers, and direct updates from our ground interventions across Western Odisha.
+                  Registering a supporter account enables automatic linking of your contributions, instant donation payment receipt PDF generation, personal contribution ledgers, and direct updates from our ground interventions across Western Odisha.
                 </p>
               </div>
 
@@ -323,7 +323,7 @@ function RegisterContent() {
                 <div className="flex items-start gap-2.5">
                   <ShieldCheck className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                   <span className="text-cream/90 leading-relaxed">
-                    <strong>Statutory Tax Exemption:</strong> Verified Section 80G URN <span className="font-mono text-sand">AADTM5474FF20241</span>.
+                    <strong>Statutory Order:</strong> Historical Section 80G Order URN <span className="font-mono text-sand">AADTM5474FF20241</span>.
                   </span>
                 </div>
                 <div className="flex items-start gap-2.5">
@@ -440,7 +440,7 @@ function RegisterContent() {
 
                     <div>
                       <label htmlFor="reg-pan" className="block text-xs font-bold text-forest mb-1">
-                        PAN <span className="text-ink-muted font-normal">(Optional for 80G tax benefit)</span>
+                        PAN <span className="text-ink-muted font-normal">(Optional for tax reporting)</span>
                       </label>
                       <Input
                         id="reg-pan"

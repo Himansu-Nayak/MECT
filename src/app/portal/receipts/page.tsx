@@ -94,15 +94,15 @@ export default function PortalReceiptsPage() {
                 <span>Back to Dashboard</span>
               </Link>
               <h1 className="text-2xl sm:text-3xl font-serif font-bold text-forest">
-                Official Tax &amp; Payment Receipts
+                Official Donation Payment Receipts
               </h1>
               <p className="text-xs sm:text-sm text-ink-muted">
-                Download serialized Official Donation Receipts (PDF) with SHA-256 cryptographic verification for Section 80G income-tax filing.
+                Download serialized Official Donation Receipts (PDF) with SHA-256 cryptographic verification for your accounting and financial records.
               </p>
             </div>
 
             <Badge variant="forest" size="sm">
-              Section 80G Active (URN: AADTM5474FF20241)
+              Historical 80G Order (URN: AADTM5474FF20241)
             </Badge>
           </div>
 
@@ -117,10 +117,10 @@ export default function PortalReceiptsPage() {
         <div className="p-4 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] space-y-2 text-xs text-ink leading-relaxed">
           <div className="font-bold text-forest flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-terracotta" />
-            <span>Statutory Section 80G Certificate Generation Policy</span>
+            <span>Statutory Receipt Policy</span>
           </div>
           <p className="text-ink-muted">
-            All voluntary contributions to MECT generate an immediate <strong>Official Donation Receipt &amp; Payment Acknowledgement</strong> bearing Trust PAN <strong>AADTM5474F</strong> and a unique cryptographic SHA-256 hash. In accordance with Section 354 and Rule 190 of the Income-tax Act, formal statutory certificates (Form 114) are issued following electronic filing of annual donation returns (Form 113).
+            All voluntary contributions to MECT generate an immediate <strong>Official Donation Receipt &amp; Payment Acknowledgement</strong> bearing Trust PAN <strong>AADTM5474F</strong> and a unique cryptographic SHA-256 hash. Tax treatment of contributions is subject to applicable law and confirmation of the Trust&apos;s current statutory eligibility.
           </p>
         </div>
 

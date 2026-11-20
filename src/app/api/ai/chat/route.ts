@@ -78,6 +78,26 @@ const LOCAL_AI_CHAT_URL = process.env.LOCAL_AI_CHAT_URL || "http://127.0.0.1:808
 const INTERNAL_AI_SECRET = process.env.INTERNAL_AI_SECRET || "";
 const AI_ENGINE_MODE = process.env.AI_ENGINE_MODE || "local_with_fallback";
 
+function getDirectAuditResponse(lastPrompt: string): string | null {
+  const norm = lastPrompt.trim().toLowerCase().replace(/[?.,!]/g, "");
+  if (norm.includes("80g eligible") || norm === "is my donation 80g eligible" || norm === "can i claim 80g for my donation") {
+    return "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27.";
+  }
+  if (norm.includes("tax receipt") || norm === "will i get a tax receipt" || norm === "can i get a tax exemption certificate today") {
+    return "You will receive an Official Donation Receipt & Payment Acknowledgement after the Trust checks your State Bank of India transfer or UPI payment against its bank records. Formal tax certificates are subject to applicable statutory filing.";
+  }
+  if (norm.includes("tax will i save") || norm.includes("how much tax") || norm === "how much tax will i save") {
+    return "MECT does not calculate or guarantee personal tax savings. Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. Please consult your tax advisor regarding your specific tax filing.";
+  }
+  if (norm.includes("trust registered") || norm === "is the trust registered" || norm.includes("trust registration")) {
+    return "Yes. Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust registered under the Indian Trusts Act, 1882 at Balangir, Odisha (Trust Deed No. 40311302194, registered 30-07-2013). The Trust holds PAN AADTM5474F, MCA CSR-1 registration CSR00081063, and NITI Aayog NGO Darpan ID OR/2024/0466491.";
+  }
+  if (norm.includes("pay by card") || norm.includes("pay with credit card") || norm.includes("card payment") || norm === "can i pay by card") {
+    return "No. MECT does not accept credit or debit cards, and does not operate an online payment gateway. Contributions are accepted exclusively via direct State Bank of India bank transfer (NEFT/RTGS) or official UPI (86971610172@sbi). Details are available at https://mect.org.in/donate.";
+  }
+  return null;
+}
+
 export async function POST(req: NextRequest) {
   const correlationId = crypto.randomUUID();
 
@@ -172,6 +192,51 @@ export async function POST(req: NextRequest) {
     const validLang = ["en", "or", "hi"].includes(preferredLanguage)
       ? (preferredLanguage as "en" | "or" | "hi")
       : "en";
+
+    // Statutory Factual Answers for Audited Questions
+    const lastUserMessage = [...sanitizedMessages].reverse().find((m) => m.role === "user");
+    const directAuditReply = lastUserMessage ? getDirectAuditResponse(lastUserMessage.content) : null;
+    if (directAuditReply) {
+      if (wantsJson) {
+        return NextResponse.json(
+          {
+            reply: directAuditReply,
+            engine: "mect-direct-verified",
+            correlationId,
+            timestamp: new Date().toISOString(),
+          },
+          {
+            status: 200,
+            headers: {
+              "Content-Type": "application/json",
+              "X-MECT-Engine": "mect-direct-verified",
+              "X-Correlation-Id": correlationId,
+            },
+          }
+        );
+      }
+
+      const encoder = new TextEncoder();
+      const readableStream = new ReadableStream({
+        start(controller) {
+          const payload = `data: ${JSON.stringify({ text: directAuditReply })}\n\n`;
+          controller.enqueue(encoder.encode(payload));
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+          controller.close();
+        },
+      });
+
+      return new Response(readableStream, {
+        headers: {
+          "Content-Type": "text/event-stream; charset=utf-8",
+          "Cache-Control": "no-cache, no-transform",
+          Connection: "keep-alive",
+          "X-Accel-Buffering": "no",
+          "X-MECT-Engine": "mect-direct-verified",
+          "X-Correlation-Id": correlationId,
+        },
+      });
+    }
 
     // 4. Dual-Routing & Resilient Circuit Breaker Evaluation
     let localStreamResponse: Response | null = null;

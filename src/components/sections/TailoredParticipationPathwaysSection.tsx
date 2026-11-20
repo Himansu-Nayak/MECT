@@ -91,7 +91,7 @@ export function TailoredParticipationPathwaysSection() {
                 </div>
 
                 <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
-                  Support first-generation college grants, summer heatstroke water points, or the Hanuman Murti cultural project. Every donation generates an official computer-signed receipt with verified Trust PAN (AADTM5474F) and 80G registration.
+                  Support first-generation college grants, summer heatstroke water points, or the Hanuman Murti cultural project. Every donation generates an official computer-signed receipt with verified Trust PAN (AADTM5474F) and registered public trust credentials.
                 </p>
 
                 <div className="space-y-2 pt-1 text-xs text-ink-secondary font-sans">
@@ -101,7 +101,7 @@ export function TailoredParticipationPathwaysSection() {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-terracotta shrink-0" />
-                    <span>UPI, NetBanking, Debit/Credit Cards &amp; Direct Bank NEFT.</span>
+                    <span>Direct State Bank of India Bank Transfer (NEFT/RTGS) &amp; Official UPI.</span>
                   </div>
                 </div>
               </div>

@@ -531,7 +531,7 @@ export function UnifiedDonationExperience() {
         return false;
       }
       if (!addressLine.trim()) {
-        setActionError("Please enter your postal address for Section 80G statutory receipting.");
+        setActionError("Please enter your postal address for official receipting.");
         return false;
       }
       if (!city.trim()) {
@@ -904,7 +904,7 @@ export function UnifiedDonationExperience() {
         <div className="flex items-center gap-2 shrink-0">
           <Badge variant={config?.statutoryClaimApproved ? "forest" : "gold"} size="sm">
             {config?.statutoryFinancialYear || "FY 2026-27"} ·{" "}
-            {config?.statutoryClaimApproved ? "Section 80G Active" : "Official Receipt"}
+            {config?.statutoryClaimApproved ? "Statutory Receipt" : "Official Receipt"}
           </Badge>
           {isAuthenticated && (
             <button
@@ -1563,7 +1563,7 @@ export function UnifiedDonationExperience() {
             {/* Optional PAN */}
             <div>
               <label htmlFor="donor-pan-field" className="block text-xs font-bold text-forest mb-1">
-                Permanent Account Number (PAN) <span className="text-ink-muted font-normal">(Optional for 80G)</span>
+                Permanent Account Number (PAN) <span className="text-ink-muted font-normal">(Optional)</span>
               </label>
               <Input
                 id="donor-pan-field"
@@ -1574,7 +1574,7 @@ export function UnifiedDonationExperience() {
                 className="font-mono uppercase"
               />
               <p className="text-[11px] text-ink-muted mt-1">
-                Required only if claiming Section 80G income-tax deduction in India.
+                Optional identifier for statutory audit and accounting records.
               </p>
             </div>
 
@@ -1780,7 +1780,7 @@ export function UnifiedDonationExperience() {
               <div className="text-ink-muted leading-relaxed">{fullDonorAddress}</div>
               {donorPan ? (
                 <div className="font-mono text-forest font-semibold mt-1">
-                  PAN: {donorPan} (80G Eligible)
+                  PAN: {donorPan} (Recorded on Receipt)
                 </div>
               ) : (
                 <div className="text-ink-muted mt-1">PAN: Not provided (General Receipt)</div>
@@ -1797,13 +1797,13 @@ export function UnifiedDonationExperience() {
           <div className="p-4 rounded-xs bg-amber-50/70 border border-amber-200 text-xs text-amber-950 space-y-2">
             <div className="font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5 text-amber-900">
               <ShieldCheck className="w-4 h-4 text-amber-800" />
-              <span>Statutory Compliance &amp; Tax Deductibility ({config?.statutoryFinancialYear || "2026-27"})</span>
+              <span>Statutory Compliance &amp; Legal Disclosure</span>
             </div>
             <p className="leading-relaxed">
               Mahaveer Educational &amp; Charitable Trust (MECT) holds statutory registration under Section 12A (URN:{" "}
-              <strong className="font-mono">AADTM5474FE20231</strong>) and Section 80G (URN:{" "}
+              <strong className="font-mono">AADTM5474FE20231</strong>) and historical Section 80G order (URN:{" "}
               <strong className="font-mono">AADTM5474FF20241</strong>) with Trust PAN{" "}
-              <strong className="font-mono">AADTM5474F</strong>. Under Section 354 and Rule 190 of the Income-tax Act, formal statutory certificates (Form 114) follow annual statements (Form 113).
+              <strong className="font-mono">AADTM5474F</strong>. Tax treatment of contributions is subject to applicable law and confirmation of the Trust&apos;s current statutory eligibility.
             </p>
             <p className="text-[11px] text-amber-900/90 font-mono">
               Trust Deed Reg: No. 41042300063 / 2023, Balangir, Odisha.

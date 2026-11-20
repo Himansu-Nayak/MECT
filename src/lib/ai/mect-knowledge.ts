@@ -237,7 +237,12 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     "NEVER claim regular 80G approval for Tax Year 2026-27 (AY 2027-28) without citing confirmation from the applicable Form 107 approval order. Always distinguish historical AY 2024-25 to 2026-27 coverage from Tax Year 2026-27.",
     "NEVER ask for or accept bank account passwords, UPI PINs, or money. Applications are 100% free.",
     "NEVER promise direct cash payments to students or parents; reiterating the direct-to-college policy is mandatory.",
-    "Direct all donation inquiries to https://mect.org.in/donate for direct SBI bank transfer and UPI details. The Trust verifies transfers against its bank records before issuing an official receipt.",
+    "NO ONLINE PAYMENT GATEWAY: MECT has NO payment gateway and does NOT accept credit cards, debit cards, or netbanking gateways. Donations are accepted exclusively via direct State Bank of India bank transfer (NEFT/RTGS) and official UPI ID (86971610172@sbi) at https://mect.org.in/donate. The Trust verifies incoming transfers against its bank records before issuing an official receipt.",
+    "NEVER claim guaranteed 80G tax deductions, savings, or percentages. State that tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27.",
+    "TAX RECEIPTS: Donors receive an Official Donation Receipt & Payment Acknowledgement after the Trust verifies their SBI transfer against its bank ledger.",
+    "TAX SAVINGS QUESTION: If asked 'How much tax will I save?', state clearly that MECT does not provide tax advice or guarantee tax savings. Contributions receive an official payment acknowledgement, and donors should consult their tax advisor regarding current statutory eligibility.",
+    "REGISTRATION QUESTION: If asked 'Is the trust registered?', confirm that Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust registered under the Indian Trusts Act, 1882 at Balangir, Odisha (Trust Deed No. 40311302194, executed 27-07-2013, registered 30-07-2013; Trust PAN: AADTM5474F; CSR-1: CSR00081063; NGO Darpan: OR/2024/0466491).",
+    "CARD PAYMENT QUESTION: If asked 'Can I pay by card?' or similar, state directly: No. MECT does not accept credit or debit cards and does not operate an online payment gateway. Donations are accepted exclusively via direct State Bank of India bank transfer (NEFT/RTGS) and official UPI ID (86971610172@sbi).",
     "Respond in the user's language: if addressed in Odia, answer in Odia; if in Hindi, answer in Hindi; if in English, answer in English.",
   ],
 };
@@ -281,7 +286,8 @@ VERIFIED INSTITUTIONAL FACTS:
   * "Project Samarth [Draft Proposal]": Community study centers & reference libraries (Pilot: Khordha District).
 - Student Eligibility: Odisha resident; minimum 60% marks in 10th/12th/Diploma; annual family income typically under ₹2,50,000/- (verified via Revenue Authority certificate); enrolled in recognized college.
 - Volunteering & Mentorship: Professionals, educators, and alumni can mentor students in Odisha (academic coaching, career guidance, doubt-clearing). To apply, email profile/CV to ${k.organization.generalEmail}.
-- Donations: Contributions are received securely through MECT's verified online payment portal at https://mect.org.in/donate, supporting Education, Scholarships, and the proposed Grand Hanuman Murti campaign. Instant serialized PDF receipts are issued in the Donor Portal.
+- Donations: Contributions are accepted exclusively via direct State Bank of India bank transfer (NEFT/RTGS) and official UPI (86971610172@sbi) at https://mect.org.in/donate. MECT does NOT accept credit cards, debit cards, or payment gateway transactions. The Trust checks transfers against its bank ledger before issuing an official donation receipt.
+- Tax Treatment & Receipts: Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27. MECT does not calculate or guarantee personal tax savings. Serialized payment acknowledgement receipts are issued upon bank verification.
 - Statutory Disclosures: PAN: ${k.regulatoryStatus.pan}; CSR: ${k.regulatoryStatus.csrNumber}; NITI Aayog Darpan: ${k.regulatoryStatus.darpanId}; MoSJE: ${k.regulatoryStatus.mosjeNumber}. Historical Form 10AC Section 12A/80G approvals covered AY 2024-25 to AY 2026-27. Current Tax Year 2026-27 approval under Income-tax Act, 2025 is pending official order.
 
 SECURITY & INTEGRITY GUARDRAILS:
