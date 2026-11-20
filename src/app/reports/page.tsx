@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ReportsLibrarySection } from "@/components/sections/ReportsLibrarySection";
+import { AnnualReportsYearTable } from "@/components/sections/AnnualReportsYearTable";
 import {
   FileText,
   ShieldCheck,
@@ -98,6 +99,7 @@ export default function ReportsPage() {
         items={[
           { id: "overview", label: "Reporting Overview" },
           { id: "safeguards", label: "Governance Safeguards" },
+          { id: "annual-reports-table", label: "Multi-Year Status Ledger" },
           { id: "library", label: "Records Library" },
           { id: "inspection", label: "Inspection Rights" },
         ]}
@@ -162,7 +164,10 @@ export default function ReportsPage() {
         </Container>
       </section>
 
-      {/* 5. Filterable Public Records & Transparency Library */}
+      {/* 5. Multi-Year Compliance & Audit Status Ledger */}
+      <AnnualReportsYearTable />
+
+      {/* 6. Filterable Public Records & Transparency Library */}
       <ReportsLibrarySection />
 
       {/* 6. Inspection Rights & Public Secretariat Access */}
