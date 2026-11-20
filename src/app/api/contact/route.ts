@@ -6,7 +6,7 @@ const rateLimitMap = new Map<string, number[]>();
 const MAX_REQUESTS_PER_MINUTE = 5;
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 
-export const VALID_CATEGORIES = [
+const VALID_CATEGORIES = [
   "Grievance",
   "RTI",
   "CSR",
@@ -15,7 +15,7 @@ export const VALID_CATEGORIES = [
   "General",
 ] as const;
 
-export type InquiryCategory = (typeof VALID_CATEGORIES)[number];
+type InquiryCategory = (typeof VALID_CATEGORIES)[number];
 
 export async function POST(request: NextRequest) {
   try {
