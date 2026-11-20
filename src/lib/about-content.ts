@@ -203,7 +203,7 @@ export const ABOUT_CONTENT = {
     statement:
       "Designed and developed the digital platform for Mahaveer Educational & Charitable Trust, implementing high-performance Next.js architecture, WCAG 2.2 AA accessibility standards, and security-hardened public desks to support institutional transparency.",
     skills: ["Next.js 16", "TypeScript", "Spring Boot", "PostgreSQL", "Tailwind CSS"],
-    profileUrl: "https://www.linkedin.com/in/himansu-nayak-243b0482h7/",
+    profileUrl: undefined,
     disclaimer:
       "Independent Technical Development Acknowledgement • Non-Trustee Technical Contributor",
   },

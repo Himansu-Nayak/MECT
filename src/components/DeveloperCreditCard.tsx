@@ -52,25 +52,27 @@ export function DeveloperCreditCard() {
             </div>
 
             {/* LinkedIn Action Button */}
-            <div className="shrink-0 mt-2 sm:mt-0">
-              <a
-                href={profileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xs bg-forest text-cream hover:bg-terracotta hover:text-white border border-forest-deep text-xs font-semibold font-sans transition-all shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
-                aria-label={`View LinkedIn profile of ${name} (opens in new tab)`}
-              >
-                <svg
-                  className="w-3.5 h-3.5 fill-current text-sand"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+            {profileUrl && (
+              <div className="shrink-0 mt-2 sm:mt-0">
+                <a
+                  href={profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xs bg-forest text-cream hover:bg-terracotta hover:text-white border border-forest-deep text-xs font-semibold font-sans transition-all shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+                  aria-label={`View LinkedIn profile of ${name} (opens in new tab)`}
                 >
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-                <span>LinkedIn Profile</span>
-                <ExternalLink className="w-3 h-3 text-sand" aria-hidden="true" />
-              </a>
-            </div>
+                  <svg
+                    className="w-3.5 h-3.5 fill-current text-sand"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                  </svg>
+                  <span>LinkedIn Profile</span>
+                  <ExternalLink className="w-3 h-3 text-sand" aria-hidden="true" />
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Contribution Statement */}

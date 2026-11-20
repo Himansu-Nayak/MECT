@@ -344,7 +344,7 @@ export function Footer() {
               href="/about#developer-credit"
               className="inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand"
             >
-              Architect: Himansu Nayak (HN)
+              Website developed by Himansu Nayak
             </Link>
             <span className="text-white/25" aria-hidden="true">|</span>
             <Link
