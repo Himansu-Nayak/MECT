@@ -215,6 +215,30 @@ async function verifyPagesAndLinks(browser, routes) {
     }
   }
 
+  // Assert strictly that /programmes contains the 7 official anchor IDs with non-empty content (A7)
+  console.log("\n[VERIFY] Validating the 7 official /programmes anchor IDs...");
+  const officialProgrammeIds = [
+    "education",
+    "women-empowerment",
+    "sports-extracurricular",
+    "water",
+    "food-relief",
+    "community-welfare",
+    "higher-education",
+  ];
+  await page.goto(`${BASE_URL}/programmes`, { waitUntil: "domcontentloaded" });
+  for (const progId of officialProgrammeIds) {
+    const el = await page.$(`#${progId}`);
+    if (!el) {
+      throw new Error(`[A7 Assertion Failed] Missing required programme section ID: #${progId} on /programmes`);
+    }
+    const textContent = await el.innerText();
+    if (!textContent || textContent.trim().length < 50) {
+      throw new Error(`[A7 Assertion Failed] Programme section #${progId} has insufficient content (${textContent?.length || 0} chars)`);
+    }
+    console.log(`  ✓ #${progId}: Verified with ${textContent.trim().length} characters of authentic content.`);
+  }
+
   // Assert bank details consistency across all crawled pages
   console.log("\n[VERIFY] Checking bank details consistency across all crawled pages...");
   const bankDiscrepancies = [];
