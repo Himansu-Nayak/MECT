@@ -57,7 +57,7 @@ export default function StoriesPage() {
                   MECT Documentary Editorial Standard
                 </span>
                 <p className="leading-relaxed text-ink-secondary text-[11px] sm:text-xs">
-                  Strictly zero fabricated quotations, unverified individual claims, or commercial endorsements. In compliance with institutional child safeguarding and medical ethics, individual beneficiary names are withheld for privacy (<span className="font-mono text-terracotta">[Name withheld for privacy]</span>).
+                  Strictly zero fabricated quotations, unverified individual claims, or commercial endorsements. Field records reflect institutional attendance and activity logs with documented operating cycles.
                 </p>
               </div>
             </div>

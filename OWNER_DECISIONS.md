@@ -98,3 +98,14 @@ Per P1-9, Odia language toggle (`locales/or.json`) provides community access for
 - [x] **FY 2022–23 Annual Activity Report:** Verified and published (`/reports/MECT-Annual-Report-FY2022-23.pdf`). Form 10B on file.
 - [x] **FY 2023–24 Annual Activity Report:** Verified and published (`/reports/MECT-Annual-Report-FY2023-24.pdf`). Form 10B on file.
 - [ ] **FY 2024–25 Annual Activity Report & Financial Accounts:** Marked **"Pending"** across Activity Report, Audited Statement, and Form 10B. Financial accounts are currently undergoing annual reconciliation and statutory preparation by the Chartered Accountant. Download slot in `/public/reports/` is reserved and will be activated upon audit sign-off.
+
+---
+
+## 6. Needs a documentary source before publishing
+
+Per Loop 6 audit directive, all unverified dispatches, day-specific dates, and privacy markers have been completely removed from public pages:
+
+- [ ] **Arogya Diagnostic Camp at Rayagada:** Removed from `/stories`. Requires primary health camp docket, certified medical coordinator details, and government health department permissions before publishing.
+- [ ] **Higher Education Scholarship Distribution FY 2024–25:** Removed from `/stories`. Scholarship grants are currently proposed with zero funded places; cannot publish retrospective distribution stories without audited bank disbursal vouchers and sanction letters.
+- [ ] **Emergency Heatwave Relief 2024 (Day-Specific Accounts):** Removed invented daily counts. Restored documented seasonal Jal Seva dispatch covering documented April–June period with verified service instance caveats ("service instances, not unique-person census").
+
