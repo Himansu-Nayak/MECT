@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T08:03:58.594Z",
+  "timestamp": "2026-11-20T09:20:48.996Z",
   "url": "http://127.0.0.1:3000/contact",
   "toolOptions": {
     "reporter": "v1"
@@ -1261,6 +1261,46 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-allowed-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attributes are used correctly for the defined role"
+            },
+            {
+              "id": "aria-allowed-attr-elm",
+              "data": null,
+              "relatedNodes": [],
+              "message": "ARIA attributes are allowed for this element",
+              "impact": "critical"
+            },
+            {
+              "id": "aria-no-deprecated-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "No deprecated ARIA attributes are used"
+            }
+          ],
+          "none": [
+            {
+              "id": "aria-unsupported-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute is supported"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -1303,7 +1343,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -1981,7 +2021,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -2430,6 +2470,24 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-conditional-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -2450,7 +2508,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -2754,7 +2812,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -3348,7 +3406,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-about > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-about > .lucide-chevron-down.transition-transform.duration-200"
           ]
         },
         {
@@ -3380,7 +3438,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-our-work > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-our-work > .lucide-chevron-down.transition-transform.duration-200"
           ]
         },
         {
@@ -3412,7 +3470,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-impact-accountability > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-impact-accountability > .lucide-chevron-down.transition-transform.duration-200"
           ]
         },
         {
@@ -3444,7 +3502,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-get-involved > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-get-involved > .lucide-chevron-down.transition-transform.duration-200"
           ]
         },
         {
@@ -3508,7 +3566,39 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-resources-help > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-resources-help > .lucide-chevron-down.transition-transform.duration-200"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
           ]
         },
         {
@@ -3669,6 +3759,38 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:px-4 > .fill-current.lucide-heart.w-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".sm\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
           ]
         },
         {
@@ -4018,6 +4140,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-message-circle w-3.5 h-3.5 text-emerald-600\" aria-hidden=\"true\">",
+          "target": [
+            ".lucide-message-circle"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-file-check-corner lucide-file-check-2 w-5 h-5 text-terracotta-dark\" aria-hidden=\"true\">",
           "target": [
             ".lucide-file-check-corner"
@@ -4082,6 +4236,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-external-link w-3 h-3\" aria-hidden=\"true\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > .lucide-external-link.w-3.h-3"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-building-complex lucide-building-2 w-6 h-6 text-terracotta-dark\" aria-hidden=\"true\">",
           "target": [
             ".w-12.h-12.bg-sand-light > .lucide-building-complex.lucide-building-2.w-6"
@@ -4114,9 +4300,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-external-link w-3 h-3\" aria-hidden=\"true\">",
           "target": [
-            "label[for=\"inquiry-name\"] > .ml-1.text-terracotta-dark.font-bold"
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > .lucide-external-link.w-3.h-3"
           ]
         },
         {
@@ -4148,7 +4334,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-email\"] > .ml-1.text-terracotta-dark.font-bold"
+            "label[for=\"inquiry-name\"] > .ml-1.font-bold.text-terracotta-dark"
           ]
         },
         {
@@ -4180,7 +4366,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-phone\"] > .ml-1.text-terracotta-dark.font-bold"
+            "label[for=\"inquiry-email\"] > .ml-1.font-bold.text-terracotta-dark"
           ]
         },
         {
@@ -4212,7 +4398,39 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-category\"] > .ml-1.text-terracotta-dark.font-bold"
+            "label[for=\"inquiry-phone\"] > .ml-1.font-bold.text-terracotta-dark"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
+          "target": [
+            "label[for=\"inquiry-category\"] > .ml-1.font-bold.text-terracotta-dark"
           ]
         },
         {
@@ -4276,7 +4494,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-message\"] > .ml-1.text-terracotta-dark.font-bold"
+            "label[for=\"inquiry-message\"] > .ml-1.font-bold.text-terracotta-dark"
           ]
         },
         {
@@ -5162,6 +5380,24 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "aria-prohibited-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -5182,7 +5418,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -5486,7 +5722,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -6123,6 +6359,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-valid-attr-value",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute values are valid"
+            },
+            {
+              "id": "aria-errormessage",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
+            },
+            {
+              "id": "aria-level",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-level values are valid"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6157,7 +6425,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -6667,7 +6935,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -7014,6 +7282,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "aria-valid-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute name is valid"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -7034,7 +7320,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -7338,7 +7624,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -7571,6 +7857,38 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "aria-label attribute exists and is not empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has a title attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7716,7 +8034,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -8175,6 +8493,31 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
                 "bgColor": "#fefdfc",
                 "contrastRatio": 16.13,
                 "fontSize": "8.6pt (11.5px)",
@@ -8216,7 +8559,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -8849,6 +9192,31 @@
             {
               "id": "color-contrast",
               "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#ffffff",
+                "contrastRatio": 16.39,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 16.39"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>WhatsApp Secretariat Desk</span>",
+          "target": [
+            "a[href=\"https://wa.me/919853608113\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
                 "fgColor": "#0f1714",
                 "bgColor": "#f7f2ea",
                 "contrastRatio": 16.34,
@@ -9324,6 +9692,31 @@
             {
               "id": "color-contrast",
               "data": {
+                "fgColor": "#8e3e24",
+                "bgColor": "#ffffff",
+                "contrastRatio": 7.33,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 7.33"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>View Balangir Location on Google Maps</span>",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
                 "fgColor": "#0f1714",
                 "bgColor": "#fcf9f6",
                 "contrastRatio": 17.36,
@@ -9592,6 +9985,31 @@
           "html": "<span>Available strictly by advance appointment for CSR &amp; academic partners</span>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .gap-2\\.5.flex.items-center:nth-child(2) > span:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8e3e24",
+                "bgColor": "#ffffff",
+                "contrastRatio": 7.33,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 7.33"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>View Bhubaneswar Office on Google Maps</span>",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > span"
           ]
         },
         {
@@ -12351,6 +12769,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "label-content-name-mismatch",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element contains visible text as part of its accessible name"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -12371,7 +12807,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -13594,7 +14030,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -13859,9 +14295,87 @@
             }
           ],
           "impact": null,
+          "html": "<a href=\"https://wa.me/919853608113\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1\">",
+          "target": [
+            "a[href=\"https://wa.me/919853608113\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
           "html": "<a href=\"mailto:mect220@gmail.com\" class=\"text-terracotta-dark font-medium underline hover:text-forest break-all block\">mect220@gmail.com</a>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(4) > .space-y-3 > .space-y-1\\.5.pt-2.border-t > .break-all.hover\\:text-forest[href$=\"mailto:mect220@gmail.com\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"https://www.google.com/maps/search/?api=1&query=Rugudipara,+Balangir,+Odisha+767001\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a href=\"https://www.google.com/maps/search/?api=1&query=Lewis+Plaza,+BJB+Nagar,+Bhubaneswar,+Odisha+751014\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"]"
           ]
         },
         {
@@ -14934,7 +15448,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             ".py-1.min-h-\\[24px\\][href$=\"governance\"]"
           ]
@@ -15794,6 +16308,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -16082,7 +16614,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -17393,6 +17925,46 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -17455,7 +18027,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -17475,7 +18047,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -18933,7 +19505,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-2 border-t border-border-warm text-xs space-y-1.5\"><span class=\"text-[10px] uppercase font-bold tracking-wider text-forest block\">Contact Line</span><a href=\"tel:+919853608113\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">9853608113</a></div>",
+          "html": "<div class=\"pt-2 border-t border-border-warm text-xs space-y-1.5\">",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(3) > .space-y-3 > .space-y-1\\.5.pt-2.border-t"
           ]
@@ -18976,6 +19548,46 @@
           "html": "<a href=\"tel:+919853608113\" class=\"text-terracotta-dark font-medium underline hover:text-forest block\">9853608113</a>",
           "target": [
             ".hover\\:text-forest.underline[href=\"tel:+919853608113\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"https://wa.me/919853608113\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1\">",
+          "target": [
+            "a[href=\"https://wa.me/919853608113\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>WhatsApp Secretariat Desk</span>",
+          "target": [
+            "a[href=\"https://wa.me/919853608113\"] > span"
           ]
         },
         {
@@ -19773,6 +20385,66 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<div class=\"pt-1\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"https://www.google.com/maps/search/?api=1&query=Rugudipara,+Balangir,+Odisha+767001\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>View Balangir Location on Google Maps</span>",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<div class=\"pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-3 rounded-xs space-y-1\">",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .pt-4.bg-cream\\/70.p-3"
@@ -20156,6 +20828,66 @@
           "html": "<span>Available strictly by advance appointment for CSR &amp; academic partners</span>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .gap-2\\.5.flex.items-center:nth-child(2) > span:nth-child(2)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"pt-1\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a href=\"https://www.google.com/maps/search/?api=1&query=Lewis+Plaza,+BJB+Nagar,+Bhubaneswar,+Odisha+751014\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline\">",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>View Bhubaneswar Office on Google Maps</span>",
+          "target": [
+            ".p-8.border-t-4.border-t-terracotta:nth-child(2) > .space-y-3.pt-2.text-ink-sand > .pt-1 > .hover\\:underline[target=\"_blank\"][rel=\"noopener noreferrer\"] > span"
           ]
         },
         {
@@ -22713,7 +23445,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -22773,7 +23505,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Ask HIm</span>",
+          "html": "<span>Ask MECT</span>",
           "target": [
             ".right-16 > span:nth-child(1)"
           ]
@@ -23415,7 +24147,7 @@
           "impact": null,
           "html": "<div class=\"pt-1\">",
           "target": [
-            ".pt-1"
+            ".space-y-4 > .pt-1"
           ]
         },
         {
@@ -24833,7 +25565,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             ".py-1.min-h-\\[24px\\][href$=\"governance\"]"
           ]

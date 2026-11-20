@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T08:03:51.866Z",
+  "timestamp": "2026-11-20T09:20:34.987Z",
   "url": "http://127.0.0.1:3000/about",
   "toolOptions": {
     "reporter": "v1"
@@ -1317,6 +1317,46 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-allowed-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attributes are used correctly for the defined role"
+            },
+            {
+              "id": "aria-allowed-attr-elm",
+              "data": null,
+              "relatedNodes": [],
+              "message": "ARIA attributes are allowed for this element",
+              "impact": "critical"
+            },
+            {
+              "id": "aria-no-deprecated-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "No deprecated ARIA attributes are used"
+            }
+          ],
+          "none": [
+            {
+              "id": "aria-unsupported-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute is supported"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -1359,7 +1399,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -2037,7 +2077,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -2486,6 +2526,24 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-conditional-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -2506,7 +2564,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -2810,7 +2868,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -3594,6 +3652,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-search w-3.5 h-3.5 text-forest\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55 > .lucide-search.w-3\\.5.h-3\\.5"
@@ -3725,6 +3815,38 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:px-4 > .fill-current.lucide-heart.w-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".sm\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.w-3\\.5.h-3\\.5"
           ]
         },
         {
@@ -5506,6 +5628,24 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "aria-prohibited-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -5526,7 +5666,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -5830,7 +5970,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -6467,6 +6607,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-valid-attr-value",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute values are valid"
+            },
+            {
+              "id": "aria-errormessage",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
+            },
+            {
+              "id": "aria-level",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-level values are valid"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6501,7 +6673,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -7011,7 +7183,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -7358,6 +7530,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "aria-valid-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute name is valid"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -7378,7 +7568,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -7682,7 +7872,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -7915,6 +8105,38 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "aria-label attribute exists and is not empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has a title attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -8096,7 +8318,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -8149,7 +8371,7 @@
                   ]
                 },
                 {
-                  "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Fiduciary Integrity</h3>",
+                  "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Financial Integrity</h3>",
                   "target": [
                     ".gap-3\\.5.items-start.flex:nth-child(1) > div:nth-child(2) > .text-sm"
                   ]
@@ -8185,7 +8407,7 @@
                   ]
                 },
                 {
-                  "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Fiduciary Integrity</h3>",
+                  "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Financial Integrity &amp; Trust</h3>",
                   "target": [
                     ".hover\\:border-sand\\/60.hover\\:shadow-md.hover\\:-translate-y-0\\.5:nth-child(1) > .space-y-3 > .text-lg"
                   ]
@@ -8639,6 +8861,31 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
                 "bgColor": "#fefdfc",
                 "contrastRatio": 16.13,
                 "fontSize": "8.6pt (11.5px)",
@@ -8680,7 +8927,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -8755,7 +9002,7 @@
           "impact": null,
           "html": "<span>Public Charitable Trust • Odisha</span>",
           "target": [
-            ".leading-none > .border-sand\\/40.text-\\[11px\\].gap-1\\.5 > span"
+            ".leading-none > .border-sand\\/40.text-\\[11px\\].px-2\\.5 > span"
           ]
         },
         {
@@ -8778,7 +9025,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Fiduciary Governance</span>",
+          "html": "<span>Trustee Governance</span>",
           "target": [
             ".hover\\:bg-cream.hover\\:border-terracotta.px-3\\.5 > span"
           ]
@@ -8903,7 +9150,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Financial Integrity &amp; Trust</h3>",
           "target": [
             ".hover\\:border-sand\\/60.hover\\:shadow-md.hover\\:-translate-y-0\\.5:nth-child(1) > .space-y-3 > .text-lg"
           ]
@@ -9178,7 +9425,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Read our complete Fiduciary Charter &amp; Governance Code</span>",
+          "html": "<span>Read our complete Governance Charter &amp; Trust Code</span>",
           "target": [
             ".hover\\:text-forest > span"
           ]
@@ -9203,7 +9450,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Fiduciary Governance Structure</span>",
+          "html": "<span>Trustee Governance Structure</span>",
           "target": [
             ".space-y-14.max-w-7xl.sm\\:px-6 > .space-y-3\\.5.max-w-3xl.text-center > .leading-none > .border-terracotta\\/40.text-ink.bg-sand-light > span"
           ]
@@ -9953,7 +10200,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>View Fiduciary Charter</span>",
+          "html": "<span>View Governance Charter</span>",
           "target": [
             ".hover\\:bg-sand > span"
           ]
@@ -9980,7 +10227,7 @@
           "impact": null,
           "html": "<span>13+ Year Journey</span>",
           "target": [
-            ".border-sand\\/40.text-\\[11px\\].gap-1\\.5 > span:nth-child(2)"
+            ".border-sand\\/40.text-\\[11px\\].px-2\\.5 > span:nth-child(2)"
           ]
         },
         {
@@ -10570,7 +10817,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Financial Integrity</h3>",
           "target": [
             ".gap-3\\.5.items-start.flex:nth-child(1) > div:nth-child(2) > .text-sm"
           ]
@@ -10678,7 +10925,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Financial Integrity &amp; Trust</h3>",
           "target": [
             ".hover\\:border-sand\\/60.hover\\:shadow-md.hover\\:-translate-y-0\\.5:nth-child(1) > .space-y-3 > .text-lg"
           ]
@@ -11282,7 +11529,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Financial Integrity</h3>",
           "target": [
             ".gap-3\\.5.items-start.flex:nth-child(1) > div:nth-child(2) > .text-sm"
           ]
@@ -11390,7 +11637,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Financial Integrity &amp; Trust</h3>",
           "target": [
             ".hover\\:border-sand\\/60.hover\\:shadow-md.hover\\:-translate-y-0\\.5:nth-child(1) > .space-y-3 > .text-lg"
           ]
@@ -12007,6 +12254,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "label-content-name-mismatch",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element contains visible text as part of its accessible name"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -12027,7 +12292,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -13074,7 +13339,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -14414,7 +14679,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             ".min-h-\\[24px\\].py-1[href$=\"governance\"]"
           ]
@@ -15292,6 +15557,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -15454,7 +15737,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -16107,7 +16390,7 @@
           "impact": null,
           "html": "<div class=\"flex items-center justify-between gap-1.5 sm:gap-4 min-w-0 w-full\">",
           "target": [
-            ".sm\\:gap-4.min-w-0.gap-1\\.5"
+            ".border-border-warm\\/75 > .max-w-\\[1400px\\].max-w-\\[1600px\\].sm\\:px-6 > .sm\\:gap-4.min-w-0.w-full"
           ]
         },
         {
@@ -16765,6 +17048,46 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -16827,7 +17150,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -16847,7 +17170,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -17287,7 +17610,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-forest text-cream border border-sand/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Public Charitable Trust • Odisha</span></span>",
           "target": [
-            ".leading-none > .border-sand\\/40.text-\\[11px\\].gap-1\\.5"
+            ".leading-none > .border-sand\\/40.text-\\[11px\\].px-2\\.5"
           ]
         },
         {
@@ -17307,7 +17630,7 @@
           "impact": null,
           "html": "<span>Public Charitable Trust • Odisha</span>",
           "target": [
-            ".leading-none > .border-sand\\/40.text-\\[11px\\].gap-1\\.5 > span"
+            ".leading-none > .border-sand\\/40.text-\\[11px\\].px-2\\.5 > span"
           ]
         },
         {
@@ -17425,7 +17748,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Fiduciary Governance</span>",
+          "html": "<span>Trustee Governance</span>",
           "target": [
             ".hover\\:bg-cream.hover\\:border-terracotta.px-3\\.5 > span"
           ]
@@ -17765,7 +18088,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-sm font-bold text-terracotta-dark\">100% Direct Disbursals &amp; Financial Integrity</h3>",
           "target": [
             ".gap-3\\.5.items-start.flex:nth-child(1) > div:nth-child(2) > .text-sm"
           ]
@@ -18485,7 +18808,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Fiduciary Integrity</h3>",
+          "html": "<h3 class=\"font-serif text-lg font-bold text-terracotta-dark\">Financial Integrity &amp; Trust</h3>",
           "target": [
             ".hover\\:border-sand\\/60.hover\\:shadow-md.hover\\:-translate-y-0\\.5:nth-child(1) > .space-y-3 > .text-lg"
           ]
@@ -19065,7 +19388,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"text-xs sm:text-sm text-ink-sand leading-relaxed font-sans\">A disciplined four-step operating approach connecting grassroots community needs with fiduciary governance and transparent field execution.</p>",
+          "html": "<p class=\"text-xs sm:text-sm text-ink-sand leading-relaxed font-sans\">A disciplined four-step operating approach connecting grassroots community needs with responsible trustee governance and transparent field execution.</p>",
           "target": [
             ".sm\\:text-sm.text-ink-sand.leading-relaxed"
           ]
@@ -19705,7 +20028,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Read our complete Fiduciary Charter &amp; Governance Code</span>",
+          "html": "<span>Read our complete Governance Charter &amp; Trust Code</span>",
           "target": [
             ".hover\\:text-forest > span"
           ]
@@ -19785,7 +20108,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"leading-none\"><span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Fiduciary Governance Structure</span></span></div>",
+          "html": "<div class=\"leading-none\"><span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Trustee Governance Structure</span></span></div>",
           "target": [
             ".space-y-14.max-w-7xl.sm\\:px-6 > .space-y-3\\.5.max-w-3xl.text-center > .leading-none"
           ]
@@ -19805,7 +20128,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Fiduciary Governance Structure</span></span>",
+          "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Trustee Governance Structure</span></span>",
           "target": [
             ".space-y-14.max-w-7xl.sm\\:px-6 > .space-y-3\\.5.max-w-3xl.text-center > .leading-none > .border-terracotta\\/40.text-ink.bg-sand-light"
           ]
@@ -19825,7 +20148,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Fiduciary Governance Structure</span>",
+          "html": "<span>Trustee Governance Structure</span>",
           "target": [
             ".space-y-14.max-w-7xl.sm\\:px-6 > .space-y-3\\.5.max-w-3xl.text-center > .leading-none > .border-terracotta\\/40.text-ink.bg-sand-light > span"
           ]
@@ -21085,7 +21408,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>View Fiduciary Charter</span>",
+          "html": "<span>View Governance Charter</span>",
           "target": [
             ".hover\\:bg-sand > span"
           ]
@@ -21167,7 +21490,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-forest text-cream border border-sand/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \">",
           "target": [
-            ".max-w-3xl.text-center.mx-auto > .border-sand\\/40.text-\\[11px\\].gap-1\\.5"
+            ".max-w-3xl.text-center.mx-auto > .border-sand\\/40.text-\\[11px\\].px-2\\.5"
           ]
         },
         {
@@ -21187,7 +21510,7 @@
           "impact": null,
           "html": "<span class=\"shrink-0\">",
           "target": [
-            ".border-sand\\/40.text-\\[11px\\].gap-1\\.5 > .shrink-0"
+            ".border-sand\\/40.text-\\[11px\\].px-2\\.5 > .shrink-0"
           ]
         },
         {
@@ -21207,7 +21530,7 @@
           "impact": null,
           "html": "<span>13+ Year Journey</span>",
           "target": [
-            ".border-sand\\/40.text-\\[11px\\].gap-1\\.5 > span:nth-child(2)"
+            ".border-sand\\/40.text-\\[11px\\].px-2\\.5 > span:nth-child(2)"
           ]
         },
         {
@@ -23185,7 +23508,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".sm\\:w-13"
           ]
@@ -23245,7 +23568,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Ask HIm</span>",
+          "html": "<span>Ask MECT</span>",
           "target": [
             ".right-16 > span:nth-child(1)"
           ]
@@ -25305,7 +25628,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             ".min-h-\\[24px\\].py-1[href$=\"governance\"]"
           ]

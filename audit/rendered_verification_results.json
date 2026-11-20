@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T08:05:25.605Z",
+  "timestamp": "2026-11-20T09:23:33.003Z",
   "part1_pages": [
     {
       "route": "/",
@@ -16,7 +16,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/donate",
@@ -33,7 +34,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/programmes",
@@ -50,7 +52,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/about",
@@ -67,7 +70,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/scholarships",
@@ -84,7 +88,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/scholarships/apply",
@@ -101,7 +106,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/scholarships/track",
@@ -118,7 +124,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/campaigns",
@@ -135,7 +142,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/campaigns/hanuman-murti",
@@ -152,7 +160,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/statutory-disclosures",
@@ -169,7 +178,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/csr-partnerships",
@@ -186,7 +196,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/reports",
@@ -203,7 +214,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/impact",
@@ -220,7 +232,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories",
@@ -237,7 +250,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/memories-gallery",
@@ -254,7 +268,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/governance",
@@ -271,7 +286,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/volunteer",
@@ -288,7 +304,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/contact",
@@ -305,7 +322,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/faq",
@@ -322,7 +340,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/privacy",
@@ -339,7 +358,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/terms",
@@ -356,7 +376,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/accessibility",
@@ -373,7 +394,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories/arogya-health-camp-rayagada",
@@ -390,7 +412,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories/scholarship-distribution-fy2024",
@@ -407,7 +430,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories/emergency-relief-2024",
@@ -424,7 +448,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories/classroom",
@@ -441,7 +466,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     },
     {
       "route": "/stories/workshop",
@@ -458,7 +484,8 @@
       "keywordsAbsent": true,
       "jsonLdValid": true,
       "lang": "en",
-      "forbiddenStrings": []
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
     }
   ],
   "brokenAnchors": [],
@@ -537,7 +564,7 @@
       "status": 200,
       "data": {
         "success": true,
-        "claimReference": "MECT-SBI-816255-5434",
+        "claimReference": "MECT-SBI-399084-2878",
         "status": "PENDING_VERIFICATION",
         "message": "Your transfer details have been submitted to the MECT accounts desk. An official receipt will be issued once the transfer is verified against our State Bank of India statement."
       }
@@ -632,51 +659,51 @@
   },
   "part7_lighthouse": {
     "/": {
-      "perfScore": 81,
+      "perfScore": 68,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0.002",
+      "inp": "N/A"
+    },
+    "/programmes": {
+      "perfScore": 65,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "2.8 s",
+      "cls": "0.002",
+      "inp": "N/A"
+    },
+    "/donate": {
+      "perfScore": 69,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "2.4 s",
+      "cls": "0.001",
+      "inp": "N/A"
+    },
+    "/about": {
+      "perfScore": 82,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.3 s",
+      "cls": "0.001",
+      "inp": "N/A"
+    },
+    "/scholarships": {
+      "perfScore": 79,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.7 s",
+      "cls": "0.001",
+      "inp": "N/A"
+    },
+    "/contact": {
+      "perfScore": 77,
       "a11yScore": 100,
       "seoScore": 100,
       "lcp": "1.2 s",
       "cls": "0.001",
-      "inp": "N/A"
-    },
-    "/programmes": {
-      "perfScore": 90,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.6 s",
-      "cls": "0",
-      "inp": "N/A"
-    },
-    "/donate": {
-      "perfScore": 80,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.3 s",
-      "cls": "0",
-      "inp": "N/A"
-    },
-    "/about": {
-      "perfScore": 91,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.2 s",
-      "cls": "0",
-      "inp": "N/A"
-    },
-    "/scholarships": {
-      "perfScore": 88,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.4 s",
-      "cls": "0",
-      "inp": "N/A"
-    },
-    "/contact": {
-      "perfScore": 84,
-      "a11yScore": 100,
-      "seoScore": 100,
-      "lcp": "1.6 s",
-      "cls": "0",
       "inp": "N/A"
     }
   }

@@ -146,6 +146,7 @@ async function verifyPagesAndLinks(browser, routes) {
         foundForbidden.push(term);
       }
     }
+    const fiduciaryCount = (bodyText.match(/fiduciary/gi) || []).length;
 
     // Collect all links on page
     const links = await page.$$eval("a[href]", (els) =>
@@ -177,22 +178,40 @@ async function verifyPagesAndLinks(browser, routes) {
       jsonLdValid: jsonLdErrors.length === 0,
       lang,
       forbiddenStrings: foundForbidden,
+      fiduciaryCount,
     });
 
     crawledPages.set(route, { status, finalUrl, bodyText });
   }
 
-  // Anchor target validation
-  console.log(`\n[VERIFY] Validating ${anchorChecks.length} internal anchor links...`);
+  // Anchor target validation - optimized by grouping by targetPage
+  console.log(`\n[VERIFY] Validating ${anchorChecks.length} internal anchor links across unique pages...`);
   const brokenAnchors = [];
-  for (const { sourcePage, targetPage, anchor } of anchorChecks) {
-    if (!anchor) continue;
+  const anchorsByTarget = new Map();
+  for (const check of anchorChecks) {
+    if (!check.anchor) continue;
+    if (!anchorsByTarget.has(check.targetPage)) {
+      anchorsByTarget.set(check.targetPage, []);
+    }
+    anchorsByTarget.get(check.targetPage).push(check);
+  }
+
+  for (const [targetPage, checks] of anchorsByTarget.entries()) {
     const targetUrl = `${BASE_URL}${targetPage}`;
-    await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
-    const exists = await page.$eval(`#${anchor}`, () => true).catch(() => false);
-    if (!exists) {
-      console.warn(`[BROKEN ANCHOR] On ${sourcePage} -> #${anchor} on ${targetPage} not found!`);
-      brokenAnchors.push({ sourcePage, targetPage, anchor });
+    try {
+      await page.goto(targetUrl, { waitUntil: "domcontentloaded" });
+      const existingIds = new Set(await page.$$eval("[id]", (els) => els.map((el) => el.id)));
+      for (const { sourcePage, anchor } of checks) {
+        if (!existingIds.has(anchor)) {
+          console.warn(`[BROKEN ANCHOR] On ${sourcePage} -> #${anchor} on ${targetPage} not found!`);
+          brokenAnchors.push({ sourcePage, targetPage, anchor });
+        }
+      }
+    } catch (err) {
+      console.error(`[PAGE LOAD ERROR] Could not load ${targetUrl}:`, err.message);
+      for (const { sourcePage, anchor } of checks) {
+        brokenAnchors.push({ sourcePage, targetPage, anchor, error: err.message });
+      }
     }
   }
 

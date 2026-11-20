@@ -128,11 +128,10 @@ export function AnnualReportsYearTable() {
                           href={row.downloadUrl}
                           download
                           className="inline-flex items-center"
-                          aria-label={`Download ${row.fy} Annual Report PDF`}
                         >
                           <Button variant="primary" size="sm" className="gap-1.5 text-xs font-bold">
                             <Download className="w-3.5 h-3.5" />
-                            <span>Download PDF ({row.fileSize})</span>
+                            <span>Download {row.fy} PDF ({row.fileSize})</span>
                           </Button>
                         </a>
                       ) : (

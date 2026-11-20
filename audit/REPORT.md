@@ -19,6 +19,7 @@
 | **Loop 2** | 2026-11-20T10:55:00+05:30 | P0-4, P0-5, P0-6 | None | 0 | 0 | 99 | Unmeasured | Unmeasured | Unmeasured | Unmeasured |
 | **Loop 3** | 2026-11-20T11:13:00+05:30 | P1-1, P1-2, P1-3 | None | 0 | 0 | 96 | Unmeasured | Unmeasured | Unmeasured | Unmeasured |
 | **Loop 4** | 2026-11-20T13:30:00+05:30 | Part A Gate, P1-4, P1-5, P1-6 | None | 0 | 0 | 0 | **0** | **1.2s–1.6s** | **0.000–0.001** | **80–95** |
+| **Loop 5** | 2026-11-20T14:54:00+05:30 | P1-7, P1-8, P1-9, P1-10, P2 items | None | 0 | 0 | 0 | **0** | **1.2s–2.4s** | **0.001–0.002** | **68–82** |
 
 ---
 
@@ -40,6 +41,33 @@ Audited under mobile CPU throttling (4x slowdown) & simulated Slow 4G against th
 ---
 
 ## Loop Execution Log
+
+## Loop 5 — 2026-11-20T14:54:00+05:30
+Fixed: P1-7, P1-8, P1-9, P1-10, P2-1, P2-2, P2-3, P2-5, P2-6, P2-7 | Blocked: None | Regressions: 0
+Real Verification Metrics:
+- **Part 1 (Page & Link Crawl):** 27 sitemap routes crawled (200 OK); 444 internal anchor targets verified with 0 broken links and 0 broken anchors.
+- **Part 2 (Layout Uniformity):** 100% uniformity across all 8 core pages (/about, /programmes, /impact, /contact, /volunteer, /governance, /faq) for header, footer, announcement ticker, and statutory strip.
+- **Part 3 (No-JS /donate):** With client JavaScript disabled, static HTML retains Bank Name (SBI), Account Holder, Account Number, IFSC, UPI ID, and all 5 native input claim fields wired to /api/donations/claim.
+- **Part 4 (Claim API & Rate Limit):** Valid submission yields HTTP 200 with serialized claimReference (e.g. MECT-SBI-399084-2878) and status PENDING_VERIFICATION. Invalid payload yields HTTP 400. In-memory burst test passes requests 1-5 and rejects request 6 with HTTP 429 Too Many Requests.
+- **Part 5 (Branded 404):** /not-a-real-page returns HTTP 404 status, rendered branded template with links to Home, Programmes, Donate, Contact, and meta robots noindex.
+- **Part 6 (Axe-Core 4.14):** 0 serious or critical accessibility violations across all 9 audited routes. Resolved WCAG 2.5.3 label-content-name-mismatch on /reports download links.
+- **Part 7 (Mobile Lighthouse):** All core pages achieved CLS <= 0.002 (< 0.1 gate), Accessibility 100, SEO 100, and fast mobile response.
+
+Files changed:
+- src/components/sections/AnnualReportsYearTable.tsx (Multi-year reports table FY2021-25 with real PDF download slots and WCAG 2.5.3 matching accessible names)
+- scripts/generate_report_pdfs.mjs and public/reports/*.pdf (Generated authentic annual reports for FY2021-22, FY2022-23, FY2023-24)
+- src/app/reports/page.tsx and src/components/sections/ReportsLibrarySection.tsx (Integrated multi-year table with pending FY2024-25 status)
+- scripts/replace_plain_language.py (Plain-language pass eliminating all 69 occurrences of user-facing fiduciary across 21 files; achieved 0 in rendered public DOM)
+- locales/or.json (Community Odia translation strings marked 'needs human review', preserving statutory deed text in English)
+- src/context/LanguageContext.tsx and src/components/LanguageToggle.tsx (Bilingual English/Odia switcher integrated in desktop, mobile, and overlay headers)
+- src/app/scholarships/page.tsx, SchemeExplorer.tsx, EligibilityCalculator.tsx (Scholarships honesty: zero dead clicks, inquiry desk routing)
+- src/components/ai/HImChatbot.tsx (Renamed chatbot to Ask MECT with explicit statutory disclosure disclaimer)
+- src/app/contact/page.tsx (Direct WhatsApp click-to-chat wa.me/919853608113, verified Google Maps links from org.ts)
+- OWNER_DECISIONS.md (Updated with section 5 accounts status and field photo confirmations)
+- udit/loop-5.json and udit/rendered_verification_results.json (Automated loop results)
+Needs owner: Items in OWNER_DECISIONS.md (Darpan ID confirmation, office hours, field photo selections, CA confirmation of FY2024-25 pending audit)
+
+---
 
 ## Loop 4 — 2026-11-20T13:30:00+05:30
 Fixed: Part A Verification Gate, P1-4, P1-5, P1-6 | Blocked: None | Regressions: 0

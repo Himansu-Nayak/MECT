@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T08:04:01.201Z",
+  "timestamp": "2026-11-20T09:20:56.770Z",
   "url": "http://127.0.0.1:3000/stories",
   "toolOptions": {
     "reporter": "v1"
@@ -1294,6 +1294,46 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-allowed-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attributes are used correctly for the defined role"
+            },
+            {
+              "id": "aria-allowed-attr-elm",
+              "data": null,
+              "relatedNodes": [],
+              "message": "ARIA attributes are allowed for this element",
+              "impact": "critical"
+            },
+            {
+              "id": "aria-no-deprecated-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "No deprecated ARIA attributes are used"
+            }
+          ],
+          "none": [
+            {
+              "id": "aria-unsupported-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute is supported"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -1336,7 +1376,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -1814,7 +1854,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -2245,6 +2285,24 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-conditional-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -2265,7 +2323,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -2479,7 +2537,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -3231,6 +3289,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.text-terracotta-dark.w-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-search w-3.5 h-3.5 text-forest\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55 > .lucide-search.w-3\\.5.h-3\\.5"
@@ -3362,6 +3452,38 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-heart w-3.5 h-3.5 fill-current\" aria-hidden=\"true\">",
           "target": [
             ".\\32 xl\\:px-4 > .fill-current.lucide-heart.w-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-languages w-3.5 h-3.5 text-terracotta-dark shrink-0\" aria-hidden=\"true\">",
+          "target": [
+            ".sm\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .lucide-languages.text-terracotta-dark.w-3\\.5"
           ]
         },
         {
@@ -5189,6 +5311,24 @@
             }
           ],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "aria-prohibited-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "ARIA attribute is allowed"
+            }
+          ],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -5209,7 +5349,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -5423,7 +5563,7 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -6028,6 +6168,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "aria-valid-attr-value",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute values are valid"
+            },
+            {
+              "id": "aria-errormessage",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
+            },
+            {
+              "id": "aria-level",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-level values are valid"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6062,7 +6234,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -6412,7 +6584,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -6741,6 +6913,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "aria-valid-attr",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "ARIA attribute name is valid"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -6761,7 +6951,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -6975,7 +7165,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -7208,6 +7398,38 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "aria-label attribute exists and is not empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has a title attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -7299,7 +7521,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -7704,6 +7926,31 @@
               "id": "color-contrast",
               "data": {
                 "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
                 "bgColor": "#fefdfc",
                 "contrastRatio": 16.13,
                 "fontSize": "8.6pt (11.5px)",
@@ -7745,7 +7992,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -9565,6 +9812,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "label-content-name-mismatch",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element contains visible text as part of its accessible name"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -9585,7 +9850,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -10627,7 +10892,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -12019,7 +12284,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             "a[href$=\"governance\"]"
           ]
@@ -12879,6 +13144,24 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -13041,7 +13324,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -14352,6 +14635,46 @@
           "all": [],
           "none": [],
           "impact": null,
+          "html": "<button type=\"button\" class=\"inline-flex items-ce...\" aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\" title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\">",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"font-sans\">ଓଡ଼ିଆ</span>",
+          "target": [
+            ".\\32 xl\\:space-x-2 > .border-forest\\/30[aria-label=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"][title=\"ଭାଷା ବଦଳାନ୍ତୁ: ଓଡ଼ିଆ\"] > .font-sans"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
@@ -14414,7 +14737,7 @@
           "impact": null,
           "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
           "target": [
-            ".border-forest\\/30"
+            "a[aria-label=\"Sign in to Donor Portal\"]"
           ]
         },
         {
@@ -14434,7 +14757,7 @@
           "impact": null,
           "html": "<span>Sign In</span>",
           "target": [
-            ".border-forest\\/30 > span"
+            "a[aria-label=\"Sign in to Donor Portal\"] > span"
           ]
         },
         {
@@ -17672,7 +17995,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open HIm — MECT AI A...\" class=\"group relative flex ...\">",
+          "html": "<button type=\"button\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Open Ask MECT — AI A...\" class=\"group relative flex ...\">",
           "target": [
             ".w-11"
           ]
@@ -17732,7 +18055,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Ask HIm</span>",
+          "html": "<span>Ask MECT</span>",
           "target": [
             ".right-16 > span:nth-child(1)"
           ]
@@ -19792,7 +20115,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Fiduciary Charter</a>",
+          "html": "<a class=\"inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/governance\">Governance Charter</a>",
           "target": [
             "a[href$=\"governance\"]"
           ]
