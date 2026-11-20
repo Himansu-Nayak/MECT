@@ -37,28 +37,27 @@ import { submitInquiry } from "@/lib/api";
 import { MECT_ORG } from "@/config/org";
 
 const INQUIRY_CATEGORIES: SelectOption[] = [
-  { value: "General Institutional Inquiry", label: "General Institutional Inquiry" },
-  { value: "Education & Learning Programmes", label: "Education & Learning Programmes" },
-  { value: "Scholarship Guidance & Applications", label: "Scholarship Guidance & Applications" },
-  { value: "Donations & Receipts Assistance", label: "Donations & Receipts Assistance" },
-  { value: "Volunteer & Community Participation", label: "Volunteer & Community Participation" },
-  { value: "CSR & Institutional Partnerships", label: "CSR & Institutional Partnerships" },
-  { value: "Governance & Statutory Disclosures", label: "Governance & Statutory Disclosures" },
-  { value: "Feedback & General Concerns", label: "Feedback & General Concerns" },
+  { value: "General", label: "General" },
+  { value: "Grievance", label: "Grievance" },
+  { value: "RTI", label: "RTI" },
+  { value: "CSR", label: "CSR" },
+  { value: "Scholarship", label: "Scholarship" },
+  { value: "Volunteer", label: "Volunteer" },
 ];
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [referenceId, setReferenceId] = useState<number | null>(null);
+  const [referenceId, setReferenceId] = useState<string | number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [consentDeclared, setConsentDeclared] = useState(true);
+  const [gotcha, setGotcha] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    category: "General Institutional Inquiry",
+    category: "General",
     message: "",
   });
 
@@ -68,20 +67,34 @@ export default function ContactPage() {
       setErrorMessage("Please confirm the data privacy and accuracy acknowledgment before submitting.");
       return;
     }
+    if (formData.message.trim().length > 1000) {
+      setErrorMessage("Message must not exceed 1000 characters.");
+      return;
+    }
 
     setIsSubmitting(true);
     setErrorMessage(null);
 
     try {
-      const response = await submitInquiry({
-        fullName: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        category: formData.category,
-        message: formData.message.trim(),
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          category: formData.category,
+          message: formData.message.trim(),
+          _gotcha: gotcha,
+        }),
       });
 
-      setReferenceId(response.referenceId || null);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit inquiry.");
+      }
+
+      setReferenceId(data.referenceId || null);
       setFormSubmitted(true);
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -226,15 +239,6 @@ export default function ContactPage() {
                     className="text-terracotta-dark font-medium underline hover:text-forest block"
                   >
                     {TRUST_CONFIG.contact.phones.helpline}
-                  </a>
-                  <a
-                    href={MECT_ORG.contact.whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-forest hover:text-terracotta-dark font-semibold pt-1"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>WhatsApp Secretariat Desk</span>
                   </a>
                 </div>
               </div>
@@ -401,6 +405,23 @@ export default function ContactPage() {
           />
 
           <Card variant="elevated" className="p-8 sm:p-12 bg-white">
+            <noscript>
+              <div className="p-4 mb-6 bg-sand-light border border-border-warm rounded-xs text-xs text-ink space-y-2">
+                <p className="font-semibold text-forest">JavaScript is disabled in your browser.</p>
+                <p>
+                  You can reach the Secretariat directly by email at{" "}
+                  <a href={`mailto:${MECT_ORG.contact.generalEmail}`} className="underline font-semibold text-terracotta-dark">
+                    {MECT_ORG.contact.generalEmail}
+                  </a>{" "}
+                  or call our official registered line{" "}
+                  <a href={MECT_ORG.contact.phoneHref} className="underline font-semibold text-terracotta-dark">
+                    {MECT_ORG.contact.primaryPhone}
+                  </a>{" "}
+                  ({MECT_ORG.contact.officeHours}, {MECT_ORG.contact.workingDays}).
+                </p>
+              </div>
+            </noscript>
+
             {formSubmitted ? (
               <div className="p-8 bg-forest text-white rounded-xs space-y-5 text-center animate-in fade-in">
                 <CheckCircle2 className="w-14 h-14 text-sand mx-auto" />
@@ -446,9 +467,10 @@ export default function ContactPage() {
                         name: "",
                         email: "",
                         phone: "",
-                        category: "General Institutional Inquiry",
+                        category: "General",
                         message: "",
                       });
+                      setGotcha("");
                     }}
                   >
                     Submit Another Communication
@@ -457,6 +479,18 @@ export default function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <label htmlFor="inquiry-gotcha">Do not fill this field</label>
+                  <input
+                    id="inquiry-gotcha"
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={gotcha}
+                    onChange={(e) => setGotcha(e.target.value)}
+                  />
+                </div>
                 {errorMessage && (
                   <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xs text-xs flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
@@ -521,11 +555,11 @@ export default function ContactPage() {
                   required
                   rows={5}
                   showCount
-                  maxLength={2000}
+                  maxLength={1000}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Please state the specific details of your inquiry, scholarship application reference, or institutional proposal..."
-                  helperText="Include relevant student application numbers or institutional credentials if applicable."
+                  helperText="Maximum 1000 characters. Include relevant student application numbers or institutional credentials if applicable."
                 />
 
                 <div className="pt-2 flex items-start gap-3">
@@ -626,7 +660,7 @@ export default function ContactPage() {
                 Direct Trust Follow-Up
               </h3>
               <p className="text-xs text-ink-sand leading-relaxed">
-                Responses are communicated directly through verified Trust email (<code>mect220@gmail.com</code>) or registered office telephone lines (<code>9853608113</code>). No third parties or touts are engaged.
+                Responses are communicated directly through verified Trust email (<code>{MECT_ORG.contact.generalEmail}</code>) or registered office telephone lines (<code>{MECT_ORG.contact.primaryPhone}</code>). No third parties or touts are engaged.
               </p>
               <div className="text-[11px] text-forest pt-2 border-t border-border-warm font-medium">
                 Standard: Authentic institutional channels without middlemen.

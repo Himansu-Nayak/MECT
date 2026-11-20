@@ -163,12 +163,12 @@ export const MECT_ORG: MECTOrgConfig = {
   },
 
   contact: {
-    primaryPhone: "+91 98536 08113",
-    displayPhone: "9853608113",
-    e164Phone: "+919853608113",
-    phoneHref: "tel:+919853608113",
-    whatsappNumber: "+919853608113",
-    whatsappHref: "https://wa.me/919853608113",
+    primaryPhone: "+91 94371 23616",
+    displayPhone: "+91 94371 23616",
+    e164Phone: "+919437123616",
+    phoneHref: "tel:+919437123616",
+    whatsappNumber: "",
+    whatsappHref: "",
     generalEmail: "mect220@gmail.com",
     officialEmail: "trust@mect.org.in",
     officeHours: "10:00 – 17:30 IST",

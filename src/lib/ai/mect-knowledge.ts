@@ -101,7 +101,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     state: "Odisha",
     country: "India",
     pin: "767001 / 751014",
-    phone: "9853608113",
+    phone: "+91 94371 23616",
     generalEmail: "mect220@gmail.com",
     scholarshipEmail: "mect220@gmail.com",
   },
@@ -223,7 +223,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
       "Never repeat the user's question back to them.",
       "Never generate generic motivational filler or redundant summaries.",
       "If follow-up questions are asked ('What should I do?', 'What documents?'), directly continue the existing conversation context.",
-      "Always provide authentic contact details (mect220@gmail.com, phone: 9853608113, https://mect.org.in/) when official steps are needed."
+      "Always provide authentic contact details (mect220@gmail.com, phone: +91 94371 23616, https://mect.org.in/) when official steps are needed."
     ],
     lengthTargets: {
       simple: "1-3 sentences (20-50 words)",

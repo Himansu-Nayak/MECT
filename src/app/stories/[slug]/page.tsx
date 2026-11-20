@@ -150,21 +150,6 @@ export default async function StoryDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Safeguarding & Privacy Note */}
-            {dispatch.beneficiaryPrivacyNote && (
-              <div className="p-4 rounded-xs border border-sand bg-sand-light/50 flex items-start gap-3 text-xs font-sans text-ink-sand">
-                <ShieldCheck className="w-4 h-4 text-forest shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <span className="font-bold text-forest uppercase font-mono tracking-wider text-[11px] block">
-                    Institutional Safeguarding &amp; Ethical Attribution
-                  </span>
-                  <p className="mt-0.5 leading-relaxed text-ink-secondary">
-                    {dispatch.beneficiaryPrivacyNote}
-                  </p>
-                </div>
-              </div>
-            )}
-
             {/* Key Documented Highlights */}
             <div className="p-6 rounded-xs border border-border-warm bg-white space-y-4 shadow-xs">
               <h2 className="font-mono text-xs uppercase tracking-wider font-bold text-forest flex items-center gap-2">

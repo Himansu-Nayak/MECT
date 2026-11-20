@@ -28,9 +28,12 @@
   - *Owner Action:* Confirm whether the NITI Aayog portal record is `OR/2024/0466491` or `OD/2021/0285141`.
 
 - [ ] **Primary Helpline & Telephone Numbers:**
-  - *Conflict:* `+91 98536 08113` (majority of current pages) vs `+91 94371 23616` (legacy scholarship forms) vs `+91 671 234 5678` (placeholder Cuttack landline).
-  - *Current Baseline in `org.ts`:* `+91 98536 08113` (mobile/WhatsApp). Legacy placeholder `+91 671` removed.
-  - *Owner Action:* Confirm official primary public helpline phone number.
+  - *Conflict & Provenance:*
+    - `+91 94371 23616`: Authentic live site helpline present across foundational releases since project inception (commit `287d8a6`, `0daa2bf`, `ea4ab59`).
+    - `+91 98536 08113`: Introduced in commit `b294267` (Phase 24) without documentary passbook/telecom verification.
+    - Placeholder `+91 671` landline: eradicated.
+  - *Current Baseline in `org.ts`:* **`+91 94371 23616`** (official voice helpline). WhatsApp external direct link removed.
+  - *Owner Action:* Confirm whether `+91 94371 23616` remains the sole public desk number or whether `+91 98536 08113` should be registered as a secondary mobile contact.
 
 - [ ] **Secretariat Office Hours:**
   - *Conflict:* `Mon–Sat, 10:00–17:30 IST` vs `Mon–Fri, 10:00–17:00 IST`.

@@ -65,10 +65,10 @@ export const ORG = {
     },
   },
   helpline: {
-    display: "9853608113",
-    e164: "+919853608113",
-    href: "tel:+919853608113",
-    hours: "Monday-Saturday, 10:00-17:30 IST",
+    display: MECT_ORG.contact.displayPhone,
+    e164: MECT_ORG.contact.e164Phone,
+    href: MECT_ORG.contact.phoneHref,
+    hours: MECT_ORG.contact.officeHours,
   },
   emails: {
     official: "mect220@gmail.com",
