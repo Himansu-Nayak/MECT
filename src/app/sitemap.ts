@@ -1,33 +1,16 @@
 import type { MetadataRoute } from "next";
 import { execSync } from "child_process";
 import { FIELD_DISPATCHES } from "@content/stories";
+import LASTMOD_MAP from "@content/lastmod.json";
 
-const FALLBACK_DATES: Record<string, string> = {
-  "": "2026-11-20T10:00:00.000Z",
-  "/donate": "2026-11-20T10:00:00.000Z",
-  "/programmes": "2026-11-20T10:00:00.000Z",
-  "/about": "2026-11-20T10:00:00.000Z",
-  "/scholarships": "2026-11-20T10:00:00.000Z",
-  "/scholarships/apply": "2026-11-20T10:00:00.000Z",
-  "/scholarships/track": "2026-11-20T10:00:00.000Z",
-  "/campaigns": "2026-11-20T10:00:00.000Z",
-  "/campaigns/hanuman-murti": "2026-11-20T10:00:00.000Z",
-  "/statutory-disclosures": "2026-11-20T10:00:00.000Z",
-  "/csr-partnerships": "2026-11-20T10:00:00.000Z",
-  "/reports": "2026-11-20T10:00:00.000Z",
-  "/impact": "2026-11-20T10:00:00.000Z",
-  "/stories": "2026-11-20T10:00:00.000Z",
-  "/memories-gallery": "2026-11-20T10:00:00.000Z",
-  "/governance": "2026-11-20T10:00:00.000Z",
-  "/volunteer": "2026-11-20T10:00:00.000Z",
-  "/contact": "2026-11-20T10:00:00.000Z",
-  "/faq": "2026-11-20T10:00:00.000Z",
-  "/privacy": "2026-11-20T10:00:00.000Z",
-  "/terms": "2026-11-20T10:00:00.000Z",
-  "/accessibility": "2026-11-20T10:00:00.000Z",
-};
+const LASTMOD: Record<string, string> = LASTMOD_MAP;
 
-function getGitCommitDate(filePath: string, fallbackIso: string): Date {
+/**
+ * Derives route lastModified date from git history when available,
+ * falling back to the committed content/lastmod.json (for Docker builds without .git).
+ * Never uses dynamic `new Date()` runtime timestamps.
+ */
+function getGitCommitDate(filePath: string, routePath: string): Date {
   try {
     const stdout = execSync(`git log -1 --format=%cI -- "${filePath}"`, {
       encoding: "utf8",
@@ -41,9 +24,10 @@ function getGitCommitDate(filePath: string, fallbackIso: string): Date {
       }
     }
   } catch {
-    // Fallback to static constant per page
+    // Git unavailable (e.g. minimal Docker build without .git)
   }
-  return new Date(fallbackIso);
+  const committedIso = LASTMOD[routePath || "/"] || LASTMOD["/"] || "2026-11-20T10:00:00+05:30";
+  return new Date(committedIso);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -87,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return entries.map((entry) => ({
     url: `${baseUrl}${entry.path}`,
-    lastModified: getGitCommitDate(entry.filePath, FALLBACK_DATES[entry.path] || "2026-11-20T10:00:00.000Z"),
+    lastModified: getGitCommitDate(entry.filePath, entry.path),
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
   }));
