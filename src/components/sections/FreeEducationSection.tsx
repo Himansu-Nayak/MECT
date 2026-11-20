@@ -318,7 +318,7 @@ export function FreeEducationSection() {
                     alt="Students and scholars studying and reading in a community learning library"
                     fill
                     loading="lazy"
-                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 90vw, 40vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                     className="object-cover object-[50%_45%] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   />
                   <div

@@ -188,11 +188,11 @@ export function InstitutionalStorySection() {
               <ImageReveal scaleFrom={1.03} className="rounded-[2px] border border-[#E7E0D5] shadow-md bg-[#16221D]">
                 <div className="relative w-full aspect-[4/3]">
                   <Image
-                    src="/images/hero/mect-faculty-puintala-campus.jpg"
+                    src="/images/hero/mect-faculty-puintala-campus.webp"
                     alt="MECT faculty members and trustees gathered at the rural Puīntalā campus in Balangir"
                     fill
                     loading="lazy"
-                    sizes="(max-width: 1023px) 100vw, 42vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                   <div

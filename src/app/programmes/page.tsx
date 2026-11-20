@@ -8,7 +8,6 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { MECT_ORG } from "@/config/org";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
 import {
@@ -86,7 +85,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-civic-pledge-classroom.jpg",
+        src: "/images/hero/mect-civic-pledge-classroom.webp",
         alt: "MECT community classroom students participating in remedial study session",
         caption: "Community remedial classroom in Balangir district.",
       },
@@ -156,7 +155,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-faculty-puintala-campus.jpg",
+        src: "/images/hero/mect-faculty-puintala-campus.webp",
         alt: "MECT youth engagement and campus sports activities",
         caption: "Youth community sports and athletic meet in Western Odisha.",
       },
@@ -216,7 +215,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-public-health-awareness.jpg",
+        src: "/images/hero/mect-public-health-awareness.webp",
         alt: "MECT community food relief and meal drive in Balangir",
         caption: "Community meal distribution for hospital patient attendants.",
       },
@@ -504,7 +503,7 @@ export default function ProgrammesPage() {
       </div>
 
       {/* 4. Statutory Transparency Strip */}
-      <StatutoryStrip />
+      
     </div>
   );
 }

@@ -51,7 +51,7 @@ export function DocumentaryFieldExhibitionSection() {
       category: "Higher Education",
       caption:
         "Trustees and rural education coordinators reviewing community facilities and educational remedial registers at the Puīntalā campus site.",
-      src: "/images/hero/mect-faculty-puintala-campus.jpg",
+      src: "/images/hero/mect-faculty-puintala-campus.webp",
       aspect: "aspect-[16/10]",
     },
     {
@@ -87,7 +87,7 @@ export function DocumentaryFieldExhibitionSection() {
       category: "Youth Mentorship",
       caption:
         "High school students participating in an after-school remedial learning session focused on mathematics and science syllabus reinforcement.",
-      src: "/images/hero/mect-civic-pledge-classroom.jpg",
+      src: "/images/hero/mect-civic-pledge-classroom.webp",
       aspect: "aspect-[16/10]",
     },
     {
@@ -191,7 +191,7 @@ export function DocumentaryFieldExhibitionSection() {
                 alt={exhibitionRecords[0].title}
                 fill
                 loading="lazy"
-                sizes="(max-width: 767px) 100vw, 58vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 50vw"
                 className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               />
               <div
@@ -237,7 +237,7 @@ export function DocumentaryFieldExhibitionSection() {
                   alt={item.title}
                   fill
                   loading="lazy"
-                  sizes="(max-width: 767px) 100vw, 42vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 35vw"
                   className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 />
                 <div
@@ -276,7 +276,7 @@ export function DocumentaryFieldExhibitionSection() {
                   alt={item.title}
                   fill
                   loading="lazy"
-                  sizes="(max-width: 767px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 />
                 <div

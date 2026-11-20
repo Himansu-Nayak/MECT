@@ -2,11 +2,26 @@
 
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/MotionPrimitives";
-import { HanumanMurti3DExperience } from "@/components/campaigns/HanumanMurti3DExperience";
+
+const HanumanMurti3DExperience = dynamic(
+  () =>
+    import("@/components/campaigns/HanumanMurti3DExperience").then(
+      (mod) => mod.HanumanMurti3DExperience
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[210px] w-full bg-[#16221D] rounded-xs border border-sand/20 flex items-center justify-center text-xs text-sand/70 font-mono">
+        Loading 3D Landmark Viewport...
+      </div>
+    ),
+  }
+);
 import {
   GraduationCap,
   Sparkles,

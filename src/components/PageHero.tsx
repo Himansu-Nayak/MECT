@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { HeroEntrance } from "@/components/ui/MotionPrimitives";
 
 export interface BreadcrumbItem {
   label: string;
@@ -142,7 +141,7 @@ export function PageHero({
           </nav>
 
           {/* Title & Subtext */}
-          <HeroEntrance className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-4">
             {badge && (
               <div className="leading-none">
                 <Badge variant={badgeVariant} size="md">
@@ -157,7 +156,7 @@ export function PageHero({
               {description}
             </p>
             {actions && <div className="pt-2 flex flex-wrap gap-3">{actions}</div>}
-          </HeroEntrance>
+          </div>
         </div>
       </Container>
     </section>

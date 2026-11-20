@@ -23,12 +23,12 @@ import { ClosingFiduciaryPledgeSection } from "@/components/sections/ClosingFidu
  * 6. SECTION 07 — Differentiated Campaigns & Cultural Heritage: Proposed Higher Education Target & Proposed 80–100 ft Hanuman Murti 3D
  * 7. SECTION 08 — Transparency & Governance: Statutory disclosures register (Deed, PAN, 12A/80G, CSR-1, NGO Darpan, physical inspection)
  * 8. SECTION 09 — Participate in the Mission: Six tailored pathways (Donors, Volunteers, CSR, Educational Partners, Community, Collaborators)
- * 9. SECTION 10 — The Closing Message: Earned fiduciary pledge, registered office in Balangir, canonical phone 9853608113 & email mect220@gmail.com
+ * 9. SECTION 10 — The Closing Message: Earned trusteeship pledge, registered office in Balangir, canonical phone 9853608113 & email mect220@gmail.com
  */
 export const metadata: Metadata = createPageMetadata({
   title: "Empowering Communities Across Odisha",
   description:
-    "Mahaveer Educational & Charitable Trust (MECT) is a registered public charitable trust dedicated to education, women's livelihoods, safe water, and welfare.",
+    "Mahaveer Educational & Charitable Trust (MECT) is a public charitable trust dedicated to education, women's livelihoods, safe drinking water, and welfare.",
   path: "/",
 });
 

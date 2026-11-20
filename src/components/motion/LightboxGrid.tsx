@@ -18,7 +18,7 @@ export interface GalleryPhoto {
 export const MECT_FIELD_GALLERY: readonly GalleryPhoto[] = [
   {
     id: "civic-pledge",
-    src: "/images/hero/mect-civic-pledge-classroom.jpg",
+    src: "/images/hero/mect-civic-pledge-classroom.webp",
     alt: "Students participating in a classroom civic pledge session with MECT facilitators in Odisha",
     caption: "Remedial classroom civic pledge and student mentoring session.",
     location: "Balangir, Odisha",
@@ -32,7 +32,7 @@ export const MECT_FIELD_GALLERY: readonly GalleryPhoto[] = [
   },
   {
     id: "faculty-puintala",
-    src: "/images/hero/mect-faculty-puintala-campus.jpg",
+    src: "/images/hero/mect-faculty-puintala-campus.webp",
     alt: "MECT faculty and community volunteers at Puintala campus, Balangir",
     caption: "Faculty and volunteer coordinators at the Puintala outreach block.",
     location: "Puintala, Balangir",
@@ -46,7 +46,7 @@ export const MECT_FIELD_GALLERY: readonly GalleryPhoto[] = [
   },
   {
     id: "public-health",
-    src: "/images/hero/mect-public-health-awareness.jpg",
+    src: "/images/hero/mect-public-health-awareness.webp",
     alt: "Public health and nutrition awareness session with local community members",
     caption: "Public health, seasonal hydration, and nutrition guidance camp.",
     location: "Odisha Field Unit",

@@ -7,7 +7,6 @@ import { m, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import {
-  HeroEntrance,
   CountUpStat,
   MOTION_EASING,
   MOTION_DURATION,
@@ -46,41 +45,15 @@ export function CinematicHero() {
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0"
       >
-        <m.div
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  opacity: [0.22, 0.3, 0.22],
-                  scale: [1, 1.05, 1],
-                }
-          }
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -top-40 -left-40 w-[680px] h-[680px] rounded-full blur-3xl"
+        <div
+          className="absolute -top-40 -left-40 w-[680px] h-[680px] rounded-full blur-3xl opacity-25"
           style={{
             background:
               "radial-gradient(circle, rgba(184, 93, 59, 0.28) 0%, transparent 70%)",
           }}
         />
-        <m.div
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  opacity: [0.18, 0.25, 0.18],
-                  scale: [1.03, 1, 1.03],
-                }
-          }
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full blur-3xl"
+        <div
+          className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
           style={{
             background:
               "radial-gradient(circle, rgba(196, 146, 74, 0.22) 0%, transparent 70%)",
@@ -94,22 +67,19 @@ export function CinematicHero() {
           {/* =========================================================================
               LEFT COLUMN: EDITORIAL TYPOGRAPHY & SEQUENTIAL INTENT (Col 1-7)
               ========================================================================= */}
-          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-start text-left min-w-0">
-            <HeroEntrance className="w-full space-y-5 sm:space-y-6 md:space-y-7">
+          <div className="order-1 lg:col-span-7 flex flex-col items-start text-left min-w-0">
+            <div className="w-full space-y-5 sm:space-y-6 md:space-y-7">
               {/* Archival Classification Tag with Pulse Indicator */}
-              <m.div
-                initial={shouldReduceMotion ? false : { opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: MOTION_DURATION.standard, ease: MOTION_EASING.editorial }}
+              <div
                 className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D]/90 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.14em] text-[#E5C499] shadow-xs"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta shrink-0 animate-pulse" aria-hidden="true" />
                 <span>MECT ARCHIVAL REGISTER • ESTD. 2013 • BALANGIR, ODISHA</span>
-              </m.div>
+              </div>
 
               {/* Commanding Editorial Headline with Masked Entrance */}
               <div className="overflow-hidden">
-                <h1 className="font-serif text-[clamp(2.4rem,4.5vw,4.1rem)] font-bold text-white tracking-tight leading-[1.08] [text-wrap:balance]">
+                <h1 className="font-serif text-[clamp(2.4rem,4.5vw,4.1rem)] font-bold text-white tracking-tight leading-[1.08]">
                   Dignity Through Education.{" "}
                   <span className="italic font-normal text-[#E5C499] block sm:inline font-serif">
                     Resilience Through Community.
@@ -183,19 +153,16 @@ export function CinematicHero() {
                   </div>
                 </div>
               </div>
-            </HeroEntrance>
+            </div>
           </div>
 
           {/* =========================================================================
               RIGHT COLUMN: DOCUMENTARY FIELD PHOTOGRAPHY WITH CINEMATIC REVEAL (Col 8-12)
               ========================================================================= */}
-          <div className="order-1 lg:order-2 lg:col-span-5 relative w-full">
+          <div className="order-2 lg:col-span-5 relative w-full">
             <div className="relative group">
               {/* Primary Documentary Frame with Overflow Mask and Soft Zoom Settle */}
-              <m.div
-                initial={shouldReduceMotion ? false : { opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.85, ease: MOTION_EASING.editorial }}
+              <div
                 className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-[2px] overflow-hidden border border-white/20 shadow-2xl bg-[#16221D]"
               >
                 <Image
@@ -204,7 +171,7 @@ export function CinematicHero() {
                   fill
                   priority
                   fetchPriority="high"
-                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 42vw"
+                  sizes="(max-width: 640px) 360px, (max-width: 1024px) 500px, 600px"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
                 {/* Subtle vignette gradient */}
@@ -223,13 +190,10 @@ export function CinematicHero() {
                     DOC-2024-FL
                   </span>
                 </div>
-              </m.div>
+              </div>
 
               {/* Floating Fiduciary Guarantee Plaque with Delayed Stagger */}
-              <m.div
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: MOTION_EASING.institutional }}
+              <div
                 className="hidden sm:flex absolute -bottom-5 -left-5 xl:-bottom-6 xl:-left-6 max-w-xs p-3.5 rounded-[2px] bg-[#16221D]/96 border border-[#C4924A]/40 shadow-xl backdrop-blur-md z-20 items-start gap-3 pointer-events-none"
               >
                 <div className="w-7 h-7 rounded-full bg-terracotta/20 border border-terracotta/50 flex items-center justify-center shrink-0 text-terracotta mt-0.5">
@@ -243,7 +207,7 @@ export function CinematicHero() {
                     100% Honorary Trusteeship. Zero salaries, sitting fees, or administrative commissions.
                   </p>
                 </div>
-              </m.div>
+              </div>
             </div>
           </div>
         </div>
@@ -252,7 +216,7 @@ export function CinematicHero() {
         <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-1 text-center text-cream/60">
           <Link
             href="#why-mect-exists"
-            aria-label="Scroll to Section 02: Why MECT Exists"
+            aria-label="Section 02 • Institutional Heritage — Scroll to Section 02"
             className="group inline-flex flex-col items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#C4924A] rounded-xs p-1"
           >
             <span className="text-[10.5px] font-mono uppercase tracking-[0.18em] text-cream/70 group-hover:text-[#E5C499] transition-colors">
