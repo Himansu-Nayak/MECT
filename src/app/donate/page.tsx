@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { DonationClaimSection } from "@/components/donation/DonationClaimSection";
+import { UpiQrCard } from "@/components/donation/UpiQrCard";
 import { MECT_ORG } from "@/config/org";
 import { Building2, ShieldCheck, QrCode, ArrowRight, HelpCircle } from "lucide-react";
 
@@ -128,6 +129,9 @@ export default function DonatePage() {
               </a>
             </div>
           </div>
+
+          {/* Official SBI UPI QR & Direct Transfer Component (P0-5) */}
+          <UpiQrCard />
 
           {/* Interactive Programme Selector and "I Have Donated" Form */}
           <DonationClaimSection />
