@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
+import { MECT_ORG } from "@/config/org";
 
 /**
  * MECT Public Donation Verification Claim Endpoint (`POST /api/donations/claim`)
  *
  * Architecture & Governance Documentation:
- * 1. Storage & Table:
- *    - Persisted into Spring Boot backend entity `SbiDonationClaim` (`sbi_donation_claims` table)
- *      or recorded in local verified log when backend runs decoupled.
+ * 1. Storage & Fail-Closed Semantics:
+ *    - Persisted into Spring Boot backend entity `SbiDonationClaim` (`manual_bank_transfer_claims` table).
+ *    - STRICT FAIL-CLOSED: If the backend is unreachable, times out, or returns 5xx, this endpoint
+ *      returns HTTP 503 with a clear advisory message. Under NO circumstances is a local reference
+ *      number generated or displayed in production when the backend did not record the submission.
+ *    - Optional local development fallback is gated strictly behind `ALLOW_DEV_FALLBACK=true` and
+ *      `NODE_ENV !== 'production'`.
  * 2. Lifecycle Status:
  *    - Initial status is strictly `UNVERIFIED` (pending bank reconciliation).
  *    - Under NO circumstances is an official 80G/12A statutory donation receipt issued
@@ -14,8 +19,6 @@ import { NextRequest, NextResponse } from "next/server";
  * 3. IP Rate Limiter:
  *    - Sliding-window in-memory rate limiter enforcing max 5 requests per 60 seconds per IP.
  *    - Client IP is extracted from trusted reverse proxy headers (`x-forwarded-for` or `x-real-ip`).
- *    - IMPORTANT: The in-memory limiter resets upon server process restart. For multi-node
- *      deployments, an external Redis-backed token bucket is recommended.
  */
 
 const rateLimitMap = new Map<string, number[]>();
@@ -102,18 +105,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate unique verifiable claim reference
-    const timestamp = Date.now();
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const claimReference = `MECT-SBI-${timestamp.toString().slice(-6)}-${randomSuffix}`;
-    let finalClaimRef = claimReference;
-
-    // Forward to Spring Boot backend if running
+    // Forward to Spring Boot backend
     const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8081";
+    let finalClaimRef: string | null = null;
+    let backendSuccess = false;
+
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const backendRes = await fetch(`${backendUrl}/api/donations/sbi/submit-utr`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           programmeCode: programmeCode || "GENERAL",
           amount: numAmount,
@@ -127,23 +131,48 @@ export async function POST(request: NextRequest) {
           proofSummary: notes ? notes.trim() : "Submitted via mect.org.in/donate claim desk",
         }),
       });
+      clearTimeout(timeoutId);
 
       if (backendRes.ok) {
         const backendData = await backendRes.json();
         if (backendData?.claimReference) {
           finalClaimRef = backendData.claimReference;
+          backendSuccess = true;
         }
       }
     } catch {
-      // Backend offline or unreachable in local build; fallback to direct acknowledged record
+      // Backend offline, timed out, or connection refused
     }
 
-    return NextResponse.json({
-      success: true,
-      claimReference: finalClaimRef,
-      status: "UNVERIFIED",
-      message: `Claim received. Reference: ${finalClaimRef}. The Trust will check your transfer against its bank records before issuing a receipt.`,
-    });
+    if (backendSuccess && finalClaimRef) {
+      return NextResponse.json({
+        success: true,
+        claimReference: finalClaimRef,
+        status: "UNVERIFIED",
+        message: `Claim received. Reference: ${finalClaimRef}. The Trust will check your transfer against its bank records before issuing a receipt.`,
+      });
+    }
+
+    // Local dev fallback: honoured ONLY when NODE_ENV !== "production" AND ALLOW_DEV_FALLBACK === "true"
+    if (process.env.NODE_ENV !== "production" && process.env.ALLOW_DEV_FALLBACK === "true") {
+      const timestamp = Date.now();
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      const devRef = `MECT-SBI-${timestamp.toString().slice(-6)}-${randomSuffix}`;
+      return NextResponse.json({
+        success: true,
+        claimReference: devRef,
+        status: "UNVERIFIED",
+        message: `Claim received. Reference: ${devRef}. The Trust will check your transfer against its bank records before issuing a receipt.`,
+      });
+    }
+
+    // Fail closed: Never return 200 or generate a reference when the backend is unreachable
+    return NextResponse.json(
+      {
+        error: `We could not save your submission. Nothing has been recorded. Please email ${MECT_ORG.contact.generalEmail} or call ${MECT_ORG.contact.primaryPhone} and quote your details.`,
+      },
+      { status: 503 }
+    );
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json({ error: message }, { status: 500 });

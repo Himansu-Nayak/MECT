@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { MECT_ORG } from "@/config/org";
 
 // In-memory sliding window rate-limiter (5 requests per 60 seconds per client IP)
 // Note: In-memory store resets on server restart, suitable for single-node / edge rate limiting.
@@ -134,18 +135,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Reference ID generator
-    const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const fallbackRef = `MECT-INQ-${dateStr}-${randomSuffix}`;
-    let referenceId: string | number = fallbackRef;
-
-    // Forward to Spring Boot backend if reachable
+    // Forward to Spring Boot backend
     const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8081";
+    let finalRef: string | number | null = null;
+    let backendSuccess = false;
+
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const backendRes = await fetch(`${backendUrl}/public/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           fullName: cleanName,
           email: cleanEmail,
@@ -154,24 +156,51 @@ export async function POST(request: NextRequest) {
           message: cleanMessage,
         }),
       });
+      clearTimeout(timeoutId);
 
       if (backendRes.ok) {
         const backendData = await backendRes.json();
-        if (backendData?.referenceId) {
-          referenceId = backendData.referenceId;
+        if (backendData?.referenceId || backendData?.ticketNumber) {
+          finalRef = backendData.referenceId || backendData.ticketNumber;
+          backendSuccess = true;
         }
       }
     } catch {
-      // Backend unreachable or offline in standalone environment; keep fallbackRef
+      // Backend offline, timed out, or connection refused
     }
 
+    if (backendSuccess && finalRef) {
+      return NextResponse.json(
+        {
+          success: true,
+          referenceId: finalRef,
+          message: `Your inquiry has been registered in the official Secretariat intake log. Reference: ${finalRef}.`,
+        },
+        { status: 201 }
+      );
+    }
+
+    // Local dev fallback: honoured ONLY when NODE_ENV !== "production" AND ALLOW_DEV_FALLBACK === "true"
+    if (process.env.NODE_ENV !== "production" && process.env.ALLOW_DEV_FALLBACK === "true") {
+      const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      const devRef = `MECT-INQ-${dateStr}-${randomSuffix}`;
+      return NextResponse.json(
+        {
+          success: true,
+          referenceId: devRef,
+          message: `Your inquiry has been registered in the official Secretariat intake log. Reference: ${devRef}.`,
+        },
+        { status: 201 }
+      );
+    }
+
+    // Fail closed: Never return 200/201 or generate a reference when the backend is unreachable
     return NextResponse.json(
       {
-        success: true,
-        referenceId,
-        message: "Your inquiry has been registered in the official Secretariat intake log.",
+        error: `We could not save your submission. Nothing has been recorded. Please email ${MECT_ORG.contact.generalEmail} or call ${MECT_ORG.contact.primaryPhone} and quote your details.`,
       },
-      { status: 201 }
+      { status: 503 }
     );
   } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : "Internal server error";
