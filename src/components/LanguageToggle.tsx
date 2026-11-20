@@ -10,7 +10,13 @@ interface LanguageToggleProps {
 }
 
 export function LanguageToggle({ className = "", variant = "header" }: LanguageToggleProps) {
+  const isOdiaEnabled = process.env.NEXT_PUBLIC_ENABLE_ODIA === "true";
   const { locale, toggleLocale } = useLanguage();
+
+  // Feature gate: Odia toggle is disabled by default until native dialectal review is signed off
+  if (!isOdiaEnabled) {
+    return null;
+  }
 
   if (variant === "overlay") {
     return (

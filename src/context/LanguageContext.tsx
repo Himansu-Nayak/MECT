@@ -20,9 +20,15 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const isOdiaEnabled = process.env.NEXT_PUBLIC_ENABLE_ODIA === "true";
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
+    if (!isOdiaEnabled) {
+      setLocaleState("en");
+      document.documentElement.lang = "en";
+      return;
+    }
     try {
       const stored = localStorage.getItem("mect_locale") as Locale | null;
       if (stored === "en" || stored === "or") {
@@ -32,9 +38,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // LocalStorage access restricted in private mode
     }
-  }, []);
+  }, [isOdiaEnabled]);
 
   const setLocale = (newLocale: Locale) => {
+    if (!isOdiaEnabled) {
+      setLocaleState("en");
+      return;
+    }
     setLocaleState(newLocale);
     try {
       localStorage.setItem("mect_locale", newLocale);
@@ -45,11 +55,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleLocale = () => {
+    if (!isOdiaEnabled) return;
     setLocale(locale === "en" ? "or" : "en");
   };
 
   const t = (path: string, fallback?: string): string => {
-    if (locale === "en") {
+    // Statutory, tax, and legal terms must always remain in English to prevent statutory misinterpretation
+    if (
+      !isOdiaEnabled ||
+      locale === "en" ||
+      path.startsWith("statutory") ||
+      path.startsWith("tax") ||
+      path.startsWith("legal")
+    ) {
       return fallback || path;
     }
 
