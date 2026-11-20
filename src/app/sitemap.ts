@@ -1,22 +1,52 @@
 import type { MetadataRoute } from "next";
-import fs from "fs";
-import path from "path";
+import { execSync } from "child_process";
 
-function getLastModified(relativePath: string, fallback: Date): Date {
+const FALLBACK_DATES: Record<string, string> = {
+  "": "2026-11-20T10:00:00.000Z",
+  "/donate": "2026-11-20T10:00:00.000Z",
+  "/programmes": "2026-11-20T10:00:00.000Z",
+  "/about": "2026-11-20T10:00:00.000Z",
+  "/scholarships": "2026-11-20T10:00:00.000Z",
+  "/scholarships/apply": "2026-11-20T10:00:00.000Z",
+  "/scholarships/track": "2026-11-20T10:00:00.000Z",
+  "/campaigns": "2026-11-20T10:00:00.000Z",
+  "/campaigns/hanuman-murti": "2026-11-20T10:00:00.000Z",
+  "/statutory-disclosures": "2026-11-20T10:00:00.000Z",
+  "/csr-partnerships": "2026-11-20T10:00:00.000Z",
+  "/reports": "2026-11-20T10:00:00.000Z",
+  "/impact": "2026-11-20T10:00:00.000Z",
+  "/stories": "2026-11-20T10:00:00.000Z",
+  "/memories-gallery": "2026-11-20T10:00:00.000Z",
+  "/governance": "2026-11-20T10:00:00.000Z",
+  "/volunteer": "2026-11-20T10:00:00.000Z",
+  "/contact": "2026-11-20T10:00:00.000Z",
+  "/faq": "2026-11-20T10:00:00.000Z",
+  "/privacy": "2026-11-20T10:00:00.000Z",
+  "/terms": "2026-11-20T10:00:00.000Z",
+  "/accessibility": "2026-11-20T10:00:00.000Z",
+};
+
+function getGitCommitDate(filePath: string, fallbackIso: string): Date {
   try {
-    const fullPath = path.join(process.cwd(), relativePath);
-    if (fs.existsSync(fullPath)) {
-      return fs.statSync(fullPath).mtime;
+    const stdout = execSync(`git log -1 --format=%cI -- "${filePath}"`, {
+      encoding: "utf8",
+      timeout: 3000,
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (stdout) {
+      const d = new Date(stdout);
+      if (!isNaN(d.getTime())) {
+        return d;
+      }
     }
   } catch {
-    // Fallback to build time
+    // Fallback to static constant per page
   }
-  return fallback;
+  return new Date(fallbackIso);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://mect.org.in";
-  const now = new Date();
 
   const entries: {
     path: string;
@@ -50,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return entries.map((entry) => ({
     url: `${baseUrl}${entry.path}`,
-    lastModified: getLastModified(entry.filePath, now),
+    lastModified: getGitCommitDate(entry.filePath, FALLBACK_DATES[entry.path] || "2026-11-20T10:00:00.000Z"),
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
   }));

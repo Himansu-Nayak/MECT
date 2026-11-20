@@ -11,7 +11,7 @@ interface ProgrammeExtraMeta {
   impactStat: string;
   impactLabel: string;
   suggestedPresets: number[];
-  fiduciaryNotice?: string;
+  fundNotice?: string;
 }
 
 const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
@@ -21,7 +21,7 @@ const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
     impactStat: "100% Direct",
     impactLabel: "Disbursed straight to accredited colleges for verified students",
     suggestedPresets: [1000, 2500, 5000, 10000],
-    fiduciaryNotice: "Restricted directly to undergraduate tuition assistance across Western Odisha.",
+    fundNotice: "Restricted directly to undergraduate tuition assistance across Western Odisha.",
   },
   JAL_SEVA: {
     icon: <Droplet className="w-5 h-5 text-terracotta" />,
@@ -29,7 +29,7 @@ const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
     impactStat: "2,500+ Daily",
     impactLabel: "Pedestrians, transit passengers & hospital visitors served per kiosk",
     suggestedPresets: [500, 1000, 2500, 5000],
-    fiduciaryNotice: "Active during 45°C peak heatwaves at Balangir transit junctions.",
+    fundNotice: "Active during 45°C peak heatwaves at Balangir transit junctions.",
   },
   WOMEN_LIVELIHOOD: {
     icon: <Scissors className="w-5 h-5 text-terracotta" />,
@@ -37,7 +37,7 @@ const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
     impactStat: "Certified",
     impactLabel: "Sewing craftsmanship, machine operations & micro-enterprise",
     suggestedPresets: [1000, 2000, 5000, 8000],
-    fiduciaryNotice: "Equips rural women and mothers with self-sustaining livelihood skills.",
+    fundNotice: "Equips rural women and mothers with self-sustaining livelihood skills.",
   },
   GENERAL_CHARITY: {
     icon: <HeartHandshake className="w-5 h-5 text-terracotta" />,
@@ -45,7 +45,7 @@ const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
     impactStat: "Immediate Aid",
     impactLabel: "Thermal winter relief, hospital patient meals & distress response",
     suggestedPresets: [500, 1000, 2500, 5000],
-    fiduciaryNotice: "Flexible emergency fund for destitute families and rural crises.",
+    fundNotice: "Flexible emergency fund for destitute families and rural crises.",
   },
   HANUMAN_MURTI: {
     icon: <Landmark className="w-5 h-5 text-terracotta" />,
@@ -53,7 +53,7 @@ const PROGRAMME_METADATA: Record<string, ProgrammeExtraMeta> = {
     impactStat: "Ring-Fenced",
     impactLabel: "Statutorily segregated sub-ledger with zero charitable cross-mingling",
     suggestedPresets: [1000, 2500, 5000, 11000],
-    fiduciaryNotice: "Maintained in dedicated sub-accounts under MECT Trust Deed provisions.",
+    fundNotice: "Maintained in dedicated sub-accounts under MECT Trust Deed provisions.",
   },
 };
 
@@ -184,9 +184,9 @@ export function DonationProgrammeCard({
         ))}
       </div>
 
-      {meta.fiduciaryNotice && (
+      {meta.fundNotice && (
         <p className="text-[10px] text-ink-muted/80 mt-2.5 font-mono">
-          Fiduciary Note: {meta.fiduciaryNotice}
+          Fund Note: {meta.fundNotice}
         </p>
       )}
     </div>

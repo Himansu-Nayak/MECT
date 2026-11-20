@@ -9,7 +9,6 @@ export type PillarIllustrationId =
   | "education"
   | "women-empowerment"
   | "water"
-  | "hunger-relief"
   | "food-relief"
   | "community-welfare";
 
@@ -352,7 +351,6 @@ export function PillarIllustration({ id }: { id: string }) {
       return <WomenStitchIllustration />;
     case "water":
       return <SafeWaterDropletIllustration />;
-    case "hunger-relief":
     case "food-relief":
       return <FoodSecurityPlateIllustration />;
     default:

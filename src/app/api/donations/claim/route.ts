@@ -1,7 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// In-memory sliding window rate-limiter (5 requests per 60 seconds per client IP)
+const rateLimitMap = new Map<string, number[]>();
+const MAX_REQUESTS_PER_MINUTE = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+
 export async function POST(request: NextRequest) {
   try {
+    const clientIp =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "anonymous-client";
+
+    const now = Date.now();
+    const timestamps = rateLimitMap.get(clientIp) || [];
+    const recentTimestamps = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+
+    if (recentTimestamps.length >= MAX_REQUESTS_PER_MINUTE) {
+      return NextResponse.json(
+        {
+          error:
+            "Too many submissions received in a short interval. Please wait 60 seconds before submitting another donation verification claim.",
+        },
+        { status: 429 }
+      );
+    }
+
+    recentTimestamps.push(now);
+    rateLimitMap.set(clientIp, recentTimestamps);
+
     const body = await request.json();
     const {
       donorName,

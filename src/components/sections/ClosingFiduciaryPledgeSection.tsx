@@ -54,10 +54,10 @@ export function ClosingFiduciaryPledgeSection() {
 
       <Container size="narrow" className="text-center space-y-10 relative z-10 max-w-4xl">
         <Reveal direction="up" className="space-y-5">
-          {/* Fiduciary Seal Badge */}
+          {/* Trusteeship Seal Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#16221D] border border-[#C4924A]/40 text-[#E5C499] text-[11px] font-mono uppercase tracking-[0.14em] mx-auto shadow-xs">
             <ShieldCheck className="w-4 h-4 text-[#C4924A]" aria-hidden="true" />
-            <span>Section 10 • The Sovereign Fiduciary Covenant</span>
+            <span>Section 10 • Institutional Trusteeship Covenant</span>
           </div>
 
           {/* Literary Headline */}
@@ -65,7 +65,7 @@ export function ClosingFiduciaryPledgeSection() {
             id="closing-pledge-heading"
             className="font-serif text-[clamp(2.1rem,4.2vw,3.6rem)] font-bold text-white tracking-tight leading-[1.12] [text-wrap:balance]"
           >
-            An Earned Commitment to Grassroots Dignity and Absolute Fiduciary Honor
+            An Earned Commitment to Grassroots Dignity and Financial Accountability
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg text-cream/90 max-w-2xl mx-auto leading-relaxed font-sans">
@@ -137,7 +137,7 @@ export function ClosingFiduciaryPledgeSection() {
                 </p>
                 <div className="flex items-center gap-1.5 text-[11px] text-cream/70">
                   <ShieldCheck className="w-3 h-3 text-terracotta" aria-hidden="true" />
-                  <span>Verified Fiduciary Inquiries</span>
+                  <span>Verified Accounts Inquiries</span>
                 </div>
               </div>
             </div>

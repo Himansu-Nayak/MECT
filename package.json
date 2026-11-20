@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "check:confirm": "node scripts/check-confirm.mjs",
     "audit:site": "node scripts/audit-site.mts",
-    "audit:motion": "node scripts/audit-motion.mts"
+    "audit:motion": "node scripts/audit-motion.mts",
+    "verify": "node scripts/verify_rendered.mjs"
   },
   "dependencies": {
     "@number-flow/react": "^0.6.2",
@@ -31,6 +32,7 @@
     "vaul": "^1.1.2"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@next/bundle-analyzer": "^16.4.6",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/d3-scale": "^4.0.9",
@@ -40,6 +42,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.6",
+    "lighthouse": "^13.6.0",
     "playwright": "^1.65.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0",

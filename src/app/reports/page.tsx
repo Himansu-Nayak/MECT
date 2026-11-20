@@ -33,7 +33,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function ReportsPage() {
-  const fiduciarySafeguards = [
+  const governanceSafeguards = [
     {
       title: "Direct Programme Allocation Focus",
       description:
@@ -97,7 +97,7 @@ export default function ReportsPage() {
       <ScrollIndex
         items={[
           { id: "overview", label: "Reporting Overview" },
-          { id: "safeguards", label: "Fiduciary Safeguards" },
+          { id: "safeguards", label: "Governance Safeguards" },
           { id: "library", label: "Records Library" },
           { id: "inspection", label: "Inspection Rights" },
         ]}
@@ -127,18 +127,18 @@ export default function ReportsPage() {
         </Container>
       </section>
 
-      {/* 4. Fiduciary Safeguards Section */}
+      {/* 4. Governance Safeguards Section */}
       <section id="safeguards" className="py-20 bg-white border-b border-border-warm scroll-mt-24">
         <Container size="default" className="space-y-12">
           <SectionHeader
-            badge="Fiduciary Safeguards"
+            badge="Governance Safeguards"
             title="Accounting Standards &amp; Fiscal Integrity"
             subtitle="Every contribution entrusted to MECT is governed by registered Trust Deed guidelines and multi-tier institutional accountability."
             align="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {fiduciarySafeguards.map((item, idx) => {
+            {governanceSafeguards.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <Card
