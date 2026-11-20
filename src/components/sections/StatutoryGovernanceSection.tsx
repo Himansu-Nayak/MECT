@@ -60,13 +60,13 @@ export function StatutoryGovernanceSection() {
       badge: "Government of India",
     },
     {
-      title: "Section 12A & 80G Tax Exemption",
+      title: "Historical Section 12A & 80G Orders",
       regNo: "12A: AADTM5474FE20231 | 80G: AADTM5474FF20241",
       rawCopy: "12A: AADTM5474FE20231, 80G: AADTM5474FF20241",
       authority: "Income Tax Department (Form 10AC Orders)",
       date: "Historical Coverage: AY 2024-25 to AY 2026-27",
       icon: CheckCircle2,
-      badge: "Statutory 80G Tax Deductible",
+      badge: "Historical Statutory Orders",
     },
     {
       title: "MCA CSR-1 Registration",
@@ -124,7 +124,7 @@ export function StatutoryGovernanceSection() {
 
           <Reveal direction="up" delay={0.12}>
             <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">
-              MECT operates with total statutory rigor. All sovereign registrations, Ministry certifications, and tax exemption orders are catalogued below with official government reference numbers for independent verification.
+              MECT operates with total statutory rigor. All sovereign registrations, Ministry certifications, and statutory registration orders are catalogued below with official government reference numbers for independent verification.
             </p>
           </Reveal>
         </div>

@@ -274,7 +274,7 @@ export default function AdminPaymentSettingsPage() {
                 onChange={(e) => setConfig({ ...config, statutoryClaimApproved: e.target.checked })}
                 className="accent-forest"
               />
-              <span>80G Tax Exemption Verified Active</span>
+              <span>Statutory Eligibility Confirmed Active</span>
             </label>
           </div>
 

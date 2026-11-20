@@ -320,7 +320,7 @@ export default function StatutoryDisclosuresPage() {
                   <span>Statutory Compliance Notice: FY 2026–27 Position</span>
                 </span>
                 <p className="text-white/95 leading-relaxed">
-                  Under MECT&apos;s historical Form 10AC Section 80G order (URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>, dated 29-01-2024), donations made during FY 2023–24 through FY 2025–26 (AY 2024–25 to AY 2026–27) qualified for 50% deduction under legacy Section 80G(5)(vi) of the Income-tax Act, 1961.
+                  Under MECT&apos;s historical Form 10AC Section 80G order (URN: <strong>{TRUST_CONFIG.statutory.section80GUrn}</strong>, dated 29-01-2024), Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. Historical registration orders under Section 12A and Section 80G are archived below for factual reference.
                 </p>
                 <p className="text-white/90 leading-relaxed">
                   For contributions in Tax Year 2026–27 onward, statutory transition and examination orders are governed by Section 354 and Section 536(2)(j) of the Income-tax Act, 2025. <strong>Donors should note that statutory claim approval for FY 2026–27 remains strictly UNCONFIRMED pending formal Chartered Accountant certification.</strong>

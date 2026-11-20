@@ -56,7 +56,7 @@ export function TailoredParticipationPathwaysSection() {
 
           <Reveal direction="up" delay={0.12}>
             <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-sans">
-              Whether you are an individual donor seeking direct 80G fee sponsorship, an academic professional offering voluntary coaching, or a corporate CSR leader structuring Schedule VII interventions, MECT provides clear, accountable collaboration pathways.
+              Whether you are an individual donor seeking transparent community sponsorship, an academic professional offering voluntary coaching, or a corporate CSR leader structuring Schedule VII interventions, MECT provides clear, accountable collaboration pathways.
             </p>
           </Reveal>
         </div>
@@ -72,7 +72,7 @@ export function TailoredParticipationPathwaysSection() {
                     Pathway 01 • Individual Philanthropy
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-terracotta/10 text-terracotta-dark font-semibold">
-                    Section 80G Certified
+                    Verified Public Trust
                   </span>
                 </div>
 
@@ -97,7 +97,7 @@ export function TailoredParticipationPathwaysSection() {
                 <div className="space-y-2 pt-1 text-xs text-ink-secondary font-sans">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-terracotta shrink-0" />
-                    <span>Instant 80G Tax Exemption Certificate PDF download.</span>
+                    <span>Official Donation Receipt & Payment Acknowledgement PDF.</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-terracotta shrink-0" />
@@ -118,7 +118,7 @@ export function TailoredParticipationPathwaysSection() {
                   href="/login?next=/portal/dashboard"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-forest hover:text-terracotta-dark hover:bg-sand/30 rounded-xs border border-forest/20 transition-colors"
                 >
-                  <span>Donor Portal &amp; 80G</span>
+                  <span>Donor Portal &amp; Receipts</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
