@@ -3,7 +3,8 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
+import { isDonorPortalEnabled } from "@/config/portal";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -561,6 +562,9 @@ function LoginContent() {
 }
 
 export default function LoginPage() {
+  if (!isDonorPortalEnabled()) {
+    notFound();
+  }
   return (
     <Suspense
       fallback={

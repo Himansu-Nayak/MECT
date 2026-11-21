@@ -41,13 +41,13 @@ export function PortalNav() {
     },
     {
       href: "/portal/receipts",
-      label: "80G Receipts",
+      label: "Receipts",
       icon: FileDown,
       badge: verifiedReceiptsCount > 0 ? String(verifiedReceiptsCount) : null,
     },
     {
       href: "/portal/profile",
-      label: "Profile & 80G PAN",
+      label: "Profile & PAN",
       icon: UserCog,
       badge: dashboard?.account?.profileCompleted ? null : "Action Needed",
     },

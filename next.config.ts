@@ -9,6 +9,13 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_ENABLE_DONOR_PORTAL:
+      (process.env.ENABLE_DONOR_PORTAL || "").trim().toLowerCase() === "true" ||
+      (process.env.NEXT_PUBLIC_ENABLE_DONOR_PORTAL || "").trim().toLowerCase() === "true"
+        ? "true"
+        : "false",
+  },
   experimental: {
     cpus: 1,
     workerThreads: false,

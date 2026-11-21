@@ -2179,7 +2179,7 @@ export function UnifiedDonationExperience() {
                         Record Bank UTR / Transaction Reference
                       </h3>
                       <p className="text-xs text-ink-muted mt-0.5">
-                        Your UTR enables our accounts desk to match your payment in our daily SBI bank statement and issue your official tax receipt.
+                        Your UTR enables our accounts desk to match your payment in our daily SBI bank statement and issue your official numbered receipt.
                       </p>
                     </div>
 

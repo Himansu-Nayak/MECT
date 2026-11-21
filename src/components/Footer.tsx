@@ -7,6 +7,7 @@ import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/motion";
+import { isDonorPortalEnabled } from "@/config/portal";
 import {
   ShieldCheck,
   ArrowRight,
@@ -279,30 +280,34 @@ export function Footer() {
                   Donate to MECT
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
-                >
-                  Donor Sign In
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
-                >
-                  Create Supporter Account
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/portal/dashboard"
-                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
-                >
-                  Donor Portal &amp; 80G Receipts
-                </Link>
-              </li>
+              {isDonorPortalEnabled() && (
+                <>
+                  <li>
+                    <Link
+                      href="/login"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Donor Sign In
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/register"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Create Supporter Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/portal/dashboard"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Donor Portal &amp; Receipts
+                    </Link>
+                  </li>
+                </>
+              )}
               <li>
                 <Link
                   href="/volunteer"

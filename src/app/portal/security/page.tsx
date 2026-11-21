@@ -411,7 +411,7 @@ export default function PortalSecurityPage() {
               <div>
                 <strong className="text-forest block">Email Transactional Outbox</strong>
                 <p className="text-ink-muted mt-0.5">
-                  Automated computer-signed receipts and statutory Form 113/114 status dispatches.
+                  Automated computer-signed receipts and statutory status dispatches.
                 </p>
               </div>
               <span className="text-emerald-700 font-bold text-xs shrink-0 pt-1">

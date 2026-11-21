@@ -54,6 +54,77 @@ export async function runRenderedTaxCrawl(browser) {
   const page = await browser.newPage();
   const findings = [];
 
+  // Mock portal authentication and dashboard for authenticated portal routes crawling
+  await page.route("**/api/v1/portal/auth/refresh", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        accessToken: "mock-access-token",
+        refreshToken: "mock-refresh-token",
+        tokenType: "Bearer",
+        expiresIn: 3600,
+        userUuid: "usr_mock_12345",
+        role: "ROLE_DONOR",
+        primaryPhone: "+919437123616",
+        primaryEmail: "donor@example.org",
+        fullName: "Mock Supporter",
+      }),
+    });
+  });
+
+  await page.route("**/api/v1/portal/account/dashboard", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        account: {
+          userUuid: "usr_mock_12345",
+          primaryPhone: "+919437123616",
+          primaryEmail: "donor@example.org",
+          role: "ROLE_DONOR",
+          profile: {
+            fullName: "Mock Supporter",
+            pan: "ABCDE1234F",
+            addressLine1: "Civil Court Road",
+            city: "Balangir",
+            district: "Balangir",
+            state: "Odisha",
+            pinCode: "767001",
+          },
+          preferences: {
+            emailReceiptsEnabled: true,
+            whatsappOptIn: false,
+          },
+        },
+        donationSummary: {
+          totalAmount: 5000,
+          successfulCount: 1,
+          lastDonationDate: "2026-11-20T10:00:00Z",
+        },
+        donationHistory: [
+          {
+            donationReference: "MECT-2026-REF1",
+            amount: 5000,
+            currency: "INR",
+            status: "SUCCESSFUL",
+            programmeName: "Education & Learning Support",
+            date: "2026-11-20T10:00:00Z",
+            receiptNumber: "MECT-RCPT-2026-0001",
+            receiptAvailable: true,
+          },
+        ],
+        manualClaims: [],
+      }),
+    });
+  });
+
+  await page.addInitScript(() => {
+    try {
+      window.localStorage.setItem("mt_portal_refresh_token", "mock-refresh-token");
+    } catch {}
+  });
+
   for (const route of allRoutes) {
     const url = `${BASE_URL}${route}`;
     try {

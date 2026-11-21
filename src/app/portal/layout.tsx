@@ -1,4 +1,6 @@
+import { notFound } from "next/navigation";
 import { createPageMetadata } from "@/lib/seo";
+import { isDonorPortalEnabled } from "@/config/portal";
 
 export const metadata = createPageMetadata({
   title: "Donor & Supporter Portal",
@@ -13,5 +15,8 @@ export default function PortalLayout({
 }: {
   children: React.ReactNode;
 }) {
+  if (!isDonorPortalEnabled()) {
+    notFound();
+  }
   return <>{children}</>;
 }

@@ -603,13 +603,6 @@
       "isClassB": false
     },
     {
-      "url": "/login",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
       "url": "/register",
       "element": "script[type=application/ld+json]",
       "text": "40311302194\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 12A URN\",\"value\":\"AADTM5474FE20231\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 80G URN\",\"value\":\"AADTM5474FF20241\"},{\"@type\":\"PropertyValue\",\"name\":\"CSR Registration Number\",\"value\":\"CSR00081063\"},{\"@type\":\"PropertyValue\",\"name\":\"NITI Aayog NGO Darpan Unique ID\",\"value\":\"OR/2024/0466491\"}],\"address\":[{\"@type\":\"PostalAddress\",\"streetAddress\":\"Near Sai Mandir, Rugudipara\",\"addressLocality\":\"Balangir\",\"addressRegion\":\"Odisha\",\"postalCode\":\"767001\",\"addressCountry\":\"IN\",\"description\":\"Registered Office\"},{\"@type\":\"PostalAddress\",\"streetAddress\":\"A1, 3rd Floor, Lewis Plaza, BJB Nagar\",\"addressLocality\":\"Bhubaneswar\",\"addressRegion\":\"Odisha\",\"postalCode\":\"751014\",\"addressCountry\":\"IN\",\"description\":\"Administrative Office\"}],\"contactPoint\":[{\"@type\":\"ContactPoint\",\"contactType\":\"Secretariat & Public Inquiries\",\"telephone\":\"+919437123616\",\"email\":\"mect220@gmail",
@@ -638,13 +631,6 @@
       "isClassB": false
     },
     {
-      "url": "/portal/login",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
       "url": "/portal/welcome",
       "element": "script[type=application/ld+json]",
       "text": "40311302194\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 12A URN\",\"value\":\"AADTM5474FE20231\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 80G URN\",\"value\":\"AADTM5474FF20241\"},{\"@type\":\"PropertyValue\",\"name\":\"CSR Registration Number\",\"value\":\"CSR00081063\"},{\"@type\":\"PropertyValue\",\"name\":\"NITI Aayog NGO Darpan Unique ID\",\"value\":\"OR/2024/0466491\"}],\"address\":[{\"@type\":\"PostalAddress\",\"streetAddress\":\"Near Sai Mandir, Rugudipara\",\"addressLocality\":\"Balangir\",\"addressRegion\":\"Odisha\",\"postalCode\":\"767001\",\"addressCountry\":\"IN\",\"description\":\"Registered Office\"},{\"@type\":\"PostalAddress\",\"streetAddress\":\"A1, 3rd Floor, Lewis Plaza, BJB Nagar\",\"addressLocality\":\"Bhubaneswar\",\"addressRegion\":\"Odisha\",\"postalCode\":\"751014\",\"addressCountry\":\"IN\",\"description\":\"Administrative Office\"}],\"contactPoint\":[{\"@type\":\"ContactPoint\",\"contactType\":\"Secretariat & Public Inquiries\",\"telephone\":\"+919437123616\",\"email\":\"mect220@gmail",
@@ -655,13 +641,6 @@
       "url": "/portal/welcome",
       "element": "<footer>",
       "text": "No current-year deduction is represented on this page",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
-      "url": "/portal/welcome",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
       "classification": "Class (a) Neutral Statutory Statement (PASS)",
       "isClassB": false
     },
@@ -680,13 +659,6 @@
       "isClassB": false
     },
     {
-      "url": "/portal/dashboard",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
       "url": "/portal/donations",
       "element": "script[type=application/ld+json]",
       "text": "40311302194\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 12A URN\",\"value\":\"AADTM5474FE20231\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 80G URN\",\"value\":\"AADTM5474FF20241\"},{\"@type\":\"PropertyValue\",\"name\":\"CSR Registration Number\",\"value\":\"CSR00081063\"},{\"@type\":\"PropertyValue\",\"name\":\"NITI Aayog NGO Darpan Unique ID\",\"value\":\"OR/2024/0466491\"}],\"address\":[{\"@type\":\"PostalAddress\",\"streetAddress\":\"Near Sai Mandir, Rugudipara\",\"addressLocality\":\"Balangir\",\"addressRegion\":\"Odisha\",\"postalCode\":\"767001\",\"addressCountry\":\"IN\",\"description\":\"Registered Office\"},{\"@type\":\"PostalAddress\",\"streetAddress\":\"A1, 3rd Floor, Lewis Plaza, BJB Nagar\",\"addressLocality\":\"Bhubaneswar\",\"addressRegion\":\"Odisha\",\"postalCode\":\"751014\",\"addressCountry\":\"IN\",\"description\":\"Administrative Office\"}],\"contactPoint\":[{\"@type\":\"ContactPoint\",\"contactType\":\"Secretariat & Public Inquiries\",\"telephone\":\"+919437123616\",\"email\":\"mect220@gmail",
@@ -697,13 +669,6 @@
       "url": "/portal/donations",
       "element": "<footer>",
       "text": "No current-year deduction is represented on this page",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
-      "url": "/portal/donations",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
       "classification": "Class (a) Neutral Statutory Statement (PASS)",
       "isClassB": false
     },
@@ -722,13 +687,6 @@
       "isClassB": false
     },
     {
-      "url": "/portal/receipts",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
       "url": "/portal/security",
       "element": "script[type=application/ld+json]",
       "text": "40311302194\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 12A URN\",\"value\":\"AADTM5474FE20231\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 80G URN\",\"value\":\"AADTM5474FF20241\"},{\"@type\":\"PropertyValue\",\"name\":\"CSR Registration Number\",\"value\":\"CSR00081063\"},{\"@type\":\"PropertyValue\",\"name\":\"NITI Aayog NGO Darpan Unique ID\",\"value\":\"OR/2024/0466491\"}],\"address\":[{\"@type\":\"PostalAddress\",\"streetAddress\":\"Near Sai Mandir, Rugudipara\",\"addressLocality\":\"Balangir\",\"addressRegion\":\"Odisha\",\"postalCode\":\"767001\",\"addressCountry\":\"IN\",\"description\":\"Registered Office\"},{\"@type\":\"PostalAddress\",\"streetAddress\":\"A1, 3rd Floor, Lewis Plaza, BJB Nagar\",\"addressLocality\":\"Bhubaneswar\",\"addressRegion\":\"Odisha\",\"postalCode\":\"751014\",\"addressCountry\":\"IN\",\"description\":\"Administrative Office\"}],\"contactPoint\":[{\"@type\":\"ContactPoint\",\"contactType\":\"Secretariat & Public Inquiries\",\"telephone\":\"+919437123616\",\"email\":\"mect220@gmail",
@@ -743,13 +701,6 @@
       "isClassB": false
     },
     {
-      "url": "/portal/security",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
       "url": "/portal/profile",
       "element": "script[type=application/ld+json]",
       "text": "40311302194\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 12A URN\",\"value\":\"AADTM5474FE20231\"},{\"@type\":\"PropertyValue\",\"name\":\"Income Tax Section 80G URN\",\"value\":\"AADTM5474FF20241\"},{\"@type\":\"PropertyValue\",\"name\":\"CSR Registration Number\",\"value\":\"CSR00081063\"},{\"@type\":\"PropertyValue\",\"name\":\"NITI Aayog NGO Darpan Unique ID\",\"value\":\"OR/2024/0466491\"}],\"address\":[{\"@type\":\"PostalAddress\",\"streetAddress\":\"Near Sai Mandir, Rugudipara\",\"addressLocality\":\"Balangir\",\"addressRegion\":\"Odisha\",\"postalCode\":\"767001\",\"addressCountry\":\"IN\",\"description\":\"Registered Office\"},{\"@type\":\"PostalAddress\",\"streetAddress\":\"A1, 3rd Floor, Lewis Plaza, BJB Nagar\",\"addressLocality\":\"Bhubaneswar\",\"addressRegion\":\"Odisha\",\"postalCode\":\"751014\",\"addressCountry\":\"IN\",\"description\":\"Administrative Office\"}],\"contactPoint\":[{\"@type\":\"ContactPoint\",\"contactType\":\"Secretariat & Public Inquiries\",\"telephone\":\"+919437123616\",\"email\":\"mect220@gmail",
@@ -760,13 +711,6 @@
       "url": "/portal/profile",
       "element": "<footer>",
       "text": "No current-year deduction is represented on this page",
-      "classification": "Class (a) Neutral Statutory Statement (PASS)",
-      "isClassB": false
-    },
-    {
-      "url": "/portal/profile",
-      "element": "<span>",
-      "text": "Historical 80G URN:",
       "classification": "Class (a) Neutral Statutory Statement (PASS)",
       "isClassB": false
     }
