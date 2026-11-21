@@ -89,6 +89,17 @@ Over the course of 10 audit and remediation loops, the codebase has undergone ex
   - **Evidence:** 34 routes crawled, 102 neutral statutory disclosures, 0 Class (b) promotional tax phrases. 5 chatbot question/answer pairs verified.
   - **Status:** **PASS**
 
+### 3.3 End-to-End Donation Workflow Regression Tests
+- **Command:** `node scripts/test_donation_workflow_e2e.mjs` (executed against production Next.js build)
+- **Evidence (13/13 Passed):**
+  - `POST /api/donations/claim` returns HTTP 503 when backend unreachable with fail-closed message and 0 synthetic reference numbers.
+  - `POST /api/donations/claim` returns HTTP 400 on missing required donor fields.
+  - `POST /api/contact` returns HTTP 503 when backend unreachable with fail-closed message and 0 synthetic reference numbers.
+  - `POST /api/contact` rejects bot submissions via honeypot field (`_gotcha`).
+  - All 8 legacy & campaign routes redirect permanently (HTTP 308): `/campaign`, `/campaign/hanuman-murti`, `/campaigns/murti`, `/murti`, `/hanuman-murti`, `/donate/claim`, `/donate/sbi`, `/donate/upi`.
+  - `GET /donate` returns HTTP 200 with static State Bank of India credentials.
+- **Status:** **PASS**
+
 ### 3.2 Backend Test Results
 - **Local Host Environment:**
   - **Command Executed:**
