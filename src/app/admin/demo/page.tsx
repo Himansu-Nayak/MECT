@@ -92,7 +92,7 @@ const INITIAL_DEMO_STATE: DemoState = {
       amount: 5000,
       programme: "HANUMAN_MURTI",
       programmeName: "The Grand Hanuman Murti Project",
-      method: "Cashfree Online UPI",
+      method: "Cashfree Online UPI (Disabled in Production)",
       status: "COMPLETED",
       receiptNumber: "REC-2026-DEMO-001",
       sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

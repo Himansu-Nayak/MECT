@@ -31,7 +31,7 @@ export default function DonatePage() {
               Donations are accepted by bank transfer / UPI. A receipt is issued after the Trust verifies the transfer.
             </p>
             <p className="text-xs text-ink-muted leading-relaxed">
-              MECT does not operate online payment gateway checkouts. All contributions are received directly into the Trust&apos;s verified State Bank of India account without private payment processor intermediaries.
+              Contributions are received directly into the Trust&apos;s verified State Bank of India account without third-party processors or commercial intermediaries.
             </p>
           </div>
 

@@ -91,7 +91,7 @@ function ensureCashfreeSdkLoaded(): Promise<void> {
     script.onload = () => resolve();
     script.onerror = () => {
       cashfreeScriptPromise = null;
-      reject(new Error("Unable to load Cashfree Checkout SDK. You can retry or use our verified SBI bank transfer option."));
+      reject(new Error("Online checkout is not supported. Please use our verified SBI bank transfer option."));
     };
     document.head.appendChild(script);
   });
@@ -276,7 +276,7 @@ export function UnifiedDonationExperience() {
   const [termsAccepted, setTermsAccepted] = useState(true);
 
   // Payment states (Step 6)
-  const [paymentChannel, setPaymentChannel] = useState<"CASHFREE" | "SBI_DIRECT">("CASHFREE");
+  const [paymentChannel, setPaymentChannel] = useState<"CASHFREE" | "SBI_DIRECT">("SBI_DIRECT");
   const [submitting, setSubmitting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);

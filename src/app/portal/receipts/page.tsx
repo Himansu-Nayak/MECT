@@ -130,7 +130,7 @@ export default function PortalReceiptsPage() {
             <Receipt className="w-10 h-10 text-ink-muted mx-auto" />
             <h3 className="font-serif font-bold text-forest text-lg">No Receipts Issued Yet</h3>
             <p className="text-xs text-ink-muted max-w-md mx-auto">
-              Receipts are generated immediately upon confirmed settlement of online gateway donations or following manual SBI UTR bank statement reconciliation.
+              Numbered receipts are issued after the Trust verifies your State Bank of India bank transfer or UPI payment against its bank records.
             </p>
             <div className="pt-2">
               <Link href="/donate">

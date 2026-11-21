@@ -227,8 +227,8 @@ public class PaymentConfigurationService {
         } else {
             // Public endpoint suppresses all static bank transfer credentials, IFSC, UPI, QR images and manual UTR instructions
             m.put("sbiQrEnabled", false);
-            m.put("paymentInstructions", "All contributions are processed securely online through authorized payment gateways. Digital receipts are issued immediately upon transaction confirmation.");
-            m.put("gatewayNoticeText", "Online payments are processed securely via authorized payment gateways. MECT operates strictly through verified digital banking channels.");
+            m.put("paymentInstructions", "Contributions are accepted by direct State Bank of India bank transfer (NEFT/RTGS) or UPI. Submit your UTR/reference after paying. A numbered receipt is issued after the Trust checks your transfer against its bank records.");
+            m.put("gatewayNoticeText", "Contributions are accepted by direct State Bank of India bank transfer (NEFT/RTGS) or UPI. Submit your UTR/reference after paying. A numbered receipt is issued after the Trust checks your transfer against its bank records.");
         }
         m.put("statutoryStatus", cfg.getStatutoryStatus());
         m.put("statutoryFinancialYear", cfg.getStatutoryFinancialYear());

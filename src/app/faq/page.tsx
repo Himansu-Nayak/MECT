@@ -341,7 +341,7 @@ export default function FAQPage() {
                   <Badge variant="gold">3 Questions</Badge>
                 </div>
                 <p className="text-xs text-ink-sand leading-relaxed">
-                  Zero commission policy, authorized online checkout, statutory disclosure archive, and CSR collaboration.
+                  Zero commission policy, direct SBI transfer &amp; UPI, statutory disclosure archive, and CSR collaboration.
                 </p>
               </Card>
             </a>

@@ -135,8 +135,19 @@ public class DonationEcosystemIntegrationTests {
                 .andReturn();
 
         JsonNode body = objectMapper.readTree(configRes.getResponse().getContentAsString());
-        assertThat(body.get("config").get("paymentInstructions").asText()).doesNotContain("SBI").doesNotContain("UTR");
-        assertThat(body.get("config").get("gatewayNoticeText").asText()).doesNotContain("SBI").doesNotContain("UTR");
+        String expectedPublicNotice = "Contributions are accepted by direct State Bank of India bank transfer (NEFT/RTGS) or UPI. Submit your UTR/reference after paying. A numbered receipt is issued after the Trust checks your transfer against its bank records.";
+        assertThat(body.get("config").get("paymentInstructions").asText()).isEqualTo(expectedPublicNotice);
+        assertThat(body.get("config").get("gatewayNoticeText").asText()).isEqualTo(expectedPublicNotice);
+        assertThat(body.get("config").get("paymentInstructions").asText().toLowerCase())
+                .doesNotContain("cashfree")
+                .doesNotContain("gateway")
+                .doesNotContain("processed securely online")
+                .doesNotContain("receipts issued immediately");
+        assertThat(body.get("config").get("gatewayNoticeText").asText().toLowerCase())
+                .doesNotContain("cashfree")
+                .doesNotContain("gateway")
+                .doesNotContain("processed securely online")
+                .doesNotContain("receipts issued immediately");
         List<String> codes = new java.util.ArrayList<>();
         for (JsonNode p : body.get("programmes")) {
             codes.add(p.get("code").asString());

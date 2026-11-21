@@ -135,7 +135,7 @@ export default function AdminPaymentSettingsPage() {
                 onChange={(e) => setConfig({ ...config, cashfreeEnabled: e.target.checked })}
                 className="accent-forest"
               />
-              <span className="font-semibold text-forest">Cashfree Primary Enabled</span>
+              <span className="font-semibold text-forest">Cashfree Primary (Disabled in Production — SBI Direct Only)</span>
             </label>
             <label className="flex items-center gap-2 p-3 border border-border-warm rounded-xs cursor-pointer">
               <input
@@ -198,8 +198,8 @@ export default function AdminPaymentSettingsPage() {
                 onChange={(e) => setConfig({ ...config, primaryMethod: e.target.value as "CASHFREE" | "SBI_QR" })}
                 className="w-full h-10 px-3 text-sm bg-white border border-border-warm rounded-xs"
               >
-                <option value="CASHFREE">CASHFREE (Default)</option>
-                <option value="SBI_QR">SBI_QR</option>
+                <option value="SBI_QR">SBI_QR (Active Production Default)</option>
+                <option value="CASHFREE" disabled>CASHFREE (Disabled in Production)</option>
               </select>
             </div>
             <div className="md:col-span-3">

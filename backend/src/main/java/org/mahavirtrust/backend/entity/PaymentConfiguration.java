@@ -57,10 +57,10 @@ public class PaymentConfiguration {
     private String sbiQrImageUrl = "/images/mect-sbi-upi-qr.png";
 
     @Column(name = "payment_instructions", nullable = false, columnDefinition = "TEXT")
-    private String paymentInstructions = "Verify beneficiary name MAHAVEER EDUCATIONAL CHARITA in your UPI app before confirming transfer, then submit your 12-digit UTR/reference for verification.";
+    private String paymentInstructions = "Contributions are accepted by direct State Bank of India bank transfer (NEFT/RTGS) or UPI. Submit your UTR/reference after paying. A numbered receipt is issued after the Trust checks your transfer against its bank records.";
 
     @Column(name = "gateway_notice_text", nullable = false, length = 500)
-    private String gatewayNoticeText = "Online payments are processed via Cashfree. Direct SBI UPI/bank transfers are verified manually by MECT Accounts before final receipt issuance.";
+    private String gatewayNoticeText = "Contributions are accepted by direct State Bank of India bank transfer (NEFT/RTGS) or UPI. Submit your UTR/reference after paying. A numbered receipt is issued after the Trust checks your transfer against its bank records.";
 
     @Column(name = "statutory_status", nullable = false, length = 40)
     private String statutoryStatus = "UNCONFIRMED_FY_2026_27";

@@ -421,7 +421,7 @@ export async function fetchDonationProgrammes(): Promise<DonationProgrammeItem[]
 
 export async function fetchGatewayStatus(): Promise<GatewayStatusResponse> {
   const res = await fetch(`${API_BASE_URL}/public/donations/gateway-status`);
-  if (!res.ok) throw new Error("Unable to check payment gateway availability.");
+  if (!res.ok) throw new Error("Unable to check payment configuration availability.");
   return res.json();
 }
 

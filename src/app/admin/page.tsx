@@ -105,7 +105,7 @@ export default function AdminDashboardPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-ink-sand">Channel Split (Verified)</span>
             <div className="mt-3 text-xs space-y-1">
               <div className="flex justify-between">
-                <span>Cashfree Gateway:</span>
+                <span>Cashfree Gateway (Disabled):</span>
                 <strong className="font-mono text-forest">₹{Number(donationSummary.cashfreeVerifiedAmount).toLocaleString("en-IN")}</strong>
               </div>
               <div className="flex justify-between">

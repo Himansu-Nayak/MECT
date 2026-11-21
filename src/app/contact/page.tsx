@@ -112,7 +112,7 @@ export default function ContactPage() {
       {/* 1. Page Hero */}
       <PageHero
         title="Public Secretariat Inquiry & Guidance Desk"
-        description="Official communications and administrative guidance gateway for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha."
+        description="Official communications and administrative guidance desk for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha."
         breadcrumbs={[{ label: "Public Secretariat Inquiry" }]}
         actions={
           <div className="flex flex-wrap gap-4 pt-2">

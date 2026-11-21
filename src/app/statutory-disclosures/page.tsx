@@ -362,7 +362,7 @@ export default function StatutoryDisclosuresPage() {
 
               <div className="space-y-3 text-xs font-sans text-white/90">
                 <p className="leading-relaxed">
-                  MECT maintains dedicated, audited banking channels at State Bank of India (Rajendra College Square, Bolangir; A/C: {MECT_ORG.bank.accountNumber}, IFSC: {MECT_ORG.bank.ifsc}). In accordance with institutional guidelines, contributions are accepted strictly via direct bank transfer (NEFT/RTGS/IMPS) or verified UPI ({MECT_ORG.bank.upiId}) under accounts reconciliation. No commercial payment gateways are operated.
+                  MECT maintains dedicated, audited banking channels at State Bank of India (Rajendra College Square, Bolangir; A/C: {MECT_ORG.bank.accountNumber}, IFSC: {MECT_ORG.bank.ifsc}). In accordance with institutional guidelines, contributions are accepted strictly via direct bank transfer (NEFT/RTGS/IMPS) or verified UPI ({MECT_ORG.bank.upiId}) under accounts reconciliation. No third-party payment processors or commercial intermediaries are operated.
                 </p>
                 <div className="p-3 bg-white/10 rounded-xs space-y-1">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-sand">Receipting &amp; Accountability</div>

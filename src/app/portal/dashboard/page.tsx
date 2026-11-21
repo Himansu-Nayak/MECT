@@ -167,7 +167,7 @@ export default function PortalDashboardPage() {
               </h1>
               <p className="text-xs sm:text-sm text-cream/90 max-w-2xl">
                 {account.primaryEmail || account.primaryPhone || "Verified MECT Supporter"}{" "}
-                &bull; Track your Cashfree &amp; SBI transfers, download official PDF receipts, claim guest donations, and manage consent.
+                &bull; Track your direct SBI transfers &amp; UPI payments, download numbered receipts, claim guest donations, and manage consent.
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function PortalDashboardPage() {
             <p className="text-2xl font-serif font-bold text-forest">
               {donationSummary.pendingCount}
             </p>
-            <p className="text-[11px] text-ink-sand">Gateway or SBI UTR review</p>
+            <p className="text-[11px] text-ink-sand">SBI transfer or UTR review</p>
           </Card>
 
           <Card padding="md" className="bg-white border-border-warm space-y-1.5">
@@ -362,7 +362,7 @@ export default function PortalDashboardPage() {
                   My Donations, Payment History &amp; Receipts
                 </h2>
                 <p className="text-xs text-ink-sand">
-                  Official receipts are generated strictly after verified Cashfree or SBI statement settlement.
+                  Numbered receipts are generated strictly after verified State Bank of India statement settlement.
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -484,7 +484,7 @@ export default function PortalDashboardPage() {
               <span>Help &amp; Receipt Support</span>
             </div>
             <p className="text-xs text-ink-sand leading-relaxed">
-              Need help reconciling a pending Cashfree or SBI transfer? Contact our Finance &amp; Donor Desk with your donation reference or UTR.
+              Need help reconciling a pending SBI transfer or UPI payment? Contact our Finance &amp; Donor Desk with your donation reference or UTR.
             </p>
             <Link href="/contact" className="text-xs font-bold text-terracotta-dark underline inline-block">
               Contact MECT Donor Support &rarr;

@@ -147,6 +147,29 @@ async function verifyPagesAndLinks(browser, routes) {
         foundForbidden.push(term);
       }
     }
+
+    // Public route gateway & online checkout prohibition assertion (Task 1)
+    if (!route.startsWith("/admin")) {
+      const lowerBody = bodyText.toLowerCase();
+      const forbiddenGatewayTerms = [
+        "cashfree",
+        "gateway",
+        "online payment",
+        "processed securely online",
+        "receipts issued immediately",
+      ];
+      for (const term of forbiddenGatewayTerms) {
+        if (lowerBody.includes(term)) {
+          foundForbidden.push(`[PROHIBITED_GATEWAY_WORD: ${term}]`);
+        }
+      }
+      if (/\b(?:credit\s+card|debit\s+card|pay\s+(?:by|with)\s+card|card\s+(?:payment|checkout))\b/i.test(bodyText)) {
+        foundForbidden.push("[PROHIBITED_PAYMENT_CARD: card payment reference]");
+      }
+      if (route === "/donate" && /\bcards?\b/i.test(bodyText)) {
+        foundForbidden.push("[PROHIBITED_CARD_ON_DONATE: card reference on /donate]");
+      }
+    }
     const fiduciaryCount = (bodyText.match(/fiduciary/gi) || []).length;
 
     // Collect all links on page
@@ -261,6 +284,22 @@ async function verifyPagesAndLinks(browser, routes) {
     throw new Error(`Bank details discrepancy detected: ${bankDiscrepancies.join(", ")}`);
   } else {
     console.log("[PASS] Bank details consistency verified across all rendered pages: 33341302498 / SBIN0001701 / 86971610172@sbi.");
+  }
+
+  // Assert zero forbidden gateway / cashfree / card / online payment words across all public routes
+  console.log("\n[VERIFY] Checking zero mentions of gateway, cashfree, card, online payment on all public routes...");
+  const forbiddenGatewayViolations = [];
+  for (const m of pageMetrics) {
+    if (m.route.startsWith("/admin")) continue;
+    if (m.forbiddenStrings && m.forbiddenStrings.length > 0) {
+      forbiddenGatewayViolations.push(`${m.route}: [${m.forbiddenStrings.join(", ")}]`);
+    }
+  }
+  if (forbiddenGatewayViolations.length > 0) {
+    console.error("[PROHIBITED GATEWAY COPY DETECTED]:", forbiddenGatewayViolations);
+    throw new Error(`Prohibited gateway copy found on public routes: ${forbiddenGatewayViolations.join("; ")}`);
+  } else {
+    console.log("[PASS] Zero mentions of gateway, cashfree, online payment, or card on public routes.");
   }
 
   await context.close();
