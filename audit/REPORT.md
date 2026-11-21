@@ -405,3 +405,103 @@ The complete registry in `OWNER_DECISIONS.md` now tracks 15 documented decisions
 14. **Privacy Policy Review:** CA / legal counsel review of intake data retention protocols.
 15. **Founder / Trustee LinkedIn Profile URLs:** Provide verified profile URLs if desired on public pages.
 
+---
+
+## 8. Loop 9 — Release Readiness & Verification Closure (2026-11-21)
+
+### 8.1 Status per Item & Commit Log
+
+| Item | Description | Status | Commit SHA | Evidence |
+| :--- | :--- | :---: | :---: | :--- |
+| **1. Backend Java Compile & PostConstruct** | Compile backend with JDK 21, fail-safe `@PostConstruct` (handles nulls/missing row, catches Throwable, never aborts startup), add `pendingClaims` next to `pendingInquiries`. | **PASS** | `690db1e` | `mvn -q -DskipTests compile` (0 errors), `mvn test` (127/127 passed) |
+| **2. Rendered Tax Wording Crawl & Chatbot** | Playwright crawl over all 34 routes (sitemap + portal + auth) inspecting title, meta/OG, JSON-LD, body, chatbot. Fixed all 4 class (b) phrases. Added crawl to `npm run verify`. Updated Chatbot Q1 response. | **PASS** | `7bc63df` | `scripts/verify_rendered_tax.mjs` (110 Class a neutral, 0 Class b promotional). 5/5 Chatbot questions verified. |
+| **3. SHA-256 Receipt Claim Audit** | Audited `ReceiptPdfService` and verification path. Confirmed SHA-256 is computed and stored in DB, but not printed on PDF and no verification endpoint exists. Eradicated misleading crypto claims, replaced with "numbered receipt". | **PASS** | `143d42a` | `src/app/login/page.tsx`, `src/app/register/page.tsx`, `src/app/portal/receipts/page.tsx`, `src/components/sections/UnifiedDonationExperience.tsx` |
+| **4. Notifications Reclassification** | Reclassified Loop 8 item 3 as PARTIAL. Backend email uses Resend HTTP API rather than SMTP. Verified non-blocking fallback to in-portal admin queue counters (`pendingInquiries` and `pendingClaims`). | **PARTIAL / OWNER** | `fe2f39f` | `OWNER_DECISIONS.md` Item 14 updated |
+| **5. Repeatable Secret Scan & Pre-Push Check** | Extended scanner with 10 patterns (`gsk_`, `sk-`, `AKIA`, `ghp_`, `xox`, `-----BEGIN`, `password`, `jwt`, `secret`, `smtp`, base64 in `.env`). Added masking (max 4 chars). Added `npm run scan:secrets`. Documented `docs/HISTORY_CLEANUP.md`. | **PASS** | `0078a13` | `npm run scan:secrets`: 0 tracked secrets in working tree; commit `e995fbb` flagged with masked sample `gsk_...[REDACTED 52 chars]`. Added blocking Item 1 to `OWNER_DECISIONS.md`. |
+| **6. Secretariat Email Provenance** | Traced `mect220@gmail.com` to commit `b294267` (Nov 18, 2026, Phase 24). Documented owner confirmation requirement. Single source of truth is `src/config/org.ts`. | **OWNER** | `69f37cb` | `git log -S'mect220'` output, `OWNER_DECISIONS.md` Item 5 |
+| **7. Release Readiness Matrix** | Created comprehensive release readiness gate matrix and sequential pre-production execution runbook. | **PASS** | `b060852` | `RELEASE_READINESS.md` |
+
+---
+
+### 8.2 Rendered Tax Wording Crawl Table (Item 2)
+
+**Crawl Scope:** 34 Rendered Routes (all sitemap routes plus `/login`, `/register`, `/portal/login`, `/portal/welcome`, `/portal/dashboard`, `/portal/donations`, `/portal/receipts`, `/portal/security`, `/portal/profile`).  
+**Audited Elements:** `<title>`, `<meta description>`, all `<meta property="og:*">`, `<script type="application/ld+json">`, `<header>`, `<footer>`, `<main>` text elements, initial chatbot greeting.
+
+| Target Category | Total Audited | Class (a) Neutral | Class (b) Promotional | Status |
+| :--- | :---: | :---: | :---: | :---: |
+| **Rendered DOM Elements** | 110 | 110 | 0 | **PASS** |
+| **Chatbot Responses** | 5 | 5 | 0 | **PASS** |
+
+#### Representative Rendered Sample Findings:
+| URL | Element | Rendered Text Snippet | Classification |
+| :--- | :--- | :--- | :---: |
+| `/` | `script[type=application/ld+json]` | `Income Tax Section 12A URN: AADTM5474FE20231, Section 80G URN: AADTM5474FF20241` | Class (a) Neutral Statutory |
+| `/` | `<footer>` | `No current-year deduction is represented on this page` | Class (a) Neutral Statutory |
+| `/` | `<h3>` | `Historical Section 12A & 80G Orders` | Class (a) Neutral Statutory |
+| `/` | `<span>` | `12A: AADTM5474FE20231 \| 80G: AADTM5474FF20241` | Class (a) Neutral Statutory |
+| `/` | `<span>` | `Make a Contribution (Numbered Receipt)` *(formerly Instant 80G Receipt)* | Class (a) Neutral Statutory |
+| `/donate` | `<p>` | `Tax treatment of contributions is subject to applicable law and confirmation of current statutory eligibility...` | Class (a) Neutral Statutory |
+| `/about` | `<h3>` | `Section 80G Historical Approval & Compliance Notice` | Class (a) Neutral Statutory |
+| `/statutory-disclosures` | `<span>` | `DIRECT TAXES • SECTION 12A REGISTRATION` *(formerly Tax Exemption)* | Class (a) Neutral Statutory |
+| `/governance` | `<h3>` | `Territorial Application & Charitable Scope` *(formerly Tax Exemption)* | Class (a) Neutral Statutory |
+| `/governance` | `<p>` | `Per Clause 24, all income and corpus must be applied solely to public educational and charitable purposes within India...` | Class (a) Neutral Statutory |
+| `/portal/receipts` | `<span>` | `Historical 80G URN: AADTM5474FF20241` | Class (a) Neutral Statutory |
+
+#### Chatbot Statutory & Neutrality Audit Results:
+| Question | Chatbot Response Quoted | Compliance Verification |
+| :--- | :--- | :---: |
+| **Q1: "Is my donation 80G eligible?"** | *"Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27. This order does not by itself confirm eligibility for donations made now."* | PASS (Includes exact required sentence; zero promotional claims) |
+| **Q2: "Will I get a tax receipt?"** | *"You will receive an Official Donation Receipt & Payment Acknowledgement after the Trust checks your State Bank of India transfer or UPI payment against its bank records. Formal tax certificates are subject to applicable statutory filing."* | PASS (Truthful bank reconciliation notice) |
+| **Q3: "How much tax will I save?"** | *"MECT does not calculate or guarantee personal tax savings. Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. Please consult your tax advisor regarding your specific tax filing."* | PASS (Zero tax deduction promises) |
+| **Q4: "Is the trust registered?"** | *"Yes. Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust registered under the Indian Trusts Act, 1882 at Balangir, Odisha (Trust Deed No. 40311302194, registered 30-07-2013). The Trust holds PAN AADTM5474F, MCA CSR-1 registration CSR00081063, and NITI Aayog NGO Darpan ID OR/2024/0466491."* | PASS (Exact statutory registration credentials) |
+| **Q5: "Can I pay by card?"** | *"No. MECT does not accept credit or debit cards, and does not operate an online payment gateway. Contributions are accepted exclusively via direct State Bank of India bank transfer (NEFT/RTGS) or official UPI (86971610172@sbi). Details are available at https://mect.org.in/donate."* | PASS (Strict non-acceptance of cards and gateway) |
+
+---
+
+### 8.3 Secret Scan Report Table (Item 5)
+
+**Scan Suite:** `npm run scan:secrets` (`scripts/scan_secrets.mjs`)  
+**Commit Range Audited:** 136 commits on `origin/main..HEAD`  
+**Masking Standard Enforced:** At most the first 4 characters displayed.
+
+#### Git Commit History Scan:
+| Commit Hash | Commit Date | Subject | Secret Count | Pattern Detected | Sample Masked Value |
+| :---: | :---: | :--- | :---: | :--- | :--- |
+| `e995fbb` | 2026-11-14 | feat(ai): enhance HIm chatbot with concise responses | 1 | Groq API Key (`gsk_...`) | `gsk_...[REDACTED 52 chars]` |
+
+*(Note: Commit `305c80a` on 2026-11-14 scrubbed this key from the tracked file. It persists solely in immutable git historical commit objects. Remediation instructions for `git filter-repo` are recorded in `docs/HISTORY_CLEANUP.md`, and immediate API key revocation is registered as Blocking Item 1 in `OWNER_DECISIONS.md`.)*
+
+#### Working Tree Scan (Tracked Repository Files):
+| Category | Inspected Scope | Active Secrets Detected | Status |
+| :--- | :--- | :---: | :---: |
+| **Tracked Repository Files** | Full tree across `src/`, `backend/`, `docs/`, `scripts/`, `content/` | **0** | **PASS** |
+| **Untracked / Ignored Files** | `.env.local` (local developer environment) | 2 (Advisory) | Git-ignored (`.gitignore`) |
+
+---
+
+### 8.4 Release Readiness Gate Matrix (Item 7)
+
+Directly mirrored from `RELEASE_READINESS.md`:
+
+| Gate | Status | Evidence (File or Command) | Blocks Release? |
+| :--- | :---: | :--- | :---: |
+| **Bank details vs physical passbook** | **OWNER** | `src/config/org.ts`, physical passbook inspection required per Gate 1 | **YES** |
+| **Helpline phone number (+91 94371 23616)** | **OWNER** | `OWNER_DECISIONS.md` Item 2; telecom contract / SIM verification | **YES** |
+| **Darpan ID (OR/2024/0466491)** | **OWNER** | `OWNER_DECISIONS.md` Item 4; NITI Aayog portal certificate | **YES** |
+| **Chartered Accountant tax review** | **OWNER** | `OWNER_DECISIONS.md` Item 8; CA signoff on 12A & 80G validity notes | **YES** |
+| **Groq API key revoked (commit e995fbb)** | **OWNER** | `OWNER_DECISIONS.md` Item 1; Groq console revocation confirmation | **YES** |
+| **Java compile & backend test suite** | **PASS** | `mvn -q -DskipTests compile` (0 errors), `mvn test` (127/127 passed) | **NO** |
+| **End-to-end backend test with Postgres** | **NOT VERIFIED** | Local Docker daemon unavailable; mandatory staging test in `DEPLOYMENT_CHECKLIST.md` Step 5 | **YES** |
+| **Notification path (Resend / SMTP)** | **OWNER** | `OWNER_DECISIONS.md` Item 14; database intake queue verified | **NO** |
+| **Rendered tax crawl (0 class b phrases)** | **PASS** | `scripts/verify_rendered_tax.mjs` (110 class a neutral, 0 class b promotional) | **NO** |
+| **SHA-256 receipt claim honesty** | **PASS** | Removed unprinted crypto claims; replaced with "numbered receipt" (commit `143d42a`) | **NO** |
+| **Rendered verification suite (crawl & links)** | **PASS** | `npm run verify` (`scripts/verify_rendered.mjs`, 0 broken links/anchors) | **NO** |
+| **Performance medians (LCP & CLS)** | **PASS** | `npm run verify:perf` (`scripts/verify_perf.mjs`, 3-run Lighthouse medians) | **NO** |
+| **Accessibility compliance (Axe Core)** | **PASS** | `scripts/verify_rendered.mjs` (0 critical or serious Axe violations) | **NO** |
+| **Secret scan (commits & working tree)** | **PASS** | `npm run scan:secrets` (`scripts/scan_secrets.mjs`, 0 tracked secrets) | **NO** |
+| **Privacy review (intake data policy)** | **OWNER** | `src/app/privacy/page.tsx`, `OWNER_DECISIONS.md` Item 15; legal signoff | **YES** |
+| **Real field photography replacements** | **OWNER** | `audit/PHOTO_INVENTORY.md`, `OWNER_DECISIONS.md` Item 9 | **NO** |
+| **Real signed annual report PDFs** | **OWNER** | `OWNER_DECISIONS.md` Item 10; on-page table summary deployed | **NO** |
+
+
