@@ -23,7 +23,7 @@ import {
  * MECT Phase 26 — Section 09: Bespoke Participation Pathways Atelier
  *
  * Implements purposeful visual differentiation across engagement paths:
- * - Individual Donors: Prominent terracotta card with instant 80G tax receipt guarantee.
+ * - Individual Donors: Prominent terracotta card with numbered donation receipt acknowledgement.
  * - Corporate CSR: Sovereign dark slate executive docket with Schedule VII audit covenants.
  * - Academic Mentors & Fellows: Literary fellowship card with safeguarding charter alignment.
  * - Institutional & Community Lanes: Clean structured engagement channels.

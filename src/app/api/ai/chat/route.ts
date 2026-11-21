@@ -81,7 +81,7 @@ const AI_ENGINE_MODE = process.env.AI_ENGINE_MODE || "local_with_fallback";
 function getDirectAuditResponse(lastPrompt: string): string | null {
   const norm = lastPrompt.trim().toLowerCase().replace(/[?.,!]/g, "");
   if (norm.includes("80g eligible") || norm === "is my donation 80g eligible" || norm === "can i claim 80g for my donation") {
-    return "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27.";
+    return "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility. MECT holds a historical Section 80G order (URN: AADTM5474FF20241) covering AY 2024-25 to AY 2026-27. This order does not by itself confirm eligibility for donations made now.";
   }
   if (norm.includes("tax receipt") || norm === "will i get a tax receipt" || norm === "can i get a tax exemption certificate today") {
     return "You will receive an Official Donation Receipt & Payment Acknowledgement after the Trust checks your State Bank of India transfer or UPI payment against its bank records. Formal tax certificates are subject to applicable statutory filing.";

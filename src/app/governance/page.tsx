@@ -134,9 +134,9 @@ export default function GovernancePage() {
     },
     {
       clause: "Clause 24",
-      title: "Territorial Application & Tax Exemption",
+      title: "Territorial Application & Charitable Scope",
       description:
-        "Per Clause 24, all income and corpus must be applied solely to public educational and charitable purposes within India to secure tax exemption under Indian law.",
+        "Per Clause 24, all income and corpus must be applied solely to public educational and charitable purposes within India in accordance with applicable statutory provisions.",
     },
     {
       clause: "Clause 25",

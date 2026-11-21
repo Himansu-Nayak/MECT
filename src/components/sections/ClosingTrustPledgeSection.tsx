@@ -82,7 +82,7 @@ export function ClosingTrustPledgeSection() {
               className="font-bold px-8 h-12 text-sm shadow-md bg-terracotta hover:bg-terracotta-dark text-white border-0"
             >
               <Heart className="w-4 h-4 mr-2 fill-white/20" aria-hidden="true" />
-              <span>Make a Contribution (Instant 80G Receipt)</span>
+              <span>Make a Contribution (Numbered Receipt)</span>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>

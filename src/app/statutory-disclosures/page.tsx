@@ -71,7 +71,7 @@ export default function StatutoryDisclosuresPage() {
       libraryKey: "DOC-IT-PAN-2013",
     },
     {
-      category: "Direct Taxes • Section 12A Tax Exemption",
+      category: "Direct Taxes • Section 12A Registration",
       title: "Form 10AC Section 12A Registration Order",
       authority: "Director of Income Tax (Central Processing Centre)",
       identifierLabel: "Unique Registration Number (URN)",
@@ -81,7 +81,7 @@ export default function StatutoryDisclosuresPage() {
       status: "Provisional Approval Granted",
       description:
         "Statutory order issued under Section 12A(1)(ac)(vi) of the Income-tax Act, 1961 (DIN: AADTM5474FE2023101) granting provisional exemption for trust income. Transition provisions under the Income-tax Act, 2025 remain subject to CA confirmation.",
-      badge: "Section 12A Exempt",
+      badge: "Section 12A Registered",
       icon: ShieldCheck,
       accessNote: "Order copy retained on record; available for institutional inspection.",
       libraryKey: "DOC-IT-12A-2024",

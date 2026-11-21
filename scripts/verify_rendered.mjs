@@ -3,6 +3,7 @@ import { AxeBuilder } from "@axe-core/playwright";
 import lighthouse from "lighthouse";
 import fs from "fs";
 import path from "path";
+import { runRenderedTaxCrawl, testChatbotQuestions } from "./verify_rendered_tax.mjs";
 
 const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:3000";
 const AUDIT_DIR = path.join(process.cwd(), "audit");
@@ -576,6 +577,13 @@ async function main() {
     const part5 = await verify404(browser);
     const part6 = await runAxeAudits(browser);
     const part7 = await runLighthouseAudits();
+    const part8_taxFindings = await runRenderedTaxCrawl(browser);
+    const part8_chatResults = await testChatbotQuestions();
+
+    const classBHits = part8_taxFindings.filter(f => f.isClassB);
+    if (classBHits.length > 0) {
+      throw new Error(`Rendered tax wording audit failed: ${classBHits.length} Class (b) promotional tax phrases found!`);
+    }
 
     const fullReport = {
       timestamp: new Date().toISOString(),
@@ -587,6 +595,8 @@ async function main() {
       part5_404: part5,
       part6_axe: part6,
       part7_lighthouse: part7,
+      part8_taxFindings,
+      part8_chatResults,
     };
 
     fs.writeFileSync(
