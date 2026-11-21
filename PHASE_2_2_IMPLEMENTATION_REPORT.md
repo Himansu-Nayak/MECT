@@ -137,14 +137,14 @@ Full-page visual inspection was performed across all routes using an autonomous 
 
 | Page / Route | Viewport | Verified Artifact Path | Key Visual Features Verified |
 | :--- | :--- | :--- | :--- |
-| **`/about`** | Desktop | [about_page_1793620065622.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/about_page_1793620065622.png) | Editorial timeline, 4-tier governance cards, gold badges, clean contrast |
-| **`/governance`** | Desktop | [governance_page_1793620095798.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/governance_page_1793620095798.png) | Statutory legal callout, audit protocols, document library cards |
-| **`/scholarships`** | Desktop | [scholarships_page_1793620130047.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/scholarships_page_1793620130047.png) | 3-scheme matrix, 4-step workflow, document checklists, interactive FAQ |
-| **`/programmes`** | Desktop | [programmes_page_1793620302190.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/programmes_page_1793620302190.png) | Flagship programme deep dives, Project Samarth Hub specs, district rollout |
-| **`/impact`** | Desktop | [impact_page_1793620344587.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/impact_page_1793620344587.png) | 4-zone district grid, KPI impact cards, archetypes, annual report timeline |
-| **`/scholarships`** | Mobile | [mobile_scholarships_page_1793620418652.png](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/mobile_scholarships_page_1793620418652.png) | Full mobile responsive stacking, readable typography, touch-friendly accordion |
+| **`/about`** | Desktop | [about_page_1793620065622.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/about_page_1793620065622.png) | Editorial timeline, 4-tier governance cards, gold badges, clean contrast |
+| **`/governance`** | Desktop | [governance_page_1793620095798.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/governance_page_1793620095798.png) | Statutory legal callout, audit protocols, document library cards |
+| **`/scholarships`** | Desktop | [scholarships_page_1793620130047.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/scholarships_page_1793620130047.png) | 3-scheme matrix, 4-step workflow, document checklists, interactive FAQ |
+| **`/programmes`** | Desktop | [programmes_page_1793620302190.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/programmes_page_1793620302190.png) | Flagship programme deep dives, Project Samarth Hub specs, district rollout |
+| **`/impact`** | Desktop | [impact_page_1793620344587.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/impact_page_1793620344587.png) | 4-zone district grid, KPI impact cards, archetypes, annual report timeline |
+| **`/scholarships`** | Mobile | [mobile_scholarships_page_1793620418652.png](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/mobile_scholarships_page_1793620418652.png) | Full mobile responsive stacking, readable typography, touch-friendly accordion |
 
-**Autonomous Session Recording**: [phase_2_2_pages_verification_1793620040538.webp](file:///C:/Users/himan/.gemini/antigravity-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/phase_2_2_pages_verification_1793620040538.webp)
+**Autonomous Session Recording**: [phase_2_2_pages_verification_1793620040538.webp](file:///<APP_DATA_DIR>-ide/brain/3d66dedc-063f-41f4-92de-d69dca08ba59/phase_2_2_pages_verification_1793620040538.webp)
 
 ---
 

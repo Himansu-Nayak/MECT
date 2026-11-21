@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2E — Authenticated Production Verification & Backup Readiness  
 **Execution Timestamp (Local):** 2026-11-20T01:08:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:38:00Z  
@@ -80,7 +80,7 @@ While storing backups in `/opt/mect/backups/` protects against container and vol
 sequenceDiagram
     autonumber
     actor Owner as Project Owner
-    participant VPS as Hostinger VPS (srv2000528)
+    participant VPS as Hostinger VPS (<PROD_HOSTNAME>)
     participant Offsite as Off-Site Secure Storage / Local Workstation
 
     Note over VPS: pg_dump streamed to /opt/mect/backups/
@@ -95,7 +95,7 @@ sequenceDiagram
 ### Off-Site Transfer Command (Local PowerShell):
 ```powershell
 # Transfer verified production dump to local workstation as secondary off-site backup
-scp -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128:/opt/mect/backups/mect_prod_backup_*.dump "C:\Users\himan\OneDrive\Desktop\MECT_BACKUPS\"
+scp -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>:/opt/mect/backups/mect_prod_backup_*.dump "<USER_HOME>\OneDrive\Desktop\MECT_BACKUPS\"
 ```
 
 ---

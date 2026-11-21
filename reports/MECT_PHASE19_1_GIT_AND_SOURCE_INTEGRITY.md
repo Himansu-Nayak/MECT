@@ -12,8 +12,8 @@
 
 | Dimension | Exact Observed Value |
 | :--- | :--- |
-| **Git Repository Root** | `c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST` |
-| **Current Working Directory** | `c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST` |
+| **Git Repository Root** | `<WORKSPACE_DIR>` |
+| **Current Working Directory** | `<WORKSPACE_DIR>` |
 | **Active Branch** | `motion-ui` |
 | **Current HEAD Commit SHA** | `cb5b55486e4d8105a321554e579c972492f6f62d` |
 | **Production Baseline Commit SHA** | `155dd0065734766b2f8688ffcb7b964225eea9e9` |

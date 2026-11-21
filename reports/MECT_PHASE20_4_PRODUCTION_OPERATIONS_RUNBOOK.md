@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production URL:** `https://mect.org.in/`  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Directory:** `/opt/mect`  
 **Docker Compose File:** `/opt/mect/compose.production.yaml`  
 **Author:** Principal Site Reliability Engineer & Operations Lead  
@@ -13,7 +13,7 @@
 
 Log in to VPS via SSH:
 ```bash
-ssh root@200.97.161.128
+ssh <DEPLOY_USER>@<PROD_VPS_IP>
 ```
 
 Run comprehensive health check:
@@ -30,10 +30,10 @@ curl -I http://127.0.0.1:3001/
 
 ### Runbook 1: VPS Host Outage
 - **Symptoms:** Domain unreachable (`HTTP 521 Web Server Is Down`), SSH times out.
-- **Diagnostics:** Check Hostinger Cloud Console status for instance `srv2000528`.
+- **Diagnostics:** Check Hostinger Cloud Console status for instance `<PROD_HOSTNAME>`.
 - **Recovery Steps:**
   1. Trigger soft reboot via Hostinger Cloud Console.
-  2. Once online, SSH into VPS: `ssh root@200.97.161.128`.
+  2. Once online, SSH into VPS: `ssh <DEPLOY_USER>@<PROD_VPS_IP>`.
   3. Verify Docker daemon started: `systemctl status docker`.
   4. Verify containers automatically restarted: `docker ps`.
   5. If stopped, start stack: `cd /opt/mect && docker compose -f compose.production.yaml up -d`.

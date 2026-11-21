@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2D — Owner-Assisted VPS Preflight & Database Safety Gate  
 **Execution Timestamp (Local):** 2026-11-20T00:48:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:18:00Z  
@@ -43,7 +43,7 @@
 - **Sequence:**
   1. Owner pushes branch to GitHub: `git push -u origin feat/phase-29-complete-website-excellence`.
   2. Owner generates ED25519 key on Windows and registers public key in Hostinger hPanel.
-  3. Workstation tests read-only connectivity using `ssh -i "$HOME\.ssh\id_ed25519_mect" root@200.97.161.128 "uptime"`.
+  3. Workstation tests read-only connectivity using `ssh -i "<SSH_KEY_PATH>" <DEPLOY_USER>@<PROD_VPS_IP> "uptime"`.
 
 ### 3.2 Mitigation Protocol for R-05 & R-06 (Database Integrity & Backup)
 - **Protocol:** Never deploy code without a verified backup.

@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Phase:** Phase 28 — Premium Donor Authentication & Donation Experience Transformation  
-**Production Host:** `200.97.161.128` (Protected VPS)  
+**Production Host:** `<PROD_VPS_IP>` (Protected VPS)  
 **Deployment Policy:** **STRICT PRODUCTION FREEZE.** Under no circumstances may this checklist be executed against production without the Project Owner's explicit written authorization.
 
 ---
@@ -75,7 +75,7 @@ NEXT_PUBLIC_CASHFREE_ENVIRONMENT=PRODUCTION
 ### Step 1: Pre-Release Database Backup
 ```bash
 # On Production VPS:
-ssh root@200.97.161.128
+ssh <DEPLOY_USER>@<PROD_VPS_IP>
 cd /opt/mect
 ./scripts/backup-db.sh
 # Verify snapshot size > 0 and file exists in /opt/mect/backups/

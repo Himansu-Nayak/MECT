@@ -19,7 +19,7 @@
 > Under strict project governance rules, all changes developed, audited, and verified during Phase 29.1 remain strictly confined to the local repository feature branch.  
 > 
 > The following actions are **STRICTLY PROHIBITED** until explicit, written approval is granted by the project owner:
-> 1. Connecting to the production VPS server (`200.97.161.128`).
+> 1. Connecting to the production VPS server (`<PROD_VPS_IP>`).
 > 2. Initiating SSH sessions or executing remote terminal commands.
 > 3. Restarting, stopping, or updating production Docker containers or systemd services.
 > 4. Executing database migrations, ALTER TABLE statements, or SQL scripts on the live PostgreSQL instance.

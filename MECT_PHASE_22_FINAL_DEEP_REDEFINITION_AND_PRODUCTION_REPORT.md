@@ -28,7 +28,7 @@ Forensic inspection of the local Git environment established:
 - **Baseline Code Health:**
   - TypeScript Compilation (`tsc --noEmit`): **PASSED (0 errors)**.
   - ESLint Audit (`eslint .`): **PASSED (0 errors, 4 non-blocking chart dependency warnings)**.
-- **Production Host Identity:** Hostinger VPS `srv2000528` (`200.97.161.128`), deployment directory `/opt/mect`.
+- **Production Host Identity:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`), deployment directory `/opt/mect`.
 - **Production Docker Stack:**
   - `mect-frontend` (Node 22 standalone container on `127.0.0.1:3001`)
   - `mect-backend` (Eclipse Temurin 21 Spring Boot JAR on `127.0.0.1:8081`)
@@ -305,7 +305,7 @@ Status: **COMPLETED**
 
 ## 25. DEPLOYMENT IDENTITY & ARTIFACTS
 
-- **Target Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)
+- **Target Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)
 - **Docker Compose Spec:** `/opt/mect/compose.production.yaml`
 - **Frontend Image:** `mect-frontend:production`
 - **Release Verification Gate:** Passed (typecheck 0 errors, lint 0 errors, build 46/46 pages generated).

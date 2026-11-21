@@ -1,7 +1,7 @@
 # MECT PHASE 20.1 — WEBHOOK & PAYMENT GATEWAY SECURITY AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Gateway Integration:** Cashfree PG + SBI Direct UTR Verification Engine  
 **Execution Timestamp:** 2026-11-13T09:20:00Z (UTC)  
 **Status:** PASS — REJECTION OF FORGED PAYMENTS & TAMPERED SIGNATURES  

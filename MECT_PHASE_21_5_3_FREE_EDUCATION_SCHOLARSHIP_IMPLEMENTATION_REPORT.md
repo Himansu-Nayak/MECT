@@ -228,18 +228,18 @@ In response to the targeted policy integrity review, all displayed criteria, pro
 ## 15. Visual Evidence Artifacts
 
 Screenshots captured across viewports:
-- [education_320px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_320px.png)
-- [education_360px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_360px.png)
-- [education_390px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_390px.png)
-- [education_430px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_430px.png)
-- [education_768px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_768px.png)
-- [education_1024px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_1024px.png)
-- [education_1280px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_1280px.png)
-- [education_1440px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_1440px.png)
-- [education_1920px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_1920px.png)
-- [education_landscape_844px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_landscape_844px.png)
-- [education_reduced_motion.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_3/education_reduced_motion.png)
-- [education-phase21-5-3-results.json](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/education-phase21-5-3-results.json)
+- [education_320px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_320px.png)
+- [education_360px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_360px.png)
+- [education_390px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_390px.png)
+- [education_430px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_430px.png)
+- [education_768px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_768px.png)
+- [education_1024px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_1024px.png)
+- [education_1280px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_1280px.png)
+- [education_1440px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_1440px.png)
+- [education_1920px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_1920px.png)
+- [education_landscape_844px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_landscape_844px.png)
+- [education_reduced_motion.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_3/education_reduced_motion.png)
+- [education-phase21-5-3-results.json](file:///<WORKSPACE_DIR>/reports/education-phase21-5-3-results.json)
 
 ---
 

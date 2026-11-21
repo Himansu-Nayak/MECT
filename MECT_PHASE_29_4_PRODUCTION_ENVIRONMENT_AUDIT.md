@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Production VPS Host:** `200.97.161.128` (Hostinger VPS)  
+**Production VPS Host:** `<PROD_VPS_IP>` (Hostinger VPS)  
 **Current Branch:** `feat/phase-29-complete-website-excellence`  
 **Release Baseline Commit:** `b09e1bb`  
 **Phase:** 29.4.1 — Production Environment Audit  
@@ -14,7 +14,7 @@
 
 ## 1. AUDIT STATUS & EXECUTION BOUNDARIES
 
-Under Section 2 and Section 4 of the Phase 29.4 protocol, direct live connection to the production VPS host (`200.97.161.128`) requires explicit written owner authorization (`AUTH-01`).
+Under Section 2 and Section 4 of the Phase 29.4 protocol, direct live connection to the production VPS host (`<PROD_VPS_IP>`) requires explicit written owner authorization (`AUTH-01`).
 
 Because the owner approval gate remains **PENDING**, no live SSH connection was established. This audit report documents:
 1. The forensic infrastructure inventory compiled from established production runbooks and historical audit logs.
@@ -30,7 +30,7 @@ Based on production records, deployment manifests, and configuration templates i
 | Host Metric | Production Specification | Operational Verification Requirement | Status |
 | :--- | :--- | :--- | :--- |
 | **Hosting Infrastructure** | Hostinger VPS KVM / Ubuntu Linux 24.04 LTS | Verify kernel and distribution version (`uname -a`, `lsb_release -a`) | **PREPARED** |
-| **IPv4 Address** | `200.97.161.128` | Confirm routing and interface binding | **VERIFIED (DNS A record)** |
+| **IPv4 Address** | `<PROD_VPS_IP>` | Confirm routing and interface binding | **VERIFIED (DNS A record)** |
 | **System Memory (RAM)** | 8 GB Dedicated / Swappable | Verify available RAM (`free -h`, minimum 3 GB free required) | **PREPARED** |
 | **Disk Capacity** | NVMe SSD Storage | Verify mount `/` and `/var/backups` (`df -h`, minimum 15 GB free required) | **PREPARED** |
 | **Docker Engine** | Docker Engine 27.x Community Edition | Verify daemon active (`docker version`, `docker info`) | **PREPARED** |

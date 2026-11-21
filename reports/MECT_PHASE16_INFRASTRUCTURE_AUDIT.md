@@ -1,6 +1,6 @@
 # MECT Phase 16.2 & 16.3 — VPS Infrastructure & Configuration Audit
 
-**Server:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Server:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Mode:** Read-only inspection (no production services restarted or modified; OHO TECH untouched).
 
 ## 1. Host & Runtime Inventory

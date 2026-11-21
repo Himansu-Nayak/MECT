@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Release Target Baseline:** Commit `c5aa4e8`  
 **Current Audit Commit:** Commit `f787387`  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
@@ -85,8 +85,8 @@ Step 1: Push release branch to GitHub
         PowerShell: git push -u origin feat/phase-29-complete-website-excellence
 
 Step 2: Generate and register ED25519 SSH key
-        PowerShell: ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect"
-        Paste public key into Hostinger hPanel -> VPS (srv2000528) -> SSH Keys
+        PowerShell: ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "<SSH_KEY_PATH>"
+        Paste public key into Hostinger hPanel -> VPS (<PROD_HOSTNAME>) -> SSH Keys
 
 Step 3: Confirm Fast2SMS wallet balance
         Log into fast2sms.com -> Verify > 500 SMS credits available
@@ -101,12 +101,12 @@ Step 4: Explicitly approve Level C Backup Operation
 
 All nine Phase 29.4.2F reports are registered in the project workspace:
 
-1. [MECT_PHASE_29_4_2F_SSH_ACCESS_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_SSH_ACCESS_VERIFICATION.md)
-2. [MECT_PHASE_29_4_2F_LIVE_VPS_INVENTORY.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_LIVE_VPS_INVENTORY.md)
-3. [MECT_PHASE_29_4_2F_STORAGE_FAILURE_DOMAIN_ANALYSIS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_STORAGE_FAILURE_DOMAIN_ANALYSIS.md)
-4. [MECT_PHASE_29_4_2F_PRODUCTION_FLYWAY_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_PRODUCTION_FLYWAY_VERIFICATION.md)
-5. [MECT_PHASE_29_4_2F_V15_V16_PRODUCTION_IMPACT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_V15_V16_PRODUCTION_IMPACT.md)
-6. [MECT_PHASE_29_4_2F_BACKUP_ARCHITECTURE.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_BACKUP_ARCHITECTURE.md)
-7. [MECT_PHASE_29_4_2F_BACKUP_APPROVAL_PROPOSAL.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_BACKUP_APPROVAL_PROPOSAL.md)
-8. [MECT_PHASE_29_4_2F_PRODUCTION_RISK_REGISTER.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_PRODUCTION_RISK_REGISTER.md)
-9. [MECT_PHASE_29_4_2F_FINAL_READINESS_DECISION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2F_FINAL_READINESS_DECISION.md)
+1. [MECT_PHASE_29_4_2F_SSH_ACCESS_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_SSH_ACCESS_VERIFICATION.md)
+2. [MECT_PHASE_29_4_2F_LIVE_VPS_INVENTORY.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_LIVE_VPS_INVENTORY.md)
+3. [MECT_PHASE_29_4_2F_STORAGE_FAILURE_DOMAIN_ANALYSIS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_STORAGE_FAILURE_DOMAIN_ANALYSIS.md)
+4. [MECT_PHASE_29_4_2F_PRODUCTION_FLYWAY_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_PRODUCTION_FLYWAY_VERIFICATION.md)
+5. [MECT_PHASE_29_4_2F_V15_V16_PRODUCTION_IMPACT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_V15_V16_PRODUCTION_IMPACT.md)
+6. [MECT_PHASE_29_4_2F_BACKUP_ARCHITECTURE.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_BACKUP_ARCHITECTURE.md)
+7. [MECT_PHASE_29_4_2F_BACKUP_APPROVAL_PROPOSAL.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_BACKUP_APPROVAL_PROPOSAL.md)
+8. [MECT_PHASE_29_4_2F_PRODUCTION_RISK_REGISTER.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_PRODUCTION_RISK_REGISTER.md)
+9. [MECT_PHASE_29_4_2F_FINAL_READINESS_DECISION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2F_FINAL_READINESS_DECISION.md)

@@ -34,7 +34,7 @@ In accordance with Phase 29.2 audit requirements, every technical, security, sta
 | **14** | **Rollback Readiness** | **PASS** | Standalone rollback sequence documented in Release Runbook targeting commit `cc121ba` and database restore. |
 | **15** | **Documentation Completeness**| **PASS** | 12 dedicated audit reports, runbooks, defect registers, and baseline specifications authored and cross-referenced. |
 | **16** | **Git Integrity** | **PASS** | Pristine working tree on `feat/phase-29-complete-website-excellence`. Commit ancestry traceable, no merge to `main`, no unapproved remote pushes. |
-| **17** | **Production Safety** | **PASS** | Strict freeze observed throughout Phase 29.2. Zero contact with production VPS `200.97.161.128`, zero SSH executions, zero container restarts. |
+| **17** | **Production Safety** | **PASS** | Strict freeze observed throughout Phase 29.2. Zero contact with production VPS `<PROD_VPS_IP>`, zero SSH executions, zero container restarts. |
 
 ---
 
@@ -60,10 +60,10 @@ In accordance with Phase 29.2 Section 15 governance rules, the current operation
 
 ### Governance Next Steps:
 1. The project owner inspects the audit deliverables:
-   - [`MECT_PHASE_29_2_AUTHENTICATION_SECURITY_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_2_AUTHENTICATION_SECURITY_AUDIT.md)
-   - [`MECT_PHASE_29_2_STATUTORY_INTEGRITY_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_2_STATUTORY_INTEGRITY_AUDIT.md)
-   - [`MECT_PHASE_29_2_PAYMENT_FIDUCIARY_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_2_PAYMENT_FIDUCIARY_AUDIT.md)
-   - [`MECT_PHASE_29_2_FULL_SITE_REGRESSION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_2_FULL_SITE_REGRESSION_REPORT.md)
-   - [`MECT_PHASE_29_2_PRODUCTION_RELEASE_RUNBOOK.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_2_PRODUCTION_RELEASE_RUNBOOK.md)
+   - [`MECT_PHASE_29_2_AUTHENTICATION_SECURITY_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_2_AUTHENTICATION_SECURITY_AUDIT.md)
+   - [`MECT_PHASE_29_2_STATUTORY_INTEGRITY_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_2_STATUTORY_INTEGRITY_AUDIT.md)
+   - [`MECT_PHASE_29_2_PAYMENT_FIDUCIARY_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_2_PAYMENT_FIDUCIARY_AUDIT.md)
+   - [`MECT_PHASE_29_2_FULL_SITE_REGRESSION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_2_FULL_SITE_REGRESSION_REPORT.md)
+   - [`MECT_PHASE_29_2_PRODUCTION_RELEASE_RUNBOOK.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_2_PRODUCTION_RELEASE_RUNBOOK.md)
 2. When the project owner is satisfied, the owner provides **explicit release authorization**.
 3. Upon receipt of authorization, release operators execute the step-by-step container deployment sequence documented in Section 3 of the Production Release Runbook.

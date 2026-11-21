@@ -33,7 +33,7 @@ Rather than trusting pre-existing assertions or build statuses, every backend co
    - **Next.js Production Build:** 51 out of 51 routes statically compiled and optimized.
    - **Spring Boot Backend Test Suite:** 126 tests executed, 0 failures, 0 errors, BUILD SUCCESS.
 6. **Visual Review Evidence:** 23 high-resolution multi-viewport screenshots captured directly from the production server into `reports/mect-phase-29-1/screenshots/`.
-7. **Production Freeze Compliance:** Absolute adherence to production freeze covenants. No SSH connection to `200.97.161.128`, no production Docker mutations, no remote push, and no merge to `main`.
+7. **Production Freeze Compliance:** Absolute adherence to production freeze covenants. No SSH connection to `<PROD_VPS_IP>`, no production Docker mutations, no remote push, and no merge to `main`.
 
 ---
 
@@ -70,7 +70,7 @@ In accordance with Phase 29.1 governance specifications, all 25 criteria have be
 | **21** | **No unresolved critical/high defects** | **PASS** | 0 Critical open defects, 0 High open defects, 0 Medium open defects, 0 Low open defects. All identified defects (DEF-01 to DEF-05) resolved and verified. |
 | **22** | **Documentation completeness** | **PASS** | All 13 mandatory audit reports, registers, checklists, and acceptance deliverables authored and committed. |
 | **23** | **Git integrity** | **PASS** | Clean working tree on feature branch `feat/phase-29-complete-website-excellence`. Commit history clean and traceable to baseline `cc121ba`. |
-| **24** | **Production freeze preserved** | **PASS** | Zero contact with production VPS (`200.97.161.128`), zero SSH executions, zero Docker restarts, zero production DB alterations, zero merge to main. |
+| **24** | **Production freeze preserved** | **PASS** | Zero contact with production VPS (`<PROD_VPS_IP>`), zero SSH executions, zero Docker restarts, zero production DB alterations, zero merge to main. |
 | **25** | **Explicit owner approval** | **PENDING** | **Strictly awaiting the project owner's explicit inspection and authorization.** In accordance with governance rules, this criterion is never marked PASS autonomously. |
 
 ---
@@ -81,19 +81,19 @@ All 13 required forensic audit and acceptance deliverables for Phase 29.1 are fu
 
 | # | Deliverable Title | Filename & Path | Core Focus & Verification Scope |
 | :---: | :--- | :--- | :--- |
-| **01** | **Baseline Forensic Audit** | [`MECT_PHASE_29_1_BASELINE_FORENSIC_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_BASELINE_FORENSIC_AUDIT.md) | Baseline analysis of entities, services, routes, security guards, and data integrity. |
-| **02** | **Login & Registration Audit** | [`MECT_PHASE_29_1_LOGIN_REGISTRATION_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_LOGIN_REGISTRATION_AUDIT.md) | Audit of standalone `/login` and `/register`, phone validation, and OTP integration. |
-| **03** | **Donor Lifecycle Audit** | [`MECT_PHASE_29_1_DONOR_LIFECYCLE_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DONOR_LIFECYCLE_AUDIT.md) | Lifecycle stages: registration, profile update, donation history, 80G PAN management. |
-| **04** | **Security & Auth Audit** | [`MECT_PHASE_29_1_SECURITY_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_SECURITY_AUDIT.md) | OWASP API evaluation, brute-force lockout, JWT crypto, and zero unauthenticated checkouts. |
-| **05** | **Donation Experience Audit** | [`MECT_PHASE_29_1_DONATION_EXPERIENCE_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DONATION_EXPERIENCE_AUDIT.md) | 6-step donation flow, parameter retention, card design, and payment gateway integrity. |
-| **06** | **Website-Wide UX Audit** | [`MECT_PHASE_29_1_WEBSITE_WIDE_UX_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_WEBSITE_WIDE_UX_AUDIT.md) | Comprehensive review of all 51 routes, navigation, layout continuity, and typography. |
-| **07** | **Accessibility Report** | [`MECT_PHASE_29_1_ACCESSIBILITY_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_ACCESSIBILITY_REPORT.md) | WCAG 2.2 AA audit, contrast ratios (&ge; 4.5:1), screen-reader semantics, keyboard tabs. |
-| **08** | **Performance & SEO Report** | [`MECT_PHASE_29_1_PERFORMANCE_AND_SEO_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_PERFORMANCE_AND_SEO_REPORT.md) | Core Web Vitals, SSG bundle breakdown, OpenGraph cards, JSON-LD structured schemas. |
-| **09** | **Test Execution Report** | [`MECT_PHASE_29_1_TEST_EXECUTION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_TEST_EXECUTION_REPORT.md) | Full log of backend tests (126/126 PASS), TypeScript (0 errors), ESLint, and Next.js build. |
-| **10** | **Defect Register & Remediation** | [`MECT_PHASE_29_1_DEFECT_REGISTER.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DEFECT_REGISTER.md) | Traceability of defects DEF-01 through DEF-05 with root causes, fixes, and re-verification. |
-| **11** | **Visual Screenshot Index** | [`MECT_PHASE_29_1_SCREENSHOT_INDEX.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_SCREENSHOT_INDEX.md) | Complete visual catalogue and review guide for 23 high-resolution multi-viewport captures. |
-| **12** | **Deployment Readiness Checklist** | [`MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md) | Pre-release gates, production secrets inventory, container runbook, and rollback protocols. |
-| **13** | **Final Owner Acceptance Report** | [`MECT_PHASE_29_1_FINAL_OWNER_ACCEPTANCE_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_FINAL_OWNER_ACCEPTANCE_REPORT.md) | Master acceptance document containing the complete 25-point criteria evaluation. |
+| **01** | **Baseline Forensic Audit** | [`MECT_PHASE_29_1_BASELINE_FORENSIC_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_BASELINE_FORENSIC_AUDIT.md) | Baseline analysis of entities, services, routes, security guards, and data integrity. |
+| **02** | **Login & Registration Audit** | [`MECT_PHASE_29_1_LOGIN_REGISTRATION_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_LOGIN_REGISTRATION_AUDIT.md) | Audit of standalone `/login` and `/register`, phone validation, and OTP integration. |
+| **03** | **Donor Lifecycle Audit** | [`MECT_PHASE_29_1_DONOR_LIFECYCLE_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DONOR_LIFECYCLE_AUDIT.md) | Lifecycle stages: registration, profile update, donation history, 80G PAN management. |
+| **04** | **Security & Auth Audit** | [`MECT_PHASE_29_1_SECURITY_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_SECURITY_AUDIT.md) | OWASP API evaluation, brute-force lockout, JWT crypto, and zero unauthenticated checkouts. |
+| **05** | **Donation Experience Audit** | [`MECT_PHASE_29_1_DONATION_EXPERIENCE_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DONATION_EXPERIENCE_AUDIT.md) | 6-step donation flow, parameter retention, card design, and payment gateway integrity. |
+| **06** | **Website-Wide UX Audit** | [`MECT_PHASE_29_1_WEBSITE_WIDE_UX_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_WEBSITE_WIDE_UX_AUDIT.md) | Comprehensive review of all 51 routes, navigation, layout continuity, and typography. |
+| **07** | **Accessibility Report** | [`MECT_PHASE_29_1_ACCESSIBILITY_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_ACCESSIBILITY_REPORT.md) | WCAG 2.2 AA audit, contrast ratios (&ge; 4.5:1), screen-reader semantics, keyboard tabs. |
+| **08** | **Performance & SEO Report** | [`MECT_PHASE_29_1_PERFORMANCE_AND_SEO_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_PERFORMANCE_AND_SEO_REPORT.md) | Core Web Vitals, SSG bundle breakdown, OpenGraph cards, JSON-LD structured schemas. |
+| **09** | **Test Execution Report** | [`MECT_PHASE_29_1_TEST_EXECUTION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_TEST_EXECUTION_REPORT.md) | Full log of backend tests (126/126 PASS), TypeScript (0 errors), ESLint, and Next.js build. |
+| **10** | **Defect Register & Remediation** | [`MECT_PHASE_29_1_DEFECT_REGISTER.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DEFECT_REGISTER.md) | Traceability of defects DEF-01 through DEF-05 with root causes, fixes, and re-verification. |
+| **11** | **Visual Screenshot Index** | [`MECT_PHASE_29_1_SCREENSHOT_INDEX.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_SCREENSHOT_INDEX.md) | Complete visual catalogue and review guide for 23 high-resolution multi-viewport captures. |
+| **12** | **Deployment Readiness Checklist** | [`MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md) | Pre-release gates, production secrets inventory, container runbook, and rollback protocols. |
+| **13** | **Final Owner Acceptance Report** | [`MECT_PHASE_29_1_FINAL_OWNER_ACCEPTANCE_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_FINAL_OWNER_ACCEPTANCE_REPORT.md) | Master acceptance document containing the complete 25-point criteria evaluation. |
 
 ---
 
@@ -158,7 +158,7 @@ All public interfaces, receipts, portals, and statutory disclosures strictly ref
 ## 7. PRODUCTION FREEZE REAFFIRMATION
 
 In strict compliance with non-negotiable project governance rules:
-1. **No VPS Contact:** Host `200.97.161.128` was not connected to or modified.
+1. **No VPS Contact:** Host `<PROD_VPS_IP>` was not connected to or modified.
 2. **No Docker Alterations:** No containers were stopped, started, rebuilt, or altered.
 3. **No Database Operations:** Production PostgreSQL database remains completely untouched.
 4. **No Git Remote Activity:** No code was merged to `main`, pushed to `origin`, or modified on remote branches.
@@ -174,7 +174,7 @@ The Phase 29.1 forensic audit and defect-correction loop is complete. The digita
 - The 23 visual artifacts in `reports/mect-phase-29-1/screenshots/` and 13 comprehensive reports are available for immediate review.
 
 ### Recommended Next Steps for the Project Owner:
-1. Review the visual captures catalogued in [`MECT_PHASE_29_1_SCREENSHOT_INDEX.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_SCREENSHOT_INDEX.md).
-2. Inspect the defect resolutions in [`MECT_PHASE_29_1_DEFECT_REGISTER.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DEFECT_REGISTER.md).
-3. Review the deployment qualification runbook in [`MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md).
+1. Review the visual captures catalogued in [`MECT_PHASE_29_1_SCREENSHOT_INDEX.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_SCREENSHOT_INDEX.md).
+2. Inspect the defect resolutions in [`MECT_PHASE_29_1_DEFECT_REGISTER.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DEFECT_REGISTER.md).
+3. Review the deployment qualification runbook in [`MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_1_DEPLOYMENT_READINESS_CHECKLIST.md).
 4. When satisfied, provide explicit authorization to update Criterion 25 to PASS and initiate deployment in accordance with the container runbook.

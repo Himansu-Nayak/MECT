@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Database Target:** `mect_db` (Container `mect-postgres` on `200.97.161.128`)  
+**Database Target:** `mect_db` (Container `mect-postgres` on `<PROD_VPS_IP>`)  
 **Evaluation Phase:** Phase 29.4.2B — Database Preflight  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Database State:** **HEALTHY & OPERATIONAL (ESTABLISHED AT FLYWAY V14+)**

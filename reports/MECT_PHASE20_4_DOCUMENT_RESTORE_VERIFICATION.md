@@ -1,7 +1,7 @@
 # MECT PHASE 20.4 — DOCUMENT & MEDIA RESTORATION DRILL REPORT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** `mect-postgres` on Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** `mect-postgres` on Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:48:30Z (UTC)  
 **Lead Auditor:** PostgreSQL DBA & Senior Reliability Engineer  
 **Status:** PASS — 100% BYTE-FOR-BYTE DOCUMENT RESTORE VERIFIED  

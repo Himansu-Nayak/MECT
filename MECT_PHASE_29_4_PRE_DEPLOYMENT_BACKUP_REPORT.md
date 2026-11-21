@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target Host:** `200.97.161.128` (Hostinger VPS)  
+**Target Host:** `<PROD_VPS_IP>` (Hostinger VPS)  
 **Database Target:** Container `mect-postgres` (`mect_db`)  
 **Current Branch:** `feat/phase-29-complete-website-excellence`  
 **Release Baseline Commit:** `b09e1bb`  
@@ -77,7 +77,7 @@ echo "Backup verification PASSED. Safe to proceed with database migration."
 
 ## 3. EVIDENCE FROM PHASE 29.3 REHEARSAL VERIFICATION
 
-The backup and restoration workflow was programmatically executed and certified in the Phase 29.3 rehearsal test suite ([DatabaseBackupRestoreRehearsalTests.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/test/java/org/mahavirtrust/backend/DatabaseBackupRestoreRehearsalTests.java)):
+The backup and restoration workflow was programmatically executed and certified in the Phase 29.3 rehearsal test suite ([DatabaseBackupRestoreRehearsalTests.java](file:///<WORKSPACE_DIR>/backend/src/test/java/org/mahavirtrust/backend/DatabaseBackupRestoreRehearsalTests.java)):
 
 | Verification Gate | Rehearsal Condition | Rehearsal Result | Integrity Proof |
 | :--- | :--- | :--- | :--- |
@@ -97,7 +97,7 @@ Upon execution on the live VPS host, the operational values will be populated in
 ================================================================================
 PRODUCTION PRE-DEPLOYMENT BACKUP CERTIFICATION RECORD
 ================================================================================
-Target Host:            200.97.161.128 (Hostinger VPS)
+Target Host:            <PROD_VPS_IP> (Hostinger VPS)
 Target Database:        mect_db (container: mect-postgres)
 Pre-Deployment Release: Commit b09e1bb (Branch feat/phase-29-complete-website-excellence)
 Execution Timestamp:    [PENDING OWNER AUTH-02]

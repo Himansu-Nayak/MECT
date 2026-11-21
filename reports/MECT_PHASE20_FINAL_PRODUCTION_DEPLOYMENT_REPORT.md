@@ -2,7 +2,7 @@
 
 **Project:** Mahaveer Educational & Charitable Trust (MECT)  
 **Website:** `https://mect.org.in/`  
-**Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Operating System:** Ubuntu 26.04.1 LTS  
 **Architecture:** Docker + Docker Compose + Host Nginx Reverse Proxy + Cloudflare Origin CA TLS  
 **Release Git Commit:** `c7e63261a9fc55bf3607fa65b2611e9f196be4b0`  

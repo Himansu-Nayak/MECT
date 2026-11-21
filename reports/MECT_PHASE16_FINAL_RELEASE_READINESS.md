@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-12  
 **Branch:** `motion-ui` (local `HEAD` `cb5b554` + Phase 15–16 changes, ready to commit/push upon approval)  
-**Target:** Staging verified on `srv2000528` (`127.0.0.1:3002` & `127.0.0.1:8082`); **Production untouched pending explicit release authorization**.
+**Target:** Staging verified on `<PROD_HOSTNAME>` (`127.0.0.1:3002` & `127.0.0.1:8082`); **Production untouched pending explicit release authorization**.
 
 ## 1. Acceptance Criteria Status
 

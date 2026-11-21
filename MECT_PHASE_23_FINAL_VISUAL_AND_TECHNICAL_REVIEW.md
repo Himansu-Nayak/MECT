@@ -12,7 +12,7 @@
 > [!CAUTION]
 > **CRITICAL FREEZE AFFIRMATION: ZERO PRODUCTION DEPLOYMENT**
 > In strict compliance with Phase 14 instructions:
-> - **Zero VPS Deployments:** No container builds, restarts, or SSH commands were issued to Hostinger VPS `srv2000528`.
+> - **Zero VPS Deployments:** No container builds, restarts, or SSH commands were issued to Hostinger VPS `<PROD_HOSTNAME>`.
 > - **Zero Production Database Changes:** Live database and financial tables remain untouched.
 > - **Zero Live Nginx Changes:** Live traffic at https://mect.org.in/ continues running the verified Phase 21.1 container.
 > - **Zero Merging to Main:** All Phase 23 transformation work is strictly isolated on the dedicated feature branch `feat/phase-23-premium-transformation`.
@@ -119,43 +119,43 @@ The following 9 unreferenced legacy components were permanently deleted:
 
 ## 5. Visual Evidence & Screenshot Directory (`reports/phase-23-premium-transformation/`)
 
-A total of **70 high-resolution screenshots** were captured and organized into the [`reports/phase-23-premium-transformation/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/) directory:
+A total of **70 high-resolution screenshots** were captured and organized into the [`reports/phase-23-premium-transformation/`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/) directory:
 
 ### 5.1 Homepage 7-Section Captures
-- **01. Cinematic Hero:** [`01-cinematic-hero-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/01-cinematic-hero-1440px.png)
-- **02. Institutional Identity & Trust:** [`02-institutional-identity-trust-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/02-institutional-identity-trust-1440px.png)
-- **03. Areas of Work (5 Pillars):** [`03-work-areas-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/03-work-areas-1440px.png)
-- **04. Unified Initiatives & Impact:** [`04-unified-initiatives-and-impact-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/04-unified-initiatives-and-impact-1440px.png)
-- **05. Archival Memories Preview:** [`05-archival-memories-preview-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/05-archival-memories-preview-1440px.png)
-- **06. Pathways to Participate:** [`06-get-involved-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/06-get-involved-1440px.png)
-- **07. Final Institutional CTA:** [`07-final-cta-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/homepage/07-final-cta-1440px.png)
+- **01. Cinematic Hero:** [`01-cinematic-hero-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/01-cinematic-hero-1440px.png)
+- **02. Institutional Identity & Trust:** [`02-institutional-identity-trust-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/02-institutional-identity-trust-1440px.png)
+- **03. Areas of Work (5 Pillars):** [`03-work-areas-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/03-work-areas-1440px.png)
+- **04. Unified Initiatives & Impact:** [`04-unified-initiatives-and-impact-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/04-unified-initiatives-and-impact-1440px.png)
+- **05. Archival Memories Preview:** [`05-archival-memories-preview-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/05-archival-memories-preview-1440px.png)
+- **06. Pathways to Participate:** [`06-get-involved-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/06-get-involved-1440px.png)
+- **07. Final Institutional CTA:** [`07-final-cta-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/homepage/07-final-cta-1440px.png)
 
 ### 5.2 3D Experiences Deep-Dive
-- **Hanuman Murti 3D Default View:** [`01-hanuman-murti-3d-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/3d-experiences/01-hanuman-murti-3d-default-1440px.png)
-- **Hanuman Murti 3D Tilted Orbit Inspection:** [`02-hanuman-murti-3d-tilted-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/3d-experiences/02-hanuman-murti-3d-tilted-1440px.png)
-- **Odisha Impact 3D Sphere Default View:** [`03-odisha-impact-3d-sphere-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/3d-experiences/03-odisha-impact-3d-sphere-default-1440px.png)
-- **Odisha Impact 3D Sphere Hub Selected (Puintala):** [`04-odisha-impact-3d-sphere-hub-selected-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/3d-experiences/04-odisha-impact-3d-sphere-hub-selected-1440px.png)
+- **Hanuman Murti 3D Default View:** [`01-hanuman-murti-3d-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/3d-experiences/01-hanuman-murti-3d-default-1440px.png)
+- **Hanuman Murti 3D Tilted Orbit Inspection:** [`02-hanuman-murti-3d-tilted-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/3d-experiences/02-hanuman-murti-3d-tilted-1440px.png)
+- **Odisha Impact 3D Sphere Default View:** [`03-odisha-impact-3d-sphere-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/3d-experiences/03-odisha-impact-3d-sphere-default-1440px.png)
+- **Odisha Impact 3D Sphere Hub Selected (Puintala):** [`04-odisha-impact-3d-sphere-hub-selected-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/3d-experiences/04-odisha-impact-3d-sphere-hub-selected-1440px.png)
 
 ### 5.3 Archival Gallery & Field Dispatches
-- **Gallery Exhibition Default View:** [`01-gallery-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/gallery/01-gallery-default-1440px.png)
-- **Interactive Lightbox Modal Open:** [`02-gallery-lightbox-modal-open-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/gallery/02-gallery-lightbox-modal-open-1440px.png)
-- **Integrated Documentary Field Dispatches:** [`03-integrated-field-dispatches-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/gallery/03-integrated-field-dispatches-1440px.png)
+- **Gallery Exhibition Default View:** [`01-gallery-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/gallery/01-gallery-default-1440px.png)
+- **Interactive Lightbox Modal Open:** [`02-gallery-lightbox-modal-open-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/gallery/02-gallery-lightbox-modal-open-1440px.png)
+- **Integrated Documentary Field Dispatches:** [`03-integrated-field-dispatches-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/gallery/03-integrated-field-dispatches-1440px.png)
 
 ### 5.4 Navigation States
-- **Desktop Header Default:** [`desktop-header-default.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/desktop-header-default.png)
-- **Desktop Header Scrolled:** [`desktop-header-scrolled.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/desktop-header-scrolled.png)
-- **Dropdown "About":** [`dropdown-about.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/dropdown-about.png)
-- **Dropdown "Our Work":** [`dropdown-our-work.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/dropdown-our-work.png)
-- **Dropdown "Impact & Accountability":** [`dropdown-impact-accountability.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/dropdown-impact-accountability.png)
-- **Dropdown "Get Involved":** [`dropdown-get-involved.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/dropdown-get-involved.png)
-- **Dropdown "Resources & Help":** [`dropdown-resources-help.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/dropdown-resources-help.png)
-- **Mobile Navigation Drawer Open (390px):** [`mobile-drawer-open-390px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/navigation/mobile-drawer-open-390px.png)
+- **Desktop Header Default:** [`desktop-header-default.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/desktop-header-default.png)
+- **Desktop Header Scrolled:** [`desktop-header-scrolled.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/desktop-header-scrolled.png)
+- **Dropdown "About":** [`dropdown-about.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/dropdown-about.png)
+- **Dropdown "Our Work":** [`dropdown-our-work.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/dropdown-our-work.png)
+- **Dropdown "Impact & Accountability":** [`dropdown-impact-accountability.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/dropdown-impact-accountability.png)
+- **Dropdown "Get Involved":** [`dropdown-get-involved.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/dropdown-get-involved.png)
+- **Dropdown "Resources & Help":** [`dropdown-resources-help.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/dropdown-resources-help.png)
+- **Mobile Navigation Drawer Open (390px):** [`mobile-drawer-open-390px.png`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/navigation/mobile-drawer-open-390px.png)
 
 ### 5.5 Canonical Inner Pages Across Responsive Viewports
 All 15 canonical inner pages (`about`, `programmes`, `impact`, `governance`, `reports`, `campaigns`, `hanuman-murti`, `csr-partnerships`, `donate`, `scholarships`, `volunteer`, `contact`, `faq`, `statutory-disclosures`, `memories-gallery`) captured across:
-- **Desktop Viewport (1440px):** [`reports/phase-23-premium-transformation/desktop/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/desktop/)
-- **Tablet Viewport (768px):** [`reports/phase-23-premium-transformation/tablet/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/tablet/)
-- **Mobile Viewport (390px):** [`reports/phase-23-premium-transformation/mobile/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-23-premium-transformation/mobile/)
+- **Desktop Viewport (1440px):** [`reports/phase-23-premium-transformation/desktop/`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/desktop/)
+- **Tablet Viewport (768px):** [`reports/phase-23-premium-transformation/tablet/`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/tablet/)
+- **Mobile Viewport (390px):** [`reports/phase-23-premium-transformation/mobile/`](file:///<WORKSPACE_DIR>/reports/phase-23-premium-transformation/mobile/)
 
 ---
 

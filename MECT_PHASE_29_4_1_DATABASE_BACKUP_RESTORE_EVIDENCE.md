@@ -26,7 +26,7 @@ Discovery queries located official PostgreSQL 18 Enterprise binaries on the work
 
 ### Isolated PostgreSQL 18 Cluster Instantiation
 An isolated, clean-room database cluster was initialized in the scratch directory:
-- **Cluster Data Directory:** `C:\Users\himan\.gemini\antigravity\brain\255a9b69-48ce-42ba-9f45-36878b63452e\scratch\pgdata`
+- **Cluster Data Directory:** `<APP_DATA_DIR>\brain\255a9b69-48ce-42ba-9f45-36878b63452e\scratch\pgdata`
 - **Port:** `5434` (Strict loopback isolation, zero conflict with default 5432)
 - **Superuser:** `postgres` (Trust authentication)
 - **Source Database:** `mect_source`
@@ -79,7 +79,7 @@ ACTUAL PG_DUMP EXECUTION LOG
 ================================================================================
 Command: pg_dump.exe -h 127.0.0.1 -p 5434 -U postgres -Fc mect_source -f mect_actual_backup.dump
 Exit Code: 0
-Generated Dump File: C:\Users\himan\.gemini\antigravity\brain\255a9b69-48ce-42ba-9f45-36878b63452e\scratch\mect_actual_backup.dump
+Generated Dump File: <APP_DATA_DIR>\brain\255a9b69-48ce-42ba-9f45-36878b63452e\scratch\mect_actual_backup.dump
 File Size: 138,256 bytes (~135 KB compressed custom format)
 Cryptographic SHA-256 Checksum:
 4E856816543526099A7ECAA5D7F96893861FB1AF79FE4234B13A235876A85F5E

@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2F — SSH Access Activation & Storage Failure-Domain Validation  
 **Execution Timestamp (Local):** 2026-11-20T01:20:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:50:00Z  
@@ -91,7 +91,7 @@ ls -lh "/opt/mect/backups/mect_prod_backup_${TIMESTAMP}.dump"
 Execute from **local Windows PowerShell**:
 ```powershell
 # Pull verified backup to local workstation
-scp -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128:/opt/mect/backups/mect_prod_backup_*.dump "C:\Users\himan\OneDrive\Desktop\MECT_BACKUPS\"
+scp -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>:/opt/mect/backups/mect_prod_backup_*.dump "<USER_HOME>\OneDrive\Desktop\MECT_BACKUPS\"
 ```
 
 ---

@@ -98,7 +98,7 @@ If network synchronization via GitHub is temporarily deferred or blocked by prox
 git archive --format=tar.gz --output=mect-release-29.4.2.tar.gz HEAD
 
 # 2. Transfer archive via SCP directly to the VPS (requires owner SSH credentials)
-scp -o KexAlgorithms=curve25519-sha256 mect-release-29.4.2.tar.gz root@200.97.161.128:/opt/mect/releases/
+scp -o KexAlgorithms=curve25519-sha256 mect-release-29.4.2.tar.gz <DEPLOY_USER>@<PROD_VPS_IP>:/opt/mect/releases/
 ```
 
 ---

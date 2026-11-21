@@ -115,7 +115,7 @@ Phase 27.1 executes 13 rigorous investigative loops:
 ## 6. Strict Production Freeze Affirmation
 
 The project repository is operating under an unconditional **PRODUCTION DEPLOYMENT FREEZE**:
-- Zero commands will be sent to VPS host `200.97.161.128` (`srv2000528`).
+- Zero commands will be sent to VPS host `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`).
 - Zero production Docker containers, Nginx configurations, or remote databases will be modified.
 - Zero merges to `main` will be performed.
 - All testing and audits will occur in local sandboxed environments.

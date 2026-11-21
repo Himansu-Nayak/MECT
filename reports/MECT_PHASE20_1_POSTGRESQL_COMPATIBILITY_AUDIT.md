@@ -1,7 +1,7 @@
 # MECT PHASE 20.1 — POSTGRESQL 18 COMPATIBILITY & DATABASE AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** `mect-postgres` on Hostinger VPS `srv2000528`  
+**Host Target:** `mect-postgres` on Hostinger VPS `<PROD_HOSTNAME>`  
 **Database:** `mect_db`  
 **Execution Timestamp:** 2026-11-13T09:10:00Z (UTC)  
 **Status:** PASS — 100% POSTGRESQL 18 COMPLIANT  

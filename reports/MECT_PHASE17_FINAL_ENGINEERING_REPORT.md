@@ -51,7 +51,7 @@ Phase 17 has achieved a complete, production-grade transformation of the Mahavee
 
 When explicit production deployment authorization is received from the Trust stakeholders:
 
-1. **Staging Sanity Check:** Ensure staging instance on VPS (`200.97.161.128`) continues serving healthy traffic.
+1. **Staging Sanity Check:** Ensure staging instance on VPS (`<PROD_VPS_IP>`) continues serving healthy traffic.
 2. **Git Commit & Push:**
    - Commit all Phase 17 engineering enhancements, test suites, and documentation.
    - Fast-forward merge `motion-ui` branch to `main`.

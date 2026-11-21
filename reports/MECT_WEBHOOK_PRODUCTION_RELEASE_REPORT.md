@@ -41,7 +41,7 @@ Plus 9 audit & release markdown reports committed in `c0d4a8a`.
 
 ## 3. VPS Backup & Production Deployment (`PASS`)
 
-Deployed on VPS (`200.97.161.128`, host `srv2000528`):
+Deployed on VPS (`<PROD_VPS_IP>`, host `<PROD_HOSTNAME>`):
 - **Database Backup Created & Verified:**
   - File: `/opt/mect/backups/mect_db_pre_webhook_20261111_062623.dump` (`192K`, `chmod 600`, `mect:mect`)
   - Validated TOC via `pg_restore -l` (`251` TOC entries)

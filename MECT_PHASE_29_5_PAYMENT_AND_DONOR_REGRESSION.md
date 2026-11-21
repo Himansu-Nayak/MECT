@@ -25,12 +25,12 @@ MECT integrates dual redundant payment gateways (Cashfree Payments and Razorpay)
 
 | Component | Source File | Key Responsibilities |
 | :--- | :--- | :--- |
-| **Donation Lifecycle Service** | [DonationLifecycleService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/donation/DonationLifecycleService.java) | Orchestrates order creation, payment state transitions, donor linking, receipt generation, and manual SBI UTR processing. |
-| **Cashfree Gateway Service** | [CashfreePaymentGatewayService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/payment/CashfreePaymentGatewayService.java) | Manages Cashfree order creation (`/pg/orders`), payment status verification (`/pg/orders/{order_id}/payments`), webhook signature verification, and HTTP client lifecycle. |
-| **Razorpay Gateway Service** | [RazorpayPaymentGatewayService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/payment/RazorpayPaymentGatewayService.java) | Manages Razorpay order generation, HMAC-SHA256 signature verification (`order_id|payment_id`), payment capture, and status polling. |
-| **Donation REST Controller** | [DonationController.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/controller/DonationController.java) | Exposes public donation endpoints (`/api/donations/initiate`, `/api/donations/verify`, `/api/donations/manual-sbi-utr`). |
-| **Cashfree REST Controller** | [CashfreePaymentController.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/controller/CashfreePaymentController.java) | Exposes Cashfree webhook callback endpoint (`/api/payments/cashfree/webhook`). |
-| **Receipt PDF Engine** | [ReceiptPdfService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/receipt/ReceiptPdfService.java) | Generates tamper-resistant, cryptographically watermarked institutional payment acknowledgement PDFs. |
+| **Donation Lifecycle Service** | [DonationLifecycleService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/donation/DonationLifecycleService.java) | Orchestrates order creation, payment state transitions, donor linking, receipt generation, and manual SBI UTR processing. |
+| **Cashfree Gateway Service** | [CashfreePaymentGatewayService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/payment/CashfreePaymentGatewayService.java) | Manages Cashfree order creation (`/pg/orders`), payment status verification (`/pg/orders/{order_id}/payments`), webhook signature verification, and HTTP client lifecycle. |
+| **Razorpay Gateway Service** | [RazorpayPaymentGatewayService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/payment/RazorpayPaymentGatewayService.java) | Manages Razorpay order generation, HMAC-SHA256 signature verification (`order_id|payment_id`), payment capture, and status polling. |
+| **Donation REST Controller** | [DonationController.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/controller/DonationController.java) | Exposes public donation endpoints (`/api/donations/initiate`, `/api/donations/verify`, `/api/donations/manual-sbi-utr`). |
+| **Cashfree REST Controller** | [CashfreePaymentController.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/controller/CashfreePaymentController.java) | Exposes Cashfree webhook callback endpoint (`/api/payments/cashfree/webhook`). |
+| **Receipt PDF Engine** | [ReceiptPdfService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/receipt/ReceiptPdfService.java) | Generates tamper-resistant, cryptographically watermarked institutional payment acknowledgement PDFs. |
 
 ### 2.2 Payment HTTP Client Timeout Hardening
 
@@ -90,7 +90,7 @@ The dual-channel authentication upgrade introduces both Mobile and Email login o
 Receipt generation adheres strictly to trust statutory governance:
 
 - **Institutional Payment Acknowledgement:**
-  Every completed donation triggers automatic generation of a numbered receipt via [ReceiptPdfService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/receipt/ReceiptPdfService.java).
+  Every completed donation triggers automatic generation of a numbered receipt via [ReceiptPdfService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/receipt/ReceiptPdfService.java).
 - **Mandatory Statutory Disclosure:**
   Every receipt prominently displays the factual governance disclaimer established in Phase 21.5.5.2.1:
   > *"Acknowledges voluntary contribution received into Mahaveer Educational & Charitable Trust's verified ledger (Registered Trust Deed Balangir Doc No. 40311302194; Trust PAN: AADTM5474F; MCA CSR-1: CSR00081063). This receipt is an Institutional Payment Acknowledgement and does NOT itself constitute a Section 80G tax-exemption certificate for FY 2026-27 unless issued alongside an active verified 80G approval order."*

@@ -6,7 +6,7 @@
 **Repository:** https://github.com/Himansu-Nayak/MECT  
 **Release Feature Branch:** `feat/phase-29-complete-website-excellence`  
 **Phase:** Phase 29.2 — Independent Security, Statutory Integrity & Production Release Audit  
-**Target Host Architecture:** Linux VPS (`200.97.161.128`) with Docker Engine + Nginx + PostgreSQL  
+**Target Host Architecture:** Linux VPS (`<PROD_VPS_IP>`) with Docker Engine + Nginx + PostgreSQL  
 **Current Status:** **READY FOR RELEASE — STRICT PRODUCTION FREEZE ENFORCED**  
 
 ---
@@ -19,7 +19,7 @@
 > The development and audit teams have **zero standing permission** to interact with production infrastructure.
 
 The following operations **STRICTLY REQUIRE EXPLICIT OWNER APPROVAL**:
-1. Initiating an SSH connection to `200.97.161.128`.
+1. Initiating an SSH connection to `<PROD_VPS_IP>`.
 2. Pushing the feature branch `feat/phase-29-complete-website-excellence` to GitHub remote `origin`.
 3. Merging `feat/phase-29-complete-website-excellence` into `main`.
 4. Executing Docker build or container restart commands on the production host.
@@ -53,7 +53,7 @@ Before the owner issues authorization, verify that all pre-flight conditions are
 ### Step 3.1: Host Snapshot & Pre-Deployment Backup
 ```bash
 # Connect to production VPS host (Authorized Operator Only)
-ssh mect-admin@200.97.161.128
+ssh mect-admin@<PROD_VPS_IP>
 
 # Verify currently running containers
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

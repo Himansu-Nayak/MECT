@@ -128,18 +128,18 @@ The production deployment commands in `docs/DEPLOYMENT_CHECKLIST.md` and `RELEAS
 docker compose -f compose.production.yaml up -d
 ```
 **Justification:**  
-The host VPS (`200.97.161.128`) hosts other applications, standalone containers, and temporary staging containers (e.g. `mect-frontend-staging`). Using `--remove-orphans` causes Docker Compose to stop and remove any containers in the project/network space not defined in `compose.production.yaml`. Omission of `--remove-orphans` ensures Docker Compose strictly manages declared MECT services without disrupting unrelated workloads.
+The host VPS (`<PROD_VPS_IP>`) hosts other applications, standalone containers, and temporary staging containers (e.g. `mect-frontend-staging`). Using `--remove-orphans` causes Docker Compose to stop and remove any containers in the project/network space not defined in `compose.production.yaml`. Omission of `--remove-orphans` ensures Docker Compose strictly manages declared MECT services without disrupting unrelated workloads.
 
 ---
 
 ## 6. What Needs Owner Confirmation Before Merging
 
-Refer to [OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/OWNER_DECISIONS.md) for full context. The critical gates requiring explicit Trust management sign-off are:
+Refer to [OWNER_DECISIONS.md](file:///<WORKSPACE_DIR>/OWNER_DECISIONS.md) for full context. The critical gates requiring explicit Trust management sign-off are:
 
-1. **Groq API Key Revocation ([OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/OWNER_DECISIONS.md) Item 1):** Revoke the historical key exposed in commit `e995fbb` in the Groq console and issue a new secret for production.
-2. **Bank Details vs Physical Passbook ([OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/OWNER_DECISIONS.md) Item 3):** Physical inspection of SBI passbook confirming A/C `33341302498`, IFSC `SBIN0001701`, UPI `86971610172@sbi`.
-3. **Statutory Credentials ([OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/OWNER_DECISIONS.md) Items 2, 4, 5):** Confirmation of sole helpline (`+91 94371 23616`), Darpan ID (`OR/2024/0466491`), and official secretariat email (`mect220@gmail.com`).
-4. **Chartered Accountant Tax Review ([OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/OWNER_DECISIONS.md) Item 8):** Finalize CA confirmation of Section 12A / 80G disclosure notes.
+1. **Groq API Key Revocation ([OWNER_DECISIONS.md](file:///<WORKSPACE_DIR>/OWNER_DECISIONS.md) Item 1):** Revoke the historical key exposed in commit `e995fbb` in the Groq console and issue a new secret for production.
+2. **Bank Details vs Physical Passbook ([OWNER_DECISIONS.md](file:///<WORKSPACE_DIR>/OWNER_DECISIONS.md) Item 3):** Physical inspection of SBI passbook confirming A/C `33341302498`, IFSC `SBIN0001701`, UPI `86971610172@sbi`.
+3. **Statutory Credentials ([OWNER_DECISIONS.md](file:///<WORKSPACE_DIR>/OWNER_DECISIONS.md) Items 2, 4, 5):** Confirmation of sole helpline (`+91 94371 23616`), Darpan ID (`OR/2024/0466491`), and official secretariat email (`mect220@gmail.com`).
+4. **Chartered Accountant Tax Review ([OWNER_DECISIONS.md](file:///<WORKSPACE_DIR>/OWNER_DECISIONS.md) Item 8):** Finalize CA confirmation of Section 12A / 80G disclosure notes.
 5. **Manual VPS Staging Execution:** Owner will manually run the staging gate in `docs/DEPLOYMENT_CHECKLIST.md` Step 5 on loopback port `3002` before swapping production containers.
 
 ---

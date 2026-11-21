@@ -9,7 +9,7 @@
 
 ## 1. INDEPENDENT LOGIN GATEWAY AUDIT (`/login`)
 
-The standalone login page ([`src/app/login/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/login/page.tsx)) was independently evaluated against all specified requirements:
+The standalone login page ([`src/app/login/page.tsx`](file:///<WORKSPACE_DIR>/src/app/login/page.tsx)) was independently evaluated against all specified requirements:
 
 | Requirement | Implementation Detail | Audit Finding |
 | :--- | :--- | :---: |
@@ -28,7 +28,7 @@ The standalone login page ([`src/app/login/page.tsx`](file:///c:/Users/himan/One
 
 ## 2. INDEPENDENT REGISTRATION GATEWAY AUDIT (`/register`)
 
-The standalone registration page ([`src/app/register/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/register/page.tsx)) was independently evaluated:
+The standalone registration page ([`src/app/register/page.tsx`](file:///<WORKSPACE_DIR>/src/app/register/page.tsx)) was independently evaluated:
 
 | Requirement | Implementation Detail | Audit Finding |
 | :--- | :--- | :---: |

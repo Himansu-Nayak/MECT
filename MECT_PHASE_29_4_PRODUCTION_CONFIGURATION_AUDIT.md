@@ -53,7 +53,7 @@ For all authenticated donor portal sessions:
 - **`SameSite=Strict`**: Enforced to eliminate Cross-Site Request Forgery (CSRF).
 
 ### Nginx Security Headers
-Configured in [docker/nginx/mect.org.in.conf](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/docker/nginx/mect.org.in.conf):
+Configured in [docker/nginx/mect.org.in.conf](file:///<WORKSPACE_DIR>/docker/nginx/mect.org.in.conf):
 - **`Strict-Transport-Security`**: `max-age=63072000; includeSubDomains; preload` (HSTS enforced).
 - **`X-Content-Type-Options`**: `nosniff`.
 - **`X-Frame-Options`**: `DENY`.

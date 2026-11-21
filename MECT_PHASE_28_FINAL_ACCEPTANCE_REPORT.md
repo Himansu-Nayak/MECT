@@ -50,19 +50,19 @@ All 13 mandated deliverables have been authored, verified, and committed:
 
 | # | Deliverable Title | Document Path | Core Scope |
 | :---: | :--- | :--- | :--- |
-| **01** | **Architecture Audit** | [`MECT_PHASE_28_BASELINE_AUDIT_AND_ARCHITECTURE_MAPPING.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_BASELINE_AUDIT_AND_ARCHITECTURE_MAPPING.md) | Baseline analysis of entities, services, and routes. |
-| **02** | **OTP Integration Report** | [`MECT_PHASE_28_OTP_INTEGRATION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_OTP_INTEGRATION_REPORT.md) | Multi-tier SMS provider, E.164 normalization, SHA-256 hashing. |
-| **03** | **Database Migration Documentation** | [`MECT_PHASE_28_DATABASE_MIGRATION_DOCUMENTATION.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_DATABASE_MIGRATION_DOCUMENTATION.md) | Schema specification for V7, V8, V11, and V16 migrations. |
-| **04** | **Donor Authentication Report** | [`MECT_PHASE_28_DONOR_AUTHENTICATION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_DONOR_AUTHENTICATION_REPORT.md) | Server-side guards, JWT issuance, profile updates. |
-| **05** | **Donation UI Modernization Report** | [`MECT_PHASE_28_DONATION_UI_MODERNIZATION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_DONATION_UI_MODERNIZATION_REPORT.md) | Documentary Editorial cards, amount selectors, typography. |
-| **06** | **Donor Portal Report** | [`MECT_PHASE_28_DONOR_PORTAL_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_DONOR_PORTAL_REPORT.md) | Dashboard metrics, verified donation records, receipts. |
-| **07** | **Payment Regression Report** | [`MECT_PHASE_28_SECURITY_AND_PAYMENT_REGRESSION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_SECURITY_AND_PAYMENT_REGRESSION_REPORT.md) | Cashfree, SBI manual transfer, and webhook verification. |
-| **08** | **Security Audit** | [`MECT_PHASE_28_SECURITY_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_SECURITY_AUDIT.md) | OWASP API analysis, rate-limiting, brute-force lockout. |
-| **09** | **Accessibility Report** | [`MECT_PHASE_28_ACCESSIBILITY_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_ACCESSIBILITY_REPORT.md) | WCAG 2.2 AA audit, screen-reader testing, contrast checks. |
-| **10** | **Performance Report** | [`MECT_PHASE_28_PERFORMANCE_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_PERFORMANCE_REPORT.md) | Core Web Vitals (LCP 1.1s, CLS 0.00), bundle size analysis. |
-| **11** | **Visual Screenshot Archive** | [`reports/mect-phase-28/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-28/) & [`reports/mect-phase-29/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-29/) | Multi-viewport PNG screenshots captured via Playwright. |
-| **12** | **Final Acceptance Report** | [`MECT_PHASE_28_FINAL_ACCEPTANCE_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_FINAL_ACCEPTANCE_REPORT.md) | Master acceptance certificate and criteria mapping. |
-| **13** | **Deployment Readiness Checklist** | [`MECT_PHASE_28_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_28_DEPLOYMENT_READINESS_CHECKLIST.md) | Pre-release gates, runbook, rollback procedures. |
+| **01** | **Architecture Audit** | [`MECT_PHASE_28_BASELINE_AUDIT_AND_ARCHITECTURE_MAPPING.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_BASELINE_AUDIT_AND_ARCHITECTURE_MAPPING.md) | Baseline analysis of entities, services, and routes. |
+| **02** | **OTP Integration Report** | [`MECT_PHASE_28_OTP_INTEGRATION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_OTP_INTEGRATION_REPORT.md) | Multi-tier SMS provider, E.164 normalization, SHA-256 hashing. |
+| **03** | **Database Migration Documentation** | [`MECT_PHASE_28_DATABASE_MIGRATION_DOCUMENTATION.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_DATABASE_MIGRATION_DOCUMENTATION.md) | Schema specification for V7, V8, V11, and V16 migrations. |
+| **04** | **Donor Authentication Report** | [`MECT_PHASE_28_DONOR_AUTHENTICATION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_DONOR_AUTHENTICATION_REPORT.md) | Server-side guards, JWT issuance, profile updates. |
+| **05** | **Donation UI Modernization Report** | [`MECT_PHASE_28_DONATION_UI_MODERNIZATION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_DONATION_UI_MODERNIZATION_REPORT.md) | Documentary Editorial cards, amount selectors, typography. |
+| **06** | **Donor Portal Report** | [`MECT_PHASE_28_DONOR_PORTAL_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_DONOR_PORTAL_REPORT.md) | Dashboard metrics, verified donation records, receipts. |
+| **07** | **Payment Regression Report** | [`MECT_PHASE_28_SECURITY_AND_PAYMENT_REGRESSION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_SECURITY_AND_PAYMENT_REGRESSION_REPORT.md) | Cashfree, SBI manual transfer, and webhook verification. |
+| **08** | **Security Audit** | [`MECT_PHASE_28_SECURITY_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_SECURITY_AUDIT.md) | OWASP API analysis, rate-limiting, brute-force lockout. |
+| **09** | **Accessibility Report** | [`MECT_PHASE_28_ACCESSIBILITY_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_ACCESSIBILITY_REPORT.md) | WCAG 2.2 AA audit, screen-reader testing, contrast checks. |
+| **10** | **Performance Report** | [`MECT_PHASE_28_PERFORMANCE_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_PERFORMANCE_REPORT.md) | Core Web Vitals (LCP 1.1s, CLS 0.00), bundle size analysis. |
+| **11** | **Visual Screenshot Archive** | [`reports/mect-phase-28/`](file:///<WORKSPACE_DIR>/reports/mect-phase-28/) & [`reports/mect-phase-29/`](file:///<WORKSPACE_DIR>/reports/mect-phase-29/) | Multi-viewport PNG screenshots captured via Playwright. |
+| **12** | **Final Acceptance Report** | [`MECT_PHASE_28_FINAL_ACCEPTANCE_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_FINAL_ACCEPTANCE_REPORT.md) | Master acceptance certificate and criteria mapping. |
+| **13** | **Deployment Readiness Checklist** | [`MECT_PHASE_28_DEPLOYMENT_READINESS_CHECKLIST.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_28_DEPLOYMENT_READINESS_CHECKLIST.md) | Pre-release gates, runbook, rollback procedures. |
 
 ---
 
@@ -88,7 +88,7 @@ All 13 mandated deliverables have been authored, verified, and committed:
 ## 5. DEPLOYMENT POLICY COMPLIANCE
 
 **Strict Production Freeze:**
-- Zero remote VPS (`200.97.161.128`) contact.
+- Zero remote VPS (`<PROD_VPS_IP>`) contact.
 - Zero production Docker container restarts or rebuilds.
 - Zero production PostgreSQL database modifications.
 - Zero merge into branch `main`.

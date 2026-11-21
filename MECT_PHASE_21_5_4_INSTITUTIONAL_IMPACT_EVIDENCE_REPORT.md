@@ -154,18 +154,18 @@ Automated testing was conducted via `scripts/impact-qa-phase21-5-4.mjs` against 
 ## 8. Visual Evidence Artifacts
 
 Screenshots captured across viewports:
-- [impact_320px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_320px.png)
-- [impact_360px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_360px.png)
-- [impact_390px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_390px.png)
-- [impact_430px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_430px.png)
-- [impact_768px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_768px.png)
-- [impact_1024px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_1024px.png)
-- [impact_1280px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_1280px.png)
-- [impact_1440px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_1440px.png)
-- [impact_1920px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_1920px.png)
-- [impact_landscape_844px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_landscape_844px.png)
-- [impact_reduced_motion.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_4/impact_reduced_motion.png)
-- [impact-phase21-5-4-results.json](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/impact-phase21-5-4-results.json)
+- [impact_320px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_320px.png)
+- [impact_360px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_360px.png)
+- [impact_390px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_390px.png)
+- [impact_430px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_430px.png)
+- [impact_768px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_768px.png)
+- [impact_1024px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_1024px.png)
+- [impact_1280px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_1280px.png)
+- [impact_1440px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_1440px.png)
+- [impact_1920px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_1920px.png)
+- [impact_landscape_844px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_landscape_844px.png)
+- [impact_reduced_motion.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_4/impact_reduced_motion.png)
+- [impact-phase21-5-4-results.json](file:///<WORKSPACE_DIR>/reports/impact-phase21-5-4-results.json)
 
 ---
 

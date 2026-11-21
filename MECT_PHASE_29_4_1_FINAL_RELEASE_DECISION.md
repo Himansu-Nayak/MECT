@@ -49,18 +49,18 @@ The MECT software ecosystem has passed every automated regression gate, architec
 
 All 8 requested forensic audit documents are generated and available in the repository:
 
-1. [MECT_PHASE_29_4_1_GIT_PROVENANCE_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_GIT_PROVENANCE_REPORT.md) — Git release provenance, remote tracking analysis, and transfer protocol.
-2. [MECT_PHASE_29_4_1_DOCKER_RUNTIME_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_DOCKER_RUNTIME_VERIFICATION.md) — Workstation Docker daemon investigation, named pipe diagnosis, and VPS parity audit.
-3. [MECT_PHASE_29_4_1_DATABASE_BACKUP_RESTORE_EVIDENCE.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_DATABASE_BACKUP_RESTORE_EVIDENCE.md) — Actual PostgreSQL 18 archive generation (`pg_dump.exe`) and restoration (`pg_restore.exe`) proof.
-4. [MECT_PHASE_29_4_1_RELEASE_ARTIFACT_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_RELEASE_ARTIFACT_VERIFICATION.md) — Complete release image specifications, user IDs, ports, and volumes.
-5. [MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md) — Elimination of silent error suppressions (`|| true`) and hardened deployment script.
-6. [MECT_PHASE_29_4_1_EXTERNAL_SERVICE_READINESS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_EXTERNAL_SERVICE_READINESS.md) — Third-party service classification matrix and owner action checklist.
-7. [MECT_PHASE_29_4_1_FINAL_BLOCKER_REGISTER.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_FINAL_BLOCKER_REGISTER.md) — Forensic tracking log confirming resolution of all 5 deployment blockers.
-8. [MECT_PHASE_29_4_1_FINAL_RELEASE_DECISION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_FINAL_RELEASE_DECISION.md) — Master release decision report and executive determination.
+1. [MECT_PHASE_29_4_1_GIT_PROVENANCE_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_GIT_PROVENANCE_REPORT.md) — Git release provenance, remote tracking analysis, and transfer protocol.
+2. [MECT_PHASE_29_4_1_DOCKER_RUNTIME_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_DOCKER_RUNTIME_VERIFICATION.md) — Workstation Docker daemon investigation, named pipe diagnosis, and VPS parity audit.
+3. [MECT_PHASE_29_4_1_DATABASE_BACKUP_RESTORE_EVIDENCE.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_DATABASE_BACKUP_RESTORE_EVIDENCE.md) — Actual PostgreSQL 18 archive generation (`pg_dump.exe`) and restoration (`pg_restore.exe`) proof.
+4. [MECT_PHASE_29_4_1_RELEASE_ARTIFACT_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_RELEASE_ARTIFACT_VERIFICATION.md) — Complete release image specifications, user IDs, ports, and volumes.
+5. [MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md) — Elimination of silent error suppressions (`|| true`) and hardened deployment script.
+6. [MECT_PHASE_29_4_1_EXTERNAL_SERVICE_READINESS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_EXTERNAL_SERVICE_READINESS.md) — Third-party service classification matrix and owner action checklist.
+7. [MECT_PHASE_29_4_1_FINAL_BLOCKER_REGISTER.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_FINAL_BLOCKER_REGISTER.md) — Forensic tracking log confirming resolution of all 5 deployment blockers.
+8. [MECT_PHASE_29_4_1_FINAL_RELEASE_DECISION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_FINAL_RELEASE_DECISION.md) — Master release decision report and executive determination.
 
 ---
 
 ## 4. IMMEDIATE NEXT ACTIONS
 
 1. Push release branch to origin: `git push -u origin feat/phase-29-complete-website-excellence` (Awaiting owner confirmation).
-2. Connect to Hostinger VPS `200.97.161.128` and execute the hardened deployment script documented in [MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md).
+2. Connect to Hostinger VPS `<PROD_VPS_IP>` and execute the hardened deployment script documented in [MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_1_DEPLOYMENT_RUNBOOK_CORRECTIONS.md).

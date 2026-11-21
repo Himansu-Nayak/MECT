@@ -2,7 +2,7 @@
 
 **Project:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production URL:** [https://mect.org.in/](https://mect.org.in/)  
-**Target Infrastructure:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Target Infrastructure:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Container:** `mect-frontend` (Port 3001 -> 3000)  
 **Co-Hosted Application:** `oho_tech` on port 3000 (PID 416801, preserved untouched)  
 **Execution Status:** Fully Completed, Tested, Deployed, and Verified Live  
@@ -39,7 +39,7 @@ Rather than superficial decoration, the upgrade establishes an intentional, dign
 
 ## 2. Motion Design Architecture & Standardized Tokens
 
-All motion primitives were centralized and refactored in [`src/components/ui/MotionPrimitives.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR TRUST/src/components/ui/MotionPrimitives.tsx):
+All motion primitives were centralized and refactored in [`src/components/ui/MotionPrimitives.tsx`](file:///<WORKSPACE_DIR>/src/components/ui/MotionPrimitives.tsx):
 
 ### Standardized Easing Curves
 - **Institutional (`[0.22, 1, 0.36, 1]`):** High-tension decel for editorial entrances, cards, and modal sheets.
@@ -63,16 +63,16 @@ Integrated in hero metrics and programme ribbons:
 ## 3. Accessibility & WCAG 2.2.2 Compliance
 
 1. **Statutory Announcement Ticker Pause/Resume:**
-   - In [`src/components/layout/StatutoryTicker.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR TRUST/src/components/layout/StatutoryTicker.tsx), the interactive pause toggle is directly bound to the marquee style:
+   - In [`src/components/layout/StatutoryTicker.tsx`](file:///<WORKSPACE_DIR>/src/components/layout/StatutoryTicker.tsx), the interactive pause toggle is directly bound to the marquee style:
      ```tsx
      style={{ animationPlayState: isPaused ? "paused" : undefined }}
      ```
    - Features accessible `aria-pressed={isPaused}` and dynamic `aria-label` ("Pause announcement ticker" / "Resume announcement ticker").
 2. **Accreditation Marquee Assistive Tech Safeguards:**
-   - In [`src/components/InstitutionalMarquee.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR TRUST/src/components/InstitutionalMarquee.tsx), duplicate loop elements carry `aria-hidden="true"` and `inert={true}` to prevent screen readers from reading credentials twice.
+   - In [`src/components/InstitutionalMarquee.tsx`](file:///<WORKSPACE_DIR>/src/components/InstitutionalMarquee.tsx), duplicate loop elements carry `aria-hidden="true"` and `inert={true}` to prevent screen readers from reading credentials twice.
    - Includes interactive pause/resume control with accessible keyboard focus rings.
 3. **Accordion ARIA 4.1.2 Relationships:**
-   - In [`src/components/Accordion.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR TRUST/src/components/Accordion.tsx), buttons are explicitly tied to panels via `aria-controls={panelId}` and panels to triggers via `id={panelId}`, `role="region"`, and `aria-labelledby={buttonId}`.
+   - In [`src/components/Accordion.tsx`](file:///<WORKSPACE_DIR>/src/components/Accordion.tsx), buttons are explicitly tied to panels via `aria-controls={panelId}` and panels to triggers via `id={panelId}`, `role="region"`, and `aria-labelledby={buttonId}`.
 4. **Instantaneous Reduced-Motion Fallback:**
    - In `MotionPrimitives.tsx`, when `useReducedMotion()` returns true, components immediately output static DOM nodes (`style={{ opacity: 1, transform: "none" }}`) with zero delays or hidden initial states, preventing blank flashes or hydration mismatches.
 
@@ -110,7 +110,7 @@ All automated validation gates executed cleanly:
 
 ### Deployment Protocol
 1. Packaged production assets: `tar -czf frontend_update.tar.gz src content public scripts package.json package-lock.json next.config.ts tsconfig.json eslint.config.mjs Dockerfile`
-2. Securely transmitted to Hostinger VPS: `scp frontend_update.tar.gz root@200.97.161.128:/opt/mect/`
+2. Securely transmitted to Hostinger VPS: `scp frontend_update.tar.gz <DEPLOY_USER>@<PROD_VPS_IP>:/opt/mect/`
 3. Extracted to `/opt/mect/frontend` and restored file permissions (`chown -R mect:mect`).
 4. Rebuilt production Docker image:
    ```bash

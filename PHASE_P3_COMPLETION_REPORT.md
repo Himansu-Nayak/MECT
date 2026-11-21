@@ -39,14 +39,14 @@ The website has been transformed into a legally resilient, child-safe, and statu
 | `pic-9.jpg` | `src/NGO PIC 9.jpg` ($730 \times 1174$) | Conceptual graphic silhouette of a reading child containing a photo montage. | **Conceptual Graphic** | N/A (Montage) | **Unestablished** | **CATALOGED AS CONCEPTUAL ARTWORK.** Not presented as field documentary evidence. |
 
 ### Implementation of the Neutral Branded Institutional Composition
-- In [`src/app/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/page.tsx) (Hero Right Column):
+- In [`src/app/page.tsx`](file:///<WORKSPACE_DIR>/src/app/page.tsx) (Hero Right Column):
   - In place of unconsented minor photography, the Hero features a prestigious, multi-layered **Neutral Branded Institutional Vault**:
     - Deep Forest (`#072617`) card with Heritage Gold (`#C5A059`) filigree borders and subtle radial gold glow.
     - Official Trust Deed No. `40311302194` (Balangir) and establishment date (2013).
     - Five Development Sector Matrix with verified tags and statistics.
     - Explicit **Child Safeguarding & Verified Governance Notice**:
       > *"Beneficiary records are maintained in physical trust registries in Balangir. Public web publication of identifiable minor photography is restricted in accordance with child safeguarding and parental consent standards."*
-- In [`src/app/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/page.tsx) (Section 4 — Field Stories):
+- In [`src/app/page.tsx`](file:///<WORKSPACE_DIR>/src/app/page.tsx) (Section 4 — Field Stories):
   - All four field stories render high-contrast **neutral branded institutional cards** with sector badges, distinctive Lucide icons, and verified programmatic briefs.
 
 ---

@@ -183,18 +183,18 @@ All 9 interactive CTAs inside `<DevelopmentPillarsSection />` were automatedly a
 ## 12. Visual Evidence Artifacts
 
 Screenshots captured in `reports/screenshots/phase21_5_2/`:
-- [pillars_320px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_320px.png)
-- [pillars_360px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_360px.png)
-- [pillars_390px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_390px.png)
-- [pillars_430px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_430px.png)
-- [pillars_768px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_768px.png)
-- [pillars_1024px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_1024px.png)
-- [pillars_1280px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_1280px.png)
-- [pillars_1440px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_1440px.png)
-- [pillars_1920px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_1920px.png)
-- [pillars_landscape_844px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_landscape_844px.png)
-- [pillars_reduced_motion.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_2/pillars_reduced_motion.png)
-- [pillars-phase21-5-2-results.json](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/pillars-phase21-5-2-results.json)
+- [pillars_320px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_320px.png)
+- [pillars_360px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_360px.png)
+- [pillars_390px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_390px.png)
+- [pillars_430px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_430px.png)
+- [pillars_768px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_768px.png)
+- [pillars_1024px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_1024px.png)
+- [pillars_1280px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_1280px.png)
+- [pillars_1440px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_1440px.png)
+- [pillars_1920px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_1920px.png)
+- [pillars_landscape_844px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_landscape_844px.png)
+- [pillars_reduced_motion.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_2/pillars_reduced_motion.png)
+- [pillars-phase21-5-2-results.json](file:///<WORKSPACE_DIR>/reports/pillars-phase21-5-2-results.json)
 
 ---
 

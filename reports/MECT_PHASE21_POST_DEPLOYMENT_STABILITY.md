@@ -1,7 +1,7 @@
 # MECT PHASE 21 — POST-DEPLOYMENT STABILITY & RESOURCE AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T10:28:00Z (UTC)  
 **Auditor:** Production Reliability Engineer & SRE  
 **Status:** PASS — STABLE SYSTEM WITH EXTENSIVE CAPACITY HEADROOM  

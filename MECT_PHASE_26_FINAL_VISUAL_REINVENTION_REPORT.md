@@ -45,11 +45,11 @@ All existing institutional facts, statutory registrations, ring-fenced financial
 
 | Document Name | File Path | Scope & Contents |
 | :--- | :--- | :--- |
-| **1. Visual Forensic Audit** | [`MECT_PHASE_26_VISUAL_FORENSIC_AUDIT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_26_VISUAL_FORENSIC_AUDIT.md) | Forensic inspection of Phase 25 baseline across 12 major visual surfaces and 6 viewports. Detailed problem diagnoses and redesign directives. |
-| **2. Art Direction & Concepts** | [`MECT_PHASE_26_ART_DIRECTION_AND_VISUAL_CONCEPT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_26_ART_DIRECTION_AND_VISUAL_CONCEPT.md) | Comparative evaluation of 3 visual concepts (Monolith, Editorial Architecture, Neo-Brutalist). Selection matrix and aesthetic thesis. |
-| **3. Premium Design System** | [`MECT_PHASE_26_PREMIUM_DESIGN_SYSTEM.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_26_PREMIUM_DESIGN_SYSTEM.md) | Exhaustive token specifications: Color palette, fluid typography scales, 12-column asymmetric grid, paper surface physics, and motion primitives. |
-| **4. Image Art Direction** | [`MECT_PHASE_26_IMAGE_ART_DIRECTION_GUIDELINES.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_26_IMAGE_ART_DIRECTION_GUIDELINES.md) | Authentic documentary standards, child safeguarding rules (`DOC-POL-SAFEGUARDING-2024`), asset inventory, and aspect ratio standards. |
-| **5. Final Acceptance Report** | [`MECT_PHASE_26_FINAL_VISUAL_REINVENTION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_26_FINAL_VISUAL_REINVENTION_REPORT.md) | This comprehensive verification dossier, test outcomes, visual screenshot index, and deployment freeze certification. |
+| **1. Visual Forensic Audit** | [`MECT_PHASE_26_VISUAL_FORENSIC_AUDIT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_26_VISUAL_FORENSIC_AUDIT.md) | Forensic inspection of Phase 25 baseline across 12 major visual surfaces and 6 viewports. Detailed problem diagnoses and redesign directives. |
+| **2. Art Direction & Concepts** | [`MECT_PHASE_26_ART_DIRECTION_AND_VISUAL_CONCEPT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_26_ART_DIRECTION_AND_VISUAL_CONCEPT.md) | Comparative evaluation of 3 visual concepts (Monolith, Editorial Architecture, Neo-Brutalist). Selection matrix and aesthetic thesis. |
+| **3. Premium Design System** | [`MECT_PHASE_26_PREMIUM_DESIGN_SYSTEM.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_26_PREMIUM_DESIGN_SYSTEM.md) | Exhaustive token specifications: Color palette, fluid typography scales, 12-column asymmetric grid, paper surface physics, and motion primitives. |
+| **4. Image Art Direction** | [`MECT_PHASE_26_IMAGE_ART_DIRECTION_GUIDELINES.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_26_IMAGE_ART_DIRECTION_GUIDELINES.md) | Authentic documentary standards, child safeguarding rules (`DOC-POL-SAFEGUARDING-2024`), asset inventory, and aspect ratio standards. |
+| **5. Final Acceptance Report** | [`MECT_PHASE_26_FINAL_VISUAL_REINVENTION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_26_FINAL_VISUAL_REINVENTION_REPORT.md) | This comprehensive verification dossier, test outcomes, visual screenshot index, and deployment freeze certification. |
 
 ---
 
@@ -69,45 +69,45 @@ All automated verification gates passed with zero errors:
 
 ## 5. Visual Review Evidence Dossier (41 High-Resolution Captures)
 
-All screenshots have been generated and archived in [`reports/mect-phase-26/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/):
+All screenshots have been generated and archived in [`reports/mect-phase-26/`](file:///<WORKSPACE_DIR>/reports/mect-phase-26/):
 
 ### Multi-Device Responsive Viewports
-- [Homepage Mobile 390px (iPhone 14)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-mobile-390px.png)
-- [Homepage Mobile 430px (iPhone 15 Pro Max)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-mobile-430px.png)
-- [Homepage Tablet 768px (iPad)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-tablet-768px.png)
-- [Homepage Laptop 1024px (MacBook Air)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-laptop-1024px.png)
-- [Homepage Desktop 1440px (Standard Desktop)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-desktop-1440px.png)
-- [Homepage Large Desktop 1920px (1080p FHD)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/viewports/homepage-large-desktop-1920px.png)
+- [Homepage Mobile 390px (iPhone 14)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-mobile-390px.png)
+- [Homepage Mobile 430px (iPhone 15 Pro Max)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-mobile-430px.png)
+- [Homepage Tablet 768px (iPad)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-tablet-768px.png)
+- [Homepage Laptop 1024px (MacBook Air)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-laptop-1024px.png)
+- [Homepage Desktop 1440px (Standard Desktop)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-desktop-1440px.png)
+- [Homepage Large Desktop 1920px (1080p FHD)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/viewports/homepage-large-desktop-1920px.png)
 
 ### Homepage Section-by-Section Narrative Journey
-- [Section 01: The First Impression (Documentary Split Hero)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/01-the-first-impression-cinematic-hero.png)
-- [Section 02: Why MECT Exists (Institutional Story Manifesto)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/02-why-mect-exists-institutional-story.png)
-- [Section 03 & 04: The MECT Difference (Spatial Safety Net Navigator)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/03-the-mect-difference-interconnected-safety-net.png)
-- [Section 05: Evidence of Impact (Archival Telemetry Ledger)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/05-evidence-of-impact-audited-telemetry.png)
-- [Section 06: Real Stories (Curated Field Exhibition & Safeguarding)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/06-real-stories-field-dispatches-safeguarding.png)
-- [Section 07: Differentiated Campaigns (Higher Education vs. Hanuman Murti 3D)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/07-differentiated-campaigns-hanuman-murti-3d.png)
-- [Section 08: Transparency & Governance (Sovereign Gazetted Docket)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/08-transparency-governance-statutory-register.png)
-- [Section 09: Participate (Six Bespoke Engagement Ateliers)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/09-participate-six-tailored-pathways.png)
-- [Section 10: Closing Fiduciary Pledge & Canonical Contacts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/10-closing-fiduciary-pledge-canonical-contact.png)
-- [Section 11: Fiduciary Footer & Colophon](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/homepage/11-statutory-fiduciary-footer.png)
+- [Section 01: The First Impression (Documentary Split Hero)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/01-the-first-impression-cinematic-hero.png)
+- [Section 02: Why MECT Exists (Institutional Story Manifesto)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/02-why-mect-exists-institutional-story.png)
+- [Section 03 & 04: The MECT Difference (Spatial Safety Net Navigator)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/03-the-mect-difference-interconnected-safety-net.png)
+- [Section 05: Evidence of Impact (Archival Telemetry Ledger)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/05-evidence-of-impact-audited-telemetry.png)
+- [Section 06: Real Stories (Curated Field Exhibition & Safeguarding)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/06-real-stories-field-dispatches-safeguarding.png)
+- [Section 07: Differentiated Campaigns (Higher Education vs. Hanuman Murti 3D)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/07-differentiated-campaigns-hanuman-murti-3d.png)
+- [Section 08: Transparency & Governance (Sovereign Gazetted Docket)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/08-transparency-governance-statutory-register.png)
+- [Section 09: Participate (Six Bespoke Engagement Ateliers)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/09-participate-six-tailored-pathways.png)
+- [Section 10: Closing Fiduciary Pledge & Canonical Contacts](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/10-closing-fiduciary-pledge-canonical-contact.png)
+- [Section 11: Fiduciary Footer & Colophon](file:///<WORKSPACE_DIR>/reports/mect-phase-26/homepage/11-statutory-fiduciary-footer.png)
 
 ### 3D Experiences & Navigation
-- [Hanuman Murti 3D Orbital Experience](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/3d/01-hanuman-murti-3d-orbital-experience.png)
-- [Odisha Impact Sphere 3D](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/3d/02-odisha-impact-sphere-3d.png)
-- [Desktop Navigation Masthead](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/navigation/01-desktop-navigation-header.png)
-- [Mobile Navigation Drawer (Touch UI)](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/navigation/02-mobile-navigation-drawer.png)
+- [Hanuman Murti 3D Orbital Experience](file:///<WORKSPACE_DIR>/reports/mect-phase-26/3d/01-hanuman-murti-3d-orbital-experience.png)
+- [Odisha Impact Sphere 3D](file:///<WORKSPACE_DIR>/reports/mect-phase-26/3d/02-odisha-impact-sphere-3d.png)
+- [Desktop Navigation Masthead](file:///<WORKSPACE_DIR>/reports/mect-phase-26/navigation/01-desktop-navigation-header.png)
+- [Mobile Navigation Drawer (Touch UI)](file:///<WORKSPACE_DIR>/reports/mect-phase-26/navigation/02-mobile-navigation-drawer.png)
 
 ### All 15 Canonical Inner Pages (1440px Desktop)
-- [About Us](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/about-1440px.png) • [Programmes](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/programmes-1440px.png) • [Impact Telemetry](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/impact-1440px.png) • [Governance & Board](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/governance-1440px.png) • [Scholarships](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/scholarships-1440px.png)
-- [CSR Partnerships](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/csr-partnerships-1440px.png) • [Hanuman Murti 3D Project](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/hanuman-murti-1440px.png) • [Memories Gallery](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/memories-gallery-1440px.png) • [Donate Experience](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/donate-1440px.png) • [Volunteer Pathways](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/volunteer-1440px.png)
-- [Contact & Secretariat](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/contact-1440px.png) • [Statutory Disclosures](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/statutory-disclosures-1440px.png) • [Annual Reports & Audits](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/reports-1440px.png) • [Campaigns Registry](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/campaigns-1440px.png) • [Public FAQ](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-26/inner-pages/faq-1440px.png)
+- [About Us](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/about-1440px.png) • [Programmes](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/programmes-1440px.png) • [Impact Telemetry](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/impact-1440px.png) • [Governance & Board](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/governance-1440px.png) • [Scholarships](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/scholarships-1440px.png)
+- [CSR Partnerships](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/csr-partnerships-1440px.png) • [Hanuman Murti 3D Project](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/hanuman-murti-1440px.png) • [Memories Gallery](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/memories-gallery-1440px.png) • [Donate Experience](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/donate-1440px.png) • [Volunteer Pathways](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/volunteer-1440px.png)
+- [Contact & Secretariat](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/contact-1440px.png) • [Statutory Disclosures](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/statutory-disclosures-1440px.png) • [Annual Reports & Audits](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/reports-1440px.png) • [Campaigns Registry](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/campaigns-1440px.png) • [Public FAQ](file:///<WORKSPACE_DIR>/reports/mect-phase-26/inner-pages/faq-1440px.png)
 
 ---
 
 ## 6. Strict Deployment Freeze Certification
 
 In compliance with project directives:
-- **Zero VPS deployment:** Remote host `200.97.161.128` (`srv2000528`) remains untouched.
+- **Zero VPS deployment:** Remote host `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`) remains untouched.
 - **Zero container restarts:** Production Docker containers and Nginx configs are completely unmodified.
 - **Zero database modifications:** Production PostgreSQL is untouched.
 - **Zero merge to `main`:** All work remains safely isolated on working branch `feat/phase-26-radical-visual-reinvention`.

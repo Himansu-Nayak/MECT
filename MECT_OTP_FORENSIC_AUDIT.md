@@ -7,37 +7,37 @@
 
 ## 1. Root Cause Analysis
 1. **Why the UI displayed only `"RESEND"`:**
-   - When the running Spring Boot backend lacked `RESEND_API_KEY` in `backend/.env` / OS environment (`emailProvider.isConfigured() == false`), [`OtpAuthService.requestOtp`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java) threw `ProviderUnconfiguredException("RESEND", ...)`.
-   - [`GlobalExceptionHandler.handleProviderUnconfigured`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/exception/GlobalExceptionHandler.java) serialized `List.of(ex.getProvider())` (`["RESEND"]`) into `ApiErrorResponse.validationErrors`.
-   - [`parseErrorMessage`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/lib/portal-api.ts) prioritized `err.validationErrors[0]` over `err.message`, causing the UI red alert banner to show literally just the string `"RESEND"` (and for unconfigured Phone OTP, `"NONE"`).
+   - When the running Spring Boot backend lacked `RESEND_API_KEY` in `backend/.env` / OS environment (`emailProvider.isConfigured() == false`), [`OtpAuthService.requestOtp`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java) threw `ProviderUnconfiguredException("RESEND", ...)`.
+   - [`GlobalExceptionHandler.handleProviderUnconfigured`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/exception/GlobalExceptionHandler.java) serialized `List.of(ex.getProvider())` (`["RESEND"]`) into `ApiErrorResponse.validationErrors`.
+   - [`parseErrorMessage`](file:///<WORKSPACE_DIR>/src/lib/portal-api.ts) prioritized `err.validationErrors[0]` over `err.message`, causing the UI red alert banner to show literally just the string `"RESEND"` (and for unconfigured Phone OTP, `"NONE"`).
 2. **Primary Missing Environment Configuration:**
    - Verified `backend/.env` and Windows user/machine/process environment variables contain **no** `RESEND_API_KEY`.
-   - Application defaults in [`application.yml`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/resources/application.yml) keep `RESEND_API_KEY` empty (`app.resend.api-key: ${RESEND_API_KEY:}`), and sender defaults to `MECT Notifications <notifications@mect.org.in>`.
+   - Application defaults in [`application.yml`](file:///<WORKSPACE_DIR>/backend/src/main/resources/application.yml) keep `RESEND_API_KEY` empty (`app.resend.api-key: ${RESEND_API_KEY:}`), and sender defaults to `MECT Notifications <notifications@mect.org.in>`.
 3. **Additional Defects Discovered & Repaired Along the Trace:**
    - **Pre-check DB mutation bug:** `OtpAuthService.requestOtp` previously invalidated prior OTPs and inserted a new row into `otp_verifications` *before* verifying `emailProvider.isConfigured()` / `smsProvider.isConfigured()`.
    - **Unhandled dispatch failure (`500`):** If `ResendEmailService` returned a non-`SENT` dispatch result, `OtpAuthService` threw `IllegalStateException`, falling through to HTTP `500` instead of a clean `503` rollback.
    - **Public message leak:** Previously exposed internal env variable naming (`RESEND_API_KEY` / `SMS_PROVIDER=TWILIO`) inside public `503` JSON bodies.
    - **UTF-8 charset omission & error granularity:** Fixed `MessageDigest.isEqual` byte conversion in `verifyOtpRecordOrThrow` to explicitly use `StandardCharsets.UTF_8`, and added distinct clear messages for expired, already-used, attempt-locked, and incorrect OTP codes.
-   - **Tab input persistence:** Switching between `Email OTP` and `Phone SMS OTP` in [`src/app/portal/login/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/portal/login/page.tsx) left the previous email value in the input box.
+   - **Tab input persistence:** Switching between `Email OTP` and `Phone SMS OTP` in [`src/app/portal/login/page.tsx`](file:///<WORKSPACE_DIR>/src/app/portal/login/page.tsx) left the previous email value in the input box.
 
 ---
 
 ## 2. Changes Made
 1. **Backend Exception & Status Handling:**
-   - Created [`ProviderDispatchException`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/exception/ProviderDispatchException.java) for Resend/SMS runtime dispatch failures.
-   - Updated [`GlobalExceptionHandler`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/exception/GlobalExceptionHandler.java): cleared `validationErrors` (`List.of()`) on `503` responses so internal provider codes never appear in UI banners; added `handleProviderDispatch` (`503 Service Temporarily Unavailable`); kept technical details strictly in server logs.
-2. **Backend OTP Orchestration ([`OtpAuthService`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java)):**
+   - Created [`ProviderDispatchException`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/exception/ProviderDispatchException.java) for Resend/SMS runtime dispatch failures.
+   - Updated [`GlobalExceptionHandler`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/exception/GlobalExceptionHandler.java): cleared `validationErrors` (`List.of()`) on `503` responses so internal provider codes never appear in UI banners; added `handleProviderDispatch` (`503 Service Temporarily Unavailable`); kept technical details strictly in server logs.
+2. **Backend OTP Orchestration ([`OtpAuthService`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java)):**
    - Moved `isConfigured()` checks before any `otp_verifications` write so unconfigured providers never leave orphan OTP rows or trigger cooldown lockouts.
    - Replaced `IllegalStateException` on failed external dispatch with `ProviderDispatchException` (rolling back the unsent OTP row cleanly).
    - Replaced public internal config details with sanitized user-friendly messages; kept detailed failure diagnostics (`RESEND_API_KEY missing`, `dispatch.errorMessage()`) in `log.error(...)` / `log.warn(...)`.
    - Used `StandardCharsets.UTF_8` in `MessageDigest.isEqual` and distinguished expired vs already-used vs incorrect OTP error messages cleanly.
-3. **Resend Client Hardening ([`ResendEmailService`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)):**
+3. **Resend Client Hardening ([`ResendEmailService`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)):**
    - Added HTTP connect (`5s`) and read (`10s`) timeouts via `SimpleClientHttpRequestFactory` and `User-Agent: MECT-Portal-Backend/1.0`.
    - Caught `RestClientResponseException` explicitly to classify Resend status codes (`401` `RESEND_INVALID_API_KEY`, `403` `RESEND_DOMAIN_OR_ACCESS_RESTRICTED`, `422` `RESEND_UNPROCESSABLE_SENDER_OR_PAYLOAD`, `429` `RESEND_RATE_LIMITED`) in server logs without leaking headers/secrets.
-4. **Frontend Error Handling & UX ([`src/lib/portal-api.ts`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/lib/portal-api.ts), [`src/app/portal/login/page.tsx`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/portal/login/page.tsx)):**
+4. **Frontend Error Handling & UX ([`src/lib/portal-api.ts`](file:///<WORKSPACE_DIR>/src/lib/portal-api.ts), [`src/app/portal/login/page.tsx`](file:///<WORKSPACE_DIR>/src/app/portal/login/page.tsx)):**
    - Guarded `parseErrorMessage` against raw internal provider codes (`RESEND`, `NONE`, `TWILIO`, `MSG91`, `RAZORPAY`, `META_CLOUD`), restricted `validationErrors[0]` extraction to `400` validation failures, and added clean `503` / network-unreachable messages.
    - Added `noValidate` + consistent inline error (`Your email address is invalid.`), friendly Phone SMS unavailable feedback, and `setTarget("")` reset on channel tab switch.
-5. **Automated Regression Coverage ([`PortalAuthAndOtpSecurityTests`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/test/java/org/mahavirtrust/backend/PortalAuthAndOtpSecurityTests.java)):**
+5. **Automated Regression Coverage ([`PortalAuthAndOtpSecurityTests`](file:///<WORKSPACE_DIR>/backend/src/test/java/org/mahavirtrust/backend/PortalAuthAndOtpSecurityTests.java)):**
    - Added `testUnconfiguredResendAndDispatchFailureReturnSanitizedMessagesWithNoOrphanOtp` asserting `503`, empty `validationErrors`, zero secret/env key leakage, zero orphan DB rows, and explicit expired-OTP message verification.
 
 ---

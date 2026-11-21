@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production URL:** `https://mect.org.in/`  
-**Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Investigation Timestamp:** 2026-11-13T09:15:00Z to 2026-11-13T09:35:00Z (UTC)  
 **Lead Auditor:** Principal Production Reliability Engineer & DevSecOps Lead  
 **Status:** PASS — ALL 15 INTERRUPTED CHECKS FULLY INVESTIGATED, RESOLVED & REPRODUCED  
@@ -32,7 +32,7 @@ During Phase 20.1, fifteen operations initially exited with code 1, were interru
 | **F-07** | `SELECT id, email, ... FROM portal_users;` | 08:49:45 | 1 | `ERROR: column "email" does not exist` | Schema column name mismatch. Correct column is `primary_email`. | Yes | Passed with `primary_email`. | None |
 | **F-08** | `SHOW lc_collate;` in PostgreSQL | 08:58:53 | 1 | `ERROR: unrecognized configuration parameter "lc_collate"` | `lc_collate` is a database attribute, not a `SHOW` variable in PostgreSQL. | Yes | Passed querying `pg_database.datcollate`. | None |
 | **F-09** | `SELECT pg_size_pretty(pg_database_size("mect_db"))` | 08:50:24 | 1 | `ERROR: unterminated quoted identifier at or near ...` | Shell quotation escaping in command string. | Yes | Passed using `current_database()` and single quotes. | None |
-| **F-10** | `ssh root@200.97.161.128 "uptime"` (`task-9260`) | 08:47:56 | 1 | `ssh: connect to host ... port 22: Connection timed out` | Transient Hostinger network blip on port 22. | Yes | Retried with `-o ConnectTimeout=8`; reconnected in 1.2s. | None |
+| **F-10** | `ssh <DEPLOY_USER>@<PROD_VPS_IP> "uptime"` (`task-9260`) | 08:47:56 | 1 | `ssh: connect to host ... port 22: Connection timed out` | Transient Hostinger network blip on port 22. | Yes | Retried with `-o ConnectTimeout=8`; reconnected in 1.2s. | None |
 | **F-11** | Backend restart curl check (`task-9322`) | 09:00:06 | 1 | `curl exit code 000` / HTTP 500 on `/api/v1/public/health` | Test script timing (curled at T+12s while `start_period` is 40s) and queried non-existent endpoint `/api/v1/public/health` instead of `/api/v1/health`. | Yes | Curled `/api/v1/health` at T+25s; returned HTTP 200 `{"status":"UP"}`. Container marked healthy. | None |
 | **F-12** | Inline Bash script with `<< 'EOF'` via PowerShell | 09:01:22 | 1 | `Missing file specification after redirection operator` | PowerShell does not support Bash heredocs `<< 'EOF'`. | Yes | Script saved to file `scripts/phase20_1_audit.sh` and piped cleanly. | None |
 | **F-13** | Audit script execution | 09:01:51 | 1 | `bash: line 36: $'\r': command not found` | Windows CRLF carriage return in shell script. | Yes | Normalized with `tr -d '\r'` on VPS. | None |

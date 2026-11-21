@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Database Target:** `mect_db` (Container `mect-postgres` on `200.97.161.128`)  
+**Database Target:** `mect_db` (Container `mect-postgres` on `<PROD_VPS_IP>`)  
 **Current Branch:** `feat/phase-29-complete-website-excellence`  
 **Release Baseline Commit:** `b09e1bb`  
 **Phase:** 29.4.4 — Controlled Database Migration  

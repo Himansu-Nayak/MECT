@@ -77,7 +77,7 @@ Exit Code: 0 (SYNTACTICALLY & SEMANTICALLY VALID)
 
 ## 3. WORKSTATION VS PRODUCTION HOST PARITY
 
-| Feature / Metric | Local Windows Workstation | Production VPS Host (`200.97.161.128`) | Parity Status |
+| Feature / Metric | Local Windows Workstation | Production VPS Host (`<PROD_VPS_IP>`) | Parity Status |
 | :--- | :--- | :--- | :--- |
 | **Operating System** | Windows 11 Enterprise (x64) | Ubuntu Linux 24.04 LTS (x64) | Differing host OS (Normal container arch) |
 | **Docker Daemon Engine** | Inactive (`npipe:////./pipe/docker_engine`) | Active systemd native service (`docker.service`) | **VPS Ready** |

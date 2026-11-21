@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128`  
+**Target VPS Host:** `<PROD_VPS_IP>`  
 **Current Branch:** `feat/phase-29-complete-website-excellence`  
 **Release Baseline Commit:** `b09e1bb`  
 **Phase:** 29.4.5 — Controlled Application Release  
@@ -29,7 +29,7 @@ Upon owner authorization (`AUTH-04`, `AUTH-05`, `AUTH-06`, `AUTH-07`), the follo
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Host as VPS Host (200.97.161.128)
+    participant Host as VPS Host (<PROD_VPS_IP>)
     participant Git as GitHub Repo (b09e1bb)
     participant Docker as Docker Daemon
     participant PG as mect-postgres

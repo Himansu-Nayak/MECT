@@ -8,10 +8,10 @@
   - `/api/ai/` -> Next.js frontend `127.0.0.1:3001`
   - `/api/` -> Spring Boot backend `127.0.0.1:8081`
   - `/` -> Next.js frontend `127.0.0.1:3001`
-- **Security Filter Chain ([`SecurityConfig`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/config/SecurityConfig.java)):**
+- **Security Filter Chain ([`SecurityConfig`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/config/SecurityConfig.java)):**
   - `.requestMatchers("/webhooks/**").permitAll()` (stateless CSRF disabled; cryptographic signature verification enforced per controller/service method).
-  - [`RateLimitingFilter`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/security/RateLimitingFilter.java) restricts `/public/` and `/portal/auth/` (`30 req/min/IP`) and intentionally does **not** throttle `/webhooks/**` so legitimate bursts of provider webhook deliveries are never dropped.
-- **Unified Controller ([`WebhookController`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/controller/WebhookController.java)):** `@RequestMapping("/webhooks")` exposes:
+  - [`RateLimitingFilter`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/security/RateLimitingFilter.java) restricts `/public/` and `/portal/auth/` (`30 req/min/IP`) and intentionally does **not** throttle `/webhooks/**` so legitimate bursts of provider webhook deliveries are never dropped.
+- **Unified Controller ([`WebhookController`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/controller/WebhookController.java)):** `@RequestMapping("/webhooks")` exposes:
   1. `POST /api/v1/webhooks/payments/razorpay` -> `https://mect.org.in/api/v1/webhooks/payments/razorpay`
   2. `POST /api/v1/webhooks/resend` -> `https://mect.org.in/api/v1/webhooks/resend`
   3. `GET` + `POST /api/v1/webhooks/whatsapp` -> `https://mect.org.in/api/v1/webhooks/whatsapp`

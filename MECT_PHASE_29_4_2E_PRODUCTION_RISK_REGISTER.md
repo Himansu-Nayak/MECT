@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2E — Authenticated Production Verification & Backup Readiness  
 **Execution Timestamp (Local):** 2026-11-20T01:08:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:38:00Z  

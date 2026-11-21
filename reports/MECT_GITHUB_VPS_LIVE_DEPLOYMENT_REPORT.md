@@ -2,7 +2,7 @@
 
 **Release Date:** 2026-11-11
 **Production Domain:** `https://mect.org.in`
-**Target Server:** Hostinger VPS (`srv2000528` / `200.97.161.128`)
+**Target Server:** Hostinger VPS (`<PROD_HOSTNAME>` / `<PROD_VPS_IP>`)
 
 Allowed status vocabulary used below: **PASS**, **FAIL**, **BLOCKED**, **NOT TESTED**.
 

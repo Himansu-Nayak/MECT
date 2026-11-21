@@ -2,7 +2,7 @@
 
 **Date**: 2026-11-02  
 **Branch**: `security/nextjs-patch-upgrade`  
-**Worktree Path**: `C:/Users/himan/OneDrive/Desktop/MAHAVIR TRUST/.worktrees/security-patch`  
+**Worktree Path**: `<WORKSPACE_DIR>/.worktrees/security-patch`  
 **Original Checkout Status**: `main` (Clean, Untouched)  
 **Security Lead**: Senior Full-Stack Engineer, Application Security Engineer & DevOps Specialist  
 

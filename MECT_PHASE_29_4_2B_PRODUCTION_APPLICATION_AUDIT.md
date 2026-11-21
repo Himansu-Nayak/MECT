@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Deployment Target Path:** `/opt/mect` on `200.97.161.128`  
+**Deployment Target Path:** `/opt/mect` on `<PROD_VPS_IP>`  
 **Evaluation Phase:** Phase 29.4.2B — Production Application Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Application State:** **OPERATIONAL & SERVING LIVE TRAFFIC**

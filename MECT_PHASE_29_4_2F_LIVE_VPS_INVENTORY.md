@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2F — SSH Access Activation & Storage Failure-Domain Validation  
 **Execution Timestamp (Local):** 2026-11-20T01:20:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:50:00Z  
@@ -16,7 +16,7 @@
 - **Execution Timestamp:** `2026-11-20T01:20:00+05:30` (UTC: `2026-11-19T19:50:00Z`)
 - **Exact Evidence Source:** Validated Phase 20/21 forensic audit documentation (`reports/MECT_PHASE20_VPS_INFRASTRUCTURE_AUDIT.md`, `reports/MECT_PHASE21_DEPLOYMENT_BASELINE.md`), live TCP port 22 banner read (`SSH-2.0-OpenSSH_10.2p1 Ubuntu-2ubuntu3.8`), and live HTTPS response headers.
 - **Commands Executed:**
-  - Socket banner probe to `200.97.161.128:22`.
+  - Socket banner probe to `<PROD_VPS_IP>:22`.
   - HTTPS GET probes to `https://mect.org.in/` and `/api/v1/health`.
   - Historical correlation of host system telemetry.
 - **Actual Result:**
@@ -43,7 +43,7 @@
 
 ## 3. MULTI-TENANT WORKLOAD INVENTORY & PORT ISOLATION
 
-The production VPS `srv2000528` hosts both MECT charitable operations and non-MECT commercial workloads. Strict isolation boundaries are enforced:
+The production VPS `<PROD_HOSTNAME>` hosts both MECT charitable operations and non-MECT commercial workloads. Strict isolation boundaries are enforced:
 
 | Tenant / Workload | Process / Container | Local Port Binding | Runtime Supervisor | Isolation Boundary | Live Edge Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |

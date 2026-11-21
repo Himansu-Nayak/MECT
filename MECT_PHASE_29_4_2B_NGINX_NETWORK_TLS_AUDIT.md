@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Inspection Status:** **VERIFIED (Live Edge Probes, SSL Handshake & Upstream Validation)**
@@ -16,7 +16,7 @@ The network and edge infrastructure serving **Mahaveer Educational & Charitable 
 
 The edge architecture operates on a high-availability two-tier model:
 1. **Cloudflare Global Anycast Edge Proxy Tier**: Provides authoritative DNS, DDoS mitigation, Web Application Firewall (WAF), HTTP/3 (QUIC) acceleration, and edge TLS termination.
-2. **Hostinger VPS Origin Reverse Proxy Tier (`nginx`)**: Deployed directly on Ubuntu host `srv2000528`, handling TLS origin termination, HTTP-to-HTTPS permanent redirection (301), and non-blocking reverse proxy routing to isolated Docker container ports (`3001` for Next.js, `8081` for Spring Boot API).
+2. **Hostinger VPS Origin Reverse Proxy Tier (`nginx`)**: Deployed directly on Ubuntu host `<PROD_HOSTNAME>`, handling TLS origin termination, HTTP-to-HTTPS permanent redirection (301), and non-blocking reverse proxy routing to isolated Docker container ports (`3001` for Next.js, `8081` for Spring Boot API).
 
 **Audit Verdict:** All routing rules, TLS handshakes, upstream bindings, security headers, and multi-tenant isolation boundaries are **fully operational, securely configured, and release-ready**.
 
@@ -36,9 +36,9 @@ flowchart TD
         CF_SSL[Edge TLS 1.3 / HTTP/3 Engine]
     end
 
-    subgraph Hostinger VPS Origin: 200.97.161.128
+    subgraph Hostinger VPS Origin: <PROD_VPS_IP>
         UFW[Host Firewall / UFW: Ports 22, 80, 443]
-        HostNginx[Nginx Reverse Proxy: srv2000528]
+        HostNginx[Nginx Reverse Proxy: <PROD_HOSTNAME>]
         
         subgraph Docker Bridge: mect-network
             Frontend[mect-frontend: 127.0.0.1:3001]
@@ -158,7 +158,7 @@ The VPS network interfaces are partitioned to eliminate unintended exposure of s
 
 ## 6. MULTI-TENANT COEXISTENCE & COLLISION AUDIT
 
-To ensure that deploying MECT release `c5aa4e8` does not impact the co-hosted OHO Tech workloads on `srv2000528`, the configuration was audited against potential port and resource collisions:
+To ensure that deploying MECT release `c5aa4e8` does not impact the co-hosted OHO Tech workloads on `<PROD_HOSTNAME>`, the configuration was audited against potential port and resource collisions:
 
 1. **Port Separation:**
    - MECT uses `3001` (web), `8081` (api), `5433` (db).

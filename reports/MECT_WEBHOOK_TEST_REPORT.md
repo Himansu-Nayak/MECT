@@ -4,7 +4,7 @@
 **Command Run:** `cd backend && mvn test -B`
 **Result:** **`Tests run: 47, Failures: 0, Errors: 0, Skipped: 0` (`BUILD SUCCESS`)**
 
-## Phase 12 Scenario Verification Matrix ([`WebhookSecurityAndDeliveryTests`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/test/java/org/mahavirtrust/backend/WebhookSecurityAndDeliveryTests.java) & [`DonationPaymentReceiptWorkflowTests`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/test/java/org/mahavirtrust/backend/DonationPaymentReceiptWorkflowTests.java))
+## Phase 12 Scenario Verification Matrix ([`WebhookSecurityAndDeliveryTests`](file:///<WORKSPACE_DIR>/backend/src/test/java/org/mahavirtrust/backend/WebhookSecurityAndDeliveryTests.java) & [`DonationPaymentReceiptWorkflowTests`](file:///<WORKSPACE_DIR>/backend/src/test/java/org/mahavirtrust/backend/DonationPaymentReceiptWorkflowTests.java))
 
 | # | Scenario | Endpoint / Mechanism Tested | Verified Outcome |
 |---|---|---|---|

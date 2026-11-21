@@ -64,16 +64,16 @@ Confirmed Cashfree Merchant Dashboard registration:
 ---
 
 ## 5. Frontend Integration (`SmartDonationCheckout` & Admin Dashboard)
-- **[src/components/sections/SmartDonationCheckout.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/components/sections/SmartDonationCheckout.tsx) & [src/lib/portal-api.ts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/lib/portal-api.ts):**
+- **[src/components/sections/SmartDonationCheckout.tsx](file:///<WORKSPACE_DIR>/src/components/sections/SmartDonationCheckout.tsx) & [src/lib/portal-api.ts](file:///<WORKSPACE_DIR>/src/lib/portal-api.ts):**
   - Loads Cashfree JS SDK v3 (`https://sdk.cashfree.com/js/v3/cashfree.js`) dynamically with backend-supplied `checkoutEnvironment` (`sandbox` / `production`) and `paymentSessionId`.
   - Handles desktop & mobile `_modal` checkout, `?order_id=...` return URL verification strictly via backend `POST /api/v1/payments/cashfree/verify`, background polling for `PENDING`, `SUCCESSFUL` receipt panel, `USER_DROPPED`/`FAILED`/`EXPIRED` recovery + Retry button (with URL query cleanup), and preserves direct SBI Bank Transfer (`33341302498`, `SBIN0001701`) and Static SBI UPI QR (`86971610172@sbi`).
-- **[src/app/admin/donors/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/admin/donors/page.tsx):**
+- **[src/app/admin/donors/page.tsx](file:///<WORKSPACE_DIR>/src/app/admin/donors/page.tsx):**
   - Fixed `SUCCESS` vs `SUCCESSFUL` status filter bug; added `USER_DROPPED`, gateway provider filter (`CASHFREE`/`RAZORPAY`), search bar, Cashfree `cfOrderId`/`paymentGroup` display, **Verify** manual reconciliation trigger, audit history modal, PDF downloads, and CSV export (`GatewayProvider`, `GatewayOrderId`, `GatewayPaymentId`, `BankReference`).
 
 ---
 
 ## 6. Database Migration (`V10`)
-- **[V10__cashfree_payment_gateway_schema.sql](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/resources/db/migration/V10__cashfree_payment_gateway_schema.sql):**
+- **[V10__cashfree_payment_gateway_schema.sql](file:///<WORKSPACE_DIR>/backend/src/main/resources/db/migration/V10__cashfree_payment_gateway_schema.sql):**
   - Non-destructively adds `cf_order_id`, `payment_session_id`, `gateway_raw_status`, `payment_group`, `bank_reference`, `verified_at` (`IF NOT EXISTS`), unique index `uq_payments_provider_order ON payments(provider, provider_order_id)`, and status lookup indexes compatible with both PostgreSQL and H2 `MODE=PostgreSQL`.
   - Preserves all existing `donations`, `payments`, `payment_events`, and `donation_receipts` records.
 
@@ -90,7 +90,7 @@ Confirmed Cashfree Merchant Dashboard registration:
 ---
 
 ## 8. Live VPS, Reverse Proxy, & Production Verification Status
-- **Stage 1 Infrastructure Deployment Executed (`PASS` on `200.97.161.128` / `srv2000528`):**
+- **Stage 1 Infrastructure Deployment Executed (`PASS` on `<PROD_VPS_IP>` / `<PROD_HOSTNAME>`):**
   - **Pre-Deploy Backups Verified:**
     - PostgreSQL `mect_db`: `/opt/mect/backups/mect_db_pre_cashfree_20261111_201502.dump` (`100K`, `chmod 600`, `PG_RESTORE_TOC_ENTRIES=262`)
     - Previous JAR: `/opt/mect/backups/mahavir-backend.jar.pre_cashfree_20261111_201502` (`65M`)
@@ -115,7 +115,7 @@ Confirmed Cashfree Merchant Dashboard registration:
 ---
 
 ## 9. Deployment Plan & Rollback Procedure
-Detailed step-by-step commands (`pg_dump`, JAR backup, `/opt/mect/backend/.env`, `mvn clean package`, `systemctl restart mect-backend.service`, `npm run build`, `pm2 restart mect_frontend`, smoke tests, and instant `PAYMENT_PROVIDER=RAZORPAY` + JAR rollback) are documented in [CASHFREE_VPS_DEPLOYMENT_GUIDE.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/CASHFREE_VPS_DEPLOYMENT_GUIDE.md).
+Detailed step-by-step commands (`pg_dump`, JAR backup, `/opt/mect/backend/.env`, `mvn clean package`, `systemctl restart mect-backend.service`, `npm run build`, `pm2 restart mect_frontend`, smoke tests, and instant `PAYMENT_PROVIDER=RAZORPAY` + JAR rollback) are documented in [CASHFREE_VPS_DEPLOYMENT_GUIDE.md](file:///<WORKSPACE_DIR>/CASHFREE_VPS_DEPLOYMENT_GUIDE.md).
 
 ---
 

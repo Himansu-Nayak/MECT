@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2G — SSH Activation, Disaster Recovery Design & Backup Runbook Hardening  
 **Execution Timestamp (Local):** 2026-11-20T01:30:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T20:00:00Z  
@@ -52,13 +52,13 @@ flowchart TD
 
 ## 3. COMPLETE HARDENED BACKUP SCRIPT SOURCE CODE
 
-Below is the complete, production-grade bash script designed for `srv2000528`:
+Below is the complete, production-grade bash script designed for `<PROD_HOSTNAME>`:
 
 ```bash
 #!/usr/bin/env bash
 # ==============================================================================
 # MECT PRODUCTION DATABASE BACKUP SCRIPT (HARDENED)
-# Target Host: srv2000528 (200.97.161.128)
+# Target Host: <PROD_HOSTNAME> (<PROD_VPS_IP>)
 # Container: mect-postgres | Database: mect_prod | User: mect_user
 # Failure Domain: /opt/mect/backups/ (Outside Docker named volumes)
 # ==============================================================================

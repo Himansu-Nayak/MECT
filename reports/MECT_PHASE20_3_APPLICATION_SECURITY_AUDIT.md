@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production Stack:** Next.js 16 (Node 22) + Spring Boot 3 (Java 21) + PostgreSQL 18.7  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:55:00Z (UTC)  
 **Lead Auditor:** Senior Application Security Engineer & DevSecOps Lead  
 **Status:** PASS — OWASP TOP 10 MITIGATIONS IMPLEMENTED  

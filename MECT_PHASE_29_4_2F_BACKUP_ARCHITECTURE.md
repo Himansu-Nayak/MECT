@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2F — SSH Access Activation & Storage Failure-Domain Validation  
 **Execution Timestamp (Local):** 2026-11-20T01:20:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:50:00Z  
@@ -27,7 +27,7 @@
 
 ```mermaid
 flowchart TD
-    subgraph Hostinger VPS: srv2000528
+    subgraph Hostinger VPS: <PROD_HOSTNAME>
         DB[(mect-postgres Live DB<br/>Volume: mect-pgdata)]
         
         DB -->|stdout streaming| T1["TIER 1: Local Rapid Snapshot<br/>Path: /opt/mect/backups/<br/>RTO: < 60 seconds | RPO: < 1 hour<br/>Purpose: Deployment rollback"]

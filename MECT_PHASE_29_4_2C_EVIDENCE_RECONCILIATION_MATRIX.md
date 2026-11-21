@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Audit Evaluation Date:** 2026-11-20T00:15:00+05:30 (UTC: 2026-11-19T18:45:00Z)  
 **Current Audit Commit:** `6208def`  
 **Phase:** Phase 29.4.2C — Evidence Reconciliation & Owner-Assisted Access Readiness  
@@ -31,9 +31,9 @@ The table below reconciles all 28 major claims across the nine Phase 29.4.2B aud
 
 | # | Phase 29.4.2B Claim | Phase 29.4.2B Classification | Corrected Phase 29.4.2C Classification | Evidence Source & Terminal Verification | Limitations & Forensic Corrections |
 | :- | :--- | :--- | :--- | :--- | :--- |
-| **1** | SSH Server Banner: `OpenSSH_10.2p1 Ubuntu-2ubuntu3.8` | VERIFIED | **`VERIFIED_PUBLICLY`** | Live TCP socket connection to `200.97.161.128:22`. Banner captured. | Proves SSH daemon is running on Ubuntu host. Does NOT prove authenticated access. |
-| **2** | SSH Host Key: ED25519 Fingerprint | VERIFIED | **`VERIFIED_DIRECTLY`** | Registered in `C:\Users\himan\.ssh\known_hosts` (`AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA`). | Host identity accepted into known_hosts. Does NOT grant shell access. |
-| **3** | Direct VPS SSH Terminal Inspection | VERIFIED | **`FAILED`** | `ssh -o KexAlgorithms=curve25519-sha256 root@200.97.161.128` exited with code 255: `Permission denied (publickey,password)`. | **CORRECTION:** Direct SSH inspection failed completely. Zero commands were executed on the VPS. |
+| **1** | SSH Server Banner: `OpenSSH_10.2p1 Ubuntu-2ubuntu3.8` | VERIFIED | **`VERIFIED_PUBLICLY`** | Live TCP socket connection to `<PROD_VPS_IP>:22`. Banner captured. | Proves SSH daemon is running on Ubuntu host. Does NOT prove authenticated access. |
+| **2** | SSH Host Key: ED25519 Fingerprint | VERIFIED | **`VERIFIED_DIRECTLY`** | Registered in `<USER_HOME>\.ssh\known_hosts` (`AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA`). | Host identity accepted into known_hosts. Does NOT grant shell access. |
+| **3** | Direct VPS SSH Terminal Inspection | VERIFIED | **`FAILED`** | `ssh -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>` exited with code 255: `Permission denied (publickey,password)`. | **CORRECTION:** Direct SSH inspection failed completely. Zero commands were executed on the VPS. |
 | **4** | Host Hardware: 4 vCPU, 15 GiB RAM, 193 GB NVMe | VERIFIED | **`HISTORICAL_EVIDENCE`**| Sourced from `reports/MECT_PHASE20_VPS_INFRASTRUCTURE_AUDIT.md`. | **CORRECTION:** Host hardware capacity was NOT measured in 29.4.2B. It represents historical specification. |
 | **5** | Host Available Memory: ~13 GiB Free | VERIFIED | **`HISTORICAL_EVIDENCE`**| Historical audit telemetry from Phase 21. | **CORRECTION:** `free -m` was NOT executed on the live VPS. Current memory usage is unmeasured. |
 | **6** | Host Disk Free: 174 GB NVMe Storage | VERIFIED | **`HISTORICAL_EVIDENCE`**| Historical audit telemetry from Phase 21. | **CORRECTION:** `df -h` was NOT executed on the live VPS. Current disk utilization is unmeasured. |

@@ -223,7 +223,7 @@ reports/mect-phase-29/
 ## 7. PRODUCTION FREEZE REAFFIRMATION
 
 In strict compliance with project governance directives:
-1. **NO PRODUCTION REMOTE ACTIONS:** Remote VPS host `200.97.161.128` was not contacted, pinged, or modified.
+1. **NO PRODUCTION REMOTE ACTIONS:** Remote VPS host `<PROD_VPS_IP>` was not contacted, pinged, or modified.
 2. **NO DOCKER REBUILDS:** Production Docker containers, networks, and volumes remain frozen and untouched.
 3. **NO DATABASE MUTATIONS:** Production PostgreSQL database was not altered. All automated tests executed against in-memory H2 databases.
 4. **NO MAIN MERGE:** All work is strictly isolated in the dedicated feature branch `feat/phase-29-complete-website-excellence`.

@@ -175,7 +175,7 @@ Real financial transactions were executed, tested, and audited against the live 
 
 ## 5. REPOSITORY INTEGRITY & SCOPE BOUNDARY
 
-- **Target Repository:** `MAHAVIR-TRUST` (`c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST`).
+- **Target Repository:** `MAHAVIR-TRUST` (`<WORKSPACE_DIR>`).
 - **Isolation Confirmed:** OHO TECH and any unrelated applications remain 100% untouched and isolated outside the repository tree.
 - **Git State:** All working tree modifications in `MAHAVIR-TRUST` are deliberate, verified, and ready for baseline commit.
 

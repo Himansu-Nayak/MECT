@@ -21,7 +21,7 @@ A thorough inspection of Git status, branch configuration, and commit lineage wa
   - `0f58118` feat(phase-28): enforce mandatory donor authentication on donation initiation and update schema V16
   - `85bfe1a` feat(phase-27-1): final excellence audit, hd validation, performance and production readiness
 * **Working Tree State:** Clean, zero uncommitted or untracked file conflicts.
-* **Remote VPS State:** Zero network requests dispatched to `200.97.161.128`. Zero Docker containers restarted.
+* **Remote VPS State:** Zero network requests dispatched to `<PROD_VPS_IP>`. Zero Docker containers restarted.
 
 ---
 

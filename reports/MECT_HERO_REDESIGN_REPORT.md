@@ -2,11 +2,11 @@
 
 **Date:** 2026-11-10
 **Files Modified / Created:**
-- [HeroPhotoGallery.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/components/sections/HeroPhotoGallery.tsx) (new)
-- [page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/page.tsx)
-- [globals.css](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/globals.css)
-- [MotionPrimitives.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/components/ui/MotionPrimitives.tsx)
-- [next.config.ts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/next.config.ts)
+- [HeroPhotoGallery.tsx](file:///<WORKSPACE_DIR>/src/components/sections/HeroPhotoGallery.tsx) (new)
+- [page.tsx](file:///<WORKSPACE_DIR>/src/app/page.tsx)
+- [globals.css](file:///<WORKSPACE_DIR>/src/app/globals.css)
+- [MotionPrimitives.tsx](file:///<WORKSPACE_DIR>/src/components/ui/MotionPrimitives.tsx)
+- [next.config.ts](file:///<WORKSPACE_DIR>/next.config.ts)
 
 ---
 

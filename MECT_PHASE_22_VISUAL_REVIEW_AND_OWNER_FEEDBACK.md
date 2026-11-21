@@ -12,7 +12,7 @@
 
 > [!IMPORTANT]
 > **PRODUCTION DEPLOYMENT FREEZE ENFORCEMENT**
-> - **Zero VPS Deployments:** No container builds, restarts, or SSH deployments have been made to Hostinger VPS `srv2000528`.
+> - **Zero VPS Deployments:** No container builds, restarts, or SSH deployments have been made to Hostinger VPS `<PROD_HOSTNAME>`.
 > - **Zero Production Database Changes:** Live PostgreSQL instance remains untouched.
 > - **Zero Nginx or Remote Config Alterations:** Live website https://mect.org.in/ continues running the verified Phase 21.1 container.
 > - **Zero Merging to Main:** Branch `feat/phase-22-deep-redefinition` is held locally for owner review.
@@ -37,7 +37,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ## 2. HOMEPAGE DETAILED SECTION-BY-SECTION VISUAL AUDIT
 
 ### SECTION 01: CINEMATIC INSTITUTIONAL HERO
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/01-cinematic-hero-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/01-cinematic-hero-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/01-cinematic-hero-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/01-cinematic-hero-1440px.png)
 - **Viewport:** 1440px Desktop (also captured at 768px and 390px)
 - **Current Design:** High-contrast Forest Deep canvas with warm Sand atmospheric radial gradients. Asymmetric two-column composition with prominent typography on left and authentic documentary photography on right with location tag (*Balangir, Odisha*).
 - **Headline & Copy:**
@@ -54,7 +54,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 02: INSTITUTIONAL IDENTITY & TRUST
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/02-identity-trust-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/02-identity-trust-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/02-identity-trust-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/02-identity-trust-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** Consolidated unit combining the institutional narrative on the right with an authentic documentary photograph (`mect-trustees-campus-walk.webp`) on the left, grounded by an integrated 4-credential statutory strip along the bottom.
 - **Content Quality:** ~65 words summarizing MECT's 2013 registered establishment under Balangir Deed No. 40311302194, non-remunerative trustee stewardship, and direct community interventions.
@@ -72,7 +72,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 03: OUR AREAS OF WORK
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/03-work-areas-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/03-work-areas-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/03-work-areas-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/03-work-areas-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** Clean 5-card grid over Warm Sand Light background presenting the five core pillars:
   1. *Education & Learning Support* (After-school remedial coaching)
@@ -89,7 +89,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 04: FEATURED INITIATIVES
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/04-featured-initiatives-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/04-featured-initiatives-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/04-featured-initiatives-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/04-featured-initiatives-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** Side-by-side card comparison between:
   1. *Proposed Education Target (Up to 200 Students):* Prominently marked with "Subject to Board Sanction" and "Confirmed funded places currently stand at zero" disclaimer. Direct RTGS college transfers explained.
@@ -101,7 +101,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 05: DOCUMENTED IMPACT
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/05-documented-impact-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/05-documented-impact-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/05-documented-impact-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/05-documented-impact-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** High-contrast Forest Deep section featuring 4 telemetry counters:
   - **350+** Student Participation Entries (FY 2023–24)
@@ -116,7 +116,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 06: HOW MECT WORKS
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/06-how-mect-works-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/06-how-mect-works-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/06-how-mect-works-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/06-how-mect-works-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** 4-step horizontal process cards on Warm Sand Light:
   - *Step 01:* Understand Community Needs
@@ -129,7 +129,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 07: MEMORIES & GALLERY PREVIEW
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/07-memories-gallery-preview-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/07-memories-gallery-preview-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/07-memories-gallery-preview-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/07-memories-gallery-preview-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** Asymmetric editorial composition:
   - *Left (Col 1–7):* Featured documentary card showcasing *Remedial Coaching in Balangir* with category badge, location, period, and full caption.
@@ -143,7 +143,7 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 08: GET INVOLVED
-- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/08-get-involved-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/08-get-involved-1440px.png)
+- **Screenshot Path:** [`reports/phase-22-visual-review/homepage/08-get-involved-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/08-get-involved-1440px.png)
 - **Viewport:** 1440px Desktop
 - **Current Design:** 3 balanced participation cards:
   1. *Online Donation* (`Donate Online` -> `/donate`)
@@ -154,10 +154,10 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 ---
 
 ### SECTION 09: FINAL INSTITUTIONAL CTA & FOOTER
-- **Screenshot Path (CTA):** [`reports/phase-22-visual-review/homepage/09-final-cta-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/09-final-cta-1440px.png)
-- **Screenshot Path (Footer):** [`reports/phase-22-visual-review/homepage/10-footer-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/homepage/10-footer-1440px.png)
+- **Screenshot Path (CTA):** [`reports/phase-22-visual-review/homepage/09-final-cta-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/09-final-cta-1440px.png)
+- **Screenshot Path (Footer):** [`reports/phase-22-visual-review/homepage/10-footer-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/homepage/10-footer-1440px.png)
 - **Viewport:** 1440px Desktop
-- **Current Design:** Forest Deep closing section with headline *"Building Resilient, Self-Reliant Communities"*, followed by the 5-column institutional footer containing mandatory statutory notices, registered office details, official helpline, and verified links to the new [Memories & Gallery](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/memories-gallery/page.tsx).
+- **Current Design:** Forest Deep closing section with headline *"Building Resilient, Self-Reliant Communities"*, followed by the 5-column institutional footer containing mandatory statutory notices, registered office details, official helpline, and verified links to the new [Memories & Gallery](file:///<WORKSPACE_DIR>/src/app/memories-gallery/page.tsx).
 
 ---
 
@@ -165,43 +165,43 @@ A total of **77 high-resolution screenshots** were captured and categorized into
 
 | Page Name | Canonical Route | Desktop (1440px) | Tablet (768px) | Mobile (390px) | Observations & Owner Review Notes |
 |---|---|---|---|---|---|
-| **About Us** | `/about` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/about-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/about-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/about-390px.png) | Developer card successfully removed; narrative streamlined into 4 values and roadmap. Dignified and institutional. |
-| **Programmes** | `/programmes` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/programmes-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/programmes-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/programmes-390px.png) | All 5 pillars accurately presented, including the newly added Community Welfare & Winter Relief pillar. |
-| **Impact** | `/impact` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/impact-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/impact-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/impact-390px.png) | Verified telemetry cards; field records section links cleanly to `/memories-gallery`. 30-district matrix intact. |
-| **Governance** | `/governance` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/governance-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/governance-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/governance-390px.png) | Full deed citations (Clauses 8, 9, 10, 12, 16, 23, 24, 25) with honorary non-remuneration clause displayed prominently. |
-| **Reports** | `/reports` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/reports-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/reports-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/reports-390px.png) | Public records library with audited statements, annual reports, and verified legal disclosures. |
-| **Campaigns** | `/campaigns` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/campaigns-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/campaigns-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/campaigns-390px.png) | Clearly separates the Proposed Hanuman Murti and Proposed 200-Student Target with strictly segregated ledgers. |
-| **Hanuman Murti** | `/campaigns/hanuman-murti` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/hanuman-murti-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/hanuman-murti-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/hanuman-murti-390px.png) | Monument rendering, faith and seva philosophy, zero unverified construction claims. |
-| **CSR Partnerships** | `/csr-partnerships` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/csr-partnerships-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/csr-partnerships-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/csr-partnerships-390px.png) | Concise corporate guidance focusing on MCA CSR-1 (CSR00081063) and Schedule VII eligibility. |
-| **Donate** | `/donate` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/donate-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/donate-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/donate-390px.png) | Unified donation portal with Cashfree gateway, cryptographic SHA-256 PDF receipts, and neutral tax notice. |
-| **Scholarships** | `/scholarships` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/scholarships-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/scholarships-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/scholarships-390px.png) | Explains direct college fee transfers (zero cash grants); clear 4-step eligibility and application path. |
-| **Volunteer** | `/volunteer` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/volunteer-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/volunteer-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/volunteer-390px.png) | 3 volunteer tracks, student welfare code of conduct, and working registration form connected to API. |
-| **Contact** | `/contact` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/contact-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/contact-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/contact-390px.png) | Balangir Registered HQ and Bhubaneswar Secretariat with inquiry category selector and privacy consent. |
-| **FAQ** | `/faq` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/faq-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/faq-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/faq-390px.png) | Consolidated accordion questions; short, authoritative answers with deep links. |
-| **Statutory Disclosures** | `/statutory-disclosures` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/statutory-disclosures-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/statutory-disclosures-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/statutory-disclosures-390px.png) | Complete legal documents archive (Trust Deed 2013, Form 10AC orders, CSR-1, Darpan, PAN). |
-| **Memories & Gallery** | `/memories-gallery` | [View 1440px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/desktop/memories-gallery-1440px.png) | [View 768px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/tablet/memories-gallery-768px.png) | [View 390px](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/mobile/memories-gallery-390px.png) | Full documentary exhibition with child safeguarding clearance, category filters, and accessible lightbox. |
+| **About Us** | `/about` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/about-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/about-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/about-390px.png) | Developer card successfully removed; narrative streamlined into 4 values and roadmap. Dignified and institutional. |
+| **Programmes** | `/programmes` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/programmes-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/programmes-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/programmes-390px.png) | All 5 pillars accurately presented, including the newly added Community Welfare & Winter Relief pillar. |
+| **Impact** | `/impact` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/impact-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/impact-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/impact-390px.png) | Verified telemetry cards; field records section links cleanly to `/memories-gallery`. 30-district matrix intact. |
+| **Governance** | `/governance` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/governance-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/governance-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/governance-390px.png) | Full deed citations (Clauses 8, 9, 10, 12, 16, 23, 24, 25) with honorary non-remuneration clause displayed prominently. |
+| **Reports** | `/reports` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/reports-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/reports-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/reports-390px.png) | Public records library with audited statements, annual reports, and verified legal disclosures. |
+| **Campaigns** | `/campaigns` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/campaigns-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/campaigns-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/campaigns-390px.png) | Clearly separates the Proposed Hanuman Murti and Proposed 200-Student Target with strictly segregated ledgers. |
+| **Hanuman Murti** | `/campaigns/hanuman-murti` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/hanuman-murti-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/hanuman-murti-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/hanuman-murti-390px.png) | Monument rendering, faith and seva philosophy, zero unverified construction claims. |
+| **CSR Partnerships** | `/csr-partnerships` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/csr-partnerships-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/csr-partnerships-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/csr-partnerships-390px.png) | Concise corporate guidance focusing on MCA CSR-1 (CSR00081063) and Schedule VII eligibility. |
+| **Donate** | `/donate` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/donate-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/donate-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/donate-390px.png) | Unified donation portal with Cashfree gateway, cryptographic SHA-256 PDF receipts, and neutral tax notice. |
+| **Scholarships** | `/scholarships` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/scholarships-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/scholarships-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/scholarships-390px.png) | Explains direct college fee transfers (zero cash grants); clear 4-step eligibility and application path. |
+| **Volunteer** | `/volunteer` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/volunteer-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/volunteer-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/volunteer-390px.png) | 3 volunteer tracks, student welfare code of conduct, and working registration form connected to API. |
+| **Contact** | `/contact` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/contact-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/contact-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/contact-390px.png) | Balangir Registered HQ and Bhubaneswar Secretariat with inquiry category selector and privacy consent. |
+| **FAQ** | `/faq` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/faq-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/faq-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/faq-390px.png) | Consolidated accordion questions; short, authoritative answers with deep links. |
+| **Statutory Disclosures** | `/statutory-disclosures` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/statutory-disclosures-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/statutory-disclosures-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/statutory-disclosures-390px.png) | Complete legal documents archive (Trust Deed 2013, Form 10AC orders, CSR-1, Darpan, PAN). |
+| **Memories & Gallery** | `/memories-gallery` | [View 1440px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/desktop/memories-gallery-1440px.png) | [View 768px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/tablet/memories-gallery-768px.png) | [View 390px](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/mobile/memories-gallery-390px.png) | Full documentary exhibition with child safeguarding clearance, category filters, and accessible lightbox. |
 
 ---
 
 ## 4. NAVIGATION & INTERACTION EVIDENCE
 
 ### Desktop Navigation & Dropdowns
-- **Header Top State:** [`reports/phase-22-visual-review/navigation/desktop-header-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/desktop-header-default-1440px.png)
-- **Dropdown: About:** [`reports/phase-22-visual-review/navigation/dropdown-about-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/dropdown-about-1440px.png)
-- **Dropdown: Our Work:** [`reports/phase-22-visual-review/navigation/dropdown-our-work-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/dropdown-our-work-1440px.png)
-- **Dropdown: Impact & Accountability:** [`reports/phase-22-visual-review/navigation/dropdown-impact-accountability-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/dropdown-impact-accountability-1440px.png)
-- **Dropdown: Get Involved:** [`reports/phase-22-visual-review/navigation/dropdown-get-involved-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/dropdown-get-involved-1440px.png)
-- **Dropdown: Resources & Help:** [`reports/phase-22-visual-review/navigation/dropdown-resources-help-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/dropdown-resources-help-1440px.png)
-- **Site Search Dialog (Ctrl+K):** [`reports/phase-22-visual-review/navigation/search-modal-open-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/search-modal-open-1440px.png)
-- **Mobile Navigation Drawer (390px):** [`reports/phase-22-visual-review/navigation/mobile-drawer-open-390px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/navigation/mobile-drawer-open-390px.png)
+- **Header Top State:** [`reports/phase-22-visual-review/navigation/desktop-header-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/desktop-header-default-1440px.png)
+- **Dropdown: About:** [`reports/phase-22-visual-review/navigation/dropdown-about-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/dropdown-about-1440px.png)
+- **Dropdown: Our Work:** [`reports/phase-22-visual-review/navigation/dropdown-our-work-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/dropdown-our-work-1440px.png)
+- **Dropdown: Impact & Accountability:** [`reports/phase-22-visual-review/navigation/dropdown-impact-accountability-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/dropdown-impact-accountability-1440px.png)
+- **Dropdown: Get Involved:** [`reports/phase-22-visual-review/navigation/dropdown-get-involved-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/dropdown-get-involved-1440px.png)
+- **Dropdown: Resources & Help:** [`reports/phase-22-visual-review/navigation/dropdown-resources-help-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/dropdown-resources-help-1440px.png)
+- **Site Search Dialog (Ctrl+K):** [`reports/phase-22-visual-review/navigation/search-modal-open-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/search-modal-open-1440px.png)
+- **Mobile Navigation Drawer (390px):** [`reports/phase-22-visual-review/navigation/mobile-drawer-open-390px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/navigation/mobile-drawer-open-390px.png)
 
 ---
 
 ## 5. ARCHIVAL GALLERY & LIGHTBOX DEEP-DIVE EVIDENCE
 
-- **Default Gallery Collection (All Records):** [`reports/phase-22-visual-review/gallery/01-gallery-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/gallery/01-gallery-default-1440px.png)
-- **Category Filter View (Women's Livelihoods):** [`reports/phase-22-visual-review/gallery/02-gallery-filter-womens-livelihoods-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/gallery/02-gallery-filter-womens-livelihoods-1440px.png)
-- **Accessible Lightbox Modal Open:** [`reports/phase-22-visual-review/gallery/03-gallery-lightbox-modal-open-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/phase-22-visual-review/gallery/03-gallery-lightbox-modal-open-1440px.png)
+- **Default Gallery Collection (All Records):** [`reports/phase-22-visual-review/gallery/01-gallery-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/gallery/01-gallery-default-1440px.png)
+- **Category Filter View (Women's Livelihoods):** [`reports/phase-22-visual-review/gallery/02-gallery-filter-womens-livelihoods-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/gallery/02-gallery-filter-womens-livelihoods-1440px.png)
+- **Accessible Lightbox Modal Open:** [`reports/phase-22-visual-review/gallery/03-gallery-lightbox-modal-open-1440px.png`](file:///<WORKSPACE_DIR>/reports/phase-22-visual-review/gallery/03-gallery-lightbox-modal-open-1440px.png)
 
 ---
 

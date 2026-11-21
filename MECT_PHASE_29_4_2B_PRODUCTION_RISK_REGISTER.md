@@ -4,7 +4,7 @@
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
 **Release Target Commit:** `c5aa4e8`  
-**Target VPS:** Hostinger VPS `200.97.161.128` (`srv2000528`)  
+**Target VPS:** Hostinger VPS `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Overall Risk Level:** **LOW-MEDIUM (Fully Mitigated & Controlled)**
@@ -24,7 +24,7 @@ To guarantee that the production release does not destabilize existing services,
 | Risk ID | Risk Title & Description | Severity | Likelihood | Impact Area | Mitigation Strategy | Contingency / Rollback Action |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **R-01** | **Git Remote Branch Synchronization**<br/>Commit `c5aa4e8` is committed locally on `feat/phase-29-complete-website-excellence` but must be synchronized to remote repo `Himansu-Nayak/MECT`. | **HIGH** | **HIGH** | Build Pipeline | Execute git push to GitHub remote prior to initiating VPS pull, or transfer release bundle via SCP. | If remote push fails, transfer release tarball via secure SCP to `/opt/mect/releases/`. |
-| **R-02** | **Interactive SSH Credential Gate**<br/>Workstation OpenSSH client lacks interactive private key or password for `root@200.97.161.128`. | **HIGH** | **HIGH** | VPS Execution | Owner must execute deployment interactively or authorize SSH key pairing. | Owner executes `deploy-production.sh` via native terminal or Hostinger VPS web console. |
+| **R-02** | **Interactive SSH Credential Gate**<br/>Workstation OpenSSH client lacks interactive private key or password for `<DEPLOY_USER>@<PROD_VPS_IP>`. | **HIGH** | **HIGH** | VPS Execution | Owner must execute deployment interactively or authorize SSH key pairing. | Owner executes `deploy-production.sh` via native terminal or Hostinger VPS web console. |
 | **R-03** | **Fast2SMS Prepaid Wallet Balance**<br/>If Fast2SMS balance is exhausted, donor mobile OTPs will fail to dispatch. | **MEDIUM** | **LOW** | Donor Auth | Owner checks and recharges Fast2SMS wallet balance prior to release window. | Fallback to administrative email verification or temporary test bypass flag. |
 | **R-04** | **Multi-Tenant Workload Disruption**<br/>Accidental interference with co-hosted OHO Tech PM2 services (ports 3000, 8080, 5432). | **HIGH** | **VERY LOW** | Co-Tenant Apps | Deploy script operates strictly on `compose.production.yaml` with explicit project name `-p mect`. | No command touches global systemd or PM2 processes. Zero interference confirmed. |
 | **R-05** | **Database Schema Lock Contention**<br/>Flyway migrations `V15` and `V16` taking exclusive table locks during active traffic. | **MEDIUM** | **VERY LOW** | Database | Deploy during low-traffic window (01:00–04:00 IST). `V15`/`V16` are additive only. | Automated pre-deploy `pg_dump` snapshot allows instant point-in-time restoration. |
@@ -44,12 +44,12 @@ sequenceDiagram
     actor Owner as Project Owner / Architect
     participant Local as Local Git Workstation
     participant GitHub as Remote GitHub Repository
-    participant VPS as Production VPS (200.97.161.128)
+    participant VPS as Production VPS (<PROD_VPS_IP>)
 
     Note over Local: Commit c5aa4e8 fully verified locally
     Owner ->> Local: Authorize / Execute git push
     Local ->> GitHub: git push origin feat/phase-29-complete-website-excellence
-    Owner ->> VPS: SSH interactive login (root@200.97.161.128)
+    Owner ->> VPS: SSH interactive login (<DEPLOY_USER>@<PROD_VPS_IP>)
     VPS ->> GitHub: git pull origin feat/phase-29-complete-website-excellence
     VPS ->> VPS: bash deploy-production.sh
 ```

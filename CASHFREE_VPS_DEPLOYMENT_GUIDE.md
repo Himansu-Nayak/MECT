@@ -3,7 +3,7 @@
 > **AUTHORIZED EXECUTION GATE:** Do **not** deploy, restart live services, run `pg_dump`/migrations on the VPS, switch `PAYMENT_PROVIDER=CASHFREE`, or trigger a real charge without explicit user authorization.
 
 ## 1. Confirmed Hostinger VPS & Reverse Proxy Topology
-- **Server:** `200.97.161.128` (`srv2000528`) behind Cloudflare
+- **Server:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`) behind Cloudflare
 - **Frontend Checkout App:** `/opt/mect/frontend` managed by PM2 (`mect_frontend`, `id: 1`)
 - **Backend API Service:** `mect-backend.service` listening on `127.0.0.1:8081` (context-path `/api/v1`)
 - **PostgreSQL Database:** `mect_db` (currently Flyway `V1`–`V9`)

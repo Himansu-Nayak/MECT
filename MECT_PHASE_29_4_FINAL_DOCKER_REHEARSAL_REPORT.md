@@ -26,8 +26,8 @@ Exit Code: 0 (BUILD SUCCESS / VALID CONFIGURATION)
 ### Architectural Normalization & Fixes Applied in Commit `b09e1bb`
 1. **Frontend Build Context:** Previously specified non-existent subdirectory `./frontend`. Corrected to root directory `.` where Next.js `Dockerfile`, `package.json`, and `src/` reside.
 2. **Deterministic Context Paths:**
-   - `mect-backend`: context `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\backend`, dockerfile `Dockerfile`
-   - `mect-frontend`: context `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST`, dockerfile `Dockerfile`
+   - `mect-backend`: context `<WORKSPACE_DIR>\backend`, dockerfile `Dockerfile`
+   - `mect-frontend`: context `<WORKSPACE_DIR>`, dockerfile `Dockerfile`
    - `mect-postgres`: image `postgres:18-alpine`
 3. **Loopback Port Isolation:**
    - PostgreSQL: Host `127.0.0.1:5433` &rarr; Container `5432` (avoids host port 5432)
@@ -91,4 +91,4 @@ Local container lifecycle execution is therefore BLOCKED on this Windows machine
 
 ## 4. DOCKER REHEARSAL CONCLUSION
 
-All manifests, Dockerfiles, network mappings, and container user identities are strictly validated. On the production VPS host (`200.97.161.128`), Docker Engine runs as a native systemd service with verified execution history.
+All manifests, Dockerfiles, network mappings, and container user identities are strictly validated. On the production VPS host (`<PROD_VPS_IP>`), Docker Engine runs as a native systemd service with verified execution history.

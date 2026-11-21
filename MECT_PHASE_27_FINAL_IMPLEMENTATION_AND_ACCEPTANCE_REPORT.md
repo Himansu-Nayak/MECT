@@ -109,53 +109,53 @@ The following components were audited and retained because they actively support
 All visual evidence has been captured into `reports/mect-phase-27/` (37 files, 11.26 MB):
 
 ### 6.1 Viewports (Full Homepage Across Devices)
-- [viewports/homepage-mobile-390px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-mobile-390px.png) (390 × 844)
-- [viewports/homepage-mobile-430px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-mobile-430px.png) (430 × 932)
-- [viewports/homepage-tablet-768px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-tablet-768px.png) (768 × 1024)
-- [viewports/homepage-laptop-1024px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-laptop-1024px.png) (1024 × 768)
-- [viewports/homepage-desktop-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-desktop-1440px.png) (1440 × 900)
-- [viewports/homepage-large-desktop-1920px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/viewports/homepage-large-desktop-1920px.png) (1920 × 1080)
+- [viewports/homepage-mobile-390px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-mobile-390px.png) (390 × 844)
+- [viewports/homepage-mobile-430px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-mobile-430px.png) (430 × 932)
+- [viewports/homepage-tablet-768px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-tablet-768px.png) (768 × 1024)
+- [viewports/homepage-laptop-1024px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-laptop-1024px.png) (1024 × 768)
+- [viewports/homepage-desktop-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-desktop-1440px.png) (1440 × 900)
+- [viewports/homepage-large-desktop-1920px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/viewports/homepage-large-desktop-1920px.png) (1920 × 1080)
 
 ### 6.2 Homepage 10-Section Architecture (1440px)
-- [homepage/01-the-first-impression-cinematic-hero.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/01-the-first-impression-cinematic-hero.png) (Section 01)
-- [homepage/02-why-mect-exists-institutional-story.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/02-why-mect-exists-institutional-story.png) (Section 02)
-- [homepage/03-the-mect-difference-interconnected-safety-net.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/03-the-mect-difference-interconnected-safety-net.png) (Sections 03 & 04)
-- [homepage/05-evidence-of-impact-audited-telemetry.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/05-evidence-of-impact-audited-telemetry.png) (Section 05)
-- [homepage/06-real-stories-field-dispatches-safeguarding.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/06-real-stories-field-dispatches-safeguarding.png) (Section 06)
-- [homepage/07-differentiated-campaigns-hanuman-murti-3d.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/07-differentiated-campaigns-hanuman-murti-3d.png) (Section 07)
-- [homepage/08-transparency-governance-statutory-register.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/08-transparency-governance-statutory-register.png) (Section 08)
-- [homepage/09-participate-six-tailored-pathways.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/09-participate-six-tailored-pathways.png) (Section 09)
-- [homepage/10-closing-fiduciary-pledge-canonical-contact.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/10-closing-fiduciary-pledge-canonical-contact.png) (Section 10)
-- [homepage/11-statutory-fiduciary-footer.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/homepage/11-statutory-fiduciary-footer.png) (Institutional Footer)
+- [homepage/01-the-first-impression-cinematic-hero.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/01-the-first-impression-cinematic-hero.png) (Section 01)
+- [homepage/02-why-mect-exists-institutional-story.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/02-why-mect-exists-institutional-story.png) (Section 02)
+- [homepage/03-the-mect-difference-interconnected-safety-net.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/03-the-mect-difference-interconnected-safety-net.png) (Sections 03 & 04)
+- [homepage/05-evidence-of-impact-audited-telemetry.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/05-evidence-of-impact-audited-telemetry.png) (Section 05)
+- [homepage/06-real-stories-field-dispatches-safeguarding.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/06-real-stories-field-dispatches-safeguarding.png) (Section 06)
+- [homepage/07-differentiated-campaigns-hanuman-murti-3d.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/07-differentiated-campaigns-hanuman-murti-3d.png) (Section 07)
+- [homepage/08-transparency-governance-statutory-register.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/08-transparency-governance-statutory-register.png) (Section 08)
+- [homepage/09-participate-six-tailored-pathways.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/09-participate-six-tailored-pathways.png) (Section 09)
+- [homepage/10-closing-fiduciary-pledge-canonical-contact.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/10-closing-fiduciary-pledge-canonical-contact.png) (Section 10)
+- [homepage/11-statutory-fiduciary-footer.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/homepage/11-statutory-fiduciary-footer.png) (Institutional Footer)
 
 ### 6.3 3D Experiences
-- [3d/01-hanuman-murti-3d-orbital-experience.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/3d/01-hanuman-murti-3d-orbital-experience.png) (Murti 3D Orbital Canvas)
-- [3d/02-odisha-impact-sphere-3d.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/3d/02-odisha-impact-sphere-3d.png) (Odisha Geographic Impact Sphere)
+- [3d/01-hanuman-murti-3d-orbital-experience.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/3d/01-hanuman-murti-3d-orbital-experience.png) (Murti 3D Orbital Canvas)
+- [3d/02-odisha-impact-sphere-3d.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/3d/02-odisha-impact-sphere-3d.png) (Odisha Geographic Impact Sphere)
 
 ### 6.4 Motion & Interaction Micro-Interactions
-- [motion-telemetry/01-active-pillar-switch-vocational.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/motion-telemetry/01-active-pillar-switch-vocational.png) (Pillar Tab Transition)
-- [motion-telemetry/03-statutory-copy-reference-feedback.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/motion-telemetry/03-statutory-copy-reference-feedback.png) (Copy Reference Feedback State)
+- [motion-telemetry/01-active-pillar-switch-vocational.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/motion-telemetry/01-active-pillar-switch-vocational.png) (Pillar Tab Transition)
+- [motion-telemetry/03-statutory-copy-reference-feedback.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/motion-telemetry/03-statutory-copy-reference-feedback.png) (Copy Reference Feedback State)
 
 ### 6.5 Navigation States
-- [navigation/01-desktop-navigation-header.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/navigation/01-desktop-navigation-header.png) (Desktop Navigation Bar)
-- [navigation/02-mobile-navigation-drawer.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/navigation/02-mobile-navigation-drawer.png) (Mobile Navigation Drawer)
+- [navigation/01-desktop-navigation-header.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/navigation/01-desktop-navigation-header.png) (Desktop Navigation Bar)
+- [navigation/02-mobile-navigation-drawer.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/navigation/02-mobile-navigation-drawer.png) (Mobile Navigation Drawer)
 
 ### 6.6 Canonical Inner Pages (1440px)
-- [inner-pages/about-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/about-1440px.png) (About Us & Institutional Heritage)
-- [inner-pages/programmes-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/programmes-1440px.png) (Core Development Pillars)
-- [inner-pages/impact-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/impact-1440px.png) (Documented Community Impact)
-- [inner-pages/governance-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/governance-1440px.png) (Governance & Fiduciary Charter)
-- [inner-pages/reports-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/reports-1440px.png) (Public Records Library)
-- [inner-pages/campaigns-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/campaigns-1440px.png) (Campaigns Directory)
-- [inner-pages/hanuman-murti-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/hanuman-murti-1440px.png) (Grand Hanuman Murti 3D)
-- [inner-pages/csr-partnerships-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/csr-partnerships-1440px.png) (CSR Partnerships)
-- [inner-pages/donate-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/donate-1440px.png) (Unified Donation Portal)
-- [inner-pages/scholarships-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/scholarships-1440px.png) (Higher Education Scholarships)
-- [inner-pages/volunteer-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/volunteer-1440px.png) (Volunteer Fellowship)
-- [inner-pages/contact-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/contact-1440px.png) (Contact & Secretariat)
-- [inner-pages/faq-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/faq-1440px.png) (Frequently Asked Questions)
-- [inner-pages/statutory-disclosures-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/statutory-disclosures-1440px.png) (Statutory Disclosures)
-- [inner-pages/memories-gallery-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27/inner-pages/memories-gallery-1440px.png) (Archival Memories & Field Dispatches)
+- [inner-pages/about-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/about-1440px.png) (About Us & Institutional Heritage)
+- [inner-pages/programmes-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/programmes-1440px.png) (Core Development Pillars)
+- [inner-pages/impact-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/impact-1440px.png) (Documented Community Impact)
+- [inner-pages/governance-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/governance-1440px.png) (Governance & Fiduciary Charter)
+- [inner-pages/reports-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/reports-1440px.png) (Public Records Library)
+- [inner-pages/campaigns-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/campaigns-1440px.png) (Campaigns Directory)
+- [inner-pages/hanuman-murti-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/hanuman-murti-1440px.png) (Grand Hanuman Murti 3D)
+- [inner-pages/csr-partnerships-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/csr-partnerships-1440px.png) (CSR Partnerships)
+- [inner-pages/donate-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/donate-1440px.png) (Unified Donation Portal)
+- [inner-pages/scholarships-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/scholarships-1440px.png) (Higher Education Scholarships)
+- [inner-pages/volunteer-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/volunteer-1440px.png) (Volunteer Fellowship)
+- [inner-pages/contact-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/contact-1440px.png) (Contact & Secretariat)
+- [inner-pages/faq-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/faq-1440px.png) (Frequently Asked Questions)
+- [inner-pages/statutory-disclosures-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/statutory-disclosures-1440px.png) (Statutory Disclosures)
+- [inner-pages/memories-gallery-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27/inner-pages/memories-gallery-1440px.png) (Archival Memories & Field Dispatches)
 
 ---
 
@@ -182,7 +182,7 @@ All canonical organisational facts have been cross-verified across all modified 
 > [!IMPORTANT]
 > **STRICT PRODUCTION DEPLOYMENT FREEZE IN EFFECT**  
 > In accordance with user instructions:
-> - **NO VPS deployment** (`200.97.161.128` / `srv2000528`) has been initiated.
+> - **NO VPS deployment** (`<PROD_VPS_IP>` / `<PROD_HOSTNAME>`) has been initiated.
 > - **NO production containers or Nginx configurations** have been modified.
 > - **NO merging to `main`** has occurred.
 > - All changes reside exclusively on working branch `feat/phase-27-immersive-motion-hd-excellence`.

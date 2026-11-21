@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Audit Evaluation Date:** 2026-11-20T00:15:00+05:30 (UTC: 2026-11-19T18:45:00Z)  
 **Phase:** Phase 29.4.2C — Evidence Reconciliation & Owner-Assisted Access Readiness  
 
@@ -20,11 +20,11 @@ This document catalogues every check that failed, every claim from Phase 29.4.2B
 ## 2. FORENSIC CATALOGUE OF FAILED CHECKS
 
 ### 2.1 Failed Check 1: Direct VPS SSH Authentication
-- **Command Attempted:** `ssh -o KexAlgorithms=curve25519-sha256 root@200.97.161.128`
-- **Result:** `root@200.97.161.128: Permission denied (publickey,password).` (Exit code: 255)
+- **Command Attempted:** `ssh -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>`
+- **Result:** `<DEPLOY_USER>@<PROD_VPS_IP>: Permission denied (publickey,password).` (Exit code: 255)
 - **Root Cause Investigation:**
-  1. OpenSSH client on Windows attempted authentication using default keys in `C:\Users\himan\.ssh\`.
-  2. Inspection of `C:\Users\himan\.ssh\` revealed that **zero private key files** exist in the user profile (only `known_hosts` of length 97 bytes is present).
+  1. OpenSSH client on Windows attempted authentication using default keys in `<USER_HOME>\.ssh\`.
+  2. Inspection of `<USER_HOME>\.ssh\` revealed that **zero private key files** exist in the user profile (only `known_hosts` of length 97 bytes is present).
   3. No SSH agent (`ssh-agent`) is active with pre-loaded identities.
   4. The remote OpenSSH 10.2p1 server on Ubuntu requested interactive password or public key authentication. In non-interactive automated subshell execution, password prompting is impossible.
 - **Consequence:** Direct VPS inspection was completely blocked. No host commands (`docker ps`, `df -h`, `free -m`, `ufw status`, `ps aux`) could be executed on the production server.

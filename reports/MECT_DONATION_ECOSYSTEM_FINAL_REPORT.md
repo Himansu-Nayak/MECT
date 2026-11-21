@@ -34,7 +34,7 @@ The MECT platform (`MAHAVIR-TRUST`) has been upgraded with a unified 5-step dona
 - `src/app/faq/page.tsx`: replaced stale `pre-launch` / inactive-gateway text and placeholder `+91 671 234 5678` helpline with accurate `/donate` & `trust.mect@gmail.com` details.
 
 ## 3. Verification & Reports
-- **Verification Results:** See [MECT_PRODUCTION_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/MECT_PRODUCTION_VERIFICATION.md) (`58/58` backend tests passing, `typecheck` & `lint` 0 errors, `next build` 40/40 routes, `audit:motion` 0 failures, Playwright 0 mobile overflow & 0 page errors).
+- **Verification Results:** See [MECT_PRODUCTION_VERIFICATION.md](file:///<WORKSPACE_DIR>/reports/MECT_PRODUCTION_VERIFICATION.md) (`58/58` backend tests passing, `typecheck` & `lint` 0 errors, `next build` 40/40 routes, `audit:motion` 0 failures, Playwright 0 mobile overflow & 0 page errors).
 - **Related Reports:**
   - `reports/MECT_CONTENT_AUDIT.md`
   - `reports/MECT_ADMIN_CMS_REPORT.md`

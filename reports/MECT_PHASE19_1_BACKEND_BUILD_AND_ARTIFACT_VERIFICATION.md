@@ -13,7 +13,7 @@
 ### 1.1 The Failure Event (Phase 19 Step 8479)
 During Phase 19, `mvn package -DskipTests` failed with:
 ```
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:4.1.1:repackage (repackage) on project mahavir-backend: Execution repackage of goal org.springframework.boot:spring-boot-maven-plugin:4.1.1:repackage failed: Unable to rename 'C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar' to 'C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar.original' -> [Help 1]
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:4.1.1:repackage (repackage) on project mahavir-backend: Execution repackage of goal org.springframework.boot:spring-boot-maven-plugin:4.1.1:repackage failed: Unable to rename '<WORKSPACE_DIR>\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar' to '<WORKSPACE_DIR>\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar.original' -> [Help 1]
 ```
 
 ### 1.2 Root Cause Analysis
@@ -41,7 +41,7 @@ mvn clean package -DskipTests=true -B -f "backend\pom.xml"
 
 | Property | Measured Value |
 | :--- | :--- |
-| **Artifact File Path** | `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar` |
+| **Artifact File Path** | `<WORKSPACE_DIR>\backend\target\mahavir-backend-0.1.0-SNAPSHOT.jar` |
 | **File Size** | `67,320,401 bytes` (~64.2 MB) |
 | **Build Timestamp** | `2026-11-13 12:10:14 +05:30` |
 | **SHA-256 Checksum** | `1CF8AFC6E284643A7545986B2789F1EA7C4E34B7522390229199EAF6C1A4AC13` |

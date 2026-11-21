@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2D — Owner-Assisted VPS Preflight & Database Safety Gate  
 **Execution Timestamp (Local):** 2026-11-20T00:48:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:18:00Z  
@@ -16,7 +16,7 @@
 - **Execution Timestamp:** `2026-11-20T00:48:00+05:30` (UTC: `2026-11-19T19:18:00Z`)
 - **Exact Evidence Source:** Prior verified Phase 20/21 forensic infrastructure audit records (`reports/MECT_PHASE20_VPS_INFRASTRUCTURE_AUDIT.md`, `reports/MECT_PHASE21_DEPLOYMENT_BASELINE.md`), live TCP port 22 banner probe (`SSH-2.0-OpenSSH_10.2p1 Ubuntu-2ubuntu3.8`), and live HTTP/HTTPS edge responses.
 - **Command Used:**
-  - Socket connect to `200.97.161.128:22` (Banner read).
+  - Socket connect to `<PROD_VPS_IP>:22` (Banner read).
   - `curl -sS -I https://mect.org.in/` (Cloudflare edge headers).
   - Historical correlation of host system specifications.
 - **Actual Result:**
@@ -45,11 +45,11 @@ Compiled from validated project infrastructure records and verified against VPS 
 
 ## 3. MULTI-TENANT WORKLOAD INVENTORY & ISOLATION MAPPING
 
-The Hostinger VPS `srv2000528` co-hosts MECT charitable operations alongside non-MECT OHO Tech workloads. The architectural separation is mapped below:
+The Hostinger VPS `<PROD_HOSTNAME>` co-hosts MECT charitable operations alongside non-MECT OHO Tech workloads. The architectural separation is mapped below:
 
 ```mermaid
 graph TD
-    subgraph Host: srv2000528
+    subgraph Host: <PROD_HOSTNAME>
         Nginx[Host Nginx Reverse Proxy: 0.0.0.0:80, 443]
         
         subgraph MECT Charitable Ecosystem

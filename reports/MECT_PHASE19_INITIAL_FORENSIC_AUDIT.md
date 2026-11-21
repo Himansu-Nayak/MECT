@@ -3,7 +3,7 @@
 **Project:** Mahaveer Educational & Charitable Trust (MECT)  
 **Production Domain:** https://mect.org.in/  
 **Repository:** `MAHAVIR-TRUST`  
-**Working Directory:** `c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST`  
+**Working Directory:** `<WORKSPACE_DIR>`  
 **Execution Timestamp:** 2026-11-13T11:42:00+05:30  
 **Phase Objective:** Independent forensic baseline check prior to production release gate revalidation.
 
@@ -13,8 +13,8 @@
 
 | Dimension | Verification Evidence |
 | :--- | :--- |
-| **Working Directory** | `c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST` (Verified via `Get-Location`) |
-| **Git Repository Root** | `c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST` |
+| **Working Directory** | `<WORKSPACE_DIR>` (Verified via `Get-Location`) |
+| **Git Repository Root** | `<WORKSPACE_DIR>` |
 | **Active Git Branch** | `motion-ui` (Verified via `git branch --show-current`) |
 | **Current Commit SHA** | `cb5b55486e4d8105a321554e579c972492f6f62d` |
 | **Production Baseline Commit** | `155dd0065734766b2f8688ffcb7b964225eea9e9` |

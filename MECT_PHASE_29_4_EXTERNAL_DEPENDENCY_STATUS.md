@@ -21,7 +21,7 @@ In accordance with Section E of the Phase 29.4 protocol:
 
 ## 2. PRODUCTION HOST PRE-FLIGHT COMPATIBILITY
 
-| Infrastructure Component | Minimum Required Specification | VPS Host Specification (`200.97.161.128`) | Compliance Status |
+| Infrastructure Component | Minimum Required Specification | VPS Host Specification (`<PROD_VPS_IP>`) | Compliance Status |
 | :--- | :--- | :--- | :--- |
 | **Operating System** | Linux Kernel 5.15+ (Ubuntu 22.04 / 24.04 LTS) | Ubuntu Linux 24.04 LTS | **READY** |
 | **System Memory (RAM)** | 4 GB Minimum (8 GB Recommended) | 8 GB Dedicated KVM RAM | **READY** |

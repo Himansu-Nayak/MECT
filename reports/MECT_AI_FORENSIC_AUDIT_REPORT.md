@@ -1,6 +1,6 @@
 # MECT AI — FORENSIC AUDIT REPORT
 **Platform:** HIm Institutional Intelligence Platform  
-**Target Environment:** Production (`https://mect.org.in`) — Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Target Environment:** Production (`https://mect.org.in`) — Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Date:** November 14, 2026  
 **Auditor:** Principal AI & SRE Engineering Team  
 **Status:** COMPLETED & REMEDIATED  

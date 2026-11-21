@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Container:** `mect-backend` (`mect-backend:production`)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:25:00Z (UTC)  
 **Lead Engineer:** Senior Java / Spring Boot Systems Engineer & Site Reliability Engineer  
 **Status:** PASS — ROOT CAUSE ISOLATED TO SCRIPT ASSERTION TIMING & ENDPOINT PATH  

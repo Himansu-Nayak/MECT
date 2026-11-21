@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2D — Owner-Assisted VPS Preflight & Database Safety Gate  
 **Execution Timestamp (Local):** 2026-11-20T00:48:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:18:00Z  
@@ -14,14 +14,14 @@
 ## 1. MANDATORY METADATA HEADER
 
 - **Execution Timestamp:** `2026-11-20T00:48:00+05:30` (UTC: `2026-11-19T19:18:00Z`)
-- **Exact Evidence Source:** Local filesystem inspection of `C:\Users\himan\.ssh\`, Windows OpenSSH client probe, `ssh-add` identity check, and socket handshake with `200.97.161.128:22`.
+- **Exact Evidence Source:** Local filesystem inspection of `<USER_HOME>\.ssh\`, Windows OpenSSH client probe, `ssh-add` identity check, and socket handshake with `<PROD_VPS_IP>:22`.
 - **Command Used:**
-  1. `Get-ChildItem -Path "C:\Users\himan\.ssh" | Select-Object Name, Length, LastWriteTime`
+  1. `Get-ChildItem -Path "<USER_HOME>\.ssh" | Select-Object Name, Length, LastWriteTime`
   2. `ssh-add -l`
-  3. `ssh -i "$HOME\.ssh\id_ed25519_mect" -o IdentitiesOnly=yes -o KexAlgorithms=curve25519-sha256 root@200.97.161.128`
+  3. `ssh -i "<SSH_KEY_PATH>" -o IdentitiesOnly=yes -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>`
 - **Actual Result:**
   - Host identity verified and trusted in `known_hosts`: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA`.
-  - Private key `$HOME\.ssh\id_ed25519_mect` is **absent** from the local workstation.
+  - Private key `<SSH_KEY_PATH>` is **absent** from the local workstation.
   - SSH agent service is inactive (`Error connecting to agent: No such file or directory`).
   - Terminal connection exits with code 255: `Permission denied (publickey,password)`.
 - **Verification Classification:** **`FAILED`** (Remote shell authentication); **`VERIFIED_DIRECTLY`** (Local key inventory & known_hosts validation).
@@ -36,7 +36,7 @@
 flowchart TD
     subgraph Level A: Local Preparation
         A1[Check Local .ssh Directory] --> A2{Key File Exists?}
-        A2 -- No --> A3[id_ed25519_mect: ABSENT]
+        A2 -- No --> A3[<SSH_KEY_NAME>: ABSENT]
         A2 -- Yes --> A4[Verify Permissions]
         A1 --> A5[Check known_hosts]
         A5 --> A6[Host Fingerprint: VERIFIED]
@@ -50,7 +50,7 @@ flowchart TD
 
 ### 2.1 File System Inspection of `$HOME\.ssh\`
 
-Direct inspection of `C:\Users\himan\.ssh\` produced:
+Direct inspection of `<USER_HOME>\.ssh\` produced:
 
 ```
 Name         Length LastWriteTime
@@ -59,16 +59,16 @@ known_hosts      97 19-11-2026 23:59:53
 ```
 
 - **Observed:** Only `known_hosts` exists.
-- **Missing File:** `$HOME\.ssh\id_ed25519_mect` (Expected private key).
-- **Missing File:** `$HOME\.ssh\id_ed25519_mect.pub` (Expected public key).
+- **Missing File:** `<SSH_KEY_PATH>` (Expected private key).
+- **Missing File:** `<SSH_KEY_PATH>.pub` (Expected public key).
 - **Security Confirmation:** Zero private key material was detected, printed, or exposed.
 
 ### 2.2 Host Key Identity & Cryptographic Integrity
 
-The production server host identity in `C:\Users\himan\.ssh\known_hosts` was inspected:
+The production server host identity in `<USER_HOME>\.ssh\known_hosts` was inspected:
 
 ```
-200.97.161.128 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
+<PROD_VPS_IP> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
 ```
 
 - **Algorithm:** Modern Edwards-curve Digital Signature Algorithm (`ssh-ed25519`).
@@ -103,13 +103,13 @@ The Project Owner can enable authenticated Level B inspection in less than three
 
 ```powershell
 # Step 1: Open Windows PowerShell and generate the dedicated key pair
-ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect"
+ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "<SSH_KEY_PATH>"
 
 # Step 2: Output the public key string to copy
-Get-Content "$HOME\.ssh\id_ed25519_mect.pub"
+Get-Content "<SSH_KEY_PATH>.pub"
 
-# Step 3: Add this public key in Hostinger hPanel -> VPS (srv2000528) -> SSH Keys
+# Step 3: Add this public key in Hostinger hPanel -> VPS (<PROD_HOSTNAME>) -> SSH Keys
 
 # Step 4: Verify connectivity with safe read-only command
-ssh -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128 "uptime; free -m; df -h"
+ssh -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP> "uptime; free -m; df -h"
 ```

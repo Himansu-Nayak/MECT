@@ -1,7 +1,7 @@
 # MECT — Resend Email Delivery & Integration Verification Report
 
 ## Integration & Security Status
-- **Server-Side Only Architecture:** Browser code calls only Spring Boot (`/api/v1/portal/auth/*`); [`ResendEmailService`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java) calls `https://api.resend.com/emails` server-side with `Authorization: Bearer <RESEND_API_KEY>`, `5s` connect / `10s` read timeouts, and zero client exposure.
+- **Server-Side Only Architecture:** Browser code calls only Spring Boot (`/api/v1/portal/auth/*`); [`ResendEmailService`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java) calls `https://api.resend.com/emails` server-side with `Authorization: Bearer <RESEND_API_KEY>`, `5s` connect / `10s` read timeouts, and zero client exposure.
 - **Credential & Environment Loading:** Loaded via gitignored `backend/.env` (`.gitignore:40`, never committed to Git or bundled in `.next`).
 - **Authorized Domain & Sender Identity:** `MECT Notifications <notifications@mect.org.in>` (`mect.org.in`).
 - **API Key Scope Check:**

@@ -1,7 +1,7 @@
 # MECT PHASE 21 — PRE-DEPLOYMENT BACKUP & ROLLBACK VERIFICATION
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T10:06:50Z (UTC)  
 **Auditor:** PostgreSQL Database Administrator & SRE  
 **Status:** PASS — PRE-DEPLOYMENT BACKUP CAPTURED & RESTORE READY  

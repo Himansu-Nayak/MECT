@@ -20,7 +20,7 @@
 
 ---
 
-## 2. Hostinger VPS Cutover (`200.97.161.128` / `srv2000528`)
+## 2. Hostinger VPS Cutover (`<PROD_VPS_IP>` / `<PROD_HOSTNAME>`)
 
 - **Pre-Deploy Frontend Backup:** `/opt/mect/backups/mect_frontend_0641263_20261111_124553.tar.gz` (`92M`, `chmod 600`, `mect:mect`)
 - **Deployed Directory (`/opt/mect/frontend`):** `989e0da0344d3e1ffded971edbdfb6a2633d624f` (fast-forward pulled & built cleanly via `npm run build` on Next.js `16.4.3`, `37/37` static routes + dynamic routes compiled in `9.8s`)

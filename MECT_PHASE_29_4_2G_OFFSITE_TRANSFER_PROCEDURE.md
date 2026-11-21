@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2G — SSH Activation, Disaster Recovery Design & Backup Runbook Hardening  
 **Execution Timestamp (Local):** 2026-11-20T01:30:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T20:00:00Z  
@@ -27,7 +27,7 @@
 
 In accordance with Phase 29.4.2G security mandates:
 1. **Zero Broad Wildcards:** The transfer command explicitly forbids `scp ... *.dump`. The operator must specify the exact, verified filename (e.g. `mect_prod_backup_20261120_020000Z.dump`).
-2. **Destination Preflight:** The script automatically validates that the local target directory (`C:\Users\himan\OneDrive\Desktop\MECT_BACKUPS\`) exists and has write permissions before initiating network transport.
+2. **Destination Preflight:** The script automatically validates that the local target directory (`<USER_HOME>\OneDrive\Desktop\MECT_BACKUPS\`) exists and has write permissions before initiating network transport.
 3. **Authenticated Encrypted Channel:** Transport is conducted exclusively via OpenSSH using Curve25519 key exchange and ED25519 identity authentication.
 4. **Mandatory Post-Transfer Checksum:** Transfer success is **not** confirmed until the destination computes a SHA-256 hash that matches the remote manifest identically.
 5. **No Premature Deletion:** The source backup on the VPS is preserved permanently. Source files must never be removed as part of transfer.
@@ -42,8 +42,8 @@ Execute the following script from **Windows PowerShell** on the Project Owner's 
 ```powershell
 # ==============================================================================
 # MECT OFFSITE BACKUP TRANSFER RUNBOOK (WINDOWS POWERSHELL)
-# Target VPS: 200.97.161.128 | User: root | Key: $HOME\.ssh\id_ed25519_mect
-# Destination: C:\Users\himan\OneDrive\Desktop\MECT_BACKUPS\
+# Target VPS: <PROD_VPS_IP> | User: root | Key: <SSH_KEY_PATH>
+# Destination: <USER_HOME>\OneDrive\Desktop\MECT_BACKUPS\
 # ==============================================================================
 
 param(
@@ -55,11 +55,11 @@ param(
 $ErrorActionPreference = "Stop"
 
 # 1. Configuration & Constants
-$VpsHost = "200.97.161.128"
+$VpsHost = "<PROD_VPS_IP>"
 $VpsUser = "root"
-$SshKeyPath = "$HOME\.ssh\id_ed25519_mect"
+$SshKeyPath = "<SSH_KEY_PATH>"
 $RemoteBackupDir = "/opt/mect/backups"
-$LocalBackupDir = "C:\Users\himan\OneDrive\Desktop\MECT_BACKUPS"
+$LocalBackupDir = "<USER_HOME>\OneDrive\Desktop\MECT_BACKUPS"
 
 Write-Host "==============================================================================" -ForegroundColor Cyan
 Write-Host "MECT OFFSITE BACKUP TRANSFER INITIATION: $BackupFilename" -ForegroundColor Cyan

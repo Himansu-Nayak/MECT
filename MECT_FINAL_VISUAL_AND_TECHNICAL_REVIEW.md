@@ -12,7 +12,7 @@
 > [!CAUTION]
 > **CRITICAL COMPLIANCE NOTICE: PRODUCTION DEPLOYMENT IS BLOCKED**
 > In strict accordance with Phase 16 directives:
-> - **Zero VPS Deployments:** No container builds, restarts, or SSH commands were issued to Hostinger VPS `srv2000528`.
+> - **Zero VPS Deployments:** No container builds, restarts, or SSH commands were issued to Hostinger VPS `<PROD_HOSTNAME>`.
 > - **Zero Production Database Modifications:** Live database tables and financial logs remain untouched.
 > - **Zero Live Nginx Changes:** Live public traffic at https://mect.org.in/ continues serving the verified Phase 21.1 container.
 > - **Zero Merging to Main:** All brand storytelling, 3D experiences, architectural consolidations, and visual assets are strictly isolated on the local branch `feat/brand-storytelling-transformation`.
@@ -69,43 +69,43 @@ $$\text{DISCOVER} \longrightarrow \text{UNDERSTAND} \longrightarrow \text{DIFFER
 
 ## 4. Visual Review Evidence & Screenshots (`reports/mect-brand-transformation/`)
 
-All **70 high-resolution screenshots** are organized into [`reports/mect-brand-transformation/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/):
+All **70 high-resolution screenshots** are organized into [`reports/mect-brand-transformation/`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/):
 
 ### 4.1 Homepage 7-Section Architecture Captures
-- **01. Cinematic Hero:** [`01-cinematic-hero-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/01-cinematic-hero-1440px.png)
-- **02. Institutional Identity & Trust:** [`02-institutional-identity-trust-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/02-institutional-identity-trust-1440px.png)
-- **03. Areas of Work (5 Pillars):** [`03-work-areas-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/03-work-areas-1440px.png)
-- **04. Unified Initiatives & Impact:** [`04-unified-initiatives-and-impact-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/04-unified-initiatives-and-impact-1440px.png)
-- **05. Archival Memories Preview:** [`05-archival-memories-preview-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/05-archival-memories-preview-1440px.png)
-- **06. Pathways to Participate:** [`06-get-involved-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/06-get-involved-1440px.png)
-- **07. Final Institutional CTA:** [`07-final-cta-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/homepage/07-final-cta-1440px.png)
+- **01. Cinematic Hero:** [`01-cinematic-hero-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/01-cinematic-hero-1440px.png)
+- **02. Institutional Identity & Trust:** [`02-institutional-identity-trust-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/02-institutional-identity-trust-1440px.png)
+- **03. Areas of Work (5 Pillars):** [`03-work-areas-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/03-work-areas-1440px.png)
+- **04. Unified Initiatives & Impact:** [`04-unified-initiatives-and-impact-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/04-unified-initiatives-and-impact-1440px.png)
+- **05. Archival Memories Preview:** [`05-archival-memories-preview-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/05-archival-memories-preview-1440px.png)
+- **06. Pathways to Participate:** [`06-get-involved-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/06-get-involved-1440px.png)
+- **07. Final Institutional CTA:** [`07-final-cta-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/homepage/07-final-cta-1440px.png)
 
 ### 4.2 3D Experiences Deep-Dive
-- **Hanuman Murti 3D Default View:** [`01-hanuman-murti-3d-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/3d-experiences/01-hanuman-murti-3d-default-1440px.png)
-- **Hanuman Murti 3D Tilted Orbit Inspection:** [`02-hanuman-murti-3d-tilted-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/3d-experiences/02-hanuman-murti-3d-tilted-1440px.png)
-- **Odisha Impact 3D Sphere Default View:** [`03-odisha-impact-3d-sphere-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/3d-experiences/03-odisha-impact-3d-sphere-default-1440px.png)
-- **Odisha Impact 3D Sphere Hub Selected (Puintala):** [`04-odisha-impact-3d-sphere-hub-selected-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/3d-experiences/04-odisha-impact-3d-sphere-hub-selected-1440px.png)
+- **Hanuman Murti 3D Default View:** [`01-hanuman-murti-3d-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/3d-experiences/01-hanuman-murti-3d-default-1440px.png)
+- **Hanuman Murti 3D Tilted Orbit Inspection:** [`02-hanuman-murti-3d-tilted-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/3d-experiences/02-hanuman-murti-3d-tilted-1440px.png)
+- **Odisha Impact 3D Sphere Default View:** [`03-odisha-impact-3d-sphere-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/3d-experiences/03-odisha-impact-3d-sphere-default-1440px.png)
+- **Odisha Impact 3D Sphere Hub Selected (Puintala):** [`04-odisha-impact-3d-sphere-hub-selected-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/3d-experiences/04-odisha-impact-3d-sphere-hub-selected-1440px.png)
 
 ### 4.3 Archival Gallery & Integrated Field Dispatches
-- **Gallery Exhibition Default View:** [`01-gallery-default-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/gallery/01-gallery-default-1440px.png)
-- **Interactive Lightbox Modal Open:** [`02-gallery-lightbox-modal-open-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/gallery/02-gallery-lightbox-modal-open-1440px.png)
-- **Integrated Documentary Field Dispatches:** [`03-integrated-field-dispatches-1440px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/gallery/03-integrated-field-dispatches-1440px.png)
+- **Gallery Exhibition Default View:** [`01-gallery-default-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/gallery/01-gallery-default-1440px.png)
+- **Interactive Lightbox Modal Open:** [`02-gallery-lightbox-modal-open-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/gallery/02-gallery-lightbox-modal-open-1440px.png)
+- **Integrated Documentary Field Dispatches:** [`03-integrated-field-dispatches-1440px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/gallery/03-integrated-field-dispatches-1440px.png)
 
 ### 4.4 Navigation States
-- **Desktop Header Default:** [`desktop-header-default.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/desktop-header-default.png)
-- **Desktop Header Scrolled:** [`desktop-header-scrolled.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/desktop-header-scrolled.png)
-- **Dropdown "About":** [`dropdown-about.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/dropdown-about.png)
-- **Dropdown "Our Work":** [`dropdown-our-work.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/dropdown-our-work.png)
-- **Dropdown "Impact & Accountability":** [`dropdown-impact-accountability.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/dropdown-impact-accountability.png)
-- **Dropdown "Get Involved":** [`dropdown-get-involved.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/dropdown-get-involved.png)
-- **Dropdown "Resources & Help":** [`dropdown-resources-help.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/dropdown-resources-help.png)
-- **Mobile Navigation Drawer Open (390px):** [`mobile-drawer-open-390px.png`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/navigation/mobile-drawer-open-390px.png)
+- **Desktop Header Default:** [`desktop-header-default.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/desktop-header-default.png)
+- **Desktop Header Scrolled:** [`desktop-header-scrolled.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/desktop-header-scrolled.png)
+- **Dropdown "About":** [`dropdown-about.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/dropdown-about.png)
+- **Dropdown "Our Work":** [`dropdown-our-work.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/dropdown-our-work.png)
+- **Dropdown "Impact & Accountability":** [`dropdown-impact-accountability.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/dropdown-impact-accountability.png)
+- **Dropdown "Get Involved":** [`dropdown-get-involved.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/dropdown-get-involved.png)
+- **Dropdown "Resources & Help":** [`dropdown-resources-help.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/dropdown-resources-help.png)
+- **Mobile Navigation Drawer Open (390px):** [`mobile-drawer-open-390px.png`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/navigation/mobile-drawer-open-390px.png)
 
 ### 4.5 Canonical Inner Pages Across Responsive Viewports
 All 15 canonical inner pages (`about`, `programmes`, `impact`, `governance`, `reports`, `campaigns`, `hanuman-murti`, `csr-partnerships`, `donate`, `scholarships`, `volunteer`, `contact`, `faq`, `statutory-disclosures`, `memories-gallery`) captured across:
-- **Desktop (1440px):** [`reports/mect-brand-transformation/desktop/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/desktop/)
-- **Tablet (768px):** [`reports/mect-brand-transformation/tablet/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/tablet/)
-- **Mobile (390px):** [`reports/mect-brand-transformation/mobile/`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-brand-transformation/mobile/)
+- **Desktop (1440px):** [`reports/mect-brand-transformation/desktop/`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/desktop/)
+- **Tablet (768px):** [`reports/mect-brand-transformation/tablet/`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/tablet/)
+- **Mobile (390px):** [`reports/mect-brand-transformation/mobile/`](file:///<WORKSPACE_DIR>/reports/mect-brand-transformation/mobile/)
 
 ---
 

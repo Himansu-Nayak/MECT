@@ -4,7 +4,7 @@
 **Registered Seat:** Balangir, Odisha, India  
 **Production Domain:** https://mect.org.in/  
 **Repository:** https://github.com/Himansu-Nayak/MECT  
-**Target Infrastructure:** Hostinger VPS `srv2000528` (`200.97.161.128`), Docker Compose (`mect-frontend`, `mect-backend`, `mect-postgres`), Nginx reverse proxy, Cloudflare Edge SSL.  
+**Target Infrastructure:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`), Docker Compose (`mect-frontend`, `mect-backend`, `mect-postgres`), Nginx reverse proxy, Cloudflare Edge SSL.  
 **Co-hosted Service:** PM2 service `oho_tech` (PID `416801`, port 3000) preserved completely online and untouched.  
 **Certification Date:** 18 November 2026
 
@@ -116,7 +116,7 @@ A comprehensive audit was performed across all public-facing forms, search modal
 ## 6. Container & Production Infrastructure Status
 
 ```
-Hostinger VPS: srv2000528 (200.97.161.128)
+Hostinger VPS: <PROD_HOSTNAME> (<PROD_VPS_IP>)
 Uptime: Healthy | Memory Usage: 19.9% | CPU: Normal
 
 Containers (Docker Compose /opt/mect):

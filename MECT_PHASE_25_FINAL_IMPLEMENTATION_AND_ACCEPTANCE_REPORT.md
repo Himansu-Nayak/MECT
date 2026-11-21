@@ -121,7 +121,7 @@ The donation ecosystem has been preserved without regressions or exposure:
 > [!IMPORTANT]
 > **ABSOLUTE PRODUCTION DEPLOYMENT FREEZE REMAINS IN EFFECT.**
 > 
-> - **Zero VPS deployments** to `srv2000528` (`200.97.161.128`).
+> - **Zero VPS deployments** to `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`).
 > - **Zero Docker builds or restarts** on production.
 > - **Zero database migrations or environment modifications** on production.
 > - **Zero merges to `main`**.

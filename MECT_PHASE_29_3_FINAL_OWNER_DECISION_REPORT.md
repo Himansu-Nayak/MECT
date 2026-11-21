@@ -61,18 +61,18 @@ In strict accordance with Phase 29.3 Section 15 governance rules, operational st
 
 All 12 mandated forensic audit reports, disaster recovery rehearsals, and release specifications for Phase 29.3 are authored and committed:
 
-1. [`MECT_PHASE_29_3_GIT_AND_RELEASE_FORENSICS.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_GIT_AND_RELEASE_FORENSICS.md) — Commit ancestry, working tree state, and rollback target viability.
-2. [`MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md) — Cross-verification of Trust Deed No. `40311302194`, PAN, 12A/80G URNs, CSR-1, and Darpan ID against official government orders.
-3. [`MECT_PHASE_29_3_BANKING_AND_FINANCIAL_VERIFICATION.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_BANKING_AND_FINANCIAL_VERIFICATION.md) — SBI Balangir Main Branch coordinates, Cashfree merchant setup, and manual UTR review protocol.
-4. [`MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md) — Automated disaster recovery simulation, SQL export/restore, and foreign-key integrity validation.
-5. [`MECT_PHASE_29_3_MIGRATION_AND_ROLLBACK_REHEARSAL.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_MIGRATION_AND_ROLLBACK_REHEARSAL.md) — Schema evolution analysis (V1..V16), backward compatibility, and rollback runbooks.
-6. [`MECT_PHASE_29_3_LOCAL_DEPLOYMENT_REHEARSAL.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_LOCAL_DEPLOYMENT_REHEARSAL.md) — Multi-container stack audit (`compose.production.yaml`), non-root users, loopback isolation, and health probes.
-7. [`MECT_PHASE_29_3_END_TO_END_REHEARSAL.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_END_TO_END_REHEARSAL.md) — 17-step synthetic lifecycle simulation from public browsing to settlement and receipt generation.
-8. [`MECT_PHASE_29_3_EXTERNAL_DEPENDENCY_REGISTER.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_EXTERNAL_DEPENDENCY_REGISTER.md) — Third-party gateway specifications, API credentials, webhooks, and failure fallbacks.
-9. [`MECT_PHASE_29_3_FINAL_TEST_EXECUTION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_FINAL_TEST_EXECUTION_REPORT.md) — Automated test results: 127/127 backend tests PASS, TypeScript (0 errors), ESLint (0 errors), Next.js build clean.
-10. [`MECT_PHASE_29_3_DEFECT_REGISTER.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_DEFECT_REGISTER.md) — Traceability log confirming 0 open critical/high defects and re-verification of DEF-01 to DEF-05.
-11. [`MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md) — 18-dimension release scorecard evaluating technical, security, statutory, and operational readiness.
-12. [`MECT_PHASE_29_3_FINAL_OWNER_DECISION_REPORT.md`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_FINAL_OWNER_DECISION_REPORT.md) — Master owner decision report and release gate recommendation.
+1. [`MECT_PHASE_29_3_GIT_AND_RELEASE_FORENSICS.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_GIT_AND_RELEASE_FORENSICS.md) — Commit ancestry, working tree state, and rollback target viability.
+2. [`MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md) — Cross-verification of Trust Deed No. `40311302194`, PAN, 12A/80G URNs, CSR-1, and Darpan ID against official government orders.
+3. [`MECT_PHASE_29_3_BANKING_AND_FINANCIAL_VERIFICATION.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_BANKING_AND_FINANCIAL_VERIFICATION.md) — SBI Balangir Main Branch coordinates, Cashfree merchant setup, and manual UTR review protocol.
+4. [`MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md) — Automated disaster recovery simulation, SQL export/restore, and foreign-key integrity validation.
+5. [`MECT_PHASE_29_3_MIGRATION_AND_ROLLBACK_REHEARSAL.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_MIGRATION_AND_ROLLBACK_REHEARSAL.md) — Schema evolution analysis (V1..V16), backward compatibility, and rollback runbooks.
+6. [`MECT_PHASE_29_3_LOCAL_DEPLOYMENT_REHEARSAL.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_LOCAL_DEPLOYMENT_REHEARSAL.md) — Multi-container stack audit (`compose.production.yaml`), non-root users, loopback isolation, and health probes.
+7. [`MECT_PHASE_29_3_END_TO_END_REHEARSAL.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_END_TO_END_REHEARSAL.md) — 17-step synthetic lifecycle simulation from public browsing to settlement and receipt generation.
+8. [`MECT_PHASE_29_3_EXTERNAL_DEPENDENCY_REGISTER.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_EXTERNAL_DEPENDENCY_REGISTER.md) — Third-party gateway specifications, API credentials, webhooks, and failure fallbacks.
+9. [`MECT_PHASE_29_3_FINAL_TEST_EXECUTION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_FINAL_TEST_EXECUTION_REPORT.md) — Automated test results: 127/127 backend tests PASS, TypeScript (0 errors), ESLint (0 errors), Next.js build clean.
+10. [`MECT_PHASE_29_3_DEFECT_REGISTER.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_DEFECT_REGISTER.md) — Traceability log confirming 0 open critical/high defects and re-verification of DEF-01 to DEF-05.
+11. [`MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md) — 18-dimension release scorecard evaluating technical, security, statutory, and operational readiness.
+12. [`MECT_PHASE_29_3_FINAL_OWNER_DECISION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_FINAL_OWNER_DECISION_REPORT.md) — Master owner decision report and release gate recommendation.
 
 ---
 
@@ -87,5 +87,5 @@ All 12 mandated forensic audit reports, disaster recovery rehearsals, and releas
 
 ## 5. NEXT STEPS FOR THE PROJECT OWNER
 
-1. Review the independent evidence in the [Statutory Source-of-Truth Register](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md), [Backup & Restore Rehearsal](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md), and [Release Scorecard](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md).
+1. Review the independent evidence in the [Statutory Source-of-Truth Register](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_STATUTORY_SOURCE_OF_TRUTH_REGISTER.md), [Backup & Restore Rehearsal](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_BACKUP_RESTORE_REHEARSAL.md), and [Release Scorecard](file:///<WORKSPACE_DIR>/MECT_PHASE_29_3_FINAL_RELEASE_SCORECARD.md).
 2. **Whenever you are ready to proceed with deployment**, provide your explicit written sign-off so deployment operators can execute the step-by-step production runbook.

@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** Hostinger VPS `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** Hostinger VPS `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Release Target Commit:** `c5aa4e8`  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
@@ -53,7 +53,7 @@ To ensure complete governance and security compliance, the physical deployment o
 
 ```mermaid
 flowchart LR
-    Gate1["Gate 1: Push Git Branch<br/>git push origin feat/phase-29..."] --> Gate2["Gate 2: Interactive SSH Terminal<br/>Connect to root@200.97.161.128"]
+    Gate1["Gate 1: Push Git Branch<br/>git push origin feat/phase-29..."] --> Gate2["Gate 2: Interactive SSH Terminal<br/>Connect to <DEPLOY_USER>@<PROD_VPS_IP>"]
     Gate2 --> Gate3["Gate 3: Fast2SMS Balance Check<br/>Confirm > 500 SMS Credits"]
     Gate3 --> Execute["Execute Production Deployment<br/>bash deploy-production.sh"]
 ```
@@ -65,9 +65,9 @@ git push origin feat/phase-29-complete-website-excellence
 ```
 
 ### Action Gate 2: Interactive SSH Terminal Authorization
-The production VPS (`200.97.161.128`) requires interactive authentication (password or private key). The owner initiates an SSH session to run the verified deployment script:
+The production VPS (`<PROD_VPS_IP>`) requires interactive authentication (password or private key). The owner initiates an SSH session to run the verified deployment script:
 ```bash
-ssh -o KexAlgorithms=curve25519-sha256 root@200.97.161.128
+ssh -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>
 ```
 
 ### Action Gate 3: Fast2SMS Wallet Balance Confirmation
@@ -171,12 +171,12 @@ curl -fsS https://mect.org.in/api/v1/health
 
 All 9 comprehensive audit reports have been compiled and deposited in the project workspace:
 
-1. [MECT_PHASE_29_4_2B_VPS_SYSTEM_INVENTORY.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_VPS_SYSTEM_INVENTORY.md)
-2. [MECT_PHASE_29_4_2B_DOCKER_INFRASTRUCTURE_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_DOCKER_INFRASTRUCTURE_AUDIT.md)
-3. [MECT_PHASE_29_4_2B_PRODUCTION_APPLICATION_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_PRODUCTION_APPLICATION_AUDIT.md)
-4. [MECT_PHASE_29_4_2B_DATABASE_PREFLIGHT_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_DATABASE_PREFLIGHT_REPORT.md)
-5. [MECT_PHASE_29_4_2B_NGINX_NETWORK_TLS_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_NGINX_NETWORK_TLS_AUDIT.md)
-6. [MECT_PHASE_29_4_2B_EXTERNAL_DEPENDENCY_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_EXTERNAL_DEPENDENCY_AUDIT.md)
-7. [MECT_PHASE_29_4_2B_RELEASE_COMPATIBILITY_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_RELEASE_COMPATIBILITY_REPORT.md)
-8. [MECT_PHASE_29_4_2B_PRODUCTION_RISK_REGISTER.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_PRODUCTION_RISK_REGISTER.md)
-9. [MECT_PHASE_29_4_2B_FINAL_PREFLIGHT_DECISION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2B_FINAL_PREFLIGHT_DECISION.md)
+1. [MECT_PHASE_29_4_2B_VPS_SYSTEM_INVENTORY.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_VPS_SYSTEM_INVENTORY.md)
+2. [MECT_PHASE_29_4_2B_DOCKER_INFRASTRUCTURE_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_DOCKER_INFRASTRUCTURE_AUDIT.md)
+3. [MECT_PHASE_29_4_2B_PRODUCTION_APPLICATION_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_PRODUCTION_APPLICATION_AUDIT.md)
+4. [MECT_PHASE_29_4_2B_DATABASE_PREFLIGHT_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_DATABASE_PREFLIGHT_REPORT.md)
+5. [MECT_PHASE_29_4_2B_NGINX_NETWORK_TLS_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_NGINX_NETWORK_TLS_AUDIT.md)
+6. [MECT_PHASE_29_4_2B_EXTERNAL_DEPENDENCY_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_EXTERNAL_DEPENDENCY_AUDIT.md)
+7. [MECT_PHASE_29_4_2B_RELEASE_COMPATIBILITY_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_RELEASE_COMPATIBILITY_REPORT.md)
+8. [MECT_PHASE_29_4_2B_PRODUCTION_RISK_REGISTER.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_PRODUCTION_RISK_REGISTER.md)
+9. [MECT_PHASE_29_4_2B_FINAL_PREFLIGHT_DECISION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2B_FINAL_PREFLIGHT_DECISION.md)

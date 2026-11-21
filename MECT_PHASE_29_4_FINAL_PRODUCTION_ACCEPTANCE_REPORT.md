@@ -24,7 +24,7 @@ Authorizing User: Project Owner / Repository Administrator
 
 "I explicitly authorize the MECT production deployment from the approved release commit.
 I authorize:
-1. Production VPS access (200.97.161.128).
+1. Production VPS access (<PROD_VPS_IP>).
 2. Production pre-deployment database backup.
 3. Approved production database migrations.
 4. Production Docker build and container restart.
@@ -60,32 +60,32 @@ In compliance with the Phase 29.4 Final Completion Directive, the application st
 All required Phase 29.4 forensic audit reports, regression logs, disaster recovery runbooks, and acceptance scorecards are completed and committed:
 
 ### Phase 29.4 Pre-Flight & Governance Suite
-1. [MECT_PHASE_29_4_DEPLOYMENT_AUTHORIZATION_CHECKLIST.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_DEPLOYMENT_AUTHORIZATION_CHECKLIST.md) — Production access control register and signed owner grants.
-2. [MECT_PHASE_29_4_RELEASE_BASELINE.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_RELEASE_BASELINE.md) — Cryptographic provenance and artifact checksum registry.
-3. [MECT_PHASE_29_4_PRODUCTION_ENVIRONMENT_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_PRODUCTION_ENVIRONMENT_AUDIT.md) — Hostinger VPS inventory, memory thresholds, and multi-tenant isolation.
-4. [MECT_PHASE_29_4_PRE_DEPLOYMENT_BACKUP_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_PRE_DEPLOYMENT_BACKUP_REPORT.md) — Pre-deployment snapshot backup specification and TOC verification protocol.
-5. [MECT_PHASE_29_4_PRODUCTION_CONFIGURATION_AUDIT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_PRODUCTION_CONFIGURATION_AUDIT.md) — Secrets segregation and environment variable audit.
-6. [MECT_PHASE_29_4_DATABASE_MIGRATION_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_DATABASE_MIGRATION_REPORT.md) — Flyway V1–V16 additive schema migration report.
-7. [MECT_PHASE_29_4_DEPLOYMENT_EXECUTION_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_DEPLOYMENT_EXECUTION_REPORT.md) — Zero-downtime container transition and sequential health-gated startup runbook.
-8. [MECT_PHASE_29_4_EXTERNAL_SERVICE_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_EXTERNAL_SERVICE_VERIFICATION.md) — Third-party service matrix, Cashfree webhooks, and SMS telemetry.
-9. [MECT_PHASE_29_4_POST_DEPLOYMENT_MONITORING.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_POST_DEPLOYMENT_MONITORING.md) — Observability runbook, 13 telemetry vectors, and log sanitization rules.
-10. [MECT_PHASE_29_4_ROLLBACK_EXECUTION_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_ROLLBACK_EXECUTION_REPORT.md) — Incident decision matrix, Tier 1 (< 30s code rollback), and Tier 2 (< 5m DB restore).
+1. [MECT_PHASE_29_4_DEPLOYMENT_AUTHORIZATION_CHECKLIST.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_DEPLOYMENT_AUTHORIZATION_CHECKLIST.md) — Production access control register and signed owner grants.
+2. [MECT_PHASE_29_4_RELEASE_BASELINE.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_RELEASE_BASELINE.md) — Cryptographic provenance and artifact checksum registry.
+3. [MECT_PHASE_29_4_PRODUCTION_ENVIRONMENT_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_PRODUCTION_ENVIRONMENT_AUDIT.md) — Hostinger VPS inventory, memory thresholds, and multi-tenant isolation.
+4. [MECT_PHASE_29_4_PRE_DEPLOYMENT_BACKUP_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_PRE_DEPLOYMENT_BACKUP_REPORT.md) — Pre-deployment snapshot backup specification and TOC verification protocol.
+5. [MECT_PHASE_29_4_PRODUCTION_CONFIGURATION_AUDIT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_PRODUCTION_CONFIGURATION_AUDIT.md) — Secrets segregation and environment variable audit.
+6. [MECT_PHASE_29_4_DATABASE_MIGRATION_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_DATABASE_MIGRATION_REPORT.md) — Flyway V1–V16 additive schema migration report.
+7. [MECT_PHASE_29_4_DEPLOYMENT_EXECUTION_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_DEPLOYMENT_EXECUTION_REPORT.md) — Zero-downtime container transition and sequential health-gated startup runbook.
+8. [MECT_PHASE_29_4_EXTERNAL_SERVICE_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_EXTERNAL_SERVICE_VERIFICATION.md) — Third-party service matrix, Cashfree webhooks, and SMS telemetry.
+9. [MECT_PHASE_29_4_POST_DEPLOYMENT_MONITORING.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_POST_DEPLOYMENT_MONITORING.md) — Observability runbook, 13 telemetry vectors, and log sanitization rules.
+10. [MECT_PHASE_29_4_ROLLBACK_EXECUTION_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_ROLLBACK_EXECUTION_REPORT.md) — Incident decision matrix, Tier 1 (< 30s code rollback), and Tier 2 (< 5m DB restore).
 
 ### Phase 29.4 Final Rehearsal & Regression Suite
-11. [MECT_PHASE_29_4_FINAL_DOCKER_REHEARSAL_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_FINAL_DOCKER_REHEARSAL_REPORT.md) — Compose validation, multi-stage Dockerfiles, and runtime probe audit.
-12. [MECT_PHASE_29_4_DATABASE_RESTORE_VERIFICATION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_DATABASE_RESTORE_VERIFICATION.md) — Rehearsal snapshot reconciliation, schema version comparison, and financial integrity drill.
-13. [MECT_PHASE_29_4_FINAL_REGRESSION_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_FINAL_REGRESSION_REPORT.md) — Full-stack automated verification (127 backend tests, 51 frontend routes).
-14. [MECT_PHASE_29_4_EXTERNAL_DEPENDENCY_STATUS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_EXTERNAL_DEPENDENCY_STATUS.md) — Pre-flight requirements and owner operational checklist.
-15. [MECT_PHASE_29_4_FINAL_DEFECT_REGISTER.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_FINAL_DEFECT_REGISTER.md) — Forensic tracking log confirming 0 open critical/high defects.
-16. [MECT_PHASE_29_4_FINAL_PRODUCTION_ACCEPTANCE_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_FINAL_PRODUCTION_ACCEPTANCE_REPORT.md) — Master acceptance report and governance certification.
+11. [MECT_PHASE_29_4_FINAL_DOCKER_REHEARSAL_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_FINAL_DOCKER_REHEARSAL_REPORT.md) — Compose validation, multi-stage Dockerfiles, and runtime probe audit.
+12. [MECT_PHASE_29_4_DATABASE_RESTORE_VERIFICATION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_DATABASE_RESTORE_VERIFICATION.md) — Rehearsal snapshot reconciliation, schema version comparison, and financial integrity drill.
+13. [MECT_PHASE_29_4_FINAL_REGRESSION_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_FINAL_REGRESSION_REPORT.md) — Full-stack automated verification (127 backend tests, 51 frontend routes).
+14. [MECT_PHASE_29_4_EXTERNAL_DEPENDENCY_STATUS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_EXTERNAL_DEPENDENCY_STATUS.md) — Pre-flight requirements and owner operational checklist.
+15. [MECT_PHASE_29_4_FINAL_DEFECT_REGISTER.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_FINAL_DEFECT_REGISTER.md) — Forensic tracking log confirming 0 open critical/high defects.
+16. [MECT_PHASE_29_4_FINAL_PRODUCTION_ACCEPTANCE_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_FINAL_PRODUCTION_ACCEPTANCE_REPORT.md) — Master acceptance report and governance certification.
 
 ---
 
 ## 4. NEXT IMMEDIATE OPERATIONAL STEPS
 
-With explicit owner authorization now granted, the production release can be executed against the Hostinger VPS (`200.97.161.128`) following the verified runbooks:
+With explicit owner authorization now granted, the production release can be executed against the Hostinger VPS (`<PROD_VPS_IP>`) following the verified runbooks:
 
-1. **Host Connection:** Establish secure SSH session to `200.97.161.128`.
+1. **Host Connection:** Establish secure SSH session to `<PROD_VPS_IP>`.
 2. **Pre-Deployment Backup:** Execute `scripts/backup-db.sh`, verify file size, SHA-256, and TOC count (`>= 50`).
 3. **Repository Sync:** Checkout release commit `9810ed6` on branch `feat/phase-29-complete-website-excellence`.
 4. **Container Build & Transition:** Run `docker compose -f compose.production.yaml build` and sequential restart.

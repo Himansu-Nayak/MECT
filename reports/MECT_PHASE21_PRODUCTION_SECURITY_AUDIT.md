@@ -1,7 +1,7 @@
 # MECT PHASE 21 — PRODUCTION SECURITY & HARDENING AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T10:22:00Z (UTC)  
 **Auditor:** Application Security Engineer & DevSecOps Lead  
 **Status:** PASS — HARDENED POSTURE & DEFENSE IN DEPTH  

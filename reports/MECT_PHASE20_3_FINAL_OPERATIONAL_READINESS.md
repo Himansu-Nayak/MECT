@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production URL:** `https://mect.org.in/`  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Architecture:** Docker Compose + PostgreSQL 18.7 + Spring Boot 3 + Next.js 16 + Nginx  
 **Release Tag / Commit:** `c7e63261a9fc55bf3607fa65b2611e9f196be4b0` (Deployed) / `de14b87` (Verified)  
 **Certification Date:** 2026-11-13T10:05:00Z (UTC)  

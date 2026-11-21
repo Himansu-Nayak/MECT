@@ -1,7 +1,7 @@
 # MECT PHASE 20.3 — BACKUP FRESHNESS, INTEGRITY & RECOVERY AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:45:00Z (UTC)  
 **Lead Auditor:** Disaster Recovery Specialist & SRE  
 **Status:** PASS — VERIFIED BACKUP ARCHIVE WITH DOCUMENTED LOCAL-ONLY LIMITATION  

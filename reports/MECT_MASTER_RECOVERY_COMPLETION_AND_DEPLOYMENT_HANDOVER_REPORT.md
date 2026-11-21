@@ -3,7 +3,7 @@
 
 **Institution:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Live Production URL:** [https://mect.org.in/](https://mect.org.in/)  
-**Target Infrastructure:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Target Infrastructure:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Model:** Docker Compose (`mect-frontend`, `mect-backend`, `mect-postgres`) + Nginx Reverse Proxy + Cloudflare Full/Strict SSL  
 **Completion Date:** November 17, 2026  
 **Auditor:** Principal Full-Stack Engineer, Database Architect & Application Security Lead  
@@ -248,7 +248,7 @@ QUALITY GATE                    RESULT          EXIT CODE   STATUS
 
 ## 12. Live Production Infrastructure & Docker Health
 
-Deployed on Hostinger VPS `srv2000528` (`200.97.161.128`):
+Deployed on Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`):
 
 | Container | Image | Ports | Health Status | Uptime | Role |
 |---|---|---|---|---|---|

@@ -177,18 +177,18 @@ All CTA buttons inside `<InstitutionalIntroSection />` were automatedly audited 
 ## 14. Screenshots & Evidence Artifacts
 
 Generated and verified in `reports/screenshots/phase21_5_1/`:
-- [intro_320px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_320px.png)
-- [intro_360px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_360px.png)
-- [intro_390px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_390px.png)
-- [intro_430px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_430px.png)
-- [intro_768px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_768px.png)
-- [intro_1024px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_1024px.png)
-- [intro_1280px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_1280px.png)
-- [intro_1440px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_1440px.png)
-- [intro_1920px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_1920px.png)
-- [intro_landscape_844px.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_landscape_844px.png)
-- [intro_reduced_motion.png](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/screenshots/phase21_5_1/intro_reduced_motion.png)
-- [intro-phase21-5-1-results.json](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/intro-phase21-5-1-results.json)
+- [intro_320px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_320px.png)
+- [intro_360px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_360px.png)
+- [intro_390px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_390px.png)
+- [intro_430px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_430px.png)
+- [intro_768px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_768px.png)
+- [intro_1024px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_1024px.png)
+- [intro_1280px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_1280px.png)
+- [intro_1440px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_1440px.png)
+- [intro_1920px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_1920px.png)
+- [intro_landscape_844px.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_landscape_844px.png)
+- [intro_reduced_motion.png](file:///<WORKSPACE_DIR>/reports/screenshots/phase21_5_1/intro_reduced_motion.png)
+- [intro-phase21-5-1-results.json](file:///<WORKSPACE_DIR>/reports/intro-phase21-5-1-results.json)
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS:** `200.97.161.128` (Hostname: `srv2000528`)  
+**Target VPS:** `<PROD_VPS_IP>` (Hostname: `<PROD_HOSTNAME>`)  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
 **Target Release Commit:** `6a9de8787baa32a5e74814d5c2f8d6a5322bf227`  
 **Rollback Baseline Commit:** `c5aa4e8`  
@@ -97,8 +97,8 @@ To eliminate single points of failure, backups are partitioned across distinct p
 ### Off-Site Transfer Command (Operator-Executed):
 ```bash
 # Example secure transfer to off-site vault
-scp -i "$HOME/.ssh/id_ed25519_mect" \
-    deploy@200.97.161.128:/opt/mect/backups/mect_db_predeploy_6a9de87_*.dump \
+scp -i "<SSH_KEY_PATH>" \
+    deploy@<PROD_VPS_IP>:/opt/mect/backups/mect_db_predeploy_6a9de87_*.dump \
     /secure/vault/mect/backups/
 ```
 

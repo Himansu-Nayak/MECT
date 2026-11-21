@@ -1,6 +1,6 @@
 # MAHAVIR TRUST — VOLUNTEER & MENTORSHIP PORTAL IMPLEMENTATION REPORT
 **Phase 2.3 Production Implementation & Security Integration**  
-**Worktree:** `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\.worktrees\security-patch`  
+**Worktree:** `<WORKSPACE_DIR>\.worktrees\security-patch`  
 **Branch:** `security/nextjs-patch-upgrade`  
 **Status:** FULLY IMPLEMENTED & VERIFIED  
 **Date:** November 2026  

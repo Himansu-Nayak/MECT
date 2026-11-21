@@ -1,7 +1,7 @@
 # MECT PHASE 21 — NGINX, SSL & NETWORK ARCHITECTURE AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Domain:** `https://mect.org.in/`  
 **Audit Timestamp:** 2026-11-13T10:26:00Z (UTC)  
 **Auditor:** DevSecOps Architect & Network Reliability Lead  

@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2F — SSH Access Activation & Storage Failure-Domain Validation  
 **Execution Timestamp (Local):** 2026-11-20T01:20:00+05:30  
 **Execution Timestamp (UTC):** 2026-11-19T19:50:00Z  
@@ -14,16 +14,16 @@
 ## 1. MANDATORY METADATA HEADER
 
 - **Execution Timestamp:** `2026-11-20T01:20:00+05:30` (UTC: `2026-11-19T19:50:00Z`)
-- **Exact Evidence Source:** Direct inspection of workstation SSH directory `C:\Users\himan\.ssh\`, Windows OpenSSH client probe, `known_hosts` cryptographic inspection, and identity status query (`ssh-add -l`).
+- **Exact Evidence Source:** Direct inspection of workstation SSH directory `<USER_HOME>\.ssh\`, Windows OpenSSH client probe, `known_hosts` cryptographic inspection, and identity status query (`ssh-add -l`).
 - **Commands Executed:**
-  1. `Get-ChildItem -Path "C:\Users\himan\.ssh" | Select-Object Name, Length, LastWriteTime`
+  1. `Get-ChildItem -Path "<USER_HOME>\.ssh" | Select-Object Name, Length, LastWriteTime`
   2. `ssh-add -l`
-  3. `Get-Content "C:\Users\himan\.ssh\known_hosts"`
+  3. `Get-Content "<USER_HOME>\.ssh\known_hosts"`
 - **Actual Result:**
-  - File `$HOME\.ssh\id_ed25519_mect` does **not exist** on the workstation filesystem.
-  - Exactly one file exists in `C:\Users\himan\.ssh\`: `known_hosts` (97 bytes).
+  - File `<SSH_KEY_PATH>` does **not exist** on the workstation filesystem.
+  - Exactly one file exists in `<USER_HOME>\.ssh\`: `known_hosts` (97 bytes).
   - OpenSSH agent is inactive (`Error connecting to agent: No such file or directory`).
-  - Remote host public key is verified and permanently registered: `200.97.161.128 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA`.
+  - Remote host public key is verified and permanently registered: `<PROD_VPS_IP> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA`.
   - Non-interactive SSH connection exits with code 255 (`Permission denied (publickey,password)`).
 - **Verification Classification:** **`VERIFIED_DIRECTLY`** (Local key inventory & host fingerprint); **`FAILED`** (Remote shell authentication due to missing private key).
 - **Limitations:** Zero commands were executed on the remote production VPS. Remote execution is halted at the access gate.
@@ -43,10 +43,10 @@ In strict accordance with Phase 29.4.2F cybersecurity guidelines:
 
 ## 3. VERIFIED SERVER HOST IDENTITY
 
-The production server host identity in `C:\Users\himan\.ssh\known_hosts` was inspected:
+The production server host identity in `<USER_HOME>\.ssh\known_hosts` was inspected:
 
 ```
-200.97.161.128 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
+<PROD_VPS_IP> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
 ```
 
 - **Algorithm:** `ssh-ed25519`
@@ -60,7 +60,7 @@ The production server host identity in `C:\Users\himan\.ssh\known_hosts` was ins
 flowchart TD
     Start[Phase 29.4.2F SSH Access Gate] --> CheckKnownHosts[Check known_hosts]
     CheckKnownHosts --> HostOK[Host Identity: VERIFIED]
-    HostOK --> CheckKey[Check $HOME/.ssh/id_ed25519_mect]
+    HostOK --> CheckKey[Check <SSH_KEY_PATH>]
     CheckKey --> KeyStatus{Key Exists on Disk?}
     KeyStatus -- No --> GateBlocked[GATE BLOCKED: Remote Inspection Halted]
     GateBlocked --> OwnerInstructions[Provide 3-Minute Owner Setup Instructions]
@@ -71,13 +71,13 @@ flowchart TD
 
 ```powershell
 # 1. Open Windows PowerShell and generate the dedicated ED25519 key pair:
-ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect"
+ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "<SSH_KEY_PATH>"
 
 # 2. Display the public key string to copy:
-Get-Content "$HOME\.ssh\id_ed25519_mect.pub"
+Get-Content "<SSH_KEY_PATH>.pub"
 
-# 3. Add this public key in Hostinger hPanel -> VPS (srv2000528) -> SSH Keys
+# 3. Add this public key in Hostinger hPanel -> VPS (<PROD_HOSTNAME>) -> SSH Keys
 
 # 4. Verify connectivity from PowerShell:
-ssh -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128 "uptime; free -m; df -h"
+ssh -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP> "uptime; free -m; df -h"
 ```

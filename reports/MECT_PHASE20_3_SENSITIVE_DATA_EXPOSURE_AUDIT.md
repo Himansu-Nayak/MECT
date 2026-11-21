@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production URL:** `https://mect.org.in/`  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:35:00Z (UTC)  
 **Lead Auditor:** Application Security Auditor  
 **Status:** PASS — ZERO CREDENTIAL OR PII LEAKAGE DETECTED  

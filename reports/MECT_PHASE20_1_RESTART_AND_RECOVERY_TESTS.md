@@ -1,7 +1,7 @@
 # MECT PHASE 20.1 — RESTART & RECOVERY STRESS TESTS
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:25:00Z (UTC)  
 **Status:** PASS — ZERO CRASH OR STALL OBSERVED  
 

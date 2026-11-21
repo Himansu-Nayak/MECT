@@ -100,7 +100,7 @@ The release candidate commit `b09e1bb` inherits the complete chronological traje
 
 ## 4. DOCKER ORCHESTRATION & TOPOLOGY BASELINE
 
-Defined in [compose.production.yaml](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/compose.production.yaml):
+Defined in [compose.production.yaml](file:///<WORKSPACE_DIR>/compose.production.yaml):
 
 ```mermaid
 graph TD

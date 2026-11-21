@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production Database:** `mect-postgres` (`mect_db`)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:50:00Z (UTC)  
 **Lead Auditor:** Financial Systems Auditor & PostgreSQL DBA  
 **Status:** PASS — APPLICATION LEDGER RECONCILED (BANK SETTLEMENT PENDING PHYSICAL CONFIRMATION)  

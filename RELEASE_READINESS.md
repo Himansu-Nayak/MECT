@@ -2,7 +2,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT)  
 **Production Domain:** `https://mect.org.in/`  
-**Target VPS:** `<VPS_HOST>` / `srv2000528` (`200.97.161.128`)  
+**Target VPS:** `<VPS_HOST>` / `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Release Branch:** `fix/audit-loop`  
 **Classification:** Confidential — Fiduciary Production Gate Document  
 **Last Revised:** 2026-11-21 (Loop 9)

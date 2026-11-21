@@ -1,7 +1,7 @@
 # MECT Homepage Hero — Visual & Architectural Audit (Final)
 
 **Date:** 2026-11-11  
-**Target Route:** `/` ([src/app/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/page.tsx))
+**Target Route:** `/` ([src/app/page.tsx](file:///<WORKSPACE_DIR>/src/app/page.tsx))
 
 ---
 

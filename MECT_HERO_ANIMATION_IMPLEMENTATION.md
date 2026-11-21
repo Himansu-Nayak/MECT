@@ -1,9 +1,9 @@
 # MECT Hero Left-to-Right Animation Implementation
 
 ## 1. Architecture
-- **Backdrop Component:** [`HeroBackgroundMarquee`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/components/sections/HeroBackgroundMarquee.tsx)
-- **CSS Rules:** [src/app/globals.css](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/globals.css)
-- **Hero Consumer:** [src/app/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/page.tsx) (Section 1)
+- **Backdrop Component:** [`HeroBackgroundMarquee`](file:///<WORKSPACE_DIR>/src/components/sections/HeroBackgroundMarquee.tsx)
+- **CSS Rules:** [src/app/globals.css](file:///<WORKSPACE_DIR>/src/app/globals.css)
+- **Hero Consumer:** [src/app/page.tsx](file:///<WORKSPACE_DIR>/src/app/page.tsx) (Section 1)
 
 ## 2. Seamless Loop & Feathered Overlap
 - **Keyframes (`hero-bg-marquee-ltr`):** Translates `.hero-bg-track-ltr` monotonically from `translate3d(-50%, 0, 0)` to `translate3d(0%, 0, 0)` across two identical 5-slide sequences (`26s linear infinite` on `768px+`, `22s linear infinite` on `<768px`).

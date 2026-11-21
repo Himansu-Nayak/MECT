@@ -175,7 +175,7 @@ In strict compliance with child protection guidelines, donor privacy laws, and i
 
 ## 9. Dedicated Story Destination Route
 
-- **Route Created:** `/stories` ([src/app/stories/page.tsx](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/stories/page.tsx)).
+- **Route Created:** `/stories` ([src/app/stories/page.tsx](file:///<WORKSPACE_DIR>/src/app/stories/page.tsx)).
 - **Status:** HTTP 200 OK, prerendered as static content in the Next.js production build (`○ /stories`).
 - **Features:**
   - Semantic article anchors: `/stories#classroom`, `/stories#workshop`, `/stories#water-point`.

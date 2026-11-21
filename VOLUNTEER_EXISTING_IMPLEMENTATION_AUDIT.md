@@ -22,8 +22,8 @@ While a rudimentary volunteer registration mechanism exists and communicates wit
 
 ### 2.1 Git Repository & Branch State
 - **Remote Origin**: `https://github.com/Himansu-Nayak/MAHAVIR-TRUST.git`
-- **Root Repository Directory**: `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST` (Clean on branch `main`, commit `09f8725`).
-- **Active Worktree Directory**: `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\.worktrees\security-patch`
+- **Root Repository Directory**: `<WORKSPACE_DIR>` (Clean on branch `main`, commit `09f8725`).
+- **Active Worktree Directory**: `<WORKSPACE_DIR>\.worktrees\security-patch`
 - **Active Branch**: `security/nextjs-patch-upgrade`
 - **Latest Commit**: `e9de046` (*feat(ui): complete Phase 2.2 institutional pages redesign*)
 - **Working Tree**: Completely clean, 0 uncommitted changes.

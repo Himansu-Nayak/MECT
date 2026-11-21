@@ -2,7 +2,7 @@
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
 **Production URL:** `https://mect.org.in/`  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Directory:** `/opt/mect`  
 **Deployment Timestamp:** 2026-11-13T10:32:00Z (UTC)  
 **Release Manager:** Principal Production Release Manager  

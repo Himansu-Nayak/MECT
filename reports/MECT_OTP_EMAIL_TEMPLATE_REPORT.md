@@ -1,6 +1,6 @@
 # MECT — OTP & Centralized Email Template Report
 
-## Centralized Versioned Templates ([`EmailTemplateRenderer`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java))
+## Centralized Versioned Templates ([`EmailTemplateRenderer`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java))
 All transactional emails use pure table-based HTML and inline CSS (`max-width: 600px`, `role="presentation"`, MECT emblem `#FFFFFF`/`#E5C499` badge in Forest Charcoal `#283730` header, Terracotta `#A45E44` rule, Warm Cream `#F3E4D2` highlights, Light Sand `#F0DEC5` Balangir footer) designed for Gmail, Outlook, Apple Mail, and mobile viewports without external CSS or JavaScript.
 
 | Template Method | Version Tag | Status & Verification Classification |

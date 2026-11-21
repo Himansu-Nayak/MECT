@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target Host:** Hostinger VPS `200.97.161.128` (`srv2000528`)  
+**Target Host:** Hostinger VPS `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production Docker Infrastructure  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Docker Status:** **VERIFIED (Active Production Multi-Container Topology)**
@@ -25,7 +25,7 @@
 
 ```mermaid
 graph TD
-    subgraph Host Network: srv2000528
+    subgraph Host Network: <PROD_HOSTNAME>
         Nginx[Host Nginx Reverse Proxy]
     end
 

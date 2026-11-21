@@ -21,7 +21,7 @@ The MECT production platform interacts with the following external service provi
 | **Resend (Email Gateway)** | Official PDF tax receipt delivery & security notifications | Yes | `RESEND_API_KEY`, `RESEND_FROM_NOTIFICATIONS` in `.env.production` | Outbox pattern queues failed emails for asynchronous retry. | Verify domain DNS records (SPF, DKIM, DMARC) for `mect.org.in` in Resend. |
 | **Meta Cloud WhatsApp API** | Transactional donation alerts & receipt PDF delivery | Yes | `WHATSAPP_ACCESS_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID` | Fall back to SMS and Email receipt delivery. | Optional: Confirm Meta Business Manager verification if WhatsApp enabled. |
 | **Cloudflare DNS & CDN** | DNS routing, DDoS protection, CDN caching, and TLS termination | Yes | Cloudflare Dashboard for `mect.org.in` | Origin direct fallback (restricted to Cloudflare IP ranges). | Ensure SSL/TLS mode is set to "Full (Strict)" with Origin CA certificate. |
-| **Linux Production VPS** | Docker host running frontend, backend, and PostgreSQL containers | Yes (Local) | Host IP `200.97.161.128` (Port 443 Nginx reverse proxy) | Automated container healthchecks with `restart: unless-stopped`. | Execute pre-deployment database backup prior to container restart. |
+| **Linux Production VPS** | Docker host running frontend, backend, and PostgreSQL containers | Yes (Local) | Host IP `<PROD_VPS_IP>` (Port 443 Nginx reverse proxy) | Automated container healthchecks with `restart: unless-stopped`. | Execute pre-deployment database backup prior to container restart. |
 
 ---
 

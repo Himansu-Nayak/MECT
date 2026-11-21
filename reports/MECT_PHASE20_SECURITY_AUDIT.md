@@ -1,6 +1,6 @@
 # MECT Phase 20 — Production Security Audit
 
-**Target:** `https://mect.org.in/` / VPS `200.97.161.128`  
+**Target:** `https://mect.org.in/` / VPS `<PROD_VPS_IP>`  
 **Audit Scope:** Container permissions, file permissions, network isolation, RBAC, payment signatures, and secrets.
 
 ---

@@ -34,23 +34,23 @@ A dedicated headless Chromium test suite (`scripts/capture-phase27-1-visual-revi
 
 ### 3.1 DEF-01: `/donate` Offline Fallback & Resilience
 - **Pre-Fix Condition:** Accessing `/donate` while the backend service was offline resulted in a harsh red alert ("Failed to fetch donation configuration") and disabled the donation stepper, presenting a severe trust deficit.
-- **Post-Fix Verification:** Visual review of [donate-1440px.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27-1/inner-pages/donate-1440px.png) shows the 5-step donation stepper loading cleanly. Step 1 ("Select Charitable Programme") presents all 5 verified Trust programmes with radio selectors, the 80G tax benefit badge, and direct links to official SBI bank transfer coordinates. Zero error banners or broken UI states appear.
+- **Post-Fix Verification:** Visual review of [donate-1440px.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27-1/inner-pages/donate-1440px.png) shows the 5-step donation stepper loading cleanly. Step 1 ("Select Charitable Programme") presents all 5 verified Trust programmes with radio selectors, the 80G tax benefit badge, and direct links to official SBI bank transfer coordinates. Zero error banners or broken UI states appear.
 
 ### 3.2 DEF-02: 3D Odisha Impact Sphere Label Collision
 - **Pre-Fix Condition:** In `reports/mect-phase-27/3d/02-odisha-impact-sphere-3d.png`, text labels for Balangir, Titilagarh, Patnagarh, Kantabanji, and Tusura overlapped into an illegible black blob near the pole of the sphere.
-- **Post-Fix Verification:** Visual review of [02-odisha-impact-sphere-3d.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27-1/3d/02-odisha-impact-sphere-3d.png) displays a single, sharp callout pill ("Balangir Central Hub") hovering elegantly over the illuminated active node. The orbital rings, latitude lines, and rotation prompt are crisp and perfectly proportioned.
+- **Post-Fix Verification:** Visual review of [02-odisha-impact-sphere-3d.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27-1/3d/02-odisha-impact-sphere-3d.png) displays a single, sharp callout pill ("Balangir Central Hub") hovering elegantly over the illuminated active node. The orbital rings, latitude lines, and rotation prompt are crisp and perfectly proportioned.
 
 ### 3.3 DEF-03: Fullscreen Mobile Navigation Index
 - **Pre-Fix Condition:** The previous test suite captured only the desktop header collapsed view, failing to verify the mobile overlay.
-- **Post-Fix Verification:** Visual review of [02-mobile-navigation-drawer.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27-1/navigation/02-mobile-navigation-drawer.png) captures the full mobile drawer: Trust deed citation (`Doc No. 40311302194`), Institutional Giving card with `80G TAX BENEFIT`, official Helpline (`9853608113`), Darpan ID (`OR/2024/0466491`), CSR-1 (`CSR00081063`), and primary "Donate Now" CTA.
+- **Post-Fix Verification:** Visual review of [02-mobile-navigation-drawer.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27-1/navigation/02-mobile-navigation-drawer.png) captures the full mobile drawer: Trust deed citation (`Doc No. 40311302194`), Institutional Giving card with `80G TAX BENEFIT`, official Helpline (`9853608113`), Darpan ID (`OR/2024/0466491`), CSR-1 (`CSR00081063`), and primary "Donate Now" CTA.
 
 ### 3.4 DEF-04: Section 07 Monument 3D Viewport
 - **Pre-Fix Condition:** Internal overlay tags ("PROPOSED CULTURAL MONUMENT" and "CONCEPTUAL ARCHITECTURAL INITIATIVE") duplicated the parent card headers, resulting in double-stacked badges.
-- **Post-Fix Verification:** Visual review of [07-differentiated-campaigns-hanuman-murti-3d.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27-1/homepage/07-differentiated-campaigns-hanuman-murti-3d.png) demonstrates clean typographic hierarchy. The 3D canvas viewport retains only the subtle top-right indicator `Interactive 3D Viewport` and elevation axis `80–100 FT ELEVATION`, while the ring-fenced accounting disclosure sits neatly below.
+- **Post-Fix Verification:** Visual review of [07-differentiated-campaigns-hanuman-murti-3d.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27-1/homepage/07-differentiated-campaigns-hanuman-murti-3d.png) demonstrates clean typographic hierarchy. The 3D canvas viewport retains only the subtle top-right indicator `Interactive 3D Viewport` and elevation axis `80–100 FT ELEVATION`, while the ring-fenced accounting disclosure sits neatly below.
 
 ### 3.5 DEF-05: Section 09 Tailored Pathways Tier 2 Visibility
 - **Pre-Fix Condition:** On standard 900px viewport heights, Tier 2 cards (Academic Mentors, Educational Institutions, In-Kind Supplies, Civil Society) remained hidden or partially rendered due to late scroll triggering.
-- **Post-Fix Verification:** Visual review of [09-participate-six-tailored-pathways.png](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/mect-phase-27-1/homepage/09-participate-six-tailored-pathways.png) confirms both Tier 1 primary cards and all 4 Tier 2 secondary cards trigger simultaneously, presenting a complete, balanced grid with zero content truncation.
+- **Post-Fix Verification:** Visual review of [09-participate-six-tailored-pathways.png](file:///<WORKSPACE_DIR>/reports/mect-phase-27-1/homepage/09-participate-six-tailored-pathways.png) confirms both Tier 1 primary cards and all 4 Tier 2 secondary cards trigger simultaneously, presenting a complete, balanced grid with zero content truncation.
 
 ---
 

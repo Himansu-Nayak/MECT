@@ -56,7 +56,7 @@ All 5 assets contain zero watermarks, zero private donor data, and clear commerc
 
 ---
 
-## 5. VPS Deployment Details (`200.97.161.128`)
+## 5. VPS Deployment Details (`<PROD_VPS_IP>`)
 - **Application Directory:** `/opt/mect/frontend` (owned by `mect:mect`)
 - **Frontend Process:** PM2 `mect_frontend` (`id: 1`, `PID 365380`, `restarts: 8`, `status: online`, upstream `127.0.0.1:3001`)
 - **Backend Service:** `mect-backend.service` remained `active` on `127.0.0.1:8081` (context path `/api/v1`) — **NOT rebuilt or restarted**
@@ -102,7 +102,7 @@ All 5 assets contain zero watermarks, zero private donor data, and clear commerc
 ## 8. Rollback Procedure
 If an emergency rollback to `c0d4a8a` is ever needed:
 ```bash
-ssh root@200.97.161.128 '
+ssh <DEPLOY_USER>@<PROD_VPS_IP> '
   set -e
   tar -xzf /opt/mect/backups/mect_frontend_c0d4a8a_20261111_094321.tar.gz -C /opt/mect
   chown -R mect:mect /opt/mect/frontend

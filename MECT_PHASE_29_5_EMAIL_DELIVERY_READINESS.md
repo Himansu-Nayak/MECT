@@ -13,8 +13,8 @@
 MECT utilizes [Resend](https://resend.com) as the primary institutional email provider for transactional notifications, cryptographic donor receipts, and OTP verification codes.
 
 The backend implementation resides in:
-- [ResendEmailService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)
-- [EmailTemplateRenderer.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java)
+- [ResendEmailService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)
+- [EmailTemplateRenderer.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java)
 
 ---
 

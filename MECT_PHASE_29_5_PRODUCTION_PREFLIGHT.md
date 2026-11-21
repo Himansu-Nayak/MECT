@@ -2,7 +2,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS:** `200.97.161.128` (Hostname: `srv2000528`)  
+**Target VPS:** `<PROD_VPS_IP>` (Hostname: `<PROD_HOSTNAME>`)  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
 **Target Release Commit:** `6a9de8787baa32a5e74814d5c2f8d6a5322bf227`  
 **Audit Date:** 2026-11-20  
@@ -12,7 +12,7 @@
 
 ## 1. Objective & Scope
 
-This production preflight audit establishes the infrastructure inventory, container boundaries, failure domains, port bindings, environment variable requirements, and non-destructive isolation rules for deploying commit `6a9de87` to the target Hostinger VPS (`200.97.161.128`).
+This production preflight audit establishes the infrastructure inventory, container boundaries, failure domains, port bindings, environment variable requirements, and non-destructive isolation rules for deploying commit `6a9de87` to the target Hostinger VPS (`<PROD_VPS_IP>`).
 
 This audit enforces the strict safety invariant that MECT deployment operations must **never disrupt or overwrite unrelated workloads (such as OHO Tech containers or system systemd daemons)** running on the same host.
 
@@ -22,8 +22,8 @@ This audit enforces the strict safety invariant that MECT deployment operations 
 
 | Attribute | Specification | Forensic Verification / Notes |
 | :--- | :--- | :--- |
-| **Public IPv4** | `200.97.161.128` | Hostinger VPS datacenter allocation. |
-| **Target Hostname** | `srv2000528` | Confirmed from previous infrastructure inventories. |
+| **Public IPv4** | `<PROD_VPS_IP>` | Hostinger VPS datacenter allocation. |
+| **Target Hostname** | `<PROD_HOSTNAME>` | Confirmed from previous infrastructure inventories. |
 | **Operating System** | Ubuntu 24.04 LTS (x86_64) | Linux kernel 6.8 series. |
 | **Reverse Proxy** | Host-level Nginx | Terminates TLS for `mect.org.in` and proxies to loopback ports. |
 | **TLS Certificate** | Let's Encrypt Authority | Managed via certbot with auto-renewal timers. |
@@ -33,7 +33,7 @@ This audit enforces the strict safety invariant that MECT deployment operations 
 
 ## 3. Container Isolation & Port Architecture
 
-The MECT production deployment utilizes [compose.production.yaml](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/compose.production.yaml) with strictly scoped container names and isolated network namespaces:
+The MECT production deployment utilizes [compose.production.yaml](file:///<WORKSPACE_DIR>/compose.production.yaml) with strictly scoped container names and isolated network namespaces:
 
 ```mermaid
 flowchart TD
@@ -112,11 +112,11 @@ Based on the storage topology established in Phase 29.4.2F and 29.4.2G:
 
 | Access Gate | Required Artifact / Setting | Actual Status | Blocker Description |
 | :--- | :--- | :--- | :--- |
-| **SSH Private Key** | `$HOME\.ssh\id_ed25519_mect` | NOT PRESENT | Key must be generated and registered by project owner. |
+| **SSH Private Key** | `<SSH_KEY_PATH>` | NOT PRESENT | Key must be generated and registered by project owner. |
 | **Server Fingerprint** | Verified Hostinger Host Key | PENDING AUTH | Cannot be validated without authorized private key. |
 | **Password Authentication** | Disabled per security policy | ENFORCED | Guessing passwords or brute-forcing is strictly prohibited. |
 
-**Current Access Verdict:** Remote SSH access to `200.97.161.128` remains blocked pending owner configuration of `$HOME\.ssh\id_ed25519_mect`.
+**Current Access Verdict:** Remote SSH access to `<PROD_VPS_IP>` remains blocked pending owner configuration of `<SSH_KEY_PATH>`.
 
 ---
 

@@ -27,7 +27,7 @@ In accordance with Section C of the Phase 29.4 protocol:
 
 ## 2. AUTOMATED REHEARSAL TEST EXECUTION RECORD
 
-The programmatic database restore verification was executed via the dedicated test class [DatabaseBackupRestoreRehearsalTests.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/test/java/org/mahavirtrust/backend/DatabaseBackupRestoreRehearsalTests.java).
+The programmatic database restore verification was executed via the dedicated test class [DatabaseBackupRestoreRehearsalTests.java](file:///<WORKSPACE_DIR>/backend/src/test/java/org/mahavirtrust/backend/DatabaseBackupRestoreRehearsalTests.java).
 
 ### Test Execution Command & Outcome
 ```text
@@ -80,7 +80,7 @@ The rehearsal suite rigorously verified financial isolation across the simulated
 In accordance with strict reporting transparency:
 - **Local Programmatic Restore Drill:** **PASS (100% Verified in Java test suite).**
 - **Local Host Shell `pg_dump` CLI Execution:** **BLOCKED.** Local Windows environment does not have PostgreSQL command-line binaries installed (`Get-Command pg_dump` exited with code 1) and local Docker pipe is unavailable.
-- **Production Host Execution Status:** **AUTHORIZED BY OWNER.** The production backup runbook (`docker exec mect-postgres pg_dump -U mect_user -Fc mect_db > /var/backups/mect/...`) is verified and ready for execution on VPS `200.97.161.128`.
+- **Production Host Execution Status:** **AUTHORIZED BY OWNER.** The production backup runbook (`docker exec mect-postgres pg_dump -U mect_user -Fc mect_db > /var/backups/mect/...`) is verified and ready for execution on VPS `<PROD_VPS_IP>`.
 
 ---
 

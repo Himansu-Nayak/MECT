@@ -1,7 +1,7 @@
 # MECT PHASE 20.1 — PERSISTENT STORAGE & FILE DURABILITY AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Audit Timestamp:** 2026-11-13T09:15:00Z (UTC)  
 **Status:** PASS — DURABLE AND ACID PERSISTED  
 

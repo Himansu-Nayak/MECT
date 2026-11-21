@@ -1,7 +1,7 @@
 # MECT Phase 20 — VPS Infrastructure & Preflight Audit
 
 **Execution Date:** 2026-11-13  
-**Server Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Server Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Target:** Production MECT (`https://mect.org.in/`)  
 **Isolation Status:** OHO TECH and other VPS applications completely isolated and untouched.
 
@@ -11,8 +11,8 @@
 
 | Telemetry Property | Verified Value | Evidence / Command Output |
 | :--- | :--- | :--- |
-| **Hostname** | `srv2000528` | `hostname` -> `srv2000528` |
-| **IP Address** | `200.97.161.128` | SSH Target IPv4 |
+| **Hostname** | `<PROD_HOSTNAME>` | `hostname` -> `<PROD_HOSTNAME>` |
+| **IP Address** | `<PROD_VPS_IP>` | SSH Target IPv4 |
 | **Operating System** | `Ubuntu 26.04.1 LTS` | `PRETTY_NAME="Ubuntu 26.04.1 LTS"` |
 | **Kernel** | `Linux 7.0.0-38-generic #38-Ubuntu` | `x86_64 GNU/Linux` |
 | **CPU Architecture** | 4 vCPUs | `lscpu \| grep 'CPU(s):' -> 4` |

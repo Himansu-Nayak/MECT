@@ -2,7 +2,7 @@
 ## Forensic Connection Analysis, Key Discovery, Security Hardening & Windows Setup Instructions
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Production Domain:** https://mect.org.in/  
 **Audit Evaluation Date:** 2026-11-20T00:15:00+05:30 (UTC: 2026-11-19T18:45:00Z)  
 **Phase:** Phase 29.4.2C — Evidence Reconciliation & Owner-Assisted Access Readiness  
@@ -30,9 +30,9 @@ During Phase 29.4.2B, direct inspection of the production VPS was attempted from
 ### 1.2 Layer 2: Authentication Denial
 - **Symptom:** Handshake succeeded, host key was registered in `known_hosts`, but the server returned:
   ```
-  root@200.97.161.128: Permission denied (publickey,password).
+  <DEPLOY_USER>@<PROD_VPS_IP>: Permission denied (publickey,password).
   ```
-- **Investigation of Local SSH Directory (`C:\Users\himan\.ssh\`):**
+- **Investigation of Local SSH Directory (`<USER_HOME>\.ssh\`):**
   - Executed metadata inspection:
     ```
     Name         Length  LastWriteTime
@@ -40,7 +40,7 @@ During Phase 29.4.2B, direct inspection of the production VPS was attempted from
     known_hosts      97  19-11-2026 23:59:53
     ```
   - **Finding:** Only `known_hosts` is present.
-  - **Zero Private Keys:** No `id_ed25519`, `id_rsa`, or any other private key exists in `C:\Users\himan\.ssh\`.
+  - **Zero Private Keys:** No `id_ed25519`, `id_rsa`, or any other private key exists in `<USER_HOME>\.ssh\`.
   - **No Active SSH Agent:** No `ssh-agent` service is running in this session.
   - **Non-Interactive Environment:** The remote server offered password authentication, but automated background processes cannot respond to interactive password prompts.
 
@@ -50,11 +50,11 @@ During Phase 29.4.2B, direct inspection of the production VPS was attempted from
 
 The production host identity has been captured and validated:
 
-- **Host IPv4:** `200.97.161.128` (Port: 22)
+- **Host IPv4:** `<PROD_VPS_IP>` (Port: 22)
 - **Host Key Algorithm:** `ssh-ed25519`
 - **Host Public Key Data (in `known_hosts`):**
   ```
-  200.97.161.128 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
+  <PROD_VPS_IP> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHNEB/8JFEwU/RkzxUwa1ykxU/P/RRUekqP03tBiCmA
   ```
 - **Security Rule:** Host key checking MUST NOT be disabled. The workstation has already trusted this exact ED25519 public key.
 
@@ -70,7 +70,7 @@ Open **PowerShell** on your local machine and run:
 
 ```powershell
 # Generate a modern, high-security ED25519 key pair dedicated to MECT
-ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect"
+ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "<SSH_KEY_PATH>"
 ```
 *(Press Enter when prompted for passphrase, or enter a passphrase of your choice).*
 
@@ -78,7 +78,7 @@ ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect
 
 ```powershell
 # Display ONLY the public key (ends in .pub) - NEVER share the private key!
-Get-Content "$HOME\.ssh\id_ed25519_mect.pub"
+Get-Content "<SSH_KEY_PATH>.pub"
 ```
 *Output will resemble:* `ssh-ed25519 AAAAC3... mect-owner@mect.org.in`
 
@@ -87,7 +87,7 @@ Get-Content "$HOME\.ssh\id_ed25519_mect.pub"
 You have two simple options to add your public key to the server:
 
 #### Option A: Via Hostinger VPS Control Panel (Recommended)
-1. Log in to your **Hostinger hPanel** &rarr; Navigate to **VPS Management** (`srv2000528`).
+1. Log in to your **Hostinger hPanel** &rarr; Navigate to **VPS Management** (`<PROD_HOSTNAME>`).
 2. Go to **SSH Keys** or **Security** section.
 3. Click **Add SSH Key**, paste the public key string from Step 2, and save.
 
@@ -106,21 +106,21 @@ From your local Windows PowerShell terminal:
 
 ```powershell
 # Test connection with safe read-only system commands
-ssh -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128 "uptime; free -m; df -h"
+ssh -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP> "uptime; free -m; df -h"
 ```
 
 ---
 
 ## 4. OPTIONAL: CONFIGURE LOCAL SSH CONFIG FOR CONVENIENCE
 
-To avoid typing the `-o KexAlgorithms` and `-i` flags every time, append the following block to `C:\Users\himan\.ssh\config` (create the file if it does not exist):
+To avoid typing the `-o KexAlgorithms` and `-i` flags every time, append the following block to `<USER_HOME>\.ssh\config` (create the file if it does not exist):
 
 ```ssh-config
 Host mect-vps
-    HostName 200.97.161.128
+    HostName <PROD_VPS_IP>
     User root
     Port 22
-    IdentityFile ~/.ssh/id_ed25519_mect
+    IdentityFile <SSH_KEY_PATH>
     KexAlgorithms curve25519-sha256
     StrictHostKeyChecking yes
 ```
@@ -154,7 +154,7 @@ ssh mect-vps
 +=============================================================================+
 |             MECT PHASE 29.4.2C SSH ACCESS READINESS STATUS                  |
 +=============================================================================+
-| Host IP & Port:                       200.97.161.128:22 (Reachable)         |
+| Host IP & Port:                       <PROD_VPS_IP>:22 (Reachable)         |
 | Host ED25519 Key:                     VERIFIED & STORED in known_hosts      |
 | Windows OpenSSH KEX Fix:              curve25519-sha256 documented          |
 | Local Private Key on Workstation:     ABSENT (Requires owner generation)    |

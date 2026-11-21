@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Release Target Baseline:** Commit `c5aa4e8`  
 **Latest Audit Commit:** Commit `6208def`  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
@@ -42,7 +42,7 @@ In accordance with strict forensic auditing governance and after reconciling all
 > [!CAUTION]
 > **CRITICAL INFRASTRUCTURE STATUS:**  
 > **Authenticated VPS access has NOT been established.**  
-> Terminal execution of `ssh -o KexAlgorithms=curve25519-sha256 root@200.97.161.128` resulted in `Permission denied (publickey,password)` due to the absence of private keys in the local workstation profile and the non-interactive execution boundary.  
+> Terminal execution of `ssh -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP>` resulted in `Permission denied (publickey,password)` due to the absence of private keys in the local workstation profile and the non-interactive execution boundary.  
 > 
 > Consequently:
 > - **Direct host hardware metrics (CPU load, free RAM, available NVMe disk) remain unmeasured today** (supported only by historical Phase 20/21 baseline documentation).
@@ -83,7 +83,7 @@ In accordance with strict forensic auditing governance and after reconciling all
 
 This **`CONDITIONAL GO — OWNER ACTION REQUIRED`** decision:
 - **AUTHORIZES:** Preparation for the next audit and deployment rehearsal phases (Phase 29.4.2D / Phase 30 preflight).
-- **DOES NOT AUTHORIZE:** Execution of `deploy-production.sh`, database migrations, container restarts, or modifications on VPS `200.97.161.128`.
+- **DOES NOT AUTHORIZE:** Execution of `deploy-production.sh`, database migrations, container restarts, or modifications on VPS `<PROD_VPS_IP>`.
 
 ---
 
@@ -91,10 +91,10 @@ This **`CONDITIONAL GO — OWNER ACTION REQUIRED`** decision:
 
 The seven Phase 29.4.2C evidence reconciliation deliverables are registered below:
 
-1. [MECT_PHASE_29_4_2C_EVIDENCE_RECONCILIATION_MATRIX.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_EVIDENCE_RECONCILIATION_MATRIX.md)
-2. [MECT_PHASE_29_4_2C_FAILED_AND_UNVERIFIED_CHECKS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_FAILED_AND_UNVERIFIED_CHECKS.md)
-3. [MECT_PHASE_29_4_2C_GIT_RELEASE_INTEGRITY_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_GIT_RELEASE_INTEGRITY_REPORT.md)
-4. [MECT_PHASE_29_4_2C_SSH_ACCESS_READINESS_GUIDE.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_SSH_ACCESS_READINESS_GUIDE.md)
-5. [MECT_PHASE_29_4_2C_PUBLIC_ENDPOINT_SECURITY_REPORT.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_PUBLIC_ENDPOINT_SECURITY_REPORT.md)
-6. [MECT_PHASE_29_4_2C_OWNER_ACTION_CHECKLIST.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_OWNER_ACTION_CHECKLIST.md)
-7. [MECT_PHASE_29_4_2C_FINAL_RELEASE_READINESS_DECISION.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_29_4_2C_FINAL_RELEASE_READINESS_DECISION.md)
+1. [MECT_PHASE_29_4_2C_EVIDENCE_RECONCILIATION_MATRIX.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_EVIDENCE_RECONCILIATION_MATRIX.md)
+2. [MECT_PHASE_29_4_2C_FAILED_AND_UNVERIFIED_CHECKS.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_FAILED_AND_UNVERIFIED_CHECKS.md)
+3. [MECT_PHASE_29_4_2C_GIT_RELEASE_INTEGRITY_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_GIT_RELEASE_INTEGRITY_REPORT.md)
+4. [MECT_PHASE_29_4_2C_SSH_ACCESS_READINESS_GUIDE.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_SSH_ACCESS_READINESS_GUIDE.md)
+5. [MECT_PHASE_29_4_2C_PUBLIC_ENDPOINT_SECURITY_REPORT.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_PUBLIC_ENDPOINT_SECURITY_REPORT.md)
+6. [MECT_PHASE_29_4_2C_OWNER_ACTION_CHECKLIST.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_OWNER_ACTION_CHECKLIST.md)
+7. [MECT_PHASE_29_4_2C_FINAL_RELEASE_READINESS_DECISION.md](file:///<WORKSPACE_DIR>/MECT_PHASE_29_4_2C_FINAL_RELEASE_READINESS_DECISION.md)

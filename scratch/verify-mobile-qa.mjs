@@ -1,4 +1,4 @@
-import { chromium } from "file:///C:/Users/himan/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules/playwright/index.mjs";
+import { chromium } from "file:///<LOCAL_APP_DATA>/npm-cache/_npx/e41f203b7505f1fb/node_modules/playwright/index.mjs";
 import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";

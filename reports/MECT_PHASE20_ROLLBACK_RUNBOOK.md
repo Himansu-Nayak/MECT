@@ -18,7 +18,7 @@ All pre-cutover state is safely preserved on the VPS:
 
 ## 2. Emergency 60-Second Rollback Sequence
 
-Execute as `root` via SSH on `srv2000528` (`200.97.161.128`):
+Execute as `root` via SSH on `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`):
 
 ### Step 1: Stop Docker Containers
 ```bash

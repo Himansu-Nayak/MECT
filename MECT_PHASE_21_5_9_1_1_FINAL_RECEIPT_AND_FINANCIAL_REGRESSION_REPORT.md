@@ -10,8 +10,8 @@
 - [`/`](http://localhost:3000/) — Homepage (Strict Five-Section Editorial Architecture)  
 - [`/api/v1/portal/receipts/{receiptNumber}/pdf`](http://localhost:8081/api/v1/portal/receipts/{receiptNumber}/pdf) — Authenticated Donor Receipt Retrieval  
 - [`/api/v1/admin/receipts/{receiptNumber}/pdf`](http://localhost:8081/api/v1/admin/receipts/{receiptNumber}/pdf) — Administrative Receipt Audit & Retrieval  
-**Deliverable Artifact:** [`MECT_PHASE_21_5_9_1_1_FINAL_RECEIPT_AND_FINANCIAL_REGRESSION_REPORT.md`](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/MECT_PHASE_21_5_9_1_1_FINAL_RECEIPT_AND_FINANCIAL_REGRESSION_REPORT.md)  
-**Automated Results JSON:** [`reports/financial-regression-phase21-5-9-1-1-results.json`](file:///C:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/reports/financial-regression-phase21-5-9-1-1-results.json)  
+**Deliverable Artifact:** [`MECT_PHASE_21_5_9_1_1_FINAL_RECEIPT_AND_FINANCIAL_REGRESSION_REPORT.md`](file:///<WORKSPACE_DIR>/MECT_PHASE_21_5_9_1_1_FINAL_RECEIPT_AND_FINANCIAL_REGRESSION_REPORT.md)  
+**Automated Results JSON:** [`reports/financial-regression-phase21-5-9-1-1-results.json`](file:///<WORKSPACE_DIR>/reports/financial-regression-phase21-5-9-1-1-results.json)  
 **Status:** **Fully Closed, Regressed & Provisionally Accepted**
 
 ---

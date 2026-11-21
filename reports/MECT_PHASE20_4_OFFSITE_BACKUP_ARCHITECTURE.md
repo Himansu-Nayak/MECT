@@ -1,7 +1,7 @@
 # MECT PHASE 20.4 — OFF-SITE BACKUP ARCHITECTURE & DESIGN
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Design Lead:** Principal DevSecOps Architect & Cloud Infrastructure Lead  
 **Status:** RECOMMENDED DESIGN (AWAITING USER CLOUD CREDENTIALS)  
 

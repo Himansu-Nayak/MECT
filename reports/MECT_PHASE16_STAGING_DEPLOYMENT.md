@@ -1,6 +1,6 @@
 # MECT Phase 16.5–16.7 — Staging Deployment Report
 
-**Target Server:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Target Server:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Scope:** Isolated MECT Staging Environment (`MECT ONLY`; production `mect-backend`, `mect_frontend`, `mect_db`, and `oho_tech` completely untouched)
 
 ## 1. Staging Topology

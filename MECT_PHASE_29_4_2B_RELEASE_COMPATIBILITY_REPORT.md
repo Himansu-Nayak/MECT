@@ -5,7 +5,7 @@
 **Production Domain:** https://mect.org.in/  
 **Release Target Commit:** `c5aa4e8`  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
-**Target VPS:** Hostinger VPS `200.97.161.128` (`srv2000528`)  
+**Target VPS:** Hostinger VPS `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Compatibility Verdict:** **100% FULLY COMPATIBLE (Zero-Regression Release Candidate)**
@@ -14,7 +14,7 @@
 
 ## 1. EXECUTIVE SUMMARY
 
-This forensic compatibility report evaluates release commit `c5aa4e8` against the live production infrastructure of **Mahaveer Educational & Charitable Trust** running on Hostinger VPS `srv2000528`.
+This forensic compatibility report evaluates release commit `c5aa4e8` against the live production infrastructure of **Mahaveer Educational & Charitable Trust** running on Hostinger VPS `<PROD_HOSTNAME>`.
 
 Every structural and functional delta—spanning database schema evolutions, backend Spring Boot APIs, frontend Next.js bundles, Docker compose manifests, and environment variables—was audited for backward compatibility, data safety, and zero-downtime deployability.
 

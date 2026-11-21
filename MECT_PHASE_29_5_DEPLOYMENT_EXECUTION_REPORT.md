@@ -2,7 +2,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS:** `200.97.161.128` (Hostname: `srv2000528`)  
+**Target VPS:** `<PROD_VPS_IP>` (Hostname: `<PROD_HOSTNAME>`)  
 **Release Branch:** `feat/phase-29-complete-website-excellence`  
 **Target Release Commit:** `6a9de8787baa32a5e74814d5c2f8d6a5322bf227`  
 **Audit Date:** 2026-11-20  
@@ -12,12 +12,12 @@
 
 ## 1. Execution Gate Status & Blocking Reasons
 
-Per the strict authorization rules of Phase 29.5, deployment execution to the live production VPS (`200.97.161.128`) has **NOT** been performed. 
+Per the strict authorization rules of Phase 29.5, deployment execution to the live production VPS (`<PROD_VPS_IP>`) has **NOT** been performed. 
 
 Deployment is currently held at the Authorization Gate due to the following two non-negotiable blockers:
 
 ### Blocker 1: Missing SSH Authentication Identity
-- **Required Identity File:** `$HOME\.ssh\id_ed25519_mect` on the operator workstation.
+- **Required Identity File:** `<SSH_KEY_PATH>` on the operator workstation.
 - **Current Status:** Not present in the local filesystem.
 - **Policy Enforcement:** Automated agents are strictly forbidden from guessing SSH passwords, brute-forcing accounts, disabling host-key checks, or creating unauthorized remote keys. Remote execution cannot proceed without the owner-configured private key.
 
@@ -33,7 +33,7 @@ Once the owner configures the SSH key and provides deployment authorization, the
 
 ### Step 1: Establish Authenticated SSH Session
 ```bash
-ssh -i "$HOME/.ssh/id_ed25519_mect" -o StrictHostKeyChecking=yes deploy@200.97.161.128
+ssh -i "<SSH_KEY_PATH>" -o StrictHostKeyChecking=yes deploy@<PROD_VPS_IP>
 cd /opt/mect
 ```
 

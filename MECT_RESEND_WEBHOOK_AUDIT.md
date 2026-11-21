@@ -3,7 +3,7 @@
 ## A. Findings from the MECT Repository
 1. **Endpoint & Controller:** Implemented at `WebhookController.handleResendWebhook` (`POST /api/v1/webhooks/resend` under `server.servlet.context-path=/api/v1`).
 2. **Raw Request Body Preservation:** Uses Spring MVC `@RequestBody String rawPayload`, preserving exact payload bytes before JSON parsing.
-3. **Svix Signature Verification ([`ResendEmailService.verifyWebhookSignature`](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)):**
+3. **Svix Signature Verification ([`ResendEmailService.verifyWebhookSignature`](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java)):**
    - Supports Base64-decoded `whsec_` signing secrets (and plain UTF-8 secrets) and compares `Base64(HMAC-SHA256(svix-id + "." + svix-timestamp + "." + rawPayload))` using constant-time `MessageDigest.isEqual` across space-delimited `v1,<sig>` tokens.
    - **Remediation Applied Locally (Phase 11):** Added strict `±300 seconds` (5-minute) `svix-timestamp` replay protection, `svix-id` deduplication via `NotificationDeliveryLogRepository.existsByWebhookEventId(svixId)`, and automatic `NotificationOutbox.lastError` flagging when `email.bounced` or `email.complained` events arrive.
 4. **Functional Boundary — Are Resend Webhooks Needed to Send OTPs?**

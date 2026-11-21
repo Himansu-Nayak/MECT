@@ -185,7 +185,7 @@ MAHAVIR TRUST/
 
 1. **ESLint Errors in `src/app/page.tsx:946`:**
    ```
-   C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\src\app\page.tsx
+   <WORKSPACE_DIR>\src\app\page.tsx
      946:51   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
      946:104  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
      946:215  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities

@@ -30,7 +30,7 @@ All non-production build, verification, configuration audit, and runbook prepara
 
 | Gate ID | Operational Scope | Current Operational Status | Owner Authorization Status | Required Action / Safeguard |
 | :--- | :--- | :--- | :--- | :--- |
-| **AUTH-01** | **Production VPS Access** (`200.97.161.128`) | **HALTED / ZERO ATTEMPTS** | ⏳ **PENDING** | SSH key or root password authorization to initiate controlled shell session. |
+| **AUTH-01** | **Production VPS Access** (`<PROD_VPS_IP>`) | **HALTED / ZERO ATTEMPTS** | ⏳ **PENDING** | SSH key or root password authorization to initiate controlled shell session. |
 | **AUTH-02** | **Production Pre-Deployment Backup** | **PREPARED (Runbook Ready)** | ⏳ **PENDING** | Execute `docker exec mect-postgres pg_dump` + `pg_dumpall --globals-only` to `/var/backups/mect/`. Validate SHA-256. |
 | **AUTH-03** | **Production Database Migrations** (Flyway V1–V16) | **PREPARED (V16 Verified)** | ⏳ **PENDING** | Permit Flyway migration engine to verify/apply schema updates against production PostgreSQL. |
 | **AUTH-04** | **Production Docker Operations** (`compose.production.yaml`) | **PREPARED (Compose Verified)** | ⏳ **PENDING** | Authorize container lifecycle operations (`build`, `up -d --no-deps`, image tagging). |
@@ -65,7 +65,7 @@ Release Commit: b09e1bb
 Branch: feat/phase-29-complete-website-excellence
 Date: ____________________
 
-[ ] AUTH-01: I authorize SSH access to VPS host 200.97.161.128.
+[ ] AUTH-01: I authorize SSH access to VPS host <PROD_VPS_IP>.
 [ ] AUTH-02: I authorize creation and validation of the pre-deployment database backup.
 [ ] AUTH-03: I authorize execution of Flyway database migrations up to V16.
 [ ] AUTH-04: I authorize Docker compose container builds and image deployments.

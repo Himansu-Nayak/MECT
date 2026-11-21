@@ -2,7 +2,7 @@
 
 **Release Date:** 2026-11-10
 **Production Domain:** `https://mect.org.in`
-**Target Infrastructure:** Hostinger VPS (`srv2000528` / `200.97.161.128`)
+**Target Infrastructure:** Hostinger VPS (`<PROD_HOSTNAME>` / `<PROD_VPS_IP>`)
 **Overall Status:** **DEPLOYED & LIVE VERIFIED**
 
 ---

@@ -1,7 +1,7 @@
 # MECT PHASE 20.2 — DATABASE CONFIGURATION & BACKUP ARCHIVE VERIFICATION
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** `mect-postgres` on Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** `mect-postgres` on Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Database:** `mect_db`  
 **Audit Timestamp:** 2026-11-13T09:30:00Z (UTC)  
 **Lead Auditor:** PostgreSQL Database Administrator & SRE  

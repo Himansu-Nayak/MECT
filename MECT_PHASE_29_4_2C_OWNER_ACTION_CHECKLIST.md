@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2C — Evidence Reconciliation & Owner-Assisted Access Readiness  
 **Audit Evaluation Date:** 2026-11-20T00:15:00+05:30  
 **Governance Policy:** **STRICT SEPARATION OF DUTIES (Zero Autonomous Production Access)**  
@@ -50,20 +50,20 @@ flowchart TD
 ### ACTION ITEM 2: Configure Authenticated SSH Access to Hostinger VPS
 
 - **Objective:** Enable secure, non-password terminal access for production inspection and maintenance.
-- **Target Host:** `200.97.161.128` (`srv2000528`)
+- **Target Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)
 - **Step-by-Step Instructions:**
   1. Generate key pair on local Windows PowerShell (if not already done):
      ```powershell
-     ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "$HOME\.ssh\id_ed25519_mect"
+     ssh-keygen -t ed25519 -C "mect-owner@mect.org.in" -f "<SSH_KEY_PATH>"
      ```
   2. Copy public key string:
      ```powershell
-     Get-Content "$HOME\.ssh\id_ed25519_mect.pub"
+     Get-Content "<SSH_KEY_PATH>.pub"
      ```
-  3. Add public key in **Hostinger hPanel** &rarr; **VPS Management** (`srv2000528`) &rarr; **SSH Keys** (or via Hostinger Browser Web Terminal to `~/.ssh/authorized_keys`).
+  3. Add public key in **Hostinger hPanel** &rarr; **VPS Management** (`<PROD_HOSTNAME>`) &rarr; **SSH Keys** (or via Hostinger Browser Web Terminal to `~/.ssh/authorized_keys`).
   4. Test authenticated connection:
      ```powershell
-     ssh -i "$HOME\.ssh\id_ed25519_mect" -o KexAlgorithms=curve25519-sha256 root@200.97.161.128 "uptime; free -m; df -h"
+     ssh -i "<SSH_KEY_PATH>" -o KexAlgorithms=curve25519-sha256 <DEPLOY_USER>@<PROD_VPS_IP> "uptime; free -m; df -h"
      ```
 - **Verification Criteria:**
   - [ ] SSH connection succeeds without password prompts.

@@ -1,7 +1,7 @@
 # MECT PHASE 20.1 — INITIAL PRODUCTION HEALTH AUDIT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Domain:** `https://mect.org.in/`  
 **Execution Timestamp:** 2026-11-13T08:45:00Z to 2026-11-13T09:15:00Z (UTC)  
 **Status:** PASS — PRODUCTION STABLE & OPERATIONAL  

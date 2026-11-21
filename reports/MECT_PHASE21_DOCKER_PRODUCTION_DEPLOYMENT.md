@@ -1,7 +1,7 @@
 # MECT PHASE 21 — DOCKER PRODUCTION ORCHESTRATION & DEPLOYMENT REPORT
 
 **Project:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)  
-**Host Target:** Hostinger VPS `srv2000528` (`200.97.161.128`)  
+**Host Target:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`)  
 **Deployment Directory:** `/opt/mect`  
 **Compose File:** `/opt/mect/compose.production.yaml`  
 **Audit Timestamp:** 2026-11-13T10:16:00Z (UTC)  

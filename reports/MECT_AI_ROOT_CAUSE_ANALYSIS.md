@@ -29,7 +29,7 @@ Both failed to stream any generative response and immediately rendered the clien
    Because both the primary local inference engine and the cloud fallback service failed during request execution.
 
 3. **Why did the primary local inference engine fail?**  
-   The local Python inference service (`http://127.0.0.1:8082/v1/chat/completions`) was not running as an active daemon on Hostinger VPS `srv2000528`. After 3 consecutive socket connection refused errors (`ECONNREFUSED`), the gateway's `aiGatewayCircuitBreaker` correctly transitioned to the `OPEN` state to prevent thread exhaustion.
+   The local Python inference service (`http://127.0.0.1:8082/v1/chat/completions`) was not running as an active daemon on Hostinger VPS `<PROD_HOSTNAME>`. After 3 consecutive socket connection refused errors (`ECONNREFUSED`), the gateway's `aiGatewayCircuitBreaker` correctly transitioned to the `OPEN` state to prevent thread exhaustion.
 
 4. **Why did the cloud fallback service (Groq Cloud) fail?**  
    When the gateway executed `createGroqChatStream()`, `getGroqClient()` evaluated `process.env.GROQ_API_KEY`. Inside the `mect-frontend` Docker container, the environment variable was empty (`""`). `getGroqClient()` threw an exception: `GROQ_API_KEY is not configured in server environment`.

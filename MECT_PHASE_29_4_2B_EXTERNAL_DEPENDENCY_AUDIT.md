@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target Host:** Hostinger VPS `200.97.161.128` (`srv2000528`)  
+**Target Host:** Hostinger VPS `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Inspection Status:** **VERIFIED (Live Public Telemetry, Gateway Handshakes & Credentials Audit)**
@@ -168,7 +168,7 @@ content-type: application/json
 2. **Security Controls:**
    - DDoS Layer 3/4/7 protection active.
    - Automatic bot fight mode enabled.
-   - Strict SSL/TLS encryption mode between Cloudflare and VPS origin (`200.97.161.128`).
+   - Strict SSL/TLS encryption mode between Cloudflare and VPS origin (`<PROD_VPS_IP>`).
 3. **Caching Rules:**
    - Static assets (`/_next/static/*`, `/images/*`): Cached at edge with long TTL.
    - Dynamic API (`/api/v1/*`, `/api/ai/*`): `Cache-Control: no-store` / Dynamic bypass.

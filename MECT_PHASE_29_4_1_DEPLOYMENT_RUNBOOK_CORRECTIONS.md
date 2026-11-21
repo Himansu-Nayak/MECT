@@ -66,7 +66,7 @@ The corrected, idempotent production deployment script is documented below:
 #!/usr/bin/env bash
 # ==============================================================================
 # MECT Institutional Production Deployment Script
-# Target Host: Hostinger VPS (200.97.161.128)
+# Target Host: Hostinger VPS (<PROD_VPS_IP>)
 # Release Commit: 2f51639
 # ==============================================================================
 set -euo pipefail

@@ -16,24 +16,24 @@ All public routes were audited against Next.js App Router Metadata API standards
 ## 2. Completed Metadata & Indexability Implementation
 
 ### 2.1 Route-Level Metadata Additions & Deduplication
-- Created [donate/layout.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/donate/layout.tsx) setting `canonical: "/donate"` and clean route metadata for the client-rendered donation experience.
-- Created [csr-partnerships/layout.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/csr-partnerships/layout.tsx) setting `canonical: "/csr-partnerships"` and route metadata for CSR partnership inquiries.
+- Created [donate/layout.tsx](file:///<WORKSPACE_DIR>/src/app/donate/layout.tsx) setting `canonical: "/donate"` and clean route metadata for the client-rendered donation experience.
+- Created [csr-partnerships/layout.tsx](file:///<WORKSPACE_DIR>/src/app/csr-partnerships/layout.tsx) setting `canonical: "/csr-partnerships"` and route metadata for CSR partnership inquiries.
 - Added clean deduplicated `<title>` and `alternates: { canonical }` exports to:
-  - [governance/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/governance/page.tsx)
-  - [programmes/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/programmes/page.tsx)
-  - [impact/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/impact/page.tsx)
-  - [reports/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/reports/page.tsx)
-  - [statutory-disclosures/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/statutory-disclosures/page.tsx)
-  - [scholarships/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/scholarships/page.tsx)
-  - [faq/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/faq/page.tsx)
-  - [privacy/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/privacy/page.tsx)
-  - [terms/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/terms/page.tsx)
-  - [accessibility/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/accessibility/page.tsx)
+  - [governance/page.tsx](file:///<WORKSPACE_DIR>/src/app/governance/page.tsx)
+  - [programmes/page.tsx](file:///<WORKSPACE_DIR>/src/app/programmes/page.tsx)
+  - [impact/page.tsx](file:///<WORKSPACE_DIR>/src/app/impact/page.tsx)
+  - [reports/page.tsx](file:///<WORKSPACE_DIR>/src/app/reports/page.tsx)
+  - [statutory-disclosures/page.tsx](file:///<WORKSPACE_DIR>/src/app/statutory-disclosures/page.tsx)
+  - [scholarships/page.tsx](file:///<WORKSPACE_DIR>/src/app/scholarships/page.tsx)
+  - [faq/page.tsx](file:///<WORKSPACE_DIR>/src/app/faq/page.tsx)
+  - [privacy/page.tsx](file:///<WORKSPACE_DIR>/src/app/privacy/page.tsx)
+  - [terms/page.tsx](file:///<WORKSPACE_DIR>/src/app/terms/page.tsx)
+  - [accessibility/page.tsx](file:///<WORKSPACE_DIR>/src/app/accessibility/page.tsx)
 
 ### 2.2 Sitemap, Robots & Structured Data
-- **[sitemap.ts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/sitemap.ts):** Updated `buildDate` to `2026-11-10T12:00:00.000Z`; compiles statically as `/sitemap.xml`.
-- **[robots.ts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/robots.ts):** Explicitly disallows administrative and API paths (`/admin/`, `/admin`, `/api/`), while exposing public discovery routes and referencing the sitemap.
-- **Structured Data (Schema.org):** Preserved institutional `Organization` / NGO JSON-LD structured data in [layout.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/layout.tsx) and [about/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/about/page.tsx).
+- **[sitemap.ts](file:///<WORKSPACE_DIR>/src/app/sitemap.ts):** Updated `buildDate` to `2026-11-10T12:00:00.000Z`; compiles statically as `/sitemap.xml`.
+- **[robots.ts](file:///<WORKSPACE_DIR>/src/app/robots.ts):** Explicitly disallows administrative and API paths (`/admin/`, `/admin`, `/api/`), while exposing public discovery routes and referencing the sitemap.
+- **Structured Data (Schema.org):** Preserved institutional `Organization` / NGO JSON-LD structured data in [layout.tsx](file:///<WORKSPACE_DIR>/src/app/layout.tsx) and [about/page.tsx](file:///<WORKSPACE_DIR>/src/app/about/page.tsx).
 
 ---
 

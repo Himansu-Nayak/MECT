@@ -141,7 +141,7 @@ All evidence files have been captured and saved into their respective directorie
 **DEPLOYMENT TO PRODUCTION IS STRICTLY BLOCKED.**
 
 In compliance with the project owner's mandate:
-- **Zero** VPS deployments to host `srv2000528` (`200.97.161.128`).
+- **Zero** VPS deployments to host `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`).
 - **Zero** Docker builds or restarts on production.
 - **Zero** production database migrations or environment modifications.
 - **Zero** merges to `main`.

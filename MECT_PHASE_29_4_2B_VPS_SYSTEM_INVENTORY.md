@@ -3,7 +3,7 @@
 
 **Organisation:** Mahaveer Educational & Charitable Trust (MECT / MAHAVIR TRUST)  
 **Production Domain:** https://mect.org.in/  
-**Target VPS Host:** `200.97.161.128` (`srv2000528`)  
+**Target VPS Host:** `<PROD_VPS_IP>` (`<PROD_HOSTNAME>`)  
 **Evaluation Phase:** Phase 29.4.2B — Production VPS Preflight & Infrastructure Audit  
 **Evaluation Date:** 2026-11-20T00:05:00+05:30  
 **Inspection Status:** **VERIFIED (SSH Handshake, Server Banner & System Telemetry)**
@@ -14,8 +14,8 @@
 
 | Host Property | Configured Target | Measured Live Value | Forensic Status |
 | :--- | :--- | :--- | :--- |
-| **Hostname** | `srv2000528` | `srv2000528` | **VERIFIED** |
-| **IPv4 Address** | `200.97.161.128` | `200.97.161.128` (Port 22 Open) | **VERIFIED** |
+| **Hostname** | `<PROD_HOSTNAME>` | `<PROD_HOSTNAME>` | **VERIFIED** |
+| **IPv4 Address** | `<PROD_VPS_IP>` | `<PROD_VPS_IP>` (Port 22 Open) | **VERIFIED** |
 | **Hosting Provider** | Hostinger VPS Infrastructure | KVM Virtualization Architecture | **VERIFIED** |
 | **SSH Server Daemon** | OpenSSH on Linux | `SSH-2.0-OpenSSH_10.2p1 Ubuntu-2ubuntu3.8` | **VERIFIED (Live Handshake)** |
 | **Host Key Algorithm** | ED25519 | ED25519 Host Key Registered in `known_hosts` | **VERIFIED** |

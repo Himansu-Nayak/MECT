@@ -22,17 +22,17 @@ Every security gate has been independently verified against source code and comp
 
 | Component | File Path | Function / Responsibility |
 | :--- | :--- | :--- |
-| **REST Controller** | [PortalAuthController.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/controller/PortalAuthController.java) | Exposes `/portal/auth/request-otp`, `/verify-otp`, `/refresh`, `/logout`, `/me` |
-| **Authentication Service** | [OtpAuthService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java) | OTP generation, cryptographic hashing, expiry, rate limiting, and user linkage |
-| **Request DTO** | [OtpRequestPayload.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/dto/portal/OtpRequestPayload.java) | Validates channel (`EMAIL|PHONE`), target value, and purpose |
-| **Verify DTO** | [OtpVerifyPayload.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/dto/portal/OtpVerifyPayload.java) | Validates channel, target, 6-digit regex code, and purpose |
-| **Email Dispatcher** | [ResendEmailService.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java) | Secure HTTP client dispatch to Resend API via `SimpleClientHttpRequestFactory` |
-| **Template Renderer** | [EmailTemplateRenderer.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java) | Renders responsive HTML OTP and security notice emails |
-| **Token Provider** | [JwtTokenProvider.java](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/backend/src/main/java/org/mahavirtrust/backend/security/JwtTokenProvider.java) | Generates scoped HMAC-SHA256 JWT access tokens and hashed refresh tokens |
-| **Frontend Login** | [src/app/login/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/login/page.tsx) | Dual-channel login interface with Phone/Email tabs and fallback prompts |
-| **Frontend Register** | [src/app/register/page.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/app/register/page.tsx) | Dual-channel registration interface with 80G profile completion |
-| **Frontend Donation** | [UnifiedDonationExperience.tsx](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/components/sections/UnifiedDonationExperience.tsx) | Step 3 mandatory dual-channel donor authentication |
-| **API Client** | [src/lib/portal-api.ts](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20TRUST/src/lib/portal-api.ts) | Strict TypeScript client for OTP request and verify endpoints |
+| **REST Controller** | [PortalAuthController.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/controller/PortalAuthController.java) | Exposes `/portal/auth/request-otp`, `/verify-otp`, `/refresh`, `/logout`, `/me` |
+| **Authentication Service** | [OtpAuthService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/portal/OtpAuthService.java) | OTP generation, cryptographic hashing, expiry, rate limiting, and user linkage |
+| **Request DTO** | [OtpRequestPayload.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/dto/portal/OtpRequestPayload.java) | Validates channel (`EMAIL|PHONE`), target value, and purpose |
+| **Verify DTO** | [OtpVerifyPayload.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/dto/portal/OtpVerifyPayload.java) | Validates channel, target, 6-digit regex code, and purpose |
+| **Email Dispatcher** | [ResendEmailService.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/ResendEmailService.java) | Secure HTTP client dispatch to Resend API via `SimpleClientHttpRequestFactory` |
+| **Template Renderer** | [EmailTemplateRenderer.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/service/notification/EmailTemplateRenderer.java) | Renders responsive HTML OTP and security notice emails |
+| **Token Provider** | [JwtTokenProvider.java](file:///<WORKSPACE_DIR>/backend/src/main/java/org/mahavirtrust/backend/security/JwtTokenProvider.java) | Generates scoped HMAC-SHA256 JWT access tokens and hashed refresh tokens |
+| **Frontend Login** | [src/app/login/page.tsx](file:///<WORKSPACE_DIR>/src/app/login/page.tsx) | Dual-channel login interface with Phone/Email tabs and fallback prompts |
+| **Frontend Register** | [src/app/register/page.tsx](file:///<WORKSPACE_DIR>/src/app/register/page.tsx) | Dual-channel registration interface with 80G profile completion |
+| **Frontend Donation** | [UnifiedDonationExperience.tsx](file:///<WORKSPACE_DIR>/src/components/sections/UnifiedDonationExperience.tsx) | Step 3 mandatory dual-channel donor authentication |
+| **API Client** | [src/lib/portal-api.ts](file:///<WORKSPACE_DIR>/src/lib/portal-api.ts) | Strict TypeScript client for OTP request and verify endpoints |
 
 ---
 
