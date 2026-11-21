@@ -45,25 +45,31 @@ public class PaymentConfigurationService {
     public void validateStatutoryConfiguration() {
         try {
             PaymentConfiguration cfg = configRepository.findById(1L).orElse(null);
-            if (cfg != null) {
-                boolean accountMismatch = !STATUTORY_ACCOUNT_NUMBER.equals(cfg.getSbiAccountNumber());
-                boolean ifscMismatch = !STATUTORY_IFSC.equalsIgnoreCase(cfg.getSbiIfsc());
-                boolean upiMismatch = !STATUTORY_UPI_ID.equalsIgnoreCase(cfg.getSbiUpiId());
-
-                if (accountMismatch || ifscMismatch || upiMismatch) {
-                    log.error("CRITICAL STATUTORY MISMATCH: Database payment configuration differs from official Trust statutory passbook! "
-                            + "DB Account: {}, Expected: {}; DB IFSC: {}, Expected: {}; DB UPI: {}, Expected: {}. "
-                            + "Public pages are locked to statutory configuration.",
-                            cfg.getSbiAccountNumber(), STATUTORY_ACCOUNT_NUMBER,
-                            cfg.getSbiIfsc(), STATUTORY_IFSC,
-                            cfg.getSbiUpiId(), STATUTORY_UPI_ID);
-                } else {
-                    log.info("Payment configuration verified against Trust statutory bank configuration: SBI A/C {} / IFSC {}",
-                            STATUTORY_ACCOUNT_NUMBER, STATUTORY_IFSC);
-                }
+            if (cfg == null) {
+                log.warn("Payment configuration row (ID 1) not found in database. Using statutory defaults.");
+                return;
             }
-        } catch (Exception e) {
-            log.warn("Could not execute startup validation of payment configuration: {}", e.getMessage());
+            String dbAccount = cfg.getSbiAccountNumber() != null ? cfg.getSbiAccountNumber().trim() : "";
+            String dbIfsc = cfg.getSbiIfsc() != null ? cfg.getSbiIfsc().trim() : "";
+            String dbUpi = cfg.getSbiUpiId() != null ? cfg.getSbiUpiId().trim() : "";
+
+            boolean accountMismatch = !STATUTORY_ACCOUNT_NUMBER.equals(dbAccount);
+            boolean ifscMismatch = !STATUTORY_IFSC.equalsIgnoreCase(dbIfsc);
+            boolean upiMismatch = !STATUTORY_UPI_ID.equalsIgnoreCase(dbUpi);
+
+            if (accountMismatch || ifscMismatch || upiMismatch) {
+                log.error("CRITICAL STATUTORY MISMATCH: Database payment configuration differs from official Trust statutory passbook! "
+                        + "DB Account: {}, Expected: {}; DB IFSC: {}, Expected: {}; DB UPI: {}, Expected: {}. "
+                        + "Public pages are locked to statutory configuration.",
+                        dbAccount, STATUTORY_ACCOUNT_NUMBER,
+                        dbIfsc, STATUTORY_IFSC,
+                        dbUpi, STATUTORY_UPI_ID);
+            } else {
+                log.info("Payment configuration verified against Trust statutory bank configuration: SBI A/C {} / IFSC {}",
+                        STATUTORY_ACCOUNT_NUMBER, STATUTORY_IFSC);
+            }
+        } catch (Throwable t) {
+            log.error("Could not execute startup validation of payment configuration: {}", t.getMessage(), t);
         }
     }
 

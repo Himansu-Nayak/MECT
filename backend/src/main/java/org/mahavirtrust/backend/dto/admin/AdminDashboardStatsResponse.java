@@ -9,6 +9,7 @@ public class AdminDashboardStatsResponse {
     private long approvedVolunteers;
     private long totalInquiries;
     private long pendingInquiries;
+    private long pendingClaims;
     private long totalScholarships;
     private long submittedScholarships;
     private long underScrutinyScholarships;
@@ -35,6 +36,9 @@ public class AdminDashboardStatsResponse {
 
     public long getPendingInquiries() { return pendingInquiries; }
     public void setPendingInquiries(long pendingInquiries) { this.pendingInquiries = pendingInquiries; }
+
+    public long getPendingClaims() { return pendingClaims; }
+    public void setPendingClaims(long pendingClaims) { this.pendingClaims = pendingClaims; }
 
     public long getTotalScholarships() { return totalScholarships; }
     public void setTotalScholarships(long totalScholarships) { this.totalScholarships = totalScholarships; }

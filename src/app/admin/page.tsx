@@ -208,13 +208,23 @@ export default function AdminDashboardPage() {
           </div>
           <div className="mt-4">
             <div className="text-2xl font-black text-terracotta-dark">{stats?.totalInquiries ?? 0}</div>
-            <div className="text-[11px] text-ink-sand mt-1 flex items-center justify-between">
-              <span className="text-terracotta-dark font-semibold">
-                {stats?.pendingInquiries ?? 0} Pending Review
-              </span>
-              <Link href="/admin/inquiries" className="text-xs font-bold text-forest underline">
-                Open Desk &rarr;
-              </Link>
+            <div className="text-[11px] text-ink-sand mt-1 flex flex-col gap-1">
+              <div className="flex items-center justify-between">
+                <span className="text-terracotta-dark font-semibold">
+                  {stats?.pendingInquiries ?? 0} Pending Inquiries
+                </span>
+                <Link href="/admin/inquiries" className="text-xs font-bold text-forest underline">
+                  Inquiries &rarr;
+                </Link>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-terracotta-dark font-semibold">
+                  {stats?.pendingClaims ?? 0} Pending Claims
+                </span>
+                <Link href="/admin/donors" className="text-xs font-bold text-forest underline">
+                  Claims &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </Card>

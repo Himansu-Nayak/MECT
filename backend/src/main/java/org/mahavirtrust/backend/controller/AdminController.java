@@ -10,6 +10,7 @@ import org.mahavirtrust.backend.dto.scholarship.ScholarshipApplicationResponse;
 import org.mahavirtrust.backend.dto.scholarship.ScholarshipStatusUpdateRequest;
 import org.mahavirtrust.backend.entity.*;
 import org.mahavirtrust.backend.repository.AdminUserRepository;
+import org.mahavirtrust.backend.repository.ManualBankTransferClaimRepository;
 import org.mahavirtrust.backend.repository.PublicInquiryRepository;
 import org.mahavirtrust.backend.repository.ScholarshipApplicationRepository;
 import org.mahavirtrust.backend.repository.VolunteerRegistrationRepository;
@@ -38,6 +39,7 @@ public class AdminController {
     private final PublicInquiryService inquiryService;
     private final VolunteerRegistrationRepository volunteerRepository;
     private final ScholarshipApplicationRepository scholarshipRepository;
+    private final ManualBankTransferClaimRepository claimRepository;
     private final AuditLogService auditLogService;
     private final VolunteerRegistrationService volunteerRegistrationService;
     private final ScholarshipApplicationService scholarshipApplicationService;
@@ -48,6 +50,7 @@ public class AdminController {
                            PublicInquiryService inquiryService,
                            VolunteerRegistrationRepository volunteerRepository,
                            ScholarshipApplicationRepository scholarshipRepository,
+                           ManualBankTransferClaimRepository claimRepository,
                            AuditLogService auditLogService,
                            VolunteerRegistrationService volunteerRegistrationService,
                            ScholarshipApplicationService scholarshipApplicationService) {
@@ -57,6 +60,7 @@ public class AdminController {
         this.inquiryService = inquiryService;
         this.volunteerRepository = volunteerRepository;
         this.scholarshipRepository = scholarshipRepository;
+        this.claimRepository = claimRepository;
         this.auditLogService = auditLogService;
         this.volunteerRegistrationService = volunteerRegistrationService;
         this.scholarshipApplicationService = scholarshipApplicationService;
@@ -72,6 +76,7 @@ public class AdminController {
 
         stats.setTotalInquiries(inquiryRepository.count());
         stats.setPendingInquiries(inquiryRepository.countByStatus("PENDING_REVIEW"));
+        stats.setPendingClaims(claimRepository.countByStatus("UTR_SUBMITTED") + claimRepository.countByStatus("UNVERIFIED"));
 
         stats.setTotalScholarships(scholarshipRepository.count());
         stats.setSubmittedScholarships(scholarshipRepository.countByStatus(ApplicationStatus.SUBMITTED));
