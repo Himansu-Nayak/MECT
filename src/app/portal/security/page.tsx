@@ -239,7 +239,7 @@ export default function PortalSecurityPage() {
               <p className="font-mono font-bold text-forest text-sm">
                 {account.primaryPhone || "Not linked"}
               </p>
-              <span className="text-[10px] text-emerald-700 font-medium">✓ Cryptographically Verified</span>
+              <span className="text-[10px] text-emerald-700 font-medium">✓ Verified Channel</span>
             </div>
 
             <div className="p-3.5 rounded-xs bg-[#FAF7F2] border border-[#E6E1D8] space-y-1">

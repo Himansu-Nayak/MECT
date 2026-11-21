@@ -217,7 +217,7 @@ function LoginContent() {
                   Transparent Governance. Ground-Level Impact.
                 </p>
                 <p className="text-xs text-cream/80 leading-relaxed font-sans">
-                  Access your verified donor dashboard, download serialized official donation payment receipts with cryptographic SHA-256 seals, track manual SBI transfers, and monitor your direct contribution impact.
+                  Access your verified donor dashboard, download serialized numbered official donation payment receipts, track manual SBI transfers, and monitor your direct contribution impact.
                 </p>
               </div>
 

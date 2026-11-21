@@ -335,7 +335,7 @@ function RegisterContent() {
                 <div className="flex items-start gap-2.5">
                   <ShieldCheck className="w-4 h-4 text-sand shrink-0 mt-0.5" />
                   <span className="text-cream/90 leading-relaxed">
-                    <strong>Cryptographic Receipts:</strong> Every receipt bears a verifiable SHA-256 digital signature.
+                    <strong>Numbered Receipts:</strong> Every donation receives a numbered receipt stored in the Trust ledger.
                   </span>
                 </div>
               </div>

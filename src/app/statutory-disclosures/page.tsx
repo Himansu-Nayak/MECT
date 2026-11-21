@@ -366,7 +366,7 @@ export default function StatutoryDisclosuresPage() {
                 </p>
                 <div className="p-3 bg-white/10 rounded-xs space-y-1">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-sand">Receipting &amp; Accountability</div>
-                  <div className="text-xs text-white">Cryptographically verified (SHA-256) serialized receipts issued for verified contributions. Zero cash collections.</div>
+                  <div className="text-xs text-white">Numbered serialized receipts issued for verified contributions. Zero cash collections.</div>
                 </div>
               </div>
 

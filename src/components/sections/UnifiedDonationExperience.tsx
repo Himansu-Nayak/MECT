@@ -1194,7 +1194,7 @@ export function UnifiedDonationExperience() {
                     <strong className="font-mono">
                       {portalDashboard.account.primaryPhone || portalDashboard.account.primaryEmail}
                     </strong>
-                    . This contribution of <strong>₹{amount.toLocaleString("en-IN")}</strong> will automatically generate an official cryptographic PDF receipt linked directly to your Donor Portal.
+                    . This contribution of <strong>₹{amount.toLocaleString("en-IN")}</strong> will automatically generate an official numbered PDF receipt linked directly to your Donor Portal.
                   </p>
                 </div>
               </div>
@@ -1873,7 +1873,7 @@ export function UnifiedDonationExperience() {
                   <span className="text-emerald-900">
                     Official Receipt: <strong>{gatewayStatusResult.receiptNumber || "Generated"}</strong>
                   </span>
-                  <Badge variant="forest" size="sm">Cryptographic SHA-256 Verified</Badge>
+                  <Badge variant="forest" size="sm">Numbered Receipt</Badge>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-ink">
                   <div>Donation Reference: <strong>{gatewayStatusResult.donationReference}</strong></div>
@@ -2047,7 +2047,7 @@ export function UnifiedDonationExperience() {
                       <span>Instant Gateway Checkout (Cards, UPI QR, NetBanking)</span>
                     </div>
                     <p className="text-ink-muted leading-relaxed">
-                      Secured by 256-bit TLS encryption. Upon successful payment verification, your official serialized receipt with cryptographic SHA-256 seal is generated immediately.
+                      Secured by 256-bit TLS encryption. Upon verified payment reconciliation, your official numbered receipt is issued in your donor account.
                     </p>
                   </div>
 

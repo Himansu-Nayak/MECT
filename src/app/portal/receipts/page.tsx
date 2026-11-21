@@ -97,7 +97,7 @@ export default function PortalReceiptsPage() {
                 Official Donation Payment Receipts
               </h1>
               <p className="text-xs sm:text-sm text-ink-muted">
-                Download serialized Official Donation Receipts (PDF) with SHA-256 cryptographic verification for your accounting and financial records.
+                Download serialized numbered Official Donation Receipts (PDF) for your accounting and financial records.
               </p>
             </div>
 
@@ -120,7 +120,7 @@ export default function PortalReceiptsPage() {
             <span>Statutory Receipt Policy</span>
           </div>
           <p className="text-ink-muted">
-            All voluntary contributions to MECT generate an immediate <strong>Official Donation Receipt &amp; Payment Acknowledgement</strong> bearing Trust PAN <strong>AADTM5474F</strong> and a unique cryptographic SHA-256 hash. Tax treatment of contributions is subject to applicable law and confirmation of the Trust&apos;s current statutory eligibility.
+            All voluntary contributions to MECT generate an official <strong>numbered receipt and payment acknowledgement</strong> bearing Trust PAN <strong>AADTM5474F</strong>. Tax treatment of contributions is subject to applicable law and confirmation of the Trust&apos;s current statutory eligibility.
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export default function PortalReceiptsPage() {
                         {item.receiptNumber}
                       </span>
                       <Badge variant="forest" size="sm">
-                        SHA-256 Verified
+                        Numbered Receipt
                       </Badge>
                       <span className="text-[11px] text-ink-muted font-mono">
                         Issued: {new Date(item.confirmedAt || item.date).toLocaleDateString("en-IN", {

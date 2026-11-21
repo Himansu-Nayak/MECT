@@ -224,7 +224,7 @@ export default function AdminAutomatedDemoPage() {
         sampleDonations: updated,
       };
     });
-    setVerificationFeedback("Sample bank claim verified! Serialized PDF receipt REC-2026-DEMO-003 generated with SHA-256 cryptographic hash (Simulated).");
+    setVerificationFeedback("Sample bank claim verified! Serialized PDF receipt REC-2026-DEMO-003 generated as numbered receipt (Simulated).");
   };
 
   // Simulate Ticker toggle
@@ -378,7 +378,7 @@ export default function AdminAutomatedDemoPage() {
               </div>
               <div className="p-3 bg-cream/40 border border-border-warm rounded-xs space-y-1">
                 <span className="font-bold text-forest block">Auditor (Read-Only)</span>
-                <p className="text-ink-muted leading-relaxed">Read-only oversight of receipts, cryptographic SHA-256 hashes, outbox deliveries, and tamper-proof audit trails.</p>
+                <p className="text-ink-muted leading-relaxed">Read-only oversight of receipts, numbered ledger records, outbox deliveries, and tamper-proof audit trails.</p>
               </div>
             </div>
           </Card>

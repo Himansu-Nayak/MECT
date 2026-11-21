@@ -88,7 +88,7 @@ export default function HanumanMurtiCampaignPage() {
     },
     {
       q: "Will I receive an official receipt for my contribution?",
-      a: "Yes. Every verified contribution immediately generates an auditable, serialized Official Donation Receipt & Payment Acknowledgement (PDF) with a cryptographic SHA-256 hash, downloadable in your authenticated Donor Portal.",
+      a: "Yes. Every verified contribution immediately generates an auditable, numbered Official Donation Receipt & Payment Acknowledgement (PDF), downloadable in your authenticated Donor Portal.",
     },
     {
       q: "Can institutional or corporate donors support this initiative?",
@@ -317,7 +317,7 @@ export default function HanumanMurtiCampaignPage() {
                   <strong>Financial Transparency:</strong> Verified campaign progress metrics and audit statements will be published upon conclusion of the ongoing feasibility phase.
                 </p>
                 <p className="text-[11px]">
-                  Receipts with cryptographic SHA-256 integrity hash are generated instantly and permanently accessible in your authenticated Donor Portal.
+                  Numbered receipts are issued upon bank reconciliation and permanently accessible in your authenticated Donor Portal.
                 </p>
               </div>
             </Card>
