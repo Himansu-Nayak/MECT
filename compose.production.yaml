@@ -97,6 +97,7 @@ services:
       HOSTNAME: "0.0.0.0"
       NEXT_PUBLIC_API_BASE_URL: "https://mect.org.in/api/v1"
       NEXT_PUBLIC_API_URL: "https://mect.org.in/api/v1"
+      BACKEND_API_URL: "${BACKEND_API_URL:-http://mect-backend:8080}"
       AI_ENGINE_MODE: "${AI_ENGINE_MODE:-local_with_fallback}"
       GROQ_API_KEY: "${GROQ_API_KEY}"
       GROQ_MODEL: "${GROQ_MODEL:-qwen/qwen3.8-27b}"

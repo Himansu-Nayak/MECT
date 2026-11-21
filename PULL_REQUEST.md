@@ -75,7 +75,7 @@ The following 7 Flyway database migrations were added in `backend/src/main/resou
 | **`V15__sanitize_public_donation_instructions.sql`** | Data-only update sanitizing `payment_instructions` and `gateway_notice_text` in `payment_configurations` (id=1). | **YES** (Data Compensation) | ```sql<br>UPDATE payment_configurations<br>SET payment_instructions = 'Verify beneficiary name MAHAVEER EDUCATIONAL CHARITA in your UPI app before confirming transfer, then submit your 12-digit UTR/reference for verification.',<br>    gateway_notice_text = 'Online payments are processed via Cashfree. Direct SBI UPI/bank transfers are verified manually by MECT Accounts before final receipt issuance.'<br>WHERE id = 1;<br>``` |
 | **`V16__donor_authentication_and_district_schema.sql`** | Adds `district` column to `portal_user_profiles`; adds indexes `idx_portal_user_profiles_district` and `idx_donations_portal_user_status`. | **YES** | ```sql<br>DROP INDEX IF EXISTS idx_donations_portal_user_status;<br>DROP INDEX IF EXISTS idx_portal_user_profiles_district;<br>ALTER TABLE portal_user_profiles DROP COLUMN IF EXISTS district;<br>``` |
 
-*Note: In production, the recommended database rollback procedure is to restore from the pre-deployment binary pg_dump (`mect_db_pre_deploy_<TIMESTAMP>.dump`) as detailed in the rollback runbook.*
+*Note: The SQL statements above document the technical reversibility of schema objects for reference and isolated test teardowns. In production, refer to Section 8: **NEVER execute manual SQL DROP statements on a running database after launch**; use binary `pg_restore` instead.*
 
 ---
 
@@ -87,7 +87,7 @@ The following environment variables are newly introduced or updated across the s
 | :--- | :--- | :--- | :--- |
 | `NEXT_PUBLIC_ENABLE_ODIA` | Frontend (Next.js) | `false` | Feature flag toggling Odia language switcher. Non-sensitive. |
 | `NEXT_PUBLIC_API_URL` | Frontend (Next.js) | `https://mect.org.in/api/v1` | Public API base URL alias for client components. Non-sensitive. |
-| `BACKEND_API_URL` | Next.js Server | `http://127.0.0.1:8081` | Upstream backend API URL for Next.js server route proxies. Non-sensitive. |
+| `BACKEND_API_URL` | Next.js Server | `http://mect-backend:8080` (Compose) / `http://127.0.0.1:8081` (Host dev) | Upstream backend API URL for Next.js server route proxies. Non-sensitive. |
 | `ALLOW_DEV_FALLBACK` | Next.js Server | `false` | Development-only fallback for simulated claim/inquiry tickets. Must remain `false` in production. |
 | `TRUSTED_PROXY_HEADER` | Next.js Server | `X-Forwarded-For` | Reverse proxy header used for client IP rate limiting. Non-sensitive. |
 | `PORT` | Next.js Server | `3000` | Local port binding for frontend container. Non-sensitive. |
@@ -168,23 +168,45 @@ Refer to [OWNER_DECISIONS.md](file:///c:/Users/himan/OneDrive/Desktop/MAHAVIR%20
 
 ---
 
-## 8. Step-by-Step Rollback Runbook
+## 8. Step-by-Step Rollback Runbook: Application Rollback vs Database Restore
 
-If any regression occurs upon staging or production deployment:
+If any regression occurs upon staging or production deployment, choose the appropriate rollback tier:
 
-1. **Revert Frontend & Backend Containers:**
+### 8.1 Application Rollback (Code Regression, Schema Intact)
+When frontend or backend code has a defect, but database schema changes (V10–V16) are not the cause:
+1. Check out the previous release commit:
    ```bash
    cd <APP_DIR>
    git checkout <PREVIOUS_RELEASE_COMMIT_SHA>
+   ```
+2. **Flyway Compatibility Notice:**  
+   Because Flyway defaults to `validateOnMigrate: true` without ignoring future migrations (`ignoreMigrationPatterns` is empty), an older backend image lacking V10–V16 scripts on its classpath will fail startup with:
+   `FlywayValidateException: Validate failed: Detected applied migration not resolved locally: 10, 11, ...`  
+   To allow an older backend container to boot against the existing V10–V16 schema without rolling back the database, pass the Flyway ignore flag in its environment or JVM args:
+   `-Dflyway.ignoreMigrationPatterns=*:future` or set `FLYWAY_IGNORE_MIGRATION_PATTERNS=*:future`.
+3. Restart containers:
+   ```bash
    docker compose -f compose.production.yaml up -d --build
    ```
-2. **Restore Database from Pre-Deploy Binary Dump (if migrations failed):**
+
+### 8.2 Database Restore (Migration Failure or State Corruption)
+When database schema migrations failed or state corruption occurred:
+1. **NEVER RUN MANUAL SQL DROP STATEMENTS AFTER LAUNCH:**  
+   Dropping tables (`DROP TABLE ...`) or columns (`DROP COLUMN ...`) on a live production database will permanently destroy live donor records, break foreign keys, desynchronize `flyway_schema_history`, and cause catastrophic data loss.
+2. Revert the database cleanly from the pre-deployment binary dump taken in Step 5:
    ```bash
    docker exec -i mect-postgres pg_restore -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} --clean --if-exists < <BACKUP_DIR>/mect_db_pre_deploy_<TIMESTAMP>.dump
    ```
-3. **Verify Restored Endpoints:**
+3. Checkout previous release and restart containers:
    ```bash
-   curl -fsS http://127.0.0.1:3001/api/ai/health
-   curl -fsS http://127.0.0.1:8081/api/v1/actuator/health
-   curl -I https://mect.org.in/
+   git checkout <PREVIOUS_RELEASE_COMMIT_SHA>
+   docker compose -f compose.production.yaml up -d --build
    ```
+
+### 8.3 Post-Rollback Verification
+Verify all restored endpoints:
+```bash
+curl -fsS http://127.0.0.1:3001/api/ai/health
+curl -fsS http://127.0.0.1:8081/api/v1/actuator/health
+curl -I https://mect.org.in/
+```

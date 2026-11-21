@@ -225,22 +225,37 @@ Verify LCP < 2.5s and CLS < 0.1 over real CDN/TLS network.
 
 ---
 
-## 6. Immediate Rollback Plan
+## 6. Immediate Rollback Plan: Application vs Database Restore
 
-If any post-deployment smoke check fails, or if an unexpected data anomaly is detected:
+If any post-deployment smoke check fails, or if an unexpected regression is detected:
 
-1. **Revert Containers:**
+### Option A: Application Rollback (Code Regression, Schema Intact)
+1. Check out previous release:
    ```bash
    cd <APP_DIR>
    git checkout <PREVIOUS_COMMIT_SHA>
+   ```
+2. **Flyway Notice:** If older backend image lacks V10–V16 on its classpath, Flyway validation (`validateOnMigrate: true`) will fail startup. Add `FLYWAY_IGNORE_MIGRATION_PATTERNS=*:future` to `.env` or run database restore below.
+3. Restart containers:
+   ```bash
    docker compose -f compose.production.yaml up -d --build
    ```
-2. **Restore Database (if Flyway or schema migration corrupted state):**
+
+### Option B: Database Restore (Migration / State Corruption)
+1. **NEVER RUN MANUAL SQL DROP STATEMENTS AFTER LAUNCH:** Dropping tables or columns on production destroys live donor submissions and desynchronizes `flyway_schema_history`.
+2. Restore cleanly from pre-deploy binary pg_dump:
    ```bash
-   docker exec -i mect-postgres pg_restore -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} --clean --if-exists < <BACKUP_DIR>/<BACKUP_FILE>.dump
+   docker exec -i mect-postgres pg_restore -U ${DB_USERNAME:-mect_user} -d ${DB_NAME:-mect_db} --clean --if-exists < <BACKUP_DIR>/mect_db_pre_deploy_<TIMESTAMP>.dump
    ```
-3. **Verify Restored State:**
+3. Checkout previous release and restart containers:
    ```bash
-   curl -fsS http://127.0.0.1:3001/api/ai/health
-   curl -I https://mect.org.in/
+   git checkout <PREVIOUS_COMMIT_SHA>
+   docker compose -f compose.production.yaml up -d --build
    ```
+
+### Option C: Post-Rollback Verification
+```bash
+curl -fsS http://127.0.0.1:3001/api/ai/health
+curl -fsS http://127.0.0.1:8081/api/v1/actuator/health
+curl -I https://mect.org.in/
+```
