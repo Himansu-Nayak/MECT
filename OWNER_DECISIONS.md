@@ -77,8 +77,8 @@ The following 12 items are prioritized in strict order of operational and statut
 - **Owner Action:** Review Odia strings with a native Odia speaker for dialectal appropriateness in Western Odisha (Kosali / Sambalpuri / Standard Odia) before enabling publicly.
 
 ### 13. Secretariat Email Notifications & Intake Monitoring
-- **Status:** Neither SMTP nor Resend email credentials are configured in production for inbound inquiry/claim notifications. Intake submissions are safely recorded in the database queue (`manual_bank_transfer_claims` and `public_inquiries`).
-- **Owner Action:** Provide official SMTP/mail credentials (or Resend API key), or decide who checks the admin portal intake lists (`/admin/donors` and `/admin/inquiries`) and how often (e.g., daily desk roster).
+- **Status:** PARTIAL. The backend features an HTTP-based Resend email provider (`ResendEmailService`), but no external SMTP/Resend API key is configured in production. Outbound emails cannot be dispatched without valid credentials. Inbound intake submissions (bank transfer claims and public inquiries) are safely recorded in the database and surfaced directly on the Secretariat executive overview dashboard (`pendingInquiries` and `pendingClaims` counters).
+- **Owner Action:** Provide official Resend API credentials (`RESEND_API_KEY`) or dedicated SMTP server parameters if outbound email notifications are required, or rely on daily admin desk review (`/admin/donors` and `/admin/inquiries`) to monitor incoming claims and inquiries.
 
 ### 14. Privacy Policy & Intake Retention Review
 - **Status:** Privacy page (`/privacy`) has been updated to describe the exact intake data points (name, email, phone, amount, UTR, message), purpose, retention, access controls, and deletion procedure without making unverified statutory legal compliance claims.
