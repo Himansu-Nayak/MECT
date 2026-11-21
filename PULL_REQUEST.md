@@ -58,6 +58,14 @@ This Pull Request represents the culmination of Loops 1 through 9 of the autonom
     - Verified branded `src/app/not-found.tsx` (404) with navigation shortcuts.
 12. **Feature-Gated Odia Language Toggle:**
     - Bilingual English/Odia toggle safely gated behind `NEXT_PUBLIC_ENABLE_ODIA="true"` (default off until Trust review).
+13. **Feature-Gated Donor Portal (`ENABLE_DONOR_PORTAL=false`):**
+    - Donor & Supporter Portal gated behind build-time flag `ENABLE_DONOR_PORTAL` (default `false`). When false, all `/login`, `/register`, and `/portal/*` links are hidden, routes return HTTP 404, and are excluded from sitemap.
+14. **Decoupled Receipt Delivery & Manual Fallback:**
+    - Traced receipt generation lifecycle. Documented that missing `RESEND_API_KEY` pauses outbox retries without rolling back claim verification or receipt persistence. Confirmed working PDF download on `/admin/donors`.
+15. **URL Redirects & Deep-Linking (`/donate?programme=...`):**
+    - Added permanent HTTP 308 redirects for legacy and campaign URLs (`/campaign`, `/murti`, `/donate/claim`, etc.). Enabled direct pre-selection of donation programmes via query parameter.
+16. **Docker Build Context Optimization:**
+    - Purged legacy `scratch/` directory and excluded `docs/`, `audit/`, `reports/`, and `MECT_PHASE_*` from Docker context in `.dockerignore`, eliminating 338 MB of build transfer bloat.
 
 ---
 
