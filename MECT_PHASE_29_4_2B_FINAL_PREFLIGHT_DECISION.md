@@ -111,7 +111,7 @@ echo "[SUCCESS] Pre-deployment database dump created: pre_deploy_${TIMESTAMP}.du
 docker compose -p mect -f compose.production.yaml build
 
 # Apply updates in dependency order
-docker compose -p mect -f compose.production.yaml up -d --remove-orphans
+docker compose -p mect -f compose.production.yaml up -d
 ```
 
 ### Step 4: Verify Container Health & Flyway Migrations

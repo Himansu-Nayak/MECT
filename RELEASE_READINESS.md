@@ -64,10 +64,10 @@ To achieve a production deployment without compromising financial accuracy, data
    - Query PostgreSQL: confirm matching rows exist in `manual_bank_transfer_claims` and `public_inquiries` with identical generated reference numbers.
    - Clean up staging container: `docker stop mect-frontend-staging && docker rm mect-frontend-staging`.
 8. **Production Stack Replacement:**
-   - Build and start production containers via Compose:
+   - Build and start production containers via Compose (strictly targeting declared services without `--remove-orphans`):
      ```bash
      docker compose -f compose.production.yaml build
-     docker compose -f compose.production.yaml up -d --remove-orphans
+     docker compose -f compose.production.yaml up -d
      ```
 9. **Live HTTPS Smoke Verification:**
    - Verify loopback endpoints: `http://127.0.0.1:3001/api/ai/health` and `http://127.0.0.1:8081/api/v1/actuator/health`.

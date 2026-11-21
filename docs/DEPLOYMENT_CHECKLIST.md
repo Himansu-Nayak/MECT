@@ -196,8 +196,8 @@ Before replacing the live production frontend container:
 # Build production images cleanly
 docker compose -f compose.production.yaml build
 
-# Deploy containers with zero-orphan hygiene
-docker compose -f compose.production.yaml up -d --remove-orphans
+# Deploy containers in background mode (no --remove-orphans to protect unrelated host workloads)
+docker compose -f compose.production.yaml up -d
 ```
 
 ### Step 7: Post-Deployment Smoke Verification
