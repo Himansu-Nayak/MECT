@@ -63,7 +63,7 @@ This Pull Request represents the culmination of Loops 1 through 9 of the autonom
 
 ## 3. Database Migrations & Reversibility Analysis
 
-The following 7 Flyway database migrations were added in `backend/src/main/resources/db/migration/` since `main`:
+The following 8 Flyway database migrations were added in `backend/src/main/resources/db/migration/` since `main`:
 
 | Migration File | Description & Schema Impact | Reversible? | Rollback Mechanism / SQL |
 | :--- | :--- | :---: | :--- |
@@ -74,6 +74,7 @@ The following 7 Flyway database migrations were added in `backend/src/main/resou
 | **`V14__hanuman_murti_and_campaigns_schema.sql`** | Inserts `HANUMAN_MURTI` into `donation_programmes` (segregated ledger); creates `campaign_updates` table and seeds 3 initial project milestones. | **YES** | ```sql<br>DROP TABLE IF EXISTS campaign_updates CASCADE;<br>DELETE FROM donation_programmes WHERE code = 'HANUMAN_MURTI';<br>``` |
 | **`V15__sanitize_public_donation_instructions.sql`** | Data-only update sanitizing `payment_instructions` and `gateway_notice_text` in `payment_configurations` (id=1). | **YES** (Data Compensation) | ```sql<br>UPDATE payment_configurations<br>SET payment_instructions = 'Verify beneficiary name MAHAVEER EDUCATIONAL CHARITA in your UPI app before confirming transfer, then submit your 12-digit UTR/reference for verification.',<br>    gateway_notice_text = 'Online payments are processed via Cashfree. Direct SBI UPI/bank transfers are verified manually by MECT Accounts before final receipt issuance.'<br>WHERE id = 1;<br>``` |
 | **`V16__donor_authentication_and_district_schema.sql`** | Adds `district` column to `portal_user_profiles`; adds indexes `idx_portal_user_profiles_district` and `idx_donations_portal_user_status`. | **YES** | ```sql<br>DROP INDEX IF EXISTS idx_donations_portal_user_status;<br>DROP INDEX IF EXISTS idx_portal_user_profiles_district;<br>ALTER TABLE portal_user_profiles DROP COLUMN IF EXISTS district;<br>``` |
+| **`V17__sanitize_payment_gateway_instructions.sql`** | Data-only update setting `payment_instructions` and `gateway_notice_text` in `payment_configurations` (id=1) to canonical SBI Direct & UPI instructions, eliminating all public online gateway wording. | **YES** (Data Compensation) | ```sql<br>UPDATE payment_configurations<br>SET payment_instructions = 'Verify beneficiary name MAHAVEER EDUCATIONAL CHARITA in your UPI app before confirming transfer, then submit your 12-digit UTR/reference for verification.',<br>    gateway_notice_text = 'Online payments are processed via Cashfree. Direct SBI UPI/bank transfers are verified manually by MECT Accounts before final receipt issuance.'<br>WHERE id = 1;<br>``` |
 
 *Note: The SQL statements above document the technical reversibility of schema objects for reference and isolated test teardowns. In production, refer to Section 8: **NEVER execute manual SQL DROP statements on a running database after launch**; use binary `pg_restore` instead.*
 
@@ -210,3 +211,97 @@ curl -fsS http://127.0.0.1:3001/api/ai/health
 curl -fsS http://127.0.0.1:8081/api/v1/actuator/health
 curl -I https://mect.org.in/
 ```
+
+---
+
+## 9. PR Scope Breakdown, Production Baseline & Historical Architecture Segregation
+
+### 9.1 Commit Breakdown by Workstream (145 Commits on `fix/audit-loop`)
+
+The 145 commits between `origin/main` and `fix/audit-loop` break down into the following distinct functional workstreams:
+
+| Workstream | Commit Count | Key Commits / Ranges | Description & Scope |
+| :--- | :---: | :--- | :--- |
+| **Audit Work (Loops 1–9 & Hygiene)** | **61** | `42a7fa1` (Infra hygiene), `1948bcc` (Gateway wording & V17), `8c1c9b7` (Networking), `0078079` (PR doc), `54adf8c`–`690db1e` (Loop 9), `08e00a5`–`42190bd` (Loop 8 fail-closed), `b475185`–`ad7c21e` (Loop 7), `4e9662b`–`328f0a7` (Loop 6), `5409cce`–`212ef5e` (Loops 1–5) | Factual corrections, single-source SBI details, fail-closed HTTP 503 submissions, truthful numbered receipt wording, neutral statutory tax statements, backend JDK 21 build, rendered crawlers, secret scanner. |
+| **Initial Audit Gates (AUDIT-A0..A2)** | **21** | `51f5558` (`[AUDIT-GATE-2]`), `e095ff6`–`e5ebadc` (`AUDIT-A2.1`–`A2.9`), `d8fab23` (`[AUDIT-GATE-1]`), `be4b43b`–`f59aa81` (`AUDIT-A1.1`–`A1.6`), `6b6c351`–`86fbbaf` (`AUDIT-A0.1`–`A0.4`) | Pre-loop statutory baseline reconciliation, `TaxStatusNotice` component, crawler scripts, trustee confirmation checklist. |
+| **Phase 28 (Donor Portal & V16)** | **5** | `6a9de87` (Dual-channel OTP), `cc121ba` (Phase 28 deliverables), `e760cec` (Donor portal suite), `40b8cae` (Donor auth), `0f58118` (Mandatory donor auth & schema V16) | Donor portal account management, JWT/OTP token handling, district-level tracking schema `V16`. |
+| **Phase 29 (Gateways, Murti, V10/V12/V14/V15)** | **17** | `7b4575d`–`c917047` (Phase 29 audit & safety gates), `9c7033e`–`155dd00` (Cashfree PG v2023-08-01, V10 schema, HIM PG V12, Hanuman Murti V14, V15 sanitization) | Cashfree PG integration, webhook signatures, HIM gateway schemas, Hanuman Murti segregated ledger and campaign updates. |
+| **Phase 24–27 (Brand & Motion Overhaul)** | **26** | `85bfe1a` (Phase 27.1), `78969cf` (Phase 27), `84dbc30` (Phase 26 editorial), `efeaa1f` (Phase 25), `b294267` (Phase 24 overhaul), `cb5b554`–`e4ecd53` (Motion milestones M-M0.1–M-M8) | Anime.js integration, Framer Motion transitions, 30-district Odisha SVG grid, visx impact charts, hero video container, editorial storytelling. |
+| **Phase 20 & 21 (CMS, Media & Infra)** | **13** | `b09e1bb` (Frontend Docker context), `3fb88df` (Engineering reports), `261018a`–`03a7432` (Auth & API fixes), `5b30d76`–`c7e6326` (Phase 20/21 CMS, V11 migration, Docker configs) | Full donation ecosystem CMS, `media_assets` table, Nginx reverse proxy configs, PM2/Docker orchestration. |
+| **AI Engine (FastAPI & Groq)** | **2** | `e995fbb` (HIm chatbot intelligence & retry), `305c80a` (Sanitize script key) | Python FastAPI backend (`mect-ai-engine`), Groq API client, context retriever. |
+
+### 9.2 Live Production Deployment Baseline & Migration History
+
+Forensic examination of the 365 deployment dossiers in `reports/` identified the exact live production deployment milestones:
+
+1. **Initial Production Deployment (`reports/MECT_PRODUCTION_RELEASE_REPORT.md`):**
+   - **Deployed Commit SHA:** `989e0da0344d3e1ffded971edbdfb6a2633d624f` on `origin/main`.
+   - **Applied Flyway Migrations:** Ranks 1 to 9 applied cleanly (`V1` through `V9`).
+2. **Phase 16 Stage 1 Cashfree Cutover (`reports/MECT_CASHFREE_FINAL_PRODUCTION_READINESS_REPORT.md` / `MECT_PHASE16_RELEASE_BASELINE.md`):**
+   - **Deployed Commit SHA:** `155dd00` / `9c7033e44313395997f57f8b1197c538d46102ba`.
+   - **Applied Flyway Migrations:** Migrated `mect_db` from `V9` to `V10` (`10 | cashfree payment gateway schema | t`).
+3. **Master Recovery Handover Certification (`reports/MECT_MASTER_RECOVERY_COMPLETION_AND_DEPLOYMENT_HANDOVER_REPORT.md` - Nov 17, 2026):**
+   - **VPS State:** Hostinger VPS `<PROD_HOSTNAME>` (`<PROD_VPS_IP>`) running Docker Compose (`mect-frontend`, `mect-backend`, `mect-postgres`).
+   - **Applied Flyway Migrations:** Verified `flyway_schema_history` in production PostgreSQL 18 with ranks 1 to 15:
+     - `V1`–`V10` (Core, portal, outbox, Cashfree)
+     - `V11` (Donation ecosystem CMS & RBAC)
+     - `V12` (HIM payment gateway schema)
+     - `V13` (Public documents library schema)
+     - `V14` (Hanuman Murti campaign schema)
+     - `V15` (Sanitize public donation instructions)
+4. **Unapplied Migrations on Production:**
+   - `V16__donor_authentication_and_district_schema.sql` (Tested locally/staging, not yet run in production).
+   - `V17__sanitize_payment_gateway_instructions.sql` (Authored in Loop 9 / pre-PR hygiene, pending deployment).
+
+---
+
+### 9.3 Proposed Plan: Applying Only Audit Commits (Minimal PR / Split Branch)
+
+If the Trust desires a lightweight, zero-risk pull request containing **strictly** the truth and compliance audit fixes without the experimental feature branches (Phases 22–29):
+
+1. **Create Isolated Branch from Production Baseline:**
+   ```bash
+   git checkout -b fix/production-audit-only <PROD_BASELINE_SHA>
+   ```
+2. **Cherry-Pick Only Audit Fixes (Loops 1–9):**
+   Cherry-pick or apply patch for the core audit files:
+   - `src/config/org.ts` (Single-source SBI bank and UPI credentials)
+   - `src/app/api/donations/claim/route.ts` & `src/app/api/contact/route.ts` (Fail-closed 503 behavior)
+   - `src/components/donation/UpiQrCard.tsx` (Direct SBI transfer & QR)
+   - `src/app/reports/page.tsx` & `src/app/stories/` (Multi-year reports & authentic dispatches)
+   - `backend/src/main/java/.../PaymentConfigurationService.java` & `AdminController.java`
+   - `backend/src/main/resources/db/migration/V17__sanitize_payment_gateway_instructions.sql`
+   - `scripts/verify_rendered_tax.mjs`, `scripts/scan_secrets.mjs`, `scripts/verify_rendered.mjs`
+3. **Outcome:**
+   - PR touches ~45 files with ~2,500 lines changed (instead of 1,632 files and 638,000 lines).
+   - Reversible schema impact: Only data-only migration `V17` is applied.
+
+---
+
+### 9.4 Proposed Plan: Moving `MECT_PHASE_*` and `reports/*` Out of Repository
+
+To eliminate repository bloat (over 380 markdown files and 400,000 lines of historical planning logs) while permanently preserving institutional audit records:
+
+1. **Create Dedicated Documentation Branch:**
+   ```bash
+   git checkout --orphan docs/historical-architecture
+   git rm -rf .
+   git checkout fix/audit-loop -- reports/ MECT_PHASE_*.md
+   git commit -m "docs(archive): preserve historical phase specifications and rehearsal reports"
+   git tag archive/historical-phase-reports
+   ```
+2. **Purge Historical Reports from Working Tree on Main:**
+   ```bash
+   git checkout fix/audit-loop
+   git rm -r reports/
+   git rm MECT_PHASE_*.md
+   git commit -m "chore(hygiene): remove historical phase reports from application working tree"
+   ```
+3. **Retain Curated Operational Documentation:**
+   Keep only essential, living operational runbooks inside `docs/`:
+   - `docs/DEPLOYMENT_CHECKLIST.md`
+   - `docs/RELEASE_READINESS.md`
+   - `docs/HISTORY_CLEANUP.md`
+   - `docs/STATUTORY_REGISTER.md`
+   - `docs/local-deploy-notes.md` (git-ignored)
+   - `PULL_REQUEST.md`
