@@ -20,6 +20,11 @@ backend/.env
 backend/.env.production
 backups
 scratch
+docs
+audit
+reports
+MECT_PHASE_*
+*DEPLOYMENT_REPORT*
 *.pem
 *.csv
 *.CSV
