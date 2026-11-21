@@ -42,6 +42,46 @@ const nextConfig: NextConfig = {
         destination: "/memories-gallery",
         permanent: true,
       },
+      {
+        source: "/campaign",
+        destination: "/campaigns",
+        permanent: true,
+      },
+      {
+        source: "/campaign/hanuman-murti",
+        destination: "/campaigns/hanuman-murti",
+        permanent: true,
+      },
+      {
+        source: "/campaigns/murti",
+        destination: "/campaigns/hanuman-murti",
+        permanent: true,
+      },
+      {
+        source: "/murti",
+        destination: "/campaigns/hanuman-murti",
+        permanent: true,
+      },
+      {
+        source: "/hanuman-murti",
+        destination: "/campaigns/hanuman-murti",
+        permanent: true,
+      },
+      {
+        source: "/donate/claim",
+        destination: "/donate",
+        permanent: true,
+      },
+      {
+        source: "/donate/sbi",
+        destination: "/donate",
+        permanent: true,
+      },
+      {
+        source: "/donate/upi",
+        destination: "/donate",
+        permanent: true,
+      },
     ];
   },
   async headers() {

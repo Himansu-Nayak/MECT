@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Check, Copy, CheckCircle2, AlertCircle, Loader2, Send, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -46,9 +47,30 @@ const PROGRAMME_OPTIONS: ProgrammeOption[] = [
   },
 ];
 
-export function DonationClaimSection() {
+function DonationClaimSectionContent() {
+  const searchParams = useSearchParams();
+  const paramProgramme = searchParams.get("programme")?.toUpperCase();
+  const matchedInitial = PROGRAMME_OPTIONS.find(
+    (opt) =>
+      opt.code === paramProgramme ||
+      opt.code.replace(/_/g, "") === paramProgramme?.replace(/_/g, "")
+  )?.code || "GENERAL";
+
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [selectedProgramme, setSelectedProgramme] = useState<string>("GENERAL");
+  const [selectedProgramme, setSelectedProgramme] = useState<string>(matchedInitial);
+
+  useEffect(() => {
+    if (paramProgramme) {
+      const match = PROGRAMME_OPTIONS.find(
+        (opt) =>
+          opt.code === paramProgramme ||
+          opt.code.replace(/_/g, "") === paramProgramme.replace(/_/g, "")
+      );
+      if (match) {
+        setSelectedProgramme(match.code);
+      }
+    }
+  }, [paramProgramme]);
   const [amount, setAmount] = useState<string>("1000");
   const [donorName, setDonorName] = useState<string>("");
   const [donorEmail, setDonorEmail] = useState<string>("");
@@ -476,5 +498,19 @@ export function DonationClaimSection() {
         )}
       </div>
     </div>
+  );
+}
+
+export function DonationClaimSection() {
+  return (
+    <React.Suspense
+      fallback={
+        <div className="p-8 text-center text-xs text-ink-muted">
+          Loading contribution options...
+        </div>
+      }
+    >
+      <DonationClaimSectionContent />
+    </React.Suspense>
   );
 }
