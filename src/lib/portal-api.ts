@@ -993,4 +993,184 @@ export async function updateAdminDocumentStatus(
   return res.json();
 }
 
+export interface WhatsAppStatusDto {
+  configured: boolean;
+  enabled: boolean;
+  provider: string;
+  apiVersion: string;
+  phoneNumberId: string;
+  maskedToken: string;
+  businessAccountId: string;
+  totalRecipients: number;
+  activeRecipients: number;
+  templatesCount: number;
+  approvedTemplatesCount: number;
+  metrics: {
+    total: number;
+    sent: number;
+    delivered: number;
+    read: number;
+    failed: number;
+    queued: number;
+  };
+}
+
+export interface WhatsAppRecipientDto {
+  id: number;
+  phoneNumber: string;
+  name: string;
+  role: string;
+  active: boolean;
+  notifyOnDonation: boolean;
+  notifyOnClaim: boolean;
+  notifyOnRefund: boolean;
+  notifyDailySummary: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface WhatsAppTemplateConfigDto {
+  id: number;
+  templateKey: string;
+  templateName: string;
+  languageCode: string;
+  category: string;
+  status: string;
+  parameterMappings?: string;
+  sampleBody?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface WhatsAppMessageLogDto {
+  id: number;
+  outboxId?: number;
+  wamid?: string;
+  recipientPhone: string;
+  recipientType: string;
+  templateName?: string;
+  eventType: string;
+  status: string;
+  errorCode?: string;
+  errorMessage?: string;
+  sentAt?: string;
+  deliveredAt?: string;
+  readAt?: string;
+  rawPayload?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export async function fetchAdminWhatsAppStatus(token: string): Promise<WhatsAppStatusDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/status`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load WhatsApp status."));
+  return res.json();
+}
+
+export async function fetchAdminWhatsAppRecipients(token: string): Promise<WhatsAppRecipientDto[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/recipients`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load WhatsApp recipients."));
+  return res.json();
+}
+
+export async function createAdminWhatsAppRecipient(
+  token: string,
+  recipient: Partial<WhatsAppRecipientDto>
+): Promise<WhatsAppRecipientDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/recipients`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(recipient),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to create recipient."));
+  return res.json();
+}
+
+export async function updateAdminWhatsAppRecipient(
+  token: string,
+  id: number,
+  recipient: Partial<WhatsAppRecipientDto>
+): Promise<WhatsAppRecipientDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/recipients/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(recipient),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to update recipient."));
+  return res.json();
+}
+
+export async function deleteAdminWhatsAppRecipient(token: string, id: number): Promise<void> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/recipients/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to delete recipient."));
+}
+
+export async function toggleAdminWhatsAppRecipient(token: string, id: number): Promise<WhatsAppRecipientDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/recipients/${id}/toggle`, {
+    method: "PATCH",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to toggle recipient status."));
+  return res.json();
+}
+
+export async function fetchAdminWhatsAppTemplates(token: string): Promise<WhatsAppTemplateConfigDto[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/templates`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load WhatsApp templates."));
+  return res.json();
+}
+
+export async function updateAdminWhatsAppTemplate(
+  token: string,
+  key: string,
+  update: Partial<WhatsAppTemplateConfigDto>
+): Promise<WhatsAppTemplateConfigDto> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/templates/${key}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(update),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to update template."));
+  return res.json();
+}
+
+export async function fetchAdminWhatsAppLogs(token: string): Promise<WhatsAppMessageLogDto[]> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/logs`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Failed to load WhatsApp logs."));
+  return res.json();
+}
+
+export async function sendAdminWhatsAppTest(
+  token: string,
+  req: { phone: string; template?: string; params?: string[] }
+): Promise<any> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/test`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify(req),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Test message dispatch failed."));
+  return res.json();
+}
+
+export async function retryAdminWhatsAppOutbox(token: string, outboxId: number): Promise<any> {
+  const res = await fetch(`${API_BASE_URL}/admin/whatsapp/retry/${outboxId}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Outbox retry dispatch failed."));
+  return res.json();
+}
+
 

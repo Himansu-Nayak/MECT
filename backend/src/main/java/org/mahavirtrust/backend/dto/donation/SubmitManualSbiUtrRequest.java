@@ -37,6 +37,8 @@ public record SubmitManualSbiUtrRequest(
 
         Boolean communicationConsent,
 
+        Boolean whatsappConsent,
+
         @NotBlank(message = "UTR / bank transaction reference is required")
         @Size(min = 8, max = 64, message = "UTR / bank reference must be between 8 and 64 characters")
         String utrReference,
@@ -52,5 +54,25 @@ public record SubmitManualSbiUtrRequest(
 
         @Size(max = 64)
         String existingDonationReference
-) {}
-
+) {
+    public SubmitManualSbiUtrRequest(
+            String programmeCode,
+            BigDecimal amount,
+            String donorName,
+            String donorEmail,
+            String donorPhone,
+            String donorAddress,
+            String donorPan,
+            String dedicationMessage,
+            boolean anonymous,
+            Boolean communicationConsent,
+            String utrReference,
+            LocalDate transferDate,
+            String paymentModeNote,
+            String proofSummary,
+            String existingDonationReference) {
+        this(programmeCode, amount, donorName, donorEmail, donorPhone, donorAddress, donorPan,
+                dedicationMessage, anonymous, communicationConsent, Boolean.FALSE, utrReference,
+                transferDate, paymentModeNote, proofSummary, existingDonationReference);
+    }
+}

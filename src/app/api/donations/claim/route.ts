@@ -66,6 +66,7 @@ export async function POST(request: NextRequest) {
       programmeCode,
       transferDate,
       notes,
+      whatsappConsent,
     } = body;
 
     // Server-side validations
@@ -129,6 +130,7 @@ export async function POST(request: NextRequest) {
           transferDate: transferDate || new Date().toISOString().split("T")[0],
           paymentModeNote: "SBI Transfer / UPI Manual Claim",
           proofSummary: notes ? notes.trim() : "Submitted via mect.org.in/donate claim desk",
+          whatsappConsent: Boolean(whatsappConsent),
         }),
       });
       clearTimeout(timeoutId);

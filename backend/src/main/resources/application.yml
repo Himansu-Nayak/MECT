@@ -89,12 +89,20 @@ app:
     cashfree-return-url: ${CASHFREE_RETURN_URL:https://mect.org.in/donate?order_id={order_id}}
     cashfree-notify-url: ${CASHFREE_NOTIFY_URL:https://mect.org.in/api/v1/webhooks/payments/cashfree}
   whatsapp:
-    provider: ${WHATSAPP_PROVIDER:NONE}
-    api-version: ${WHATSAPP_API_VERSION:v21.0}
+    enabled: ${WHATSAPP_ENABLED:false}
+    provider: ${WHATSAPP_PROVIDER:META_CLOUD}
+    api-version: ${WHATSAPP_GRAPH_API_VERSION:${WHATSAPP_API_VERSION:v21.0}}
     phone-number-id: ${WHATSAPP_PHONE_NUMBER_ID:}
+    business-account-id: ${WHATSAPP_BUSINESS_ACCOUNT_ID:}
     access-token: ${WHATSAPP_ACCESS_TOKEN:}
     verify-token: ${WHATSAPP_WEBHOOK_VERIFY_TOKEN:}
     app-secret: ${WHATSAPP_APP_SECRET:}
+    admin-template: ${WHATSAPP_ADMIN_TEMPLATE:mect_donation_admin_alert}
+    donor-receipt-template: ${WHATSAPP_DONOR_RECEIPT_TEMPLATE:mect_donation_receipt}
+    pending-template: ${WHATSAPP_PENDING_TEMPLATE:mect_donation_pending}
+    verified-template: ${WHATSAPP_VERIFIED_TEMPLATE:mect_donation_verified}
+    rejected-template: ${WHATSAPP_REJECTED_TEMPLATE:mect_donation_rejected}
+    daily-summary-template: ${WHATSAPP_DAILY_SUMMARY_TEMPLATE:mect_daily_donation_summary}
     welcome-template: ${WHATSAPP_TEMPLATE_WELCOME:}
     donation-template: ${WHATSAPP_TEMPLATE_DONATION:}
   scheduling:

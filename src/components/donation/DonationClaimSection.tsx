@@ -81,6 +81,7 @@ function DonationClaimSectionContent() {
     new Date().toISOString().split("T")[0]
   );
   const [notes, setNotes] = useState<string>("");
+  const [whatsappConsent, setWhatsappConsent] = useState<boolean>(true);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -144,6 +145,7 @@ function DonationClaimSectionContent() {
           programmeCode: selectedProgramme,
           transferDate,
           notes: notes.trim(),
+          whatsappConsent,
         }),
       });
 
@@ -471,6 +473,23 @@ function DonationClaimSectionContent() {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               />
+            </div>
+
+            <div className="p-3.5 bg-emerald-50/60 rounded-lg border border-emerald-200/70 flex items-start gap-3">
+              <input
+                id="whatsappConsent"
+                name="whatsappConsent"
+                type="checkbox"
+                checked={whatsappConsent}
+                onChange={(e) => setWhatsappConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 rounded border-gray-300 text-forest focus:ring-forest cursor-pointer"
+              />
+              <label htmlFor="whatsappConsent" className="text-xs text-ink cursor-pointer select-none leading-relaxed">
+                <span className="font-semibold text-forest">Receive receipt & verification updates via WhatsApp.</span>{" "}
+                <span className="text-ink-muted">
+                  The Trust will send your verification status and official numbered receipt to {donorPhone || "your mobile number"} once matched against bank statements.
+                </span>
+              </label>
             </div>
 
             <div className="pt-2">
