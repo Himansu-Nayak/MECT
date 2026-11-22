@@ -5,11 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
+import java.time.Duration;
 import java.util.*;
 
 @Service
@@ -23,7 +25,7 @@ public class MetaWhatsAppCloudService implements WhatsAppProvider {
     private final String accessToken;
     private final String appSecret;
     private final ObjectMapper objectMapper;
-    private final RestClient restClient = RestClient.create();
+    private final RestClient restClient;
 
     public MetaWhatsAppCloudService(
             @Value("${app.whatsapp.provider:NONE}") String provider,
@@ -38,6 +40,10 @@ public class MetaWhatsAppCloudService implements WhatsAppProvider {
         this.accessToken = accessToken != null ? accessToken.trim() : "";
         this.appSecret = appSecret != null ? appSecret.trim() : "";
         this.objectMapper = objectMapper;
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(Duration.ofSeconds(5));
+        requestFactory.setReadTimeout(Duration.ofSeconds(10));
+        this.restClient = RestClient.builder().requestFactory(requestFactory).build();
     }
 
     @Override

@@ -26,6 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
@@ -130,7 +131,8 @@ public class CashfreePaymentGatewayIntegrationTests {
 
     @AfterEach
     void teardown() {
-        cashfreeGatewayService.setRestClientForTesting(RestClient.create());
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        cashfreeGatewayService.setRestClientForTesting(RestClient.builder().requestFactory(requestFactory).build());
     }
 
     @Test

@@ -4,12 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Base64;
 import java.util.Map;
 
@@ -24,7 +26,7 @@ public class ConfigurableSmsService implements SmsProvider {
     private final String twilioFrom;
     private final String msg91Key;
     private final String msg91TemplateId;
-    private final RestClient restClient = RestClient.create();
+    private final RestClient restClient;
 
     public ConfigurableSmsService(
             @Value("${app.sms.provider:NONE}") String provider,
@@ -33,6 +35,10 @@ public class ConfigurableSmsService implements SmsProvider {
             @Value("${app.sms.twilio-from-number:}") String twilioFrom,
             @Value("${app.sms.msg91-auth-key:}") String msg91Key,
             @Value("${app.sms.msg91-template-id:}") String msg91TemplateId) {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(Duration.ofSeconds(5));
+        requestFactory.setReadTimeout(Duration.ofSeconds(10));
+        this.restClient = RestClient.builder().requestFactory(requestFactory).build();
         this.provider = provider != null ? provider.trim().toUpperCase() : "NONE";
         this.twilioSid = twilioSid != null ? twilioSid.trim() : "";
         this.twilioToken = twilioToken != null ? twilioToken.trim() : "";
