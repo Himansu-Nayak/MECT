@@ -71,22 +71,26 @@ public class AdminWhatsAppController {
     }
 
     @PostMapping("/recipients")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<WhatsAppRecipient> createRecipient(@RequestBody WhatsAppRecipient recipient) {
         return ResponseEntity.ok(recipientService.createRecipient(recipient));
     }
 
     @PutMapping("/recipients/{id}")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<WhatsAppRecipient> updateRecipient(@PathVariable Long id, @RequestBody WhatsAppRecipient update) {
         return ResponseEntity.ok(recipientService.updateRecipient(id, update));
     }
 
     @DeleteMapping("/recipients/{id}")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<Map<String, String>> deleteRecipient(@PathVariable Long id) {
         recipientService.deleteRecipient(id);
         return ResponseEntity.ok(Map.of("status", "DELETED"));
     }
 
     @PatchMapping("/recipients/{id}/toggle")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<WhatsAppRecipient> toggleRecipient(@PathVariable Long id) {
         return ResponseEntity.ok(recipientService.toggleActive(id));
     }
@@ -97,6 +101,7 @@ public class AdminWhatsAppController {
     }
 
     @PutMapping("/templates/{key}")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<WhatsAppTemplateConfig> updateTemplate(
             @PathVariable String key,
             @RequestBody WhatsAppTemplateConfig update) {
@@ -109,6 +114,7 @@ public class AdminWhatsAppController {
     }
 
     @PostMapping("/test")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<Map<String, Object>> sendTestMessage(@RequestBody Map<String, Object> req) {
         String phone = (String) req.get("phone");
         String template = (String) req.getOrDefault("template", "mect_donation_admin_alert");
@@ -129,6 +135,7 @@ public class AdminWhatsAppController {
     }
 
     @PostMapping("/retry/{outboxId}")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<Map<String, Object>> retryOutboxItem(@PathVariable Long outboxId) {
         Optional<NotificationOutbox> outboxOpt = outboxRepository.findById(outboxId);
         if (outboxOpt.isEmpty()) {

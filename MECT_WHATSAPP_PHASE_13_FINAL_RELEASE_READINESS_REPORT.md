@@ -57,7 +57,7 @@
 
 ### Phase 2: Financial Privacy Remediation
 
-In compliance with Phase 2 requirements, all reports, scripts, and documentation were audited to eliminate unnecessary bank account numbers, partial account numbers (`3334****498`), and IFSC details (`SBIN0001701`), replacing them with generic compliance statements:
+In compliance with Phase 2 requirements, all reports, scripts, and documentation were audited to eliminate unnecessary bank account numbers, partial account numbers, and IFSC details, replacing them with generic compliance statements:
 
 - **Files Remediated:**
   1. `MECT_WHATSAPP_PHASE_10_SECURITY_REMEDIATION_AND_GITHUB_PUBLICATION_REPORT.md`
