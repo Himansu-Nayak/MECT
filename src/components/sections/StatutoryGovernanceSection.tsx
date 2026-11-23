@@ -199,7 +199,7 @@ export function StatutoryGovernanceSection() {
               <div className="relative w-24 h-32 sm:w-28 sm:h-36 rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-forest shrink-0 shadow-xs group">
                 <Image
                   src="/images/leadership/er-japabandhu-kampa.webp"
-                  alt="Er. Japabandu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT"
+                  alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT"
                   fill
                   sizes="(max-width: 640px) 96px, 112px"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -210,7 +210,7 @@ export function StatutoryGovernanceSection() {
                   <span>Founder Custodianship • Deed Clauses 8(2) &amp; 10</span>
                 </div>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
-                  Er. Japabandu Kampa
+                  Er. Japabandhu Kampa
                 </h3>
                 <p className="text-xs sm:text-sm text-terracotta font-semibold font-sans">
                   Settler Founder &amp; Chairman cum Managing Trustee

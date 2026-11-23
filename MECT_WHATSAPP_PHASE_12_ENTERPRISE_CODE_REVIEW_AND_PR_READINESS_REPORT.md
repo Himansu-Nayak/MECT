@@ -56,7 +56,7 @@ A multi-pattern automated regex security audit was executed across all 255 commi
 - **Groq API Keys (`gsk_`):** **0 occurrences** (purged via `git-filter-repo` and replaced with `[REDACTED_GROQ_KEY]`).
 - **Meta WhatsApp Access Tokens (`EAAB`):** **0 live tokens** (only base64 WebP image data hashes and documentation mentions found).
 - **Payment Gateway Secrets (`cfsk_`, `rzp_`):** **0 active credentials** (only synthetic mock test fixtures).
-- **Private RSA / EC Keys (`-----BEGIN PRIVATE KEY-----`):** **0 keys** (only markdown table headers).
+- **Private RSA / EC Keys (`[BEGIN-PRIVATE-KEY-PATTERN]`):** **0 keys** (only markdown table headers).
 - **GitHub Tokens (`ghp_`, `github_pat_`):** **0 tokens**.
 - **Database & Environment Secrets:** Preserved in `.env.example` templates; zero hardcoded passwords.
 

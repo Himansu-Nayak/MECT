@@ -97,7 +97,7 @@ A deep automated scan across the entire working tree, Git index, reachable commi
 - **Razorpay Secrets (`rzp_`):** **0 credentials**
 - **GitHub PATs (`ghp_`, `github_pat_`):** **0 tokens**
 - **Database Passwords in Connection Strings:** **0 hardcoded passwords**
-- **Private Key Headers (`-----BEGIN PRIVATE KEY-----`):** **0 keys** (only referenced in markdown reports documenting pattern verification).
+- **Private Key Headers (`[BEGIN-PRIVATE-KEY-PATTERN]`):** **0 keys** (only referenced in markdown reports documenting pattern verification).
 - **Synthetic Test Fixtures:** Properly isolated in mock tests with dummy values.
 
 ---

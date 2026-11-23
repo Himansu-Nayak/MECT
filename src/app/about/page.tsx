@@ -277,7 +277,7 @@ export default function AboutPage() {
               <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
                 <Image
                   src="/images/leadership/er-japabandhu-kampa.webp"
-                  alt="Er. Japabandu Kampa, Settler Founder & Chairman cum Managing Trustee"
+                  alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee"
                   fill
                   sizes="(max-width: 640px) 112px, 128px"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -294,7 +294,7 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
-                    Er. Japabandu Kampa
+                    Er. Japabandhu Kampa
                   </h3>
                   <p className="text-xs sm:text-sm text-terracotta-dark font-semibold font-sans">
                     Settler Founder &amp; Chairman cum Managing Trustee

@@ -111,7 +111,7 @@ Both files were updated so that bank configuration validation completed successf
   - Active Meta WhatsApp Tokens (`EAAB`): **0 found** (only synthetic base64 image strings and test fixtures detected)
   - Active Cashfree Secrets (`cfsk_`): **0 found** (only dummy test fixtures)
   - Active Razorpay Secrets (`rzp_`): **0 found** (only dummy test fixtures)
-  - Private RSA/EC Keys (`-----BEGIN PRIVATE KEY-----`): **0 found** (only documentation table headers)
+  - Private RSA/EC Keys (`[BEGIN-PRIVATE-KEY-PATTERN]`): **0 found** (only documentation table headers)
 - **Finding:** **PASS**.
 
 ---
