@@ -1,47 +1,69 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { QuickActionDock } from "@/components/QuickActionDock";
-import { HImChatbot } from "@/components/ai/HImChatbot";
-import { TRUST_CONFIG } from "@/lib/config";
+import { SiteLayout } from "@/components/layout/SiteLayout";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { ToastProvider } from "@/components/ui/PromiseToast";
+import { PortalAuthProvider } from "@/context/PortalAuthContext";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { ORG } from "@content/org";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const loraSerif = Lora({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mect.org.in"),
+  metadataBase: new URL(ORG.branding.canonicalOrigin),
   title: {
-    default: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust (Est. 2013) • Odisha",
-    template: "%s | MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+    default: ORG.legalName,
+    template: `%s | ${ORG.shortName}`,
   },
   description:
-    "Official website of Mahaveer Educational & Charitable Trust (MECT). Registered in 2013 (Balangir, Odisha). 12A & 80G certified (50% tax exemption), MCA CSR-1 approved, NITI Aayog Darpan registered. Advancing higher education, rural skilling, and clean water relief.",
-  keywords: [
-    "Mahaveer Educational & Charitable Trust",
-    "MECT Odisha",
-    "Mahaveer Educational & Charitable Trust Balangir",
-    "Mahaveer Educational & Charitable Trust Bhubaneswar",
-    "80G Tax Exemption Donation Odisha",
-    "MCA CSR-1 Registered Trust Odisha",
-    "NITI Aayog NGO Darpan Odisha",
-    "Higher Education Scholarships Odisha",
-    "Remedial Education Balangir",
-    "Women Vocational Tailoring Odisha",
-    "Jal Seva Drinking Water Relief",
-  ],
-  authors: [{ name: "MECT Board of Trustees" }],
+    "Official portal of Mahaveer Educational & Charitable Trust (MECT), Odisha. Education, women's empowerment, safe water, and community welfare initiatives.",
+  authors: [{ name: `${ORG.shortName} Board of Trustees` }],
+  alternates: {
+    canonical: ORG.branding.canonicalOrigin,
+  },
   openGraph: {
-    title: "Mahaveer Educational & Charitable Trust (MECT) — Registered Public Charitable Trust (Est. 2013)",
+    title: ORG.legalName,
     description:
-      "12+ years of civic service across Odisha. 12A & 80G tax-exempt charitable trust advancing higher education, rural women's tailoring livelihoods, and safe drinking water.",
-    url: "https://mect.org.in",
-    siteName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)",
+      "A registered charitable trust rooted in Odisha, working across education, women's livelihoods, safe water, nutrition and community welfare.",
+    url: ORG.branding.canonicalOrigin,
+    siteName: ORG.legalName,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: ORG.branding.ogDefaultImagePath,
+        width: 1200,
+        height: 630,
+        alt: ORG.legalName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mahaveer Educational & Charitable Trust (MECT) — Fiduciary Philanthropy & Education in Odisha",
+    title: ORG.legalName,
     description:
-      "12+ years of civic service. 12A & 80G tax-exempt charitable trust advancing higher education, rural skilling, and clean water relief.",
+      "Registered public charitable trust supporting education, livelihoods, safe water, and community welfare in Odisha.",
+    images: [ORG.branding.ogDefaultImagePath],
   },
   robots: {
     index: true,
@@ -59,74 +81,80 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
-  name: "Mahaveer Educational & Charitable Trust",
-  alternateName: ["MECT", "MECT ODISHA"],
-  url: "https://mect.org.in",
+  name: ORG.name,
+  alternateName: [ORG.shortName, "MECT Odisha"],
+  url: ORG.branding.canonicalOrigin,
+  logo: `${ORG.branding.canonicalOrigin}${ORG.branding.logoPath}`,
   description:
-    "An irrevocable registered public charitable trust established on 27th July 2013, dedicated to educational advancement, rural livelihood empowerment, clean water relief, and community welfare across Odisha.",
+    "A registered public charitable trust (Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar), working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
   foundingDate: "2013-07-27",
-  taxID: "AADTM5474F",
+  taxID: ORG.ids.pan,
   identifier: [
     {
       "@type": "PropertyValue",
       name: "Trust Deed Registration Number",
-      value: "Book No. 4, Volume No. 45, Document No. 40311302194",
+      value: ORG.trustDeed.bookVolume,
     },
     {
       "@type": "PropertyValue",
       name: "Income Tax Section 12A URN",
-      value: "AADTM5474FE20231",
+      value: ORG.ids.urn12A,
     },
     {
       "@type": "PropertyValue",
       name: "Income Tax Section 80G URN",
-      value: "AADTM5474FF20241",
+      value: ORG.ids.urn80G,
     },
     {
       "@type": "PropertyValue",
-      name: "Ministry of Corporate Affairs CSR Registration",
-      value: "CSR00081063",
+      name: "CSR Registration Number",
+      value: ORG.ids.csr1,
     },
     {
       "@type": "PropertyValue",
       name: "NITI Aayog NGO Darpan Unique ID",
-      value: "OR/2024/0466491",
+      value: ORG.ids.darpan,
     },
   ],
   address: [
     {
       "@type": "PostalAddress",
-      streetAddress: "Near Sai Mandir, Rugudipara",
-      addressLocality: "Balangir",
-      addressRegion: "Odisha",
-      postalCode: "767001",
+      streetAddress: ORG.addresses.registered.line1,
+      addressLocality: ORG.addresses.registered.city,
+      addressRegion: ORG.addresses.registered.state,
+      postalCode: ORG.addresses.registered.pin,
       addressCountry: "IN",
-      description: "Registered Trust Office",
+      description: ORG.addresses.registered.title,
     },
     {
       "@type": "PostalAddress",
-      streetAddress: "A1, 3rd Floor, Lewis Plaza, BJB Nagar",
-      addressLocality: "Bhubaneswar",
-      addressRegion: "Odisha",
-      postalCode: "751014",
+      streetAddress: ORG.addresses.corporateLiaison.line1,
+      addressLocality: ORG.addresses.corporateLiaison.city,
+      addressRegion: ORG.addresses.corporateLiaison.state,
+      postalCode: ORG.addresses.corporateLiaison.pin,
       addressCountry: "IN",
-      description: "Corporate & Liaison Office",
+      description: ORG.addresses.corporateLiaison.title,
     },
   ],
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "Secretariat & Public Inquiries",
-      telephone: "+91-94371-23616",
-      email: "mect27072013@gmail.com",
+      telephone: ORG.helpline.e164,
+      email: ORG.emails.official,
       areaServed: "IN",
       availableLanguage: ["English", "Odia", "Hindi"],
     },
   ],
+  founder: {
+    "@type": "Person",
+    name: ORG.chairman.name,
+    jobTitle: ORG.chairman.role,
+  },
   funder: {
     "@type": "Person",
-    name: "Er. Japabandhu Kampa",
-    jobTitle: "Settler Founder & Managing Trustee",
+    name: ORG.chairman.name,
+    jobTitle: ORG.chairman.role,
   },
 };
 
@@ -136,25 +164,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${loraSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1C2421] selection:bg-[#C5A059] selection:text-[#0A192F]">
-        {/* WCAG 2.2 AA Accessible Skip Link */}
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content" className="flex-1 focus:outline-none">
-          {children}
-        </main>
-        <QuickActionDock />
-        <HImChatbot />
-        <Footer />
+      <body className="min-h-screen flex flex-col bg-cream text-ink font-sans antialiased selection:bg-sand selection:text-forest-deep">
+        <PortalAuthProvider>
+          <LanguageProvider>
+            <MotionProvider>
+              <ToastProvider>
+                <SiteLayout>{children}</SiteLayout>
+              </ToastProvider>
+            </MotionProvider>
+          </LanguageProvider>
+        </PortalAuthProvider>
       </body>
     </html>
   );

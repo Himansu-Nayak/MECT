@@ -40,8 +40,8 @@ export const FALLBACK_GROQ_MODEL = "openai/gpt-oss-20b";
 export async function createGroqChatStream({
   messages,
   preferredLanguage = "en",
-  temperature = 0.5,
-  maxTokens = 1024,
+  temperature = 0.3,
+  maxTokens = 350,
 }: StreamChatOptions) {
   const client = getGroqClient();
 

@@ -1,0 +1,684 @@
+{
+  "timestamp": "2026-11-20T17:36:36.398Z",
+  "part1_pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/",
+      "title": "Empowering Communities Across Odisha",
+      "titleLength": 36,
+      "titleValid": true,
+      "descLength": 154,
+      "descValid": true,
+      "canonical": "https://mect.org.in",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/donate",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/donate",
+      "title": "Donate — Support Programmes | MECT",
+      "titleLength": 34,
+      "titleValid": true,
+      "descLength": 135,
+      "descValid": true,
+      "canonical": "https://mect.org.in/donate",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/programmes",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/programmes",
+      "title": "Our Work & Programmes | MECT",
+      "titleLength": 28,
+      "titleValid": true,
+      "descLength": 144,
+      "descValid": true,
+      "canonical": "https://mect.org.in/programmes",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/about",
+      "title": "About Us & Heritage | MECT",
+      "titleLength": 26,
+      "titleValid": true,
+      "descLength": 142,
+      "descValid": true,
+      "canonical": "https://mect.org.in/about",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/scholarships",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/scholarships",
+      "title": "Scholarship Grants & Schemes | MECT",
+      "titleLength": 35,
+      "titleValid": true,
+      "descLength": 138,
+      "descValid": true,
+      "canonical": "https://mect.org.in/scholarships",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/scholarships/apply",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/scholarships/apply",
+      "title": "Scholarship Application | MECT",
+      "titleLength": 30,
+      "titleValid": true,
+      "descLength": 142,
+      "descValid": true,
+      "canonical": "https://mect.org.in/scholarships/apply",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/scholarships/track",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/scholarships/track",
+      "title": "Track Scholarship Status | MECT",
+      "titleLength": 31,
+      "titleValid": true,
+      "descLength": 130,
+      "descValid": true,
+      "canonical": "https://mect.org.in/scholarships/track",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/campaigns",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/campaigns",
+      "title": "Campaigns & Initiatives | MECT",
+      "titleLength": 30,
+      "titleValid": true,
+      "descLength": 152,
+      "descValid": true,
+      "canonical": "https://mect.org.in/campaigns",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/campaigns/hanuman-murti",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/campaigns/hanuman-murti",
+      "title": "Grand Hanuman Murti Project | MECT",
+      "titleLength": 34,
+      "titleValid": true,
+      "descLength": 154,
+      "descValid": true,
+      "canonical": "https://mect.org.in/campaigns/hanuman-murti",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/statutory-disclosures",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/statutory-disclosures",
+      "title": "Statutory Disclosures & Register | MECT",
+      "titleLength": 39,
+      "titleValid": true,
+      "descLength": 146,
+      "descValid": true,
+      "canonical": "https://mect.org.in/statutory-disclosures",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/csr-partnerships",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/csr-partnerships",
+      "title": "CSR Partnerships | MECT",
+      "titleLength": 23,
+      "titleValid": true,
+      "descLength": 150,
+      "descValid": true,
+      "canonical": "https://mect.org.in/csr-partnerships",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/reports",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/reports",
+      "title": "Annual Reports & Records | MECT",
+      "titleLength": 31,
+      "titleValid": true,
+      "descLength": 144,
+      "descValid": true,
+      "canonical": "https://mect.org.in/reports",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/impact",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/impact",
+      "title": "Community Impact & Outcomes | MECT",
+      "titleLength": 34,
+      "titleValid": true,
+      "descLength": 144,
+      "descValid": true,
+      "canonical": "https://mect.org.in/impact",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/stories",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/stories",
+      "title": "Field Stories & Dispatches | MECT | MECT",
+      "titleLength": 40,
+      "titleValid": true,
+      "descLength": 140,
+      "descValid": true,
+      "canonical": "https://mect.org.in/stories",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/memories-gallery",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/memories-gallery",
+      "title": "Documentary Archival Gallery | MECT",
+      "titleLength": 35,
+      "titleValid": true,
+      "descLength": 151,
+      "descValid": true,
+      "canonical": "https://mect.org.in/memories-gallery",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/governance",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/governance",
+      "title": "Governance Charter & Board | MECT",
+      "titleLength": 33,
+      "titleValid": true,
+      "descLength": 131,
+      "descValid": true,
+      "canonical": "https://mect.org.in/governance",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/volunteer",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/volunteer",
+      "title": "Volunteer & Community Registry | MECT",
+      "titleLength": 37,
+      "titleValid": true,
+      "descLength": 146,
+      "descValid": true,
+      "canonical": "https://mect.org.in/volunteer",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/contact",
+      "title": "Contact & Secretariat | MECT",
+      "titleLength": 28,
+      "titleValid": true,
+      "descLength": 151,
+      "descValid": true,
+      "canonical": "https://mect.org.in/contact",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/faq",
+      "title": "Frequently Asked Questions | MECT",
+      "titleLength": 33,
+      "titleValid": true,
+      "descLength": 140,
+      "descValid": true,
+      "canonical": "https://mect.org.in/faq",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/privacy",
+      "title": "Privacy Policy | MECT",
+      "titleLength": 21,
+      "titleValid": true,
+      "descLength": 112,
+      "descValid": true,
+      "canonical": "https://mect.org.in/privacy",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/terms",
+      "title": "Terms of Engagement | MECT",
+      "titleLength": 26,
+      "titleValid": true,
+      "descLength": 143,
+      "descValid": true,
+      "canonical": "https://mect.org.in/terms",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/accessibility",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/accessibility",
+      "title": "Accessibility Statement | MECT",
+      "titleLength": 30,
+      "titleValid": true,
+      "descLength": 135,
+      "descValid": true,
+      "canonical": "https://mect.org.in/accessibility",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/stories/classroom",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/stories/classroom",
+      "title": "The Classroom | MECT Stories | MECT",
+      "titleLength": 35,
+      "titleValid": true,
+      "descLength": 152,
+      "descValid": true,
+      "canonical": "https://mect.org.in/stories/classroom",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/stories/workshop",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/stories/workshop",
+      "title": "The Workshop | MECT Stories | MECT",
+      "titleLength": 34,
+      "titleValid": true,
+      "descLength": 152,
+      "descValid": true,
+      "canonical": "https://mect.org.in/stories/workshop",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    },
+    {
+      "route": "/stories/water-point",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:3000/stories/water-point",
+      "title": "The Water Point | MECT Stories | MECT",
+      "titleLength": 37,
+      "titleValid": true,
+      "descLength": 152,
+      "descValid": true,
+      "canonical": "https://mect.org.in/stories/water-point",
+      "canonicalValid": true,
+      "ogImagePresent": true,
+      "keywordsAbsent": true,
+      "jsonLdValid": true,
+      "lang": "en",
+      "forbiddenStrings": [],
+      "fiduciaryCount": 0
+    }
+  ],
+  "brokenAnchors": [],
+  "part2_uniformity": [
+    {
+      "route": "/",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/about",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/programmes",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/impact",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/contact",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/volunteer",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/governance",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    },
+    {
+      "route": "/faq",
+      "hasHeader": true,
+      "hasFooter": true,
+      "hasTicker": true,
+      "hasStatutoryStrip": true
+    }
+  ],
+  "part3_donateNoJs": {
+    "bankName": true,
+    "accountHolder": true,
+    "accountNumber": true,
+    "ifsc": true,
+    "branch": true,
+    "upiId": true,
+    "donorNameField": true,
+    "donorEmailField": true,
+    "donorPhoneField": true,
+    "amountField": true,
+    "utrField": true
+  },
+  "part4_api": {
+    "valid": {
+      "status": 200,
+      "data": {
+        "success": true,
+        "claimReference": "MECT-SBI-101726-8021",
+        "status": "UNVERIFIED",
+        "message": "Claim received. Reference: MECT-SBI-101726-8021. The Trust will check your transfer against its bank records before issuing a receipt."
+      }
+    },
+    "invalid": {
+      "status": 400,
+      "data": {
+        "error": "Donor full name is required for institutional accounting records."
+      }
+    },
+    "burst": [
+      {
+        "attempt": 1,
+        "status": 200
+      },
+      {
+        "attempt": 2,
+        "status": 200
+      },
+      {
+        "attempt": 3,
+        "status": 200
+      },
+      {
+        "attempt": 4,
+        "status": 200
+      },
+      {
+        "attempt": 5,
+        "status": 200
+      },
+      {
+        "attempt": 6,
+        "status": 429
+      }
+    ],
+    "distinctIp": {
+      "status": 200,
+      "data": {
+        "success": true,
+        "claimReference": "MECT-SBI-101850-9408",
+        "status": "UNVERIFIED",
+        "message": "Claim received. Reference: MECT-SBI-101850-9408. The Trust will check your transfer against its bank records before issuing a receipt."
+      }
+    }
+  },
+  "part5_404": {
+    "status": 404,
+    "noindex": true,
+    "hasHomeLink": true,
+    "hasProgrammesLink": true,
+    "hasDonateLink": true,
+    "hasContactLink": true
+  },
+  "part6_axe": {
+    "/": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/programmes": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/donate": {
+      "totalViolations": 1,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/about": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/scholarships": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/contact": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/stories": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/reports": {
+      "totalViolations": 0,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    },
+    "/statutory-disclosures": {
+      "totalViolations": 1,
+      "seriousAndCritical": 0,
+      "seriousDetails": []
+    }
+  },
+  "part7_lighthouse": {
+    "/": {
+      "perfScore": 92,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0",
+      "inp": "N/A"
+    },
+    "/programmes": {
+      "perfScore": 99,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0",
+      "inp": "N/A"
+    },
+    "/donate": {
+      "perfScore": 99,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0.001",
+      "inp": "N/A"
+    },
+    "/about": {
+      "perfScore": 99,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0.001",
+      "inp": "N/A"
+    },
+    "/scholarships": {
+      "perfScore": 98,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0.011",
+      "inp": "N/A"
+    },
+    "/contact": {
+      "perfScore": 85,
+      "a11yScore": 100,
+      "seoScore": 100,
+      "lcp": "1.2 s",
+      "cls": "0",
+      "inp": "N/A"
+    }
+  }
+}

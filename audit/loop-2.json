@@ -1,0 +1,243 @@
+{
+  "loop": 2,
+  "timestamp": "2026-11-20T10:29:37.1291986+05:30",
+  "forbidden_strings": {
+    "total_occurrences": 106,
+    "counts": {
+      "MAHAVIR TRUST": 0,
+      "pre-launch": 0,
+      "Odisha Educational Foundation": 0,
+      "secure online checkout": 2,
+      "80G Tax Exemption": 4,
+      "fiduciary": 72,
+      "hunger-relief": 2,
+      "pillars": 25,
+      "Loading unified": 1,
+      "+91 671": 0,
+      "[Permanent Physical Address": 0
+    },
+    "details": {
+      "secure online checkout": [
+        {
+          "file": "src/app/donate/layout.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/lib/ai/mect-knowledge.ts",
+          "count": 1
+        }
+      ],
+      "80G Tax Exemption": [
+        {
+          "file": "src/app/admin/settings/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/StatutoryGovernanceSection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/TailoredParticipationPathwaysSection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/lib/config.ts",
+          "count": 1
+        }
+      ],
+      "fiduciary": [
+        {
+          "file": "src/app/page.tsx",
+          "count": 4
+        },
+        {
+          "file": "src/app/about/page.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/app/admin/demo/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/campaigns/hanuman-murti/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/contact/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/csr-partnerships/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/faq/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/governance/page.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/app/login/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/memories-gallery/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/privacy/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/reports/page.tsx",
+          "count": 5
+        },
+        {
+          "file": "src/app/scholarships/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/terms/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/DirectDisbursalFlowchart.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/Footer.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/InstitutionalMarquee.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/layout/SiteSearch.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/CinematicHero.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/ClosingFiduciaryPledgeSection.tsx",
+          "count": 7
+        },
+        {
+          "file": "src/components/sections/CompactHowMectWorks.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/sections/DonationProgrammeCard.tsx",
+          "count": 9
+        },
+        {
+          "file": "src/components/sections/FreeEducationSection.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/sections/InstitutionalStorySection.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/sections/InterconnectedSafetyNetSection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/ReportsLibrarySection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/lib/about-content.ts",
+          "count": 4
+        },
+        {
+          "file": "src/lib/config.ts",
+          "count": 1
+        },
+        {
+          "file": "src/lib/homepage-content.ts",
+          "count": 3
+        }
+      ],
+      "hunger-relief": [
+        {
+          "file": "src/components/motion/PillarIllustrations.tsx",
+          "count": 2
+        }
+      ],
+      "pillars": [
+        {
+          "file": "src/app/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/register/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/volunteer/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/layout/SiteSearch.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/FreeEducationSection.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/sections/InterconnectedSafetyNetSection.tsx",
+          "count": 10
+        },
+        {
+          "file": "src/lib/config.ts",
+          "count": 2
+        },
+        {
+          "file": "src/lib/homepage-content.ts",
+          "count": 3
+        },
+        {
+          "file": "src/lib/ai/mect-knowledge.ts",
+          "count": 2
+        }
+      ],
+      "Loading unified": [
+        {
+          "file": "src/app/donate/page.tsx",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "links_and_anchors": {
+    "total_hrefs": 245,
+    "broken_links_count": 0,
+    "broken_links": [],
+    "broken_anchors_count": 0,
+    "broken_anchors": [],
+    "dead_links_count": 0,
+    "dead_links": []
+  },
+  "typecheck": {
+    "exit_code": 0,
+    "error_count": 0,
+    "output": "Clean typecheck"
+  },
+  "lint": {
+    "exit_code": 0,
+    "output": "Clean lint"
+  },
+  "summary": {
+    "broken_links": 0,
+    "broken_anchors": 0,
+    "forbidden_strings": 106,
+    "typecheck_clean": true,
+    "lint_clean": true
+  }
+}

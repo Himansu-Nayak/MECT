@@ -92,10 +92,10 @@ export default function AdminAuditLogsPage() {
   return (
     <div className="space-y-6">
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-warm pb-4">
         <div>
-          <h1 className="text-2xl font-black text-[#0B3B24]">Statutory Audit & Access Trail</h1>
-          <p className="text-xs text-gray-500 mt-1">
+          <h1 className="text-2xl font-black text-terracotta-dark">Statutory Audit & Access Trail</h1>
+          <p className="text-xs text-ink-sand mt-1">
             Immutable transactional event ledger recording all staff actions, state changes, and authentication logs.
           </p>
         </div>
@@ -111,25 +111,25 @@ export default function AdminAuditLogsPage() {
       )}
 
       {/* Search Bar */}
-      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+      <Card className="p-4 bg-white border border-border-warm rounded-xl shadow-sm">
         <div className="relative">
-          <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+          <Search className="w-4 h-4 absolute left-3 top-3 text-ink-secondary" />
           <input
             type="text"
             placeholder="Search by action, actor, resource ID, IP address, or details..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full pl-9 pr-3 py-2 text-xs border border-border-warm rounded-lg focus:outline-none focus:ring-1 focus:ring-terracotta"
           />
         </div>
       </Card>
 
       {/* Table Container */}
-      <Card className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+      <Card className="bg-white border border-border-warm rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider text-[10px]">
+              <tr className="bg-cream/65 border-b border-border-warm text-ink-sand font-bold uppercase tracking-wider text-[10px]">
                 <th className="p-3.5">Timestamp</th>
                 <th className="p-3.5">Actor</th>
                 <th className="p-3.5">Action</th>
@@ -141,20 +141,20 @@ export default function AdminAuditLogsPage() {
             <tbody className="divide-y divide-gray-100">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     Loading statutory audit trail from database...
                   </td>
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-8 text-center text-gray-400">
+                  <td colSpan={6} className="p-8 text-center text-ink-secondary">
                     No audit records match the query.
                   </td>
                 </tr>
               ) : (
                 filtered.map((log) => (
-                  <tr key={log.id} className="hover:bg-gray-50/70 transition-colors">
-                    <td className="p-3.5 whitespace-nowrap text-gray-500 text-[11px] font-mono">
+                  <tr key={log.id} className="hover:bg-cream/65/70 transition-colors">
+                    <td className="p-3.5 whitespace-nowrap text-ink-sand text-[11px] font-mono">
                       {new Date(log.createdAt).toLocaleDateString("en-IN", {
                         day: "numeric",
                         month: "short",
@@ -164,14 +164,14 @@ export default function AdminAuditLogsPage() {
                         second: "2-digit",
                       })}
                     </td>
-                    <td className="p-3.5 font-bold text-gray-900">{log.actorUsername}</td>
+                    <td className="p-3.5 font-bold text-ink">{log.actorUsername}</td>
                     <td className="p-3.5">{getActionBadge(log.action)}</td>
-                    <td className="p-3.5 font-mono text-[11px] text-gray-700">
+                    <td className="p-3.5 font-mono text-[11px] text-forest">
                       {log.resourceType}
                       {log.resourceId ? `:${log.resourceId}` : ""}
                     </td>
-                    <td className="p-3.5 font-mono text-[11px] text-gray-500">{log.ipAddress || "—"}</td>
-                    <td className="p-3.5 text-gray-600 max-w-xs truncate" title={log.details || ""}>
+                    <td className="p-3.5 font-mono text-[11px] text-ink-sand">{log.ipAddress || "—"}</td>
+                    <td className="p-3.5 text-ink-sand max-w-xs truncate" title={log.details || ""}>
                       {log.details || "—"}
                     </td>
                   </tr>

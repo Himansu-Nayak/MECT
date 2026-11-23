@@ -76,6 +76,18 @@ public class PublicInquiryService {
         );
     }
 
+    @Transactional
+    public PublicInquiry updateInquiryStatus(Long id, String newStatus, String actorUsername) {
+        PublicInquiry inquiry = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Inquiry not found with ID: " + id));
+
+        String cleanStatus = newStatus != null ? newStatus.trim().toUpperCase() : "PENDING_REVIEW";
+        inquiry.setStatus(cleanStatus);
+        PublicInquiry saved = repository.save(inquiry);
+        log.info("Admin user {} updated inquiry #{} status to {}", actorUsername, id, cleanStatus);
+        return saved;
+    }
+
     private String sanitizeInput(String input) {
         if (input == null) return null;
         return input.replaceAll("(?i)<script.*?>.*?</script>", "")

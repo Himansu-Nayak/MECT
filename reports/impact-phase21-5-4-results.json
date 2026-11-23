@@ -1,0 +1,218 @@
+{
+  "timestamp": "2026-11-16T12:14:56.981Z",
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "29.6px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "33.792px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "44px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Meaningful work. Evidence that matters.",
+      "h2FontSize": "37.136px",
+      "imageLoaded": true,
+      "imageVisible": true,
+      "metricsVerified": true,
+      "illustrativeContextVerified": true,
+      "howWeReportVerified": true,
+      "fiduciaryVerified": true,
+      "errors": []
+    }
+  ],
+  "ctaVerification": [
+    {
+      "text": "Verify",
+      "href": "/statutory-disclosures"
+    },
+    {
+      "text": "Verify",
+      "href": "/impact"
+    },
+    {
+      "text": "Verify",
+      "href": "/programmes"
+    },
+    {
+      "text": "Verify",
+      "href": "/impact"
+    },
+    {
+      "text": "Verify",
+      "href": "/programmes#free-education-200"
+    },
+    {
+      "text": "Verify",
+      "href": "/governance"
+    },
+    {
+      "text": "Inspect Full Impact Ledger",
+      "href": "/impact"
+    },
+    {
+      "text": "View Statutory Vault",
+      "href": "/statutory-disclosures"
+    },
+    {
+      "text": "Review Annual Reports",
+      "href": "/reports"
+    }
+  ],
+  "reducedMotionTest": {
+    "h2Opacity": "1",
+    "imgOpacity": "1"
+  },
+  "consoleErrors": []
+}

@@ -1,0 +1,208 @@
+{
+  "timestamp": "2026-11-16T10:26:36.413Z",
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "29.6px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "29.6px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "29.6px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "29.6px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "33.792px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "44px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "44px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "44px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "44px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "overflowPx": 0,
+      "sectionExists": true,
+      "h2Visible": true,
+      "h2Text": "Five Documented Pillars of Civic Stewardship",
+      "h2FontSize": "37.136px",
+      "imagesCount": 5,
+      "allImagesLoaded": true,
+      "allImagesVisible": true,
+      "allFivePillarsPresent": true,
+      "statutoryFrameworkPresent": true,
+      "errors": []
+    }
+  ],
+  "ctaVerification": [
+    {
+      "text": "Explore Pillar",
+      "href": "/programmes#education"
+    },
+    {
+      "text": "Explore Pillar",
+      "href": "/programmes#women-empowerment"
+    },
+    {
+      "text": "Explore Pillar",
+      "href": "/programmes#water"
+    },
+    {
+      "text": "Explore Pillar",
+      "href": "/programmes#hunger-relief"
+    },
+    {
+      "text": "Explore Pillar",
+      "href": "/programmes#pillars"
+    },
+    {
+      "text": "Explore All Programmes",
+      "href": "/programmes"
+    },
+    {
+      "text": "Higher Education Grants",
+      "href": "/scholarships"
+    },
+    {
+      "text": "Statutory Disclosures",
+      "href": "/statutory-disclosures"
+    },
+    {
+      "text": "Board Governance",
+      "href": "/governance"
+    }
+  ],
+  "reducedMotionTest": {
+    "h2Opacity": "1",
+    "imgOpacity": "1"
+  },
+  "consoleErrors": []
+}

@@ -21,9 +21,46 @@ spring:
     locations: classpath:db/migration
 
 app:
+  rate-limiting:
+    enabled: false
   cors:
     allowed-origins: http://localhost:3000
   jwt:
     secret: test-jwt-secret-key-at-least-256-bits-long-for-testing-purposes-only-2026
     access-token-validity-seconds: 900
     refresh-token-validity-seconds: 604800
+  otp:
+    expiry-seconds: 600
+    resend-cooldown-seconds: 60
+    max-attempts: 5
+    pepper: test-otp-pepper-only
+  resend:
+    api-key: ""
+    base-url: https://api.resend.com
+    from-notifications: MECT Notifications <notifications@mect.org.in>
+    from-donations: MECT Donations <donations@mect.org.in>
+    webhook-secret: test-resend-webhook-secret
+    public-base-url: https://mect.org.in
+  sms:
+    provider: NONE
+  payment:
+    provider: RAZORPAY
+    sandbox-mode: true
+    razorpay-key-id: ""
+    razorpay-key-secret: ""
+    razorpay-webhook-secret: test-razorpay-webhook-secret
+    qr-expiry-minutes: 15
+    cashfree-app-id: ""
+    cashfree-secret-key: ""
+    cashfree-env: SANDBOX
+    cashfree-api-version: 2023-08-01
+    cashfree-webhook-secret: test-cashfree-webhook-secret
+    cashfree-webhook-tolerance-seconds: 300
+    cashfree-return-url: http://localhost:3000/donate?order_id={order_id}
+    cashfree-notify-url: http://localhost:8081/api/v1/webhooks/payments/cashfree
+  whatsapp:
+    provider: NONE
+    app-secret: test-whatsapp-app-secret
+    verify-token: test-whatsapp-verify-token
+  scheduling:
+    enabled: false

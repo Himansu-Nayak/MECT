@@ -1,0 +1,221 @@
+{
+  "loop": 3,
+  "timestamp": "2026-11-20T10:54:22.7242287+05:30",
+  "forbidden_strings": {
+    "total_occurrences": 99,
+    "counts": {
+      "MAHAVIR TRUST": 0,
+      "pre-launch": 0,
+      "Odisha Educational Foundation": 0,
+      "secure online checkout": 1,
+      "80G Tax Exemption": 1,
+      "fiduciary": 70,
+      "hunger-relief": 2,
+      "pillars": 25,
+      "Loading unified": 0,
+      "+91 671": 0,
+      "[Permanent Physical Address": 0
+    },
+    "details": {
+      "secure online checkout": [
+        {
+          "file": "src/lib/ai/mect-knowledge.ts",
+          "count": 1
+        }
+      ],
+      "80G Tax Exemption": [
+        {
+          "file": "src/lib/config.ts",
+          "count": 1
+        }
+      ],
+      "fiduciary": [
+        {
+          "file": "src/app/page.tsx",
+          "count": 4
+        },
+        {
+          "file": "src/app/about/page.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/app/admin/demo/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/campaigns/hanuman-murti/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/contact/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/csr-partnerships/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/faq/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/governance/page.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/app/login/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/memories-gallery/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/privacy/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/reports/page.tsx",
+          "count": 5
+        },
+        {
+          "file": "src/app/scholarships/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/terms/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/DirectDisbursalFlowchart.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/Footer.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/InstitutionalMarquee.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/layout/SiteSearch.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/CinematicHero.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/ClosingFiduciaryPledgeSection.tsx",
+          "count": 7
+        },
+        {
+          "file": "src/components/sections/CompactHowMectWorks.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/sections/DonationProgrammeCard.tsx",
+          "count": 9
+        },
+        {
+          "file": "src/components/sections/FreeEducationSection.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/components/sections/InstitutionalStorySection.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/sections/InterconnectedSafetyNetSection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/ReportsLibrarySection.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/lib/about-content.ts",
+          "count": 2
+        },
+        {
+          "file": "src/lib/config.ts",
+          "count": 1
+        },
+        {
+          "file": "src/lib/homepage-content.ts",
+          "count": 3
+        }
+      ],
+      "hunger-relief": [
+        {
+          "file": "src/components/motion/PillarIllustrations.tsx",
+          "count": 2
+        }
+      ],
+      "pillars": [
+        {
+          "file": "src/app/page.tsx",
+          "count": 2
+        },
+        {
+          "file": "src/app/register/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/app/volunteer/page.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/layout/SiteSearch.tsx",
+          "count": 1
+        },
+        {
+          "file": "src/components/sections/FreeEducationSection.tsx",
+          "count": 3
+        },
+        {
+          "file": "src/components/sections/InterconnectedSafetyNetSection.tsx",
+          "count": 10
+        },
+        {
+          "file": "src/lib/config.ts",
+          "count": 2
+        },
+        {
+          "file": "src/lib/homepage-content.ts",
+          "count": 3
+        },
+        {
+          "file": "src/lib/ai/mect-knowledge.ts",
+          "count": 2
+        }
+      ]
+    }
+  },
+  "links_and_anchors": {
+    "total_hrefs": 243,
+    "broken_links_count": 0,
+    "broken_links": [],
+    "broken_anchors_count": 0,
+    "broken_anchors": [],
+    "dead_links_count": 0,
+    "dead_links": []
+  },
+  "typecheck": {
+    "exit_code": 0,
+    "error_count": 0,
+    "output": "Clean typecheck"
+  },
+  "lint": {
+    "exit_code": 1,
+    "output": "\n> mect@0.1.0 lint\n> eslint .\n\n\nC:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\src\\app\\statutory-disclosures\\page.tsx\n  323:247  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities\n\nC:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\src\\components\\charts\\bar-chart.tsx\n  393:6  warning  React Hook useEffect has a missing dependency: 'data.length'. Either include it or remove the dependency array  react-hooks/exhaustive-deps\n\nC:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\src\\components\\charts\\pie-ticks.tsx\n  229:6  warning  React Hook useEffect has a missing dependency: 'applyTick'. Either include it or remove the dependency array   react-hooks/exhaustive-deps\n  419:6  warning  React Hook useEffect has a missing dependency: 'transition'. Either include it or remove the dependency array  react-hooks/exhaustive-deps\n\nC:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\src\\components\\charts\\tooltip\\chart-tooltip.tsx\n  674:6  warning  React Hook useEffect has a missing dependency: 'xWithMargin'. Either include it or remove the dependency array  react-hooks/exhaustive-deps\n\n\u2716 5 problems (1 error, 4 warnings)\n\n"
+  },
+  "summary": {
+    "broken_links": 0,
+    "broken_anchors": 0,
+    "forbidden_strings": 99,
+    "typecheck_clean": true,
+    "lint_clean": false
+  }
+}

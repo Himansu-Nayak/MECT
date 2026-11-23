@@ -11,9 +11,15 @@ import {
   MessageSquare,
   ShieldAlert,
   UserCog,
+  HandHeart,
+  SlidersHorizontal,
+  FileEdit,
+  FileText,
+  Image as ImageIcon,
   LogOut,
   ExternalLink,
   Shield,
+  Sparkles,
   Menu,
   X,
 } from "lucide-react";
@@ -33,15 +39,15 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
   }, [isLoading, isAuthenticated, isLoginPage, router]);
 
   if (isLoginPage) {
-    return <div className="min-h-screen bg-slate-900">{children}</div>;
+    return <div className="min-h-screen bg-forest">{children}</div>;
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center">
+      <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-4 border-[#0B3B24] border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+          <div className="w-10 h-10 border-4 border-terracotta border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-xs font-semibold text-ink-sand uppercase tracking-widest">
             Verifying Secretariat Credentials...
           </p>
         </div>
@@ -53,21 +59,60 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
     return null;
   }
 
-  const navItems = [
-    { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-    { label: "Scholarships", href: "/admin/scholarships", icon: GraduationCap },
-    { label: "Volunteers", href: "/admin/volunteers", icon: Users },
-    { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
-    { label: "Audit Logs", href: "/admin/audit-logs", icon: ShieldAlert },
-    { label: "Staff & Users", href: "/admin/users", icon: UserCog },
+  const role = user?.role || "";
+  const allNavItems = [
+    { label: "Dashboard", href: "/admin", icon: LayoutDashboard, roles: null },
+    {
+      label: "Donations & UTR Queue",
+      href: "/admin/donors",
+      icon: HandHeart,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_DONATION_VERIFICATION_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
+      label: "Payment & 80G Settings",
+      href: "/admin/settings",
+      icon: SlidersHorizontal,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
+      label: "WhatsApp Notifications",
+      href: "/admin/whatsapp",
+      icon: MessageSquare,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
+      label: "CMS Pages",
+      href: "/admin/cms",
+      icon: FileEdit,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_CONTENT_ADMIN", "ROLE_AUDITOR"],
+    },
+    {
+      label: "Media Library",
+      href: "/admin/media",
+      icon: ImageIcon,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_CONTENT_ADMIN", "ROLE_AUDITOR"],
+    },
+    {
+      label: "Public Documents",
+      href: "/admin/documents",
+      icon: FileText,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_CONTENT_ADMIN", "ROLE_AUDITOR"],
+    },
+    { label: "Scholarships", href: "/admin/scholarships", icon: GraduationCap, roles: null },
+    { label: "Volunteers", href: "/admin/volunteers", icon: Users, roles: null },
+    { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare, roles: null },
+    { label: "System Demo Walkthrough", href: "/admin/demo", icon: Sparkles, roles: null },
+    { label: "Audit Logs", href: "/admin/audit-logs", icon: ShieldAlert, roles: null },
+    { label: "Staff & Users", href: "/admin/users", icon: UserCog, roles: ["ROLE_SUPER_ADMIN", "ROLE_ADMIN"] },
   ];
+  const navItems = allNavItems.filter((item) => !item.roles || item.roles.includes(role));
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-cream flex flex-col md:flex-row">
       {/* Mobile Header Bar */}
-      <div className="md:hidden bg-[#072617] text-white p-4 flex items-center justify-between border-b border-[#C5A059]/30">
+      <div className="md:hidden bg-forest text-white p-4 flex items-center justify-between border-b border-sand/30">
         <div className="flex items-center space-x-2">
-          <Shield className="w-5 h-5 text-[#E4C88A]" />
+          <Shield className="w-5 h-5 text-cream" />
           <span className="font-serif font-bold tracking-wide text-sm">MECT Secretariat</span>
         </div>
         <button
@@ -80,20 +125,19 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
 
       {/* Admin Sidebar Navigation */}
       <aside
-        className={`w-full md:w-64 bg-[#072617] text-white flex flex-col shrink-0 border-r border-[#C5A059]/20 ${
-          mobileNavOpen ? "block" : "hidden md:flex"
-        }`}
+        className={`w-full md:w-64 bg-forest text-white flex flex-col shrink-0 border-r border-sand/20 ${mobileNavOpen ? "block" : "hidden md:flex"
+          }`}
       >
         <div className="p-6 border-b border-white/10 hidden md:block">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-[#C5A059] flex items-center justify-center text-[#072617] font-serif font-bold text-lg shadow-md">
+            <div className="w-9 h-9 rounded-lg bg-sand flex items-center justify-center text-ink font-serif font-bold text-lg shadow-md">
               M
             </div>
             <div>
               <h1 className="font-serif font-bold text-sm text-white tracking-wide">
-                MAHAVIR TRUST
+                MECT
               </h1>
-              <p className="text-[10px] text-[#E4C88A] tracking-wider uppercase">
+              <p className="text-[10px] text-cream tracking-wider uppercase">
                 Administrative Desk
               </p>
             </div>
@@ -106,11 +150,11 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
             <div className="text-xs font-semibold text-white/95 truncate max-w-[140px]">
               {user?.fullName || user?.username}
             </div>
-            <div className="text-[10px] text-[#E4C88A] uppercase tracking-wider font-mono">
+            <div className="text-[10px] text-cream uppercase tracking-wider font-mono">
               {user?.role?.replace("ROLE_", "")}
             </div>
           </div>
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
+          <span className="inline-block w-2 h-2 rounded-full bg-sand ring-4 ring-sand/20" />
         </div>
 
         {/* Navigation Items */}
@@ -127,13 +171,12 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileNavOpen(false)}
-                className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all ${
-                  isActive
-                    ? "bg-[#C5A059] text-[#072617] font-semibold shadow-sm"
+                className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all ${isActive
+                    ? "bg-sand text-forest-deep font-semibold shadow-sm"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
-                }`}
+                  }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? "text-[#072617]" : "text-[#E4C88A]"}`} />
+                <Icon className={`w-4 h-4 ${isActive ? "text-ink" : "text-cream"}`} />
                 <span>{item.label}</span>
               </Link>
             );

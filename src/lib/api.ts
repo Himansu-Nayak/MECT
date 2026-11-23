@@ -137,6 +137,8 @@ export interface AdminDashboardStats {
   pendingVolunteers: number;
   approvedVolunteers: number;
   totalInquiries: number;
+  pendingInquiries?: number;
+  pendingClaims?: number;
   totalScholarships: number;
   submittedScholarships: number;
   underScrutinyScholarships: number;
@@ -208,6 +210,7 @@ export interface AdminInquiry {
   phone: string;
   category: string;
   message: string;
+  status?: string;
   createdAt: string;
 }
 
@@ -221,6 +224,79 @@ export interface ApiResponse<T> {
 
 // ---------------- Public Endpoints ----------------
 
+async function safeParseResponse<T = any>(
+  response: Response,
+  fallbackErrorMessage: string
+): Promise<T> {
+  const contentType = response.headers.get("content-type") || "";
+  let data: any = null;
+  let text = "";
+
+  try {
+    text = await response.text();
+    if (text && text.trim().length > 0) {
+      if (
+        contentType.includes("application/json") ||
+        text.startsWith("{") ||
+        text.startsWith("[")
+      ) {
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = null;
+        }
+      }
+    }
+  } catch {
+    text = "";
+    data = null;
+  }
+
+  if (!response.ok) {
+    if (response.status === 502 || response.status === 503 || response.status === 504) {
+      throw new Error(
+        `MECT Secretariat server is temporarily unreachable (HTTP ${response.status}). Please check backend status.`
+      );
+    }
+    if (response.status === 404) {
+      throw new Error(`Requested resource or API endpoint not found (HTTP 404).`);
+    }
+    if (response.status === 409) {
+      throw new Error(
+        data?.message ||
+          "Conflict detected: This resource was modified concurrently by another process. Please reload."
+      );
+    }
+    if (response.status === 423) {
+      throw new Error(
+        data?.message ||
+          "Account locked due to consecutive failed attempts. Contact Super Admin."
+      );
+    }
+    if (
+      data?.validationErrors &&
+      Array.isArray(data.validationErrors) &&
+      data.validationErrors.length > 0
+    ) {
+      throw new Error(data.validationErrors.join("; "));
+    }
+    throw new Error(data?.message || fallbackErrorMessage);
+  }
+
+  // Handle 204 No Content or empty successful body
+  if (response.status === 204 || !text || text.trim().length === 0) {
+    return null as T;
+  }
+
+  if (data === null) {
+    throw new Error(
+      `Unexpected non-JSON response from server (HTTP ${response.status}).`
+    );
+  }
+
+  return data as T;
+}
+
 export async function submitInquiry(
   payload: CreateInquiryPayload
 ): Promise<ApiResponse<void>> {
@@ -230,15 +306,10 @@ export async function submitInquiry(
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    const errorMsg =
-      data.validationErrors && data.validationErrors.length > 0
-        ? data.validationErrors.join(", ")
-        : data.message || "Failed to submit inquiry. Please check your inputs.";
-    throw new Error(errorMsg);
-  }
-  return data;
+  return safeParseResponse<ApiResponse<void>>(
+    response,
+    "Failed to submit inquiry. Please check your inputs."
+  );
 }
 
 export async function submitVolunteerRegistration(
@@ -250,15 +321,10 @@ export async function submitVolunteerRegistration(
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    const errorMsg =
-      data.validationErrors && data.validationErrors.length > 0
-        ? data.validationErrors.join(", ")
-        : data.message || "Failed to register volunteer. Please check your inputs.";
-    throw new Error(errorMsg);
-  }
-  return data;
+  return safeParseResponse<ApiResponse<void>>(
+    response,
+    "Failed to register volunteer. Please check your inputs."
+  );
 }
 
 export async function submitScholarshipApplication(
@@ -270,15 +336,10 @@ export async function submitScholarshipApplication(
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    const errorMsg =
-      data.validationErrors && data.validationErrors.length > 0
-        ? data.validationErrors.join(", ")
-        : data.message || "Failed to submit scholarship application. Please review all fields.";
-    throw new Error(errorMsg);
-  }
-  return data;
+  return safeParseResponse<ScholarshipApplicationData>(
+    response,
+    "Failed to submit scholarship application. Please review all fields."
+  );
 }
 
 export async function trackScholarshipApplication(
@@ -290,11 +351,10 @@ export async function trackScholarshipApplication(
     `${API_BASE_URL}/public/scholarships/track/${encodeURIComponent(applicationNumber)}${query}`
   );
 
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || "Scholarship application not found.");
-  }
-  return data;
+  return safeParseResponse<ScholarshipTrackData>(
+    response,
+    "Scholarship application not found."
+  );
 }
 
 // ---------------- Admin Auth & Protected Endpoints ----------------
@@ -302,36 +362,43 @@ export async function trackScholarshipApplication(
 export async function loginAdmin(
   payload: AdminLoginPayload
 ): Promise<AdminAuthResponse> {
-  const response = await fetch(`${API_BASE_URL}/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  const data = await response.json();
-  if (!response.ok) {
-    if (response.status === 423) {
-      throw new Error(data.message || "Account locked due to consecutive failed attempts. Contact Super Admin.");
-    }
-    throw new Error(data.message || "Invalid administrative credentials.");
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    throw new Error(
+      "Unable to connect to MECT Secretariat API. Please verify backend server is running."
+    );
   }
-  return data;
+
+  return safeParseResponse<AdminAuthResponse>(
+    response,
+    "Invalid administrative credentials."
+  );
 }
 
 export async function refreshAdminToken(
   refreshToken: string
 ): Promise<AdminAuthResponse> {
-  const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ refreshToken }),
-  });
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || "Session expired. Please log in again.");
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE_URL}/auth/refresh`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refreshToken }),
+    });
+  } catch {
+    throw new Error("Unable to connect to MECT Secretariat API.");
   }
-  return data;
+
+  return safeParseResponse<AdminAuthResponse>(
+    response,
+    "Session expired. Please log in again."
+  );
 }
 
 export async function getAdminDashboardStats(
@@ -341,8 +408,10 @@ export async function getAdminDashboardStats(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load dashboard metrics");
-  return response.json();
+  return safeParseResponse<AdminDashboardStats>(
+    response,
+    "Failed to load dashboard metrics"
+  );
 }
 
 export async function getAdminScholarships(
@@ -359,8 +428,10 @@ export async function getAdminScholarships(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load scholarships list");
-  return response.json();
+  return safeParseResponse<ScholarshipApplicationData[]>(
+    response,
+    "Failed to load scholarships list"
+  );
 }
 
 export async function getAdminScholarshipById(
@@ -371,8 +442,10 @@ export async function getAdminScholarshipById(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load scholarship details");
-  return response.json();
+  return safeParseResponse<ScholarshipApplicationData>(
+    response,
+    "Failed to load scholarship details"
+  );
 }
 
 export async function updateAdminScholarshipStatus(
@@ -395,14 +468,10 @@ export async function updateAdminScholarshipStatus(
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    if (response.status === 409) {
-      throw new Error("Conflict detected: This application was updated by another administrator. Please reload.");
-    }
-    throw new Error(data.message || "Failed to update scholarship status");
-  }
-  return data;
+  return safeParseResponse<ScholarshipApplicationData>(
+    response,
+    "Failed to update scholarship status"
+  );
 }
 
 export async function getAdminVolunteers(
@@ -412,8 +481,10 @@ export async function getAdminVolunteers(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load volunteers registry");
-  return response.json();
+  return safeParseResponse<AdminVolunteer[]>(
+    response,
+    "Failed to load volunteers registry"
+  );
 }
 
 export async function updateAdminVolunteerStatus(
@@ -430,14 +501,10 @@ export async function updateAdminVolunteerStatus(
     body: JSON.stringify({ status }),
   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    if (response.status === 409) {
-      throw new Error("Conflict detected: Volunteer status was changed concurrently. Please reload.");
-    }
-    throw new Error(data.message || "Failed to update volunteer status");
-  }
-  return data;
+  return safeParseResponse<{ status: string; verificationStatus: string; version: number }>(
+    response,
+    "Failed to update volunteer status"
+  );
 }
 
 export async function getAdminInquiries(
@@ -447,8 +514,30 @@ export async function getAdminInquiries(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load inquiries");
-  return response.json();
+  return safeParseResponse<AdminInquiry[]>(
+    response,
+    "Failed to load inquiries"
+  );
+}
+
+export async function updateAdminInquiryStatus(
+  id: number,
+  status: string,
+  token: string
+): Promise<AdminInquiry> {
+  const response = await fetch(`${API_BASE_URL}/admin/inquiries/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ status }),
+  });
+
+  return safeParseResponse<AdminInquiry>(
+    response,
+    "Failed to update inquiry status"
+  );
 }
 
 export async function getAdminAuditLogs(
@@ -458,8 +547,10 @@ export async function getAdminAuditLogs(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load audit logs");
-  return response.json();
+  return safeParseResponse<AdminAuditLog[]>(
+    response,
+    "Failed to load audit logs"
+  );
 }
 
 export async function getAdminUsers(
@@ -469,8 +560,10 @@ export async function getAdminUsers(
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) throw new Error("Failed to load institutional users");
-  return response.json();
+  return safeParseResponse<AdminUserSummary[]>(
+    response,
+    "Failed to load institutional users"
+  );
 }
 
 export async function createAdminUser(
@@ -486,9 +579,10 @@ export async function createAdminUser(
     body: JSON.stringify(payload),
   });
 
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.message || "Failed to create administrator");
-  return data;
+  return safeParseResponse<AdminUserSummary>(
+    response,
+    "Failed to create administrator"
+  );
 }
 
 export async function updateAdminUserStatus(
@@ -505,7 +599,8 @@ export async function updateAdminUserStatus(
     body: JSON.stringify({ status }),
   });
 
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.message || "Failed to update user status");
-  return data;
+  return safeParseResponse<AdminUserSummary>(
+    response,
+    "Failed to update user status"
+  );
 }

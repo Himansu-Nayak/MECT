@@ -13,6 +13,9 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
 import { TRUST_CONFIG } from "@/lib/config";
 import { submitInquiry } from "@/lib/api";
+import { CsrRegistrationSection } from "@/components/sections/CsrRegistrationSection";
+import { DotField } from "@/components/motion/DotField";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import {
   Briefcase,
   ShieldCheck,
@@ -28,7 +31,6 @@ import {
   Building2,
   Send,
   AlertCircle,
-  ExternalLink,
 } from "lucide-react";
 
 export default function CSRPartnershipsPage() {
@@ -79,23 +81,23 @@ export default function CSRPartnershipsPage() {
     {
       sector: "Schedule VII (ii)",
       title: "Remedial Rural Education & Digital Learning Labs",
-      partnerValue: "Prevents Secondary Dropouts • 350+ Students per Cluster",
+      partnerValue: "Prevents Secondary Dropouts • 350+ Participation Entries",
       description:
-        "Sponsor after-school remedial coaching centres, supply STEM textbook libraries, and deploy computer learning labs in rural Balangir and Western Odisha blocks.",
+        "Sponsor after-school remedial coaching centres, supply STEM textbook libraries, and deploy computer learning labs in rural Balangir and Western Odisha blocks (350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported).",
       deliverables: [
         "Branded rural coaching centres equipped with desks and teaching aids",
         "Free student study kits (textbooks, notebooks, geometry sets)",
         "Monthly attendance and academic performance tracking reports",
-        "Independent CA Utilization Certificate (UC) and photographic audit",
+        "Project Utilization Certificate (UC) and photographic field documentation",
       ],
       icon: GraduationCap,
     },
     {
       sector: "Schedule VII (iii)",
       title: "Women's Vocational Tailoring & Livelihood Centers",
-      partnerValue: "Empowers 120+ Rural Women • Sustainable Micro-Enterprises",
+      partnerValue: "Empowers Rural Women • 120+ Enrolments",
       description:
-        "Fund 6-month intensive tailoring, garment design, and craft workshops. Equip certified women graduates with sewing machine toolkits for home-based micro-enterprises.",
+        "Fund intensive tailoring, garment design, and craft workshops. Equip certified women graduates with sewing machine toolkits for home-based micro-enterprises (120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women).",
       deliverables: [
         "Fully equipped stitching centers with pedal and electric sewing machines",
         "Master trainer honorariums and certified syllabus execution",
@@ -107,9 +109,9 @@ export default function CSRPartnershipsPage() {
     {
       sector: "Schedule VII (i)",
       title: "Safe Drinking Water Purification (Jal Seva)",
-      partnerValue: "10,000+ Citizens Served • Eradicates Summer Heat Exhaustion",
+      partnerValue: "10,000+ Service Instances • Summer Hydration Relief",
       description:
-        "Establish permanent community RO/UV drinking water kiosks in rural transit hubs and hospital zones, complemented by annual summer heatwave hydration stations.",
+        "Establish community drinking water kiosks in rural transit hubs and hospital zones, complemented by annual summer heatwave hydration stations (10,000+ recorded water and relief service instances, not 10,000 unique citizens).",
       deliverables: [
         "Solar-backed water purification units with daily quality testing",
         "Hygienic stainless steel and earthen storage distribution kiosks",
@@ -128,7 +130,7 @@ export default function CSRPartnershipsPage() {
         "Hygienic community kitchen operations compliant with food safety norms",
         "Daily cooked thali distribution (rice, dal, fresh vegetable curry)",
         "Zero-cash transparent procurement ledgers audited by Chartered Accountants",
-        "Quarterly donor impact logs with beneficiary testimonials",
+        "Quarterly donor impact logs with verified activity documentation (subject to beneficiary privacy and consent)",
       ],
       icon: Utensils,
     },
@@ -138,9 +140,9 @@ export default function CSRPartnershipsPage() {
     <div className="flex flex-col w-full">
       {/* 1. Page Hero */}
       <PageHero
-        badge="Ministry of Corporate Affairs Approved • Reg: CSR00081063"
-        title="Turnkey Corporate Social Responsibility (CSR) Partnerships"
-        description="Mahaveer Educational & Charitable Trust (MECT) provides accredited corporate partners with fully compliant, auditable, and high-impact CSR project execution aligned with Schedule VII of the Companies Act, 2013."
+        badge="Schedule VII CSR Registered • Reg: CSR00081063"
+        title="Corporate Partnerships for Community Development"
+        description="Mahaveer Educational & Charitable Trust (MECT) invites responsible institutional collaboration around documented programmes in education, women's livelihoods, safe water and nutrition. Proposed CSR projects are scoped with clear outcomes, governance and reporting."
         breadcrumbs={[{ label: "CSR Partnerships" }]}
         actions={
           <>
@@ -150,172 +152,148 @@ export default function CSRPartnershipsPage() {
                 <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </Button>
             </Link>
-            <Link href="/statutory-disclosures">
+            <Link href="#csr-registration">
               <Button variant="dark-outline" size="sm">
-                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-[#E4C88A]" />
-                <span>Verify CSR-1 Certificate</span>
+                <ShieldCheck className="w-3.5 h-3.5 mr-1 text-cream" />
+                <span>Verify CSR Registration</span>
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* 2. Statutory CSR Credentials Strip */}
-      <section className="py-8 bg-[#F4EFE6] border-b border-[#0A192F]/10">
-        <Container size="default">
-          <div className="p-6 bg-white rounded-xs border-2 border-[#C5A059]/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-            <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#C5A059]" aria-hidden="true" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge variant="forest" size="sm">
-                    MCA CSR-1 Registered
-                  </Badge>
-                  <span className="text-xs font-mono font-bold text-[#0A192F]">
-                    Registration No: {TRUST_CONFIG.statutory.mcaCsrNumber}
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#1C2421] font-semibold mt-1 font-serif">
-                  Approved by Ministry of Corporate Affairs (ROC-Delhi, SRN-N14617237)
-                </p>
-                <p className="text-xs text-[#4A5568] mt-1 leading-relaxed font-sans max-w-3xl">
-                  MECT satisfies all conditions under Section 135 of the Companies Act, 2013 and Companies (CSR Policy) Amendment Rules. Section 12A URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section12AUrn}</strong> • Section 80G URN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.section80GUrn}</strong> (50% Tax Deduction) • PAN: <strong className="text-[#0A192F]">{TRUST_CONFIG.statutory.pan}</strong>.
-                </p>
-              </div>
-            </div>
-            <Link href="/statutory-disclosures" className="shrink-0">
-              <Button variant="secondary" size="sm">
-                <span>View Compliance Vault</span>
-                <ExternalLink className="w-3.5 h-3.5 ml-1" />
-              </Button>
-            </Link>
-          </div>
-        </Container>
-      </section>
+      {/* 2. Verified CSR Registration & Organisational Details */}
+      <CsrRegistrationSection />
 
       {/* 3. Four Turnkey CSR Project Tracks */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]" aria-label="CSR Focus Sectors">
+      <section className="py-20 md:py-28 bg-cream" aria-label="CSR Focus Sectors">
         <Container size="default" className="space-y-14">
           <SectionHeader
             badge="Schedule VII Aligned"
-            title="Turnkey CSR Project Portfolios in Odisha"
-            subtitle="Choose from our four high-impact project tracks designed for measurable corporate compliance and deep grassroots impact."
+            title="Partner Across MECT's Community Programme Areas"
+            subtitle="Explore four existing programme areas that may be suitable for carefully scoped, accountable CSR collaboration, subject to project approval and due diligence."
             align="center"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.08}>
             {csrTracks.map((track, idx) => {
               const Icon = track.icon;
               return (
-                <Card
-                  key={idx}
-                  variant="elevated"
-                  className="p-8 bg-white border-[#0A192F]/15 shadow-sm hover:border-[#C5A059] transition-all space-y-5 flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-[#0A192F]/10">
-                      <span className="text-xs font-bold text-[#7A5E24] bg-[#7A5E24]/10 px-2.5 py-0.5 rounded-xs font-mono">
-                        {track.sector}
-                      </span>
-                      <span className="text-[11px] font-semibold text-[#15803D]">
-                        ✓ {track.partnerValue}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xs bg-[#0A192F] text-[#E4C88A] flex items-center justify-center shrink-0 border border-[#C5A059]/40">
-                        <Icon className="w-5 h-5 text-[#E4C88A]" />
+                <StaggerItem key={idx}>
+                  <Card
+                    variant="elevated"
+                    className="p-8 bg-white border-border-warm shadow-sm hover:border-sand transition-all space-y-5 flex flex-col justify-between h-full"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-border-warm">
+                        <span className="text-xs font-bold text-forest bg-forest/10 px-2.5 py-0.5 rounded-xs font-mono">
+                          {track.sector}
+                        </span>
+                        <span className="text-[11px] font-semibold text-forest">
+                          ✓ {track.partnerValue}
+                        </span>
                       </div>
-                      <div>
-                        <h3 className="font-serif text-xl font-bold text-[#0A192F]">
-                          {track.title}
-                        </h3>
-                        <p className="text-xs text-[#4A5568] mt-2 leading-relaxed font-sans">
-                          {track.description}
-                        </p>
+
+                      <div className="flex items-start gap-4">
+                        <div className="w-11 h-11 rounded-xs bg-terracotta text-white flex items-center justify-center shrink-0 border border-sand/40">
+                          <Icon className="w-5 h-5 text-cream" />
+                        </div>
+                        <div>
+                          <h3 className="font-serif text-xl font-bold text-terracotta-dark">
+                            {track.title}
+                          </h3>
+                          <p className="text-xs text-ink-sand mt-2 leading-relaxed font-sans">
+                            {track.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Key Deliverables */}
+                      <div className="p-4 bg-sand-light rounded-xs border border-border-warm space-y-2 font-sans">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">
+                          Corporate Deliverables &amp; Auditing
+                        </span>
+                        <ul className="space-y-1.5 text-xs text-ink">
+                          {track.deliverables.map((d, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0 mt-0.5" />
+                              <span>{d}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
-                    {/* Key Deliverables */}
-                    <div className="p-4 bg-[#F4EFE6] rounded-xs border border-[#0A192F]/10 space-y-2 font-sans">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#0A192F] block">
-                        Corporate Deliverables &amp; Auditing
-                      </span>
-                      <ul className="space-y-1.5 text-xs text-[#4A5568]">
-                        {track.deliverables.map((d, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#15803D] shrink-0 mt-0.5" />
-                            <span>{d}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="pt-2">
+                      <Link href="#inquiry">
+                        <Button variant="secondary" size="sm" className="w-full justify-center text-xs">
+                          <span>Partner on this Project</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </Button>
+                      </Link>
                     </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <Link href="#inquiry">
-                      <Button variant="secondary" size="sm" className="w-full justify-center text-xs">
-                        <span>Partner on this Project</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
+                  </Card>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </Container>
       </section>
 
-      {/* 4. Corporate Governance & Fiduciary Assurance */}
-      <section className="py-20 bg-[#0A192F] text-[#EDE6D8] border-y border-[#C5A059]/30">
-        <Container size="default" className="space-y-12">
+      {/* 4. Corporate Governance & Financial Assurance */}
+      <section className="relative overflow-hidden py-20 bg-terracotta text-white border-y border-sand/30">
+        <DotField />
+        <Container size="default" className="relative z-10 space-y-12">
           <SectionHeader
-            badge="Fiduciary Integrity"
+            badge="Financial Integrity & Trust"
             title="The MECT Corporate Governance Guarantee"
             subtitle="Built to satisfy corporate CSR committees, board oversight panels, and statutory auditors."
             align="center"
             theme="dark"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <FileCheck className="w-8 h-8 text-[#E4C88A]" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Independent CA Utilization Certificates
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Every rupee disbursed is reconciled with bills, vouchers, and vendor invoices. Donors receive certified Form 10B and project Utilization Certificates (UC) signed by independent Chartered Accountants.
-              </p>
-            </div>
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.08}>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <FileCheck className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Utilization Certificates &amp; Vouchers
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Project disbursements are reconciled with bills, vouchers, and vendor invoices, with Utilization Certificates (UC) prepared for corporate CSR partners.
+                </p>
+              </div>
+            </StaggerItem>
 
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <ShieldCheck className="w-8 h-8 text-[#E4C88A]" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Milestone-Based Tranche Disbursal
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Project capital is released in tranches linked to verified field milestones (e.g. classroom setup, machine delivery, graduation exams), ensuring complete programmatic alignment.
-              </p>
-            </div>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <ShieldCheck className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Milestone-Based Tranche Disbursal
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Project capital is released in tranches linked to verified field milestones (e.g. classroom setup, machine delivery, graduation exams), ensuring complete programmatic alignment.
+                </p>
+              </div>
+            </StaggerItem>
 
-            <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans">
-              <Landmark className="w-8 h-8 text-[#E4C88A]" />
-              <h4 className="font-serif text-lg font-bold text-white">
-                Co-Branded Impact Recognition
-              </h4>
-              <p className="text-xs text-white/75 leading-relaxed">
-                Centres, water kiosks, and learning kits carry co-branded corporate signage in compliance with CSR norms, accompanied by high-resolution photographic and video audit assets.
-              </p>
-            </div>
-          </div>
+            <StaggerItem>
+              <div className="p-7 rounded-xs bg-white/5 border border-white/10 space-y-3 font-sans h-full">
+                <Landmark className="w-8 h-8 text-cream" />
+                <h4 className="font-serif text-lg font-bold text-white">
+                  Co-Branded Impact Recognition
+                </h4>
+                <p className="text-xs text-white/75 leading-relaxed">
+                  Centres, water kiosks, and learning kits carry co-branded corporate signage in compliance with CSR norms, accompanied by high-resolution photographic and video audit assets.
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerGroup>
         </Container>
       </section>
 
       {/* 5. Interactive Corporate Inquiry Form */}
-      <section id="inquiry" className="py-20 md:py-28 bg-[#F4EFE6] scroll-mt-16">
+      <section id="inquiry" className="py-20 md:py-28 bg-cream scroll-mt-16">
         <Container size="default">
           <SectionHeader
             badge="Corporate Collaboration Desk"
@@ -325,15 +303,15 @@ export default function CSRPartnershipsPage() {
             className="mb-12"
           />
 
-          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-[#C5A059]/40 shadow-xl">
+          <div className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xs border-2 border-sand/40 shadow-xl">
             {csrSubmitted ? (
-              <div className="p-8 bg-[#0A192F] text-white rounded-xs space-y-4 text-center animate-in fade-in">
-                <CheckCircle2 className="w-12 h-12 text-[#E4C88A] mx-auto" aria-hidden="true" />
+              <div className="p-8 bg-terracotta text-white rounded-xs space-y-4 text-center animate-in fade-in">
+                <CheckCircle2 className="w-12 h-12 text-cream mx-auto" aria-hidden="true" />
                 <h3 className="font-serif text-2xl font-bold">
                   CSR Inquiry Registered Successfully
                 </h3>
                 {csrReferenceId && (
-                  <p className="text-sm font-mono text-[#E4C88A] bg-black/25 py-1.5 px-4 rounded inline-block">
+                  <p className="text-sm font-mono text-cream bg-black/25 py-1.5 px-4 rounded inline-block">
                     CSR Registry Reference: #{csrReferenceId}
                   </p>
                 )}
@@ -381,7 +359,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    placeholder="e.g. Jindal Steel / Tata Power"
+                    placeholder="Enter enterprise or corporate name"
                   />
                   <Input
                     id="csr-contact"
@@ -389,7 +367,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    placeholder="e.g. Rajesh Mohanty"
+                    placeholder="Enter contact person's name"
                   />
                 </div>
 
@@ -400,7 +378,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.designation}
                     onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
-                    placeholder="e.g. Head of CSR / VP HR"
+                    placeholder="Enter designation (e.g. CSR Lead / Director)"
                   />
                   <Input
                     id="csr-email"
@@ -409,7 +387,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="rajesh@enterprise.com"
+                    placeholder="corporate@domain.com"
                   />
                 </div>
 
@@ -421,7 +399,7 @@ export default function CSRPartnershipsPage() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 98XXXXXXXX"
                   />
                   <Select
                     id="csr-budget"
@@ -484,8 +462,8 @@ export default function CSRPartnershipsPage() {
                   <span>Transmit CSR Inquiry to Secretariat</span>
                 </Button>
 
-                <p className="text-[11px] text-[#4A5568] text-center italic font-sans">
-                  Protected under Indian corporate privacy norms. Regulated under MCA CSR-1 Reg: {TRUST_CONFIG.statutory.mcaCsrNumber}.
+                <p className="text-[11px] text-ink-sand text-center italic font-sans">
+                  Protected under Indian corporate privacy norms. CSR Reg: {TRUST_CONFIG.statutory.mcaCsrNumber}.
                 </p>
               </form>
             )}

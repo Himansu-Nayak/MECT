@@ -40,15 +40,20 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {label && (
             <label
               htmlFor={inputId}
-              className="block text-xs font-bold text-[#0B3B24] uppercase tracking-wider"
+              className="block text-xs font-bold text-forest uppercase tracking-wider"
             >
               {label}
-              {required && <span className="text-[#C5A059] ml-1">*</span>}
+              {required && (
+                <>
+                  <span className="text-terracotta-dark font-bold ml-1" aria-hidden="true">*</span>
+                  <span className="sr-only"> (required)</span>
+                </>
+              )}
             </label>
           )}
 
           {showCount && maxLength && (
-            <span className="text-[10px] text-[#4A5568] tabular-nums">
+            <span className="text-[10px] text-ink-sand tabular-nums" aria-live="off">
               {currentLength}/{maxLength}
             </span>
           )}
@@ -60,34 +65,35 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             id={inputId}
             rows={rows}
             required={required}
+            aria-required={required ? "true" : undefined}
             disabled={disabled}
             maxLength={maxLength}
             value={value}
-            aria-invalid={!!error}
+            aria-invalid={error ? "true" : "false"}
             aria-describedby={
               error ? errorId : helperText ? helperId : undefined
             }
-            className={`w-full rounded-xs bg-[#FDFBF7] text-xs sm:text-sm text-[#1C2421] placeholder-[#4A5568]/60 border transition-all duration-200 px-3.5 py-2.5 focus:outline-none disabled:opacity-50 disabled:bg-[#EDE6D8]/40 disabled:cursor-not-allowed resize-y ${
+            className={`w-full rounded-xs bg-white text-xs sm:text-sm text-ink placeholder-ink-secondary/70 border transition-all duration-200 px-3.5 py-2.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-terracotta disabled:opacity-50 disabled:bg-sage/35 disabled:cursor-not-allowed resize-y ${
               error
                 ? "border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200"
-                : "border-[#0B3B24]/20 focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20"
+                : "border-border-warm focus:border-terracotta focus:ring-2 focus:ring-terracotta/20"
             } ${className}`}
             {...props}
           />
 
           {error && (
-            <div className="absolute top-3 right-3 pointer-events-none text-red-500 shrink-0">
+            <div className="absolute top-3 right-3 pointer-events-none text-red-600 shrink-0" aria-hidden="true">
               <AlertCircle className="w-4 h-4" />
             </div>
           )}
         </div>
 
         {error ? (
-          <p id={errorId} role="alert" className="text-[11px] text-red-600 font-medium pt-0.5">
+          <p id={errorId} role="alert" aria-live="polite" className="text-[11px] text-red-700 font-medium pt-0.5">
             {error}
           </p>
         ) : helperText ? (
-          <p id={helperId} className="text-[11px] text-[#4A5568] pt-0.5">
+          <p id={helperId} className="text-[11px] text-ink-sand pt-0.5">
             {helperText}
           </p>
         ) : null}

@@ -3,7 +3,7 @@
  * Master Homepage Content Configuration
  * 
  * Verified against 2013 Registered Trust Deed (Doc No. 40311302194),
- * Income Tax Section 12A/80G Form 10AC, and MCA CSR-1 (CSR00081063).
+ * Income Tax Section 12A/80G Form 10AC, and CSR Registration (CSR00081063).
  */
 
 export interface MetricCard {
@@ -17,70 +17,57 @@ export interface PillarCard {
   title: string;
   description: string;
   tag: string;
-}
-
-export interface FocusAreaItem {
-  id: string;
-  number: string;
-  title: string;
-  status: string;
-  statusVariant: "forest" | "gold" | "neutral";
-  description: string;
   image?: string;
-  imageAlt?: string;
-  iconName?: "Droplets" | "Utensils";
-  ctaText: string;
-  ctaHref: string;
-  isFlagship?: boolean;
-  isArchive?: boolean;
+  href?: string;
+  stat?: string;
 }
 
 export const HOMEPAGE_CONTENT = {
   // Hero section messaging
   hero: {
-    badge: "Registered Public Charitable Trust • Est. 2013, Odisha",
-    headline: "Building Opportunities. Empowering Communities. Creating Lasting Change.",
+    badge: "Public Charitable Trust • Odisha",
+    headline: "Stronger communities begin with opportunity, dignity and care.",
     subtext:
-      "Mahaveer Educational & Charitable Trust (MECT) is an irrevocable public charitable trust advancing grassroots remedial education, rural women's vocational tailoring, and potable drinking water relief across Western Odisha since 2013.",
+      "Mahaveer Educational & Charitable Trust (MECT) is a registered charitable trust rooted in Odisha. Our work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare through practical, community-based initiatives.",
     notice:
-      "Registered under Indian Trusts Act, 1882 (Reg No. 40311302194, Balangir). 12A & 80G registered (Provisional Form 10AC orders: AY 2024–25 to AY 2026–27). MCA CSR-1 Reg: CSR00081063.",
+      "Registered public charitable trust in Odisha (Trust Deed No. 40311302194). Explore our programmes, governance and statutory disclosures.",
     metrics: [
       {
+        value: "13+ Years",
+        label: "Civic Service",
+        subtext: "Registered Trust Deed (2013, Balangir)",
+      },
+      {
         value: "350+",
-        label: "Students Tutored",
-        subtext: "Proposal-reported remedial center enrollment",
+        label: "Participation Entries",
+        subtext: "350+ recorded student participation entries (FY 2023–24), not necessarily 350 unique students supported.",
       },
       {
         value: "120+",
-        label: "Women Trained",
-        subtext: "Proposal-reported vocational tailoring batches",
+        label: "Course Enrolments",
+        subtext: "120+ cumulative vocational course enrolments (FY 2021–23), not necessarily 120 uniquely certified women.",
       },
       {
-        value: "50,000+ L",
-        label: "Drinking Water Relief",
-        subtext: "Estimated potable water served across summer kiosks",
-      },
-      {
-        value: "100%",
-        label: "Direct Disbursal Mandate",
-        subtext: "Policy: Direct-to-college transfers • Zero cash",
+        value: "10,000+",
+        label: "Service Instances",
+        subtext: "10,000+ recorded water and relief service instances, not 10,000 unique citizens.",
       },
     ] as MetricCard[],
     ctas: {
       primary: {
-        text: "Explore Our Programmes",
-        href: "/programmes",
-      },
-      secondary: {
-        text: "Support Our Mission",
+        text: "Support Our Work",
         href: "/donate",
       },
+      secondary: {
+        text: "Explore Our Work",
+        href: "/programmes",
+      },
       governance: {
-        text: "Fiduciary Charter & Board",
+        text: "Governance Charter & Board",
         href: "/governance",
       },
       csr: {
-        text: "Corporate CSR Gateway",
+        text: "Partner With Us",
         href: "/csr-partnerships",
       },
     },
@@ -89,18 +76,18 @@ export const HOMEPAGE_CONTENT = {
   // Marquee endorsements & standards
   standards: [
     {
-      title: "12+ Years Heritage",
+      title: "13+ Years of Service",
       subtitle: "Registered Trust Deed (2013, Balangir)",
       iconName: "Landmark",
     },
     {
-      title: "Section 80G Certified",
-      subtitle: "50% Income Tax Exemption for Donors",
+      title: "Income-tax 12A & 80G Orders",
+      subtitle: "Order dated 29-01-2024, valid AY 2024-25 to AY 2026-27",
       iconName: "ShieldCheck",
     },
     {
-      title: "MCA CSR-1 Approved",
-      subtitle: "Schedule VII Eligible (CSR00081063)",
+      title: "MoSJE e-Anudaan Enrolled",
+      subtitle: "Verified NGO ID: OR/00040466",
       iconName: "Building2",
     },
     {
@@ -114,144 +101,71 @@ export const HOMEPAGE_CONTENT = {
       iconName: "School",
     },
     {
-      title: "Honorary Fiduciary Board",
+      title: "Honorary Board of Trustees",
       subtitle: "Non-Remunerative Governance (Clause XVI)",
       iconName: "CheckCircle2",
     },
   ],
 
-  // Institutional Focus Areas Section (Section 3)
-  focusSection: {
-    eyebrow: "INSTITUTIONAL FOCUS AREAS",
-    mainHeading: "Education as Our Foundational Mission.",
-    supportingHeading: "Dedicated Welfare for Communities Across Odisha.",
-    introCopy:
-      "Mahaveer Educational & Charitable Trust (MECT) prioritizes educational access as a foundation for individual opportunity and community progress. Alongside its educational focus, the Trust's documented charitable initiatives address women's vocational development, seasonal drinking water relief, hospital patient food support and humanitarian assistance.",
-  },
-
-  focusAreas: [
-    {
-      id: "education",
-      number: "01",
-      title: "Grassroots Remedial Education & Scholastic Guidance",
-      status: "Documented Educational Initiative",
-      statusVariant: "forest",
-      description:
-        "Documented educational initiatives include evening remedial learning support for students in Classes 6–10 across Balangir and Puintala, with academic guidance in Mathematics, Science and English, alongside study materials.",
-      image: "/images/programmes/field_photo_5.jpg",
-      imageAlt: "Secondary school students supported with scholastic materials in Odisha",
-      ctaText: "Explore Educational Initiatives",
-      ctaHref: "/programmes",
-      isFlagship: true,
-    },
-    {
-      id: "child-welfare",
-      number: "02",
-      title: "Child Scholastic Enablement & Learning Support",
-      status: "Integrated Educational Activity",
-      statusVariant: "forest",
-      description:
-        "Documented scholastic support activities include the distribution of textbooks, slate boards and learning materials for children attending community remedial education initiatives.",
-      image: "/images/programmes/field_photo_8.jpg",
-      imageAlt: "Rural children attending community learning and scholastic support sessions in Odisha",
-      ctaText: "Learn More",
-      ctaHref: "/programmes",
-    },
-    {
-      id: "women-empowerment",
-      number: "03",
-      title: "Women's Vocational Tailoring & Stitching School",
-      status: "Documented Vocational Initiative",
-      statusVariant: "forest",
-      description:
-        "The institutional proposal documents vocational tailoring courses in Balangir, covering sewing machine operation, garment cutting and pattern-making through six-month practical training programmes.",
-      image: "/images/programmes/field_photo_3.jpg",
-      imageAlt: "Women participating in vocational tailoring training in Balangir",
-      ctaText: "View Training Details",
-      ctaHref: "/programmes",
-    },
-    {
-      id: "jal-seva",
-      number: "04",
-      title: "Jal Seva: Seasonal Drinking Water Relief",
-      status: "Seasonal Initiative",
-      statusVariant: "gold",
-      description:
-        "The Trust's documented Jal Seva initiative provided free drinking water through earthen-pot kiosks at public transit locations and other community areas in Balangir during summer months.",
-      iconName: "Droplets",
-      ctaText: "Civic Relief Overview",
-      ctaHref: "/programmes",
-    },
-    {
-      id: "jan-ahar",
-      number: "05",
-      title: "Jan Ahar: Hospital Patient Attendant Food Support",
-      status: "Documented Community Nutrition Initiative",
-      statusVariant: "forest",
-      description:
-        "The institutional proposal documents cooked meal support outside District Headquarters Hospital, Balangir, for underprivileged families accompanying hospitalized relatives. The documented arrangements included subsidized and free meal support.",
-      iconName: "Utensils",
-      ctaText: "Healthcare Support Details",
-      ctaHref: "/programmes",
-    },
-    {
-      id: "historical-relief",
-      number: "06",
-      title: "Emergency Calamity Relief & Community Support",
-      status: "Historical Relief Archive",
-      statusVariant: "neutral",
-      description:
-        "Historical relief records document emergency dry ration and sanitization distributions during the COVID-19 lockdown period of 2020–2021, along with humanitarian relief activities associated with Cyclone Fani (2019) and Cyclone Yaas (2021).",
-      image: "/images/programmes/field_photo_9.jpg",
-      imageAlt: "Community members gathered during emergency relief coordination in Odisha",
-      ctaText: "View Relief Records",
-      ctaHref: "/reports",
-      isArchive: true,
-    },
-  ] as FocusAreaItem[],
-
-  // Core Pillars of Transformation (Retained for backward compatibility)
+  // Core Pillars of Transformation (Documented Across 5 Development Sectors)
   pillars: [
     {
       number: "01",
-      title: "Remedial Rural Education",
+      title: "Education & Learning",
       tag: "Shiksha Setu",
       description:
-        "Free tuition, exam coaching, and scholastic books for 350+ underserved tribal and rural students in Balangir and Puintala blocks to bridge secondary dropout rates.",
+        "Remedial tuition, exam coaching and scholastic materials for underserved rural and tribal students in Balangir and Puintala.",
+      href: "/programmes#education",
+      stat: "350+ Entries",
     },
     {
       number: "02",
-      title: "Women's Vocational Livelihood",
+      title: "Women Empowerment & Livelihoods",
       tag: "Swavalamban",
       description:
-        "Comprehensive 6-month tailoring, embroidery, and handicraft training empowering 120+ rural women toward financial self-reliance and self-help group entrepreneurship.",
+        "Tailoring, embroidery and handicraft training designed to strengthen women's skills, confidence and livelihood options.",
+      href: "/programmes#women-empowerment",
+      stat: "120+ Enrolments",
     },
     {
       number: "03",
-      title: "Jal Seva Safe Drinking Water",
+      title: "Safe Water & Sanitation",
       tag: "Jal & Arogya",
       description:
-        "Installation of clean drinking water points, summer hydration kiosks, and community sanitation camps serving over 10,000 citizens during peak summer months.",
+        "Jal Seva drinking-water points, summer hydration kiosks and community sanitation activities that support everyday wellbeing.",
+      href: "/programmes#water",
+      stat: "10,000+ Instances",
     },
     {
       number: "04",
-      title: "Jan Ahar Destitute Nutrition",
+      title: "Food Security & Nutrition",
       tag: "Annadaan",
       description:
-        "Subsidized and free nutritious meal distribution for impoverished patients and attendants at Balangir District Hospital and destitute daily wage earners.",
+        "Jan Ahar food relief and nutritious meals for documented beneficiary groups, including hospital attendants and vulnerable community members.",
+      href: "/programmes#food-relief",
+      stat: "Daily Relief",
+    },
+    {
+      number: "05",
+      title: "Community Welfare & Relief",
+      tag: "Samaj Kalyan",
+      description:
+        "Seasonal essentials, emergency community assistance, and disaster resilience for vulnerable families in rural Western Odisha.",
+      href: "/programmes#community-welfare",
+      stat: "Direct Action",
     },
   ] as PillarCard[],
 
   // From the Managing Trustee's Desk
   secretariat: {
     badge: "From The Managing Trustee's Desk",
-    quote: "“A 12-Year Commitment That Educational Dignity & Civic Welfare Shall Reach the Grassroots of Odisha.”",
+    quote: "“A 13+ Year Commitment to Opportunity, Livelihood and Community Wellbeing Across Odisha.”",
     paragraph:
-      "Mahaveer Educational & Charitable Trust was founded in 2013 with a resolute conviction: genuine social transformation requires lasting institutional empowerment, not transient charity. Whether through direct remedial tutoring in rural Balangir, equipping women with sewing machines and tailoring trade certificates, or ensuring clean drinking water, our mission remains grounded in transparency, non-remunerative service, and auditable accountability.",
+      "Mahaveer Educational & Charitable Trust was founded in 2013 with a belief that lasting progress is built by strengthening people and communities. Our work brings together learning support, women's vocational skills, safe-water access and food relief, guided by responsible stewardship, dignity and accountability.",
     officeTitle: "Er. Japabandhu Kampa",
-    officeSubtitle: "Settler Founder & Permanent Managing Trustee",
+    officeSubtitle: "Settler Founder & Chairman cum Managing Trustee",
     statutoryNote:
-      "Registered under Indian Trusts Act (Deed No. 40311302194, Balangir). 12A URN: AADTM5474FE20231 • 80G URN: AADTM5474FF20241 • MCA CSR-1: CSR00081063.",
+      "Registered under Indian Trusts Act (Deed No. 40311302194, Balangir). 12A URN: AADTM5474FE20231 • 80G URN: AADTM5474FF20241.",
   },
 
   // Beyond financial grants enablement
@@ -282,10 +196,145 @@ export const HOMEPAGE_CONTENT = {
     },
   ],
 
-  // Donor notice
+  // Donor notice (short pointer; full explanation kept on /statutory-disclosures)
   donorNotice: {
-    title: "Section 80G Tax Exemption Notice",
+    title: "Statutory Disclosures & Registration Records",
     description:
-      "All monetary contributions to Mahaveer Educational & Charitable Trust are eligible for a 50% deduction on taxable income under Section 80G of the Income Tax Act, 1961 (Order URN: AADTM5474FF20241, issued by IT Dept CPC). Direct bank RTGS/NEFT transfers are acknowledged with stamped official tax certificates.",
+      "MECT holds documented Section 12A and Section 80G orders dated 29-01-2024 (covering AY 2024-25 to AY 2026-27); current tax status for FY 2026-27 is being confirmed with our Chartered Accountant. Full statutory records, order copies, and tax details are published on the Statutory Disclosures page.",
   },
+
+  // Organisational Introduction & Vision/Mission (Homepage Section 2)
+  aboutIntro: {
+    eyebrow: "Institutional Overview",
+    heading: "Public Charitable Stewardship Rooted in Odisha Since 2013",
+    summary:
+      "Established under the Indian Trusts Act, 1882 (Regd. Deed No. 40311302194, Balangir), Mahaveer Educational & Charitable Trust (MECT) connects community-based learning support, women's vocational tailoring, seasonal drinking-water relief, and hospital meal outreach across Odisha.",
+    vision:
+      "Odisha communities where household financial hardship does not cut short foundational schooling, vocational self-reliance, or access to basic wellbeing.",
+    mission:
+      "Deliver direct, non-intermediary support across remedial education, women's livelihood skills, safe water, and nutrition relief backed by auditable trust governance.",
+    principles: [
+      "Direct-to-institution bank remittance with zero cash scholarships",
+      "Honorary Board of Trustees serving without remuneration (Deed Clause XVI)",
+      "Transparent distinction between active Balangir centres and planned expansion",
+    ],
+  },
+
+  // PHASE 3: Flagship Initiative — Free Education for 200 Students
+  freeEducation200: {
+    badge: "Flagship Priority Initiative",
+    heading: "PROPOSED TARGET: FREE EDUCATION FOR UP TO 200 STUDENTS",
+    supportingHeadline: "EDUCATION TODAY. A BETTER TOMORROW.",
+    supportingStatement:
+      "Expanding access to educational support for children from underserved communities.",
+    targetCount: "200",
+    programmeStatus: "Proposed Target — Up to 200 Students (Subject to Formal Sanction & Confirmed Funding)",
+    objective:
+      "Prevent economic dropouts and expand structured academic access for up to 200 underserved students across Odisha by removing tuition, study-material, and remedial coaching barriers.",
+    supportPillars: [
+      {
+        title: "Fee-Free Remedial Coaching",
+        detail:
+          "Structured academic instruction in foundational subjects, exam readiness, and classroom reinforcement without tuition charges.",
+      },
+      {
+        title: "Learning Materials & Book Kits",
+        detail:
+          "Direct provision of essential notebooks, textbooks, and study stationery for enrolled beneficiaries from low-income households.",
+      },
+      {
+        title: "Academic Guidance & Continuity",
+        detail:
+          "Regular attendance tracking, academic mentoring, and guidance across school and higher-secondary transitions.",
+      },
+    ],
+    specifications: [
+      {
+        label: "Eligibility Criteria",
+        value: "Odisha students from economically weaker, agrarian, daily-wage, or rural households unable to meet tuition and textbook expenses.",
+      },
+      {
+        label: "Selection Process",
+        value: "Community screening and Secretariat document review of household need, school enrolment, and attendance.",
+      },
+      {
+        label: "Programme Duration",
+        value: "Academic-year cycle aligned to school and higher-secondary terms with termly progression checks.",
+      },
+      {
+        label: "Funding Scope",
+        value: "Public and CSR contributions fund faculty honorariums, textbooks, stationery kits, and direct institutional fees.",
+      },
+      {
+        label: "Monitoring & Accountability",
+        value: "Attendance logs, study-kit distribution registers, and bank remittance records maintained at the Balangir Secretariat.",
+      },
+      {
+        label: "Current Cohort Note",
+        value: "Proposed target — up to 200 students, subject to formal board sanction and confirmed funding. Confirmed funded places currently stand at zero, based on the existing programme record.",
+      },
+    ],
+    beneficiaryScope:
+      "Targeted toward verified students from economically disadvantaged, rural, agrarian, and daily-wage households in Balangir and underserved clusters of Odisha (beneficiary registers maintained directly at the Balangir Trust Office).",
+    fundraisingPurpose:
+      "Public and institutional contributions toward this initiative directly fund faculty instruction, textbooks, stationery kits, and verified educational institution fees through verifiable banking transfers.",
+  },
+
+  // PHASE 4: Educational Resource Mobilisation Appeal
+  educationalAppeal: {
+    badge: "Educational Resource Mobilisation",
+    heading: "SUPPORT EDUCATION. TRANSFORM LIVES.",
+    contextNote:
+      "This public appeal raises direct funds for primary and secondary learning materials across MECT's remedial instruction model.",
+    purpose:
+      "Meet essential study-kit, remedial instruction, and mentoring expenses for out-of-school and first-generation learners from daily-wage households.",
+    utilizationPoints: [
+      {
+        title: "Direct Student Resource Kits",
+        detail: "Notebooks, stationery, textbooks, and classroom learning aids distributed without cost to students.",
+      },
+      {
+        title: "Remedial Learning Support",
+        detail: "Sustaining safe, well-lit study centres and honorary academic mentor sessions.",
+      },
+      {
+        title: "Transparent Direct Banking",
+        detail: "Contributions are received directly in MECT's registered trust account with verifiable bank references.",
+      },
+    ],
+    beneficiaries:
+      "Out-of-school children, first-generation learners, and students from daily-wage and migrant families across Balangir and Odisha.",
+  },
+
+  // How MECT Works — Operational Delivery Framework
+  howWeWork: [
+    {
+      step: "01",
+      title: "Grassroots Need Appraisal",
+      description:
+        "Direct block-level surveys in Balangir and rural clusters to identify critical vulnerabilities in student retention, women's livelihoods, and seasonal heatwave risks.",
+      iconName: "Search",
+    },
+    {
+      step: "02",
+      title: "Non-Intermediary Programme Design",
+      description:
+        "Developing structured, community-led interventions (Shiksha Setu, Swavalamban, Jal Seva, Jan Ahar) engineered to deliver aid directly without middle-agents.",
+      iconName: "Layers",
+    },
+    {
+      step: "03",
+      title: "Hands-On Field Implementation",
+      description:
+        "Field execution led by civic volunteers and certified trainers with transparent on-site beneficiary registers.",
+      iconName: "Users",
+    },
+    {
+      step: "04",
+      title: "Independent Oversight & Audit",
+      description:
+        "Direct institutional bank disbursal, annual independent chartered accountant auditing, and statutory compliance.",
+      iconName: "ShieldCheck",
+    },
+  ],
 };

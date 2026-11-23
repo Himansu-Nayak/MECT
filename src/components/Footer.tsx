@@ -1,274 +1,411 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { TRUST_CONFIG } from "@/lib/config";
+import { ORG } from "@content/org";
+import { COMPLIANCE } from "@content/compliance";
+import { TaxStatusNotice } from "@/components/compliance/TaxStatusNotice";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/motion";
+import { isDonorPortalEnabled } from "@/config/portal";
 import {
-  ShieldAlert,
-  Mail,
-  MapPin,
-  ArrowRight,
-  Clock,
   ShieldCheck,
-  Building2,
+  ArrowRight,
   Heart,
-  Landmark,
-  FileCheck,
 } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#072617] text-[#EDE6D8] border-t border-[#C5A059]/30 pt-16 pb-12 transition-colors">
-      <Container size="default" className="space-y-12">
-        {/* Tier 1: Mandatory Statutory & Compliance Transparency Notice Box */}
-        <div className="bg-[#0B3B24] border border-[#C5A059]/40 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xs bg-[#072617] border border-[#C5A059]/50 flex items-center justify-center shrink-0 text-[#E4C88A]">
-              <ShieldCheck className="w-5 h-5 text-[#E4C88A]" aria-hidden="true" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-bold text-[#E4C88A] tracking-wider uppercase text-[11px] font-sans">
-                  Statutory & Fiduciary Disclosure (Govt. of India / Govt. of Odisha)
-                </span>
-                <Badge variant="gold-dark" size="sm">
-                  12A & 80G Certified
-                </Badge>
-                <Badge variant="forest" size="sm">
-                  MCA CSR-1 Registered
-                </Badge>
+    <footer className="bg-forest text-cream border-t-2 border-terracotta pt-16 pb-12 transition-colors">
+      <Reveal direction="fade" tone="slow">
+        <Container size="default" className="space-y-12">
+        {/* Tier 1: Mandatory Statutory & Tax Status Notice Box */}
+        {COMPLIANCE.isTaxEligibilityConfirmed ? (
+          <div className="bg-forest-deep border border-sand/30 rounded-xs p-5 sm:p-6 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xl">
+            <div className="flex items-start gap-3.5">
+              <div className="w-10 h-10 rounded-xs bg-forest border border-sand/45 flex items-center justify-center shrink-0 text-sand">
+                <ShieldCheck className="w-5 h-5 text-sand" aria-hidden="true" />
               </div>
-              <p className="text-white/85 text-[12px] mt-1.5 leading-relaxed max-w-4xl">
-                {TRUST_CONFIG.legal.registrationNotice} Donors are eligible for a{" "}
-                <strong className="text-white font-semibold">50% deduction on taxable income under Section 80G</strong>.
-                All grants are remitted directly to institutional or operational accounts under a strict zero-cash policy.
-              </p>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-white tracking-wider uppercase text-[11px] font-sans">
+                    Statutory &amp; Institutional Disclosure (Govt. of India / Govt. of Odisha)
+                  </span>
+                  <Badge variant="gold-dark" size="sm">
+                    12A &amp; 80G Recorded
+                  </Badge>
+                  <Badge variant="forest" size="sm">
+                    NGO Darpan Verified
+                  </Badge>
+                  <Badge variant="forest" size="sm">
+                    e-Anudaan Enrolled
+                  </Badge>
+                </div>
+                <p className="text-cream/95 text-[12px] mt-1.5 leading-relaxed max-w-4xl">
+                  {ORG.trustDeed.summaryLine} ({ORG.trustDeed.bookVolume}). PAN: {ORG.ids.pan}. CSR-1: {ORG.ids.csr1}. NITI Aayog Darpan: {ORG.ids.darpan}. e-Anudaan: {ORG.ids.eAnudaan}. {COMPLIANCE.historical12ASummary} and {COMPLIANCE.historical80GSummary}. {ORG.chairman.honoraryClause}
+                </p>
+              </div>
             </div>
+            <Link
+              href="/statutory-disclosures"
+              className="inline-flex items-center gap-1.5 text-xs text-white font-bold px-4 py-2.5 bg-terracotta hover:bg-terracotta-dark border border-terracotta-dark rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-sand"
+            >
+              <span>Verify Certificates</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
           </div>
-          <Link
-            href="/statutory-disclosures"
-            className="inline-flex items-center gap-1.5 text-xs text-[#072617] font-bold px-4 py-2.5 bg-[#C5A059] hover:bg-[#E4C88A] rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-[#C5A059]"
-          >
-            <span>Verify Certificates</span>
-            <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-          </Link>
-        </div>
+        ) : (
+          <TaxStatusNotice variant="dark" />
+        )}
 
-        {/* Tier 2: Main Institutional Grid (5 Columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-10 border-b border-white/10">
-          {/* Col 1 & 2: Institutional Brand, Heritage & Offices */}
-          <div className="lg:col-span-2 space-y-4">
+        {/* Tier 2: Main Institutional 5-Column Grid (Restructured per Director Guidelines) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 pb-10 border-b border-white/15">
+          {/* Column 1: Institution */}
+          <div className="space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center space-x-3.5 group focus-visible:outline-2 focus-visible:outline-[#C5A059]"
-              aria-label="Mahaveer Educational & Charitable Trust Homepage"
+              className="inline-flex items-center space-x-3 group focus-visible:outline-2 focus-visible:outline-sand"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#C5A059] flex items-center justify-center shrink-0 shadow-xs bg-[#4b1d6b]">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-sand bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square">
                 <Image
-                  src="/images/mect-official-emblem.png"
-                  alt="Official MECT Circular Emblem"
+                  src={ORG.branding.logoPath}
+                  alt={ORG.branding.logoAlt}
                   width={40}
                   height={40}
-                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  className="w-full h-full object-cover scale-[1.06]"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-base sm:text-lg text-white tracking-wider group-hover:text-[#E4C88A] transition-colors">
-                  MAHAVEER EDUCATIONAL & CHARITABLE TRUST
+                <span className="font-serif font-bold text-sm sm:text-base text-white tracking-wide group-hover:text-sand transition-colors">
+                  {ORG.name}
                 </span>
-                <span className="text-[10px] tracking-wider uppercase font-semibold text-[#E4C88A]">
-                  MECT • Registered Public Charitable Trust (Est. 2013)
+                <span className="text-[10px] tracking-wider uppercase font-semibold text-cream">
+                  Public Charitable Trust ({ORG.shortName})
                 </span>
               </div>
             </Link>
 
-            <p className="text-xs text-white/75 leading-relaxed max-w-sm font-sans">
-              An irrevocable public charitable trust established by registered Trust Deed on 27th July 2013 (Balangir Sub-Registrar), advancing higher education, rural women&apos;s skilling, and clean drinking water relief across Odisha.
+            <p className="text-xs text-cream/90 leading-relaxed font-sans">
+              An irrevocable public charitable trust established under registered deed in Odisha. Dedicated to grassroots education, women&apos;s livelihoods, community healthcare, and cultural preservation.
             </p>
 
-            <div className="pt-2 text-xs text-white/70 space-y-2.5 font-sans">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="leading-snug">
-                  <strong>Registered Office:</strong> {TRUST_CONFIG.contact.registeredOffice.addressLine1}, {TRUST_CONFIG.contact.registeredOffice.city}, {TRUST_CONFIG.contact.registeredOffice.state} - {TRUST_CONFIG.contact.registeredOffice.pin}
-                </span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <Building2 className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="leading-snug">
-                  <strong>Corporate Liaison:</strong> {TRUST_CONFIG.contact.corporateOffice.addressLine1}, {TRUST_CONFIG.contact.corporateOffice.city}, {TRUST_CONFIG.contact.corporateOffice.state} - {TRUST_CONFIG.contact.corporateOffice.pin}
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
-                <a
-                  href={`mailto:${TRUST_CONFIG.contact.emails.official}`}
-                  className="hover:text-[#E4C88A] transition-colors"
+            <div className="pt-1">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1.5 text-xs text-sand hover:text-white font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+              >
+                <span>Learn About Our Heritage</span>
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Column 2: Our Work */}
+          <div className="space-y-3 font-sans">
+            <span className="text-xs font-bold uppercase tracking-wider text-sand block">
+              Our Work
+            </span>
+            <ul className="space-y-2 text-xs text-cream/90">
+              <li>
+                <Link
+                  href="/programmes#education"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
-                  {TRUST_CONFIG.contact.emails.official}
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#C5A059] shrink-0" aria-hidden="true" />
-                <span>Working Hours: {TRUST_CONFIG.contact.hours}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 3: Statutory Disclosures & Compliance */}
-          <div className="space-y-3 font-sans">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E4C88A] block">
-              Statutory Disclosures
-            </span>
-            <ul className="space-y-2 text-xs text-white/75">
-              <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>Trust Deed (2013)</span>
-                  <span className="text-[10px] text-[#C5A059]">40311302194</span>
+                  Education &amp; Remedial Coaching
                 </Link>
               </li>
               <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>PAN (Income Tax)</span>
-                  <span className="text-[10px] text-[#C5A059]">{TRUST_CONFIG.statutory.pan}</span>
+                <Link
+                  href="/programmes#women-empowerment"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Women Empowerment &amp; Tailoring
                 </Link>
               </li>
               <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>Section 12A URN</span>
-                  <span className="text-[10px] text-[#C5A059]">{TRUST_CONFIG.statutory.section12AUrn}</span>
+                <Link
+                  href="/programmes#sports-extracurricular"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Sports &amp; Extracurriculars
                 </Link>
               </li>
               <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>Section 80G URN</span>
-                  <span className="text-[10px] text-[#C5A059]">{TRUST_CONFIG.statutory.section80GUrn}</span>
+                <Link
+                  href="/programmes#water"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Safe Water &amp; Jal Seva Kiosks
                 </Link>
               </li>
               <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>MCA CSR-1 Reg</span>
-                  <span className="text-[10px] text-[#C5A059]">{TRUST_CONFIG.statutory.mcaCsrNumber}</span>
+                <Link
+                  href="/programmes#food-relief"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Food Relief &amp; Jan Ahar
                 </Link>
               </li>
               <li>
-                <Link href="/statutory-disclosures" className="hover:text-white transition-colors flex items-center justify-between">
-                  <span>NITI Aayog Darpan</span>
-                  <span className="text-[10px] text-[#C5A059]">{TRUST_CONFIG.statutory.ngoDarpanId}</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Core Programmes & CSR */}
-          <div className="space-y-3 font-sans">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E4C88A] block">
-              Civic Programmes & CSR
-            </span>
-            <ul className="space-y-2 text-xs text-white/75">
-              <li>
-                <Link href="/programmes#education" className="hover:text-white transition-colors">
-                  Remedial Rural Education (Balangir)
+                <Link
+                  href="/programmes#community-welfare"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Community Welfare &amp; Rural Relief
                 </Link>
               </li>
               <li>
-                <Link href="/programmes#women-empowerment" className="hover:text-white transition-colors">
-                  Women&apos;s Vocational Tailoring
-                </Link>
-              </li>
-              <li>
-                <Link href="/programmes#water" className="hover:text-white transition-colors">
-                  Jal Seva Clean Drinking Water
-                </Link>
-              </li>
-              <li>
-                <Link href="/programmes#hunger-relief" className="hover:text-white transition-colors">
-                  Jan Ahar Destitute Nutrition
-                </Link>
-              </li>
-              <li>
-                <Link href="/csr-partnerships" className="hover:text-white transition-colors font-semibold text-[#E4C88A]">
-                  Corporate CSR (Schedule VII)
-                </Link>
-              </li>
-              <li>
-                <Link href="/impact" className="hover:text-white transition-colors">
-                  Civic Beneficiary Metrics
+                <Link
+                  href="/programmes#higher-education"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Higher Education Scholarships
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 5: Direct Bank Transfer for 80G Donations */}
+          {/* Column 3: Campaigns */}
           <div className="space-y-3 font-sans">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#E4C88A] block flex items-center gap-1.5">
-              <Landmark className="w-3.5 h-3.5 text-[#C5A059]" aria-hidden="true" />
-              <span>Direct Bank NEFT/RTGS</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-sand block">
+              Campaigns
             </span>
-            <div className="bg-[#0B3B24] p-3 rounded-xs border border-white/10 space-y-1.5 text-[11px]">
-              <div>
-                <span className="text-white/50 block">Bank Name:</span>
-                <span className="text-white font-medium">{TRUST_CONFIG.bank.bankName}</span>
-              </div>
-              <div>
-                <span className="text-white/50 block">Account Name:</span>
-                <span className="text-white font-medium">{TRUST_CONFIG.bank.accountName}</span>
-              </div>
-              <div>
-                <span className="text-white/50 block">Account No:</span>
-                <span className="text-[#E4C88A] font-mono font-bold tracking-wider">{TRUST_CONFIG.bank.accountNumber}</span>
-              </div>
-              <div>
-                <span className="text-white/50 block">IFSC Code:</span>
-                <span className="text-white font-mono font-bold">{TRUST_CONFIG.bank.ifsc}</span>
-              </div>
+            <ul className="space-y-2 text-xs text-cream/90">
+              <li>
+                <Link
+                  href="/campaigns/hanuman-murti"
+                  className="hover:text-white font-semibold text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  The Grand Hanuman Murti Project
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/programmes#free-education-200"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Free Education (Target: Up to 200)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/campaigns"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  All Institutional Initiatives
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/csr-partnerships"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Corporate CSR Collaborations
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Resources */}
+          <div className="space-y-3 font-sans">
+            <span className="text-xs font-bold uppercase tracking-wider text-sand block">
+              Resources
+            </span>
+            <ul className="space-y-2 text-xs text-cream/90">
+              <li>
+                <Link
+                  href="/stories"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Blog &amp; Field Dispatches
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/memories-gallery"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Memories &amp; Archival Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/reports#library"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Public Records Library
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/reports"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Annual Reports &amp; Audits
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/statutory-disclosures"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Statutory Accreditation Register
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Frequently Asked Questions
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: Support & Inquiries */}
+          <div className="space-y-3 font-sans">
+            <span className="text-xs font-bold uppercase tracking-wider text-sand block">
+              Support &amp; Inquiries
+            </span>
+            <ul className="space-y-2 text-xs text-cream/90">
+              <li>
+                <Link
+                  href="/donate"
+                  className="hover:text-white font-semibold text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Donate to MECT
+                </Link>
+              </li>
+              {isDonorPortalEnabled() && (
+                <>
+                  <li>
+                    <Link
+                      href="/login"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Donor Sign In
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/register"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Create Supporter Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/portal/dashboard"
+                      className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                    >
+                      Donor Portal &amp; Receipts
+                    </Link>
+                  </li>
+                </>
+              )}
+              <li>
+                <Link
+                  href="/volunteer"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Volunteer &amp; Mentorship
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Secretariat Inquiry Desk
+                </Link>
+              </li>
+            </ul>
+            <div className="pt-2">
+              <Link
+                href="/donate"
+                className="w-full min-h-[40px] inline-flex items-center justify-center gap-1.5 text-xs text-white font-bold px-3 py-2 bg-terracotta hover:bg-terracotta-dark border border-terracotta-dark rounded-xs shadow-xs transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+              >
+                <Heart className="w-3.5 h-3.5 fill-current text-white" aria-hidden="true" />
+                <span>Support Our Work</span>
+              </Link>
             </div>
-            <Link
-              href="/donate"
-              className="w-full inline-flex items-center justify-center gap-1.5 text-xs text-white font-bold px-3 py-2 bg-[#D97706] hover:bg-[#B45309] rounded-xs shadow-xs transition-colors"
-            >
-              <Heart className="w-3 h-3 fill-current" aria-hidden="true" />
-              <span>Online 80G Donation</span>
-            </Link>
           </div>
         </div>
 
         {/* Tier 3: Bottom Legal & Developer Acknowledgement Bar */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-white/60 font-sans">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-cream/90 font-sans">
           <div>
-            © 2013–{currentYear} Mahaveer Educational & Charitable Trust (MECT). All rights reserved. Registered under Indian Trusts Act, 1882.
+            &copy; {ORG.foundedYear}&ndash;{currentYear} {ORG.legalName}. All rights reserved.{" "}
+            {ORG.trustDeed.shortDeedRef}
           </div>
 
-          <div className="flex items-center space-x-4 flex-wrap">
-            <Link href="/about#developer-credit" className="text-[#C5A059] hover:text-[#E4C88A] transition-colors font-medium">
-              Architect: Himansu Nayak (HN)
+          <div className="flex items-center gap-x-4 gap-y-1 flex-wrap">
+            <Link
+              href="/about#developer-credit"
+              className="inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand"
+            >
+              Website developed by Himansu Nayak
             </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/faq" className="hover:text-white transition-colors">
-              FAQ
-            </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/accessibility" className="hover:text-white transition-colors">
-              Accessibility
-            </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/privacy" className="hover:text-white transition-colors">
+            <span className="text-white/25" aria-hidden="true">|</span>
+            <Link
+              href="/privacy"
+              className="inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+            >
               Privacy Policy
             </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/terms" className="hover:text-white transition-colors">
+            <span className="text-white/25" aria-hidden="true">|</span>
+            <Link
+              href="/terms"
+              className="inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+            >
               Terms of Service
             </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/governance" className="hover:text-white transition-colors">
-              Fiduciary Charter
+            <span className="text-white/25" aria-hidden="true">|</span>
+            <Link
+              href="/accessibility"
+              className="inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+            >
+              Accessibility Statement
+            </Link>
+            <span className="text-white/25" aria-hidden="true">|</span>
+            <Link
+              href="/governance"
+              className="inline-flex items-center min-h-[24px] py-1 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+            >
+              Governance Charter
             </Link>
           </div>
         </div>
+
+        {/* Photographic Attribution Notice */}
+        <div className="pt-3 mt-3 border-t border-white/10 text-[10.5px] text-cream/80 font-sans leading-relaxed">
+          Hero backdrop photography combines MECT Balangir archive &amp; field photography with illustrative stock photography via Wikimedia Commons: &ldquo;Self Help Group&rdquo; by Ganesh Dhamodkar (
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-sand/60 hover:text-sand"
+          >
+            CC BY 4.0
+          </a>
+          , cropped &amp; exposure-balanced) and &ldquo;Rammohun Library Main Reading Room&rdquo; by Sumitsurai (
+          <a
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-sand/60 hover:text-sand"
+          >
+            CC BY-SA 4.0
+          </a>
+          , cropped &amp; exposure-balanced), plus a user-supplied outreach reference image. See full asset register in repository documentation.
+        </div>
       </Container>
+      </Reveal>
     </footer>
   );
 }

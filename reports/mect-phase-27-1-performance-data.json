@@ -1,0 +1,86 @@
+[
+  {
+    "route": "/",
+    "name": "Homepage",
+    "ttfbMs": 13,
+    "fcpMs": 804,
+    "lcpMs": 1840,
+    "cls": 0.0014,
+    "domContentLoadedMs": 466,
+    "totalLoadMs": 3075,
+    "domNodeCount": 1490,
+    "transferKB": 217
+  },
+  {
+    "route": "/programmes",
+    "name": "Programmes",
+    "ttfbMs": 15,
+    "fcpMs": 584,
+    "lcpMs": 584,
+    "cls": 0.001,
+    "domContentLoadedMs": 74,
+    "totalLoadMs": 2839,
+    "domNodeCount": 1595,
+    "transferKB": 132
+  },
+  {
+    "route": "/impact",
+    "name": "Impact",
+    "ttfbMs": 15,
+    "fcpMs": 460,
+    "lcpMs": 460,
+    "cls": 0.0246,
+    "domContentLoadedMs": 414,
+    "totalLoadMs": 2528,
+    "domNodeCount": 1007,
+    "transferKB": 96
+  },
+  {
+    "route": "/donate",
+    "name": "Donate",
+    "ttfbMs": 10,
+    "fcpMs": 272,
+    "lcpMs": 272,
+    "cls": 0.0068,
+    "domContentLoadedMs": 230,
+    "totalLoadMs": 2099,
+    "domNodeCount": 437,
+    "transferKB": 96
+  },
+  {
+    "route": "/csr-partnerships",
+    "name": "CSR Partnerships",
+    "ttfbMs": 15,
+    "fcpMs": 552,
+    "lcpMs": 552,
+    "cls": 0.0028,
+    "domContentLoadedMs": 496,
+    "totalLoadMs": 2416,
+    "domNodeCount": 865,
+    "transferKB": 148
+  },
+  {
+    "route": "/governance",
+    "name": "Governance",
+    "ttfbMs": 30,
+    "fcpMs": 344,
+    "lcpMs": 344,
+    "cls": 0.0112,
+    "domContentLoadedMs": 312,
+    "totalLoadMs": 2106,
+    "domNodeCount": 811,
+    "transferKB": 96
+  },
+  {
+    "route": "/campaigns",
+    "name": "Campaigns",
+    "ttfbMs": 31,
+    "fcpMs": 496,
+    "lcpMs": 496,
+    "cls": 0.0004,
+    "domContentLoadedMs": 444,
+    "totalLoadMs": 3246,
+    "domNodeCount": 514,
+    "transferKB": 96
+  }
+]

@@ -1,7 +1,7 @@
 # MAHAVIR TRUST — PHASE 2.3.1 SECURITY AND DATA-INTEGRITY CORRECTIVE REPORT
 
 **Project:** MAHAVIR TRUST — Educational & Mentorship Platform  
-**Worktree:** `C:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST\.worktrees\security-patch`  
+**Worktree:** `<WORKSPACE_DIR>\.worktrees\security-patch`  
 **Target Branch:** `security/nextjs-patch-upgrade`  
 **Starting Commit:** `030938bdaa533d2fdd6eb4073209c1eff6e1ef09` (Preserved intact)  
 **Execution Date:** 2026-11-02  

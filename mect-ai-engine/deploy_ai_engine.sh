@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # MAHAVIR TRUST (MECT) — Autonomous AI Engine VPS Deployment Script
-# Target Host: Hostinger KVM 4 VPS (200.97.161.128) - Ubuntu 26.04.1 LTS
+# Target Host: Hostinger KVM 4 VPS (<PROD_VPS_IP>) - Ubuntu 26.04.1 LTS
 # ==============================================================================
 
 set -euo pipefail

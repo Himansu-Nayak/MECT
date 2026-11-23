@@ -3,72 +3,127 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { AlertTriangle, RotateCcw, Home, HelpCircle } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import { Home, BookOpen, Heart, Mail, RotateCcw, AlertTriangle } from "lucide-react";
 
-export interface ErrorProps {
+export default function ErrorPage({
+  error,
+  reset,
+}: {
   error: Error & { digest?: string };
   reset: () => void;
-}
-
-export default function ErrorBoundary({ error, reset }: ErrorProps) {
+}) {
   useEffect(() => {
-    // Log unexpected runtime error to console for diagnostic auditing
-    console.error("Institutional Portal Render Interruption:", error);
+    // Log unexpected errors for institutional diagnostics
+    console.error("[MECT Application Error]:", error);
   }, [error]);
 
   return (
-    <main className="min-h-[70vh] py-20 md:py-28 bg-[#FDFBF7] flex items-center">
-      <Container size="default" className="space-y-8">
-        <div className="max-w-xl mx-auto text-center space-y-6">
-          <Badge
-            variant="warning"
-            size="md"
-            icon={<AlertTriangle className="w-3.5 h-3.5 text-amber-900" aria-hidden="true" />}
-          >
-            System Interruption • 500
+    <div className="flex flex-col w-full bg-cream min-h-[70vh]">
+      <section className="py-20 md:py-28 bg-forest text-cream border-b border-terracotta/40">
+        <Container size="narrow" className="text-center space-y-6">
+          <Badge variant="gold" size="md">
+            HTTP 500 — Server Incident
           </Badge>
 
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] tracking-tight">
-            An Unexpected Interruption Occurred
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.15]">
+            Temporary Service Disruption
           </h1>
 
-          <p className="text-sm sm:text-base text-[#4A5568] leading-relaxed font-sans">
-            The page could not be rendered due to a transient client-side processing interruption. No institutional data or user submission was compromised.
+          <p className="text-sm sm:text-base text-cream/90 max-w-xl mx-auto leading-relaxed">
+            The secretariat server encountered an unexpected situation while processing this request. Our technical team has been notified.
           </p>
 
-          {error.digest && (
-            <div className="p-3 bg-[#F4EFE6] rounded-xs border border-[#0A192F]/10 text-xs text-[#7A5E24] font-mono inline-block">
-              Reference Incident Digest: {error.digest}
-            </div>
-          )}
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+          <div className="pt-2">
             <Button
-              variant="primary"
-              size="md"
+              variant="outline"
               onClick={() => reset()}
+              className="!border-sand !text-cream hover:!bg-white/15 text-xs inline-flex items-center gap-2"
             >
-              <RotateCcw className="w-4 h-4 mr-1.5" aria-hidden="true" />
-              <span>Retry Page Render</span>
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Retry Request</span>
             </Button>
-            <Link href="/">
-              <Button variant="secondary" size="md">
-                <Home className="w-4 h-4 mr-1.5" aria-hidden="true" />
-                <span>Return to Homepage</span>
-              </Button>
-            </Link>
-            <Link href="/contact?subject=System%20Error%20Report">
-              <Button variant="ghost" size="md">
-                <HelpCircle className="w-4 h-4 mr-1.5" aria-hidden="true" />
-                <span>Contact Secretariat</span>
-              </Button>
-            </Link>
           </div>
-        </div>
-      </Container>
-    </main>
+        </Container>
+      </section>
+
+      <section className="py-16 md:py-20 bg-cream">
+        <Container size="default">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link href="/" className="group">
+                <Card
+                  variant="elevated"
+                  className="p-6 h-full flex flex-col justify-between hover:border-forest transition-colors bg-white shadow-xs"
+                >
+                  <div className="space-y-2">
+                    <div className="w-10 h-10 rounded-xs bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                      <Home className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-forest">Home</h3>
+                    <p className="text-xs text-ink-sand leading-relaxed">
+                      Return to the main institutional homepage and core mission overview.
+                    </p>
+                  </div>
+                </Card>
+              </Link>
+
+              <Link href="/programmes" className="group">
+                <Card
+                  variant="elevated"
+                  className="p-6 h-full flex flex-col justify-between hover:border-forest transition-colors bg-white shadow-xs"
+                >
+                  <div className="space-y-2">
+                    <div className="w-10 h-10 rounded-xs bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                      <BookOpen className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-forest">Programmes</h3>
+                    <p className="text-xs text-ink-sand leading-relaxed">
+                      View our community programmes in education, livelihoods, and relief.
+                    </p>
+                  </div>
+                </Card>
+              </Link>
+
+              <Link href="/donate" className="group">
+                <Card
+                  variant="elevated"
+                  className="p-6 h-full flex flex-col justify-between hover:border-forest transition-colors bg-white shadow-xs"
+                >
+                  <div className="space-y-2">
+                    <div className="w-10 h-10 rounded-xs bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                      <Heart className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-forest">Donate</h3>
+                    <p className="text-xs text-ink-sand leading-relaxed">
+                      View verified State Bank of India account and UPI credentials.
+                    </p>
+                  </div>
+                </Card>
+              </Link>
+
+              <Link href="/contact" className="group">
+                <Card
+                  variant="elevated"
+                  className="p-6 h-full flex flex-col justify-between hover:border-forest transition-colors bg-white shadow-xs"
+                >
+                  <div className="space-y-2">
+                    <div className="w-10 h-10 rounded-xs bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-forest">Contact</h3>
+                    <p className="text-xs text-ink-sand leading-relaxed">
+                      Reach our official secretariat helpline or registered offices.
+                    </p>
+                  </div>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </div>
   );
 }
-

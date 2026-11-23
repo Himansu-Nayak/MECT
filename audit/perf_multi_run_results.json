@@ -1,0 +1,272 @@
+{
+  "/": {
+    "route": "/",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 92,
+      "min": 80,
+      "max": 97,
+      "spread": 17,
+      "runs": [
+        80,
+        92,
+        97
+      ]
+    },
+    "lcp": {
+      "median": 1.31,
+      "min": 1.24,
+      "max": 1.45,
+      "spread": 0.21,
+      "runs": [
+        1.24,
+        1.31,
+        1.45
+      ]
+    },
+    "cls": {
+      "median": 0,
+      "min": 0,
+      "max": 0,
+      "spread": 0,
+      "runs": [
+        0,
+        0,
+        0
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  },
+  "/programmes": {
+    "route": "/programmes",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 94,
+      "min": 93,
+      "max": 98,
+      "spread": 5,
+      "runs": [
+        93,
+        94,
+        98
+      ]
+    },
+    "lcp": {
+      "median": 1.22,
+      "min": 1.22,
+      "max": 1.32,
+      "spread": 0.1,
+      "runs": [
+        1.22,
+        1.22,
+        1.32
+      ]
+    },
+    "cls": {
+      "median": 0,
+      "min": 0,
+      "max": 0,
+      "spread": 0,
+      "runs": [
+        0,
+        0,
+        0
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  },
+  "/donate": {
+    "route": "/donate",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 99,
+      "min": 96,
+      "max": 100,
+      "spread": 4,
+      "runs": [
+        96,
+        99,
+        100
+      ]
+    },
+    "lcp": {
+      "median": 1.22,
+      "min": 1.22,
+      "max": 1.3,
+      "spread": 0.08,
+      "runs": [
+        1.22,
+        1.22,
+        1.3
+      ]
+    },
+    "cls": {
+      "median": 0.001,
+      "min": 0,
+      "max": 0.001,
+      "spread": 0.001,
+      "runs": [
+        0,
+        0.001,
+        0.001
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  },
+  "/about": {
+    "route": "/about",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 99,
+      "min": 92,
+      "max": 99,
+      "spread": 7,
+      "runs": [
+        92,
+        99,
+        99
+      ]
+    },
+    "lcp": {
+      "median": 1.22,
+      "min": 1.22,
+      "max": 1.22,
+      "spread": 0,
+      "runs": [
+        1.22,
+        1.22,
+        1.22
+      ]
+    },
+    "cls": {
+      "median": 0.001,
+      "min": 0,
+      "max": 0.001,
+      "spread": 0.001,
+      "runs": [
+        0,
+        0.001,
+        0.001
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  },
+  "/scholarships": {
+    "route": "/scholarships",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 98,
+      "min": 94,
+      "max": 100,
+      "spread": 6,
+      "runs": [
+        94,
+        98,
+        100
+      ]
+    },
+    "lcp": {
+      "median": 1.22,
+      "min": 1.21,
+      "max": 1.31,
+      "spread": 0.1,
+      "runs": [
+        1.21,
+        1.22,
+        1.31
+      ]
+    },
+    "cls": {
+      "median": 0.011,
+      "min": 0,
+      "max": 0.011,
+      "spread": 0.011,
+      "runs": [
+        0,
+        0.011,
+        0.011
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  },
+  "/contact": {
+    "route": "/contact",
+    "status": "PASS",
+    "runsCount": 3,
+    "perf": {
+      "median": 100,
+      "min": 89,
+      "max": 100,
+      "spread": 11,
+      "runs": [
+        89,
+        100,
+        100
+      ]
+    },
+    "lcp": {
+      "median": 1.22,
+      "min": 1.22,
+      "max": 1.22,
+      "spread": 0,
+      "runs": [
+        1.22,
+        1.22,
+        1.22
+      ]
+    },
+    "cls": {
+      "median": 0.001,
+      "min": 0,
+      "max": 0.001,
+      "spread": 0.001,
+      "runs": [
+        0,
+        0.001,
+        0.001
+      ]
+    },
+    "a11yMedian": 100,
+    "seoMedian": 100,
+    "gates": {
+      "perfGte90": true,
+      "lcpLte2_5s": true,
+      "clsLte0_1": true
+    }
+  }
+}

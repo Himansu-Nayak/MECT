@@ -1,0 +1,1 @@
+const fs = require("fs"); const path = require("path"); function write(p, c) { fs.mkdirSync(path.dirname(p), {recursive: true}); fs.writeFileSync(p, c, "utf8"); console.log("[SAVED] " + p); } module.exports = { write };

@@ -11,6 +11,8 @@ export interface SectionHeaderProps
   theme?: "light" | "dark";
   actions?: React.ReactNode;
   className?: string;
+  as?: "h1" | "h2" | "h3" | "h4";
+  size?: "sm" | "md" | "lg";
 }
 
 export function SectionHeader({
@@ -22,6 +24,8 @@ export function SectionHeader({
   theme = "light",
   actions,
   className = "",
+  as: HeadingTag = "h2",
+  size = "md",
   ...props
 }: SectionHeaderProps) {
   const alignStyles = {
@@ -30,16 +34,22 @@ export function SectionHeader({
     right: "text-right items-end ml-auto",
   };
 
-  const titleColor = theme === "dark" ? "text-white" : "text-[#072617]";
-  const subtitleColor = theme === "dark" ? "text-[#EDE6D8]/80" : "text-[#4A5568]";
+  const titleColor = theme === "dark" ? "text-white" : "text-forest";
+  const subtitleColor = theme === "dark" ? "text-cream/95" : "text-ink-sand";
+
+  const sizeHeadingStyles = {
+    sm: "type-h3",
+    md: "type-h2",
+    lg: "type-h1",
+  };
 
   return (
     <div
-      className={`flex flex-col space-y-3 max-w-3xl ${alignStyles[align]} ${className}`}
+      className={`flex flex-col space-y-3.5 max-w-3xl ${alignStyles[align]} ${className}`}
       {...props}
     >
       {badge && (
-        <div>
+        <div className="leading-none">
           {typeof badge === "string" ? (
             <Badge variant={theme === "dark" ? "gold-dark" : badgeVariant}>
               {badge}
@@ -50,14 +60,14 @@ export function SectionHeader({
         </div>
       )}
 
-      <h2
-        className={`font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-tight ${titleColor}`}
+      <HeadingTag
+        className={`${sizeHeadingStyles[size]} ${titleColor}`}
       >
         {title}
-      </h2>
+      </HeadingTag>
 
       {subtitle && (
-        <p className={`text-sm sm:text-base leading-relaxed ${subtitleColor}`}>
+        <p className={`type-body max-w-[64ch] ${subtitleColor}`}>
           {subtitle}
         </p>
       )}

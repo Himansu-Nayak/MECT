@@ -291,5 +291,5 @@ Build Exit Code: 0
 ## 8. Summary of Worktree State
 
 - **Branch**: `security/nextjs-patch-upgrade`
-- **Isolation Status**: Main branch (`c:\Users\himan\OneDrive\Desktop\MAHAVIR TRUST`) remains 100% clean and untouched.
+- **Isolation Status**: Main branch (`<WORKSPACE_DIR>`) remains 100% clean and untouched.
 - **Verification**: All backend and frontend tests passed cleanly without waivers or disabled assertions.

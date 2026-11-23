@@ -1,0 +1,86 @@
+{
+  "loop": 5,
+  "timestamp": "2026-11-20T14:54:30+05:30",
+  "items_fixed": [
+    "P1-7",
+    "P1-8",
+    "P1-9",
+    "P1-10",
+    "P2-1",
+    "P2-2",
+    "P2-3",
+    "P2-5",
+    "P2-6",
+    "P2-7"
+  ],
+  "forbidden_strings": {
+    "total_occurrences": 0,
+    "fiduciary_dom_occurrences": 0,
+    "counts": {
+      "MAHAVIR TRUST": 0,
+      "pre-launch": 0,
+      "Odisha Educational Foundation": 0,
+      "secure online checkout": 0,
+      "80G Tax Exemption": 0,
+      "50% Tax Deduction": 0,
+      "hunger-relief": 0,
+      "#pillars": 0,
+      "Loading unified": 0,
+      "+91 671": 0,
+      "[Permanent Physical Address": 0
+    }
+  },
+  "links_and_anchors": {
+    "total_sitemap_routes": 27,
+    "broken_links_count": 0,
+    "total_internal_anchors": 444,
+    "broken_anchors_count": 0
+  },
+  "axe_core_summary": {
+    "audited_routes": 9,
+    "serious_and_critical_violations": 0,
+    "routes": {
+      "/": { "seriousAndCritical": 0 },
+      "/programmes": { "seriousAndCritical": 0 },
+      "/donate": { "seriousAndCritical": 0 },
+      "/about": { "seriousAndCritical": 0 },
+      "/scholarships": { "seriousAndCritical": 0 },
+      "/contact": { "seriousAndCritical": 0 },
+      "/stories": { "seriousAndCritical": 0 },
+      "/reports": { "seriousAndCritical": 0 },
+      "/statutory-disclosures": { "seriousAndCritical": 0 }
+    }
+  },
+  "lighthouse_mobile": {
+    "/": { "perf": 68, "a11y": 100, "seo": 100, "lcp": "1.2s", "cls": "0.002" },
+    "/programmes": { "perf": 65, "a11y": 100, "seo": 100, "lcp": "2.8s", "cls": "0.002" },
+    "/donate": { "perf": 69, "a11y": 100, "seo": 100, "lcp": "2.4s", "cls": "0.001" },
+    "/about": { "perf": 82, "a11y": 100, "seo": 100, "lcp": "1.3s", "cls": "0.001" },
+    "/scholarships": { "perf": 79, "a11y": 100, "seo": 100, "lcp": "1.7s", "cls": "0.001" },
+    "/contact": { "perf": 77, "a11y": 100, "seo": 100, "lcp": "1.2s", "cls": "0.001" }
+  },
+  "uniformity": {
+    "core_routes_checked": 8,
+    "uniformity_rate": "100%",
+    "elements": ["header", "footer", "announcement_ticker", "statutory_strip"]
+  },
+  "no_js_donate": {
+    "server_rendered": true,
+    "sbi_account_visible": true,
+    "fields_present": ["bankName", "accountHolder", "accountNumber", "ifsc", "upiId", "donorName", "donorEmail", "donorPhone", "amount", "utr"]
+  },
+  "donation_claim_api": {
+    "valid_status": 200,
+    "invalid_status": 400,
+    "rate_limit_burst_6th": 429
+  },
+  "branded_404": {
+    "status": 404,
+    "robots": "noindex",
+    "home_link": true,
+    "programmes_link": true,
+    "donate_link": true,
+    "contact_link": true
+  },
+  "exit_condition_met": true
+}

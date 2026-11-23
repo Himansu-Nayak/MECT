@@ -1,67 +1,310 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @layer base {
   :root {
-    /* Primary Institutional Color Tokens */
-    --color-navy: #0A192F;
-    --color-navy-dark: #07111E;
-    --color-navy-deep: #0F172A;
-    --color-blue-imperial: #1E3A8A;
-    --color-blue-royal: #1E40AF;
+    /* =========================================================================
+       1. Core Brand Colour System (Phase 26 Documentary Editorial Architecture)
+       ========================================================================= */
+    --color-primary: #B25430;         /* Calibrated Sunbaked Terracotta (4.9:1 WCAG AA with white, 4.6:1 with cream) */
+    --color-primary-dark: #8E3E24;    /* Deep Terracotta (WCAG AAA text/links: 7.5:1) */
 
-    /* Heritage Forest & Green Tokens */
-    --color-forest: #0B3B24;
-    --color-forest-dark: #072617;
-    --color-forest-light: #165B38;
-    --color-green-emerald: #15803D;
+    --color-sand: #EFE6D9;           /* Refined Warm Sand */
+    --color-sand-light: #F7F2EA;     /* Light Sand / Soft Ivory */
 
-    /* Temple Gold & Warm Amber Tokens */
-    --color-gold: #C5A059;
-    --color-gold-light: #E4C88A;
-    --color-gold-muted: #9E7D3B;
-    --color-gold-contrast: #7A5E24;
-    --color-amber-gold: #D97706;
-    --color-amber-dark: #B45309;
+    --color-forest: #16221D;         /* Deep Slate Charcoal (Masthead & Colophon) */
+    --color-forest-deep: #0D1612;    /* High-contrast Deep Slate */
 
-    /* Academic Crimson & Warning */
+    --color-sage: #D8DDD6;           /* Subtle Muted Sage */
+    --color-cream: #FAF7F2;          /* Archival Alabaster Canvas (Global Background) */
+    --color-alabaster: #FAF7F2;      /* Archival Alabaster Token */
+
+    --color-ochre: #C4924A;          /* Burnished Brass / Ochre Accent */
+    --color-ochre-light: #F6EDE0;    /* Soft Ochre Tint */
+
+    --color-white: #FFFFFF;          /* Pure Museum White (Card Elevated Surfaces) */
+    --color-text: #0F1714;           /* Deep Carbon Basalt Ink (16.2:1 AAA Contrast) */
+    --color-text-secondary: #4A5852; /* Editorial Secondary Ink (6.4:1 AA Contrast) */
+    --color-text-on-sand: #3D4843;   /* Calibrated WCAG 2.2 AA Secondary Ink */
+    --color-ink-muted: #4E5B55;      /* Calibrated WCAG 2.2 AA (6.6:1 AAA/AA Contrast) */
+
+    --color-border: #E7E0D5;         /* Razor Hairline Border */
+    --color-border-hairline: #E7E0D5;
+    --color-border-subtle: rgba(231, 224, 213, 0.7);
+    --color-border-accent: rgba(184, 93, 59, 0.35);
+    --color-border-dark: rgba(255, 255, 255, 0.14);
+
+    /* Semantic Feedback Tokens */
     --color-crimson: #991B1B;
     --color-crimson-dark: #7F1D1D;
+    --color-success: #1E6B47;
+    --color-success-bg: #E8F5EE;
+    --color-warning: #92540F;
+    --color-warning-bg: #FEF6EB;
+    --color-info: #1B5E78;
+    --color-info-bg: #EDF7FA;
 
-    /* Backgrounds & Neutrals */
-    --color-ivory: #FDFBF7;
-    --color-ivory-warm: #F4EFE6;
-    --color-slate-light: #F8FAFC;
-    --color-sand: #EDE6D8;
-    --color-charcoal: #1C2421;
-    --color-slate-text: #4A5568;
-    --color-border-subtle: rgba(11, 59, 36, 0.12);
-    --color-border-gold: rgba(197, 160, 89, 0.35);
+    /* =========================================================================
+       2. Semantic Surface Hierarchy
+       ========================================================================= */
+    --surface-canvas: var(--color-cream);
+    --surface-card: var(--color-white);
+    --surface-card-subtle: rgba(243, 228, 210, 0.65);
+    --surface-sand: var(--color-sand);
+    --surface-sand-light: var(--color-sand-light);
+    --surface-sage: var(--color-sage);
+    --surface-dark: var(--color-forest);
+    --surface-dark-deep: var(--color-forest-deep);
+    --surface-accent: var(--color-primary);
+    --surface-accent-dark: var(--color-primary-dark);
+
+    /* =========================================================================
+       3. Semantic Text Hierarchy
+       ========================================================================= */
+    --text-primary: var(--color-text);
+    --text-secondary: var(--color-text-secondary);
+    --text-on-sand: var(--color-text-on-sand);
+    --text-on-dark: var(--color-white);
+    --text-on-dark-secondary: var(--color-cream);
+    --text-on-dark-muted: rgba(243, 228, 210, 0.85);
+    --text-accent: var(--color-primary);
+    --text-accent-dark: var(--color-primary-dark);
+
+    /* =========================================================================
+       4. Fluid Typography Scale (Desktop 1440px to Mobile 360px via clamp)
+       ========================================================================= */
+    /* Display / Hero Landmark */
+    --type-display-size: clamp(2.25rem, 1.8rem + 2vw, 3.625rem);
+    --type-display-line-height: 1.12;
+    --type-display-tracking: -0.025em;
+    --type-display-weight: 600;
+
+    /* Heading 1 (Page Titles & Major Features) */
+    --type-h1-size: clamp(1.875rem, 1.55rem + 1.45vw, 2.75rem);
+    --type-h1-line-height: 1.16;
+    --type-h1-tracking: -0.02em;
+    --type-h1-weight: 600;
+
+    /* Heading 2 (Section Headers & Component Anchors) */
+    --type-h2-size: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
+    --type-h2-line-height: 1.22;
+    --type-h2-tracking: -0.018em;
+    --type-h2-weight: 600;
+
+    /* Heading 3 (Cards, Module Headers & Sub-sections) */
+    --type-h3-size: clamp(1.25rem, 1.125rem + 0.55vw, 1.5rem);
+    --type-h3-line-height: 1.28;
+    --type-h3-tracking: -0.012em;
+    --type-h3-weight: 600;
+
+    /* Heading 4 (Minor Subheadings, Form Titles & Metrics) */
+    --type-h4-size: clamp(1.0625rem, 1rem + 0.28vw, 1.2rem);
+    --type-h4-line-height: 1.35;
+    --type-h4-tracking: -0.005em;
+    --type-h4-weight: 600;
+
+    /* Body Large (Lead / Introductory Paragraphs / Hero Descriptions) */
+    --type-body-lead-size: clamp(1.0625rem, 1rem + 0.28vw, 1.1875rem);
+    --type-body-lead-line-height: 1.62;
+    --type-body-lead-tracking: 0em;
+
+    /* Standard Body (Primary Content & Paragraph Copy) */
+    --type-body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+    --type-body-line-height: 1.65;
+    --type-body-tracking: -0.005em;
+
+    /* Supporting Body (Cards, Lists, Footers, Sub-descriptions) */
+    --type-body-sm-size: clamp(0.8125rem, 0.78rem + 0.12vw, 0.875rem);
+    --type-body-sm-line-height: 1.55;
+    --type-body-sm-tracking: 0em;
+
+    /* Eyebrow / Overline (Badges, Category Headers, Structural Tags) */
+    --type-eyebrow-size: clamp(0.6875rem, 0.65rem + 0.12vw, 0.75rem);
+    --type-eyebrow-line-height: 1.4;
+    --type-eyebrow-tracking: 0.08em;
+    --type-eyebrow-weight: 600;
+
+    /* Caption / Metadata (Legal, Timestamps, Disclaimers) */
+    --type-caption-size: clamp(0.6875rem, 0.65rem + 0.1vw, 0.75rem);
+    --type-caption-line-height: 1.45;
+    --type-caption-tracking: 0.03em;
+
+    /* Optimal Editorial Paragraph Measure (Line Lengths) */
+    --measure-prose: 65ch;
+    --measure-narrow: 50ch;
+    --measure-wide: 75ch;
+
+    /* =========================================================================
+       5. Spatial Hierarchy (4/8-point Grid)
+       ========================================================================= */
+    --space-1: 0.25rem;    /* 4px */
+    --space-2: 0.5rem;     /* 8px */
+    --space-3: 0.75rem;    /* 12px */
+    --space-4: 1rem;       /* 16px */
+    --space-5: 1.25rem;    /* 20px */
+    --space-6: 1.5rem;     /* 24px */
+    --space-8: 2rem;       /* 32px */
+    --space-10: 2.5rem;    /* 40px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+    --space-20: 5rem;      /* 80px */
+    --space-24: 6rem;      /* 96px */
+
+    /* Fluid Section Vertical Rhythm */
+    --section-padding-y: clamp(3rem, 2rem + 3.5vw, 6rem);
+    --section-padding-y-compact: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+
+    /* =========================================================================
+       6. Disciplined Institutional Border Radii
+       ========================================================================= */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+
+    /* =========================================================================
+       7. Editorial Soft Surface Elevation (Physical Paper / Matte Layers)
+       ========================================================================= */
+    --shadow-subtle: 0 1px 3px 0 rgba(29, 41, 36, 0.05), 0 1px 2px -1px rgba(29, 41, 36, 0.04);
+    --shadow-card: 0 4px 12px -2px rgba(29, 41, 36, 0.06), 0 2px 4px -2px rgba(29, 41, 36, 0.04);
+    --shadow-elevated: 0 12px 28px -6px rgba(29, 41, 36, 0.08), 0 4px 12px -4px rgba(29, 41, 36, 0.05);
+    --shadow-float: 0 20px 36px -8px rgba(29, 41, 36, 0.12), 0 8px 16px -6px rgba(29, 41, 36, 0.06);
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 7.25rem;
+    overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 8rem;
+    }
   }
 
   body {
-    background-color: var(--color-ivory);
-    color: var(--color-charcoal);
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-cream);
+    color: var(--color-text);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
   /* Classical Institutional Typography */
+  .font-sans {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
   .font-serif,
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Georgia", "Cambria", "Times New Roman", Times, serif;
+    font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+    font-weight: 600;
     letter-spacing: -0.015em;
+    overflow-wrap: break-word;
+  }
+
+  .font-mono,
+  code {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
   }
 
   ::selection {
-    background-color: #C5A059;
-    color: #072617;
+    background-color: var(--color-sand);
+    color: var(--color-forest-deep);
   }
+}
+
+@theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-terracotta: var(--color-primary);
+  --color-terracotta-dark: var(--color-primary-dark);
+  --color-sand: var(--color-sand);
+  --color-sand-light: var(--color-sand-light);
+  --color-forest: var(--color-forest);
+  --color-forest-deep: var(--color-forest-deep);
+  --color-sage: var(--color-sage);
+  --color-cream: var(--color-cream);
+  --color-alabaster: var(--color-alabaster);
+  --color-ochre: var(--color-ochre);
+  --color-ochre-light: var(--color-ochre-light);
+  --color-ink: var(--color-text);
+  --color-ink-secondary: var(--color-text-secondary);
+  --color-ink-sand: var(--color-text-on-sand);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-border-warm: var(--color-border);
+  --color-border-hairline: var(--color-border-hairline);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-accent: var(--color-border-accent);
+  --color-border-dark: var(--color-border-dark);
+  --color-surface-canvas: var(--color-cream);
+  --color-surface-card: var(--color-white);
+  --color-surface-sand: var(--color-sand);
+  --color-surface-sand-light: var(--color-sand-light);
+  --color-surface-sage: var(--color-sage);
+  --color-surface-dark: var(--color-forest);
+  --color-surface-dark-deep: var(--color-forest-deep);
+  --color-surface-accent: var(--color-primary);
+  --color-surface-accent-dark: var(--color-primary-dark);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-info: var(--color-info);
+  --color-chart-line-primary: var(--chart-line-primary);
+  --color-chart-line-secondary: var(--chart-line-secondary);
+  --color-chart-brush-border: var(--chart-brush-border);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-segment-line: var(--chart-segment-line);
+  --color-chart-segment-background: var(--chart-segment-background);
+  --color-chart-marker-badge-foreground: var(--chart-marker-badge-foreground);
+  --color-chart-marker-badge-background: var(--chart-marker-badge-background);
+  --color-chart-indicator-secondary-color: var(--chart-indicator-secondary-color);
+  --color-chart-indicator-color: var(--chart-indicator-color);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+  --chart-scale-05: var(--chart-scale-05);
+  --chart-scale-04: var(--chart-scale-04);
+  --chart-scale-03: var(--chart-scale-03);
+  --chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-scale-mix: var(--chart-scale-mix);
+  --color-chart-label: var(--chart-label);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --chart-tooltip-muted: var(--chart-tooltip-muted);
+  --chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --chart-tooltip-background: var(--chart-tooltip-background);
+  --chart-brush-border: var(--chart-brush-border);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --chart-line-secondary: var(--chart-line-secondary);
+  --chart-line-primary: var(--chart-line-primary);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-background: var(--chart-background);
+  --color-chart-negative: var(--chart-negative);
+  --color-chart-positive: var(--chart-positive);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
 }
 
 /* Accessibility Skip Link */
@@ -71,9 +314,9 @@
   left: 1rem;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background-color: #072617;
-  color: #E4C88A;
-  border: 2px solid #C5A059;
+  background-color: var(--color-forest);
+  color: var(--color-white);
+  border: 2px solid var(--color-sand);
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.875rem;
@@ -81,117 +324,272 @@
   transition: top 0.2s ease;
 }
 
-.skip-to-content:focus {
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
   top: 1rem;
+  outline: 2px solid var(--color-sand);
+  outline-offset: 3px;
+  box-shadow: 0 10px 25px -5px rgba(29, 41, 36, 0.35);
 }
 
-/* Institutional Utilities */
-@utility text-navy {
-  color: #0A192F;
+/* Central Semantic Utilities mapped directly to :root custom properties */
+@utility text-terracotta {
+  color: var(--color-primary-dark);
 }
 
-@utility text-navy-deep {
-  color: #0F172A;
-}
-
-@utility text-blue-imperial {
-  color: #1E3A8A;
+@utility text-terracotta-dark {
+  color: var(--color-primary-dark);
 }
 
 @utility text-forest {
-  color: #0B3B24;
+  color: var(--color-forest);
 }
 
-@utility text-forest-dark {
-  color: #072617;
+@utility text-forest-deep {
+  color: var(--color-forest-deep);
 }
 
-@utility text-forest-light {
-  color: #165B38;
+@utility text-sand {
+  color: var(--color-sand);
 }
 
-@utility text-gold {
-  color: #C5A059;
-}
-
-@utility text-gold-light {
-  color: #E4C88A;
-}
-
-@utility text-gold-contrast {
-  color: #7A5E24;
-}
-
-@utility text-amber-gold {
-  color: #D97706;
+@utility text-cream {
+  color: var(--color-cream);
 }
 
 @utility text-crimson {
-  color: #991B1B;
+  color: var(--color-crimson);
 }
 
-@utility bg-navy {
-  background-color: #0A192F;
+@utility bg-terracotta {
+  background-color: var(--color-primary);
 }
 
-@utility bg-navy-deep {
-  background-color: #0F172A;
-}
-
-@utility bg-blue-imperial {
-  background-color: #1E3A8A;
-}
-
-@utility bg-forest {
-  background-color: #0B3B24;
-}
-
-@utility bg-forest-dark {
-  background-color: #072617;
-}
-
-@utility bg-forest-light {
-  background-color: #165B38;
-}
-
-@utility bg-ivory {
-  background-color: #FDFBF7;
-}
-
-@utility bg-ivory-warm {
-  background-color: #F4EFE6;
-}
-
-@utility bg-slate-light {
-  background-color: #F8FAFC;
+@utility bg-terracotta-dark {
+  background-color: var(--color-primary-dark);
 }
 
 @utility bg-sand {
-  background-color: #EDE6D8;
+  background-color: var(--color-sand);
 }
 
-@utility bg-gold {
-  background-color: #C5A059;
+@utility bg-sand-light {
+  background-color: var(--color-sand-light);
 }
 
-@utility bg-amber-gold {
-  background-color: #D97706;
+@utility bg-forest {
+  background-color: var(--color-forest);
 }
 
-@utility border-forest-subtle {
-  border-color: rgba(11, 59, 36, 0.12);
+@utility bg-forest-deep {
+  background-color: var(--color-forest-deep);
 }
 
-@utility border-gold-subtle {
-  border-color: rgba(197, 160, 89, 0.25);
+@utility bg-sage {
+  background-color: var(--color-sage);
 }
 
-@utility border-gold-contrast {
-  border-color: rgba(122, 94, 36, 0.35);
+@utility bg-cream {
+  background-color: var(--color-cream);
 }
 
-@utility border-navy-subtle {
-  border-color: rgba(15, 23, 42, 0.15);
+@utility border-warm {
+  border-color: var(--color-border);
+}
+
+@utility border-terracotta-subtle {
+  border-color: var(--color-border-accent);
+}
+
+/* =========================================================================
+   Fluid Editorial Typography Utilities
+   ========================================================================= */
+@utility type-display {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-line-height);
+  letter-spacing: var(--type-display-tracking);
+  font-weight: var(--type-display-weight);
+  overflow-wrap: break-word;
+}
+
+@utility type-h1 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-line-height);
+  letter-spacing: var(--type-h1-tracking);
+  font-weight: var(--type-h1-weight);
+  overflow-wrap: break-word;
+}
+
+@utility type-h2 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-line-height);
+  letter-spacing: var(--type-h2-tracking);
+  font-weight: var(--type-h2-weight);
+  overflow-wrap: break-word;
+}
+
+@utility type-h3 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  letter-spacing: var(--type-h3-tracking);
+  font-weight: var(--type-h3-weight);
+  overflow-wrap: break-word;
+}
+
+@utility type-h4 {
+  font-family: var(--font-serif), "Georgia", "Cambria", "Times New Roman", Times, serif;
+  font-size: var(--type-h4-size);
+  line-height: var(--type-h4-line-height);
+  letter-spacing: var(--type-h4-tracking);
+  font-weight: var(--type-h4-weight);
+  overflow-wrap: break-word;
+}
+
+@utility type-body-lead {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-lead-size);
+  line-height: var(--type-body-lead-line-height);
+  letter-spacing: var(--type-body-lead-tracking);
+}
+
+@utility type-body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  letter-spacing: var(--type-body-tracking);
+}
+
+@utility type-body-sm {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line-height);
+  letter-spacing: var(--type-body-sm-tracking);
+}
+
+@utility type-eyebrow {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-eyebrow-size);
+  line-height: var(--type-eyebrow-line-height);
+  letter-spacing: var(--type-eyebrow-tracking);
+  font-weight: var(--type-eyebrow-weight);
+  text-transform: uppercase;
+}
+
+@utility type-caption {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-line-height);
+  letter-spacing: var(--type-caption-tracking);
+}
+
+@utility type-numeral {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+@utility prose-measure {
+  max-width: var(--measure-prose);
+}
+
+@utility section-rhythm {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+@utility section-rhythm-compact {
+  padding-top: var(--section-padding-y-compact);
+  padding-bottom: var(--section-padding-y-compact);
+}
+
+@utility border-subtle {
+  border-color: var(--color-border-subtle);
+}
+
+@utility border-dark {
+  border-color: var(--color-border-dark);
+}
+
+@utility bg-surface-canvas {
+  background-color: var(--surface-canvas);
+}
+
+@utility bg-surface-card {
+  background-color: var(--surface-card);
+}
+
+@utility bg-surface-dark {
+  background-color: var(--surface-dark);
+}
+
+@utility bg-surface-dark-deep {
+  background-color: var(--surface-dark-deep);
+}
+
+/* =========================================================================
+   Lightweight GPU CSS Entrance Utilities (Zero Dependencies)
+   Fixes no-op animate-in / fade-in / slide-in utilities across interactive modals
+   ========================================================================= */
+@keyframes mect-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mect-slide-in-bottom-2 {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-in {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+@utility fade-in {
+  animation-name: mect-fade-in;
+}
+
+@utility slide-in-from-bottom-2 {
+  animation-name: mect-slide-in-bottom-2;
+}
+
+.animate-in {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: mect-fade-in;
+}
+
+.slide-in-from-bottom-2 {
+  animation-name: mect-slide-in-bottom-2;
+}
+
+/* Floating Action & Chatbot Safe-Area Clearance on Mobile */
+.pb-floating-clearance {
+  padding-bottom: max(6.5rem, calc(env(safe-area-inset-bottom, 20px) + 5rem));
+}
+
+@media (min-width: 1280px) {
+  .pb-floating-clearance {
+    padding-bottom: 2rem;
+  }
 }
 
 /* Accessible Focus States */
@@ -200,7 +598,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #C5A059;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -217,17 +615,234 @@ select:focus-visible {
 .animate-marquee {
   display: inline-block;
   animation: marquee 38s linear infinite;
+  contain: layout;
+  will-change: transform;
 }
 
-.animate-marquee:hover {
+.animate-marquee:hover,
+.animate-marquee:focus-within {
   animation-play-state: paused;
 }
 
+/* Hero Full-Bleed Left-to-Right Photographic Background Track */
+@keyframes hero-bg-marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.hero-bg-track-ltr {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+  animation: hero-bg-marquee-ltr 32s linear infinite;
+}
+
+.hero-mobile-track-ltr {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+  animation: hero-bg-marquee-ltr 30s linear infinite;
+}
+
+.hero-bg-panel-feather {
+  margin-right: -8vw;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 767px) {
+  .hero-bg-track-ltr {
+    animation-duration: 24s;
+  }
+  .hero-bg-panel-feather {
+    margin-right: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* Purposeful micro-interaction on buttons and action links with directional arrows */
+.group svg.lucide-arrow-right,
+.group svg.lucide-chevron-right {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover svg.lucide-arrow-right,
+.group:hover svg.lucide-chevron-right {
+  transform: translateX(2px);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .hero-bg-track-ltr {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .hero-bg-track-ltr {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .hero-bg-panel-feather {
+    margin-right: 0 !important;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-bg-seq {
+    display: contents !important;
+  }
+
+  .hero-bg-panel {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-mobile-seq {
+    display: contents !important;
+  }
+
+  .hero-bg-clone,
+  .hero-bg-extra-slide,
+  .hero-mobile-clone,
+  .hero-mobile-extra-panel {
+    display: none !important;
+  }
+
+  .hero-mobile-track-ltr {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .hero-mobile-panel {
+    width: 100% !important;
+    max-width: none !important;
+    border-right: 0 !important;
+  }
+
+  @media (max-width: 767px) {
+    .hero-bg-secondary-slide {
+      display: none !important;
+    }
+  }
+
+  .animate-in,
+  .fade-in,
+  .slide-in-from-bottom-2 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
+}
+
+:root {
+  --chart-1: oklch(0.585 0.233 277.117);
+  --chart-2: oklch(0.852 0.199 91.936);
+  --chart-3: oklch(0.459 0.156 302.679);
+  --chart-4: oklch(0.56 0.021 213.5);
+  --chart-5: oklch(0 0 0);
+  --chart-positive: oklch(0.696 0.17 162.48);
+  --chart-negative: oklch(0.637 0.237 25.331);
+  --chart-background: oklch(1 0 0);
+  --chart-foreground: oklch(0.145 0.004 285);
+  --chart-foreground-muted: oklch(0.55 0.014 260);
+  --chart-line-primary: var(--chart-1);
+  --chart-line-secondary: var(--chart-2);
+  --chart-crosshair: oklch(0.4 0.1828 274.34);
+  --chart-grid: oklch(0.9 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-tooltip-background: var(--popover);
+  --chart-tooltip-foreground: var(--popover-foreground);
+  --chart-tooltip-muted: var(--muted-foreground);
+  --chart-marker-background: oklch(0.97 0.005 260);
+  --chart-marker-border: oklch(0.85 0.01 260);
+  --chart-marker-foreground: oklch(0.3 0.01 260);
+  --chart-label: oklch(0.45 0.01 260);
+  --chart-scale-mix: oklch(1 0 0);
+  --chart-scale-01: oklch(0.922 0 0);
+  --chart-scale-02: color-mix(in oklab, var(--chart-1) 35%, var(--chart-scale-mix));
+  --chart-scale-03: color-mix(in oklab, var(--chart-1) 55%, var(--chart-scale-mix));
+  --chart-scale-04: color-mix(in oklab, var(--chart-1) 78%, var(--chart-scale-mix));
+  --chart-scale-05: var(--chart-1);
+  --chart-scale-pattern-color: oklch(1 0 0);
+  --chart-indicator-color: oklch(0.21 0.006 285);
+  --chart-indicator-secondary-color: oklch(0.913 0 0);
+  --chart-marker-badge-background: oklch(0 0 0);
+  --chart-marker-badge-foreground: oklch(0.84 0 0);
+  --chart-segment-background: oklch(0.756 0 0 / 0.06);
+  --chart-segment-line: oklch(0.5 0 0 / 0.25);
+}
+
+.dark {
+  --chart-1: oklch(0.585 0.233 277.117);
+  --chart-2: oklch(0.852 0.199 91.936);
+  --chart-3: oklch(0.459 0.156 302.679);
+  --chart-4: oklch(0.56 0.021 213.5);
+  --chart-5: oklch(1 0 0);
+  --chart-positive: oklch(0.765 0.177 163.223);
+  --chart-negative: oklch(0.704 0.191 22.216);
+  --chart-background: oklch(0.145 0 0);
+  --chart-foreground: oklch(0.45 0 0);
+  --chart-foreground-muted: oklch(0.65 0.01 260);
+  --chart-crosshair: oklch(0.45 0 0);
+  --chart-grid: oklch(0.25 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-marker-background: oklch(0.25 0.01 260);
+  --chart-marker-border: oklch(0.4 0.01 260);
+  --chart-marker-foreground: oklch(0.9 0 0);
+  --chart-label: oklch(0.75 0.01 260);
+  --chart-scale-mix: oklch(0.25 0 0);
+  --chart-scale-01: oklch(0.3 0 0);
+  --chart-scale-02: color-mix(in oklab, var(--chart-1) 35%, var(--chart-scale-mix));
+  --chart-scale-03: color-mix(in oklab, var(--chart-1) 55%, var(--chart-scale-mix));
+  --chart-scale-04: color-mix(in oklab, var(--chart-1) 78%, var(--chart-scale-mix));
+  --chart-scale-05: var(--chart-1);
+  --chart-scale-pattern-color: oklch(0.145 0 0);
+  --chart-indicator-color: oklch(1 0 0);
+  --chart-indicator-secondary-color: oklch(0.145 0 0);
+  --chart-marker-badge-background: oklch(1 0 0);
+  --chart-marker-badge-foreground: oklch(0.15 0 0);
+  --chart-segment-background: oklch(0.41 0.0127 248.14 / 0.25);
+  --chart-segment-line: oklch(1 0 0 / 0.25);
 }

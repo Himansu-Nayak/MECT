@@ -1,0 +1,1270 @@
+{
+  "production_delivered": [
+    {
+      "fullPath": "public\\images\\hero\\illustrative-child-support-outreach.webp",
+      "relPath": "public/images/hero/illustrative-child-support-outreach.webp",
+      "size": 74124,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\illustrative-community-library-reading.webp",
+      "relPath": "public/images/hero/illustrative-community-library-reading.webp",
+      "size": 319292,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\illustrative-women-self-help-group.webp",
+      "relPath": "public/images/hero/illustrative-women-self-help-group.webp",
+      "size": 283468,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-civic-pledge-classroom.jpg",
+      "relPath": "public/images/hero/mect-civic-pledge-classroom.jpg",
+      "size": 224304,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-civic-pledge-classroom.webp",
+      "relPath": "public/images/hero/mect-civic-pledge-classroom.webp",
+      "size": 176782,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-clean-water-hygiene-demo.webp",
+      "relPath": "public/images/hero/mect-clean-water-hygiene-demo.webp",
+      "size": 269848,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-faculty-puintala-campus.jpg",
+      "relPath": "public/images/hero/mect-faculty-puintala-campus.jpg",
+      "size": 97765,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-faculty-puintala-campus.webp",
+      "relPath": "public/images/hero/mect-faculty-puintala-campus.webp",
+      "size": 79542,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-legal-literacy-session.webp",
+      "relPath": "public/images/hero/mect-legal-literacy-session.webp",
+      "size": 106418,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-public-health-awareness.jpg",
+      "relPath": "public/images/hero/mect-public-health-awareness.jpg",
+      "size": 166323,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-public-health-awareness.webp",
+      "relPath": "public/images/hero/mect-public-health-awareness.webp",
+      "size": 154466,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-trustees-campus-walk.webp",
+      "relPath": "public/images/hero/mect-trustees-campus-walk.webp",
+      "size": 314976,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-women-empowerment-seminar.webp",
+      "relPath": "public/images/hero/mect-women-empowerment-seminar.webp",
+      "size": 263288,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\mect-official-emblem.png",
+      "relPath": "public/images/mect-official-emblem.png",
+      "size": 155068,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "public\\images\\og-default.png",
+      "relPath": "public/images/og-default.png",
+      "size": 253997,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "public\\images\\og-disclosures.png",
+      "relPath": "public/images/og-disclosures.png",
+      "size": 255533,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "public\\images\\og-donate.png",
+      "relPath": "public/images/og-donate.png",
+      "size": 255202,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "public\\images\\og-programmes.png",
+      "relPath": "public/images/og-programmes.png",
+      "size": 255063,
+      "ext": ".png"
+    }
+  ],
+  "source_photographs": [
+    {
+      "fullPath": "public\\Er. Japabandhu Kampa.jpeg",
+      "relPath": "public/Er. Japabandhu Kampa.jpeg",
+      "size": 55755,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\app\\icon.png",
+      "relPath": "src/app/icon.png",
+      "size": 155068,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "src\\DSC_1646.JPG.jpeg",
+      "relPath": "src/DSC_1646.JPG.jpeg",
+      "size": 11325223,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\DSC_1663.JPG.jpeg",
+      "relPath": "src/DSC_1663.JPG.jpeg",
+      "size": 11385112,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\DSC_1664.JPG.jpeg",
+      "relPath": "src/DSC_1664.JPG.jpeg",
+      "size": 11498408,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\MECT QRCODE.jpeg",
+      "relPath": "src/MECT QRCODE.jpeg",
+      "size": 362884,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\NOG PIC1.jpg",
+      "relPath": "src/NOG PIC1.jpg",
+      "size": 103506,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.34 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.34 PM (1).jpeg",
+      "size": 92325,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.34 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.34 PM.jpeg",
+      "size": 97765,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.35 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.35 PM (1).jpeg",
+      "size": 188270,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.35 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.35 PM.jpeg",
+      "size": 188270,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.36 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.36 PM (1).jpeg",
+      "size": 166323,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.36 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.36 PM.jpeg",
+      "size": 124960,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.37 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.37 PM (1).jpeg",
+      "size": 342679,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.37 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.37 PM.jpeg",
+      "size": 224304,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.38 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.38 PM.jpeg",
+      "size": 313855,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.39 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.39 PM (1).jpeg",
+      "size": 196121,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.39 PM (2).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.39 PM (2).jpeg",
+      "size": 196121,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.39 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.39 PM.jpeg",
+      "size": 191154,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.40 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.40 PM (1).jpeg",
+      "size": 255641,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.40 PM (2).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.40 PM (2).jpeg",
+      "size": 153465,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-09 at 6.26.40 PM (3).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-09 at 6.26.40 PM (3).jpeg",
+      "size": 62791,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-17 at 11.22.50 PM (1).jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-17 at 11.22.50 PM (1).jpeg",
+      "size": 107439,
+      "ext": ".jpeg"
+    },
+    {
+      "fullPath": "src\\WhatsApp Image 2026-11-17 at 11.22.50 PM.jpeg",
+      "relPath": "src/WhatsApp Image 2026-11-17 at 11.22.50 PM.jpeg",
+      "size": 116355,
+      "ext": ".jpeg"
+    }
+  ],
+  "generated_derivatives": [
+    {
+      "fullPath": "public\\images\\hero\\mect-classroom-study-circle.webp",
+      "relPath": "public/images/hero/mect-classroom-study-circle.webp",
+      "size": 164908,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\hero\\mect-community-field-outreach.webp",
+      "relPath": "public/images/hero/mect-community-field-outreach.webp",
+      "size": 294600,
+      "ext": ".webp"
+    },
+    {
+      "fullPath": "public\\images\\leadership\\er-japabandhu-kampa.jpg",
+      "relPath": "public/images/leadership/er-japabandhu-kampa.jpg",
+      "size": 69038,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "public\\images\\leadership\\er-japabandhu-kampa.webp",
+      "relPath": "public/images/leadership/er-japabandhu-kampa.webp",
+      "size": 65134,
+      "ext": ".webp"
+    }
+  ],
+  "temporary_scratch": [
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-about-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-about-1440.png",
+      "size": 47631,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-contact-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-contact-1440.png",
+      "size": 46061,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-csr-partnerships-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-csr-partnerships-1440.png",
+      "size": 46555,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-donate-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-donate-1440.png",
+      "size": 46796,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-governance-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-governance-1440.png",
+      "size": 46913,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-home-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-home-1440.png",
+      "size": 70545,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-impact-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-impact-1440.png",
+      "size": 43546,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-programmes-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-programmes-1440.png",
+      "size": 44602,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-reports-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-reports-1440.png",
+      "size": 44775,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\audit-statutory-disclosures-1440.png",
+      "relPath": "scratch/audit-screenshots/audit-statutory-disclosures-1440.png",
+      "size": 46765,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-csr-1440.png",
+      "relPath": "scratch/audit-screenshots/final-csr-1440.png",
+      "size": 100437,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-footer-1440.png",
+      "relPath": "scratch/audit-screenshots/final-footer-1440.png",
+      "size": 70033,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-free-edu-1440.png",
+      "relPath": "scratch/audit-screenshots/final-free-edu-1440.png",
+      "size": 64962,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-fundraising-1440.png",
+      "relPath": "scratch/audit-screenshots/final-fundraising-1440.png",
+      "size": 58295,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-hero-desktop-1440.png",
+      "relPath": "scratch/audit-screenshots/final-hero-desktop-1440.png",
+      "size": 70623,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-hero-mobile-320.png",
+      "relPath": "scratch/audit-screenshots/final-hero-mobile-320.png",
+      "size": 26011,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-hero-mobile-375.png",
+      "relPath": "scratch/audit-screenshots/final-hero-mobile-375.png",
+      "size": 28134,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-overview-1440.png",
+      "relPath": "scratch/audit-screenshots/final-overview-1440.png",
+      "size": 51074,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-sbi-1440.png",
+      "relPath": "scratch/audit-screenshots/final-sbi-1440.png",
+      "size": 65161,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-sbi-mobile-320.png",
+      "relPath": "scratch/audit-screenshots/final-sbi-mobile-320.png",
+      "size": 25267,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\final-sbi-mobile-375.png",
+      "relPath": "scratch/audit-screenshots/final-sbi-mobile-375.png",
+      "size": 26862,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-desktop-1280.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-desktop-1280.png",
+      "size": 363758,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-desktop-1440.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-desktop-1440.png",
+      "size": 378786,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-desktop-1920.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-desktop-1920.png",
+      "size": 400283,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-mobile-320.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-mobile-320.png",
+      "size": 26943,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-mobile-360.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-mobile-360.png",
+      "size": 48065,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-reduced-motion-1440.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-reduced-motion-1440.png",
+      "size": 332568,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero\\hero-tablet-768.png",
+      "relPath": "scratch/audit-screenshots/hero/hero-tablet-768.png",
+      "size": 337665,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero-desktop-1920.png",
+      "relPath": "scratch/audit-screenshots/hero-desktop-1920.png",
+      "size": 108116,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero-laptop-1366.png",
+      "relPath": "scratch/audit-screenshots/hero-laptop-1366.png",
+      "size": 357001,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero-mobile-375.png",
+      "relPath": "scratch/audit-screenshots/hero-mobile-375.png",
+      "size": 221951,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\hero-tablet-768.png",
+      "relPath": "scratch/audit-screenshots/hero-tablet-768.png",
+      "size": 250906,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\prod\\home-desktop-1440.png",
+      "relPath": "scratch/audit-screenshots/prod/home-desktop-1440.png",
+      "size": 362906,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\prod\\home-mobile-360.png",
+      "relPath": "scratch/audit-screenshots/prod/home-mobile-360.png",
+      "size": 47155,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\section3-desktop-1920.png",
+      "relPath": "scratch/audit-screenshots/section3-desktop-1920.png",
+      "size": 547500,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\section3-laptop-1366.png",
+      "relPath": "scratch/audit-screenshots/section3-laptop-1366.png",
+      "size": 417323,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\section3-mobile-375.png",
+      "relPath": "scratch/audit-screenshots/section3-mobile-375.png",
+      "size": 232596,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\section3-mobile-390.png",
+      "relPath": "scratch/audit-screenshots/section3-mobile-390.png",
+      "size": 232596,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\section3-tablet-768.png",
+      "relPath": "scratch/audit-screenshots/section3-tablet-768.png",
+      "size": 537536,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\verify-admin-login-1366.png",
+      "relPath": "scratch/audit-screenshots/verify-admin-login-1366.png",
+      "size": 39744,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\verify-donate-1366.png",
+      "relPath": "scratch/audit-screenshots/verify-donate-1366.png",
+      "size": 46501,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\verify-faq-1366.png",
+      "relPath": "scratch/audit-screenshots/verify-faq-1366.png",
+      "size": 46598,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\audit-screenshots\\verify-scholarships-1366.png",
+      "relPath": "scratch/audit-screenshots/verify-scholarships-1366.png",
+      "size": 43376,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\candidates\\arambol-tailor-1920.jpg",
+      "relPath": "scratch/candidates/arambol-tailor-1920.jpg",
+      "size": 268346,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\arambol-tailor.jpg",
+      "relPath": "scratch/candidates/arambol-tailor.jpg",
+      "size": 26138798,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\langar-meals.jpg",
+      "relPath": "scratch/candidates/langar-meals.jpg",
+      "size": 643904,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\rammohun-library.jpg",
+      "relPath": "scratch/candidates/rammohun-library.jpg",
+      "size": 14130336,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\self-help-group.jpg",
+      "relPath": "scratch/candidates/self-help-group.jpg",
+      "size": 1925074,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\varanasi-tailor.jpg",
+      "relPath": "scratch/candidates/varanasi-tailor.jpg",
+      "size": 2564649,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\water-pump-susana.jpg",
+      "relPath": "scratch/candidates/water-pump-susana.jpg",
+      "size": 2344173,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\candidates\\women-shg.jpg",
+      "relPath": "scratch/candidates/women-shg.jpg",
+      "size": 8819200,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\desktop-donate.png",
+      "relPath": "scratch/chatgpt-audit-ss/desktop-donate.png",
+      "size": 47443,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\desktop-home-full.png",
+      "relPath": "scratch/chatgpt-audit-ss/desktop-home-full.png",
+      "size": 3298627,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\desktop-home-hero.png",
+      "relPath": "scratch/chatgpt-audit-ss/desktop-home-hero.png",
+      "size": 1342890,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\desktop-sbi-qr.png",
+      "relPath": "scratch/chatgpt-audit-ss/desktop-sbi-qr.png",
+      "size": 106856,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\mobile-donate.png",
+      "relPath": "scratch/chatgpt-audit-ss/mobile-donate.png",
+      "size": 19390,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\mobile-home-full.png",
+      "relPath": "scratch/chatgpt-audit-ss/mobile-home-full.png",
+      "size": 1163620,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\mobile-home-hero.png",
+      "relPath": "scratch/chatgpt-audit-ss/mobile-home-hero.png",
+      "size": 181282,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\chatgpt-audit-ss\\mobile-sbi-qr.png",
+      "relPath": "scratch/chatgpt-audit-ss/mobile-sbi-qr.png",
+      "size": 102428,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\donate-qr-390.png",
+      "relPath": "scratch/complete-qa/donate-qr-390.png",
+      "size": 27787,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-desktop-1440.png",
+      "relPath": "scratch/complete-qa/home-desktop-1440.png",
+      "size": 1319659,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-desktop-1920.png",
+      "relPath": "scratch/complete-qa/home-desktop-1920.png",
+      "size": 1841398,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-mobile-320.png",
+      "relPath": "scratch/complete-qa/home-mobile-320.png",
+      "size": 137218,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-mobile-360.png",
+      "relPath": "scratch/complete-qa/home-mobile-360.png",
+      "size": 164075,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-mobile-390.png",
+      "relPath": "scratch/complete-qa/home-mobile-390.png",
+      "size": 177844,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\home-tablet-768.png",
+      "relPath": "scratch/complete-qa/home-tablet-768.png",
+      "size": 722313,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\qr-desktop-1440.png",
+      "relPath": "scratch/complete-qa/qr-desktop-1440.png",
+      "size": 103083,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\qr-mobile-390.png",
+      "relPath": "scratch/complete-qa/qr-mobile-390.png",
+      "size": 105150,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\route-about-1440.png",
+      "relPath": "scratch/complete-qa/route-about-1440.png",
+      "size": 47161,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\route-donate-1440.png",
+      "relPath": "scratch/complete-qa/route-donate-1440.png",
+      "size": 47536,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\complete-qa\\route-programmes-1440.png",
+      "relPath": "scratch/complete-qa/route-programmes-1440.png",
+      "size": 45447,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-desktop-1280.png",
+      "relPath": "scratch/hero-qa/hero-desktop-1280.png",
+      "size": 989415,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-desktop-1440.png",
+      "relPath": "scratch/hero-qa/hero-desktop-1440.png",
+      "size": 1316675,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-desktop-1920.png",
+      "relPath": "scratch/hero-qa/hero-desktop-1920.png",
+      "size": 1889466,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-laptop-1024.png",
+      "relPath": "scratch/hero-qa/hero-laptop-1024.png",
+      "size": 856969,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-mobile-320.png",
+      "relPath": "scratch/hero-qa/hero-mobile-320.png",
+      "size": 258572,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-mobile-390.png",
+      "relPath": "scratch/hero-qa/hero-mobile-390.png",
+      "size": 346518,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-reduced-motion-1440.png",
+      "relPath": "scratch/hero-qa/hero-reduced-motion-1440.png",
+      "size": 1176302,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\hero-qa\\hero-tablet-768.png",
+      "relPath": "scratch/hero-qa/hero-tablet-768.png",
+      "size": 732695,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-final-qa\\live-desktop-1440.png",
+      "relPath": "scratch/live-final-qa/live-desktop-1440.png",
+      "size": 1334569,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-final-qa\\live-donate-qr-1440.png",
+      "relPath": "scratch/live-final-qa/live-donate-qr-1440.png",
+      "size": 107513,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-final-qa\\live-donate-qr-390.png",
+      "relPath": "scratch/live-final-qa/live-donate-qr-390.png",
+      "size": 104049,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-final-qa\\live-mobile-390.png",
+      "relPath": "scratch/live-final-qa/live-mobile-390.png",
+      "size": 162377,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-desktop-1440.png",
+      "relPath": "scratch/live-hero-qa/live-desktop-1440.png",
+      "size": 1200236,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-desktop-1920.png",
+      "relPath": "scratch/live-hero-qa/live-desktop-1920.png",
+      "size": 1653399,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-laptop-1024.png",
+      "relPath": "scratch/live-hero-qa/live-laptop-1024.png",
+      "size": 814862,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-mobile-387.png",
+      "relPath": "scratch/live-hero-qa/live-mobile-387.png",
+      "size": 171411,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-mobile-390.png",
+      "relPath": "scratch/live-hero-qa/live-mobile-390.png",
+      "size": 178337,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\live-hero-qa\\live-tablet-768.png",
+      "relPath": "scratch/live-hero-qa/live-tablet-768.png",
+      "size": 723694,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-desktop-1280.png",
+      "relPath": "scratch/mobile-qa/after-desktop-1280.png",
+      "size": 1074887,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-desktop-1440.png",
+      "relPath": "scratch/mobile-qa/after-desktop-1440.png",
+      "size": 1322242,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-desktop-1920.png",
+      "relPath": "scratch/mobile-qa/after-desktop-1920.png",
+      "size": 1771688,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-320.png",
+      "relPath": "scratch/mobile-qa/after-mobile-320.png",
+      "size": 133985,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-360.png",
+      "relPath": "scratch/mobile-qa/after-mobile-360.png",
+      "size": 160389,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-375.png",
+      "relPath": "scratch/mobile-qa/after-mobile-375.png",
+      "size": 175164,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-387.png",
+      "relPath": "scratch/mobile-qa/after-mobile-387.png",
+      "size": 183349,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-390.png",
+      "relPath": "scratch/mobile-qa/after-mobile-390.png",
+      "size": 180984,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-mobile-430.png",
+      "relPath": "scratch/mobile-qa/after-mobile-430.png",
+      "size": 211082,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\after-tablet-768.png",
+      "relPath": "scratch/mobile-qa/after-tablet-768.png",
+      "size": 727604,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\mobile-qa\\before-387x866.png",
+      "relPath": "scratch/mobile-qa/before-387x866.png",
+      "size": 329701,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\qr-qa\\donate-qr-desktop-1440.png",
+      "relPath": "scratch/qr-qa/donate-qr-desktop-1440.png",
+      "size": 100925,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\qr-qa\\donate-qr-mobile-387.png",
+      "relPath": "scratch/qr-qa/donate-qr-mobile-387.png",
+      "size": 102905,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\qr-qa\\home-qr-desktop-1440.png",
+      "relPath": "scratch/qr-qa/home-qr-desktop-1440.png",
+      "size": 101100,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\qr-qa\\home-qr-mobile-387.png",
+      "relPath": "scratch/qr-qa/home-qr-mobile-387.png",
+      "size": 103047,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\anchor-desktop-1440.png",
+      "relPath": "scratch/ux-refinement-ss/anchor-desktop-1440.png",
+      "size": 121920,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\anchor-mobile-390.png",
+      "relPath": "scratch/ux-refinement-ss/anchor-mobile-390.png",
+      "size": 26153,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\desktop-1440-full.png",
+      "relPath": "scratch/ux-refinement-ss/desktop-1440-full.png",
+      "size": 3321689,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\desktop-1440-hero.png",
+      "relPath": "scratch/ux-refinement-ss/desktop-1440-hero.png",
+      "size": 1341237,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\donate-desktop-top.png",
+      "relPath": "scratch/ux-refinement-ss/donate-desktop-top.png",
+      "size": 50559,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\mobile-320-hero.png",
+      "relPath": "scratch/ux-refinement-ss/mobile-320-hero.png",
+      "size": 124917,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\mobile-390-full.png",
+      "relPath": "scratch/ux-refinement-ss/mobile-390-full.png",
+      "size": 1088835,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\mobile-390-hero.png",
+      "relPath": "scratch/ux-refinement-ss/mobile-390-hero.png",
+      "size": 177701,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "scratch\\ux-refinement-ss\\mobile-footer-clear.png",
+      "relPath": "scratch/ux-refinement-ss/mobile-footer-clear.png",
+      "size": 19958,
+      "ext": ".png"
+    }
+  ],
+  "audit_screenshots": [
+    {
+      "fullPath": "audit\\screens\\about-1280px.png",
+      "relPath": "audit/screens/about-1280px.png",
+      "size": 39382,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\about-390px.png",
+      "relPath": "audit/screens/about-390px.png",
+      "size": 21043,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\contact-1280px.png",
+      "relPath": "audit/screens/contact-1280px.png",
+      "size": 38316,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\contact-390px.png",
+      "relPath": "audit/screens/contact-390px.png",
+      "size": 20415,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\faq-1280px.png",
+      "relPath": "audit/screens/faq-1280px.png",
+      "size": 40468,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\faq-390px.png",
+      "relPath": "audit/screens/faq-390px.png",
+      "size": 19621,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\governance-1280px.png",
+      "relPath": "audit/screens/governance-1280px.png",
+      "size": 45103,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\governance-390px.png",
+      "relPath": "audit/screens/governance-390px.png",
+      "size": 22433,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\home-1280px.png",
+      "relPath": "audit/screens/home-1280px.png",
+      "size": 302747,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\home-390px.png",
+      "relPath": "audit/screens/home-390px.png",
+      "size": 62430,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\impact-1280px.png",
+      "relPath": "audit/screens/impact-1280px.png",
+      "size": 54206,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\impact-390px.png",
+      "relPath": "audit/screens/impact-390px.png",
+      "size": 30589,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\programmes-1280px.png",
+      "relPath": "audit/screens/programmes-1280px.png",
+      "size": 50753,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\programmes-390px.png",
+      "relPath": "audit/screens/programmes-390px.png",
+      "size": 28142,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\volunteer-1280px.png",
+      "relPath": "audit/screens/volunteer-1280px.png",
+      "size": 45301,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\screens\\volunteer-390px.png",
+      "relPath": "audit/screens/volunteer-390px.png",
+      "size": 23231,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\about-1024px-desktop.png",
+      "relPath": "audit/visual_qa_phase_14_6/about-1024px-desktop.png",
+      "size": 27252,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\about-1440px-widescreen.png",
+      "relPath": "audit/visual_qa_phase_14_6/about-1440px-widescreen.png",
+      "size": 45668,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\about-320px-mobile-compact.png",
+      "relPath": "audit/visual_qa_phase_14_6/about-320px-mobile-compact.png",
+      "size": 17174,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\about-375px-mobile-standard.png",
+      "relPath": "audit/visual_qa_phase_14_6/about-375px-mobile-standard.png",
+      "size": 18867,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\about-768px-tablet.png",
+      "relPath": "audit/visual_qa_phase_14_6/about-768px-tablet.png",
+      "size": 35761,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\campaigns-1024px-desktop.png",
+      "relPath": "audit/visual_qa_phase_14_6/campaigns-1024px-desktop.png",
+      "size": 26615,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\campaigns-1440px-widescreen.png",
+      "relPath": "audit/visual_qa_phase_14_6/campaigns-1440px-widescreen.png",
+      "size": 150808,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\campaigns-320px-mobile-compact.png",
+      "relPath": "audit/visual_qa_phase_14_6/campaigns-320px-mobile-compact.png",
+      "size": 15053,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\campaigns-375px-mobile-standard.png",
+      "relPath": "audit/visual_qa_phase_14_6/campaigns-375px-mobile-standard.png",
+      "size": 17036,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\campaigns-768px-tablet.png",
+      "relPath": "audit/visual_qa_phase_14_6/campaigns-768px-tablet.png",
+      "size": 189995,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\governance-1024px-desktop.png",
+      "relPath": "audit/visual_qa_phase_14_6/governance-1024px-desktop.png",
+      "size": 33604,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\governance-1440px-widescreen.png",
+      "relPath": "audit/visual_qa_phase_14_6/governance-1440px-widescreen.png",
+      "size": 47148,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\governance-320px-mobile-compact.png",
+      "relPath": "audit/visual_qa_phase_14_6/governance-320px-mobile-compact.png",
+      "size": 16545,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\governance-375px-mobile-standard.png",
+      "relPath": "audit/visual_qa_phase_14_6/governance-375px-mobile-standard.png",
+      "size": 18682,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\governance-768px-tablet.png",
+      "relPath": "audit/visual_qa_phase_14_6/governance-768px-tablet.png",
+      "size": 34574,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\homepage-1024px-desktop.png",
+      "relPath": "audit/visual_qa_phase_14_6/homepage-1024px-desktop.png",
+      "size": 204699,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\homepage-1440px-widescreen.png",
+      "relPath": "audit/visual_qa_phase_14_6/homepage-1440px-widescreen.png",
+      "size": 371263,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\homepage-320px-mobile-compact.png",
+      "relPath": "audit/visual_qa_phase_14_6/homepage-320px-mobile-compact.png",
+      "size": 27665,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\homepage-375px-mobile-standard.png",
+      "relPath": "audit/visual_qa_phase_14_6/homepage-375px-mobile-standard.png",
+      "size": 32492,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\homepage-768px-tablet.png",
+      "relPath": "audit/visual_qa_phase_14_6/homepage-768px-tablet.png",
+      "size": 407323,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\programmes-1024px-desktop.png",
+      "relPath": "audit/visual_qa_phase_14_6/programmes-1024px-desktop.png",
+      "size": 36975,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\programmes-1440px-widescreen.png",
+      "relPath": "audit/visual_qa_phase_14_6/programmes-1440px-widescreen.png",
+      "size": 61352,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\programmes-320px-mobile-compact.png",
+      "relPath": "audit/visual_qa_phase_14_6/programmes-320px-mobile-compact.png",
+      "size": 15697,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\programmes-375px-mobile-standard.png",
+      "relPath": "audit/visual_qa_phase_14_6/programmes-375px-mobile-standard.png",
+      "size": 19521,
+      "ext": ".png"
+    },
+    {
+      "fullPath": "audit\\visual_qa_phase_14_6\\programmes-768px-tablet.png",
+      "relPath": "audit/visual_qa_phase_14_6/programmes-768px-tablet.png",
+      "size": 52412,
+      "ext": ".png"
+    }
+  ],
+  "third_party_stock": [
+    {
+      "fullPath": "src\\NGO PIC 2.jpg",
+      "relPath": "src/NGO PIC 2.jpg",
+      "size": 75332,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC 4.jpg",
+      "relPath": "src/NGO PIC 4.jpg",
+      "size": 35098,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC 6.jpg",
+      "relPath": "src/NGO PIC 6.jpg",
+      "size": 90487,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC 7.jpg",
+      "relPath": "src/NGO PIC 7.jpg",
+      "size": 91419,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC 8.jpg",
+      "relPath": "src/NGO PIC 8.jpg",
+      "size": 234898,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC 9.jpg",
+      "relPath": "src/NGO PIC 9.jpg",
+      "size": 61550,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC3.jpg",
+      "relPath": "src/NGO PIC3.jpg",
+      "size": 11782,
+      "ext": ".jpg"
+    },
+    {
+      "fullPath": "src\\NGO PIC5.jpg",
+      "relPath": "src/NGO PIC5.jpg",
+      "size": 125984,
+      "ext": ".jpg"
+    }
+  ],
+  "unused_assets": [
+    {
+      "fullPath": "public\\documents\\mect-csr1-certificate.png",
+      "relPath": "public/documents/mect-csr1-certificate.png",
+      "size": 121056,
+      "ext": ".png"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class JwtTokenProvider {
@@ -54,6 +55,23 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .subject(username)
                 .claim("role", role)
+                .claim("tokenType", "ADMIN")
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(expiry))
+                .signWith(signingKey)
+                .compact();
+    }
+
+    public String generatePortalAccessToken(String userUuid, List<String> roles) {
+        Instant now = Instant.now();
+        Instant expiry = now.plusSeconds(accessTokenValiditySeconds);
+        String primaryRole = roles.contains("ROLE_DONOR") ? "ROLE_DONOR" : "ROLE_GENERAL_USER";
+
+        return Jwts.builder()
+                .subject(userUuid)
+                .claim("role", primaryRole)
+                .claim("roles", roles)
+                .claim("tokenType", "PORTAL")
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(expiry))
                 .signWith(signingKey)
@@ -105,6 +123,16 @@ public class JwtTokenProvider {
                 .parseSignedClaims(token)
                 .getPayload();
         return claims.get("role", String.class);
+    }
+
+    public String getTokenTypeFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(signingKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        String tokenType = claims.get("tokenType", String.class);
+        return tokenType != null ? tokenType : "ADMIN";
     }
 
     public long getAccessTokenValiditySeconds() {

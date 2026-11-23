@@ -19,15 +19,15 @@ export function Card({
 }: CardProps) {
   const variantStyles = {
     default:
-      "bg-[#FDFBF7] border border-[#0B3B24]/12 shadow-xs hover:border-[#0B3B24]/25 transition-all duration-200",
+      "bg-cream/60 border border-border-warm shadow-xs hover:border-terracotta/45 transition-all duration-200",
     elevated:
-      "bg-white border border-[#0B3B24]/10 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300",
+      "bg-white border border-border-warm shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300",
     accent:
-      "bg-[#F4EFE6] border-l-4 border-l-[#C5A059] border-y border-r border-[#0B3B24]/10 rounded-r-xs shadow-xs",
+      "bg-sand-light border-l-4 border-l-terracotta border-y border-r border-border-warm rounded-r-xs shadow-xs",
     dark:
-      "bg-[#072617] text-[#EDE6D8] border border-[#C5A059]/25 shadow-lg relative overflow-hidden",
+      "bg-forest text-cream border border-sand/30 shadow-lg relative overflow-hidden",
     stat:
-      "bg-white border border-[#0B3B24]/10 rounded-xs p-6 shadow-xs hover:border-[#C5A059]/50 transition-all duration-200",
+      "bg-white border border-border-warm rounded-xs p-6 shadow-xs hover:border-terracotta/60 transition-all duration-200",
   };
 
   const paddingStyles = {
@@ -38,7 +38,7 @@ export function Card({
   };
 
   const interactiveStyles = isClickable
-    ? "cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] active:scale-[0.99]"
+    ? "cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta active:scale-[0.99]"
     : isHoverable
     ? "hover:shadow-md hover:-translate-y-0.5 transition-transform"
     : "";
@@ -74,7 +74,7 @@ export function CardTitle({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={`font-serif text-xl sm:text-2xl font-bold text-[#0B3B24] tracking-tight ${className}`}
+      className={`font-serif text-xl sm:text-2xl font-bold text-forest tracking-tight ${className}`}
       {...props}
     >
       {children}
@@ -88,7 +88,7 @@ export function CardDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className={`text-xs sm:text-sm text-[#4A5568] leading-relaxed ${className}`} {...props}>
+    <p className={`text-xs sm:text-sm text-ink-sand leading-relaxed ${className}`} {...props}>
       {children}
     </p>
   );
@@ -112,12 +112,11 @@ export function CardFooter({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`pt-4 mt-4 border-t border-[#0B3B24]/10 flex items-center justify-between ${className}`} {...props}>
+    <div className={`pt-4 mt-4 border-t border-border-warm flex items-center justify-between ${className}`} {...props}>
       {children}
     </div>
   );
 }
 
-// Re-export Badge for backwards compatibility across existing pages
 export { Badge, type BadgeProps } from "./Badge";
 

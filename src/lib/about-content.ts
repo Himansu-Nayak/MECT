@@ -34,10 +34,10 @@ export interface RoadmapMilestone {
 
 export const ABOUT_CONTENT = {
   hero: {
-    badge: "12+ Years of Civic Service • Est. 2013, Odisha",
-    title: "Dedicated to Educational Dignity, Rural Livelihoods & Fiduciary Philanthropy",
+    badge: "Public Charitable Trust • Odisha",
+    title: "Strengthening People, Families & Communities Across Odisha",
     description:
-      "Mahaveer Educational & Charitable Trust (MECT) was established in 2013 as an irrevocable public charitable trust to empower underprivileged students, train rural women in vocational trades, and provide vital community relief across Odisha.",
+      "Mahaveer Educational & Charitable Trust (MECT) was established in 2013 as a public charitable trust rooted in Odisha. Its work connects education, women's vocational livelihoods, safe-water access, nutrition and community welfare to support people and communities.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "About Us" },
@@ -46,21 +46,21 @@ export const ABOUT_CONTENT = {
 
   narrative: {
     badge: "Foundational Philosophy",
-    title: "True Philanthropy Enables Self-Reliance Through Education & Civic Welfare.",
+    title: "Lasting Community Progress Connects Opportunity With Dignity and Care.",
     paragraphs: [
-      "Higher education and vocational training represent the single most transformative engine of social and economic mobility in India. Yet, across Western Odisha, thousands of meritorious students and rural women find their potential constrained by poverty, lack of resources, and institutional barriers.",
-      "Mahaveer Educational & Charitable Trust (MECT) was registered in Balangir in 2013 to address these systemic challenges. Over the past 12+ years, we have operated free remedial education centres, equipped over 120 rural women with certified tailoring skills, provided life-saving Jal Seva drinking water to thousands during scorching summers, and ensured hospital food relief through Jan Ahar.",
+      "People and families experience connected challenges. Access to learning, practical livelihood skills, safe water and nutritious food can all contribute to dignity, stability and opportunity.",
+      "Registered in Balangir in 2013, Mahaveer Educational & Charitable Trust (MECT) has developed programmes in remedial learning, women's vocational training, Jal Seva drinking-water support and Jan Ahar food relief. These initiatives respond to local priorities and are guided by a commitment to dignity, responsible stewardship and community participation.",
     ],
     safeguards: [
       {
-        title: "100% Direct Disbursals & Fiduciary Integrity",
+        title: "100% Direct Disbursals & Financial Integrity",
         description:
           "All educational scholarship subsidies are remitted directly to accredited institutions via verified bank transfers under a strict zero-cash policy.",
       },
       {
-        title: "Section 80G Tax Exemption Certified",
+        title: "Section 80G Historical Approval & Compliance Notice",
         description:
-          "Donors receive 50% tax deductions under Indian Income Tax Act Section 80G (URN: AADTM5474FF20241, issued by IT Dept CPC).",
+          "Historical Form 10AC approval (URN: AADTM5474FF20241, dated 29-01-2024) covered AY 2024-25 through AY 2026-27 (FY 2023-24 to FY 2025-26). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
       },
     ],
   },
@@ -70,21 +70,21 @@ export const ABOUT_CONTENT = {
     title: "Vision & Operational Mission",
     vision: {
       tag: "Institutional Vision",
-      title: "An Empowered, Educated & Self-Reliant Odisha",
+      title: "An Odisha Where People and Communities Can Thrive",
       description:
-        "An Odisha where every hardworking student and aspiring citizen, irrespective of socioeconomic background or geographic remoteness, has access to accredited higher education, dignified livelihood skills, and clean community resources.",
+        "An Odisha where individuals, families and communities can access opportunities for learning, dignified livelihoods, essential community support and the resources needed to build self-reliant futures.",
     },
     mission: {
       tag: "Operational Mission",
-      title: "Direct Grants, Livelihood Training & Community Relief",
+      title: "Opportunity, Livelihoods & Essential Community Support",
       description:
-        "To deliver transparent college fee grants, operate rural remedial education centres, provide certified women's vocational training, expand summer drinking water stations (Jal Seva), and foster sustainable community welfare across all 30 districts of Odisha.",
+        "To support educational access, women's vocational skills, safe-water initiatives, food and nutrition relief, and community welfare through transparent programme delivery and responsible partnerships.",
     },
   },
 
   values: [
     {
-      title: "Fiduciary Integrity",
+      title: "Financial Integrity & Trust",
       description:
         "100% of approved scholarship subsidies are remitted directly to accredited colleges. Governed by registered deed with mandatory annual audits.",
       icon: ShieldCheck,
@@ -105,9 +105,9 @@ export const ABOUT_CONTENT = {
       tag: "Ethos",
     },
     {
-      title: "Non-Sectarian Universality",
+      title: "Universal Civic Inclusion",
       description:
-        "Strictly neutral and non-denominational. Open to all deserving citizens across Odisha regardless of caste, creed, gender, or background.",
+        "Open to all beneficiaries across Odisha regardless of caste, creed, or gender, ensuring equal access to education, water, livelihoods, and relief.",
       icon: Users,
       tag: "Inclusion",
     },
@@ -117,10 +117,10 @@ export const ABOUT_CONTENT = {
     {
       tier: "Tier 1",
       title: "Board of Trustees",
-      role: "Fiduciary Stewardship & Charter Custodians",
+      role: "Trustee Stewardship & Charter Custodians",
       description:
-        "Led by Settler Founder & Permanent Managing Trustee Er. Japabandhu Kampa alongside life trustees Yudhisthir Rana, Ramachandra Biswal, and Sambit Kumar Dang under registered Trust Deed No. 40311302194.",
-      status: "Permanent Honorary Trustees (Deed Clause XVI)",
+        "Led by Settler Founder & Chairman cum Managing Trustee Er. Japabandhu Kampa alongside the Honorary Board of Trustees under registered Trust Deed No. 40311302194.",
+      status: "Honorary Trustee Governance (Deed Clause XVI)",
       icon: Landmark,
     },
     {
@@ -153,17 +153,17 @@ export const ABOUT_CONTENT = {
   ] as GovernanceTierItem[],
 
   roadmap: {
-    badge: "12-Year Evolution",
+    badge: "13+ Year Journey",
     title: "Institutional Journey & Milestones",
     subtitle:
-      "From our registered inception in 2013 to statewide higher education grants and corporate CSR collaborations.",
+      "From our registered inception in 2013 through grassroots programmes, statutory registrations, institutional development and collaboration.",
     milestones: [
       {
         year: "2013",
         badge: "Inception",
         title: "Registration of Trust Deed in Balangir",
         description:
-          "Formal execution of Trust Deed on 27-07-2013 and registration before District Sub-Registrar, Balangir (Doc No. 40311302194). PAN card issued (AADTM5474F).",
+          "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar (Doc No. 40311302194). PAN card issued (AADTM5474F).",
       },
       {
         year: "2014–2020",
@@ -182,9 +182,9 @@ export const ABOUT_CONTENT = {
       {
         year: "2024",
         badge: "Statutory",
-        title: "12A, 80G & MCA CSR-1 Government Accreditations",
+        title: "12A, 80G & National NGO Portal Accreditations",
         description:
-          "CBDT Form 10AC orders for 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241). MCA CSR-1 approved (CSR00081063) and NITI Aayog NGO Darpan listing (OR/2024/0466491).",
+          "CBDT Form 10AC orders for 12A (URN: AADTM5474FE20231) and 80G (URN: AADTM5474FF20241), and NITI Aayog NGO Darpan listing (OR/2024/0466491).",
       },
       {
         year: "2025–2026",
@@ -203,7 +203,7 @@ export const ABOUT_CONTENT = {
     statement:
       "Designed and developed the digital platform for Mahaveer Educational & Charitable Trust, implementing high-performance Next.js architecture, WCAG 2.2 AA accessibility standards, and security-hardened public desks to support institutional transparency.",
     skills: ["Next.js 16", "TypeScript", "Spring Boot", "PostgreSQL", "Tailwind CSS"],
-    profileUrl: "https://www.linkedin.com/in/himansu-nayak-243b0482h7/",
+    profileUrl: undefined,
     disclaimer:
       "Independent Technical Development Acknowledgement • Non-Trustee Technical Contributor",
   },
@@ -212,6 +212,6 @@ export const ABOUT_CONTENT = {
     badge: "Public Participation",
     title: "Join Us in Advancing Educational Dignity & Rural Welfare Across Odisha",
     subtitle:
-      "Whether you are a CSR leader, an aspiring volunteer mentor, an educator, or a donor seeking 80G tax exemption, your partnership strengthens our collective mission.",
+      "Whether you are a CSR leader, an aspiring volunteer mentor, an educator, or a prospective donor, your partnership strengthens our collective mission.",
   },
 };

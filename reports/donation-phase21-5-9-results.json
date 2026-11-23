@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-11-17T03:11:39.442Z",
+  "donationPageAudit": {
+    "status": 200,
+    "heroTitle": "Give With Purpose. Support Work That Matters.",
+    "heroDesc": "Your contribution supports MECT's documented charitable activities and programme objectives. Choose how you would like to participate and review the applicable donation terms before proceeding.",
+    "hasBreadcrumb": true
+  },
+  "stepsFlowAudit": {
+    "progressNavFound": true,
+    "step1Title": "Step 1 — Select Charitable Programme",
+    "programmesFound": 3,
+    "step2Title": "Step 2 — Select Contribution Amount",
+    "presetsFound": 4,
+    "step3Title": "Step 3 — Donor Information",
+    "step4Title": "Step 4 — Review & Payment Method",
+    "step5Title": "Step 5 — Complete Contribution (₹1,000)"
+  },
+  "statutoryDisclosureAudit": {
+    "present": true,
+    "mentionsUrn": true,
+    "mentionsPendingCa": true
+  },
+  "paymentChannelsAudit": {
+    "hasCashfreeOption": true,
+    "hasSbiDirectOption": true,
+    "sbiQrImgPresent": true,
+    "bankDetailsTablePresent": true,
+    "utrFormPresent": true
+  },
+  "receiptTransparencyAudit": {
+    "hasReceiptBlock": true,
+    "hasTaxReportingBlock": true,
+    "hasCorpusAllocationBlock": true
+  },
+  "homepageFiveSectionAudit": {
+    "heroPresent": true,
+    "introPresent": true,
+    "pillarsPresent": true,
+    "storiesPresent": true,
+    "impactPresent": true,
+    "totalMainSections": 5,
+    "exactFiveSectionsPreserved": true
+  },
+  "viewportsTested": [
+    {
+      "viewport": "320px",
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "360px",
+      "width": 360,
+      "height": 740,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "390px",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "430px",
+      "width": 430,
+      "height": 932,
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "768px",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "1024px",
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "1280px",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "1440px",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "1920px",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "innerWidth": 1920,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    },
+    {
+      "viewport": "landscape_844px",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 844,
+      "innerWidth": 844,
+      "overflowPx": 0,
+      "zeroOverflowPassed": true
+    }
+  ],
+  "reducedMotionTest": {
+    "emulatedProperly": true,
+    "pageLoadedWithoutError": true
+  },
+  "consoleErrors": []
+}

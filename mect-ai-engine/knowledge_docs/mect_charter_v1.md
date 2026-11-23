@@ -87,26 +87,25 @@ Candidate appraisals combine academic consistency and financial need evaluation 
 
 ---
 
-### SECTION 6: STATUTORY CREDENTIALS, 80G TAX EXEMPTION & BANK DETAILS
+### SECTION 6: STATUTORY CREDENTIALS, TAX DISCLOSURE & BANK DETAILS
 6.1 **Government Registrations & Accreditations:**  
 - **Permanent Account Number (PAN):** `AADTM5474F` (Issued 27/07/2013).
 - **Income Tax Section 12A URN:** `AADTM5474FE20231` (Form 10AC, Date: 29-01-2024, Assessment Years 2024-25 to 2026-27).
-- **Income Tax Section 80G URN:** `AADTM5474FF20241` (Form 10AC, Date: 29-01-2024, 50% Tax Deduction, AY 2024-25 to 2026-27).
+- **Income Tax Section 80G Order URN:** `AADTM5474FF20241` (Form 10AC, Date: 29-01-2024, Historical order AY 2024-25 to 2026-27).
 - **MCA CSR-1 Registration:** `CSR00081063` (Approved 09-11-2024, ROC-Delhi, SRN-N14617237).
 - **NITI Aayog NGO Darpan Unique ID:** `OR/2024/0466491`.
 - **Ministry of Social Justice & Empowerment (MoSJE) e-Anudaan:** `OR/00040466`.
 
-6.2 **Form 10BD & 10BE Compliance:**  
-All donors receive an official 80G tax receipt and annual Form 10BE certificate filed with the Income Tax Department for automatic reflection in AIS / Form 26AS.
+6.2 **Statutory Receipts & Accounting Acknowledgements:**  
+Donors receive an Official Donation Receipt & Payment Acknowledgement after the Trust verifies their State Bank of India transfer or UPI payment against its bank ledger. Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility.
 
-6.3 **Official Domestic Bank Account for Remittances:**  
-- **Account Name:** MAHAVEER EDUCATIONAL AND CHARITABLE TRUST  
-- **Bank Name:** Union Bank of India  
-- **Branch:** Balangir Branch, Odisha  
-- **Account Number:** `381002010014021`  
-- **IFSC Code:** `UBIN0538108`  
-- **Account Type:** Current Account  
-- **MICR Code:** 767026002  
+6.3 **Official Domestic Bank Account for Remittances (Direct SBI & UPI Only; No Gateway):**  
+- **Account Name:** MAHAVEER EDUCATIONAL & CHARITABLE TRUST  
+- **Bank Name:** State Bank of India  
+- **Branch:** Rajendra College Square, Bolangir, Odisha  
+- **Account Number:** `33341302498`  
+- **IFSC Code:** `SBIN0001701`  
+- **UPI ID:** `86971610172@sbi`  
 
 6.4 **Independent Financial Audits:**  
 All trust expenditures, grant transfers, and receipts are subject to mandatory annual statutory audit by independent Chartered Accountants, and are maintained in the administrative secretariat.
