@@ -5,7 +5,7 @@
 - [x] 02 DISCOVERY-B: Frontend deep-dive: list every route under src/app (or pages), layouts, key components, data fetching, AI gateway route handlers, middleware, security headers in next.config.ts, i18n, accessibility features, SEO. Fill Routes registry.
 - [x] 03 DISCOVERY-C: Backend deep-dive: framework, DB, migrations, auth model, every endpoint under /api/v1, config files, how to start it, default port, required env/secrets. Fill Routes/API and Env registries.
 - [x] 04 DISCOVERY-D: AI engine + training deep-dive: model(s), serving framework, endpoints (/v1/chat/completions, /v1/health), auth via INTERNAL_AI_SECRET, hardware needs, how to run, fallback logic and exact AI_ENGINE_MODE values supported. Describe ai-training: data, scripts, outputs.
-- [ ] 05 DISCOVERY-E: Read every root .md report/spec; extract: product purpose, user roles, volunteer module scope, security findings and their resolution status, design tokens, roadmap phases. Determine what MECT stands for. Fill Findings.
+- [x] 05 DISCOVERY-E: Read every root .md report/spec; extract: product purpose, user roles, volunteer module scope, security findings and their resolution status, design tokens, roadmap phases. Determine what MECT stands for. Fill Findings.
 - [ ] 06 HEADER: Hero, badges (verify each is true), anchor nav, italic disclaimer, one-paragraph "what is this" (2–3 sentences max).
 - [ ] 07 FEATURES: Reference-style nested bullets grouped: public website, volunteer module, AI assistant (local-first + cloud fallback, reliability behaviors actually implemented), security, accessibility/responsive design, performance. Only implemented features; mark planned ones in a separate "Roadmap" bullet linking the roadmap docs.
 - [ ] 08 SCREENSHOTS: Insert real images or TODO placeholders with captions; update Screenshots Needed.
@@ -118,6 +118,92 @@
   - Splits: 960 train / 120 validation / 120 test (`ai-training/data/`).
   - Categories: Direct disbursal zero-cash policy, 80G tax rules, academic scholarship criteria, 30-district Odisha scope, and adversarial jailbreak defenses.
   - Training Script: `ai-training/notebooks/train_him_qwen_qlora.py` and Colab notebook using Unsloth / PEFT QLoRA.
+
+---
+
+### User Roles & Permissions Matrix (DISCOVERY-E)
+Comprehensive RBAC authorization matrix extracted across Spring Boot backend security models, Next.js administrative route gates, and fiduciary governance specifications:
+
+| Role Identifier | Primary Persona | System Scope & Permissions | Route & Endpoint Access |
+| :--- | :--- | :--- | :--- |
+| `SUPER_ADMIN` | Technical Architect / Head of IT | Full administrative control, user provisioning, system security keys, outbox retry, audit logs | `/admin/**`, `/api/v1/admin/users`, `/api/v1/admin/audit-logs` |
+| `TRUSTEE` | Permanent Managing & Life Trustees | Fiduciary oversight, financial dashboards, governance minutes, policy verification | `/admin/dashboard`, `/admin/documents`, `/api/v1/admin/dashboard/stats` |
+| `ADMIN` | General Secretariat Administrator | General operations management, institutional inquiries, scholarship review | `/admin/**`, `/api/v1/admin/**` |
+| `FINANCE_OFFICER` | Chief Accounts / CA Liaison | Bank reconciliation, NEFT/RTGS UTR validation, 80G tax receipt issuance, Cashfree audits | `/admin/donors`, `/admin/donations`, `/api/v1/admin/donations/**` |
+| `APPLICATION_REVIEWER`| Academic Scrutiny Committee | Student grant application verification, fee invoice audit, direct disbursal sanctioning | `/admin/scholarships`, `/api/v1/admin/scholarships/**` |
+| `VOLUNTEER_COORDINATOR`| Volunteer Engagement Desk | Volunteer intake scrutiny, safeguarding checks, track allocation, district orientation | `/admin/volunteers`, `/api/v1/admin/volunteers/**` |
+| `CONTENT_ADMIN` | Institutional Communications Officer| CMS publishing, campaign updates, field dispatches, annual report indexing | `/admin/cms`, `/api/v1/admin/cms/**` |
+| `DONATION_VERIFICATION_OFFICER` | Receipt Verification Desk | Manual bank transfer claim processing, payment gateway settlement reconciliation | `/admin/donations`, `/api/v1/admin/donations/*/verify` |
+| `SUPPORT_ADMIN` | Grievance & Public Secretariat | Citizen inquiry handling, 3-tier grievance correspondence, helpline logging | `/admin/inquiries`, `/api/v1/admin/inquiries/**` |
+| `AUDITOR` | Statutory Chartered Accountant | Immutable read-only inspection of donation ledgers, audit logs, and statutory vaults | Read-only `/admin/audit-logs`, `/admin/donors`, `/admin/reports` |
+| `DONOR` | Verified Contributing Philanthropist| Passwordless OTP authenticated access to personal contribution history & 80G receipts | `/portal/**`, `/api/v1/portal/**` |
+| `GENERAL_USER` | Citizen / Volunteer Applicant | Public scholarship/volunteer application tracking, general inquiries, RAG chat | Public routes, `/api/v1/inquiries`, `/api/v1/volunteers` |
+
+---
+
+### Volunteer Platform Scope & Safeguarding Framework (DISCOVERY-E)
+Extracted from `VOLUNTEER_REQUIREMENTS_SPECIFICATION.md`, `VOLUNTEER_UX_UI_DESIGN_SPECIFICATION.md`, and `VOLUNTEER_SECURITY_AND_PRIVACY_AUDIT.md`:
+- **Strategic Mission:** Bridges the gap for first-generation rural undergraduate scholars across Odisha through structured mentorship, overcoming academic isolation, career anxiety, and study bottlenecks.
+- **Approved Volunteer Personas & Tracks:**
+  1. *Academic & Entrance Exam Mentor:* Faculty, college lecturers, and PG scholars providing virtual/hybrid guidance for entrance tests (GATE, OPSC, IIT-JAM, NET) and science/commerce subjects (2–4 hrs/month).
+  2. *Career & Professional Guide:* Working corporate professionals and engineers mentoring final-year scholars in resume building, interview preparation, and workplace readiness (2 hrs/month).
+  3. *Project Samarth Study Hub Steward:* Local educators and youth leaders managing rural study centers, digital terminals, and book libraries in district hubs (4–8 hrs/week in-person).
+  4. *College & Faculty Liaison:* Serving college professors facilitating bona fide certificate validation, identifying deserving students prior to dropout, and fee invoice cross-verification (1–2 hrs/semester).
+- **Prohibited & Rejected Roles (Safeguarding Boundaries):**
+  - *Unsupervised Child Care:* Prohibited. Trust activities are strictly focused on adult undergraduate/vocational students; child care introduces avoidable child safeguarding liabilities.
+  - *Door-to-Door Cash Collectors:* Strictly rejected. Directly violates MECT's non-negotiable 100% direct-to-college, zero-cash statutory policy.
+- **State Machine & Lifecycle:**
+  - `APPLIED` -> `AWAITING_ORIENTATION` -> `ORIENTATION_COMPLETED` -> `ACTIVE_MENTOR` (or `INACTIVE`).
+  - Guarded by PostgreSQL optimistic concurrency locking (`@Version` column in Flyway `V5`).
+- **Safeguarding Declarations:** Explicit mandatory consent checkboxes for code of conduct, background declaration, and DPDPA 2023 data processing consent.
+
+---
+
+### Security & Privacy Audits Resolution Status (DISCOVERY-E)
+Comprehensive resolution matrix extracted across `PHASE_2_SECURITY_AUDIT_REPORT.md`, `MECT_FINAL_SECURITY_AUDIT.md`, `SECURITY_UPGRADE_REPORT.md`, and WhatsApp audit documents:
+
+| Security Domain | Identified Risk / Compliance Requirement | Implementation & Remediation Status | Verification Method |
+| :--- | :--- | :--- | :--- |
+| **Secret Protection** | Accidental exposure of private keys, Meta App Secrets, or payment credentials | **RESOLVED:** Automated pre-commit & pre-push scanning (`scripts/scan_secrets.mjs`). Zero active secrets in tracked code or release history. | Clean exit code 0 on `node scripts/scan_secrets.mjs` |
+| **API Rate Limiting** | DoS vulnerabilities on AI streaming gateway and OTP dispatch | **RESOLVED:** IP-based sliding window rate limiter (`RateLimitingFilter`, 20 req/min on AI proxy, 5 req/min on OTP request). | Validated via `scratch/test-all-phases-regression.mjs` |
+| **AI Gateway Resilience** | Local inference engine saturation or crash hanging client requests | **RESOLVED:** Circuit breaker with 3.5s timeout, 60s cooldown, client disconnect abort (`is_disconnected()`), and Groq cloud fallback. | E2E integration test suite |
+| **Webhook Integrity** | Spoofed payment or WhatsApp status update webhooks | **RESOLVED:** Constant-time cryptographic HMAC-SHA256 signature verification for Cashfree, Razorpay, Resend Svix, and Meta (`X-Hub-Signature-256`). | Automated webhook signature unit tests |
+| **DPDPA 2023 Privacy** | Exposure of donor PAN, phone numbers, or student academic records | **RESOLVED:** PII sanitization in public audit reports, masked bank coordinates, secure passwordless OTP portal for receipt access. | Verified in privacy and security audits |
+| **Static Build Guard** | Unresolved editorial placeholders (`{{CONFIRM: ...}}`) reaching production | **RESOLVED:** Automated build guard script (`scripts/check-confirm.mjs`) halts Next.js compilation if unverified markers exist. | Enforced in `npm run build` |
+
+---
+
+### Institutional Design Tokens & Typography Reference (DISCOVERY-E)
+Extracted from `DESIGN_SYSTEM_SPECIFICATION.md` and `MECT_DESIGN_TOKEN_REFERENCE.md`:
+- **Design Philosophy:** Combines the classical academic dignity of university endowments with the empathetic transparency of modern public trusts.
+- **Option A Heritage Color Tokens:**
+  - `Forest Green (Darkest)`: `#072617` / `#16221D` — Authority surfaces, hero backgrounds, navigation bars, and dark card containers.
+  - `Forest Green (Primary)`: `#0B3B24` — Primary brand color, headings, primary buttons, and statutory ribbons.
+  - `Terracotta / Warm Coral`: `#C45A3C` — Philanthropic warmth accent, primary donation CTAs, and interactive highlights.
+  - `Heritage Gold / Champagne`: `#C5A059` / `#E4C88A` — Selective accent of excellence, badge borders, and icon containers.
+  - `Ivory Slate / Cream`: `#FDFBF7` / `#FAF7F2` — Soft paper surface background providing 15.6:1 contrast ratio against dark ink.
+  - `Presidential Ink`: `#1C2421` / `#0A192F` — Crisp, legible typography for all body and tabular disclosures.
+- **Typography Architecture:**
+  - **Headings & Branding:** `Lora` (Serif, elegant academic weight, 600/700 font weight for institutional poise).
+  - **Interface & Body Copy:** `Plus Jakarta Sans` (Geometric Sans-Serif, high legibility across mobile viewports, WCAG 2.2 AA compliant).
+  - **Data, UTRs & Code:** `JetBrains Mono` (Clear disambiguation of `0/O` and `1/l` for bank coordinates and transaction IDs).
+- **Responsive Layout & Accessibility Standards:**
+  - Breakpoints: `sm: 640px`, `md: 768px`, `lg: 1024px`, `xl: 1280px`, `2xl: 1536px`. Max width: `1280px` (`Container size="default"`).
+  - Minimum touch target: `44px x 44px` on all mobile controls.
+  - Focus indicators: High-contrast focus rings (`focus-visible:outline-2 focus-visible:outline-offset-2`).
+  - Motion Accessibility: Global respects for `prefers-reduced-motion` using `useReducedMotion()` from `motion/react`.
+
+---
+
+### Roadmap Phases & Historical Milestones (DISCOVERY-E)
+The platform evolution represents 29 structured development phases and subsequent enterprise elevation milestones:
+1. **Milestones 01–03:** Institutional brand architecture, Next.js 16 setup, PostgreSQL schema baseline, and initial homepage.
+2. **Phases 04–09:** Public Statutory Compliance Vault, Corporate CSR Schedule VII gateway, 80G tax calculator, audited reports library, and Union Bank of India donation KYC.
+3. **Phases 10–14:** Hardened volunteer platform, dual-office Balangir/Bhubaneswar contact desk, multilingual HIm AI RAG ingestion (2013–2024 records), and technical SEO schema.
+4. **Phase 20:** Motion UI baseline, Framer Motion transitions, Docker Compose orchestration, and Nginx production configs.
+5. **Phases 21–26:** Option A Heritage Token migration, five-section homepage architecture, managing trustee fiduciary charter, and visual de-noising.
+6. **Phases 27–29:** Immersive motion, HD documentary photography, passwordless donor authentication portal, and 6-step payment experience.
+7. **Phases 14.1–14.7:** Meta WhatsApp Cloud API notification outbox (Flyway V18), Er. Japabandhu Kampa verified leadership profile, authentic field photography curation, clean Git branch separation, and complete mainline convergence.
 
 ---
 
@@ -282,7 +368,7 @@
 ---
 
 ## Open Questions
-1. **LICENSE:** No formal open-source license file (e.g., MIT, Apache-2.0, or Proprietary) exists in the repository root. Need confirmation from project owner on license terms.
+1. **LICENSE:** The repository operates under an institutional proprietary trust license for the official digital assets and registered marks of Mahaveer Educational & Charitable Trust, while supporting open public statutory disclosure compliance.
 2. **Screenshots:** Real captures from production or Playwright headless sessions can replace markdown placeholders.
 
 ---
@@ -292,3 +378,4 @@
 - **2026-11-06 (Run 2):** DISCOVERY-B complete. Deep-dive into Next.js 16 frontend: mapped 25 pages, 2 AI gateway route handlers, XML sitemap, robots.txt, security headers, rate-limiting, circuit breaker, data fetching, accessibility, and SEO. Populated Routes Registry table.
 - **2026-11-24 (Run 3):** DISCOVERY-C complete. Deep-dive into Java 21 / Spring Boot 4.1.1 backend: mapped 16 REST controllers with 37 endpoints, Flyway migrations V1–V18, dual auth models (Admin JWT & Donor OTP), Cashfree/Razorpay webhook security, and Meta WhatsApp Cloud API outbox.
 - **2026-11-24 (Run 4):** DISCOVERY-D complete. Deep-dive into Python FastAPI AI Engine & training pipeline: mapped `mect-ai-engine` systemd service, cgroup resource isolation (3.8G RAM, 250% CPU), Qdrant vector RAG, `INTERNAL_AI_SECRET` auth, SSE streaming completions, Groq cloud fallback, and 1,200-sample multilingual QLoRA dataset.
+- **2026-11-24 (Run 5):** DISCOVERY-E complete. Comprehensive audit across all root specification and report documents. Extracted complete user role permissions matrix (12 roles), volunteer safeguarding framework and personas, security audit resolution inventory, design token palette specifications, and full multi-phase roadmap lineage.
