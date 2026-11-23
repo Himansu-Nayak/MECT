@@ -314,8 +314,8 @@ export function FreeEducationSection() {
               <div className="relative group">
                 <div className="relative w-full aspect-[16/10] rounded-sm overflow-hidden border border-border-warm shadow-xl bg-forest-deep">
                   <Image
-                    src="/images/hero/illustrative-community-library-reading.webp"
-                    alt="Students and scholars studying and reading in a community learning library"
+                    src="/images/hero/mect-classroom-study-circle.webp"
+                    alt="MECT rural secondary students participating in quiet peer-learning study circle in Balangir"
                     fill
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
@@ -329,10 +329,10 @@ export function FreeEducationSection() {
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
                     <div className="inline-flex items-center gap-1.5 rounded-xs bg-forest-deep/90 border border-sand/35 px-2.5 py-1 text-[11px] text-cream font-sans backdrop-blur-xs">
                       <MapPin className="w-3 h-3 text-sand shrink-0" aria-hidden="true" />
-                      <span className="font-medium">Project Samarth Learning Hub • Study Library</span>
+                      <span className="font-medium">Project Samarth Learning Hub • Balangir Centre</span>
                     </div>
                     <span className="hidden sm:inline-block text-[10px] text-sand uppercase tracking-wider font-mono bg-forest-deep/80 px-2 py-0.5 rounded-2xs border border-sand/25">
-                      Illustrative
+                      Field Documentary
                     </span>
                   </div>
                 </div>
