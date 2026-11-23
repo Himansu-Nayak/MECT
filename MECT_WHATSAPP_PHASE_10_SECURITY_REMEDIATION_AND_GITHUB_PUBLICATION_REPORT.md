@@ -24,7 +24,7 @@ The secret was identified as an exposed **Groq API Key** (`gsk_...`) originally 
 4. **End-to-End Regression Validation:**
    - **Backend:** 18/18 critical payment and WhatsApp unit and integration tests passed (`BUILD SUCCESS`).
    - **Database:** Flyway migrations V1 through V18 validated and executed cleanly against PostgreSQL-compatible schema.
-   - **Statutory Financial Integrity:** Banking configuration confirmed matching Trust records (`SBI A/C 33341302498 / IFSC SBIN0001701`).
+   - **Statutory Financial Integrity:** Banking configuration confirmed matching Trust records (`SBI A/C 3334****498 / IFSC SBIN0001701`).
    - **Frontend:** TypeScript static typecheck (`npx tsc --noEmit`) passed with 0 errors; Next.js 16.4.6 production build (`npm run build`) successfully generated all 58 routes including the new administrative `/admin/whatsapp` portal.
 5. **Canonical Repository Migration & GitHub Publication:** The remote origin was migrated to `https://github.com/Himansu-Nayak/MECT.git`. The feature branch `feat/mect-whatsapp-donation-notifications` was pushed and accepted cleanly by GitHub with **zero Push Protection rejections**.
 6. **Strict Deployment Safeguards Respected:** Zero production VPS deployments performed; zero SSH connections opened; `WHATSAPP_ENABLED=false` preserved by default.
@@ -118,7 +118,7 @@ mvn test "-Dtest=WhatsAppCloudApiClientTests,WhatsAppWebhookSecurityTests,WhatsA
 - **Skipped:** 0
 - **Build Status:** `BUILD SUCCESS` (01:10 min)
 - **Database Schema Validation:** Flyway verified 18 migrations (`Current version of schema "PUBLIC": 18`).
-- **Bank Verification:** `SBI A/C 33341302498 / IFSC SBIN0001701` validated.
+- **Bank Verification:** Statutory SBI bank configuration (`SBI A/C 3334****498 / IFSC SBIN0001701`) validated.
 
 ### 5.2 Frontend TypeScript Typecheck
 Executed:
