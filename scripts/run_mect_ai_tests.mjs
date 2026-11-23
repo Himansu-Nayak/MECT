@@ -5,7 +5,13 @@ import path from 'path';
 const mectKnowledgeTs = fs.readFileSync(path.resolve('src/lib/ai/mect-knowledge.ts'), 'utf8');
 
 // Build prompt using the source definition
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+
+if (!GROQ_API_KEY) {
+  console.error("ERROR: GROQ_API_KEY environment variable is required to run MECT AI tests.");
+  console.error("Please export GROQ_API_KEY in your environment before executing this script.");
+  process.exit(1);
+}
 
 function getSystemPrompt(lang = 'en') {
   const langText = lang === 'or' ? 'Odia (ଓଡ଼ିଆ)' : lang === 'hi' ? 'Hindi (हिन्दी)' : 'English';
