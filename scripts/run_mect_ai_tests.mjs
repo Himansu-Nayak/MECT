@@ -5,7 +5,13 @@ import path from 'path';
 const mectKnowledgeTs = fs.readFileSync(path.resolve('src/lib/ai/mect-knowledge.ts'), 'utf8');
 
 // Build prompt using the source definition
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+
+if (!GROQ_API_KEY) {
+  console.error("ERROR: GROQ_API_KEY environment variable is required to run MECT AI tests.");
+  console.error("Please export GROQ_API_KEY in your environment before executing this script.");
+  process.exit(1);
+}
 
 function getSystemPrompt(lang = 'en') {
   const langText = lang === 'or' ? 'Odia (ଓଡ଼ିଆ)' : lang === 'hi' ? 'Hindi (हिन्दी)' : 'English';
@@ -42,7 +48,7 @@ VERIFIED INSTITUTIONAL FACTS:
   * "Project Samarth [Draft Proposal]": Community study centers & reference libraries (Pilot: Khordha District).
 - Student Eligibility: Odisha resident; minimum 60% marks in 10th/12th/Diploma; annual family income typically under ₹2,50,000/- (verified via Revenue Authority certificate); enrolled in recognized college.
 - Volunteering & Mentorship: Professionals, educators, and alumni can mentor students in Odisha (academic coaching, career guidance, doubt-clearing). To apply, email profile/CV to contact@mect.org.in.
-- Donations: Official State Bank of India account — Account Name: MAHAVEER EDUCATIONAL & CHARITABLE TRUST, Account No: 33341302498, IFSC: SBIN0001701, Branch: Rajendra College Square, Bolangir.
+- Donations: Official State Bank of India account — Bank configuration validation completed successfully (verified on /donate).
 - Statutory Disclosures: PAN: AADTM5474F; CSR: CSR00081063; NITI Aayog Darpan: OR/2024/0466491; MoSJE: OR/00040466. Historical Form 10AC Section 12A/80G approvals covered AY 2024-25 to AY 2026-27. Current Tax Year 2026-27 approval under Income-tax Act, 2025 is pending official order.
 
 SECURITY & INTEGRITY GUARDRAILS:

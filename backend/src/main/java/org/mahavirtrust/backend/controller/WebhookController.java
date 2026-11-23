@@ -5,6 +5,7 @@ import org.mahavirtrust.backend.service.donation.DonationLifecycleService;
 import org.mahavirtrust.backend.service.notification.EmailProvider;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
 import org.mahavirtrust.backend.service.notification.WhatsAppProvider;
+import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppWebhookService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class WebhookController {
     private final DonationLifecycleService donationService;
     private final EmailProvider emailProvider;
     private final WhatsAppProvider whatsAppProvider;
+    private final WhatsAppWebhookService whatsAppWebhookService;
     private final NotificationOutboxService outboxService;
     private final ObjectMapper objectMapper;
     private final String whatsappVerifyToken;
@@ -30,12 +32,14 @@ public class WebhookController {
             DonationLifecycleService donationService,
             EmailProvider emailProvider,
             WhatsAppProvider whatsAppProvider,
+            WhatsAppWebhookService whatsAppWebhookService,
             NotificationOutboxService outboxService,
             ObjectMapper objectMapper,
             @Value("${app.whatsapp.verify-token:}") String whatsappVerifyToken) {
         this.donationService = donationService;
         this.emailProvider = emailProvider;
         this.whatsAppProvider = whatsAppProvider;
+        this.whatsAppWebhookService = whatsAppWebhookService;
         this.outboxService = outboxService;
         this.objectMapper = objectMapper;
         this.whatsappVerifyToken = whatsappVerifyToken != null ? whatsappVerifyToken.trim() : "";
@@ -91,6 +95,9 @@ public class WebhookController {
             @RequestParam(name = "hub.mode", required = false) String mode,
             @RequestParam(name = "hub.verify_token", required = false) String verifyToken,
             @RequestParam(name = "hub.challenge", required = false) String challenge) {
+        if (whatsAppWebhookService.verifyChallenge(mode, verifyToken, challenge)) {
+            return ResponseEntity.ok(challenge);
+        }
         if ("subscribe".equals(mode) && !whatsappVerifyToken.isBlank()
                 && whatsappVerifyToken.equals(verifyToken) && challenge != null) {
             return ResponseEntity.ok(challenge);
@@ -103,27 +110,13 @@ public class WebhookController {
             @RequestBody String rawPayload,
             @RequestHeader(value = "X-Hub-Signature-256", required = false) String signatureHeader) {
 
-        if (!whatsAppProvider.verifyWebhookSignature(rawPayload, signatureHeader)) {
+        if (!whatsAppWebhookService.verifySignature(rawPayload, signatureHeader)
+                && !whatsAppProvider.verifyWebhookSignature(rawPayload, signatureHeader)) {
             throw new BadCredentialsException("Invalid WhatsApp webhook signature.");
         }
 
         try {
-            JsonNode root = objectMapper.readTree(rawPayload);
-            if (root.has("entry") && root.get("entry").isArray()) {
-                for (JsonNode entry : root.get("entry")) {
-                    for (JsonNode change : entry.path("changes")) {
-                        JsonNode statuses = change.path("value").path("statuses");
-                        if (statuses.isArray()) {
-                            for (JsonNode st : statuses) {
-                                String msgId = st.path("id").asString(null);
-                                String statusVal = st.path("status").asString("unknown");
-                                String dedupEventId = (msgId != null && !msgId.isBlank()) ? (msgId + ":" + statusVal) : null;
-                                outboxService.recordWebhookDeliveryUpdate("WHATSAPP", "META_CLOUD", msgId, statusVal, rawPayload, dedupEventId);
-                            }
-                        }
-                    }
-                }
-            }
+            whatsAppWebhookService.processPayload(rawPayload);
             return ResponseEntity.ok(Map.of("status", "RECORDED"));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(Map.of("status", "INVALID_PAYLOAD"));

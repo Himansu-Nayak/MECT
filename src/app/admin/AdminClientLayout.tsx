@@ -75,6 +75,12 @@ function AdminLayoutShell({ children }: { children: React.ReactNode }) {
       roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_AUDITOR"],
     },
     {
+      label: "WhatsApp Notifications",
+      href: "/admin/whatsapp",
+      icon: MessageSquare,
+      roles: ["ROLE_SUPER_ADMIN", "ROLE_TRUSTEE", "ROLE_ADMIN", "ROLE_FINANCE_OFFICER", "ROLE_AUDITOR"],
+    },
+    {
       label: "CMS Pages",
       href: "/admin/cms",
       icon: FileEdit,

@@ -25,14 +25,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isOdiaEnabled) {
-      setLocaleState("en");
       document.documentElement.lang = "en";
       return;
     }
     try {
       const stored = localStorage.getItem("mect_locale") as Locale | null;
       if (stored === "en" || stored === "or") {
-        setLocaleState(stored);
+        queueMicrotask(() => {
+          setLocaleState(stored);
+        });
         document.documentElement.lang = stored;
       }
     } catch {

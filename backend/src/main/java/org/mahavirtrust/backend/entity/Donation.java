@@ -56,6 +56,9 @@ public class Donation {
     @Column(name = "communication_consent", nullable = false)
     private boolean communicationConsent = false;
 
+    @Column(name = "whatsapp_consent", nullable = false)
+    private boolean whatsappConsent = false;
+
     @Column(nullable = false, length = 30)
     private String status = "CREATED";
 
@@ -107,6 +110,8 @@ public class Donation {
     public void setAnonymous(boolean anonymous) { this.anonymous = anonymous; }
     public boolean isCommunicationConsent() { return communicationConsent; }
     public void setCommunicationConsent(boolean communicationConsent) { this.communicationConsent = communicationConsent; }
+    public boolean isWhatsappConsent() { return whatsappConsent; }
+    public void setWhatsappConsent(boolean whatsappConsent) { this.whatsappConsent = whatsappConsent; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
     public String getPaymentMethod() { return paymentMethod; }

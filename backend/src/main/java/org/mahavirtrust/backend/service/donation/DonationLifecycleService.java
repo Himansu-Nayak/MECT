@@ -11,6 +11,8 @@ import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.AuditLogService;
 import org.mahavirtrust.backend.service.notification.EmailTemplateRenderer;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
+import org.mahavirtrust.backend.service.notification.whatsapp.DonorMessagingPreferenceService;
+import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppNotificationService;
 import org.mahavirtrust.backend.service.payment.CashfreePaymentGatewayService;
 import org.mahavirtrust.backend.service.payment.PaymentGatewayProvider;
 import org.mahavirtrust.backend.service.payment.RazorpayPaymentGatewayService;
@@ -63,6 +65,8 @@ public class DonationLifecycleService {
     private final ObjectMapper objectMapper;
     private final PaymentConfigurationService paymentConfigurationService;
     private final ManualBankTransferClaimRepository manualClaimRepository;
+    private final WhatsAppNotificationService whatsAppNotificationService;
+    private final DonorMessagingPreferenceService donorMessagingPreferenceService;
 
     private final String activeProviderName;
     private final int qrExpiryMinutes;
@@ -86,6 +90,8 @@ public class DonationLifecycleService {
             ObjectMapper objectMapper,
             PaymentConfigurationService paymentConfigurationService,
             ManualBankTransferClaimRepository manualClaimRepository,
+            WhatsAppNotificationService whatsAppNotificationService,
+            DonorMessagingPreferenceService donorMessagingPreferenceService,
             @Value("${app.payment.provider:CASHFREE}") String activeProviderName,
             @Value("${app.payment.qr-expiry-minutes:15}") int qrExpiryMinutes,
             @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled) {
@@ -106,6 +112,8 @@ public class DonationLifecycleService {
         this.objectMapper = objectMapper;
         this.paymentConfigurationService = paymentConfigurationService;
         this.manualClaimRepository = manualClaimRepository;
+        this.whatsAppNotificationService = whatsAppNotificationService;
+        this.donorMessagingPreferenceService = donorMessagingPreferenceService;
         this.activeProviderName = activeProviderName != null ? activeProviderName.trim().toUpperCase(Locale.ROOT) : "CASHFREE";
         this.qrExpiryMinutes = qrExpiryMinutes;
         this.schedulingEnabled = schedulingEnabled;
@@ -195,6 +203,20 @@ public class DonationLifecycleService {
         donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
         donation.setAnonymous(req.anonymous());
         donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
+        boolean waConsent = (req.whatsappConsent() != null && req.whatsappConsent())
+                || (req.communicationConsent() != null && req.communicationConsent());
+        donation.setWhatsappConsent(waConsent);
+        if (waConsent && donation.getDonorPhone() != null && !donation.getDonorPhone().isBlank()) {
+            donorMessagingPreferenceService.saveOrUpdateConsent(
+                    donation.getDonorPhone(),
+                    donation.getDonorEmail(),
+                    portalUser != null ? portalUser.getId() : null,
+                    true,
+                    false,
+                    clientIp,
+                    "DONATION_CHECKOUT"
+            );
+        }
         String defaultMethod = "CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider()) ? "GATEWAY_CHECKOUT" : "UPI_QR";
         donation.setPaymentMethod(req.paymentMethod() != null && !req.paymentMethod().isBlank() ? req.paymentMethod() : defaultMethod);
         donation.setStatus("CREATED");
@@ -785,6 +807,14 @@ public class DonationLifecycleService {
                     )
             );
         }
+
+        // Enterprise WhatsApp Subsystem: Instant alert to administrators and verified receipt to opted-in donors
+        String paymentMode = payment != null && payment.getProvider() != null ? payment.getProvider() : "DIRECT";
+        String paymentRef = payment != null && payment.getProviderPaymentId() != null
+                ? payment.getProviderPaymentId()
+                : (payment != null && payment.getBankReference() != null ? payment.getBankReference() : donation.getDonationReference());
+        whatsAppNotificationService.notifyAdminsOnDonation(donation, paymentMode, paymentRef);
+        whatsAppNotificationService.notifyDonorOnDonation(donation, receipt);
     }
 
     private void markNonSuccessPaymentInternal(
@@ -940,6 +970,13 @@ public class DonationLifecycleService {
                     Map.of()
             );
         }
+
+        // Enterprise WhatsApp Subsystem: Instant refund alert to administrators
+        whatsAppNotificationService.notifyAdminsOnRefund(
+                donation,
+                refundId != null ? refundId : providerEventId,
+                refundedAmount
+        );
 
         return Map.of("status", "PROCESSED_REFUND", "donationStatus", targetStatus);
     }
@@ -1147,6 +1184,20 @@ public class DonationLifecycleService {
             donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
             donation.setAnonymous(req.anonymous());
             donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
+            boolean waConsent = (req.whatsappConsent() != null && req.whatsappConsent())
+                    || (req.communicationConsent() != null && req.communicationConsent());
+            donation.setWhatsappConsent(waConsent);
+            if (waConsent && donation.getDonorPhone() != null && !donation.getDonorPhone().isBlank()) {
+                donorMessagingPreferenceService.saveOrUpdateConsent(
+                        donation.getDonorPhone(),
+                        donation.getDonorEmail(),
+                        portalUser != null ? portalUser.getId() : null,
+                        true,
+                        false,
+                        clientIp,
+                        "MANUAL_CLAIM"
+                );
+            }
         } else if (donation.getPortalUser() == null && portalUser != null) {
             donation.setPortalUser(portalUser);
         }
@@ -1203,6 +1254,10 @@ public class DonationLifecycleService {
                     Map.of("claimReference", claim.getClaimReference(), "utr", utrNormalized)
             );
         }
+
+        // Enterprise WhatsApp Subsystem: Instant alert to administrators and pending status template to opted-in donor
+        whatsAppNotificationService.notifyAdminsOnClaim(donation, utrNormalized);
+        whatsAppNotificationService.notifyDonorOnClaimSubmitted(donation, utrNormalized);
 
         auditLogService.record(
                 portalUser != null ? "portal:" + portalUser.getUserUuid() : "PUBLIC_CHECKOUT",
@@ -1292,6 +1347,10 @@ public class DonationLifecycleService {
             String targetDonationStatus = "REJECTED".equals(decision) ? "FAILED" : "PENDING_VERIFICATION";
             donation.setStatus(targetDonationStatus);
             donationRepository.save(donation);
+
+            if ("REJECTED".equals(decision)) {
+                whatsAppNotificationService.notifyDonorOnClaimRejected(donation, req.verificationNotes());
+            }
 
             Payment payment = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(donation.getId()).orElse(null);
             if (payment != null) {

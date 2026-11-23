@@ -98,7 +98,11 @@ public class NotificationOutboxService {
         outbox.setDonationId(donationId);
         outbox.setChannel("EMAIL");
         outbox.setRecipient(recipientEmail.trim());
-        outbox.setSenderIdentity(isDonationSender ? fromDonations : fromNotifications);
+        String sender = isDonationSender ? fromDonations : fromNotifications;
+        if (sender == null || sender.isBlank()) {
+            sender = "MECT Notifications <notifications@mect.org.in>";
+        }
+        outbox.setSenderIdentity(sender);
         outbox.setSubject(rendered.subject());
         outbox.setTemplateCode(rendered.templateVersion());
         outbox.setAttachmentReceiptId(attachmentReceiptId);
@@ -141,7 +145,10 @@ public class NotificationOutboxService {
         outbox.setDonationId(donationId);
         outbox.setChannel("WHATSAPP");
         outbox.setRecipient(consent.getPhoneNumber());
-        outbox.setSenderIdentity(whatsAppProvider.getProviderName());
+        String sender = whatsAppProvider != null && whatsAppProvider.getProviderName() != null && !whatsAppProvider.getProviderName().isBlank()
+                ? whatsAppProvider.getProviderName()
+                : "META_WHATSAPP_CLOUD";
+        outbox.setSenderIdentity(sender);
         outbox.setSubject(eventType);
         outbox.setTemplateCode(templateName.isBlank() ? "UNAPPROVED_TEMPLATE" : templateName);
         outbox.setPayloadJson(writeJsonSafe(Map.of("params", templateParams)));

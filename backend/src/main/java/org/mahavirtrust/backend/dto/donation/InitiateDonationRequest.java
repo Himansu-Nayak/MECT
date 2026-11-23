@@ -37,7 +37,9 @@ public record InitiateDonationRequest(
         @Pattern(regexp = "UPI_QR|GATEWAY_CHECKOUT", message = "Payment method must be UPI_QR or GATEWAY_CHECKOUT")
         String paymentMethod,
 
-        Boolean communicationConsent
+        Boolean communicationConsent,
+
+        Boolean whatsappConsent
 ) {
     public InitiateDonationRequest(
             String programmeCode,
@@ -51,7 +53,22 @@ public record InitiateDonationRequest(
             boolean anonymous,
             String paymentMethod) {
         this(programmeCode, amount, donorName, donorEmail, donorPhone, donorAddress, donorPan,
-                dedicationMessage, anonymous, paymentMethod, Boolean.TRUE);
+                dedicationMessage, anonymous, paymentMethod, Boolean.TRUE, Boolean.FALSE);
+    }
+
+    public InitiateDonationRequest(
+            String programmeCode,
+            BigDecimal amount,
+            String donorName,
+            String donorEmail,
+            String donorPhone,
+            String donorAddress,
+            String donorPan,
+            String dedicationMessage,
+            boolean anonymous,
+            String paymentMethod,
+            Boolean communicationConsent) {
+        this(programmeCode, amount, donorName, donorEmail, donorPhone, donorAddress, donorPan,
+                dedicationMessage, anonymous, paymentMethod, communicationConsent, Boolean.FALSE);
     }
 }
-

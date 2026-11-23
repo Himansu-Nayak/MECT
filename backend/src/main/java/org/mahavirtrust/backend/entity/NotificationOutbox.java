@@ -30,7 +30,7 @@ public class NotificationOutbox {
     private String recipient;
 
     @Column(name = "sender_identity", nullable = false, length = 255)
-    private String senderIdentity;
+    private String senderIdentity = "SYSTEM";
 
     @Column(length = 255)
     private String subject;
@@ -68,8 +68,22 @@ public class NotificationOutbox {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt = Instant.now();
 
+    @PrePersist
+    public void onPrePersist() {
+        if (createdAt == null) createdAt = Instant.now();
+        if (updatedAt == null) updatedAt = Instant.now();
+        if (senderIdentity == null || senderIdentity.isBlank()) {
+            senderIdentity = "SYSTEM";
+        }
+    }
+
     @PreUpdate
-    public void onUpdate() { this.updatedAt = Instant.now(); }
+    public void onUpdate() {
+        this.updatedAt = Instant.now();
+        if (senderIdentity == null || senderIdentity.isBlank()) {
+            senderIdentity = "SYSTEM";
+        }
+    }
 
     public Long getId() { return id; }
     public String getEventKey() { return eventKey; }
