@@ -99,7 +99,7 @@ An automated forensic scanning script (`scratch/audit_secret_scan.js`) was execu
 | **GitHub Tokens** | `ghp_...`, `github_pat_...` | All 255 commits | 0 tokens | **PASS** |
 | **Cashfree Secrets** | `cfsk_ma_...` | All 255 commits | 0 secrets (mock test fixtures only) | **PASS** |
 | **Razorpay Secrets** | `rzp_live_...`, `rzp_test_...` | All 255 commits | 0 secrets (mock test fixtures only) | **PASS** |
-| **Private Keys** | `-----BEGIN PRIVATE KEY-----` | All 255 commits | 0 keys (documentation scanner regex text only) | **PASS** |
+| **Private Keys** | `[BEGIN-PRIVATE-KEY-PATTERN]` | All 255 commits | 0 keys (documentation scanner regex text only) | **PASS** |
 
 ---
 

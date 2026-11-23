@@ -20,7 +20,7 @@ All high-severity vulnerabilities identified in earlier iterations have been res
 ### 2.1 Automated Secret Scanning Execution
 - **Tooling:** `scripts/scan_secrets.mjs` combined with regex-based historical Git commit inspection.
 - **Scope:** Complete Git log (`git rev-list --all`) covering commits across all feature and fix branches.
-- **Scan Targets:** API keys (Groq, Resend, Cashfree, Razorpay, Twilio, MSG91), private keys (`-----BEGIN PRIVATE KEY-----`), JWT secrets, and database passwords.
+- **Scan Targets:** API keys (Groq, Resend, Cashfree, Razorpay, Twilio, MSG91), private keys (`[BEGIN-PRIVATE-KEY-PATTERN]`), JWT secrets, and database passwords.
 
 ### 2.2 Findings & Sanitization Record
 
