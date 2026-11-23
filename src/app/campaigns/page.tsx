@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -92,16 +93,24 @@ export default function CampaignsDirectoryPage() {
                   <Badge variant="forest">Proposed Target • Up to 200 Students</Badge>
                   <span className="text-[11px] font-mono text-ink-muted">Code: EDUCATION_LEARNING</span>
                 </div>
-                <div className="h-64 bg-forest/5 border border-forest/15 rounded-xs p-6 flex flex-col justify-center items-center text-center space-y-3">
-                  <div className="w-16 h-16 rounded-full bg-forest text-cream flex items-center justify-center shadow-xs">
-                    <GraduationCap className="w-8 h-8 text-sand" />
+                <div className="relative h-64 w-full rounded-xs overflow-hidden border border-border-soft group bg-forest shadow-xs">
+                  <Image
+                    src="/images/hero/mect-civic-pledge-classroom.webp"
+                    alt="Rural secondary students participating in remedial education and civic pledge in Balangir"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/25 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 text-cream flex items-center justify-between">
+                    <div className="inline-flex items-center gap-1.5 text-xs bg-forest-dark/80 px-2.5 py-1 rounded-2xs border border-white/10 backdrop-blur-xs font-sans">
+                      <GraduationCap className="w-3.5 h-3.5 text-sand" aria-hidden="true" />
+                      <span>Classroom Mentoring Circle</span>
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-sand font-semibold bg-forest-dark/80 px-2 py-0.5 rounded-2xs border border-white/10">
+                      Balangir Centre
+                    </span>
                   </div>
-                  <div className="font-serif font-bold text-xl text-forest">
-                    Free Education Target: Up to 200 Students
-                  </div>
-                  <p className="text-xs text-ink-sand max-w-xs leading-relaxed">
-                    Proposed target — up to 200 students, subject to formal board sanction and confirmed funding. Confirmed funded places currently stand at zero.
-                  </p>
                 </div>
                 <div>
                   <h3 className="font-serif text-2xl font-bold text-forest">
