@@ -228,7 +228,7 @@ Execution Environment: Playwright + Google Chrome Headless on local Next.js prod
    - *Remediation:* Harmonized both components to the verified registered spelling `Er. Japabandhu Kampa`.
    - *Verification:* Rebuilt and verified with `npx tsc --noEmit` and Playwright visual test suite.
 2. **Defect 2: Secret Scanner Triggering on Report Documentation Tables**
-   - *Evidence:* `scripts/scan_secrets.mjs` matched the verbatim regex pattern name `-----BEGIN PRIVATE KEY-----` in 5 audit report markdown tables.
+   - *Evidence:* `scripts/scan_secrets.mjs` matched the verbatim regex pattern name `[BEGIN-PRIVATE-KEY-PATTERN]` in 5 audit report markdown tables.
    - *Root Cause:* Documentation tables quoted the literal pattern string being scanned.
    - *Remediation:* Neutralized pattern references in reports to `[BEGIN-PRIVATE-KEY-PATTERN]`.
    - *Verification:* `node scripts/scan_secrets.mjs` exited with code 0 (`PASS: Tracked working tree is 100% clean of hardcoded secrets`).

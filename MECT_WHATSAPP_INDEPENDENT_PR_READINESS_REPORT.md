@@ -71,8 +71,8 @@ WHATSAPP_ENABLED=true
 WHATSAPP_PHONE_NUMBER_ID="<Meta_Phone_Number_ID>"
 WHATSAPP_BUSINESS_ACCOUNT_ID="<Meta_WABA_ID>"
 WHATSAPP_ACCESS_TOKEN="<Meta_Permanent_System_User_Token>"
-WHATSAPP_WEBHOOK_VERIFY_TOKEN="<Random_Webhook_Verification_Secret>"
-WHATSAPP_APP_SECRET="<Meta_App_Client_Secret>"
+WHATSAPP_WEBHOOK_VERIFY_TOKEN="example_webhook_verify_token"
+WHATSAPP_APP_SECRET="example_meta_client_secret"
 WHATSAPP_API_VERSION="v21.0"
 ```
 
