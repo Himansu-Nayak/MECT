@@ -67,7 +67,9 @@ function DonationClaimSectionContent() {
           opt.code.replace(/_/g, "") === paramProgramme.replace(/_/g, "")
       );
       if (match) {
-        setSelectedProgramme(match.code);
+        queueMicrotask(() => {
+          setSelectedProgramme((prev) => (prev !== match.code ? match.code : prev));
+        });
       }
     }
   }, [paramProgramme]);

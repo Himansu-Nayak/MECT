@@ -102,7 +102,31 @@ export default function AdminWhatsAppNotificationCenterPage() {
   };
 
   useEffect(() => {
-    loadData(true);
+    if (!token) return;
+    let isSubscribed = true;
+    Promise.all([
+      fetchAdminWhatsAppStatus(token),
+      fetchAdminWhatsAppRecipients(token),
+      fetchAdminWhatsAppTemplates(token),
+      fetchAdminWhatsAppLogs(token),
+    ])
+      .then(([statusData, recipData, tplData, logData]) => {
+        if (!isSubscribed) return;
+        setStatus(statusData);
+        setRecipients(recipData);
+        setTemplates(tplData);
+        setLogs(logData);
+        setLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (!isSubscribed) return;
+        setError(err instanceof Error ? err.message : "Failed to load WhatsApp data.");
+        setLoading(false);
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
   }, [token]);
 
   const handleRefresh = () => {
