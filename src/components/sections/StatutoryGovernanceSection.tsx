@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
@@ -190,6 +191,46 @@ export function StatutoryGovernanceSection() {
             );
           })}
         </StaggerGroup>
+
+        {/* Founder Custodianship & Institutional Leadership Plaque */}
+        <Reveal direction="up" delay={0.12}>
+          <div className="p-7 sm:p-8 rounded-[2px] bg-white border border-[#E7E0D5] shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-terracotta/40 transition-colors">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div className="relative w-24 h-32 sm:w-28 sm:h-36 rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-forest shrink-0 shadow-xs group">
+                <Image
+                  src="/images/leadership/er-japabandhu-kampa.webp"
+                  alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT"
+                  fill
+                  sizes="(max-width: 640px) 96px, 112px"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-2 rounded-[2px] border border-forest/20 bg-forest/5 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-forest font-semibold">
+                  <span>Founder Custodianship • Deed Clauses 8(2) &amp; 10</span>
+                </div>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
+                  Er. Japabandhu Kampa
+                </h3>
+                <p className="text-xs sm:text-sm text-terracotta font-semibold font-sans">
+                  Settler Founder &amp; Chairman cum Managing Trustee
+                </p>
+                <p className="text-xs text-ink-secondary leading-relaxed font-sans max-w-2xl pt-1">
+                  Designated life founder Chairman cum Managing Trustee under registered Trust Deed No. 40311302194. Executive administration, statutory accounts, and property custody are governed under Clause XVI permanent honorary non-remunerative service.
+                </p>
+              </div>
+            </div>
+
+            <div className="shrink-0 self-start sm:self-center">
+              <Link href="/governance#leadership">
+                <Button variant="outline" size="sm" className="border-[#E7E0D5] text-ink hover:bg-cream">
+                  <span>View Governance Role</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" aria-hidden="true" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </Reveal>
 
         {/* Physical Audit Ledger & Office Inspection Plaque */}
         <Reveal direction="up" delay={0.15}>

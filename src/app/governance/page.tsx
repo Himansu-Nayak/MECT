@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { createPageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -247,9 +248,16 @@ export default function GovernancePage() {
                     </span>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xs bg-forest text-cream flex items-center justify-center shrink-0 font-serif font-bold text-xl border border-sand shadow-xs">
-                      JK
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                    <div className="relative w-24 h-32 sm:w-28 sm:h-36 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
+                      <Image
+                        src="/images/leadership/er-japabandhu-kampa.webp"
+                        alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT"
+                        fill
+                        sizes="(max-width: 640px) 96px, 112px"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        priority
+                      />
                     </div>
                     <div className="space-y-1">
                       <h3 className="font-serif text-xl sm:text-2xl font-bold text-forest">
@@ -295,9 +303,15 @@ export default function GovernancePage() {
                     </span>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xs bg-sand text-forest flex items-center justify-center shrink-0 font-serif font-bold text-xl border border-border-warm">
-                      BT
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                    <div className="relative w-24 h-32 sm:w-28 sm:h-36 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
+                      <Image
+                        src="/images/hero/mect-trustees-campus-walk.webp"
+                        alt="MECT Trustees and community elders conducting field review at Puīntalā campus"
+                        fill
+                        sizes="(max-width: 640px) 96px, 112px"
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      />
                     </div>
                     <div className="space-y-1">
                       <h3 className="font-serif text-xl sm:text-2xl font-bold text-forest">

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -105,6 +106,22 @@ export function DifferentiatedCampaignsSection() {
                     <p className="text-xs text-terracotta-dark font-mono font-semibold mt-0.5">
                       Status: Proposed Target (Confirmed Funded: 0 / 200)
                     </p>
+                  </div>
+                </div>
+
+                {/* Authentic Educational Cohort Visual */}
+                <div className="relative h-[210px] w-full rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-[#16221D] shadow-xs">
+                  <Image
+                    src="/images/hero/mect-civic-pledge-classroom.webp"
+                    alt="MECT secondary and higher secondary scholarship candidates in Balangir"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] font-mono text-white/90">
+                    <span className="bg-black/60 px-2 py-0.5 rounded-[2px] backdrop-blur-xs">Balangir Field Centre</span>
+                    <span className="bg-black/60 px-2 py-0.5 rounded-[2px] backdrop-blur-xs">Target Intake Window</span>
                   </div>
                 </div>
 

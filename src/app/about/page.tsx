@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -270,6 +271,43 @@ export default function AboutPage() {
               subtitle="Mahaveer Educational & Charitable Trust (MECT) operates under a multi-tier governance model designed to prevent conflict of interest, eliminate administrative bias, and guarantee institutional accountability."
               align="center"
             />
+
+            {/* Managing Trustee Leadership Showcase */}
+            <div className="bg-white rounded-xs border border-border-warm shadow-xs p-7 sm:p-9 flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-8 max-w-5xl mx-auto">
+              <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
+                <Image
+                  src="/images/leadership/er-japabandhu-kampa.webp"
+                  alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee"
+                  fill
+                  sizes="(max-width: 640px) 112px, 128px"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <Badge variant="forest" size="sm">
+                    Settler Founder &amp; Managing Trustee
+                  </Badge>
+                  <span className="text-[11px] font-mono text-terracotta-dark bg-terracotta/8 px-2.5 py-0.5 rounded-2xs font-semibold">
+                    Deed Clauses 8(2) &amp; 10
+                  </span>
+                </div>
+                <div className="space-y-1">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
+                    Er. Japabandhu Kampa
+                  </h3>
+                  <p className="text-xs sm:text-sm text-terracotta-dark font-semibold font-sans">
+                    Settler Founder &amp; Chairman cum Managing Trustee
+                  </p>
+                  <p className="text-[11px] font-mono text-ink-secondary">
+                    Permanent Honorary Governance • Registered Trust Deed No. 40311302194
+                  </p>
+                </div>
+                <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
+                  Named as Settler Founder in the registered Trust Deed and designated life founder Chairman cum Managing Trustee under founding deed Clauses 8(2) and 10. Custodianship of Trust properties, books of accounts, and statutory filings is administered under Clause XVI honorary service without personal remuneration.
+                </p>
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {governanceTiers.map((tier) => {
