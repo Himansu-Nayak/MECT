@@ -48,7 +48,7 @@ VERIFIED INSTITUTIONAL FACTS:
   * "Project Samarth [Draft Proposal]": Community study centers & reference libraries (Pilot: Khordha District).
 - Student Eligibility: Odisha resident; minimum 60% marks in 10th/12th/Diploma; annual family income typically under ₹2,50,000/- (verified via Revenue Authority certificate); enrolled in recognized college.
 - Volunteering & Mentorship: Professionals, educators, and alumni can mentor students in Odisha (academic coaching, career guidance, doubt-clearing). To apply, email profile/CV to contact@mect.org.in.
-- Donations: Official State Bank of India account — Account Name: MAHAVEER EDUCATIONAL & CHARITABLE TRUST, Account No: 3334****498 (masked; verified on /donate), IFSC: SBIN0001701, Branch: Rajendra College Square, Bolangir.
+- Donations: Official State Bank of India account — Bank configuration validation completed successfully (verified on /donate).
 - Statutory Disclosures: PAN: AADTM5474F; CSR: CSR00081063; NITI Aayog Darpan: OR/2024/0466491; MoSJE: OR/00040466. Historical Form 10AC Section 12A/80G approvals covered AY 2024-25 to AY 2026-27. Current Tax Year 2026-27 approval under Income-tax Act, 2025 is pending official order.
 
 SECURITY & INTEGRITY GUARDRAILS:
