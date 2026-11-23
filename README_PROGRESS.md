@@ -6,19 +6,19 @@
 - [x] 03 DISCOVERY-C: Backend deep-dive: framework, DB, migrations, auth model, every endpoint under /api/v1, config files, how to start it, default port, required env/secrets. Fill Routes/API and Env registries.
 - [x] 04 DISCOVERY-D: AI engine + training deep-dive: model(s), serving framework, endpoints (/v1/chat/completions, /v1/health), auth via INTERNAL_AI_SECRET, hardware needs, how to run, fallback logic and exact AI_ENGINE_MODE values supported. Describe ai-training: data, scripts, outputs.
 - [x] 05 DISCOVERY-E: Read every root .md report/spec; extract: product purpose, user roles, volunteer module scope, security findings and their resolution status, design tokens, roadmap phases. Determine what MECT stands for. Fill Findings.
-- [ ] 06 HEADER: Hero, badges (verify each is true), anchor nav, italic disclaimer, one-paragraph "what is this" (2–3 sentences max).
-- [ ] 07 FEATURES: Reference-style nested bullets grouped: public website, volunteer module, AI assistant (local-first + cloud fallback, reliability behaviors actually implemented), security, accessibility/responsive design, performance. Only implemented features; mark planned ones in a separate "Roadmap" bullet linking the roadmap docs.
-- [ ] 08 SCREENSHOTS: Insert real images or TODO placeholders with captions; update Screenshots Needed.
-- [ ] 09 QUICK START: Prerequisites table (Node, Python, Java, GPU/RAM). Steps: clone → install each module → copy .env.example to .env.local (macOS/Linux & Windows) → start backend → start AI engine → npm run dev → verify. Include "Minimal mode" and "Full local mode".
-- [ ] 10 ARCHITECTURE: Mermaid diagram (browser → Next.js → API routes → backend :8080 and → AI gateway → local engine :8082 → Groq fallback), request-flow numbered list, repository-layout tree with one-line comments per folder.
-- [ ] 11 CONFIGURATION: Complete env var table from registry (name, service, required, default, example placeholder, description), AI Engine Modes table, secret-handling rules.
-- [ ] 12 MODULE REFERENCE: Tables: npm scripts; backend commands; AI engine commands; API routes; key directories.
-- [ ] 13 DOCS INDEX: Table of every root .md: file | what it covers | status (spec / audit / report / roadmap).
-- [ ] 14 SECURITY & PRIVACY: Summarize real controls (internal secret, server-only keys, headers, input validation, volunteer PII handling). Link audits. Add "Reporting a vulnerability".
-- [ ] 15 MANAGE: Update/rebuild, health checks, logs, troubleshooting table (symptom → cause → fix), "Clean up" with Removes / Keeps lists.
-- [ ] 16 CONTRIBUTING + LINKS + LICENSE: Branching conventions, lint command, AGENTS.md rule, bug-report checklist, links to Issues/PRs, License/TODO.
-- [ ] 17 POLISH: Consistent terminology, no duplicate sections, heading levels, table alignment, first screen compelling and accurate.
-- [ ] 18 VERIFY: Run verification suite Part 5.
+- [x] 06 HEADER: Hero, badges (verify each is true), anchor nav, italic disclaimer, one-paragraph "what is this" (2–3 sentences max).
+- [x] 07 FEATURES: Reference-style nested bullets grouped: public website, volunteer module, AI assistant (local-first + cloud fallback, reliability behaviors actually implemented), security, accessibility/responsive design, performance. Only implemented features; mark planned ones in a separate "Roadmap" bullet linking the roadmap docs.
+- [x] 08 SCREENSHOTS: Insert real images or TODO placeholders with captions; update Screenshots Needed.
+- [x] 09 QUICK START: Prerequisites table (Node, Python, Java, GPU/RAM). Steps: clone → install each module → copy .env.example to .env.local (macOS/Linux & Windows) → start backend → start AI engine → npm run dev → verify. Include "Minimal mode" and "Full local mode".
+- [x] 10 ARCHITECTURE: Mermaid diagram (browser → Next.js → API routes → backend :8080 and → AI gateway → local engine :8082 → Groq fallback), request-flow numbered list, repository-layout tree with one-line comments per folder.
+- [x] 11 CONFIGURATION: Complete env var table from registry (name, service, required, default, example placeholder, description), AI Engine Modes table, secret-handling rules.
+- [x] 12 MODULE REFERENCE: Tables: npm scripts; backend commands; AI engine commands; API routes; key directories.
+- [x] 13 DOCS INDEX: Table of every root .md: file | what it covers | status (spec / audit / report / roadmap).
+- [x] 14 SECURITY & PRIVACY: Summarize real controls (internal secret, server-only keys, headers, input validation, volunteer PII handling). Link audits. Add "Reporting a vulnerability".
+- [x] 15 MANAGE: Update/rebuild, health checks, logs, troubleshooting table (symptom → cause → fix), "Clean up" with Removes / Keeps lists.
+- [x] 16 CONTRIBUTING + LINKS + LICENSE: Branching conventions, lint command, AGENTS.md rule, bug-report checklist, links to Issues/PRs, License/TODO.
+- [x] 17 POLISH: Consistent terminology, no duplicate sections, heading levels, table alignment, first screen compelling and accurate.
+- [x] 18 VERIFY: Run verification suite Part 5.
 
 ---
 
@@ -379,3 +379,4 @@ The platform evolution represents 29 structured development phases and subsequen
 - **2026-11-24 (Run 3):** DISCOVERY-C complete. Deep-dive into Java 21 / Spring Boot 4.1.1 backend: mapped 16 REST controllers with 37 endpoints, Flyway migrations V1–V18, dual auth models (Admin JWT & Donor OTP), Cashfree/Razorpay webhook security, and Meta WhatsApp Cloud API outbox.
 - **2026-11-24 (Run 4):** DISCOVERY-D complete. Deep-dive into Python FastAPI AI Engine & training pipeline: mapped `mect-ai-engine` systemd service, cgroup resource isolation (3.8G RAM, 250% CPU), Qdrant vector RAG, `INTERNAL_AI_SECRET` auth, SSE streaming completions, Groq cloud fallback, and 1,200-sample multilingual QLoRA dataset.
 - **2026-11-24 (Run 5):** DISCOVERY-E complete. Comprehensive audit across all root specification and report documents. Extracted complete user role permissions matrix (12 roles), volunteer safeguarding framework and personas, security audit resolution inventory, design token palette specifications, and full multi-phase roadmap lineage.
+- **2026-11-24 (Run 6):** Complete Master README.md authoring across all sections (06 to 18). Verified all badges, features, architecture Mermaid diagrams, Quick Start (minimal and full local stack), configuration environment variables, module reference, security controls, and Hostinger VPS production operations. All checks passed.
