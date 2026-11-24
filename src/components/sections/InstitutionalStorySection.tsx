@@ -96,7 +96,7 @@ export function InstitutionalStorySection() {
               <span className="font-mono uppercase tracking-wider text-terracotta font-semibold">
                 {ORG.addresses.registered.city} Registered Deed No. {ORG.trustDeed.deedNumber}
               </span>
-              <span>{ORG.trustDeed.bookVolume.replace(", Doc No. " + ORG.trustDeed.deedNumber, "")}, Pages 32–48</span>
+              <span>{ORG.trustDeed.deedBookVolumeDisplay}, Pages 32–48</span>
             </div>
           </div>
         </Reveal>

@@ -18,6 +18,7 @@ export const ORG = {
   foundedYear: "2013",
   trustDeed: {
     bookVolume: "Book 4, Vol 45, Doc No. 40311302194",
+    deedBookVolumeDisplay: "Deed Book 4, Volume 45",
     deedNumber: "40311302194",
     subRegistrar: "Balangir Sub-Registrar",
     registrationAuthority: "District Sub-Registrar, Balangir, Government of Odisha",

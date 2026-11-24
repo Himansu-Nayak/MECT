@@ -205,23 +205,48 @@ async function runAudit() {
           return document.documentElement.scrollWidth > window.innerWidth;
         });
 
-        // Inspect images on page
+        // Inspect images on page with strict loaded vs broken vs incomplete distinction
         const imageStats = await page.evaluate(() => {
           const imgs = Array.from(document.querySelectorAll('img'));
+          let loaded = [];
           let broken = [];
+          let incomplete = [];
+
           imgs.forEach((img) => {
-            const isLoaded = img.complete && img.naturalWidth > 0;
-            if (!isLoaded) {
+            const hasNaturalDimensions = img.naturalWidth > 0 && img.naturalHeight > 0;
+            const isComplete = img.complete;
+            if (isComplete && hasNaturalDimensions) {
+              loaded.push({
+                src: img.currentSrc || img.src,
+                alt: img.alt || '',
+                naturalWidth: img.naturalWidth,
+                naturalHeight: img.naturalHeight
+              });
+            } else if (isComplete && !hasNaturalDimensions) {
               broken.push({
-                src: img.src,
-                alt: img.alt,
+                src: img.currentSrc || img.src,
+                alt: img.alt || '',
                 naturalWidth: img.naturalWidth,
                 naturalHeight: img.naturalHeight,
-                complete: img.complete
+                reason: 'complete_zero_dimensions'
+              });
+            } else {
+              incomplete.push({
+                src: img.currentSrc || img.src,
+                alt: img.alt || '',
+                complete: img.complete,
+                reason: 'incomplete_pending_timeout'
               });
             }
           });
-          return { total: imgs.length, brokenCount: broken.length, broken };
+
+          return {
+            totalImages: imgs.length,
+            loadedImages: loaded.length,
+            brokenImagesCount: broken.length + incomplete.length,
+            brokenImages: [...broken, ...incomplete],
+            incompleteDetails: incomplete
+          };
         });
 
         // Capture screenshot
@@ -266,15 +291,18 @@ async function runAudit() {
           url: targetUrl,
           status: responseStatus,
           overflow: hasOverflow,
-          brokenImagesCount: imageStats.brokenCount,
-          brokenImages: imageStats.broken,
+          totalImages: imageStats.totalImages,
+          loadedImages: imageStats.loadedImages,
+          brokenImagesCount: imageStats.brokenImagesCount,
+          brokenImages: imageStats.brokenImages,
+          incompleteDetails: imageStats.incompleteDetails,
           consoleErrorsCount: consoleErrors.length,
           consoleErrors,
           screenshot: screenshotFileName
         };
 
         summary.results.push(routeResult);
-        console.log(`- ${route.path.padEnd(15)} | HTTP ${responseStatus} | Overflow: ${hasOverflow ? 'FAIL' : 'PASS'} | Images: ${imageStats.total - imageStats.brokenCount}/${imageStats.total} OK | Errors: ${consoleErrors.length}`);
+        console.log(`- ${route.path.padEnd(15)} | HTTP ${responseStatus} | Overflow: ${hasOverflow ? 'FAIL' : 'PASS'} | Images: ${imageStats.loadedImages}/${imageStats.totalImages} OK | Errors: ${consoleErrors.length}`);
         await page.close();
       }
 
