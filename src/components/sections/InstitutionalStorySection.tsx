@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ORG } from "@content/org";
 import {
   Reveal,
   StaggerGroup,
@@ -54,7 +55,7 @@ export function InstitutionalStorySection() {
       number: "03",
       title: "13+ Years of Continuous Grassroots Tenure",
       detail:
-        "Executed on 27 July 2013 (Registered Doc No. 40311302194 at Balangir), MECT has operated without interruption through severe heatwaves, droughts, and economic distress in Western Odisha.",
+        `Executed on ${ORG.trustDeed.executedDateDisplay} (Registered Doc No. ${ORG.trustDeed.deedNumber} at ${ORG.addresses.registered.city}), MECT has operated without interruption through severe heatwaves, droughts, and economic distress in Western Odisha.`,
       badge: "Continuous Registered Record",
     },
   ];
@@ -93,9 +94,9 @@ export function InstitutionalStorySection() {
             </blockquote>
             <div className="mt-4 pt-4 border-t border-[#E7E0D5]/70 flex flex-wrap items-center justify-between gap-3 text-xs text-ink-muted font-sans">
               <span className="font-mono uppercase tracking-wider text-terracotta font-semibold">
-                Balangir Registered Deed No. 40311302194
+                {ORG.addresses.registered.city} Registered Deed No. {ORG.trustDeed.deedNumber}
               </span>
-              <span>Deed Book 4, Volume 45, Pages 32–48</span>
+              <span>{ORG.trustDeed.bookVolume.replace(", Doc No. " + ORG.trustDeed.deedNumber, "")}, Pages 32–48</span>
             </div>
           </div>
         </Reveal>
@@ -165,16 +166,16 @@ export function InstitutionalStorySection() {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-ink-secondary font-mono">
                     <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
-                      <span className="text-ink font-bold block">27 July 2013</span>
+                      <span className="text-ink font-bold block">{ORG.trustDeed.executedDateDisplay}</span>
                       <span className="text-[10px] text-ink-muted">Deed Execution by Settler Founder</span>
                     </div>
                     <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
-                      <span className="text-ink font-bold block">30 July 2013</span>
-                      <span className="text-[10px] text-ink-muted">Official Registration (Doc 40311302194)</span>
+                      <span className="text-ink font-bold block">{ORG.trustDeed.registeredDateDisplay}</span>
+                      <span className="text-[10px] text-ink-muted">Official Registration (Doc {ORG.trustDeed.deedNumber})</span>
                     </div>
                     <div className="p-2 bg-[#FAF7F2] rounded-[2px] border border-[#E7E0D5]">
                       <span className="text-ink font-bold block">Book 4, Vol 45</span>
-                      <span className="text-[10px] text-ink-muted">Sub-Registrar Balangir Registry</span>
+                      <span className="text-[10px] text-ink-muted">{ORG.trustDeed.subRegistrar} Registry</span>
                     </div>
                   </div>
                 </div>
@@ -215,7 +216,7 @@ export function InstitutionalStorySection() {
               <div className="mt-4 p-4 rounded-[2px] bg-white border border-[#E7E0D5] shadow-xs flex items-start gap-3">
                 <FileCheck className="w-5 h-5 text-terracotta shrink-0 mt-0.5" aria-hidden="true" />
                 <div className="text-xs text-ink-secondary leading-snug font-sans">
-                  <strong className="text-ink font-semibold">Physical Public Registry Notice:</strong> Original Trust Deed, 12A/80G orders, and annual activity ledgers are maintained at our Balangir registered office and open for inspection during statutory hours.
+                  <strong className="text-ink font-semibold">Physical Public Registry Notice:</strong> Original Trust Deed, 12A/80G orders, and annual activity ledgers are maintained at our {ORG.addresses.registered.city} registered office and open for inspection during statutory hours.
                 </div>
               </div>
             </Reveal>

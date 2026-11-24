@@ -6,6 +6,7 @@ import Image from "next/image";
 import { m, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ORG } from "@content/org";
 import {
   CountUpStat,
   MOTION_EASING,
@@ -74,7 +75,9 @@ export function CinematicHero() {
                 className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D]/90 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.14em] text-[#E5C499] shadow-xs"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta shrink-0 animate-pulse" aria-hidden="true" />
-                <span>MECT ARCHIVAL REGISTER • ESTD. 2013 • BALANGIR, ODISHA</span>
+                <span>
+                  {ORG.shortName} ARCHIVAL REGISTER • ESTD. {ORG.foundedYear} • {ORG.addresses.registered.city.toUpperCase()}, {ORG.addresses.registered.state.toUpperCase()}
+                </span>
               </div>
 
               {/* Commanding Editorial Headline with Masked Entrance */}

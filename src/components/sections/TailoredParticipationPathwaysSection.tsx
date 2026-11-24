@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { isDonorPortalEnabled } from "@/config/portal";
+import { ORG } from "@content/org";
 import {
   Heart,
   Users,
@@ -92,7 +93,7 @@ export function TailoredParticipationPathwaysSection() {
                 </div>
 
                 <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-sans">
-                  Support first-generation college grants, summer heatstroke water points, or the Hanuman Murti cultural project. Every donation generates an official computer-signed receipt with verified Trust PAN (AADTM5474F) and registered public trust credentials.
+                  Support first-generation college grants, summer heatstroke water points, or the Hanuman Murti cultural project. Every donation generates an official computer-signed receipt with verified Trust PAN ({ORG.ids.pan}) and registered public trust credentials.
                 </p>
 
                 <div className="space-y-2 pt-1 text-xs text-ink-secondary font-sans">
@@ -102,7 +103,7 @@ export function TailoredParticipationPathwaysSection() {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-terracotta shrink-0" />
-                    <span>Direct State Bank of India Bank Transfer (NEFT/RTGS) &amp; Official UPI.</span>
+                    <span>Direct {ORG.bank.bankName} Bank Transfer (NEFT/RTGS) &amp; Official UPI.</span>
                   </div>
                 </div>
               </div>
@@ -137,7 +138,7 @@ export function TailoredParticipationPathwaysSection() {
                     Pathway 02 • Corporate Social Responsibility
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-[#C4924A]/20 text-[#E5C499] border border-[#C4924A]/40 font-semibold">
-                    MCA CSR-1 CSR00081063
+                    MCA CSR-1 {ORG.ids.csr1}
                   </span>
                 </div>
 

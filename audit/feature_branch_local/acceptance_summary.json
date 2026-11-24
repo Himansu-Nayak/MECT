@@ -1,5 +1,5 @@
 {
-  "testTimestamp": "2026-11-24T09:20:32.528Z",
+  "testTimestamp": "2026-11-24T09:47:55.834Z",
   "testedServer": "http://127.0.0.1:3005",
   "branch": "feat/complete-website-redefinition-and-deduplication",
   "results": [
@@ -829,37 +829,8 @@
       "url": "http://127.0.0.1:3005/",
       "status": 200,
       "overflow": false,
-      "brokenImagesCount": 4,
-      "brokenImages": [
-        {
-          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-faculty-puintala-campus.webp&w=3840&q=75",
-          "alt": "Faculty & Trustee Review at Puīntalā Rural Campus",
-          "naturalWidth": 0,
-          "naturalHeight": 0,
-          "complete": false
-        },
-        {
-          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75",
-          "alt": "Women's Vocational Tailoring & Micro-Enterprise Cohort",
-          "naturalWidth": 0,
-          "naturalHeight": 0,
-          "complete": false
-        },
-        {
-          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75",
-          "alt": "Summer Heatstroke Hydration & Clean Water Demonstration",
-          "naturalWidth": 0,
-          "naturalHeight": 0,
-          "complete": false
-        },
-        {
-          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
-          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
-          "naturalWidth": 0,
-          "naturalHeight": 0,
-          "complete": false
-        }
-      ],
+      "brokenImagesCount": 0,
+      "brokenImages": [],
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "homepage-1920px-desktop-widescreen.png"

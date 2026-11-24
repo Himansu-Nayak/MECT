@@ -12,7 +12,22 @@ if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-// 1. Start local Next.js standalone server
+// 1. Synchronize static & public assets into standalone directory
+const publicSrc = path.resolve('public');
+const publicDest = path.resolve('.next/standalone/public');
+const staticSrc = path.resolve('.next/static');
+const staticDest = path.resolve('.next/standalone/.next/static');
+
+console.log('Ensuring static assets exist in .next/standalone...');
+if (fs.existsSync(publicSrc)) {
+  fs.cpSync(publicSrc, publicDest, { recursive: true });
+}
+if (fs.existsSync(staticSrc)) {
+  fs.mkdirSync(path.dirname(staticDest), { recursive: true });
+  fs.cpSync(staticSrc, staticDest, { recursive: true });
+}
+
+// 2. Start local Next.js standalone server
 console.log(`Starting local Next.js standalone server on port ${PORT}...`);
 const standaloneCwd = path.resolve('.next/standalone');
 const serverProcess = spawn('node', ['server.js'], {
@@ -164,10 +179,25 @@ async function runAudit() {
               if (totalHeight >= scrollHeight) {
                 clearInterval(timer);
                 window.scrollTo(0, 0); // scroll back to top
-                setTimeout(resolve, 300);
+                setTimeout(resolve, 800);
               }
-            }, 100);
+            }, 120);
           });
+        });
+
+        // Ensure all rendered images have attempted decode / load
+        await page.evaluate(async () => {
+          const imgs = Array.from(document.querySelectorAll('img'));
+          await Promise.allSettled(
+            imgs.map((img) => {
+              if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+              return new Promise((res) => {
+                img.addEventListener('load', () => res(), { once: true });
+                img.addEventListener('error', () => res(), { once: true });
+                setTimeout(res, 2500);
+              });
+            })
+          );
         });
 
         // Check horizontal overflow

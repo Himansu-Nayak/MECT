@@ -5,6 +5,7 @@ import Link from "next/link";
 import { m, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ORG } from "@content/org";
 import { Reveal, CountUpStat, StaggerGroup, StaggerItem, MOTION_EASING } from "@/components/ui/MotionPrimitives";
 import {
   GraduationCap,
@@ -73,9 +74,9 @@ export function AuditedImpactTelemetrySection() {
       label: "Continuous Statutory Tenure",
       metricType: "Unbroken Public Trust Record",
       definition:
-        "Continuous registered public charitable trust operations since execution of public Trust Deed on 27 July 2013 (Registered Doc No. 40311302194 at Balangir).",
-      reportingPeriod: "2013 – Present Continuous Record",
-      auditDocket: "DEED-40311302194 • Sub-Registrar Balangir Registry",
+        `Continuous registered public charitable trust operations since execution of public Trust Deed on ${ORG.trustDeed.executedDateDisplay} (Registered Doc No. ${ORG.trustDeed.deedNumber} at ${ORG.addresses.registered.city}).`,
+      reportingPeriod: `${ORG.foundedYear} – Present Continuous Record`,
+      auditDocket: `DEED-${ORG.trustDeed.deedNumber} • ${ORG.trustDeed.subRegistrar} Registry`,
       scalePercentage: 100,
       icon: Landmark,
     },
