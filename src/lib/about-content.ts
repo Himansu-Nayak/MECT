@@ -8,6 +8,7 @@ import {
   Building2,
   LucideIcon,
 } from "lucide-react";
+import { ORG } from "@content/org";
 
 export interface ValueItem {
   title: string;
@@ -60,7 +61,7 @@ export const ABOUT_CONTENT = {
       {
         title: "Section 80G Historical Approval & Compliance Notice",
         description:
-          "Historical Form 10AC approval (URN: AADTM5474FF20241, dated 29-01-2024) covered AY 2024-25 through AY 2026-27 (FY 2023-24 to FY 2025-26). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.",
+          `Historical Form 10AC approval (URN: ${ORG.ids.urn80G}, dated ${ORG.ids.taxOrderDate}) covered ${ORG.ids.taxOrderValidityPeriod} (FY 2023-24 to FY 2025-26). Current approval for Tax Year 2026-27 has not yet been established from the documentary records reviewed.`,
       },
     ],
   },
@@ -119,7 +120,7 @@ export const ABOUT_CONTENT = {
       title: "Board of Trustees",
       role: "Trustee Stewardship & Charter Custodians",
       description:
-        "Led by Settler Founder & Chairman cum Managing Trustee Er. Japabandhu Kampa alongside the Honorary Board of Trustees under registered Trust Deed No. 40311302194.",
+        `Led by ${ORG.chairman.fullTitle} ${ORG.chairman.name} alongside the Honorary Board of Trustees under registered Trust Deed No. ${ORG.trustDeed.deedNumber}.`,
       status: "Honorary Trustee Governance (Deed Clause XVI)",
       icon: Landmark,
     },
@@ -147,7 +148,7 @@ export const ABOUT_CONTENT = {
       role: "Operations, College Liaison & Disbursals",
       description:
         "Executive team managing daily college communication, bank RTGS transaction reconciliation, student tracking, and community volunteer coordination.",
-      status: "Offices in Balangir & Bhubaneswar",
+      status: `Offices in ${ORG.addresses.registered.city} & ${ORG.addresses.corporateLiaison.city}`,
       icon: Building2,
     },
   ] as GovernanceTierItem[],

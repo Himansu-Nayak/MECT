@@ -12,6 +12,7 @@ import { Reveal } from "@/components/ui/MotionPrimitives";
 import { CompactHowMectWorks } from "@/components/sections/CompactHowMectWorks";
 import { ABOUT_CONTENT } from "@/lib/about-content";
 import { createPageMetadata } from "@/lib/seo";
+import { ORG } from "@content/org";
 import {
   ShieldCheck,
   ArrowRight,
@@ -43,49 +44,49 @@ export default function AboutPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://mect.org.in",
+            "item": ORG.branding.canonicalOrigin,
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "About Us",
-            "item": "https://mect.org.in/about",
+            "item": `${ORG.branding.canonicalOrigin}/about`,
           },
         ],
       },
       {
         "@type": "NGO",
-        "@id": "https://mect.org.in/#organization",
-        "name": "Mahaveer Educational & Charitable Trust",
-        "alternateName": "MECT",
-        "url": "https://mect.org.in",
-        "logo": "https://mect.org.in/images/mect-official-emblem.png",
-        "foundingDate": "2013-07-27",
+        "@id": `${ORG.branding.canonicalOrigin}/#organization`,
+        "name": ORG.name,
+        "alternateName": ORG.shortName,
+        "url": ORG.branding.canonicalOrigin,
+        "logo": `${ORG.branding.canonicalOrigin}${ORG.branding.logoPath}`,
+        "foundingDate": ORG.trustDeed.executedDate,
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": "Odisha, India",
         },
-        "telephone": "+919437123616",
-        "email": "mect220@gmail.com",
+        "telephone": ORG.helpline.e164,
+        "email": ORG.emails.official,
         "description":
-          "Registered public charitable trust established in 2013 (Deed No. 40311302194), working across education, women's vocational livelihoods, safe-water initiatives, nutrition support and community welfare in Odisha.",
+          `Registered public charitable trust established in ${ORG.foundedYear} (Deed No. ${ORG.trustDeed.deedNumber}), working across education, women's vocational livelihoods, safe-water initiatives, nutrition support and community welfare in Odisha.`,
         "address": [
           {
             "@type": "PostalAddress",
-            "name": "Registered Office",
-            "streetAddress": "Near Sai Mandir, Rugudipara",
-            "addressLocality": "Balangir",
-            "addressRegion": "Odisha",
-            "postalCode": "767001",
+            "name": ORG.addresses.registered.title,
+            "streetAddress": ORG.addresses.registered.line1,
+            "addressLocality": ORG.addresses.registered.city,
+            "addressRegion": ORG.addresses.registered.state,
+            "postalCode": ORG.addresses.registered.pin,
             "addressCountry": "IN",
           },
           {
             "@type": "PostalAddress",
-            "name": "Corporate Liaison Secretariat",
-            "streetAddress": "A1, 3rd Floor, Lewis Plaza, BJB Nagar",
-            "addressLocality": "Bhubaneswar",
-            "addressRegion": "Odisha",
-            "postalCode": "751014",
+            "name": ORG.addresses.corporateLiaison.title,
+            "streetAddress": ORG.addresses.corporateLiaison.line1,
+            "addressLocality": ORG.addresses.corporateLiaison.city,
+            "addressRegion": ORG.addresses.corporateLiaison.state,
+            "postalCode": ORG.addresses.corporateLiaison.pin,
             "addressCountry": "IN",
           },
         ],
@@ -277,7 +278,7 @@ export default function AboutPage() {
               <div className="relative w-28 h-36 sm:w-32 sm:h-40 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
                 <Image
                   src="/images/leadership/er-japabandhu-kampa.webp"
-                  alt="Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee"
+                  alt={`${ORG.chairman.name}, ${ORG.chairman.fullTitle}`}
                   fill
                   sizes="(max-width: 640px) 112px, 128px"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -286,7 +287,7 @@ export default function AboutPage() {
               <div className="space-y-3 flex-1">
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <Badge variant="forest" size="sm">
-                    Settler Founder &amp; Managing Trustee
+                    {ORG.chairman.role}
                   </Badge>
                   <span className="text-[11px] font-mono text-terracotta-dark bg-terracotta/8 px-2.5 py-0.5 rounded-2xs font-semibold">
                     Deed Clauses 8(2) &amp; 10
@@ -294,13 +295,13 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
-                    Er. Japabandhu Kampa
+                    {ORG.chairman.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-terracotta-dark font-semibold font-sans">
-                    Settler Founder &amp; Chairman cum Managing Trustee
+                    {ORG.chairman.fullTitle}
                   </p>
                   <p className="text-[11px] font-mono text-ink-secondary">
-                    Permanent Honorary Governance • Registered Trust Deed No. 40311302194
+                    Permanent Honorary Governance • Registered Trust Deed No. {ORG.trustDeed.deedNumber}
                   </p>
                 </div>
                 <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans">
@@ -355,7 +356,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-6 h-6 text-forest shrink-0" aria-hidden="true" />
                 <p className="text-ink font-sans">
-                  <strong className="text-forest">Statutory Notice:</strong> Registered Trust Deed No. 40311302194, Form 10AC historical 12A/80G orders (AY 2024–25 to AY 2026–27), CSR Registration CSR00081063, and NITI Aayog Darpan records are published in the{" "}
+                  <strong className="text-forest">Statutory Notice:</strong> Registered Trust Deed No. {ORG.trustDeed.deedNumber}, Form 10AC historical 12A/80G orders ({ORG.ids.taxOrderValidityPeriod}), CSR Registration {ORG.ids.csr1}, and NITI Aayog Darpan records are published in the{" "}
                   <Link href="/statutory-disclosures" className="font-semibold underline text-forest">
                     Statutory Disclosures Vault
                   </Link>
