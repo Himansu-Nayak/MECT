@@ -142,45 +142,27 @@ export const TRUST_CONFIG = {
       "All educational grants are remitted directly to accredited institutions under verifiable banking channels.",
   },
 
-  // Master Institutional Navigation (Taxonomy Restructured for Multi-Sector Development NGO)
+  // Master Institutional Navigation (Streamlined Information Architecture)
   navigation: [
+    {
+      label: "Home",
+      href: "/",
+      description: "Institutional introduction, core mission, and community overview.",
+    },
     {
       label: "About",
       href: "/about",
-      description: "Institutional background, registered charter, leadership, and statutory credentials.",
+      description: "13+ years of civic service, founding philosophy, and trusteeship heritage in Odisha.",
       children: [
         {
           label: "About the Trust",
           href: "/about",
-          description: "Our 13+ year history, multi-sector mission, leadership, and operational footprint in Odisha.",
+          description: "Our 13+ year history, multi-sector mission, and operational footprint in Odisha.",
         },
         {
-          label: "Governance & Board",
-          href: "/governance",
-          description: "Registered Trust Deed, managing trustee, and honorary governance code.",
-        },
-        {
-          label: "Statutory Disclosures",
-          href: "/statutory-disclosures",
-          description: "12A, 80G, NGO Darpan & MoSJE certificates and official filings.",
-          badge: "Verified",
-        },
-      ],
-    },
-    {
-      label: "Our Work",
-      href: "/programmes",
-      description: "Grassroots development across education, women's livelihoods, clean water, and nutrition.",
-      children: [
-        {
-          label: "Civic Programmes",
-          href: "/programmes",
-          description: "Proposed education target for up to 200 students, women's vocational training, Jal Seva water kiosks, and Jan Ahar relief.",
-        },
-        {
-          label: "Higher Education Scholarships",
-          href: "/scholarships",
-          description: "Merit-cum-means financial aid and direct institution grants for underprivileged youth.",
+          label: "Leadership & Founder",
+          href: "/about#leadership",
+          description: "Settler Founder & Managing Trustee Er. Japabandhu Kampa profile.",
         },
         {
           label: "Memories & Gallery",
@@ -191,9 +173,31 @@ export const TRUST_CONFIG = {
       ],
     },
     {
-      label: "Impact & Accountability",
+      label: "Programmes",
+      href: "/programmes",
+      description: "Grassroots development across education, women's livelihoods, clean water, and nutrition.",
+      children: [
+        {
+          label: "Civic Programmes",
+          href: "/programmes",
+          description: "Education tutoring, women's tailoring, Jal Seva water kiosks, and Jan Ahar relief.",
+        },
+        {
+          label: "Higher Education Scholarships",
+          href: "/scholarships",
+          description: "Merit-cum-means financial aid and direct institution grants for underprivileged youth.",
+        },
+        {
+          label: "Apply for Scholarship",
+          href: "/scholarships/apply",
+          description: "100% free online application for higher education tuition assistance.",
+        },
+      ],
+    },
+    {
+      label: "Impact",
       href: "/impact",
-      description: "Audited civic metrics, beneficiary reach, and annual progress reports.",
+      description: "Audited civic metrics, beneficiary reach, and verified grassroots outcomes.",
       children: [
         {
           label: "Our Impact",
@@ -201,67 +205,84 @@ export const TRUST_CONFIG = {
           description: "Verified beneficiary metrics, school reach, and grassroots outcomes across Odisha.",
         },
         {
-          label: "Annual Reports & Audits",
-          href: "/reports",
-          description: "Audited financial statements, activity summaries, and downloadable annual reports.",
-        },
-        {
-          label: "Field Dispatches",
-          href: "/memories-gallery#field-dispatches",
+          label: "Field Dispatches & Stories",
+          href: "/stories",
           description: "Authentic community narratives and verified field documentation.",
         },
       ],
     },
     {
-      label: "Get Involved",
-      href: "/volunteer",
-      description: "Support our charitable mission, volunteer professional skills, or establish a CSR partnership.",
+      label: "Campaigns",
+      href: "/campaigns",
+      description: "Charitable campaigns and cultural heritage initiatives.",
       children: [
         {
-          label: "Donate Now",
-          href: "/donate",
-          description: "Direct contribution support and official donation receipting.",
-          badge: "Verified",
+          label: "All Initiatives",
+          href: "/campaigns",
+          description: "Overview of active, proposed, and cultural heritage campaigns.",
         },
         {
-          label: "Donor & Supporter Portal",
-          href: "/login",
-          description: "OTP login, donation history, official PDF receipts, and consent preferences.",
-          badge: "OTP Portal",
+          label: "The Grand Hanuman Murti Project",
+          href: "/campaigns/hanuman-murti",
+          description: "Proposed 80–100 ft cultural landmark in Puintala, Balangir (Architectural 3D Model).",
+          badge: "Cultural",
         },
         {
-          label: "Volunteer & Mentor",
-          href: "/volunteer",
-          description: "Contribute teaching, mentoring, vocational training, or field support.",
-        },
-        {
-          label: "CSR Partnerships",
-          href: "/csr-partnerships",
-          description: "Schedule VII corporate collaborations and CSR registration credentials (CSR00081063).",
+          label: "Free Higher Education Grants",
+          href: "/programmes#free-education-200",
+          description: "Proposed scholarship target for up to 200 deserving rural students.",
         },
       ],
     },
     {
-      label: "Resources & Help",
-      href: "/contact",
-      description: "Contact our offices, review frequently asked questions, or access accessibility options.",
+      label: "Governance",
+      href: "/governance",
+      description: "Registered Trust Deed, honorary managing trustee, and fiduciary governance code.",
       children: [
         {
-          label: "Contact & Offices",
-          href: "/contact",
-          description: "Balangir registered office, regional project office, and Bhubaneswar liaison desk.",
+          label: "Board of Trustees",
+          href: "/governance",
+          description: "Board composition, Er. Japabandhu Kampa leadership, and honorary status.",
         },
         {
-          label: "Frequently Asked Questions",
-          href: "/faq",
-          description: "Common questions on statutory tax disclosures, scholarship applications, and donations.",
-        },
-        {
-          label: "Accessibility Statement",
-          href: "/accessibility",
-          description: "WCAG 2.2 accessibility commitment, assistive features, and keyboard navigation.",
+          label: "Fiduciary Charter (Clause XVI)",
+          href: "/governance#charter",
+          description: "100% honorary service code — zero trustee remuneration or personal fees.",
         },
       ],
+    },
+    {
+      label: "CSR Partnerships",
+      href: "/csr-partnerships",
+      description: "Schedule VII corporate collaborations under MCA CSR-1 Registration No. CSR00081063.",
+    },
+    {
+      label: "Reports & Disclosures",
+      href: "/reports",
+      description: "Audited financial statements, activity summaries, and statutory filings.",
+      children: [
+        {
+          label: "Annual Reports & Audits",
+          href: "/reports",
+          description: "Multi-year audited summaries and trustee activity statements.",
+        },
+        {
+          label: "Statutory Disclosures",
+          href: "/statutory-disclosures",
+          description: "12A, 80G, CSR-1, NGO Darpan, and MoSJE verified credentials.",
+          badge: "Verified",
+        },
+        {
+          label: "Public Documents Library",
+          href: "/reports#library",
+          description: "Downloadable institutional documents and disclosures archive.",
+        },
+      ],
+    },
+    {
+      label: "Donate",
+      href: "/donate",
+      description: "Voluntary contributions via SBI bank transfer, UPI QR, and statutory 80G receipting.",
     },
   ] as NavItem[],
 

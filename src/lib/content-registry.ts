@@ -300,16 +300,17 @@ export const MECT_CONTENT_REGISTRY = {
     freeApplicationPolicy: "All applications, eligibility evaluations, and counselling services are 100% free of charge (₹0).",
   },
 
-  // 7. Official Banking Coordinates for 80G Domestic Donations
+  // 7. Official Banking Coordinates for Statutory Domestic Donations
   banking: {
-    accountName: "MAHAVEER EDUCATIONAL AND CHARITABLE TRUST",
-    bankName: "Union Bank of India",
-    branch: "Balangir Branch, Odisha",
-    accountNumber: "381002010014021",
-    ifsc: "UBIN0538108",
+    accountName: "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+    bankName: "State Bank of India",
+    branch: "Rajendra College Square, Bolangir, Odisha",
+    accountNumber: "33341302498",
+    ifsc: "SBIN0001701",
     accountType: "Current Account",
-    micr: "767026002",
-    taxExemptionNotice: "Donations are eligible for 50% deduction under Section 80G of the Income Tax Act, 1961 (URN: AADTM5474FF20241).",
+    upiId: "86971610172@sbi",
+    fallbackUpiId: "9853608113@sbi",
+    taxExemptionNotice: "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility (URN: AADTM5474FF20241).",
   },
 
   // 8. Official Communication Desks
@@ -318,16 +319,18 @@ export const MECT_CONTENT_REGISTRY = {
       label: "Registered Office (Balangir)",
       address: "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha, India",
       phone: "+91 94371 23616",
+      secondaryPhone: "+91 98536 08113",
     },
     liaisonOffice: {
       label: "Corporate Liaison Secretariat (Bhubaneswar)",
       address: "A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar - 751014, Odisha, India",
-      phone: "+91 94371 23616 / +91 94373 53616",
+      phone: "+91 94371 23616",
+      secondaryPhone: "+91 98536 08113",
     },
     emails: {
-      primary: "contact@mect.org.in",
-      registeredGovt: "mect27072013@gmail.com",
-      scholarships: "scholarships@mect.org.in",
+      primary: "mect220@gmail.com",
+      general: "mect220@gmail.com",
+      scholarships: "mect220@gmail.com",
     },
     website: "https://mect.org.in",
   },
