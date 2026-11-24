@@ -8,8 +8,10 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { MECT_ORG } from "@/config/org";
+import { ORG } from "@content/org";
+import { MECT_CONTENT_REGISTRY } from "@/lib/content-registry";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   GraduationCap,
   Award,
@@ -31,8 +33,7 @@ import {
 
 export const metadata = createPageMetadata({
   title: "Our Work & Programmes",
-  description:
-    "Explore MECT's verified community programmes: education, women's livelihoods, safe drinking water, food relief, and community welfare in Odisha.",
+  description: `Explore ${ORG.legalName}'s verified community programmes: education, women's livelihoods, safe drinking water, food relief, and community welfare in Odisha.`,
   path: "/programmes",
   ogImage: "/images/og-programmes.png",
 });
@@ -75,7 +76,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Provide exam orientation and guidance for Class 10 board examinations and +2 stream admissions.",
       "Support quiet study spaces and peer-learning groups for students living in congested single-room dwellings.",
     ],
-    where: "Balangir and Puintala blocks, Balangir District, Western Odisha.",
+    where: `${ORG.addresses.registered.city} and Puintala blocks, ${ORG.addresses.registered.district} District, Western Odisha.`,
     whoBenefits: "Rural school students from daily-wage earner families, tribal households, and economically weaker sections (EWS).",
     howToHelp: "Volunteer as a weekend subject tutor, sponsor textbook sets for a village batch, or donate stationery supplies.",
     recordedFigure: {
@@ -110,7 +111,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Teach practical bookkeeping, small order pricing, and digital payment basics for home-based tailoring services.",
       "Encourage collective order fulfillment for local school uniforms and village community garments.",
     ],
-    where: "MECT Vocational Training Centre, Rugudipara, Balangir, Odisha.",
+    where: `MECT Vocational Training Centre, ${ORG.addresses.registered.full}.`,
     whoBenefits: "Rural women, young widows, self-help group (SHG) members, and female heads of vulnerable households.",
     howToHelp: "Sponsor a sewing machine toolkit, fund vocational training supplies, or mentor women on micro-enterprise bookkeeping.",
     recordedFigure: {
@@ -145,7 +146,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Promote cultural folk arts, debating, essay contests, and regional Odishan performing arts among youth.",
       "Conduct basic physical fitness, stretching, and nutrition awareness sessions in collaboration with local educators.",
     ],
-    where: "School grounds and community playfields across Balangir and surrounding rural blocks.",
+    where: `School grounds and community playfields across ${ORG.addresses.registered.city} and surrounding rural blocks.`,
     whoBenefits: "Rural school-going youth, athletic young adults, and grassroots community sports clubs.",
     howToHelp: "Contribute sports kits, sponsor regional sports tournaments, or volunteer as a coach or athletic mentor.",
     recordedFigure: {
@@ -175,7 +176,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Provide oral rehydration salts (ORS) packets and electrolyte solution to at-risk outdoor laborers and transit passengers.",
       "Promote clean water handling and hygiene awareness to help prevent waterborne seasonal illnesses.",
     ],
-    where: "Bus terminals, hospital vicinities, main crossroads, and market centres in Balangir.",
+    where: `Bus terminals, hospital vicinities, main crossroads, and market centres in ${ORG.addresses.registered.city}.`,
     whoBenefits: "Daily-wage manual workers, rickshaw pullers, transit passengers, rural patients, and elderly citizens.",
     howToHelp: "Support a seasonal water kiosk, supply food-grade earthen storage pots, or volunteer for daily kiosk maintenance.",
     recordedFigure: {
@@ -205,7 +206,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Distribute emergency dry food rations (rice, pulses, flattened rice, oil, salt) during localized crises or heavy rains.",
       "Maintain strict cleanliness in meal preparation and volunteer hand-to-hand distribution with dignity.",
     ],
-    where: "Balangir District Headquarters Hospital vicinity and adjoining transit shelters.",
+    where: `${ORG.addresses.registered.city} District Headquarters Hospital vicinity and adjoining transit shelters.`,
     whoBenefits: "Underprivileged patient attendants, rural daily-wage laborers, disabled citizens, and destitute elders.",
     howToHelp: "Contribute grocery staples (rice, pulses, oil), sponsor a daily community meal drive, or volunteer in food distribution.",
     recordedFigure: {
@@ -235,7 +236,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
       "Organize village legal awareness sessions helping rural citizens understand welfare schemes, pension rights, and ration cards.",
       "Coordinate with local gram panchayats to identify isolated families lacking social protection.",
     ],
-    where: "Rural village settlements, tribal hamlets, and urban periphery clusters in Balangir district.",
+    where: `Rural village settlements, tribal hamlets, and urban periphery clusters in ${ORG.addresses.registered.district} district.`,
     whoBenefits: "Vulnerable elders, widows, disabled persons, landless laborers, and families facing sudden adversity.",
     howToHelp: "Donate winter blankets, contribute emergency relief kits, or volunteer legal/social work guidance.",
     recordedFigure: {
@@ -290,7 +291,7 @@ export default function ProgrammesPage() {
       {/* 1. Page Hero */}
       <PageHero
         title="Our Work & Community Programmes"
-        description="Explore MECT's verified community programmes: education, women's livelihoods, youth sports, safe drinking water, food relief, community welfare, and higher education across Odisha."
+        description={`Explore ${ORG.legalName}'s verified community programmes: education, women's livelihoods, youth sports, safe drinking water, food relief, community welfare, and higher education across Odisha.`}
         breadcrumbs={[{ label: "Programmes" }]}
         actions={
           <div className="flex flex-wrap gap-3 pt-2">
@@ -503,7 +504,7 @@ export default function ProgrammesPage() {
       </div>
 
       {/* 4. Statutory Transparency Strip */}
-      
+      <StatutoryStrip />
     </div>
   );
 }
