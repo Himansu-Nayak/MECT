@@ -19,6 +19,7 @@ import { ImpactChartsSection } from "@/components/charts/ImpactChartsSection";
 import { OdishaImpactSphere3D } from "@/components/charts/OdishaImpactSphere3D";
 import { OdishaDistrictGrid } from "@/components/motion/OdishaDistrictGrid";
 import { LightboxGrid } from "@/components/motion/LightboxGrid";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   MapPin,
   CheckCircle2,
@@ -121,29 +122,29 @@ export default function ImpactPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full overflow-x-hidden">
       {/* 1. Page Hero with subtle low-contrast topographic contours */}
       <div className="relative overflow-hidden">
         <svg
           aria-hidden="true"
           viewBox="0 0 1200 320"
           preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.07] text-sand z-10"
+          className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.07] text-sand z-10 overflow-hidden"
         >
           <path
-            d="M-50 80 Q 250 20, 560 95 T 1250 70"
+            d="M0 80 Q 250 20, 560 95 T 1200 70"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
           />
           <path
-            d="M-50 150 Q 300 90, 620 165 T 1250 140"
+            d="M0 150 Q 300 90, 620 165 T 1200 140"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
           />
           <path
-            d="M-50 225 Q 280 175, 650 235 T 1250 210"
+            d="M0 225 Q 280 175, 650 235 T 1200 210"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -348,7 +349,7 @@ export default function ImpactPage() {
       </section>
 
       {/* Statutory Disclosures & Transparency Strip */}
-      
+      <StatutoryStrip />
     </div>
   );
 }

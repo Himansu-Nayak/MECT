@@ -90,28 +90,30 @@ export function ImpactChartCard({
           </table>
         </div>
       ) : (
-        <div className="w-full">
+        <div className="w-full overflow-hidden">
           {children}
           {/* Screen-reader-accessible data table always present in DOM */}
-          <table className="sr-only">
-            <caption>{title}</caption>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Value</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.label}>
-                  <td>{row.label}</td>
-                  <td>{row.value}</td>
-                  <td>{row.note || ""}</td>
+          <div className="sr-only">
+            <table className="w-full">
+              <caption>{title}</caption>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Value</th>
+                  <th>Notes</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {rows.map((row) => (
+                  <tr key={row.label}>
+                    <td>{row.label}</td>
+                    <td>{row.value}</td>
+                    <td>{row.note || ""}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 

@@ -390,7 +390,7 @@ export function OdishaImpactSphere3D({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* Left: 3D Geodesic Canvas (7 cols) */}
         <div
-          className="lg:col-span-7 relative aspect-square max-h-[380px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-none rounded-xs bg-cream/30 border border-sand/30"
+          className="lg:col-span-7 relative aspect-square max-h-[380px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-none rounded-xs bg-cream/30 border border-sand/30 overflow-hidden"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}

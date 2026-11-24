@@ -404,10 +404,15 @@ export default function ScholarshipsPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
-            <Link href="#eligibility-calculator">
+            <Link href="/scholarships/apply">
               <Button variant="gold" size="md">
-                <span>Use Eligibility Calculator</span>
+                <span>Apply Online</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <Link href="/scholarships/track">
+              <Button variant="dark-outline" size="md">
+                <span>Track Application</span>
               </Button>
             </Link>
             <Link href="/contact">
