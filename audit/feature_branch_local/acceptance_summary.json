@@ -1,0 +1,1459 @@
+{
+  "testTimestamp": "2026-11-24T09:20:32.528Z",
+  "testedServer": "http://127.0.0.1:3005",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "results": [
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-360px-mobile-android.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-430px-mobile-large.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "homepage",
+      "url": "http://127.0.0.1:3005/",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 4,
+      "brokenImages": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-faculty-puintala-campus.webp&w=3840&q=75",
+          "alt": "Faculty & Trustee Review at Puīntalā Rural Campus",
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false
+        },
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-women-empowerment-seminar.webp&w=3840&q=75",
+          "alt": "Women's Vocational Tailoring & Micro-Enterprise Cohort",
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false
+        },
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fhero%2Fmect-clean-water-hygiene-demo.webp&w=3840&q=75",
+          "alt": "Summer Heatstroke Hydration & Clean Water Demonstration",
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false
+        },
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false
+        }
+      ],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "homepage-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "about",
+      "url": "http://127.0.0.1:3005/about",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "about-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "governance",
+      "url": "http://127.0.0.1:3005/governance",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "governance-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "programmes",
+      "url": "http://127.0.0.1:3005/programmes",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "programmes-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "campaigns",
+      "url": "http://127.0.0.1:3005/campaigns",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "campaigns-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "donate",
+      "url": "http://127.0.0.1:3005/donate",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "donate-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "contact",
+      "url": "http://127.0.0.1:3005/contact",
+      "status": 200,
+      "overflow": false,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "contact-1920px-desktop-widescreen.png"
+    }
+  ],
+  "founderImageVerification": [
+    {
+      "viewport": "320px-mobile-compact",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=96&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 96,
+          "naturalHeight": 172,
+          "complete": true,
+          "displayWidth": 94,
+          "displayHeight": 126,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 128,
+          "naturalHeight": 230,
+          "complete": true,
+          "displayWidth": 126,
+          "displayHeight": 158,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 128,
+          "naturalHeight": 230,
+          "complete": true,
+          "displayWidth": 126,
+          "displayHeight": 158,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 128,
+          "naturalHeight": 230,
+          "complete": true,
+          "displayWidth": 126,
+          "displayHeight": 158,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 128,
+          "naturalHeight": 230,
+          "complete": true,
+          "displayWidth": 126,
+          "displayHeight": 158,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "route": "/",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "route": "/about",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+          "naturalWidth": 128,
+          "naturalHeight": 230,
+          "complete": true,
+          "displayWidth": 126,
+          "displayHeight": 158,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "route": "/governance",
+      "images": [
+        {
+          "src": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=3840&q=75",
+          "currentSrc": "http://127.0.0.1:3005/_next/image?url=%2Fimages%2Fleadership%2Fer-japabandhu-kampa.webp&w=128&q=75",
+          "alt": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee of MECT",
+          "naturalWidth": 111,
+          "naturalHeight": 201,
+          "complete": true,
+          "displayWidth": 110,
+          "displayHeight": 142,
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "consoleErrorsRecorded": []
+}
