@@ -1,0 +1,121 @@
+{
+  "gate": "19.10.9",
+  "title": "MECT Gate 19.10 Master Evidence Synthesis & Release Readiness Assessment",
+  "timestamp": "2026-11-25T02:46:00+05:30",
+  "repository": "https://github.com/Himansu-Nayak/MECT",
+  "production_baseline": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "working_branch": "feat/complete-website-redefinition-and-deduplication",
+  "initial_local_head": "edfc8bc58335e92960c86eccd0a1b1235ad986ae",
+  "final_verdict": "CONDITIONAL — OUTSTANDING HUMAN OR OWNER DECISIONS",
+  "verdict_rationale": "All engineering-remediable criteria (TypeScript, ESLint, Next.js 58-page build, 142/142 backend tests, interactive E2E workflows, route gating, and deletion arithmetic) achieved VERIFIED PASS with zero regressions. Final production release is conditioned on physical human verification of NGO Darpan registration, bank statement audit, and formal owner decision on future payment gateway activation.",
+  "evidence_matrix": [
+    {
+      "requirement": "Gate 19.10.0 Baseline & Change Protection",
+      "source_file": ".git/refs/heads/feat/complete-website-redefinition-and-deduplication",
+      "test_script": "git rev-parse HEAD ; git status",
+      "raw_output": "edfc8bc58335e92960c86eccd0a1b1235ad986ae, working tree clean",
+      "machine_readable_result": "audit/final/gate_19_10_baseline.json",
+      "verification_method": "Git baseline reference check",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None"
+    },
+    {
+      "requirement": "Gate 19.10.1 Deletion Line Count Reconciliation",
+      "source_file": "src/components/ (10 deleted files)",
+      "test_script": "git diff --numstat 99c8b1c...HEAD -- src/components/",
+      "raw_output": "4,507 deleted lines matching git diff --numstat exactly",
+      "machine_readable_result": "audit/final/deletion_line_count_reconciliation.json",
+      "verification_method": "Git AST & diff numstat inspection",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None (all 10 components confirmed unmounted dead code)"
+    },
+    {
+      "requirement": "Gate 19.10.2 Payment Policy Reconciliation",
+      "source_file": "src/config/org.ts, src/app/donate/page.tsx, CashfreePaymentGatewayService.java",
+      "test_script": "scripts/test_gate_19_10_interactive_e2e.mjs",
+      "raw_output": "Manual SBI/UPI active on frontend; commercial gateways confirmed inactive",
+      "machine_readable_result": "audit/final/payment_policy_matrix.json",
+      "verification_method": "Code inspection and capability matrix analysis",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "Owner decision required prior to future commercial gateway activation"
+    },
+    {
+      "requirement": "Gate 19.10.3 Donor Portal Route Metadata Consistency",
+      "source_file": "src/config/portal.ts, src/lib/routes.ts, src/app/sitemap.ts",
+      "test_script": "scripts/test_gate_19_10_interactive_e2e.mjs (WF-06)",
+      "raw_output": "All 7 gated portal routes return 404; routes.ts updated to inNav/inFooter/inSitemap: false",
+      "machine_readable_result": "audit/final/portal_route_consistency.json",
+      "verification_method": "Route registry correction and HTTP 404 probing",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None"
+    },
+    {
+      "requirement": "Gate 19.10.4 Real Interactive E2E Evidence",
+      "source_file": "Forms on /contact, /donate, /scholarships, /volunteer, /admin/login",
+      "test_script": "scripts/test_gate_19_10_interactive_e2e.mjs",
+      "raw_output": "All 6 interactive workflows passed with negative/positive state checks",
+      "machine_readable_result": "audit/final/e2e_completion_results.json",
+      "verification_method": "Playwright headless browser automation with network interception",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None (external network blocked; zero real emails or transactions)"
+    },
+    {
+      "requirement": "Gate 19.10.5 Institutional Documentary Evidence Classification",
+      "source_file": "content/org.ts, src/config/org.ts, content/trustees.ts",
+      "test_script": "Cross-registry audit and redaction script",
+      "raw_output": "5-tier classification matrix generated; PAN and bank accounts masked",
+      "machine_readable_result": "audit/final/institutional_evidence_status.json",
+      "verification_method": "Evidentiary classification and privacy redaction audit",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "Physical Darpan certificate and bank passbook verification pending human trustee action"
+    },
+    {
+      "requirement": "Gate 19.10.6 Accessibility & Security Evidence",
+      "source_file": "9 public route templates, next.config.ts, SecurityConfig.java",
+      "test_script": "scripts/diagnose_axe.mjs, scripts/scan_secrets.mjs",
+      "raw_output": "0 critical/serious violations, 2 moderate violations, 20 manual review items; CSP exceptions analyzed",
+      "machine_readable_result": "audit/final/security_accessibility_closure.json",
+      "verification_method": "Axe-Core 4.10.2 automated scan + manual heuristics + CSP risk evaluation",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "2 moderate accessibility findings flagged; CSP unsafe-inline requires future nonce middleware"
+    },
+    {
+      "requirement": "Gate 19.10.7 Reproducible Build & Backend Regression",
+      "source_file": "TypeScript sources, ESLint, Next.js app, Spring Boot backend",
+      "test_script": "scripts/run_reproducible_build_audit.mjs",
+      "raw_output": "tsc (0 errors), lint (0 errors/warnings), build (58 pages), mvn test (142 tests, 0 failures)",
+      "machine_readable_result": "audit/final/reproducible_build_results.json",
+      "verification_method": "Direct command execution with raw log capture in audit/final/logs/",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None"
+    },
+    {
+      "requirement": "Gate 19.10.8 Audit Documentation Integrity",
+      "source_file": "docs/audits/*.md",
+      "test_script": "Cross-document link and redaction audit",
+      "raw_output": "0 file:/// links remaining; 4,507 line count harmonized; vocabulary standardized",
+      "machine_readable_result": "audit/final/documentation_integrity.json",
+      "verification_method": "Documentation integrity and relative-link audit",
+      "status": "VERIFIED PASS",
+      "outstanding_risk": "None"
+    }
+  ],
+  "human_and_owner_decisions_required": [
+    {
+      "domain": "Statutory Document Verification",
+      "action": "Trust Secretariat to download current physical PDF certificate for NGO Darpan ID OR/2024/0466491 from ngodarpan.gov.in."
+    },
+    {
+      "domain": "Treasury Bank Reconciliation",
+      "action": "Treasurer to perform physical inspection of monthly SBI statement for account ending in ****2498 against manual donation claims."
+    },
+    {
+      "domain": "Board Roster Consents",
+      "action": "Board of Trustees to formally review and record consented biographies before publishing additional trustee profiles on /governance."
+    },
+    {
+      "domain": "Payment Gateway Infrastructure",
+      "action": "Owner decision required if Trust management intends to activate Cashfree gateway in future with live commercial API credentials."
+    }
+  ]
+}

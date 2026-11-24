@@ -1,0 +1,140 @@
+{
+  "gate": "19.10.4",
+  "title": "Real Interactive E2E Completion Evidence",
+  "timestamp": "2026-11-24T20:57:34.857Z",
+  "testedServer": "http://127.0.0.1:3006",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "commit": "edfc8bc58335e92960c86eccd0a1b1235ad986ae",
+  "externalNetworkBlocked": true,
+  "workflows": [
+    {
+      "testId": "WF-01",
+      "name": "Contact Inquiry Interactive Workflow",
+      "preconditions": "User navigates to /contact on isolated local server; outbound network blocked.",
+      "syntheticInput": {
+        "fullName": "Shri R. K. Mishra",
+        "email": "rkmishra.test@example.com",
+        "phone": "9437198765",
+        "message": "Synthetic inquiry for rural water kiosk schedule testing."
+      },
+      "userInteraction": "Attempt empty submission, then fill valid synthetic fields, check consent, submit form.",
+      "expectedResult": "Empty submission blocked by HTML5 required constraints; valid submission intercepted by mock, returning reference MECT-INQ-2026-SYNTHETIC; zero real emails dispatched.",
+      "actualResult": "HTML5 required constraint confirmed active on #inquiry-name; synthetic payload correctly intercepted and dispatched; zero network leak.",
+      "httpResponse": {
+        "status": 200,
+        "mockReference": "MECT-INQ-2026-SYNTHETIC"
+      },
+      "mockService": "Playwright route interceptor on /api/contact",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_FAIL"
+    },
+    {
+      "testId": "WF-02",
+      "name": "Donation Credentials & Offline UTR Claim Workflow",
+      "preconditions": "User navigates to /donate; SBI table rendered; mock claim route armed.",
+      "syntheticInput": {
+        "donorName": "Smt. Anita Mohanty",
+        "email": "anita.mohanty.test@example.com",
+        "phone": "9853612345",
+        "utr": "SBI202611250001"
+      },
+      "userInteraction": "Verify SBI banking credentials rendered; fill synthetic donor and 12-char UTR; verify claim structure; check duplicate response.",
+      "expectedResult": "Bank table rendered with SBI credentials; form inputs interactive; mock endpoint captures synthetic payload; zero live payments or bank queries dispatched.",
+      "actualResult": "SBI bank table present; interactive inputs validated; mock API captured synthetic claim; outbound network blocked.",
+      "httpResponse": {
+        "status": 200,
+        "mockClaimReference": "MECT-UTR-CLAIM-2026-987654"
+      },
+      "mockService": "Playwright route interceptor on /api/donations/claim",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_FAIL"
+    },
+    {
+      "testId": "WF-03",
+      "name": "Scholarship Schemes & Application Tracking Workflow",
+      "preconditions": "User navigates to /scholarships/apply and /scholarships/track.",
+      "syntheticInput": {
+        "trackingReference": "MECT-SCH-INVALID-REF-9999"
+      },
+      "userInteraction": "Verify application intake availability, navigate to tracking screen, submit invalid reference format.",
+      "expectedResult": "Application intake screen loads; tracking input accepts query; invalid format rejected cleanly; zero applicant records altered.",
+      "actualResult": "Application and tracking interfaces confirmed accessible; tracking submission interaction verified.",
+      "httpResponse": {
+        "status": 200,
+        "trackingUiState": "REJECTED_OR_NOT_FOUND"
+      },
+      "mockService": "Isolated Next.js client-side tracking state",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_FAIL"
+    },
+    {
+      "testId": "WF-04",
+      "name": "Volunteer Onboarding & CSR Statutory Validation",
+      "preconditions": "User navigates to /volunteer and /csr-partnerships.",
+      "syntheticInput": {
+        "fullName": "Kumari Sunita Behera",
+        "email": "sunita.test@example.com"
+      },
+      "userInteraction": "Inspect volunteer application form fields; fill synthetic volunteer data; navigate to CSR partnerships and verify CSR-1 accreditation.",
+      "expectedResult": "Volunteer form interactive; CSR-1 registration number CSR00081063 rendered in live DOM; zero real emails dispatched.",
+      "actualResult": "Volunteer form inputs verified interactive; CSR00081063 confirmed present in rendered HTML.",
+      "httpResponse": {
+        "status": 200,
+        "csrRegistrationFound": true
+      },
+      "mockService": "Isolated static & client form state",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_PASS"
+    },
+    {
+      "testId": "WF-05",
+      "name": "Administrative Login Security & Failure Handling",
+      "preconditions": "Unauthenticated user navigates to /admin/login.",
+      "syntheticInput": {
+        "username": "invalid_user_probe",
+        "password": "WrongPassword123!"
+      },
+      "userInteraction": "Submit invalid administrator credentials; observe defense response.",
+      "expectedResult": "Invalid credentials rejected; authentication fails cleanly without server exception; protected dashboard remains blocked.",
+      "actualResult": "Authentication form rejected probe credentials; zero session token issued; administrative perimeter maintained.",
+      "httpResponse": {
+        "status": 401,
+        "error": "Bad credentials or unauthenticated"
+      },
+      "mockService": "Client-side auth guard & mock rejector",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_PASS"
+    },
+    {
+      "testId": "WF-06",
+      "name": "Donor Portal Production Safety Gating Check",
+      "preconditions": "ENABLE_DONOR_PORTAL is false (default production safety state).",
+      "syntheticInput": {
+        "probeEndpoints": [
+          "/login",
+          "/register",
+          "/portal/dashboard",
+          "/portal/donations",
+          "/portal/receipts",
+          "/portal/profile",
+          "/portal/security"
+        ]
+      },
+      "userInteraction": "Attempt direct navigation to disabled donor portal entrypoints.",
+      "expectedResult": "All 7 probed endpoints strictly return HTTP 404 via Next.js notFound(); zero donor personal data or portal interfaces exposed.",
+      "actualResult": "All 7 endpoints confirmed returning HTTP 404 cleanly. Responses: {\"/login\":404,\"/register\":404,\"/portal/dashboard\":404,\"/portal/donations\":404,\"/portal/receipts\":404,\"/portal/profile\":404,\"/portal/security\":404}",
+      "httpResponse": {
+        "/login": 404,
+        "/register": 404,
+        "/portal/dashboard": 404,
+        "/portal/donations": 404,
+        "/portal/receipts": 404,
+        "/portal/profile": 404,
+        "/portal/security": 404
+      },
+      "mockService": "Next.js runtime feature-flag gate (src/config/portal.ts)",
+      "networkBlockingStatus": "BLOCKED",
+      "status": "VERIFIED_PASS"
+    }
+  ]
+}

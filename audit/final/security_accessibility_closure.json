@@ -1,0 +1,81 @@
+{
+  "gate": "19.10.6",
+  "title": "Accessibility & Security Comprehensive Evidence Closure",
+  "timestamp": "2026-11-25T02:31:00+05:30",
+  "accessibility": {
+    "evaluation_standard": "WCAG 2.2 Level AA / Section 508",
+    "evaluation_engine": "Axe-Core 4.10.2 via Playwright",
+    "scanned_templates_count": 9,
+    "aggregate_counts": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 2,
+      "minor": 0,
+      "incomplete_manual_review_items": 20,
+      "rule_passes": 412
+    },
+    "template_breakdown": {
+      "about": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 2, "passes": 43 },
+      "contact": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 2, "passes": 46 },
+      "donate": { "critical": 0, "serious": 0, "moderate": 1, "minor": 0, "incomplete": 2, "passes": 51, "moderate_details": ["landmark-unique: multiple complementary regions"] },
+      "home": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 3, "passes": 45 },
+      "programmes": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 3, "passes": 43 },
+      "reports": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 2, "passes": 49 },
+      "scholarships": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 2, "passes": 51 },
+      "statutory-disclosures": { "critical": 0, "serious": 0, "moderate": 1, "minor": 0, "incomplete": 2, "passes": 41, "moderate_details": ["heading-order: heading level skipped in statutory card"] },
+      "stories": { "critical": 0, "serious": 0, "moderate": 0, "minor": 0, "incomplete": 2, "passes": 42 }
+    },
+    "manual_evaluations": {
+      "keyboard_navigation": "VERIFIED_PASS (Logical tab sequence across header, main, and footer)",
+      "visible_focus": "VERIFIED_PASS (focus-visible:outline-2 focus-visible:outline-terracotta)",
+      "focus_order": "VERIFIED_PASS (Top-to-bottom, left-to-right visual order)",
+      "form_labels_and_errors": "VERIFIED_PASS (Labels bound by id/htmlFor, aria-required, aria-live)",
+      "skip_navigation": "VERIFIED_PASS (Skip to content anchor present in root layout)",
+      "heading_hierarchy": "REQUIRES_REVIEW (Moderate skip flagged in statutory disclosures)",
+      "modal_drawer_keyboard": "VERIFIED_PASS (Escape key listener closes mobile drawer)",
+      "color_contrast": "VERIFIED_PASS (Forest on Cream 7:1 ratio; manual review items noted)",
+      "responsive_zoom_reflow": "VERIFIED_PASS (Tested 320px to 1920px with zero horizontal clip)",
+      "reduced_motion": "VERIFIED_PASS (Framer Motion respects prefers-reduced-motion: reduce)",
+      "screen_reader_announcements": "VERIFIED_PASS (aria-live polite used on clipboard and claim responses)"
+    },
+    "conformance_verdict": "SUBSTANTIAL_CONFORMANCE_WITH_PENDING_MANUAL_ITEMS"
+  },
+  "security": {
+    "csp_policy": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https:;",
+    "csp_exceptions": [
+      {
+        "directive": "'unsafe-inline'",
+        "category": "script-src",
+        "why_required": "Next.js App Router Server-Side Rendering injects inline RSC hydration scripts (__NEXT_DATA__ / chunk loaders).",
+        "where_used": "All SSR and SSG pages in Next.js App Router.",
+        "required_in_production": true,
+        "safer_alternative_feasible": true,
+        "alternative_description": "Per-request cryptographic nonce generated in Next.js middleware (strict-dynamic).",
+        "residual_risk": "If user-controlled content bypasses React escaping, inline execution is possible.",
+        "risk_owner": "Principal Frontend Architect",
+        "remediation_target": "Future Next.js Nonce Middleware Cycle"
+      },
+      {
+        "directive": "'unsafe-eval'",
+        "category": "script-src",
+        "why_required": "Development Webpack sourcemap generation and legacy charting math evaluation.",
+        "where_used": "Webpack client-side chunk execution.",
+        "required_in_production": false,
+        "safer_alternative_feasible": true,
+        "alternative_description": "Remove 'unsafe-eval' from production Nginx headers; retain only in local development config.",
+        "residual_risk": "Dynamic code evaluation if eval() sinks exist.",
+        "risk_owner": "Senior DevOps Engineer",
+        "remediation_target": "Production Nginx CSP Hardening"
+      }
+    ],
+    "controls_reconfirmed": {
+      "no_exposed_secrets": true,
+      "no_sensitive_values_in_audit_logs": true,
+      "no_production_credentials_in_test_configs": true,
+      "auth_boundaries_enforced": true,
+      "whatsapp_enabled_false": true,
+      "payment_gateways_dormant": true
+    },
+    "status": "VERIFIED_PASS"
+  }
+}

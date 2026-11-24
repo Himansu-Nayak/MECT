@@ -1,5 +1,5 @@
 {
-  "auditTimestamp": "2026-11-24T20:31:57.586Z",
+  "auditTimestamp": "2026-11-24T20:59:12.210Z",
   "securitySummary": {
     "authentication": "JWT + Spring Security BCrypt work factor 12",
     "rbac": "ROLE_ADMIN, ROLE_VOLUNTEER, ROLE_DONOR enforced",

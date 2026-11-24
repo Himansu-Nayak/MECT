@@ -25,18 +25,19 @@ This audit independently investigates the **ten frontend components (4,507 lines
 
 ## 2. Component-by-Component Deletion & Preservation Matrix
 
-| # | Deleted Component Path | Lines in Baseline | Mounted at Baseline? | API Dependencies | Final Classification | Replacement / Preservation Target |
+| # | Deleted Component Path | Git Deleted Lines | Mounted at Baseline? | API Dependencies | Final Classification | Replacement / Preservation Target |
 | :-: | :--- | :---: | :---: | :---: | :---: | :--- |
-| **1** | `src/components/sections/UnifiedDonationExperience.tsx` | 2,288 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/donate` (`BankingTable.tsx` & `UpiQrCard.tsx`) |
-| **2** | `src/components/sections/SmartDonationCheckout.tsx` | 525 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/donate` & `/campaigns/hanuman-murti` |
-| **3** | `src/components/sections/SbiDonationSection.tsx` | 365 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `BankingTable.tsx` on `/donate` |
-| **4** | `src/components/sections/HeroBackgroundMarquee.tsx` | 177 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | `CinematicHero.tsx` & `StatutoryTicker.tsx` |
-| **5** | `src/components/charts/bar-chart-loading.tsx` | 43 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Direct hydration in `bar-chart.tsx` |
-| **6** | `src/components/charts/chart-reveal-clip.tsx` | 101 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Tailwind CSS transition utilities |
-| **7** | `src/components/charts/pie-center-shell.tsx` | 173 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | `ImpactChartCard.tsx` (bar/line charts) |
-| **8** | `src/components/charts/pie-ticks.tsx` | 461 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Removed (eliminated 2 ESLint warnings) |
-| **9** | `src/components/charts/static-chart-preview-context.tsx` | 23 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Direct props in `ImpactChartCard.tsx` |
-| **10** | `src/components/motion/PillarIllustrations.tsx` | 361 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/programmes` (Lucide React iconography) |
+| **1** | `src/components/sections/UnifiedDonationExperience.tsx` | 2,287 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/donate` (`BankingTable.tsx` & `UpiQrCard.tsx`) |
+| **2** | `src/components/sections/SmartDonationCheckout.tsx` | 524 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/donate` & `/campaigns/hanuman-murti` |
+| **3** | `src/components/sections/SbiDonationSection.tsx` | 364 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `BankingTable.tsx` on `/donate` |
+| **4** | `src/components/sections/HeroBackgroundMarquee.tsx` | 176 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | `CinematicHero.tsx` & `StatutoryTicker.tsx` |
+| **5** | `src/components/charts/bar-chart-loading.tsx` | 42 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Direct hydration in `bar-chart.tsx` |
+| **6** | `src/components/charts/chart-reveal-clip.tsx` | 100 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Tailwind CSS transition utilities |
+| **7** | `src/components/charts/pie-center-shell.tsx` | 172 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | `ImpactChartCard.tsx` (bar/line charts) |
+| **8** | `src/components/charts/pie-ticks.tsx` | 460 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Removed (eliminated 2 ESLint warnings) |
+| **9** | `src/components/charts/static-chart-preview-context.tsx` | 22 | **No** (0 refs) | None | **SAFE DEAD-CODE REMOVAL** | Direct props in `ImpactChartCard.tsx` |
+| **10** | `src/components/motion/PillarIllustrations.tsx` | 360 | **No** (0 refs) | None | **SAFE CONSOLIDATION** | `/programmes` (Lucide React iconography) |
+| **Total** | **10 Files** | **4,507** | **0** | **0** | **100% Preserved** | - |
 
 ---
 

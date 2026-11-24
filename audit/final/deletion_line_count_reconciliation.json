@@ -1,0 +1,120 @@
+{
+  "gate": "19.10.1",
+  "title": "Deletion Inventory Arithmetic Correction & Line-Count Reconciliation",
+  "timestamp": "2026-11-25T02:22:00+05:30",
+  "production_baseline": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "head_commit": "edfc8bc58335e92960c86eccd0a1b1235ad986ae",
+  "git_command_source": "git diff --numstat 99c8b1c4cb400be82c02b724c1bfc87a2b9da439...HEAD",
+  "total_deleted_files": 10,
+  "authoritative_total_deleted_lines": 4507,
+  "previous_table_discrepancy": {
+    "stated_total": 4507,
+    "table_sum_in_gate_19_1": 4517,
+    "discrepancy_delta": 10,
+    "root_cause": "Prior report table used line count with trailing empty lines (split by newline + 1 per file across 10 files = +10 lines), creating an off-by-1 mismatch per file against Git's authoritative diff numstat."
+  },
+  "reconciled_inventory": [
+    {
+      "path": "src/components/sections/UnifiedDonationExperience.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 2287,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "Canonical /donate route (BankingTable.tsx, UpiQrCard.tsx, DonationClaimSection.tsx)",
+      "backend_api_or_db_affected": false,
+      "classification": "CONSOLIDATION"
+    },
+    {
+      "path": "src/components/sections/SmartDonationCheckout.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 524,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "Canonical /donate route",
+      "backend_api_or_db_affected": false,
+      "classification": "CONSOLIDATION"
+    },
+    {
+      "path": "src/components/sections/SbiDonationSection.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 364,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "src/components/donation/BankingTable.tsx",
+      "backend_api_or_db_affected": false,
+      "classification": "CONSOLIDATION"
+    },
+    {
+      "path": "src/components/sections/HeroBackgroundMarquee.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 176,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "CinematicHero.tsx and StatutoryTicker.tsx",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/charts/bar-chart-loading.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 42,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "None needed (dead code)",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/charts/chart-reveal-clip.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 100,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "None needed (dead code)",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/charts/pie-center-shell.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 172,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "None needed (dead code)",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/charts/pie-ticks.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 460,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "None needed (dead code; removal resolved 2 ESLint warnings)",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/charts/static-chart-preview-context.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 22,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "None needed (dead code)",
+      "backend_api_or_db_affected": false,
+      "classification": "SAFE_REMOVAL"
+    },
+    {
+      "path": "src/components/motion/PillarIllustrations.tsx",
+      "baseline_exists": true,
+      "git_deleted_lines": 360,
+      "imported_by_active_routes_in_baseline": false,
+      "user_functionality_available_in_baseline": false,
+      "equivalent_functionality_remaining": "Standard Lucide React iconography on /programmes",
+      "backend_api_or_db_affected": false,
+      "classification": "CONSOLIDATION"
+    }
+  ],
+  "verification_sum": 4507,
+  "status": "VERIFIED_PASS"
+}

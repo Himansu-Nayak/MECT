@@ -1,0 +1,45 @@
+{
+  "gate": "19.10.3",
+  "title": "Donor Portal Route Metadata & Feature Gating Consistency",
+  "timestamp": "2026-11-25T02:24:00+05:30",
+  "portal_feature_flag_status": "DISABLED_BY_DEFAULT",
+  "portal_flag_evaluates_to": false,
+  "verifications": {
+    "1_safe_404_responses": {
+      "verified": true,
+      "mechanism": "src/app/portal/layout.tsx, src/app/login/page.tsx, and src/app/register/page.tsx invoke if (!isDonorPortalEnabled()) { notFound(); }",
+      "status": "VERIFIED_PASS"
+    },
+    "2_header_footer_isolation": {
+      "verified": true,
+      "mechanism": "Header.tsx and Footer.tsx wrap all portal and donor links in {isDonorPortalEnabled() && (...)}",
+      "status": "VERIFIED_PASS"
+    },
+    "3_homepage_cta_isolation": {
+      "verified": true,
+      "mechanism": "Homepage links strictly target /donate, /programmes, /scholarships/apply, /volunteer, and /contact",
+      "status": "VERIFIED_PASS"
+    },
+    "4_sitemap_exclusion": {
+      "verified": true,
+      "mechanism": "src/app/sitemap.ts explicitly registers 22 canonical public routes + 3 SSG stories; zero portal routes included",
+      "status": "VERIFIED_PASS"
+    },
+    "5_route_metadata_registry_reconciliation": {
+      "verified": true,
+      "mechanism": "src/lib/routes.ts updated: LOGIN, REGISTER, and PORTAL_DASHBOARD set to inNav: false, inFooter: false, inSitemap: false, priority: 0.0, status: 'planned'",
+      "status": "VERIFIED_PASS"
+    },
+    "6_env_default_safety": {
+      "verified": true,
+      "mechanism": "isDonorPortalEnabled() requires explicit string 'true'; defaults to false when env is undefined or empty",
+      "status": "VERIFIED_PASS"
+    },
+    "7_backend_api_protection": {
+      "verified": true,
+      "mechanism": "Spring Boot SecurityConfig mandates JWT Bearer authentication on protected donor endpoints independently of frontend visibility",
+      "status": "VERIFIED_PASS"
+    }
+  },
+  "status": "VERIFIED_PASS"
+}

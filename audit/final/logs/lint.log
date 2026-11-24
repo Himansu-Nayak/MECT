@@ -1,0 +1,14 @@
+=== COMMAND: npm run lint ===
+=== START: 2026-11-24T21:04:09.280Z ===
+=== FINISH: 2026-11-24T21:05:55.600Z (Duration: 106320ms) ===
+=== EXIT CODE: 0 ===
+
+--- STDOUT ---
+
+> mect@0.1.0 lint
+> eslint .
+
+
+
+--- STDERR ---
+

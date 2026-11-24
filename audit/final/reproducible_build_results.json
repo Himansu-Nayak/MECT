@@ -1,0 +1,76 @@
+{
+  "gate": "19.10.7",
+  "title": "Reproducible Build and Backend Regression Verification",
+  "timestamp": "2026-11-24T21:03:43.505Z",
+  "environment": {
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "node": "v25.9.0",
+    "npm": "11.12.1",
+    "java": "java version \"21.0.11\" 2026-04-21 LTS\r",
+    "maven": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)\r",
+    "commit": "edfc8bc58335e92960c86eccd0a1b1235ad986ae"
+  },
+  "executions": [
+    {
+      "id": "typecheck",
+      "name": "TypeScript Compilation Check",
+      "command": "npx tsc --noEmit",
+      "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
+      "logFile": "audit/final/logs/tsc.log",
+      "startTime": "2026-11-24T21:03:43.506Z",
+      "finishTime": "2026-11-24T21:04:09.259Z",
+      "durationMs": 25753,
+      "exitCode": 0,
+      "status": "VERIFIED_PASS",
+      "testMetrics": null
+    },
+    {
+      "id": "lint",
+      "name": "ESLint Static Analysis",
+      "command": "npm run lint",
+      "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
+      "logFile": "audit/final/logs/lint.log",
+      "startTime": "2026-11-24T21:04:09.280Z",
+      "finishTime": "2026-11-24T21:05:55.600Z",
+      "durationMs": 106320,
+      "exitCode": 0,
+      "status": "VERIFIED_PASS",
+      "testMetrics": null
+    },
+    {
+      "id": "build",
+      "name": "Next.js Production Build",
+      "command": "npm run build",
+      "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
+      "logFile": "audit/final/logs/next_build.log",
+      "startTime": "2026-11-24T21:05:55.613Z",
+      "finishTime": "2026-11-24T21:09:07.200Z",
+      "durationMs": 191587,
+      "exitCode": 0,
+      "status": "VERIFIED_PASS",
+      "testMetrics": {
+        "pagesGenerated": 58,
+        "checkConfirmPassed": true
+      }
+    },
+    {
+      "id": "backend_test",
+      "name": "Spring Boot Maven Regression Suite",
+      "command": "mvn test -B",
+      "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\backend",
+      "logFile": "audit/final/logs/backend_mvn_test.log",
+      "startTime": "2026-11-24T21:09:07.228Z",
+      "finishTime": "2026-11-24T21:12:26.049Z",
+      "durationMs": 198821,
+      "exitCode": 0,
+      "status": "VERIFIED_PASS",
+      "testMetrics": {
+        "testsRun": 142,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "buildSuccess": true
+      }
+    }
+  ]
+}

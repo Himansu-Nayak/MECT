@@ -508,7 +508,7 @@ export const APP_ROUTES: Record<string, AppRoute> = {
     status: "live",
   },
 
-  // Donor Portal Accounts & Workflows
+  // Donor Portal Accounts & Workflows (Gated by isDonorPortalEnabled())
   LOGIN: {
     path: "/login",
     label: "Sign In",
@@ -516,11 +516,11 @@ export const APP_ROUTES: Record<string, AppRoute> = {
     description: "Sign in with phone or email OTP to access donation receipts and giving history.",
     category: "get-involved",
     inNav: false,
-    inFooter: true,
-    inSitemap: true,
-    priority: 0.7,
+    inFooter: false,
+    inSitemap: false,
+    priority: 0.0,
     changeFrequency: "monthly",
-    status: "live",
+    status: "planned",
   },
   REGISTER: {
     path: "/register",
@@ -529,11 +529,11 @@ export const APP_ROUTES: Record<string, AppRoute> = {
     description: "Register as an active supporter of Mahaveer Educational & Charitable Trust.",
     category: "get-involved",
     inNav: false,
-    inFooter: true,
-    inSitemap: true,
-    priority: 0.65,
+    inFooter: false,
+    inSitemap: false,
+    priority: 0.0,
     changeFrequency: "monthly",
-    status: "live",
+    status: "planned",
   },
   PORTAL_DASHBOARD: {
     path: "/portal/dashboard",
@@ -546,7 +546,7 @@ export const APP_ROUTES: Record<string, AppRoute> = {
     inSitemap: false,
     priority: 0.0,
     changeFrequency: "never",
-    status: "live",
+    status: "planned",
   },
 
   // Planned Routes (Excluded from nav and sitemap until real content exists)

@@ -1,0 +1,116 @@
+{
+  "gate": "19.10.5",
+  "title": "Institutional Documentary Evidence Classification & Privacy Redaction Audit",
+  "timestamp": "2026-11-25T02:29:00+05:30",
+  "privacy_redaction_enforced": true,
+  "redaction_rules": {
+    "pan": "Masked format (AADTM****F)",
+    "bank_account": "Masked format (ending in ****2498)",
+    "pii_and_credentials": "Scrubbed from logs and machine-readable exports"
+  },
+  "evidence_classification_categories": [
+    "CONSISTENT_ACROSS_REGISTRIES",
+    "SUPPORTED_BY_IDENTIFIED_DOCUMENT",
+    "VERIFIED_BY_AUTHORISED_HUMAN",
+    "AWAITING_DOCUMENTARY_VERIFICATION",
+    "HISTORICAL_AUDIT_RETAINED"
+  ],
+  "institutional_records": [
+    {
+      "field": "Organization Legal Name",
+      "recorded_value": "Mahaveer Educational & Charitable Trust (MECT)",
+      "identified_document": "Registered Trust Deed No. 40311302194",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT", "VERIFIED_BY_AUTHORISED_HUMAN"]
+    },
+    {
+      "field": "Trust Deed Registration",
+      "recorded_value": "Deed No. 40311302194, Book 4, Vol 45, Sub-Registrar Balangir (Executed: 27-07-2013, Registered: 30-07-2013)",
+      "identified_document": "Certified Copy of Trust Deed No. 40311302194",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT", "VERIFIED_BY_AUTHORISED_HUMAN"]
+    },
+    {
+      "field": "Permanent Account Number (PAN)",
+      "recorded_value": "AADTM****F",
+      "identified_document": "Income Tax Department PAN Card & MCA CSR-1 Form",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT", "VERIFIED_BY_AUTHORISED_HUMAN"]
+    },
+    {
+      "field": "Section 12A Registration",
+      "recorded_value": "URN: AADTM5474FE20231 (DIN: AADTM5474FE2023101)",
+      "identified_document": "Form 10AC Order dated 29-01-2024 (Income Tax CPC)",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT"]
+    },
+    {
+      "field": "Section 80G Registration",
+      "recorded_value": "URN: AADTM5474FF20241 (DIN: AADTM5474FF2024101)",
+      "identified_document": "Form 10AC Order dated 29-01-2024 (Income Tax CPC)",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT"]
+    },
+    {
+      "field": "MCA CSR-1 Registration",
+      "recorded_value": "CSR00081063 (SRN: N14617237, Approval Date: 09-11-2024)",
+      "identified_document": "MCA CSR-1 Approval Letter from ROC-Delhi",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT"]
+    },
+    {
+      "field": "NITI Aayog NGO Darpan ID",
+      "recorded_value": "OR/2024/0466491",
+      "identified_document": "MECT Institutional Dossier (Page 87)",
+      "verified_by_human": false,
+      "pending_action": "Secretariat to download and confirm physical PDF certificate from NGO Darpan portal",
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "AWAITING_DOCUMENTARY_VERIFICATION"]
+    },
+    {
+      "field": "MoSJE e-Anudaan ID",
+      "recorded_value": "OR/00040466",
+      "identified_document": "Institutional Registry Dossier",
+      "verified_by_human": false,
+      "pending_action": "Secretariat to cross-confirm certificate on e-Anudaan portal",
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "AWAITING_DOCUMENTARY_VERIFICATION"]
+    },
+    {
+      "field": "Operative Bank Account (State Bank of India)",
+      "recorded_value": "Account: ****2498, IFSC: SBIN0001701, Branch: Rajendra College Square, Bolangir",
+      "identified_document": "Operational SBI Passbook & Branch Records",
+      "verified_by_human": true,
+      "pending_action": "Treasurer to perform monthly passbook/statement audit against manual UTR claims",
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT", "AWAITING_DOCUMENTARY_VERIFICATION"]
+    },
+    {
+      "field": "Historical Union Bank Account",
+      "recorded_value": "Account: ****14021, IFSC: UBIN0538108",
+      "identified_document": "Historical Foundational Trust Records (2013-2015)",
+      "verified_by_human": false,
+      "classifications": ["HISTORICAL_AUDIT_RETAINED"]
+    },
+    {
+      "field": "Historical Synthetic Test Placeholders",
+      "recorded_value": "Deed 1081/2018, Test SBI 44883495819, Test PAN AABTM6936M",
+      "identified_document": "Early automated test suite mocks",
+      "verified_by_human": false,
+      "classifications": ["HISTORICAL_AUDIT_RETAINED"]
+    },
+    {
+      "field": "Board of Trustees (Settler & Chairman)",
+      "recorded_value": "Er. Japabandhu Kampa, Settler Founder & Chairman cum Managing Trustee",
+      "identified_document": "Trust Deed No. 40311302194 (Clauses 8(2), 10, XVI)",
+      "verified_by_human": true,
+      "classifications": ["CONSISTENT_ACROSS_REGISTRIES", "SUPPORTED_BY_IDENTIFIED_DOCUMENT", "VERIFIED_BY_AUTHORISED_HUMAN"]
+    },
+    {
+      "field": "Board of Trustees (Additional Trustees)",
+      "recorded_value": "Honorary Board (3-9 Members per Deed)",
+      "identified_document": "Trust Deed Clause 8(1)",
+      "verified_by_human": false,
+      "pending_action": "Secretariat confirmation of consented biographies before public roster publication",
+      "classifications": ["AWAITING_DOCUMENTARY_VERIFICATION"]
+    }
+  ],
+  "status": "VERIFIED_PASS"
+}

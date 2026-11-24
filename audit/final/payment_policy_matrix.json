@@ -1,0 +1,74 @@
+{
+  "gate": "19.10.2",
+  "title": "Authoritative Payment Policy Reconciliation & Capability Matrix",
+  "timestamp": "2026-11-25T02:23:00+05:30",
+  "approved_production_policy": "MANUAL_SBI_AND_UPI_ONLY",
+  "policy_summary": "The active, approved frontend policy on https://mect.org.in/ is direct State Bank of India bank transfer and static UPI QR code with manual UTR submission via DonationClaimSection.tsx. Commercial payment gateways (Cashfree, Razorpay) and self-hosted engines (HIM/UPIHost) remain dormant/inactive in production.",
+  "capability_matrix": [
+    {
+      "payment_method": "SBI bank transfer",
+      "frontend_active": true,
+      "backend_implemented": true,
+      "sandbox_tested": "N/A (Offline NEFT/RTGS)",
+      "production_authorised": true,
+      "final_classification": "ACTIVE_PRODUCTION_POLICY",
+      "details": "Active on /donate via BankingTable.tsx and src/config/org.ts. Direct transfer to SBI Account ending in ****2498, IFSC SBIN0001701."
+    },
+    {
+      "payment_method": "UPI QR/manual UTR",
+      "frontend_active": true,
+      "backend_implemented": true,
+      "sandbox_tested": "Mock only",
+      "production_authorised": true,
+      "final_classification": "ACTIVE_PRODUCTION_POLICY",
+      "details": "Active on /donate via UpiQrCard.tsx (VPA 86971610172@sbi) and DonationClaimSection.tsx dispatching to /api/donations/claim."
+    },
+    {
+      "payment_method": "Cashfree",
+      "frontend_active": false,
+      "backend_implemented": true,
+      "sandbox_tested": "Mock/sandbox",
+      "production_authorised": false,
+      "final_classification": "IMPLEMENTED_BUT_INACTIVE",
+      "details": "Fully implemented in CashfreePaymentGatewayService.java and V10 migration. Frontend unmounted. Requires explicit owner decision and production API credentials to activate."
+    },
+    {
+      "payment_method": "Razorpay",
+      "frontend_active": false,
+      "backend_implemented": true,
+      "sandbox_tested": "Mock/sandbox",
+      "production_authorised": false,
+      "final_classification": "DORMANT_LEGACY",
+      "details": "Present in RazorpayPaymentGatewayService.java from legacy codebase. Unconfigured, no frontend interface, no production authorization."
+    },
+    {
+      "payment_method": "Self-hosted UPI/UPIHost",
+      "frontend_active": false,
+      "backend_implemented": true,
+      "sandbox_tested": "Mock only",
+      "production_authorised": false,
+      "final_classification": "DORMANT_LEGACY",
+      "details": "Implemented in HimPaymentGatewayService.java and V12 migration. production-enabled flag defaults to false. Dormant."
+    },
+    {
+      "payment_method": "Payment webhooks",
+      "frontend_active": false,
+      "backend_implemented": true,
+      "sandbox_tested": "Mock only",
+      "production_authorised": false,
+      "final_classification": "IMPLEMENTED_BUT_INACTIVE",
+      "details": "Implemented in CashfreePaymentController with HMAC verification and idempotency protection. Inactive while gateway is inactive."
+    },
+    {
+      "payment_method": "Reconciliation and receipts",
+      "frontend_active": true,
+      "backend_implemented": true,
+      "sandbox_tested": "Isolated tests",
+      "production_authorised": true,
+      "final_classification": "ACTIVE_PRODUCTION_POLICY",
+      "details": "Active for manual SBI UTR verification. DonationLifecycleService generates canonical receipts upon admin review."
+    }
+  ],
+  "outbound_payment_blocking_status": "BLOCKED",
+  "status": "VERIFIED_PASS"
+}

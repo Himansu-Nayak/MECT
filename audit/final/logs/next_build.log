@@ -1,0 +1,99 @@
+=== COMMAND: npm run build ===
+=== START: 2026-11-24T21:05:55.613Z ===
+=== FINISH: 2026-11-24T21:09:07.200Z (Duration: 191587ms) ===
+=== EXIT CODE: 0 ===
+
+--- STDOUT ---
+
+> mect@0.1.0 build
+> node scripts/check-confirm.mjs && next build --webpack
+
+[check-confirm] PASS: 0 unresolved {{CONFIRM: ...}} markers found.
+▲ Next.js 16.4.6 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 576ms
+- Experiments (use with caution):
+  · cpus: 1
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 48s
+  Running TypeScript ...
+  Finished TypeScript in 10.8s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/58) ...
+  Generating static pages using 1 worker (14/58) 
+  Generating static pages using 1 worker (28/58) 
+  Generating static pages using 1 worker (43/58) 
+✓ Generating static pages using 1 worker (58/58) in 12.4s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /500
+├ ○ /about
+├ ○ /accessibility
+├ ○ /admin
+├ ○ /admin/audit-logs
+├ ○ /admin/cms
+├ ○ /admin/demo
+├ ○ /admin/documents
+├ ○ /admin/donors
+├ ○ /admin/inquiries
+├ ○ /admin/login
+├ ○ /admin/media
+├ ○ /admin/scholarships
+├ ○ /admin/settings
+├ ○ /admin/users
+├ ○ /admin/volunteers
+├ ○ /admin/whatsapp
+├ ƒ /api/ai/chat
+├ ƒ /api/ai/health
+├ ƒ /api/contact
+├ ƒ /api/donations/claim
+├ ○ /campaigns
+├ ○ /campaigns/hanuman-murti
+├ ○ /contact
+├ ○ /csr-partnerships
+├ ○ /donate
+├ ○ /faq
+├ ○ /governance
+├ ○ /icon.png
+├ ○ /impact
+├ ○ /login
+├ ○ /memories-gallery
+├ ○ /portal/dashboard
+├ ○ /portal/donations
+├ ○ /portal/login
+├ ○ /portal/profile
+├ ○ /portal/receipts
+├ ○ /portal/security
+├ ○ /portal/welcome
+├ ○ /privacy
+├ ○ /programmes
+├ ○ /register
+├ ○ /reports
+├ ○ /robots.txt
+├ ○ /scholarships
+├ ○ /scholarships/apply
+├ ○ /scholarships/track
+├ ○ /sitemap.xml
+├ ○ /statutory-disclosures
+├ ○ /stories
+├   /stories/[slug]
+│ ├ ● /stories/classroom
+│ ├ ● /stories/workshop
+│ └ ● /stories/water-point
+├ ○ /terms
+└ ○ /volunteer
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+
+--- STDERR ---
+
