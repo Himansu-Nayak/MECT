@@ -1,0 +1,368 @@
+{
+  "auditTimestamp": "2026-11-24T20:21:52.672Z",
+  "summary": {
+    "totalAssets": 39,
+    "byteDuplicates": 0,
+    "activeWebsiteAssets": 18,
+    "seoVerificationAssets": 2,
+    "backendTestFixtures": 1,
+    "historicalArchivalAssets": 18,
+    "duplicateAssets": 0,
+    "confirmedUnused": 0,
+    "uncertainRetain": 0
+  },
+  "duplicates": [],
+  "assets": [
+    {
+      "file": "public/documents/mect-csr1-certificate.png",
+      "publicPath": "/documents/mect-csr1-certificate.png",
+      "sizeBytes": 121056,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (4 direct references).",
+      "srcReferences": 4,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/Er. Japabandhu Kampa.jpeg",
+      "publicPath": "/Er. Japabandhu Kampa.jpeg",
+      "sizeBytes": 55755,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival original uncompressed photograph of Settler Founder Er. Japabandhu Kampa; retained per preservation rules.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/favicon.ico",
+      "publicPath": "/favicon.ico",
+      "sizeBytes": 155090,
+      "classification": "SEO / VERIFICATION ASSET",
+      "rationale": "Browser root fallback favicon requested automatically by standard user agents.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/google4eacd3ee074d0174.html",
+      "publicPath": "/google4eacd3ee074d0174.html",
+      "sizeBytes": 53,
+      "classification": "SEO / VERIFICATION ASSET",
+      "rationale": "Google Search Console domain ownership verification token file.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/illustrative-child-support-outreach.webp",
+      "publicPath": "/images/hero/illustrative-child-support-outreach.webp",
+      "sizeBytes": 74124,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Approved illustrative campaign graphics for child outreach, library, and self-help groups; retained for CMS use.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/illustrative-community-library-reading.webp",
+      "publicPath": "/images/hero/illustrative-community-library-reading.webp",
+      "sizeBytes": 319292,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Approved illustrative campaign graphics for child outreach, library, and self-help groups; retained for CMS use.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/illustrative-women-self-help-group.webp",
+      "publicPath": "/images/hero/illustrative-women-self-help-group.webp",
+      "sizeBytes": 283468,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Approved illustrative campaign graphics for child outreach, library, and self-help groups; retained for CMS use.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-civic-pledge-classroom.jpg",
+      "publicPath": "/images/hero/mect-civic-pledge-classroom.jpg",
+      "sizeBytes": 224304,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (1 direct references).",
+      "srcReferences": 1,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-civic-pledge-classroom.webp",
+      "publicPath": "/images/hero/mect-civic-pledge-classroom.webp",
+      "sizeBytes": 176782,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (7 direct references).",
+      "srcReferences": 7,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-classroom-study-circle.webp",
+      "publicPath": "/images/hero/mect-classroom-study-circle.webp",
+      "sizeBytes": 164908,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (2 direct references).",
+      "srcReferences": 2,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-clean-water-hygiene-demo.jpg",
+      "publicPath": "/images/hero/mect-clean-water-hygiene-demo.jpg",
+      "sizeBytes": 313855,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival high-resolution JPEG master of community field program photo; WebP counterpart used for web delivery.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-clean-water-hygiene-demo.webp",
+      "publicPath": "/images/hero/mect-clean-water-hygiene-demo.webp",
+      "sizeBytes": 269848,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (6 direct references).",
+      "srcReferences": 6,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-community-field-outreach.webp",
+      "publicPath": "/images/hero/mect-community-field-outreach.webp",
+      "sizeBytes": 294600,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (1 direct references).",
+      "srcReferences": 1,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-faculty-puintala-campus.jpg",
+      "publicPath": "/images/hero/mect-faculty-puintala-campus.jpg",
+      "sizeBytes": 97765,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival high-resolution JPEG master of community field program photo; WebP counterpart used for web delivery.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-faculty-puintala-campus.webp",
+      "publicPath": "/images/hero/mect-faculty-puintala-campus.webp",
+      "sizeBytes": 79542,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (4 direct references).",
+      "srcReferences": 4,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-legal-literacy-session.jpg",
+      "publicPath": "/images/hero/mect-legal-literacy-session.jpg",
+      "sizeBytes": 124960,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival high-resolution JPEG master of community field program photo; WebP counterpart used for web delivery.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-legal-literacy-session.webp",
+      "publicPath": "/images/hero/mect-legal-literacy-session.webp",
+      "sizeBytes": 106418,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (4 direct references).",
+      "srcReferences": 4,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-public-health-awareness.jpg",
+      "publicPath": "/images/hero/mect-public-health-awareness.jpg",
+      "sizeBytes": 166323,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (1 direct references).",
+      "srcReferences": 1,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-public-health-awareness.webp",
+      "publicPath": "/images/hero/mect-public-health-awareness.webp",
+      "sizeBytes": 154466,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (2 direct references).",
+      "srcReferences": 2,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-trustees-campus-walk.webp",
+      "publicPath": "/images/hero/mect-trustees-campus-walk.webp",
+      "sizeBytes": 314976,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (4 direct references).",
+      "srcReferences": 4,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-women-empowerment-seminar.jpg",
+      "publicPath": "/images/hero/mect-women-empowerment-seminar.jpg",
+      "sizeBytes": 188270,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival high-resolution JPEG master of community field program photo; WebP counterpart used for web delivery.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/hero/mect-women-empowerment-seminar.webp",
+      "publicPath": "/images/hero/mect-women-empowerment-seminar.webp",
+      "sizeBytes": 263288,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (6 direct references).",
+      "srcReferences": 6,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/leadership/er-japabandhu-kampa.jpg",
+      "publicPath": "/images/leadership/er-japabandhu-kampa.jpg",
+      "sizeBytes": 69038,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Archival original uncompressed photograph of Settler Founder Er. Japabandhu Kampa; retained per preservation rules.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/leadership/er-japabandhu-kampa.webp",
+      "publicPath": "/images/leadership/er-japabandhu-kampa.webp",
+      "sizeBytes": 65134,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (3 direct references).",
+      "srcReferences": 3,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/mect-official-emblem.png",
+      "publicPath": "/images/mect-official-emblem.png",
+      "sizeBytes": 155068,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (6 direct references).",
+      "srcReferences": 6,
+      "backendReferences": 2
+    },
+    {
+      "file": "public/images/mect-sbi-upi-qr.png",
+      "publicPath": "/images/mect-sbi-upi-qr.png",
+      "sizeBytes": 332325,
+      "classification": "BACKEND / TEST FIXTURE",
+      "rationale": "Required test fixture and offline payment verification reference for SBI UPI QR processing.",
+      "srcReferences": 0,
+      "backendReferences": 3
+    },
+    {
+      "file": "public/images/og-default.png",
+      "publicPath": "/images/og-default.png",
+      "sizeBytes": 253997,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (4 direct references).",
+      "srcReferences": 4,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/og-disclosures.png",
+      "publicPath": "/images/og-disclosures.png",
+      "sizeBytes": 255533,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (5 direct references).",
+      "srcReferences": 5,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/og-donate.png",
+      "publicPath": "/images/og-donate.png",
+      "sizeBytes": 255202,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (2 direct references).",
+      "srcReferences": 2,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/og-programmes.png",
+      "publicPath": "/images/og-programmes.png",
+      "sizeBytes": 255063,
+      "classification": "ACTIVE WEBSITE ASSET",
+      "rationale": "Actively referenced and rendered in frontend code (5 direct references).",
+      "srcReferences": 5,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_1.jpg",
+      "publicPath": "/images/programmes/field_photo_1.jpg",
+      "sizeBytes": 75332,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_2.jpg",
+      "publicPath": "/images/programmes/field_photo_2.jpg",
+      "sizeBytes": 35098,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_3.jpg",
+      "publicPath": "/images/programmes/field_photo_3.jpg",
+      "sizeBytes": 90487,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_4.jpg",
+      "publicPath": "/images/programmes/field_photo_4.jpg",
+      "sizeBytes": 91419,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_5.jpg",
+      "publicPath": "/images/programmes/field_photo_5.jpg",
+      "sizeBytes": 234898,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_6.jpg",
+      "publicPath": "/images/programmes/field_photo_6.jpg",
+      "sizeBytes": 61550,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_7.jpg",
+      "publicPath": "/images/programmes/field_photo_7.jpg",
+      "sizeBytes": 11782,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_8.jpg",
+      "publicPath": "/images/programmes/field_photo_8.jpg",
+      "sizeBytes": 125984,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    },
+    {
+      "file": "public/images/programmes/field_photo_9.jpg",
+      "publicPath": "/images/programmes/field_photo_9.jpg",
+      "sizeBytes": 103506,
+      "classification": "HISTORICAL / ARCHIVAL ASSET",
+      "rationale": "Authentic field outreach documentation from Western Odisha community programs; retained in institutional media archive.",
+      "srcReferences": 0,
+      "backendReferences": 0
+    }
+  ]
+}

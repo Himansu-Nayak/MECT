@@ -1,0 +1,52 @@
+{
+  "gate": "19.9",
+  "name": "Documentation Reconciliation & Evidence Alignment",
+  "timestamp": "2026-11-25T02:15:00+05:30",
+  "commit": "c5341437019a31c61355f33e1f8d48ab926680fd",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "status": "VERIFIED_PASS",
+  "reconciliations": {
+    "route_inventory": {
+      "total_routes_evaluated": 48,
+      "public_routes_200": 38,
+      "auth_routes_200": 1,
+      "feature_gated_routes_404": 9,
+      "unexpected_404s": 0,
+      "reconciliation_summary": "Resolved previous confusion regarding 9 404 responses. These routes (/login, /register, and 7 /portal/* subroutes) are strictly feature-gated by isDonorPortalEnabled() returning 404 when ENABLE_DONOR_PORTAL=false by design, not due to dead links or broken routing."
+    },
+    "component_deletions": {
+      "deleted_files_count": 10,
+      "total_lines_removed": 4507,
+      "active_route_mounts_in_baseline": 0,
+      "backend_api_loss": 0,
+      "reconciliation_summary": "Resolved previous discrepancies in deleted component counts (4 vs 10). Exactly 10 files were removed: 4 consolidated into canonical route experiences (/donate and /programmes) and 6 dead charting/marquee prototype shells."
+    },
+    "public_assets": {
+      "total_assets_inspected": 39,
+      "active_route_assets": 18,
+      "seo_verification_assets": 2,
+      "test_fixtures": 1,
+      "archival_gallery_media": 18,
+      "deleted_assets": 0,
+      "byte_duplicates": 0,
+      "reconciliation_summary": "Confirmed that all 39 assets in public/ are valid, authentic, and preserved. No assets were deleted or require deletion."
+    },
+    "institutional_facts": {
+      "trust_deed_no": "40311302194",
+      "pan": "AADTM5474F",
+      "urn_12a": "AADTM5474FE20231",
+      "urn_80g": "AADTM5474FF20241",
+      "csr1_reg": "CSR00081063",
+      "ngo_darpan": "OR/2024/0466491",
+      "mosje_eanudaan": "OR/00040466",
+      "sbi_account": "33341302498",
+      "sbi_ifsc": "SBIN0001701",
+      "reconciliation_summary": "Reconciled synthetic mock placeholders in early test documentation (such as deed 1081/2018 or test SBI account 44883495819) against authoritative statutory records present across source code registries."
+    },
+    "status_taxonomy": {
+      "standard_adopted": "Strict evidence-backed classification",
+      "allowed_values": ["VERIFIED PASS", "VERIFIED FAIL", "BLOCKED", "NOT TESTED", "NOT APPLICABLE", "REQUIRES HUMAN REVIEW"],
+      "hyperbole_eliminated": ["100% immune", "zero vulnerability guarantee", "complete AI legal certification"]
+    }
+  }
+}

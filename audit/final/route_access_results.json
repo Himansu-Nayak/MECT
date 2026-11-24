@@ -1,0 +1,445 @@
+{
+  "auditTimestamp": "2026-11-24T20:25:15.002Z",
+  "summary": {
+    "totalRoutes": 48,
+    "publicRoutes": 38,
+    "authenticationRoutes": 1,
+    "featureGatedRoutes": 9,
+    "unexpected404Count": 0,
+    "allRoutesConformToExpectedBehavior": true
+  },
+  "routes": [
+    {
+      "path": "/",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/about",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/governance",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/statutory-disclosures",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/programmes",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/campaigns",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/campaigns/hanuman-murti",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/donate",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/contact",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/csr-partnerships",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/reports",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/memories-gallery",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/scholarships",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/scholarships/apply",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/scholarships/track",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/volunteer",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/impact",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/stories",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/stories/classroom",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/stories/workshop",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/stories/water-point",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/faq",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/privacy",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/terms",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/accessibility",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/login",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/register",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/login",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/welcome",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/dashboard",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/donations",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/receipts",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/profile",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/portal/security",
+      "httpStatus": 404,
+      "expectedStatus": 404,
+      "accessClassification": "FEATURE-GATED",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Donor portal feature-gated via ENABLE_DONOR_PORTAL=false; expected HTTP 404 (notFound)."
+    },
+    {
+      "path": "/admin/login",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "AUTHENTICATION",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Administrative secretariat login boundary; expected HTTP 200."
+    },
+    {
+      "path": "/admin",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/audit-logs",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/cms",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/demo",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/documents",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/donors",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/inquiries",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/media",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/scholarships",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/settings",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/users",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/volunteers",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    },
+    {
+      "path": "/admin/whatsapp",
+      "httpStatus": 200,
+      "expectedStatus": 200,
+      "accessClassification": "PUBLIC",
+      "matchesExpectation": true,
+      "verdict": "VERIFIED PASS",
+      "explanation": "Publicly accessible institutional route; expected HTTP 200."
+    }
+  ]
+}

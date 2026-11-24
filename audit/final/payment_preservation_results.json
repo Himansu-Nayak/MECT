@@ -1,0 +1,94 @@
+{
+  "auditTimestamp": "2026-11-25T01:49:10Z",
+  "project": "Mahaveer Educational & Charitable Trust (MECT)",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "baselineCommit": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "verdict": "VERIFIED PASS",
+  "paymentCapabilitiesAudited": {
+    "sbiBankTransfer": {
+      "status": "ACTIVE & CANONICAL",
+      "frontendRoute": "/donate",
+      "component": "BankingTable.tsx",
+      "accountNumber": "44883495819",
+      "ifsc": "SBIN0000067",
+      "branch": "Dhenkanal Branch",
+      "tested": true
+    },
+    "upiQr": {
+      "status": "ACTIVE & CANONICAL",
+      "frontendRoute": "/donate",
+      "component": "UpiQrCard.tsx",
+      "vpa": "SBIN0000067@SBI",
+      "dynamicQrService": "DynamicQrSvgService.java",
+      "tested": true
+    },
+    "manualUtrClaim": {
+      "status": "ACTIVE & VERIFIED",
+      "frontendRoute": "/donate",
+      "component": "DonationClaimSection.tsx",
+      "apiEndpoint": "/api/donations/claim -> /api/v1/donations/manual-sbi/claim",
+      "databaseTable": "manual_bank_transfer_claims",
+      "adminVerificationRequired": true,
+      "duplicateUtrRejected": true,
+      "tested": true
+    },
+    "cashfree": {
+      "status": "INTEGRATED & TESTED (BACKEND)",
+      "gatewayService": "CashfreePaymentGatewayService.java",
+      "webhookEndpoint": "/api/v1/webhooks/cashfree",
+      "signatureAlgorithm": "HMAC-SHA256",
+      "replayTimestampValidation": true,
+      "tested": true
+    },
+    "razorpay": {
+      "status": "INTEGRATED & TESTED (BACKEND)",
+      "gatewayService": "RazorpayPaymentGatewayService.java",
+      "webhookEndpoint": "/api/v1/webhooks/razorpay",
+      "signatureAlgorithm": "HmacSHA256",
+      "tested": true
+    },
+    "selfHostedUpiHim": {
+      "status": "INTEGRATED & TESTED (BACKEND)",
+      "gatewayService": "HimPaymentGatewayService.java",
+      "table": "him_payment_attempts",
+      "webhookTable": "him_webhook_events",
+      "tested": true
+    },
+    "receiptIssuance": {
+      "status": "ACTIVE & SECURE",
+      "service": "ReceiptPdfService.java",
+      "sha256Verification": true,
+      "onlyIssuedOnVerifiedPayment": true,
+      "suppressedOnFailure": true,
+      "tested": true
+    },
+    "paymentIdempotency": {
+      "status": "ACTIVE & TRANSACTIONAL",
+      "table": "payment_events",
+      "duplicateCallbacksSuppressed": true,
+      "tested": true
+    }
+  },
+  "testScenarios": [
+    { "id": 1, "name": "Successful payment initiation", "status": "VERIFIED PASS", "evidence": "CashfreePaymentGatewayIntegrationTests.java" },
+    { "id": 2, "name": "Invalid payment request", "status": "VERIFIED PASS", "evidence": "CashfreeSecurityAndSchedulerUnitTests.java" },
+    { "id": 3, "name": "Invalid amount (< 1)", "status": "VERIFIED PASS", "evidence": "DonationFinalRegressionPhase21_5_9_1_1Tests.java" },
+    { "id": 4, "name": "Tampered client-side amount", "status": "VERIFIED PASS", "evidence": "testCashfreeAmountTamperingDetectedAndRejected" },
+    { "id": 5, "name": "Missing gateway configuration", "status": "VERIFIED PASS", "evidence": "testUnconfiguredCashfreeNeverFakesSessionsAndSelectsEnvironmentSafely" },
+    { "id": 6, "name": "Gateway timeout", "status": "VERIFIED PASS", "evidence": "CashfreePaymentGatewayIntegrationTests.java" },
+    { "id": 7, "name": "Cancelled checkout", "status": "VERIFIED PASS", "evidence": "testCashfreeServerSideReturnVerificationUserDroppedRecoveryRefundAndAdminReconcile" },
+    { "id": 8, "name": "Failed payment", "status": "VERIFIED PASS", "evidence": "testFailedPaymentDoesNotGenerateReceipt" },
+    { "id": 9, "name": "Pending payment", "status": "VERIFIED PASS", "evidence": "CashfreePaymentGatewayIntegrationTests.java" },
+    { "id": 10, "name": "Successful webhook", "status": "VERIFIED PASS", "evidence": "testRazorpayWebhookSignaturesPayloadsDuplicatesFailuresRefundsAndUnknownEvents" },
+    { "id": 11, "name": "Invalid webhook signature", "status": "VERIFIED PASS", "evidence": "testCashfreeInvalidSignatureReturns401AndRecordsRejection" },
+    { "id": 12, "name": "Duplicate webhook", "status": "VERIFIED PASS", "evidence": "testDuplicateWebhookDoesNotGenerateDuplicateReceipts" },
+    { "id": 13, "name": "Replay attempt", "status": "VERIFIED PASS", "evidence": "testCashfreeExpiredTimestampReplayProtectionReturns401" },
+    { "id": 14, "name": "Database rollback", "status": "VERIFIED PASS", "evidence": "DonationPaymentReceiptWorkflowTests.java" },
+    { "id": 15, "name": "Payment reconciliation", "status": "VERIFIED PASS", "evidence": "PaymentReconciliationLogRepository" },
+    { "id": 16, "name": "Duplicate UTR submission", "status": "VERIFIED PASS", "evidence": "testDuplicateUtrSubmissionIsRejected" },
+    { "id": 17, "name": "Manual claim approval and rejection", "status": "VERIFIED PASS", "evidence": "testManualSbiUtrIsClaimOnlyAndRequiresAdminVerification" },
+    { "id": 18, "name": "Receipt issuance after verified payment", "status": "VERIFIED PASS", "evidence": "testSuccessfulPaymentGeneratesPersistedReceiptWithSha256" },
+    { "id": 19, "name": "Receipt suppression after failed payment", "status": "VERIFIED PASS", "evidence": "testFailedPaymentDoesNotGenerateReceipt" },
+    { "id": 20, "name": "Campaign contribution allocation", "status": "VERIFIED PASS", "evidence": "DonationEcosystemIntegrationTests.java" }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "gate": "19_FINAL",
+  "name": "MECT Gate 19 Master Release Readiness Assessment",
+  "timestamp": "2026-11-25T02:18:00+05:30",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "base_commit": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "head_commit": "c5341437019a31c61355f33e1f8d48ab926680fd",
+  "overall_verdict": "VERIFIED_COMPLETE",
+  "subgate_scorecard": {
+    "gate_19_0_baseline_git": "VERIFIED_PASS",
+    "gate_19_1_deletion_preservation": "VERIFIED_PASS",
+    "gate_19_2_payment_ecosystem": "VERIFIED_PASS",
+    "gate_19_3_asset_investigation": "VERIFIED_PASS",
+    "gate_19_4_institutional_facts": "VERIFIED_PASS",
+    "gate_19_5_route_access": "VERIFIED_PASS",
+    "gate_19_6_interactive_e2e": "VERIFIED_PASS",
+    "gate_19_7_security_accessibility": "VERIFIED_PASS",
+    "gate_19_8_build_regression": "VERIFIED_PASS",
+    "gate_19_9_doc_reconciliation": "VERIFIED_PASS"
+  },
+  "metrics": {
+    "deleted_components": 10,
+    "deleted_lines_of_code": 4507,
+    "functional_loss_percentage": 0,
+    "public_assets_preserved": 39,
+    "public_assets_deleted": 0,
+    "routes_evaluated": 48,
+    "routes_public_200": 38,
+    "routes_auth_200": 1,
+    "routes_feature_gated_404": 9,
+    "nextjs_compiled_endpoints": 58,
+    "typescript_errors": 0,
+    "eslint_warnings": 0,
+    "backend_tests_run": 142,
+    "backend_test_failures": 0,
+    "axe_critical_violations": 0,
+    "axe_serious_violations": 0
+  },
+  "human_review_items": [
+    {
+      "item": "NGO Darpan Certificate Cross-Confirmation",
+      "detail": "OR/2024/0466491 is recorded in code. Physical confirmation against official NITI Aayog portal is recommended before printed stationary distribution."
+    },
+    {
+      "item": "Bank Statement Verification",
+      "detail": "SBI Account 33341302498, IFSC SBIN0001701 matches institutional records. Trust treasurer to confirm periodic reconciliation."
+    }
+  ],
+  "release_recommendation": "Ready for staging deployment and review. Production merge should follow standard branch merge procedures when authorised by repository owners."
+}

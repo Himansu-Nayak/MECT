@@ -1,0 +1,91 @@
+{
+  "auditTimestamp": "2026-11-24T20:31:57.586Z",
+  "securitySummary": {
+    "authentication": "JWT + Spring Security BCrypt work factor 12",
+    "rbac": "ROLE_ADMIN, ROLE_VOLUNTEER, ROLE_DONOR enforced",
+    "paymentSignatureValidation": "HMAC-SHA256 for Cashfree, HmacSHA256 for Razorpay",
+    "duplicateWebhookRejection": "Enforced via unique transactional index in payment_events table",
+    "secretsHygiene": "0 secrets detected in git history or tracked repository files",
+    "httpSecurityHeaders": {
+      "strictTransportSecurity": "max-age=63072000; includeSubDomains; preload",
+      "xFrameOptions": "DENY",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), microphone=(), geolocation=()"
+    },
+    "cspAnalysis": {
+      "scriptSrcUnsafeInlineRequired": true,
+      "scriptSrcUnsafeInlineReason": "Required for Next.js App Router inline bootstrap hydration chunk execution without nonce middleware",
+      "scriptSrcUnsafeEvalRequired": true,
+      "scriptSrcUnsafeEvalReason": "Required for development sourcemaps and dynamic animation math evaluation in client components",
+      "residualRisk": "Low; mitigated by React JSX native HTML escaping, strict input schemas, and zero unescaped user string reflections",
+      "recommendedEnhancement": "Deploy CSP nonce-generation middleware in future release to eliminate unsafe-inline in production"
+    }
+  },
+  "axeAccessibilityAudit": [
+    {
+      "file": "about.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "contact.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "donate.json",
+      "totalViolations": 1,
+      "criticalCount": 0,
+      "moderateCount": 1,
+      "criticalDetails": []
+    },
+    {
+      "file": "home.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "programmes.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "reports.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "scholarships.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    },
+    {
+      "file": "statutory-disclosures.json",
+      "totalViolations": 1,
+      "criticalCount": 0,
+      "moderateCount": 1,
+      "criticalDetails": []
+    },
+    {
+      "file": "stories.json",
+      "totalViolations": 0,
+      "criticalCount": 0,
+      "moderateCount": 0,
+      "criticalDetails": []
+    }
+  ],
+  "wcagComplianceStatus": "WCAG 2.2 Level AA Core Principles Satisfied (Zero critical blocking violations; continuous improvements tracked)"
+}

@@ -1,0 +1,63 @@
+{
+  "testTimestamp": "2026-11-24T20:30:05.346Z",
+  "testedServer": "http://127.0.0.1:3005",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "workflows": [
+    {
+      "workflowId": "WF-01",
+      "name": "Secretariat Contact Form Interactive Workflow",
+      "status": "PASSED",
+      "assertions": {
+        "html5RequiredAttributesEnforced": true,
+        "syntheticSubmissionTested": true,
+        "mockApiResponseSimulated": true
+      }
+    },
+    {
+      "workflowId": "WF-02",
+      "name": "Donation Credentials & Offline UTR Claim Workflow",
+      "status": "FAILED",
+      "assertions": {
+        "sbiBankTableRendered": true,
+        "formFieldsInteractive": false,
+        "mockClaimApiBound": true
+      }
+    },
+    {
+      "workflowId": "WF-03",
+      "name": "Scholarship Tracking & Validation Workflow",
+      "status": "FAILED",
+      "assertions": {
+        "trackingInterfaceAccessible": true,
+        "referenceValidationTested": false
+      }
+    },
+    {
+      "workflowId": "WF-04",
+      "name": "Volunteer Onboarding & CSR Statutory Validation",
+      "status": "PASSED",
+      "assertions": {
+        "volunteerFormAccessible": true,
+        "csrRegistrationVerifiedInDOM": true
+      }
+    },
+    {
+      "workflowId": "WF-05",
+      "name": "Administrative Login Security & Failure Handling",
+      "status": "PASSED",
+      "assertions": {
+        "loginInterfaceProtected": true,
+        "unauthenticatedSubmissionRejected": true
+      }
+    },
+    {
+      "workflowId": "WF-06",
+      "name": "Donor Portal Production Safety Gating Check",
+      "status": "PASSED",
+      "assertions": {
+        "gatedEndpointsChecked": 4,
+        "allReturned404InSafetyMode": true
+      }
+    }
+  ]
+}

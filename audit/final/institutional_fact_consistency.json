@@ -1,0 +1,92 @@
+{
+  "auditTimestamp": "2026-11-25T01:53:00Z",
+  "project": "Mahaveer Educational & Charitable Trust (MECT)",
+  "reconciliationAuthority": "Registered Trust Deed (Balangir, 2013), CBDT Form 10AC Orders, MCA CSR-1 Approval, and OWNER_DECISIONS.md",
+  "verdict": "VERIFIED RECONCILED",
+  "authoritativeFacts": {
+    "legalName": {
+      "canonicalValue": "Mahaveer Educational & Charitable Trust (MECT)",
+      "sources": ["content/org.ts", "src/config/org.ts", "src/lib/content-registry.ts", "OWNER_DECISIONS.md"],
+      "status": "CONSISTENT"
+    },
+    "trustDeed": {
+      "deedNumber": "40311302194",
+      "bookVolume": "Book 4, Vol 45, Doc No. 40311302194",
+      "subRegistrar": "District Sub-Registrar, Balangir, Government of Odisha",
+      "executedDate": "27-07-2013",
+      "registeredDate": "30-07-2013",
+      "conflictIdentified": "Legacy synthetic test reports referenced placeholder 'Deed No. 1081/2018'.",
+      "resolution": "Confirmed Deed No. 40311302194 is authoritative ground truth per scanned Deed Endorsement (Pages 45 & 49 of Institutional Dossier).",
+      "status": "RECONCILED"
+    },
+    "taxIdentifications": {
+      "pan": "AADTM5474F",
+      "section12AUrn": "AADTM5474FE20231",
+      "section12ADin": "AADTM5474FE2023101",
+      "section80GUrn": "AADTM5474FF20241",
+      "section80GDin": "AADTM5474FF2024101",
+      "orderDate": "29-01-2024",
+      "validityPeriod": "AY 2024-25 to AY 2026-27",
+      "conflictIdentified": "Earlier draft text mentioned placeholder 'AABTM6936ME20241'.",
+      "resolution": "Confirmed CBDT Form 10AC URNs AADTM5474FE20231 (12A) and AADTM5474FF20241 (80G) are ground truth matching PAN AADTM5474F.",
+      "taxTreatmentNotice": "Neutral statutory disclosure enforced: 'Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility.'",
+      "status": "RECONCILED"
+    },
+    "csrRegistration": {
+      "csr1Number": "CSR00081063",
+      "approvalDate": "09-11-2024",
+      "srn": "N14617237",
+      "authority": "Registrar of Companies, Ministry of Corporate Affairs, New Delhi",
+      "status": "CONSISTENT"
+    },
+    "ngoDarpan": {
+      "id": "OR/2024/0466491",
+      "conflictIdentified": "Legacy pages referenced older portal ID OD/2021/0285141.",
+      "resolution": "Current primary baseline is OR/2024/0466491 as documented in OWNER_DECISIONS.md (DEC-05).",
+      "status": "FLAGGED FOR INSTITUTIONAL HARD-COPY VERIFICATION"
+    },
+    "mosjeAnudaan": {
+      "id": "OR/00040466",
+      "status": "CONSISTENT"
+    },
+    "addresses": {
+      "registeredOffice": {
+        "address": "Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001",
+        "role": "Permanent Registered Seat under Trust Deed",
+        "status": "CONSISTENT"
+      },
+      "administrativeOffice": {
+        "address": "A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014",
+        "role": "State Capital Secretariat & Corporate Liaison",
+        "status": "CONSISTENT"
+      },
+      "conflictIdentified": "Previous drafts occasionally conflated registered office (Balangir) with administrative office (Bhubaneswar) or older Dhenkanal project unit.",
+      "resolution": "Strictly segregated into ORG.addresses.registered (Balangir) and ORG.addresses.corporateLiaison (Bhubaneswar)."
+    },
+    "banking": {
+      "bankName": "State Bank of India",
+      "accountHolder": "MAHAVEER EDUCATIONAL & CHARITABLE TRUST",
+      "accountNumber": "33341302498",
+      "ifsc": "SBIN0001701",
+      "branch": "Rajendra College Square, Bolangir",
+      "upiId": "86971610172@sbi",
+      "secondaryUpiId": "9853608113@sbi",
+      "conflictIdentified": "Some prior test reports used synthetic placeholder 'A/C 44883495819, IFSC SBIN0000067, Dhenkanal'.",
+      "resolution": "Authoritative SBI Current Account is 33341302498, SBIN0001701, Rajendra College Square, Bolangir.",
+      "status": "RECONCILED"
+    },
+    "governance": {
+      "settlerFounderAndChairman": "Er. Japabandhu Kampa",
+      "designation": "Settler Founder & Chairman cum Managing Trustee",
+      "honoraryServiceClause": "Clause XVI: All trustees serve in an honorary capacity without salary, fee, or personal remuneration.",
+      "status": "CONSISTENT"
+    },
+    "contact": {
+      "primaryHelpline": "+91 94371 23616",
+      "secondaryHelpline": "+91 98536 08113",
+      "primaryEmail": "mect220@gmail.com",
+      "officialDomainEmail": "trust@mect.org.in",
+      "status": "CONSISTENT"
+    }
+  }
+}
