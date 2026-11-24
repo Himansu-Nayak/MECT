@@ -1,0 +1,96 @@
+{
+  "testTimestamp": "2026-11-24T19:01:33.197Z",
+  "testedServer": "http://127.0.0.1:3005",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "workflows": [
+    {
+      "workflowId": "WF-01",
+      "name": "Public Visitor Core Navigation Journey",
+      "status": "PASSED",
+      "stepsCompleted": 8,
+      "details": [
+        {
+          "step": "/",
+          "status": 200
+        },
+        {
+          "step": "/about",
+          "status": 200
+        },
+        {
+          "step": "/governance",
+          "status": 200
+        },
+        {
+          "step": "/programmes",
+          "status": 200
+        },
+        {
+          "step": "/campaigns",
+          "status": 200
+        },
+        {
+          "step": "/campaigns/hanuman-murti",
+          "status": 200
+        },
+        {
+          "step": "/donate",
+          "status": 200
+        },
+        {
+          "step": "/contact",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "workflowId": "WF-02",
+      "name": "Public Secretariat Inquiry Form Validation",
+      "status": "PASSED",
+      "elementsVerified": {
+        "formElementsPresent": true,
+        "validationPassed": true
+      }
+    },
+    {
+      "workflowId": "WF-03",
+      "name": "Donation Credentials Display & Claim Interaction",
+      "status": "PASSED",
+      "details": {
+        "bankTableRendered": true,
+        "upiQrRendered": true
+      }
+    },
+    {
+      "workflowId": "WF-04",
+      "name": "Grand Hanuman Murti Project Participation Journey",
+      "status": "PASSED",
+      "tiersCount": 5,
+      "expectedTiers": 5
+    },
+    {
+      "workflowId": "WF-05",
+      "name": "Scholarship Schemes & Intake Advisory Discovery",
+      "status": "PASSED",
+      "details": {
+        "applyActionPresent": true,
+        "trackActionPresent": true
+      }
+    },
+    {
+      "workflowId": "WF-06",
+      "name": "Administrative Login Gating Verification",
+      "status": "PASSED",
+      "httpStatus": 200,
+      "pageTitle": "Administrative Secretariat | MECT"
+    },
+    {
+      "workflowId": "WF-07",
+      "name": "Donor Portal Safety Gating Check",
+      "status": "PASSED",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "note": "Portal safely returns HTTP 404 in production safety default mode"
+    }
+  ]
+}
