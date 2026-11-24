@@ -1,11 +1,11 @@
 {
-  "auditTimestamp": "2026-11-24T10:43:13.651Z",
+  "auditTimestamp": "2026-11-24T11:32:26.236Z",
   "testedServer": "http://127.0.0.1:3005",
   "branch": "feat/complete-website-redefinition-and-deduplication",
   "summary": {
     "totalRoutesAudited": 7,
-    "totalLinksChecked": 510,
-    "totalInternalLinks": 358,
+    "totalLinksChecked": 514,
+    "totalInternalLinks": 362,
     "totalInternalHashes": 121,
     "totalExternalLinks": 16,
     "totalMailtoLinks": 4,
@@ -2778,7 +2778,7 @@
     {
       "route": "/programmes",
       "httpStatus": 200,
-      "totalAnchors": 94,
+      "totalAnchors": 95,
       "totalButtons": 34,
       "links": {
         "internalRoutes": [
@@ -3147,6 +3147,15 @@
             "text": "Inquire / Partner",
             "href": "/contact",
             "resolvedHref": "http://127.0.0.1:3005/contact",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Verify Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
             "target": null,
             "rel": null,
             "ariaLabel": null
@@ -3929,7 +3938,7 @@
     {
       "route": "/campaigns",
       "httpStatus": 200,
-      "totalAnchors": 63,
+      "totalAnchors": 64,
       "totalButtons": 18,
       "links": {
         "internalRoutes": [
@@ -4118,6 +4127,15 @@
             "text": "Sponsor a Student",
             "href": "/donate?programme=EDUCATION_LEARNING",
             "resolvedHref": "http://127.0.0.1:3005/donate?programme=EDUCATION_LEARNING",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Verify Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
             "target": null,
             "rel": null,
             "ariaLabel": null
@@ -4664,7 +4682,7 @@
     {
       "route": "/donate",
       "httpStatus": 200,
-      "totalAnchors": 62,
+      "totalAnchors": 63,
       "totalButtons": 24,
       "links": {
         "internalRoutes": [
@@ -4826,6 +4844,15 @@
             "text": "Home",
             "href": "/",
             "resolvedHref": "http://127.0.0.1:3005/",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "statutory disclosures vault",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
             "target": null,
             "rel": null,
             "ariaLabel": null
@@ -5420,7 +5447,7 @@
     {
       "route": "/contact",
       "httpStatus": 200,
-      "totalAnchors": 71,
+      "totalAnchors": 72,
       "totalButtons": 17,
       "links": {
         "internalRoutes": [
@@ -5600,6 +5627,15 @@
             "text": "Governance Charter",
             "href": "/governance",
             "resolvedHref": "http://127.0.0.1:3005/governance",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Verify Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
             "target": null,
             "rel": null,
             "ariaLabel": null
