@@ -1,16 +1,26 @@
 {
-  "auditTimestamp": "2026-11-24T11:32:26.236Z",
+  "auditTimestamp": "2026-11-24T17:25:35.016Z",
   "testedServer": "http://127.0.0.1:3005",
   "branch": "feat/complete-website-redefinition-and-deduplication",
   "summary": {
-    "totalRoutesAudited": 7,
-    "totalLinksChecked": 514,
-    "totalInternalLinks": 362,
-    "totalInternalHashes": 121,
-    "totalExternalLinks": 16,
+    "totalRoutesAudited": 8,
+    "linksInventoried": 585,
+    "totalLinksChecked": 585,
+    "totalInternalLinks": 413,
+    "totalInternalHashes": 138,
+    "externalLinksInventoried": 18,
+    "totalExternalLinks": 18,
+    "mailtoLinksInventoried": 4,
     "totalMailtoLinks": 4,
-    "totalTelLinks": 9,
-    "totalButtonsChecked": 181,
+    "telLinksInventoried": 10,
+    "totalTelLinks": 10,
+    "unclassifiedLinksInventoried": 2,
+    "buttonsInventoried": 210,
+    "totalButtonsChecked": 210,
+    "buttonsInteractedWith": 0,
+    "completeWorkflowsSuccessfullyExecuted": 0,
+    "internalDestinationsValidated": 31,
+    "hashTargetsValidated": 12,
     "brokenLinksCount": 0
   },
   "routeAudits": [
@@ -781,7 +791,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {
@@ -1818,7 +1829,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {
@@ -2608,7 +2620,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {
@@ -3656,7 +3669,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {
@@ -4528,7 +4542,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {
@@ -4662,6 +4677,923 @@
         {
           "tag": "button",
           "text": "Sponsor a Student",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Ask MECT(AI)",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Open Ask MECT — AI Assistant"
+        }
+      ],
+      "brokenOnThisPage": [],
+      "brokenLinksCount": 0
+    },
+    {
+      "route": "/campaigns/hanuman-murti",
+      "httpStatus": 200,
+      "totalAnchors": 73,
+      "totalButtons": 29,
+      "links": {
+        "internalRoutes": [
+          {
+            "tag": "a",
+            "text": "Shri Hanuman Murti — Proposed 80–100-foot cultural landmark (feasibility stage).",
+            "href": "/campaigns/hanuman-murti",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Murti Project",
+            "href": "/campaigns/hanuman-murti",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "View Hanuman Murti Campaign"
+          },
+          {
+            "tag": "a",
+            "text": "Hanuman Murti (80–100 Ft)",
+            "href": "/campaigns/hanuman-murti",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Donate Now",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Mahaveer Educational & Charitable TrustRegd. Public Charitable Trust • Estd. 2013",
+            "href": "/",
+            "resolvedHref": "http://127.0.0.1:3005/",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Mahaveer Educational & Charitable Trust Homepage"
+          },
+          {
+            "tag": "a",
+            "text": "Home",
+            "href": "/",
+            "resolvedHref": "http://127.0.0.1:3005/",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "About",
+            "href": "/about",
+            "resolvedHref": "http://127.0.0.1:3005/about",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Programmes",
+            "href": "/programmes",
+            "resolvedHref": "http://127.0.0.1:3005/programmes",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Impact",
+            "href": "/impact",
+            "resolvedHref": "http://127.0.0.1:3005/impact",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Campaigns",
+            "href": "/campaigns",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Governance",
+            "href": "/governance",
+            "resolvedHref": "http://127.0.0.1:3005/governance",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "CSR Partnerships",
+            "href": "/csr-partnerships",
+            "resolvedHref": "http://127.0.0.1:3005/csr-partnerships",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Reports & Disclosures",
+            "href": "/reports",
+            "resolvedHref": "http://127.0.0.1:3005/reports",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Donate",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Donate Now",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Donate Now to Mahaveer Trust"
+          },
+          {
+            "tag": "a",
+            "text": "Donate",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Donate to Mahaveer Trust"
+          },
+          {
+            "tag": "a",
+            "text": "Home",
+            "href": "/",
+            "resolvedHref": "http://127.0.0.1:3005/",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Campaigns",
+            "href": "/campaigns",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribution₹500Donate",
+            "href": "/donate?programme=HANUMAN_MURTI&amount=500",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI&amount=500",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribution₹1,000Donate",
+            "href": "/donate?programme=HANUMAN_MURTI&amount=1000",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI&amount=1000",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribution₹2,500Donate",
+            "href": "/donate?programme=HANUMAN_MURTI&amount=2500",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI&amount=2500",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribution₹5,000Donate",
+            "href": "/donate?programme=HANUMAN_MURTI&amount=5000",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI&amount=5000",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribution₹10,000Donate",
+            "href": "/donate?programme=HANUMAN_MURTI&amount=10000",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI&amount=10000",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Enter Custom Amount & Proceed to Donate",
+            "href": "/donate?programme=HANUMAN_MURTI",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Institutional / CSR Partnership Inquiries",
+            "href": "/contact?category=CSR%20%26%20Institutional%20Partnerships",
+            "resolvedHref": "http://127.0.0.1:3005/contact?category=CSR%20%26%20Institutional%20Partnerships",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Contribute to Hanuman Murti Project",
+            "href": "/donate?programme=HANUMAN_MURTI",
+            "resolvedHref": "http://127.0.0.1:3005/donate?programme=HANUMAN_MURTI",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "View Institutional Reports",
+            "href": "/reports",
+            "resolvedHref": "http://127.0.0.1:3005/reports",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Verify Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Donate NowSBI • Direct Transfer",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Donate Now — SBI • Direct Transfer"
+          },
+          {
+            "tag": "a",
+            "text": "CSR PartnershipsSchedule VII Projects",
+            "href": "/csr-partnerships",
+            "resolvedHref": "http://127.0.0.1:3005/csr-partnerships",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "CSR Partnerships — Schedule VII Projects"
+          },
+          {
+            "tag": "a",
+            "text": "Statutory Vault12A, 80G, Darpan",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Statutory Vault — 12A, 80G, Darpan"
+          },
+          {
+            "tag": "a",
+            "text": "Join as VolunteerMentor & Support",
+            "href": "/volunteer",
+            "resolvedHref": "http://127.0.0.1:3005/volunteer",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Join as Volunteer — Mentor & Support"
+          },
+          {
+            "tag": "a",
+            "text": "Verify Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "View Statutory Disclosures",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Mahaveer Educational & Charitable TrustPublic Charitable Trust (MECT)",
+            "href": "/",
+            "resolvedHref": "http://127.0.0.1:3005/",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Learn About Our Heritage",
+            "href": "/about",
+            "resolvedHref": "http://127.0.0.1:3005/about",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "The Grand Hanuman Murti Project",
+            "href": "/campaigns/hanuman-murti",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "All Institutional Initiatives",
+            "href": "/campaigns",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Corporate CSR Collaborations",
+            "href": "/csr-partnerships",
+            "resolvedHref": "http://127.0.0.1:3005/csr-partnerships",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Blog & Field Dispatches",
+            "href": "/stories",
+            "resolvedHref": "http://127.0.0.1:3005/stories",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Memories & Archival Gallery",
+            "href": "/memories-gallery",
+            "resolvedHref": "http://127.0.0.1:3005/memories-gallery",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Annual Reports & Audits",
+            "href": "/reports",
+            "resolvedHref": "http://127.0.0.1:3005/reports",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Statutory Accreditation Register",
+            "href": "/statutory-disclosures",
+            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Frequently Asked Questions",
+            "href": "/faq",
+            "resolvedHref": "http://127.0.0.1:3005/faq",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Donate to MECT",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Volunteer & Mentorship",
+            "href": "/volunteer",
+            "resolvedHref": "http://127.0.0.1:3005/volunteer",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Secretariat Inquiry Desk",
+            "href": "/contact",
+            "resolvedHref": "http://127.0.0.1:3005/contact",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Support Our Work",
+            "href": "/donate",
+            "resolvedHref": "http://127.0.0.1:3005/donate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Privacy Policy",
+            "href": "/privacy",
+            "resolvedHref": "http://127.0.0.1:3005/privacy",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Terms of Service",
+            "href": "/terms",
+            "resolvedHref": "http://127.0.0.1:3005/terms",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Accessibility Statement",
+            "href": "/accessibility",
+            "resolvedHref": "http://127.0.0.1:3005/accessibility",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Governance Charter",
+            "href": "/governance",
+            "resolvedHref": "http://127.0.0.1:3005/governance",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          }
+        ],
+        "inPageHashes": [
+          {
+            "tag": "a",
+            "text": "Skip to main content",
+            "href": "#main-content",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti#main-content",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null,
+            "targetExists": true
+          },
+          {
+            "tag": "a",
+            "text": "Support the Campaign",
+            "href": "#participate",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti#participate",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null,
+            "targetExists": true
+          },
+          {
+            "tag": "a",
+            "text": "Project Overview & Vision",
+            "href": "#project-overview",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti#project-overview",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null,
+            "targetExists": true
+          },
+          {
+            "tag": "a",
+            "text": "Milestones & Updates",
+            "href": "#updates",
+            "resolvedHref": "http://127.0.0.1:3005/campaigns/hanuman-murti#updates",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null,
+            "targetExists": true
+          }
+        ],
+        "internalRouteWithHash": [
+          {
+            "tag": "a",
+            "text": "Education & Learning — Remedial tuition hubs and study materials for rural Balangir students.",
+            "href": "/programmes#education",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#education",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Jal Seva & Jan Ahar — Safe summer drinking water and hospital food relief in Odisha.",
+            "href": "/programmes#water",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#water",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Swavalamban — Certified vocational tailoring and self-reliance skills for rural women.",
+            "href": "/programmes#women-empowerment",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#women-empowerment",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Education & Remedial Coaching",
+            "href": "/programmes#education",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#education",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Women Empowerment & Tailoring",
+            "href": "/programmes#women-empowerment",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#women-empowerment",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Sports & Extracurriculars",
+            "href": "/programmes#sports-extracurricular",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#sports-extracurricular",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Safe Water & Jal Seva Kiosks",
+            "href": "/programmes#water",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#water",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Food Relief & Jan Ahar",
+            "href": "/programmes#food-relief",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#food-relief",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Community Welfare & Rural Relief",
+            "href": "/programmes#community-welfare",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#community-welfare",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Higher Education Scholarships",
+            "href": "/programmes#higher-education",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#higher-education",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Free Education (Target: Up to 200)",
+            "href": "/programmes#free-education-200",
+            "resolvedHref": "http://127.0.0.1:3005/programmes#free-education-200",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Public Records Library",
+            "href": "/reports#library",
+            "resolvedHref": "http://127.0.0.1:3005/reports#library",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Website developed by Himansu Nayak",
+            "href": "/about#developer-credit",
+            "resolvedHref": "http://127.0.0.1:3005/about#developer-credit",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          }
+        ],
+        "external": [
+          {
+            "tag": "a",
+            "text": "CC BY 4.0",
+            "href": "https://creativecommons.org/licenses/by/4.0/",
+            "resolvedHref": "https://creativecommons.org/licenses/by/4.0/",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "CC BY-SA 4.0",
+            "href": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "resolvedHref": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "ariaLabel": null
+          }
+        ],
+        "mailto": [],
+        "tel": [
+          {
+            "tag": "a",
+            "text": "Secretariat Desk+91 94371 23616",
+            "href": "tel:+919437123616",
+            "resolvedHref": "tel:+919437123616",
+            "target": null,
+            "rel": null,
+            "ariaLabel": "Secretariat Desk — +91 94371 23616"
+          }
+        ],
+        "unclassified": []
+      },
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": "Pause announcement ticker"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "About sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Programmes sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Impact sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Campaigns sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Governance sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Reports & Disclosures sub-navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "Search/",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": "Search site (Press / or Ctrl+K)"
+        },
+        {
+          "tag": "button",
+          "text": "Menu",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Open comprehensive institutional menu"
+        },
+        {
+          "tag": "button",
+          "text": "Search/",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": "Search site (Press / or Ctrl+K)"
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": "Open navigation menu"
+        },
+        {
+          "tag": "button",
+          "text": "Support the Campaign",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Project Overview & Vision",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Milestones & Updates",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Auto-Orbit: ON",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Enter Custom Amount & Proceed to Donate",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Institutional / CSR Partnership Inquiries",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "What is the primary objective of the Grand Hanuman Murti Project?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "true",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Yes",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": "Yes, mark \"What is the primary objective of the Grand Hanuman Murti Project?\" as helpful"
+        },
+        {
+          "tag": "button",
+          "text": "No",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": "No, mark \"What is the primary objective of the Grand Hanuman Murti Project?\" as not helpful"
+        },
+        {
+          "tag": "button",
+          "text": "What is the proposed height and design of the monument?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Is the project currently under construction?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "How are campaign donations managed and accounted for?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Will I receive an official receipt for my contribution?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Can institutional or corporate donors support this initiative?",
+          "type": "button",
+          "disabled": false,
+          "ariaExpanded": "false",
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "Contribute to Hanuman Murti Project",
+          "type": "submit",
+          "disabled": false,
+          "ariaExpanded": null,
+          "ariaLabel": null
+        },
+        {
+          "tag": "button",
+          "text": "View Institutional Reports",
           "type": "submit",
           "disabled": false,
           "ariaExpanded": null,
@@ -5245,6 +6177,26 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
+        ],
+        "unclassified": [
+          {
+            "tag": "a",
+            "text": "Open UPI App",
+            "href": "upi://pay?pa=86971610172@sbi&pn=MAHAVEER%20EDUCATIONAL%20%26%20CHARITABLE%20TRUST&cu=INR",
+            "resolvedHref": "upi://pay?pa=86971610172@sbi&pn=MAHAVEER%20EDUCATIONAL%20%26%20CHARITABLE%20TRUST&cu=INR",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          },
+          {
+            "tag": "a",
+            "text": "Open UPI App",
+            "href": "upi://pay?pa=86971610172@sbi&pn=MAHAVEER%20EDUCATIONAL%20%26%20CHARITABLE%20TRUST&cu=INR",
+            "resolvedHref": "upi://pay?pa=86971610172@sbi&pn=MAHAVEER%20EDUCATIONAL%20%26%20CHARITABLE%20TRUST&cu=INR",
+            "target": null,
+            "rel": null,
+            "ariaLabel": null
+          }
         ]
       },
       "buttons": [
@@ -5447,7 +6399,7 @@
     {
       "route": "/contact",
       "httpStatus": 200,
-      "totalAnchors": 72,
+      "totalAnchors": 70,
       "totalButtons": 17,
       "links": {
         "internalRoutes": [
@@ -5609,24 +6561,6 @@
             "text": "Home",
             "href": "/",
             "resolvedHref": "http://127.0.0.1:3005/",
-            "target": null,
-            "rel": null,
-            "ariaLabel": null
-          },
-          {
-            "tag": "a",
-            "text": "Statutory Disclosures",
-            "href": "/statutory-disclosures",
-            "resolvedHref": "http://127.0.0.1:3005/statutory-disclosures",
-            "target": null,
-            "rel": null,
-            "ariaLabel": null
-          },
-          {
-            "tag": "a",
-            "text": "Governance Charter",
-            "href": "/governance",
-            "resolvedHref": "http://127.0.0.1:3005/governance",
             "target": null,
             "rel": null,
             "ariaLabel": null
@@ -6114,7 +7048,8 @@
             "rel": null,
             "ariaLabel": "Secretariat Desk — +91 94371 23616"
           }
-        ]
+        ],
+        "unclassified": []
       },
       "buttons": [
         {

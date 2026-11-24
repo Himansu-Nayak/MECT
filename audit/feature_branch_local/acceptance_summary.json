@@ -1,5 +1,5 @@
 {
-  "testTimestamp": "2026-11-24T11:35:16.843Z",
+  "testTimestamp": "2026-11-24T17:27:06.803Z",
   "testedServer": "http://127.0.0.1:3005",
   "branch": "feat/complete-website-redefinition-and-deduplication",
   "results": [
@@ -82,6 +82,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "campaigns-320px-mobile-compact.png"
+    },
+    {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-320px-mobile-compact.png"
     },
     {
       "viewport": "320px-mobile-compact",
@@ -198,6 +214,22 @@
     {
       "viewport": "360px-mobile-android",
       "width": 360,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
       "page": "donate",
       "url": "http://127.0.0.1:3005/donate",
       "status": 200,
@@ -306,6 +338,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "campaigns-375px-mobile-standard.png"
+    },
+    {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-375px-mobile-standard.png"
     },
     {
       "viewport": "375px-mobile-standard",
@@ -422,6 +470,22 @@
     {
       "viewport": "390px-mobile-modern",
       "width": 390,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
       "page": "donate",
       "url": "http://127.0.0.1:3005/donate",
       "status": 200,
@@ -530,6 +594,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "campaigns-430px-mobile-large.png"
+    },
+    {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-430px-mobile-large.png"
     },
     {
       "viewport": "430px-mobile-large",
@@ -646,6 +726,22 @@
     {
       "viewport": "768px-tablet-portrait",
       "width": 768,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
       "page": "donate",
       "url": "http://127.0.0.1:3005/donate",
       "status": 200,
@@ -754,6 +850,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "campaigns-1024px-tablet-landscape.png"
+    },
+    {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-1024px-tablet-landscape.png"
     },
     {
       "viewport": "1024px-tablet-landscape",
@@ -870,6 +982,22 @@
     {
       "viewport": "1280px-desktop-compact",
       "width": 1280,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
       "page": "donate",
       "url": "http://127.0.0.1:3005/donate",
       "status": 200,
@@ -982,6 +1110,22 @@
     {
       "viewport": "1440px-desktop-standard",
       "width": 1440,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-1440px-desktop-standard.png"
+    },
+    {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
       "page": "donate",
       "url": "http://127.0.0.1:3005/donate",
       "status": 200,
@@ -1090,6 +1234,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "campaigns-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "hanuman-murti",
+      "url": "http://127.0.0.1:3005/campaigns/hanuman-murti",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 2,
+      "loadedImages": 2,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "hanuman-murti-1920px-desktop-widescreen.png"
     },
     {
       "viewport": "1920px-desktop-widescreen",

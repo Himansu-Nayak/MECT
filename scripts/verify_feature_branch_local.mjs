@@ -94,6 +94,7 @@ const ROUTES = [
   { path: '/governance', name: 'governance' },
   { path: '/programmes', name: 'programmes' },
   { path: '/campaigns', name: 'campaigns' },
+  { path: '/campaigns/hanuman-murti', name: 'hanuman-murti' },
   { path: '/donate', name: 'donate' },
   { path: '/contact', name: 'contact' }
 ];

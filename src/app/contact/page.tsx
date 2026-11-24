@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Select, type SelectOption } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
-import { TRUST_CONFIG } from "@/lib/config";
 import {
   MapPin,
   Mail,
@@ -237,10 +236,10 @@ export default function ContactPage() {
                     Contact Line
                   </span>
                   <a
-                    href={TRUST_CONFIG.contact.phones.helplineHref}
+                    href={ORG.helpline.href}
                     className="text-terracotta-dark font-medium underline hover:text-forest block"
                   >
-                    {TRUST_CONFIG.contact.phones.helpline}
+                    {ORG.helpline.display}
                   </a>
                 </div>
               </div>
@@ -269,10 +268,10 @@ export default function ContactPage() {
                     General Email
                   </span>
                   <a
-                    href={`mailto:${TRUST_CONFIG.contact.officialEmails.general}`}
+                    href={`mailto:${ORG.emails.general}`}
                     className="text-terracotta-dark font-medium underline hover:text-forest break-all block"
                   >
-                    {TRUST_CONFIG.contact.officialEmails.general}
+                    {ORG.emails.general}
                   </a>
                 </div>
               </div>
@@ -412,14 +411,14 @@ export default function ContactPage() {
                 <p className="font-semibold text-forest">JavaScript is disabled in your browser.</p>
                 <p>
                   You can reach the Secretariat directly by email at{" "}
-                  <a href={`mailto:${MECT_ORG.contact.generalEmail}`} className="underline font-semibold text-terracotta-dark">
-                    {MECT_ORG.contact.generalEmail}
+                  <a href={`mailto:${ORG.emails.general}`} className="underline font-semibold text-terracotta-dark">
+                    {ORG.emails.general}
                   </a>{" "}
                   or call our official registered line{" "}
-                  <a href={MECT_ORG.contact.phoneHref} className="underline font-semibold text-terracotta-dark">
-                    {MECT_ORG.contact.primaryPhone}
+                  <a href={ORG.helpline.href} className="underline font-semibold text-terracotta-dark">
+                    {ORG.helpline.display}
                   </a>{" "}
-                  ({MECT_ORG.contact.officeHours}, {MECT_ORG.contact.workingDays}).
+                  ({ORG.helpline.hours}, {MECT_ORG.contact.workingDays}).
                 </p>
               </div>
             </noscript>
@@ -662,7 +661,7 @@ export default function ContactPage() {
                 Direct Trust Follow-Up
               </h3>
               <p className="text-xs text-ink-sand leading-relaxed">
-                Responses are communicated directly through verified Trust email (<code>{MECT_ORG.contact.generalEmail}</code>) or registered office telephone lines (<code>{MECT_ORG.contact.primaryPhone}</code>). No third parties or touts are engaged.
+                Responses are communicated directly through verified Trust email (<code>{ORG.emails.general}</code>) or registered office telephone lines (<code>{ORG.helpline.display}</code>). No third parties or touts are engaged.
               </p>
               <div className="text-[11px] text-forest pt-2 border-t border-border-warm font-medium">
                 Standard: Authentic institutional channels without middlemen.
@@ -680,26 +679,8 @@ export default function ContactPage() {
                 Zero-Tolerance Notice: No Intermediaries or Processing Fees
               </h4>
               <p className="text-xs text-white/90 leading-relaxed">
-                Mahaveer Educational &amp; Charitable Trust (MECT) charges <strong>zero fees</strong> at any stage of inquiry, scholarship application, or volunteer registration. We never employ third-party touts or commission brokers. If any individual or entity solicits money claiming to expedite your scholarship or request, report it immediately to <code className="text-cream font-mono underline">{TRUST_CONFIG.contact.officialEmails.general}</code> or our helpline <code className="text-cream font-mono underline">{TRUST_CONFIG.contact.phones.helpline}</code>.
+                Mahaveer Educational &amp; Charitable Trust (MECT) charges <strong>zero fees</strong> at any stage of inquiry, scholarship application, or volunteer registration. We never employ third-party touts or commission brokers. If any individual or entity solicits money claiming to expedite your scholarship or request, report it immediately to <code className="text-cream font-mono underline">{ORG.emails.general}</code> or our helpline <code className="text-cream font-mono underline">{ORG.helpline.display}</code>.
               </p>
-            </div>
-          </div>
-
-          {/* Quick Statutory Reference */}
-          <div className="mt-8 p-4 bg-sand-light border border-border-warm rounded-xs flex flex-wrap items-center justify-between gap-4 text-xs text-ink-sand">
-            <div className="flex items-center gap-2">
-              <Compass className="w-4 h-4 text-terracotta shrink-0" />
-              <span>
-                <strong>Deed:</strong> {ORG.trustDeed.subRegistrar} Doc No. {ORG.trustDeed.deedNumber} | <strong>PAN:</strong> {ORG.ids.pan} | <strong>MCA CSR:</strong> {ORG.ids.csr1}
-              </span>
-            </div>
-            <div className="flex items-center gap-4 text-terracotta-dark font-semibold">
-              <Link href="/statutory-disclosures" className="hover:text-forest underline">
-                Statutory Disclosures
-              </Link>
-              <Link href="/governance" className="hover:text-forest underline">
-                Governance Charter
-              </Link>
             </div>
           </div>
         </Container>

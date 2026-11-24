@@ -48,6 +48,7 @@ const AUDITED_ROUTES = [
   { path: '/governance', name: 'governance' },
   { path: '/programmes', name: 'programmes' },
   { path: '/campaigns', name: 'campaigns' },
+  { path: '/campaigns/hanuman-murti', name: 'hanuman-murti' },
   { path: '/donate', name: 'donate' },
   { path: '/contact', name: 'contact' }
 ];
@@ -88,13 +89,23 @@ async function runLinkAndCtaAudit() {
     branch: 'feat/complete-website-redefinition-and-deduplication',
     summary: {
       totalRoutesAudited: AUDITED_ROUTES.length,
+      linksInventoried: 0,
       totalLinksChecked: 0,
       totalInternalLinks: 0,
       totalInternalHashes: 0,
+      externalLinksInventoried: 0,
       totalExternalLinks: 0,
+      mailtoLinksInventoried: 0,
       totalMailtoLinks: 0,
+      telLinksInventoried: 0,
       totalTelLinks: 0,
+      unclassifiedLinksInventoried: 0,
+      buttonsInventoried: 0,
       totalButtonsChecked: 0,
+      buttonsInteractedWith: 0,
+      completeWorkflowsSuccessfullyExecuted: 0,
+      internalDestinationsValidated: 0,
+      hashTargetsValidated: 0,
       brokenLinksCount: 0
     },
     routeAudits: [],
@@ -145,7 +156,8 @@ async function runLinkAndCtaAudit() {
           internalRouteWithHash: [],
           external: [],
           mailto: [],
-          tel: []
+          tel: [],
+          unclassified: []
         },
         buttons: pageElements.buttons,
         brokenOnThisPage: []
@@ -153,13 +165,16 @@ async function runLinkAndCtaAudit() {
 
       for (const a of pageElements.anchors) {
         auditReport.summary.totalLinksChecked++;
+        auditReport.summary.linksInventoried++;
         const href = a.href;
 
         if (href.startsWith('mailto:')) {
           auditReport.summary.totalMailtoLinks++;
+          auditReport.summary.mailtoLinksInventoried++;
           routeResult.links.mailto.push(a);
         } else if (href.startsWith('tel:')) {
           auditReport.summary.totalTelLinks++;
+          auditReport.summary.telLinksInventoried++;
           routeResult.links.tel.push(a);
         } else if (href.startsWith('http://') || href.startsWith('https://')) {
           if (href.startsWith(BASE_URL)) {
@@ -174,6 +189,7 @@ async function runLinkAndCtaAudit() {
             }
           } else {
             auditReport.summary.totalExternalLinks++;
+            auditReport.summary.externalLinksInventoried++;
             routeResult.links.external.push(a);
           }
         } else if (href.startsWith('#')) {
@@ -206,10 +222,14 @@ async function runLinkAndCtaAudit() {
             auditReport.summary.totalInternalLinks++;
             routeResult.links.internalRoutes.push(a);
           }
+        } else {
+          auditReport.summary.unclassifiedLinksInventoried++;
+          routeResult.links.unclassified.push(a);
         }
       }
 
       auditReport.summary.totalButtonsChecked += pageElements.buttons.length;
+      auditReport.summary.buttonsInventoried += pageElements.buttons.length;
       routeResult.brokenLinksCount = routeResult.brokenOnThisPage.length;
       auditReport.routeAudits.push(routeResult);
 
@@ -225,6 +245,9 @@ async function runLinkAndCtaAudit() {
       ra.links.internalRoutes.forEach((l) => allInternalTargets.add(l.href));
       ra.links.internalRouteWithHash.forEach((l) => allRouteHashTargets.add(l.href));
     });
+
+    auditReport.summary.internalDestinationsValidated = allInternalTargets.size;
+    auditReport.summary.hashTargetsValidated = allRouteHashTargets.size;
 
     console.log(`Verifying ${allInternalTargets.size} distinct internal route destinations...`);
     for (const targetPath of allInternalTargets) {
@@ -297,7 +320,7 @@ async function runLinkAndCtaAudit() {
     const outputPath = path.join(OUTPUT_DIR, 'cta_link_audit.json');
     fs.writeFileSync(outputPath, JSON.stringify(auditReport, null, 2), 'utf8');
     console.log(`\nCTA & Link Audit complete. Report written to ${outputPath}`);
-    console.log(`Summary: Checked ${auditReport.summary.totalLinksChecked} links across 7 routes. Broken/Missing: ${auditReport.summary.brokenLinksCount}.`);
+    console.log(`Summary: Checked ${auditReport.summary.totalLinksChecked} links across ${AUDITED_ROUTES.length} routes. Broken/Missing: ${auditReport.summary.brokenLinksCount}.`);
 
     await page.close();
   } finally {
