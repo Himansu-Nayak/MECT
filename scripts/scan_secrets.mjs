@@ -117,13 +117,17 @@ export function scanGitHistory() {
   return Array.from(commitReport.values());
 }
 
+let trackedFilesSet = null;
 export function isGitTracked(relPath) {
-  try {
-    execSync(`git ls-files --error-unmatch "${relPath}"`, { stdio: "ignore" });
-    return true;
-  } catch {
-    return false;
+  if (!trackedFilesSet) {
+    try {
+      const output = execSync("git ls-files", { encoding: "utf8" });
+      trackedFilesSet = new Set(output.split("\n").map(f => f.trim().replace(/\\/g, "/")).filter(Boolean));
+    } catch {
+      trackedFilesSet = new Set();
+    }
   }
+  return trackedFilesSet.has(relPath.replace(/\\/g, "/"));
 }
 
 export function scanWorkingTree() {

@@ -1,0 +1,241 @@
+{
+  "totalAssets": 39,
+  "usedCount": 24,
+  "unusedCount": 15,
+  "assets": [
+    {
+      "path": "public\\documents\\mect-csr1-certificate.png",
+      "relative": "public\\documents\\mect-csr1-certificate.png",
+      "size": 121056,
+      "isUsed": true
+    },
+    {
+      "path": "public\\Er. Japabandhu Kampa.jpeg",
+      "relative": "public\\Er. Japabandhu Kampa.jpeg",
+      "size": 55755,
+      "isUsed": true
+    },
+    {
+      "path": "public\\favicon.ico",
+      "relative": "public\\favicon.ico",
+      "size": 155090,
+      "isUsed": false
+    },
+    {
+      "path": "public\\google4eacd3ee074d0174.html",
+      "relative": "public\\google4eacd3ee074d0174.html",
+      "size": 53,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\hero\\illustrative-child-support-outreach.webp",
+      "relative": "public\\images\\hero\\illustrative-child-support-outreach.webp",
+      "size": 74124,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\hero\\illustrative-community-library-reading.webp",
+      "relative": "public\\images\\hero\\illustrative-community-library-reading.webp",
+      "size": 319292,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\hero\\illustrative-women-self-help-group.webp",
+      "relative": "public\\images\\hero\\illustrative-women-self-help-group.webp",
+      "size": 283468,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\hero\\mect-civic-pledge-classroom.jpg",
+      "relative": "public\\images\\hero\\mect-civic-pledge-classroom.jpg",
+      "size": 224304,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-civic-pledge-classroom.webp",
+      "relative": "public\\images\\hero\\mect-civic-pledge-classroom.webp",
+      "size": 176782,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-classroom-study-circle.webp",
+      "relative": "public\\images\\hero\\mect-classroom-study-circle.webp",
+      "size": 164908,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-clean-water-hygiene-demo.jpg",
+      "relative": "public\\images\\hero\\mect-clean-water-hygiene-demo.jpg",
+      "size": 313855,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-clean-water-hygiene-demo.webp",
+      "relative": "public\\images\\hero\\mect-clean-water-hygiene-demo.webp",
+      "size": 269848,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-community-field-outreach.webp",
+      "relative": "public\\images\\hero\\mect-community-field-outreach.webp",
+      "size": 294600,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-faculty-puintala-campus.jpg",
+      "relative": "public\\images\\hero\\mect-faculty-puintala-campus.jpg",
+      "size": 97765,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-faculty-puintala-campus.webp",
+      "relative": "public\\images\\hero\\mect-faculty-puintala-campus.webp",
+      "size": 79542,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-legal-literacy-session.jpg",
+      "relative": "public\\images\\hero\\mect-legal-literacy-session.jpg",
+      "size": 124960,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-legal-literacy-session.webp",
+      "relative": "public\\images\\hero\\mect-legal-literacy-session.webp",
+      "size": 106418,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-public-health-awareness.jpg",
+      "relative": "public\\images\\hero\\mect-public-health-awareness.jpg",
+      "size": 166323,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-public-health-awareness.webp",
+      "relative": "public\\images\\hero\\mect-public-health-awareness.webp",
+      "size": 154466,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-trustees-campus-walk.webp",
+      "relative": "public\\images\\hero\\mect-trustees-campus-walk.webp",
+      "size": 314976,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-women-empowerment-seminar.jpg",
+      "relative": "public\\images\\hero\\mect-women-empowerment-seminar.jpg",
+      "size": 188270,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\hero\\mect-women-empowerment-seminar.webp",
+      "relative": "public\\images\\hero\\mect-women-empowerment-seminar.webp",
+      "size": 263288,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\leadership\\er-japabandhu-kampa.jpg",
+      "relative": "public\\images\\leadership\\er-japabandhu-kampa.jpg",
+      "size": 69038,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\leadership\\er-japabandhu-kampa.webp",
+      "relative": "public\\images\\leadership\\er-japabandhu-kampa.webp",
+      "size": 65134,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\mect-official-emblem.png",
+      "relative": "public\\images\\mect-official-emblem.png",
+      "size": 155068,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\mect-sbi-upi-qr.png",
+      "relative": "public\\images\\mect-sbi-upi-qr.png",
+      "size": 332325,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\og-default.png",
+      "relative": "public\\images\\og-default.png",
+      "size": 253997,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\og-disclosures.png",
+      "relative": "public\\images\\og-disclosures.png",
+      "size": 255533,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\og-donate.png",
+      "relative": "public\\images\\og-donate.png",
+      "size": 255202,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\og-programmes.png",
+      "relative": "public\\images\\og-programmes.png",
+      "size": 255063,
+      "isUsed": true
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_1.jpg",
+      "relative": "public\\images\\programmes\\field_photo_1.jpg",
+      "size": 75332,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_2.jpg",
+      "relative": "public\\images\\programmes\\field_photo_2.jpg",
+      "size": 35098,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_3.jpg",
+      "relative": "public\\images\\programmes\\field_photo_3.jpg",
+      "size": 90487,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_4.jpg",
+      "relative": "public\\images\\programmes\\field_photo_4.jpg",
+      "size": 91419,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_5.jpg",
+      "relative": "public\\images\\programmes\\field_photo_5.jpg",
+      "size": 234898,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_6.jpg",
+      "relative": "public\\images\\programmes\\field_photo_6.jpg",
+      "size": 61550,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_7.jpg",
+      "relative": "public\\images\\programmes\\field_photo_7.jpg",
+      "size": 11782,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_8.jpg",
+      "relative": "public\\images\\programmes\\field_photo_8.jpg",
+      "size": 125984,
+      "isUsed": false
+    },
+    {
+      "path": "public\\images\\programmes\\field_photo_9.jpg",
+      "relative": "public\\images\\programmes\\field_photo_9.jpg",
+      "size": 103506,
+      "isUsed": false
+    }
+  ]
+}

@@ -96,7 +96,8 @@ const ROUTES = [
   { path: '/campaigns', name: 'campaigns' },
   { path: '/campaigns/hanuman-murti', name: 'hanuman-murti' },
   { path: '/donate', name: 'donate' },
-  { path: '/contact', name: 'contact' }
+  { path: '/contact', name: 'contact' },
+  { path: '/impact', name: 'impact' }
 ];
 
 async function runAudit() {
@@ -316,7 +317,14 @@ async function runAudit() {
       JSON.stringify(summary, null, 2),
       'utf8'
     );
-    console.log(`\nLocal acceptance verification finished. Summary written to ${OUTPUT_DIR}/acceptance_summary.json`);
+    const finalDir = path.resolve('audit/final');
+    if (!fs.existsSync(finalDir)) fs.mkdirSync(finalDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(finalDir, 'responsive_results.json'),
+      JSON.stringify(summary, null, 2),
+      'utf8'
+    );
+    console.log(`\nLocal acceptance verification finished. Summary written to ${OUTPUT_DIR}/acceptance_summary.json and audit/final/responsive_results.json`);
 
   } finally {
     await browser.close();

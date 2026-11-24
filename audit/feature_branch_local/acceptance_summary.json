@@ -1,5 +1,5 @@
 {
-  "testTimestamp": "2026-11-24T19:02:55.127Z",
+  "testTimestamp": "2026-11-24T19:47:27.752Z",
   "testedServer": "http://127.0.0.1:3005",
   "branch": "feat/complete-website-redefinition-and-deduplication",
   "results": [
@@ -132,6 +132,22 @@
       "screenshot": "contact-320px-mobile-compact.png"
     },
     {
+      "viewport": "320px-mobile-compact",
+      "width": 320,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-320px-mobile-compact.png"
+    },
+    {
       "viewport": "360px-mobile-android",
       "width": 360,
       "page": "homepage",
@@ -258,6 +274,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "contact-360px-mobile-android.png"
+    },
+    {
+      "viewport": "360px-mobile-android",
+      "width": 360,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-360px-mobile-android.png"
     },
     {
       "viewport": "375px-mobile-standard",
@@ -388,6 +420,22 @@
       "screenshot": "contact-375px-mobile-standard.png"
     },
     {
+      "viewport": "375px-mobile-standard",
+      "width": 375,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-375px-mobile-standard.png"
+    },
+    {
       "viewport": "390px-mobile-modern",
       "width": 390,
       "page": "homepage",
@@ -514,6 +562,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "contact-390px-mobile-modern.png"
+    },
+    {
+      "viewport": "390px-mobile-modern",
+      "width": 390,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-390px-mobile-modern.png"
     },
     {
       "viewport": "430px-mobile-large",
@@ -644,6 +708,22 @@
       "screenshot": "contact-430px-mobile-large.png"
     },
     {
+      "viewport": "430px-mobile-large",
+      "width": 430,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-430px-mobile-large.png"
+    },
+    {
       "viewport": "768px-tablet-portrait",
       "width": 768,
       "page": "homepage",
@@ -770,6 +850,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "contact-768px-tablet-portrait.png"
+    },
+    {
+      "viewport": "768px-tablet-portrait",
+      "width": 768,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-768px-tablet-portrait.png"
     },
     {
       "viewport": "1024px-tablet-landscape",
@@ -900,6 +996,22 @@
       "screenshot": "contact-1024px-tablet-landscape.png"
     },
     {
+      "viewport": "1024px-tablet-landscape",
+      "width": 1024,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-1024px-tablet-landscape.png"
+    },
+    {
       "viewport": "1280px-desktop-compact",
       "width": 1280,
       "page": "homepage",
@@ -1026,6 +1138,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "contact-1280px-desktop-compact.png"
+    },
+    {
+      "viewport": "1280px-desktop-compact",
+      "width": 1280,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-1280px-desktop-compact.png"
     },
     {
       "viewport": "1440px-desktop-standard",
@@ -1156,6 +1284,22 @@
       "screenshot": "contact-1440px-desktop-standard.png"
     },
     {
+      "viewport": "1440px-desktop-standard",
+      "width": 1440,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-1440px-desktop-standard.png"
+    },
+    {
       "viewport": "1920px-desktop-widescreen",
       "width": 1920,
       "page": "homepage",
@@ -1282,6 +1426,22 @@
       "consoleErrorsCount": 0,
       "consoleErrors": [],
       "screenshot": "contact-1920px-desktop-widescreen.png"
+    },
+    {
+      "viewport": "1920px-desktop-widescreen",
+      "width": 1920,
+      "page": "impact",
+      "url": "http://127.0.0.1:3005/impact",
+      "status": 200,
+      "overflow": false,
+      "totalImages": 8,
+      "loadedImages": 8,
+      "brokenImagesCount": 0,
+      "brokenImages": [],
+      "incompleteDetails": [],
+      "consoleErrorsCount": 0,
+      "consoleErrors": [],
+      "screenshot": "impact-1920px-desktop-widescreen.png"
     }
   ],
   "founderImageVerification": [

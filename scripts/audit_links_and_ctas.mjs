@@ -319,7 +319,10 @@ async function runLinkAndCtaAudit() {
 
     const outputPath = path.join(OUTPUT_DIR, 'cta_link_audit.json');
     fs.writeFileSync(outputPath, JSON.stringify(auditReport, null, 2), 'utf8');
-    console.log(`\nCTA & Link Audit complete. Report written to ${outputPath}`);
+    const finalDir = path.resolve('audit/final');
+    if (!fs.existsSync(finalDir)) fs.mkdirSync(finalDir, { recursive: true });
+    fs.writeFileSync(path.join(finalDir, 'link_cta_results.json'), JSON.stringify(auditReport, null, 2), 'utf8');
+    console.log(`\nCTA & Link Audit complete. Report written to ${outputPath} and audit/final/link_cta_results.json`);
     console.log(`Summary: Checked ${auditReport.summary.totalLinksChecked} links across ${AUDITED_ROUTES.length} routes. Broken/Missing: ${auditReport.summary.brokenLinksCount}.`);
 
     await page.close();

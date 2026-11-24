@@ -180,7 +180,10 @@ async function runRouteDiscoveryAudit() {
 
     const outputPath = path.join(OUTPUT_DIR, 'complete_route_inventory.json');
     fs.writeFileSync(outputPath, JSON.stringify(auditResults, null, 2), 'utf8');
-    console.log(`\nRoute inventory audit complete. Written to ${outputPath}`);
+    const finalDir = path.resolve('audit/final');
+    if (!fs.existsSync(finalDir)) fs.mkdirSync(finalDir, { recursive: true });
+    fs.writeFileSync(path.join(finalDir, 'route_results.json'), JSON.stringify(auditResults, null, 2), 'utf8');
+    console.log(`\nRoute inventory audit complete. Written to ${outputPath} and audit/final/route_results.json`);
     await page.close();
   } finally {
     await browser.close();

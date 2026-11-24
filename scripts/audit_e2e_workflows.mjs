@@ -200,7 +200,10 @@ async function runE2EWorkflows() {
 
     const outputPath = path.join(OUTPUT_DIR, 'e2e_workflows_summary.json');
     fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8');
-    console.log(`\nE2E Workflows summary written to ${outputPath}`);
+    const finalDir = path.resolve('audit/final');
+    if (!fs.existsSync(finalDir)) fs.mkdirSync(finalDir, { recursive: true });
+    fs.writeFileSync(path.join(finalDir, 'e2e_results.json'), JSON.stringify(results, null, 2), 'utf8');
+    console.log(`\nE2E Workflows summary written to ${outputPath} and audit/final/e2e_results.json`);
 
     await page.close();
   } finally {
