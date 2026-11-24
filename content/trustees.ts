@@ -19,7 +19,7 @@ export const TRUSTEES: TrusteeProfile[] = [
     role: ORG.chairman.role,
     deedClause: "Clause 8(2) & Clause 10",
     details:
-      "Settler founder of Mahaveer Educational & Charitable Trust (MECT) and custodian of trust records under the registered Trust Deed (Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar). Serves in a strictly honorary, non-remunerative capacity.",
+      `Settler founder of ${ORG.legalName} and custodian of trust records under the registered Trust Deed (Trust Deed executed ${ORG.trustDeed.executedDateDisplay}; registered ${ORG.trustDeed.registeredDateDisplay}, ${ORG.trustDeed.subRegistrar}). Serves in a strictly honorary, non-remunerative capacity.`,
     status: "Chairman & Managing Trustee",
     isConfirmed: true,
   },

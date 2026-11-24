@@ -26,7 +26,7 @@ import {
 export const metadata = createPageMetadata({
   title: "Governance Charter & Board",
   description:
-    "Governance framework, registered Trust Deed No. 40311302194, Clause XVI honorary code, and statutory compliance for MECT in Odisha.",
+    `Governance framework, registered Trust Deed No. ${ORG.trustDeed.deedNumber}, Clause XVI honorary code, and statutory compliance for MECT in Odisha.`,
   path: "/governance",
   ogImage: "/images/og-disclosures.png",
 });
@@ -66,27 +66,27 @@ export default function GovernancePage() {
   const statutoryCredentials = [
     {
       label: "Registered Trust Deed",
-      value: "No. 40311302194 (Balangir)",
-      subtext: "Executed 27 July 2013; Registered 30 July 2013 (District Sub-Registrar)",
+      value: `No. ${ORG.trustDeed.deedNumber} (${ORG.trustDeed.subRegistrar.replace(" Sub-Registrar", "")})`,
+      subtext: `Executed ${ORG.trustDeed.executedDateDisplay}; Registered ${ORG.trustDeed.registeredDateDisplay} (${ORG.trustDeed.subRegistrar})`,
     },
     {
       label: "Section 12A Registration",
-      value: "URN: AADTM5474FE20231",
-      subtext: "CBDT Order Dated 29-01-2024 (AY 2024-25 to 2026-27)",
+      value: `URN: ${ORG.ids.urn12A}`,
+      subtext: `CBDT Order Dated ${ORG.ids.taxOrderDate} (${ORG.ids.taxOrderValidityPeriod})`,
     },
     {
       label: "Section 80G Approval",
-      value: "URN: AADTM5474FF20241",
-      subtext: "CBDT Form 10AC Order Dated 29-01-2024 (Historical AY 2024-25 to 2026-27)",
+      value: `URN: ${ORG.ids.urn80G}`,
+      subtext: `CBDT Form 10AC Order Dated ${ORG.ids.taxOrderDate} (Historical ${ORG.ids.taxOrderValidityPeriod})`,
     },
     {
       label: "MCA CSR-1 Registration",
-      value: "CSR00081063",
-      subtext: "Ministry of Corporate Affairs Approval (09-11-2024, SRN: N14617237)",
+      value: ORG.ids.csr1,
+      subtext: `Ministry of Corporate Affairs Approval (${ORG.ids.csr1ApprovalDate}, SRN: ${ORG.ids.csr1Srn})`,
     },
     {
       label: "NITI Aayog NGO Darpan",
-      value: "ID: OR/2024/0466491",
+      value: `ID: ${ORG.ids.darpan}`,
       subtext: "National Voluntary Sector Registry Entry",
     },
     {
@@ -198,14 +198,14 @@ export default function GovernancePage() {
                     Statutory Registrations
                   </Badge>
                   <span className="text-xs text-terracotta-dark font-bold font-mono">
-                    Deed No. 40311302194 (Balangir Sub-Registrar)
+                    Deed No. {ORG.trustDeed.deedNumber} ({ORG.trustDeed.subRegistrar})
                   </span>
                 </div>
                 <h2 className="text-xs sm:text-sm text-ink font-semibold font-serif">
                   Governed under Indian Trusts Act, 1882 • Section 12A/80G &amp; MCA CSR-1 Registered
                 </h2>
                 <p className="text-xs text-ink-sand leading-relaxed font-sans">
-                  Registered Office: Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001 • Trust PAN: <strong className="text-terracotta-dark">{ORG.ids.pan}</strong> • Section 12A URN: <strong className="text-terracotta-dark">{ORG.ids.urn12A}</strong> (Order dated 29-01-2024) • Documents on file.
+                  Registered Office: {ORG.addresses.registered.full} • Trust PAN: <strong className="text-terracotta-dark">{ORG.ids.pan}</strong> • Section 12A URN: <strong className="text-terracotta-dark">{ORG.ids.urn12A}</strong> (Order dated {ORG.ids.taxOrderDate}) • Documents on file.
                 </p>
               </div>
             </div>
@@ -267,13 +267,13 @@ export default function GovernancePage() {
                         {ORG.chairman.role}
                       </p>
                       <p className="text-[11px] font-mono text-ink-secondary">
-                        Settler Founder • Balangir, Odisha
+                        Settler Founder • {ORG.addresses.registered.city}, {ORG.addresses.registered.state}
                       </p>
                     </div>
                   </div>
 
                   <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans pt-1">
-                    Named as Settler Founder in the registered Trust Deed (executed 27 July 2013; registered 30 July 2013, Office of the District Sub-Registrar Balangir, Book 4, Vol 45, Doc No. 40311302194) and designated life founder Chairman cum Managing Trustee under founding deed Clauses 8(2) and 10. Custodianship of Trust properties and statutory filings is derived from founding deed provisions; formal re-confirmation of the active board roster and present resolutions is tracked under secretariat records.
+                    Named as Settler Founder in the registered Trust Deed (executed {ORG.trustDeed.executedDateDisplay}; registered {ORG.trustDeed.registeredDateDisplay}, {ORG.trustDeed.registrationAuthority}, {ORG.trustDeed.deedBookVolumeDisplay}, Doc No. {ORG.trustDeed.deedNumber}) and designated life founder Chairman cum Managing Trustee under founding deed Clauses 8(2) and 10. Custodianship of Trust properties and statutory filings is derived from founding deed provisions; formal re-confirmation of the active board roster and present resolutions is tracked under secretariat records.
                   </p>
                 </div>
 
@@ -377,7 +377,7 @@ export default function GovernancePage() {
               </p>
 
               <p>
-                When MECT was formally executed on 27 July 2013 in Balangir, its founding purpose was established in law: to provide an enduring, lawful, and accountable civic foundation addressing educational disparities, promoting women&apos;s vocational skills, and offering essential humanitarian relief across Western Odisha.
+                When MECT was formally executed on {ORG.trustDeed.executedDateDisplay} in {ORG.addresses.registered.city}, its founding purpose was established in law: to provide an enduring, lawful, and accountable civic foundation addressing educational disparities, promoting women&apos;s vocational skills, and offering essential humanitarian relief across Western Odisha.
               </p>
 
               <p>
@@ -395,8 +395,8 @@ export default function GovernancePage() {
                 <p className="font-serif font-bold text-sm text-forest">
                   Mahaveer Educational &amp; Charitable Trust (MECT)
                 </p>
-                <p>Regd. Deed No. 40311302194 • Balangir, Odisha</p>
-                <p className="text-[11px] text-ink-sand">Registered Office: Near Sai Mandir, Rugudipara, Balangir - 767001</p>
+                <p>Regd. Deed No. {ORG.trustDeed.deedNumber} • {ORG.addresses.registered.city}, {ORG.addresses.registered.state}</p>
+                <p className="text-[11px] text-ink-sand">Registered Office: {ORG.addresses.registered.full}</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -489,8 +489,8 @@ export default function GovernancePage() {
         <Container size="default" className="space-y-12">
           <SectionHeader
             badge="Deed Mandates"
-            title="Clause-by-Clause Governance Matrix (Trust Deed No. 40311302194)"
-            subtitle="Executed on 27 July 2013 and registered with the District Sub-Registrar in Balangir, the Deed defines the perpetual constitutional boundaries of our institution."
+            title={`Clause-by-Clause Governance Matrix (Trust Deed No. ${ORG.trustDeed.deedNumber})`}
+            subtitle={`Executed on ${ORG.trustDeed.executedDateDisplay} and registered with the ${ORG.trustDeed.subRegistrar}, the Deed defines the perpetual constitutional boundaries of our institution.`}
             align="center"
           />
 
@@ -519,8 +519,8 @@ export default function GovernancePage() {
                 </div>
 
                 <div className="pt-3 border-t border-border-warm text-[11px] font-mono text-ink-secondary flex items-center justify-between">
-                  <span>Document No. 40311302194</span>
-                  <span>Balangir Sub-Registrar</span>
+                  <span>Document No. {ORG.trustDeed.deedNumber}</span>
+                  <span>{ORG.trustDeed.subRegistrar}</span>
                 </div>
               </Card>
             ))}
@@ -581,9 +581,9 @@ export default function GovernancePage() {
                   Registered Inspection Venue:
                 </h4>
                 <p className="text-ink leading-relaxed">
-                  Mahaveer Educational &amp; Charitable Trust (MECT)<br />
-                  Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001<br />
-                  Physical inspection available by prior written appointment via mect220@gmail.com.
+                  {ORG.legalName}<br />
+                  {ORG.addresses.registered.full}<br />
+                  Physical inspection available by prior written appointment via {ORG.emails.official}.
                 </p>
               </div>
 
