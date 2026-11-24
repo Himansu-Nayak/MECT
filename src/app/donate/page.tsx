@@ -7,7 +7,16 @@ import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { DonationClaimSection } from "@/components/donation/DonationClaimSection";
 import { UpiQrCard } from "@/components/donation/UpiQrCard";
 import { MECT_ORG } from "@/config/org";
+import { ORG } from "@content/org";
+import { createPageMetadata } from "@/lib/seo";
 import { Building2, ShieldCheck, QrCode, ArrowRight, HelpCircle } from "lucide-react";
+
+export const metadata = createPageMetadata({
+  title: "Donate & Support Our Mission",
+  description: `Support ${ORG.legalName}'s charitable initiatives across education, women's livelihoods, drinking water, and food relief in Odisha via direct bank transfer or UPI.`,
+  path: "/donate",
+  ogImage: "/images/og-donate.png",
+});
 
 export default function DonatePage() {
   return (
@@ -15,7 +24,7 @@ export default function DonatePage() {
       {/* 1. Page Hero */}
       <PageHero
         title="Support Our Work Across Odisha"
-        description="Every contribution directly supports education, women's vocational livelihoods, safe drinking water, food security, and community relief in Western Odisha."
+        description={`Every contribution directly supports ${ORG.legalName}'s initiatives in education, women's vocational livelihoods, safe drinking water, food security, and community relief in Western Odisha.`}
         breadcrumbs={[{ label: "Donate" }]}
       />
 
@@ -65,7 +74,7 @@ export default function DonatePage() {
                       Account Name:
                     </th>
                     <td className="py-3 text-ink font-semibold">
-                      {MECT_ORG.bank.accountHolder}
+                      {ORG.bank.accountName}
                     </td>
                   </tr>
                   <tr>
@@ -73,7 +82,7 @@ export default function DonatePage() {
                       Account Number:
                     </th>
                     <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
-                      {MECT_ORG.bank.accountNumber}
+                      {ORG.bank.accountNumber}
                     </td>
                   </tr>
                   <tr>
@@ -81,7 +90,7 @@ export default function DonatePage() {
                       IFSC Code:
                     </th>
                     <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
-                      {MECT_ORG.bank.ifsc}
+                      {ORG.bank.ifsc}
                     </td>
                   </tr>
                   <tr>
@@ -89,7 +98,7 @@ export default function DonatePage() {
                       Bank Branch:
                     </th>
                     <td className="py-3 text-ink">
-                      {MECT_ORG.bank.branch}
+                      {ORG.bank.branch}
                     </td>
                   </tr>
                   <tr>
@@ -97,7 +106,7 @@ export default function DonatePage() {
                       Account Type:
                     </th>
                     <td className="py-3 text-ink">
-                      {MECT_ORG.bank.accountType}
+                      {ORG.bank.accountType}
                     </td>
                   </tr>
                   <tr>
@@ -105,7 +114,7 @@ export default function DonatePage() {
                       UPI ID (VPA):
                     </th>
                     <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base">
-                      {MECT_ORG.bank.upiId}
+                      {ORG.bank.upiId}
                     </td>
                   </tr>
                 </tbody>
@@ -148,7 +157,7 @@ export default function DonatePage() {
             <div className="bg-white border border-sand/30 rounded-xl p-5 space-y-2">
               <h3 className="font-serif font-bold text-forest text-sm">Tax Treatment Notice</h3>
               <p className="leading-relaxed">
-                {MECT_ORG.taxNotice} Historical registration orders (12A &amp; 80G) are catalogued in the public disclosures vault for factual review.
+                {MECT_ORG.taxNotice} Historical registration orders (12A &amp; 80G, URN: {ORG.ids.urn80G}) are catalogued in the <Link href="/statutory-disclosures" className="text-forest underline font-semibold">statutory disclosures vault</Link> for factual review.
               </p>
             </div>
           </div>
