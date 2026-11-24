@@ -390,7 +390,7 @@ const ChartCore = memo(function ChartCore({
       setIsLoaded(true);
     }, animationDuration + staggerMs);
     return () => clearTimeout(timer);
-  }, [animationDuration, revealSignature, status]);
+  }, [animationDuration, data.length, revealSignature, status]);
 
   useEffect(() => {
     onPhaseChange?.(isLoaded ? "ready" : "revealing");

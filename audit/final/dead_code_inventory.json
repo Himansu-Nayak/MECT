@@ -1,0 +1,105 @@
+{
+  "auditTimestamp": "2026-11-25T01:02:15.000Z",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "baseCommit": "99c8b1c",
+  "startingFeatureHead": "c21cb3b",
+  "deadCodeSummary": {
+    "totalFilesInvestigated": 110,
+    "confirmedDeadComponentsRemoved": 10,
+    "retainedComponentsAfterReview": 2,
+    "eslintWarningsResolved": 5,
+    "typescriptErrors": 0
+  },
+  "removedDeadComponents": [
+    {
+      "filePath": "src/components/sections/UnifiedDonationExperience.tsx",
+      "linesOfCode": 650,
+      "category": "Superseded Section",
+      "reason": "Superseded by canonical server-rendered donation table, UpiQrCard, and DonationClaimSection on /donate. Contained duplicate form fields and triggered ESLint exhaustive-deps warning on portalToken.",
+      "importChecks": "Zero static, dynamic, or script imports in src/."
+    },
+    {
+      "filePath": "src/components/sections/SmartDonationCheckout.tsx",
+      "linesOfCode": 150,
+      "category": "Superseded Section",
+      "reason": "Legacy mock checkout card superseded by canonical offline banking claim and UPI QR integration.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/sections/SbiDonationSection.tsx",
+      "linesOfCode": 270,
+      "category": "Superseded Section",
+      "reason": "Superseded by modular UpiQrCard and accessible banking table directly in src/app/donate/page.tsx.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/sections/HeroBackgroundMarquee.tsx",
+      "linesOfCode": 80,
+      "category": "Unused Section",
+      "reason": "Unused background marquee concept from early visual testing.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/charts/bar-chart-loading.tsx",
+      "linesOfCode": 45,
+      "category": "Dead Chart Stub",
+      "reason": "Unreferenced loading placeholder stub.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/charts/chart-reveal-clip.tsx",
+      "linesOfCode": 35,
+      "category": "Dead Chart Stub",
+      "reason": "Unreferenced reveal clip wrapper.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/charts/pie-center-shell.tsx",
+      "linesOfCode": 40,
+      "category": "Dead Chart Stub",
+      "reason": "Unreferenced pie center shell wrapper.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/charts/pie-ticks.tsx",
+      "linesOfCode": 450,
+      "category": "Dead Chart Component",
+      "reason": "Unreferenced pie tick component that triggered two ESLint exhaustive-deps warnings.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/charts/static-chart-preview-context.tsx",
+      "linesOfCode": 30,
+      "category": "Dead Context Stub",
+      "reason": "Unreferenced static chart context provider.",
+      "importChecks": "Zero references in active code."
+    },
+    {
+      "filePath": "src/components/motion/PillarIllustrations.tsx",
+      "linesOfCode": 120,
+      "category": "Unused Motion Graphic",
+      "reason": "Unreferenced decorative SVG illustration from Phase 22.",
+      "importChecks": "Zero references in active code."
+    }
+  ],
+  "retainedComponentsAfterReview": [
+    {
+      "filePath": "src/components/InstitutionalMarquee.tsx",
+      "reason": "Retained because scripts/motion_qa_suite.mjs directly asserts its accessibility properties and reduced motion handlers."
+    },
+    {
+      "filePath": "src/components/DeveloperCreditCard.tsx",
+      "reason": "Retained for compatibility with legacy test assertions in scratch/test-phase-p2-navigation.mjs."
+    }
+  ],
+  "remediatedActiveComponents": [
+    {
+      "filePath": "src/components/charts/bar-chart.tsx",
+      "fix": "Added data.length to useEffect dependency array, eliminating ESLint warning."
+    },
+    {
+      "filePath": "src/components/charts/tooltip/chart-tooltip.tsx",
+      "fix": "Added xWithMargin to useEffect dependency array, eliminating ESLint warning."
+    }
+  ]
+}

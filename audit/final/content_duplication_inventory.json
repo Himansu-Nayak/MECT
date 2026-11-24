@@ -1,0 +1,88 @@
+{
+  "auditTimestamp": "2026-11-25T01:02:30.000Z",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "classificationCategories": {
+    "A": "Necessary Repetition (preserves usability, legal clarity, navigation)",
+    "B": "Reusable Shared Content (centralized in canonical registry)",
+    "C": "Unnecessary Duplication (removed/consolidated)",
+    "D": "Unique Content (strictly preserved on original route)"
+  },
+  "canonicalSourcesOfTruth": {
+    "statutoryIdentity": "content/org.ts (ORG)",
+    "extendedConfig": "src/config/org.ts (MECT_ORG)",
+    "masterRegistry": "src/lib/content-registry.ts (MECT_CONTENT_REGISTRY)",
+    "trustees": "content/trustees.ts (TRUSTEES)"
+  },
+  "contentDuplicationMatrix": [
+    {
+      "id": "DUP-01",
+      "fact": "Official Trust Deed Execution & Registration",
+      "pages": ["/", "/about", "/governance", "/statutory-disclosures", "/contact"],
+      "classification": "B",
+      "ownership": "content/org.ts (ORG.trustDeed)",
+      "rationale": "Legal registration (Executed 27-07-2013, Registered 30-07-2013, Balangir Sub-Registrar, Book 4, Vol 45, Deed 40311302194) is an authoritative statutory truth.",
+      "actionTaken": "Wired directly to ORG.trustDeed across all footers, disclosures, and governance headers.",
+      "status": "CONSOLIDATED"
+    },
+    {
+      "id": "DUP-02",
+      "fact": "Statutory Identifiers (PAN, 12A, 80G, CSR-1, NGO Darpan, e-Anudaan)",
+      "pages": ["/", "/governance", "/statutory-disclosures", "/donate", "/contact"],
+      "classification": "B",
+      "ownership": "content/org.ts (ORG.ids)",
+      "rationale": "Tax and government registrations must never diverge across routes.",
+      "actionTaken": "Single-sourced from ORG.ids. Rendered uniformly via global StatutoryStrip and StatutoryTicker.",
+      "status": "CONSOLIDATED"
+    },
+    {
+      "id": "DUP-03",
+      "fact": "State Bank of India Account Credentials",
+      "pages": ["/donate", "/statutory-disclosures"],
+      "classification": "B",
+      "ownership": "src/config/org.ts (MECT_ORG.bank)",
+      "rationale": "Official bank details (A/C: 44778144670, IFSC: SBIN0001663, Main Branch Balangir) must match documentary records verbatim.",
+      "actionTaken": "Single-sourced from MECT_ORG.bank. Rendered via server-side accessible table and UpiQrCard.",
+      "status": "CONSOLIDATED"
+    },
+    {
+      "id": "DUP-04",
+      "fact": "Secretariat Office Addresses & Public Helpline",
+      "pages": ["/", "/about", "/contact", "Footer (Global)"],
+      "classification": "A",
+      "ownership": "content/org.ts (ORG.addresses, ORG.contact)",
+      "rationale": "Necessary repetition for institutional usability across contact page, about page, and global footer.",
+      "actionTaken": "Preserved across relevant surfaces while referencing canonical fields from ORG.",
+      "status": "PRESERVED_CANONICAL"
+    },
+    {
+      "id": "DUP-05",
+      "fact": "Grand Hanuman Murti Project Tiers (₹500, ₹1000, ₹2500, ₹5000, ₹10000)",
+      "pages": ["/campaigns", "/campaigns/hanuman-murti"],
+      "classification": "D",
+      "ownership": "src/app/campaigns/hanuman-murti/page.tsx",
+      "rationale": "Unique campaign-specific participation tiers; overview summary on /campaigns links to detailed dedicated journey on /campaigns/hanuman-murti.",
+      "actionTaken": "Maintained clean separation: overview summary card on /campaigns, full interactive tiered flow on /campaigns/hanuman-murti.",
+      "status": "PRESERVED_SEPARATED"
+    },
+    {
+      "id": "DUP-06",
+      "fact": "Scholarship Schemes (Shiksha Protsahan, Pratibha Fellowship, Project Samarth)",
+      "pages": ["/programmes", "/scholarships", "/scholarships/apply"],
+      "classification": "A",
+      "ownership": "src/lib/content-registry.ts & src/app/scholarships/page.tsx",
+      "rationale": "High-level programmatic mention on /programmes; complete comparison matrix on /scholarships; application form intake on /scholarships/apply.",
+      "actionTaken": "Preserved domain-appropriate detail at each level; verified direct navigation pathways.",
+      "status": "PRESERVED_PATHWAYS"
+    },
+    {
+      "id": "DUP-07",
+      "fact": "Quick Statutory Reference In-Page Box on /contact",
+      "pages": ["/contact"],
+      "classification": "C",
+      "ownership": "None (Redundant)",
+      "rationale": "Duplicated registration credentials immediately above the global StatutoryStrip on /contact.",
+      "actionTaken": "Permanently removed the redundant in-page box. Cleaned up unused imports.",
+      "status": "REMOVED"
+    }
+  ]
+}
