@@ -10,6 +10,8 @@ import { Accordion } from "@/components/Accordion";
 import { HanumanMurtiVisual } from "@/components/campaigns/HanumanMurtiVisual";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { createPageMetadata } from "@/lib/seo";
+import { ORG } from "@content/org";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   Sparkles,
   Heart,
@@ -29,8 +31,7 @@ import {
 
 export const metadata = createPageMetadata({
   title: "Grand Hanuman Murti Project",
-  description:
-    "Proposed 80–100-foot Hanuman Murti initiative in Western Odisha by Mahaveer Educational & Charitable Trust with transparent, dedicated project accounting.",
+  description: `Proposed 80–100-foot Hanuman Murti initiative in Western Odisha by ${ORG.legalName} with transparent, dedicated project accounting.`,
   path: "/campaigns/hanuman-murti",
   ogImage: "/images/og-default.png",
 });
@@ -72,7 +73,7 @@ export default function HanumanMurtiCampaignPage() {
   const FAQS = [
     {
       q: "What is the primary objective of the Grand Hanuman Murti Project?",
-      a: "The project represents a community-inspired initiative by Mahaveer Educational & Charitable Trust to erect an 80–100-foot monument of Lord Hanuman in Odisha. It aims to create an enduring symbol of selfless service, devotion, strength, and communal harmony, complemented by planned community learning and cultural spaces.",
+      a: `The project represents a community-inspired initiative by ${ORG.legalName} to erect an 80–100-foot monument of Lord Hanuman in Odisha. It aims to create an enduring symbol of selfless service, devotion, strength, and communal harmony, complemented by planned community learning and cultural spaces.`,
     },
     {
       q: "What is the proposed height and design of the monument?",
@@ -84,7 +85,7 @@ export default function HanumanMurtiCampaignPage() {
     },
     {
       q: "How are campaign donations managed and accounted for?",
-      a: "All contributions to this initiative are credited under a strictly segregated project ledger (code: HANUMAN_MURTI). Funds are never commingled with MECT's general educational grants or scholarship budgets. Detailed financial audits will be published in annual public reports.",
+      a: `All contributions to this initiative are credited under a strictly segregated project ledger (code: HANUMAN_MURTI). Funds are never commingled with ${ORG.shortName}'s general educational grants or scholarship budgets. Detailed financial audits will be published in annual public reports.`,
     },
     {
       q: "Will I receive an official receipt for my contribution?",
@@ -101,7 +102,7 @@ export default function HanumanMurtiCampaignPage() {
       {/* 1. Page Hero */}
       <PageHero
         title="The Grand Hanuman Murti Project"
-        description="A Monumental Vision of Faith, Devotion and Community Participation. Join Mahaveer Educational & Charitable Trust in supporting this proposed 80–100-foot spiritual and cultural landmark."
+        description={`A Monumental Vision of Faith, Devotion and Community Participation. Join ${ORG.legalName} in supporting this proposed 80–100-foot spiritual and cultural landmark.`}
         breadcrumbs={[
           { label: "Campaigns", href: "/campaigns" },
           { label: "Hanuman Murti Project" },
@@ -135,7 +136,7 @@ export default function HanumanMurtiCampaignPage() {
             <SectionHeader
               badge="Institutional Initiative"
               title="A Monument of Devotion, Harmony & Resilience"
-              subtitle="Proposed 80–100-Foot Landmark by Mahaveer Educational & Charitable Trust"
+              subtitle={`Proposed 80–100-Foot Landmark by ${ORG.legalName}`}
             />
           </Reveal>
 
@@ -160,7 +161,7 @@ export default function HanumanMurtiCampaignPage() {
                 </h2>
 
                 <p className="text-sm text-ink-sand leading-relaxed">
-                  Mahaveer Educational &amp; Charitable Trust (MECT) was established under its 2013 registered charter to serve society through education, health, and moral upliftment. In alignment with this mission, the Trust is championing the <strong>Grand Hanuman Murti Project</strong>: a proposed 80 to 100-foot monumental manifestation of Lord Hanuman, the supreme emblem of selfless service (<em>Seva</em>), moral strength, and boundless compassion.
+                  {ORG.legalName} was established under its {ORG.foundedYear} registered charter (Deed No. {ORG.trustDeed.deedNumber}) to serve society through education, health, and moral upliftment. In alignment with this mission, the Trust is championing the <strong>Grand Hanuman Murti Project</strong>: a proposed 80 to 100-foot monumental manifestation of Lord Hanuman, the supreme emblem of selfless service (<em>Seva</em>), moral strength, and boundless compassion.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -186,7 +187,7 @@ export default function HanumanMurtiCampaignPage() {
                 </div>
 
                 <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xs text-xs text-amber-950 space-y-1">
-                  <strong>Honesty &amp; Transparency in Disclosures:</strong> This project is currently in the conceptual design, land appraisal, and architectural feasibility phase. Civil construction has not yet commenced. MECT makes no unverified claims regarding height superlatives and operates strictly within documented institutional milestones.
+                  <strong>Honesty &amp; Transparency in Disclosures:</strong> This project is currently in the conceptual design, land appraisal, and architectural feasibility phase. Civil construction has not yet commenced. {ORG.shortName} makes no unverified claims regarding height superlatives and operates strictly within documented institutional milestones.
                 </div>
               </Reveal>
             </div>
@@ -422,6 +423,7 @@ export default function HanumanMurtiCampaignPage() {
           </section>
         </Reveal>
       </Container>
+      <StatutoryStrip />
     </div>
   );
 }

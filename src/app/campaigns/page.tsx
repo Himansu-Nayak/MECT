@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/Button";
 import { HanumanMurtiVisual } from "@/components/campaigns/HanumanMurtiVisual";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { createPageMetadata } from "@/lib/seo";
+import { ORG } from "@content/org";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   Sparkles,
   GraduationCap,
@@ -22,8 +24,7 @@ import {
 
 export const metadata = createPageMetadata({
   title: "Campaigns & Initiatives",
-  description:
-    "Explore institutional initiatives of Mahaveer Educational & Charitable Trust, including the proposed Hanuman Murti project and higher education support.",
+  description: `Explore institutional initiatives of ${ORG.legalName}, including the proposed Hanuman Murti project and higher education support.`,
   path: "/campaigns",
   ogImage: "/images/og-default.png",
 });
@@ -142,6 +143,7 @@ export default function CampaignsDirectoryPage() {
           </StaggerItem>
         </StaggerGroup>
       </Container>
+      <StatutoryStrip />
     </div>
   );
 }
