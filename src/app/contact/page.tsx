@@ -35,6 +35,8 @@ import {
 } from "lucide-react";
 import { submitInquiry } from "@/lib/api";
 import { MECT_ORG } from "@/config/org";
+import { ORG } from "@content/org";
+import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 
 const INQUIRY_CATEGORIES: SelectOption[] = [
   { value: "General", label: "General" },
@@ -211,7 +213,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
-                <span className="font-semibold text-forest">MCA CSR Reg:</span> CSR00081063 (ROC Delhi)
+                <span className="font-semibold text-forest">MCA CSR Reg:</span> {ORG.ids.csr1} (ROC Delhi)
               </div>
             </Card>
 
@@ -275,7 +277,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
-                <span className="font-semibold text-forest">Trust Deed:</span> Doc No. 40311302194 (Balangir)
+                <span className="font-semibold text-forest">Trust Deed:</span> Doc No. {ORG.trustDeed.deedNumber} ({ORG.addresses.registered.city})
               </div>
             </Card>
           </div>
@@ -334,7 +336,7 @@ export default function ContactPage() {
 
               <div className="pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-3 rounded-xs space-y-1">
                 <div>
-                  <strong className="text-forest">Deed Jurisdiction:</strong> Sub-Registrar Balangir (Doc No. 40311302194)
+                  <strong className="text-forest">Deed Jurisdiction:</strong> {ORG.trustDeed.subRegistrar} (Doc No. {ORG.trustDeed.deedNumber})
                 </div>
                 <div>
                   <strong className="text-forest">Field Coverage:</strong> Remedial study centers, free education initiatives, and community relief across Balangir district.
@@ -688,7 +690,7 @@ export default function ContactPage() {
             <div className="flex items-center gap-2">
               <Compass className="w-4 h-4 text-terracotta shrink-0" />
               <span>
-                <strong>Deed:</strong> Balangir Sub-Registrar Doc No. 40311302194 | <strong>PAN:</strong> AADTM5474F | <strong>MCA CSR:</strong> CSR00081063
+                <strong>Deed:</strong> {ORG.trustDeed.subRegistrar} Doc No. {ORG.trustDeed.deedNumber} | <strong>PAN:</strong> {ORG.ids.pan} | <strong>MCA CSR:</strong> {ORG.ids.csr1}
               </span>
             </div>
             <div className="flex items-center gap-4 text-terracotta-dark font-semibold">
@@ -704,7 +706,7 @@ export default function ContactPage() {
       </section>
 
       {/* Statutory Disclosures & Transparency Strip */}
-      
+      <StatutoryStrip />
     </div>
   );
 }
