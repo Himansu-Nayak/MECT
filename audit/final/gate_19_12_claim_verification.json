@@ -1,0 +1,138 @@
+{
+  "gate": "19.12.1",
+  "title": "Gate 19.11 Forensic Claim-to-Evidence Matrix",
+  "timestamp": "2026-11-25T10:32:38.082Z",
+  "targetCommit": "ec9ebdbad723735cfd59f43c7a81901a0bf183f1",
+  "productionBaseline": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "axeSummary": {
+    "home": {
+      "violations": 0,
+      "incomplete": 3,
+      "passes": 46
+    },
+    "programmes": {
+      "violations": 0,
+      "incomplete": 3,
+      "passes": 44
+    },
+    "donate": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 53
+    },
+    "about": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 45
+    },
+    "scholarships": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 52
+    },
+    "contact": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 47
+    },
+    "stories": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 43
+    },
+    "reports": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 50
+    },
+    "statutory-disclosures": {
+      "violations": 0,
+      "incomplete": 2,
+      "passes": 42
+    }
+  },
+  "totalAxeViolations": 0,
+  "claimToEvidenceMatrix": [
+    {
+      "claim": "TypeScript passed with 0 errors",
+      "evidence": "audit/final/logs/tsc.log",
+      "details": "Exit Code 0: true, No TS errors: true",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "ESLint passed with 0 errors",
+      "evidence": "audit/final/logs/lint.log",
+      "details": "Exit Code 0: true, No ESLint errors: true",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Next.js production build succeeded with 58/58 static pages",
+      "evidence": "audit/final/logs/next_build.log",
+      "details": "Exit Code 0: true, 58 pages generated: true",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Spring Boot backend passed 142/142 tests with 0 failures",
+      "evidence": "audit/final/logs/backend_mvn_test.log",
+      "details": "Exit Code 0: true, Build Success: true, Tests: Tests run: 142, Failures: 0, Errors: 0, Skipped: 0",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Axe-core automated accessibility 0 violations across 9 templates",
+      "evidence": "audit/axe/*.json (9 template reports)",
+      "details": "Total violations across 9 templates: 0",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Manual contrast evaluation verified (7.8:1 - 17.2:1)",
+      "evidence": "audit/final/manual_accessibility_evaluation.json",
+      "details": "5 evaluated items covering hero gradients, sand accents, and dialogs",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "CSP hardened (no unsafe-eval, connect-src 'self', img-src 'self' data: blob:)",
+      "evidence": "next.config.ts & docker/nginx/mect.org.in.conf",
+      "details": "Checked config lines for absence of unsafe-eval and presence of frame-ancestors 'none'",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Route access audit passed (48 routes, 38 public 200, 1 admin 200, 9 gated 404, 0 unexpected)",
+      "evidence": "audit/final/route_access_results.json",
+      "details": "allRoutesConform: true, unexpected404Count: 0",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Secret scanner passed with zero secrets in tracked working tree",
+      "evidence": "audit/secret_scan_report.json",
+      "details": "trackedFindings count: 0",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    },
+    {
+      "claim": "Repository working tree is clean and on branch feat/complete-website-redefinition-and-deduplication",
+      "evidence": "Git repository status",
+      "details": "Git status clean, HEAD at ec9ebdb",
+      "independentlyVerified": true,
+      "verdict": "PASS",
+      "classification": "VERIFIED"
+    }
+  ],
+  "overallVerdict": "VERIFIED PASS"
+}

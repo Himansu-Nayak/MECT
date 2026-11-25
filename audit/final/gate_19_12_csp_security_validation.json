@@ -1,0 +1,60 @@
+{
+  "gate": "19.12.4",
+  "title": "Gate 19.12 Content Security Policy & Security Header Forensic Validation",
+  "timestamp": "2026-11-25T10:57:18.445Z",
+  "activeCspHeader": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';",
+  "unsafeEvalRemoved": true,
+  "strictOriginsEnforced": true,
+  "clickjackingDefenseEnforced": true,
+  "directiveCompliance": {
+    "default-src": true,
+    "script-src": true,
+    "style-src": true,
+    "img-src": true,
+    "font-src": true,
+    "connect-src": true,
+    "object-src": true,
+    "base-uri": true,
+    "form-action": true,
+    "frame-ancestors": true,
+    "frame-src": true
+  },
+  "compatibilityAnalysis": [
+    {
+      "feature": "Next.js Production Hydration",
+      "status": "COMPATIBLE",
+      "evidence": "unsafe-eval eliminated cleanly; Next.js webpack production bundle executes without runtime eval."
+    },
+    {
+      "feature": "Client-side Navigation & Routing",
+      "status": "COMPATIBLE",
+      "evidence": "connect-src 'self' permits Next.js router prefetching and RSC JSON payload fetching."
+    },
+    {
+      "feature": "Internal API Requests (/api/*)",
+      "status": "COMPATIBLE",
+      "evidence": "connect-src 'self' fully covers /api/contact, /api/donations/claim, /api/ai/health."
+    },
+    {
+      "feature": "Static Assets & Next.js Optimized Images",
+      "status": "COMPATIBLE",
+      "evidence": "img-src 'self' data: blob: serves all WebP/PNG assets and inline SVG icons."
+    },
+    {
+      "feature": "Typography & Web Fonts",
+      "status": "COMPATIBLE",
+      "evidence": "font-src 'self' data: covers next/font self-hosted static font bundles."
+    },
+    {
+      "feature": "Payment Gateways (Cashfree / Razorpay)",
+      "status": "DORMANT_ISOLATED",
+      "evidence": "Commercial gateways are inactive/unmounted on frontend. No external gateway domains needed in connect-src or frame-src. If activated via future trustee resolution, cashfree.com must be explicitly added."
+    },
+    {
+      "feature": "Clickjacking Defense",
+      "status": "HARDENED",
+      "evidence": "frame-ancestors 'none' prevents any third-party domain from embedding mect.org.in in an iframe."
+    }
+  ],
+  "verdict": "VERIFIED PASS"
+}

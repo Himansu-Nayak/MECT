@@ -129,7 +129,7 @@ In compliance with donor data protection standards:
 
 1. **Audit Documentation Redaction:**
    - Automated privacy redactor (`scripts/redact_audit_privacy.mjs`) scanned all 64 audit reports in `docs/audits/`.
-   - Domestic SBI Current Account number `33341302498` redacted to `****2498` (11 replacements).
+   - Domestic SBI Current Account number ending in `****2498` redacted (11 replacements).
    - Trust Permanent Account Number `AADTM5474F` redacted to `AADTM****F` in narrative prose (9 replacements).
 2. **Public Giving Channel Preservation:**
    - Public donation interface (`/donate`) retains full operational banking coordinates (`src/config/org.ts`) so donors can complete genuine NEFT/RTGS/IMPS remittances.

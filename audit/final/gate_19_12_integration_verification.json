@@ -1,0 +1,64 @@
+{
+  "gate": "19.12.8",
+  "title": "Gate 19.12 Test Claims and External Integration Boundaries Matrix",
+  "timestamp": "2026-11-25T10:58:04.246Z",
+  "externalNetworkBlockedDuringTesting": true,
+  "zeroLiveFinancialTransactionsGuaranteed": true,
+  "integrations": [
+    {
+      "integration": "Direct SBI Bank Transfer",
+      "implemented": true,
+      "automatedTest": "UI table rendering & copy-to-clipboard verification",
+      "mocked": false,
+      "liveTested": "Offline Manual Protocol",
+      "productionActive": true,
+      "notes": "Operative SBI account ending in ****2498, IFSC SBIN0001701. Standard offline NEFT/RTGS/IMPS."
+    },
+    {
+      "integration": "Static UPI QR & Manual UTR Claim",
+      "implemented": true,
+      "automatedTest": "Form constraints & mock API interceptor (/api/donations/claim)",
+      "mocked": true,
+      "liveTested": false,
+      "productionActive": true,
+      "notes": "Static QR displayed; donor manually submits 12-digit UTR for administrative verification."
+    },
+    {
+      "integration": "Cashfree Payment Gateway",
+      "implemented": true,
+      "automatedTest": "CashfreePaymentGatewayIntegrationTests (Spring Boot H2 mock)",
+      "mocked": true,
+      "liveTested": false,
+      "productionActive": false,
+      "notes": "Implemented in backend; unmounted on frontend. Strictly inactive in production."
+    },
+    {
+      "integration": "Razorpay Payment Gateway",
+      "implemented": true,
+      "automatedTest": "Mock payment client tests",
+      "mocked": true,
+      "liveTested": false,
+      "productionActive": false,
+      "notes": "Dormant legacy backend implementation; no active configuration or frontend controls."
+    },
+    {
+      "integration": "WhatsApp Notification Engine",
+      "implemented": true,
+      "automatedTest": "WhatsAppWebhookSecurityTests & OutboxIntegrationTests (Mock server)",
+      "mocked": true,
+      "liveTested": false,
+      "productionActive": false,
+      "notes": "WHATSAPP_ENABLED=false preserved. Zero external API calls made to Graph API."
+    },
+    {
+      "integration": "Admin Secretariat Authentication",
+      "implemented": true,
+      "automatedTest": "AuthenticationAndSecurityTests (Spring Security JWT + CSRF)",
+      "mocked": false,
+      "liveTested": "Isolated local test server",
+      "productionActive": true,
+      "notes": "Dedicated authentication perimeter at /admin/login."
+    }
+  ],
+  "verdict": "VERIFIED BOUNDARIES — ZERO LIVE TRANSACTION RISK"
+}

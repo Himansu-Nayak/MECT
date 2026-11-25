@@ -1,0 +1,51 @@
+{
+  "gate": "19.12.9",
+  "title": "Gate 19.12 Authoritative Governance Reconciliation Matrix",
+  "timestamp": "2026-11-25T10:58:04.249Z",
+  "items": [
+    {
+      "governanceItem": "Physical NGO Darpan Certificate Verification",
+      "previousStatus": "AWAITING_DOCUMENTARY_CONFIRMATION",
+      "currentEvidence": "Darpan ID OR/2024/0466491 listed in institutional registry",
+      "verified": false,
+      "classification": "PENDING_OWNER_VERIFICATION",
+      "ownerActionRequired": "Secretariat to download, physical-inspect, and archive official certificate PDF from NGO Darpan portal."
+    },
+    {
+      "governanceItem": "Treasurer Monthly SBI Statement Verification",
+      "previousStatus": "AWAITING_DOCUMENTARY_CONFIRMATION",
+      "currentEvidence": "Operative account ending in ****2498, IFSC SBIN0001701",
+      "verified": false,
+      "classification": "PENDING_OWNER_VERIFICATION",
+      "ownerActionRequired": "Treasurer / Managing Trustee to reconcile monthly physical passbook transactions against manual UTR submission logs."
+    },
+    {
+      "governanceItem": "Trustee Biography Consent",
+      "previousStatus": "AWAITING_DOCUMENTARY_CONFIRMATION",
+      "currentEvidence": "Board roster restricted to Settler Founder; additional trustees not publicly named",
+      "verified": false,
+      "classification": "PENDING_OWNER_VERIFICATION",
+      "ownerActionRequired": "Obtain formal written consent from individual board members prior to future public biography publishing."
+    },
+    {
+      "governanceItem": "Settler / Chairman Registration Verification",
+      "previousStatus": "VERIFIED_PASS",
+      "currentEvidence": "Er. Japabandhu Kampa matches registered Trust Deed No. 40311302194 Clauses 8(2), 10, XVI",
+      "verified": true,
+      "classification": "VERIFIED_PASS",
+      "ownerActionRequired": "None. Formally verified against certified Trust Deed."
+    },
+    {
+      "governanceItem": "Board Resolution on Payment Gateways",
+      "previousStatus": "REQUIRES_HUMAN_APPROVAL",
+      "currentEvidence": "Commercial gateways unmounted; manual SBI and static UPI policy active",
+      "verified": false,
+      "classification": "REQUIRES_HUMAN_APPROVAL",
+      "ownerActionRequired": "Formal signed Board Resolution required prior to any future activation of automated commercial payment gateways."
+    }
+  ],
+  "pendingOwnerItemsCount": 4,
+  "verifiedItemsCount": 1,
+  "overallStatus": "CONDITIONAL — OWNER ACTIONS PENDING",
+  "rationale": "All technical engineering tasks are 100% complete. Institutional governance items correctly demarcate human owner responsibilities without fabrication."
+}

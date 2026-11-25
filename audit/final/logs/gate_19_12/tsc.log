@@ -1,0 +1,15 @@
+=== COMMAND: npx tsc --noEmit ===
+=== START: 2026-11-25T09:28:51.224Z ===
+=== FINISH: 2026-11-25T09:28:59.009Z (Duration: 7785ms) ===
+=== EXIT CODE: 0 ===
+
+--- STDOUT ---
+
+
+--- STDERR ---
+npm notice
+npm notice New minor version of npm available! 11.12.1 -> 11.21.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.3
+npm notice To update run: npm install -g npm@11.21.3
+npm notice
+

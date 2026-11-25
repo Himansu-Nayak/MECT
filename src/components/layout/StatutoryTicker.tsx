@@ -140,7 +140,6 @@ export function StatutoryTicker() {
 
             <Link
               href="/campaigns/hanuman-murti"
-              aria-label="Murti Project: View Campaign"
               className="lg:hidden shrink-0 inline-flex items-center gap-1 px-2 py-1 min-h-[28px] rounded-xs border border-sand/40 text-[10px] font-semibold text-sand hover:bg-forest transition-colors whitespace-nowrap"
             >
               <Sparkles className="w-3 h-3" aria-hidden="true" />

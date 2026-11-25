@@ -219,7 +219,6 @@ export function Header() {
             <Link
               href="/"
               className="flex items-center gap-1.5 min-[360px]:gap-2 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-terracotta rounded-xs min-w-0"
-              aria-label={`${ORG.name} Homepage`}
             >
               <div
                 className={`rounded-full overflow-hidden border-2 border-terracotta/90 bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square transition-all duration-300 ${
@@ -512,7 +511,6 @@ export function Header() {
               {/* Primary Donation Action */}
               <Link
                 href="/donate"
-                aria-label="Donate Now to Mahaveer Trust"
                 className="whitespace-nowrap px-2.5 2xl:px-4 py-1.5 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
@@ -527,7 +525,7 @@ export function Header() {
 
               <Link
                 href="/donate"
-                aria-label="Donate to Mahaveer Trust"
+                aria-label="Donate"
                 className="min-h-[44px] min-w-[44px] px-2.5 sm:px-3 py-1.5 text-xs font-bold text-white bg-terracotta hover:bg-terracotta-dark border border-terracotta hover:border-terracotta-dark rounded-xs shadow-xs transition-colors flex items-center justify-center gap-1 sm:gap-1.5 focus-visible:outline-2 focus-visible:outline-forest shrink-0"
               >
                 <Heart className="w-3.5 h-3.5 fill-current shrink-0" aria-hidden="true" />
