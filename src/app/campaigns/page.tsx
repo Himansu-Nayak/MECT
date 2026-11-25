@@ -11,7 +11,6 @@ import { HanumanMurtiVisual } from "@/components/campaigns/HanumanMurtiVisual";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { createPageMetadata } from "@/lib/seo";
 import { ORG } from "@content/org";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   Sparkles,
   GraduationCap,
@@ -143,7 +142,6 @@ export default function CampaignsDirectoryPage() {
           </StaggerItem>
         </StaggerGroup>
       </Container>
-      <StatutoryStrip />
     </div>
   );
 }

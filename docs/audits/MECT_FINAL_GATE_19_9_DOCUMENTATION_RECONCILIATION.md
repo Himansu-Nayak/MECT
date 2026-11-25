@@ -89,14 +89,14 @@ Inevitably, differences arose between early speculative planning logs, intermedi
   - **Reconciled Authoritative Truth:**
     - **Legal Name:** `Mahaveer Educational & Charitable Trust (MECT)`
     - **Trust Deed Number:** `40311302194` (Balangir Sub-Registrar, Executed: 27-07-2013, Registered: 30-07-2013)
-    - **PAN:** `AADTM5474F`
+    - **PAN:** `AADTM****F`
     - **12A URN:** `AADTM5474FE20231` (DIN: `AADTM5474FE2023101`)
     - **80G URN:** `AADTM5474FF20241` (DIN: `AADTM5474FF2024101`)
     - **Tax Exemption Validity:** AY 2024-25 to AY 2026-27 (Neutral statutory language enforced).
     - **CSR-1 Registration:** `CSR00081063` (SRN: `N14617237`, Approval Date: 09-11-2024)
     - **NGO Darpan ID:** `OR/2024/0466491` (Physical certificate check recommended for cross-confirmation)
     - **MoSJE e-Anudaan:** `OR/00040466`
-    - **Primary Bank Account:** State Bank of India, A/C `33341302498`, IFSC `SBIN0001701`, Branch: Rajendra College Square, Bolangir.
+    - **Primary Bank Account:** State Bank of India, A/C `****2498`, IFSC `SBIN0001701`, Branch: Rajendra College Square, Bolangir.
     - **Operative UPI ID:** `86971610172@sbi`
     - **Registered Office:** Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001.
     - **Administrative Office:** A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014.

@@ -50,7 +50,7 @@ flowchart TD
 
 ### 2.3 Statutory Registrations & Regulatory Compliance
 - **Canonical Source:** `MECT_CONTENT_REGISTRY.statutoryCredentials`
-- **Permanent Account Number (PAN):** `AADTM5474F`
+- **Permanent Account Number (PAN):** `AADTM****F`
 - **Section 12A URN:** `AADTM5474FE20231` (Order date: `29-01-2024`, validity: AY 2024-25 to AY 2026-27)
 - **Section 80G URN:** `AADTM5474FF20241` (Order date: `29-01-2024`, validity: AY 2024-25 to AY 2026-27)
 - **MCA CSR-1 Registration:** `CSR00081063` (SRN: `N14617237`, approval date: `09-11-2024`)
@@ -63,7 +63,7 @@ flowchart TD
 - **Canonical Source:** `MECT_ORG.bank` & `MECT_CONTENT_REGISTRY.banking`
 - **Bank Name:** `State Bank of India`
 - **Account Holder:** `MAHAVEER EDUCATIONAL & CHARITABLE TRUST`
-- **Account Number:** `33341302498`
+- **Account Number:** `****2498`
 - **IFSC Code:** `SBIN0001701`
 - **Branch:** `Rajendra College Square, Bolangir, Odisha`
 - **Account Type:** `Current Account`

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import { DonationClaimSection } from "@/components/donation/DonationClaimSection";
 import { UpiQrCard } from "@/components/donation/UpiQrCard";
 import { MECT_ORG } from "@/config/org";
@@ -28,7 +27,7 @@ export default function DonatePage() {
         breadcrumbs={[{ label: "Donate" }]}
       />
 
-      <section className="py-10 sm:py-16 flex-1">
+      <section className="py-10 sm:py-16 flex-1" aria-label="Official Banking Details and Remittance Channels">
         <Container size="default" className="max-w-5xl space-y-12">
           {/* Plain Language Donation Policy Notice */}
           <div className="p-5 sm:p-6 bg-sand/20 rounded-xl border border-sand/40 space-y-2">
@@ -163,9 +162,6 @@ export default function DonatePage() {
           </div>
         </Container>
       </section>
-
-      {/* Statutory Disclosures Strip */}
-      <StatutoryStrip />
     </div>
   );
 }

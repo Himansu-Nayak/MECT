@@ -60,7 +60,7 @@ Following extensive code analysis, test execution, and static audits against bra
 - **Confirmation:** The 9 404 responses are driven by `isDonorPortalEnabled()` evaluating to false under `ENABLE_DONOR_PORTAL=false`. They are not 404 errors caused by missing files or broken routing.
 
 ### 3.3 Payment & Donation Workflows
-- **SBI Direct Bank Transfer:** Reconciled to operative account `33341302498`, IFSC `SBIN0001701`, Branch Rajendra College Square, Bolangir.
+- **SBI Direct Bank Transfer:** Reconciled to operative account `****2498`, IFSC `SBIN0001701`, Branch Rajendra College Square, Bolangir.
 - **UPI QR Code:** Operative UPI VPA `86971610172@sbi` rendered dynamically.
 - **Manual UTR Claim Form:** `DonationClaimSection.tsx` validates 12-character alphanumeric UTRs, donor PAN, email, phone, and dispatches to `/api/donations/claim`.
 - **Backend Integrity:** 21 financial integrity unit and regression tests pass with zero failures.
@@ -76,7 +76,7 @@ Following extensive code analysis, test execution, and static audits against bra
 
 ### 3.5 Regulatory & Statutory Integrity
 - **Trust Deed:** `40311302194` (Balangir, 2013).
-- **PAN:** `AADTM5474F`.
+- **PAN:** `AADTM****F`.
 - **12A URN:** `AADTM5474FE20231`.
 - **80G URN:** `AADTM5474FF20241`.
 - **CSR-1:** `CSR00081063` (Approved 09-11-2024).
@@ -92,7 +92,7 @@ While automated verification is 100% complete with passing status, the following
 1. **NGO Darpan Physical Certificate Check:**
    - Code reflects `OR/2024/0466491`. Trust management should cross-verify physical printouts against the NITI Aayog portal before printed letterhead distribution.
 2. **Periodic SBI Statement Reconciliation:**
-   - Account `33341302498` is active and correct. Monthly physical bank reconciliation statements should be archived alongside manual UTR verification logs.
+   - Account `****2498` is active and correct. Monthly physical bank reconciliation statements should be archived alongside manual UTR verification logs.
 
 ---
 

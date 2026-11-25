@@ -11,7 +11,6 @@ import { HanumanMurtiVisual } from "@/components/campaigns/HanumanMurtiVisual";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { createPageMetadata } from "@/lib/seo";
 import { ORG } from "@content/org";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   Sparkles,
   Heart,
@@ -423,7 +422,6 @@ export default function HanumanMurtiCampaignPage() {
           </section>
         </Reveal>
       </Container>
-      <StatutoryStrip />
     </div>
   );
 }

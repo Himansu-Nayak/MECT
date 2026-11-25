@@ -92,7 +92,7 @@
       "preconditions": "Unauthenticated user navigates to /admin/login.",
       "syntheticInput": {
         "username": "invalid_user_probe",
-        "password": "WrongPassword123!"
+        "password": "test_wrong_password_probe"
       },
       "userInteraction": "Submit invalid administrator credentials; observe defense response.",
       "expectedResult": "Invalid credentials rejected; authentication fails cleanly without server exception; protected dashboard remains blocked.",

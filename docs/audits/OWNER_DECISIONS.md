@@ -23,7 +23,7 @@
 
 ### DEC-02: Permanent Account Number (PAN)
 - **Documentary Evidence:** Income Tax Department PAN Card & MCA CSR-1 Letter.
-- **Authoritative Value:** `AADTM5474F`
+- **Authoritative Value:** `AADTM****F`
 - **Resolution:** Verified across all 17 references; confirmed as canonical.
 
 ### DEC-03: Income Tax 12A & 80G Disclosures
@@ -56,10 +56,10 @@
 ### DEC-07: Operative Bank Account vs Historical Union Bank Record
 - **Discrepancy Identified:**
   - `src/lib/content-registry.ts` (historical draft) listed: Union Bank of India, A/C `381002010014021`, IFSC `UBIN0538108`.
-  - `src/config/org.ts`, live site `mect.org.in`, and database listed: **State Bank of India**, A/C `33341302498`, IFSC `SBIN0001701`, Branch Rajendra College Square, Bolangir.
+  - `src/config/org.ts`, live site `mect.org.in`, and database listed: **State Bank of India**, A/C `****2498`, IFSC `SBIN0001701`, Branch Rajendra College Square, Bolangir.
 - **Approved Operative Baseline:** **State Bank of India (SBI)**:
   - Account Name: `MAHAVEER EDUCATIONAL & CHARITABLE TRUST`
-  - Account Number: `33341302498`
+  - Account Number: `****2498`
   - IFSC: `SBIN0001701`
   - Branch: `Rajendra College Square, Bolangir`
   - Primary UPI VPA: `86971610172@sbi` (Fallback / Secretariat: `9853608113@sbi`)

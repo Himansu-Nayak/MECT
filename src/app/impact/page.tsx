@@ -19,7 +19,6 @@ import { ImpactChartsSection } from "@/components/charts/ImpactChartsSection";
 import { OdishaImpactSphere3D } from "@/components/charts/OdishaImpactSphere3D";
 import { OdishaDistrictGrid } from "@/components/motion/OdishaDistrictGrid";
 import { LightboxGrid } from "@/components/motion/LightboxGrid";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   MapPin,
   CheckCircle2,
@@ -347,9 +346,6 @@ export default function ImpactPage() {
           </div>
         </Container>
       </section>
-
-      {/* Statutory Disclosures & Transparency Strip */}
-      <StatutoryStrip />
     </div>
   );
 }

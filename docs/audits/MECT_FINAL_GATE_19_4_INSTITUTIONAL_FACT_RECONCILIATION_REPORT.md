@@ -32,7 +32,7 @@ This audit formally resolves every conflicting value against the physical scanne
 | **Legal Trust Name** | **Mahaveer Educational & Charitable Trust (MECT)** | Trust Deed, PAN Card, Form 10AC | None | **CONSISTENT** |
 | **Trust Deed Number** | **Deed No. 40311302194** | Scanned Endorsement, Book 4, Vol 45, District Sub-Registrar, Balangir | Placeholder "Deed No. 1081/2018" appeared in synthetic test notes | **RECONCILED** |
 | **Deed Execution Date** | **27 July 2013** (Registered: **30 July 2013**) | Official Registration Stamp, Balangir Sub-Registrar | "2018" in legacy synthetic text | **RECONCILED** |
-| **Permanent Account No.** | **AADTM5474F** | Income Tax Department PAN Card & CSR-1 Letter | None | **CONSISTENT** |
+| **Permanent Account No.** | **AADTM****F** | Income Tax Department PAN Card & CSR-1 Letter | None | **CONSISTENT** |
 | **Section 12A URN** | **AADTM5474FE20231** (DIN: `AADTM5474FE2023101`) | CBDT Form 10AC Order dated 29-01-2024 | Synthetic placeholder "AABTM6936ME20241" | **RECONCILED** |
 | **Section 80G URN** | **AADTM5474FF20241** (DIN: `AADTM5474FF2024101`) | CBDT Form 10AC Order dated 29-01-2024 | Synthetic placeholder "AABTM6936ME20241" | **RECONCILED** |
 | **Tax Exemption Notice** | *"Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility."* | Neutral statutory compliance directive (OWNER_DECISIONS.md DEC-03) | Promotional claims ("100% Tax Deductible") suppressed | **RECONCILED** |
@@ -41,7 +41,7 @@ This audit formally resolves every conflicting value against the physical scanne
 | **MoSJE e-Anudaan** | **OR/00040466** | MoSJE NGO Portal Profile | None | **CONSISTENT** |
 | **Registered Office** | **Near Sai Mandir, Rugudipara, Balangir, Odisha - 767001** | Registered Trust Deed Clause 2 | Conflated with Bhubaneswar administrative office | **RECONCILED** |
 | **Administrative Office** | **A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014** | Corporate & Liaison Lease Record | Conflated with Balangir registered office | **RECONCILED** |
-| **Operative SBI Account** | **State Bank of India**, A/C **33341302498**, IFSC **SBIN0001701**, Branch Rajendra College Square, Bolangir | Official SBI Passbook & Account Statement | Synthetic placeholder "A/C 44883495819, SBIN0000067, Dhenkanal" | **RECONCILED** |
+| **Operative SBI Account** | **State Bank of India**, A/C ******2498**, IFSC **SBIN0001701**, Branch Rajendra College Square, Bolangir | Official SBI Passbook & Account Statement | Synthetic placeholder "A/C 44883495819, SBIN0000067, Dhenkanal" | **RECONCILED** |
 | **Official UPI VPA** | **86971610172@sbi** (Secondary: `9853608113@sbi`) | SBI Merchant UPI Onboarding | "SBIN0000067@SBI" in synthetic notes | **RECONCILED** |
 | **Settler Founder & Chairman** | **Er. Japabandhu Kampa** (Clause XVI honorary service) | Trust Deed Clauses 8(2), 10, XVI | Variations in title and honorific | **CONSISTENT** |
 | **Helpline Numbers** | **+91 94371 23616** (Secondary: `+91 98536 08113`) | Registered helpline records since 2013 | None | **CONSISTENT** |
@@ -57,7 +57,7 @@ This audit formally resolves every conflicting value against the physical scanne
 
 ### 3.2 Bank Account & IFSC Reconciliation
 - **Discrepancy:** Early test scripts used synthetic placeholder `44883495819` / `SBIN0000067` (Dhenkanal).
-- **Resolution:** As formally recorded in `docs/audits/OWNER_DECISIONS.md` (DEC-07), the operative domestic account of the Trust is **State Bank of India, Current Account No. 33341302498, IFSC SBIN0001701, Rajendra College Square, Bolangir**. All public donation interfaces wire dynamically to `ORG.bank` and `MECT_ORG.bank`.
+- **Resolution:** As formally recorded in `docs/audits/OWNER_DECISIONS.md` (DEC-07), the operative domestic account of the Trust is **State Bank of India, Current Account No. ****2498, IFSC SBIN0001701, Rajendra College Square, Bolangir**. All public donation interfaces wire dynamically to `ORG.bank` and `MECT_ORG.bank`.
 
 ### 3.3 Tax Treatment & CBDT Form 10AC Orders
 - **Discrepancy:** Early marketing drafts claimed "100% Guaranteed 80G Deductions".

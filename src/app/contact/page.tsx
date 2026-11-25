@@ -35,7 +35,6 @@ import {
 import { submitInquiry } from "@/lib/api";
 import { MECT_ORG } from "@/config/org";
 import { ORG } from "@content/org";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 
 const INQUIRY_CATEGORIES: SelectOption[] = [
   { value: "General", label: "General" },
@@ -685,9 +684,6 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
-
-      {/* Statutory Disclosures & Transparency Strip */}
-      <StatutoryStrip />
     </div>
   );
 }

@@ -37,7 +37,7 @@ All 6 core institutional interactive workflows executed with **zero unhandled ex
 - **Payload Verification:** Tested submission with valid synthetic citizen data (`Shri R. K. Mishra`, `rkmishra.test@example.com`, `9437198765`). Request body inspection verified proper serialization of `fullName`, `email`, `phone`, `message`, and `consent`.
 
 ### 3.2 Donation Credentials & UTR Claim Flow (WF-02)
-- **Accessibility:** SBI Current Account (`33341302498`) and IFSC (`SBIN0001701`) render in semantic `<table>` elements with zero hydration delays.
+- **Accessibility:** SBI Current Account (`****2498`) and IFSC (`SBIN0001701`) render in semantic `<table>` elements with zero hydration delays.
 - **Offline Claim Dispatch:** Form fields validated donor phone numbers against standard Indian 10-digit telecom specifications. The synthetic UTR (`SBI202611250001`) was submitted and acknowledged with a structured confirmation payload.
 
 ### 3.3 Administrative Portal Security (WF-05)

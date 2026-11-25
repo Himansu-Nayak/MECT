@@ -1,14 +1,14 @@
 {
   "gate": "19.10.7",
   "title": "Reproducible Build and Backend Regression Verification",
-  "timestamp": "2026-11-24T21:03:43.505Z",
+  "timestamp": "2026-11-25T09:28:51.223Z",
   "environment": {
     "os": "Windows_NT 10.0.26300 (x64)",
     "node": "v25.9.0",
     "npm": "11.12.1",
     "java": "java version \"21.0.11\" 2026-04-21 LTS\r",
     "maven": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)\r",
-    "commit": "edfc8bc58335e92960c86eccd0a1b1235ad986ae"
+    "commit": "d71bc2f7e3c665b0d9a265a2a2570bdcf25c33bb"
   },
   "executions": [
     {
@@ -17,9 +17,9 @@
       "command": "npx tsc --noEmit",
       "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
       "logFile": "audit/final/logs/tsc.log",
-      "startTime": "2026-11-24T21:03:43.506Z",
-      "finishTime": "2026-11-24T21:04:09.259Z",
-      "durationMs": 25753,
+      "startTime": "2026-11-25T09:28:51.224Z",
+      "finishTime": "2026-11-25T09:28:59.009Z",
+      "durationMs": 7785,
       "exitCode": 0,
       "status": "VERIFIED_PASS",
       "testMetrics": null
@@ -30,9 +30,9 @@
       "command": "npm run lint",
       "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
       "logFile": "audit/final/logs/lint.log",
-      "startTime": "2026-11-24T21:04:09.280Z",
-      "finishTime": "2026-11-24T21:05:55.600Z",
-      "durationMs": 106320,
+      "startTime": "2026-11-25T09:28:59.011Z",
+      "finishTime": "2026-11-25T09:29:37.720Z",
+      "durationMs": 38709,
       "exitCode": 0,
       "status": "VERIFIED_PASS",
       "testMetrics": null
@@ -43,9 +43,9 @@
       "command": "npm run build",
       "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST",
       "logFile": "audit/final/logs/next_build.log",
-      "startTime": "2026-11-24T21:05:55.613Z",
-      "finishTime": "2026-11-24T21:09:07.200Z",
-      "durationMs": 191587,
+      "startTime": "2026-11-25T09:29:37.725Z",
+      "finishTime": "2026-11-25T09:30:52.804Z",
+      "durationMs": 75078,
       "exitCode": 0,
       "status": "VERIFIED_PASS",
       "testMetrics": {
@@ -59,17 +59,16 @@
       "command": "mvn test -B",
       "cwd": "C:\\Users\\himan\\OneDrive\\Desktop\\MAHAVIR TRUST\\backend",
       "logFile": "audit/final/logs/backend_mvn_test.log",
-      "startTime": "2026-11-24T21:09:07.228Z",
-      "finishTime": "2026-11-24T21:12:26.049Z",
-      "durationMs": 198821,
+      "startTime": "2026-11-25T09:30:52.809Z",
+      "finishTime": "2026-11-25T09:31:57.532Z",
+      "durationMs": 64723,
       "exitCode": 0,
       "status": "VERIFIED_PASS",
       "testMetrics": {
         "testsRun": 142,
         "failures": 0,
         "errors": 0,
-        "skipped": 0,
-        "buildSuccess": true
+        "skipped": 0
       }
     }
   ]

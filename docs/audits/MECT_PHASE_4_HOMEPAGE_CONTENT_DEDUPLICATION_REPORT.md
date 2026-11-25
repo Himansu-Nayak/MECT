@@ -190,7 +190,7 @@ Below is the exhaustive pre-implementation inventory of all 9 homepage sections,
   - Eyebrow: `"Section 09 • Meaningful Participation Pathways"`
   - Main H2: `"Participate in the Mission: Tailored Channels of Engagement"`
 - **6 Pathways:**
-  1. Individual Donors (Direct Giving & Tuition Fee Sponsorship): References PAN `AADTM5474F`, direct bank transfer (SBI) and UPI. Link: `/donate`.
+  1. Individual Donors (Direct Giving & Tuition Fee Sponsorship): References PAN `AADTM****F`, direct bank transfer (SBI) and UPI. Link: `/donate`.
   2. Corporate CSR Partners (Turnkey CSR Partnerships): References MCA CSR-1 `CSR00081063`, Schedule VII. Link: `/csr-partnerships`.
   3. Academic Mentors & Educators: Link: `/volunteer`.
   4. Institutional Partners & Colleges: Link: `/contact`.
@@ -245,7 +245,7 @@ The 9 homepage sections were audited individually. Code refactoring was strictly
 | **02. Institutional Story**<br>`src/components/sections/InstitutionalStorySection.tsx` | `Executed on 27 July 2013 (Registered Doc No. 40311302194 at Balangir)`<br>`Balangir Registered Deed No. 40311302194`<br>`Deed Book 4, Volume 45`<br>`27 July 2013`<br>`30 July 2013`<br>`Balangir registered office` | `${ORG.trustDeed.executedDateDisplay}`<br>`${ORG.trustDeed.registeredDateDisplay}`<br>`${ORG.trustDeed.deedNumber}`<br>`${ORG.addresses.registered.city}`<br>`${ORG.trustDeed.subRegistrar}`<br>`${ORG.trustDeed.deedBookVolumeDisplay}` (restored historical display verbatim) | **MODIFIED & WIRED** |
 | **05. Audited Telemetry**<br>`src/components/sections/AuditedImpactTelemetrySection.tsx` | `execution of public Trust Deed on 27 July 2013 (Registered Doc No. 40311302194 at Balangir)`<br>`2013 – Present Continuous Record`<br>`DEED-40311302194 • Sub-Registrar Balangir Registry` | `${ORG.trustDeed.executedDateDisplay}`<br>`${ORG.trustDeed.deedNumber}`<br>`${ORG.addresses.registered.city}`<br>`${ORG.foundedYear} – Present Continuous Record`<br>`DEED-${ORG.trustDeed.deedNumber} • ${ORG.trustDeed.subRegistrar} Registry` | **MODIFIED & WIRED** |
 | **08. Statutory Governance**<br>`src/components/sections/StatutoryGovernanceSection.tsx` | Replaced 6 hardcoded credential registration numbers, dates, authorities, and SRN references. | `ORG.trustDeed.deedNumber`<br>`ORG.ids.pan`<br>`ORG.ids.urn12A` / `urn80G`<br>`ORG.ids.taxOrderValidityPeriod`<br>`ORG.ids.csr1` / `csr1Srn`<br>`ORG.ids.darpan`<br>`ORG.ids.eAnudaan` | **MODIFIED & WIRED** |
-| **09. Participation Pathways**<br>`src/components/sections/TailoredParticipationPathwaysSection.tsx` | `verified Trust PAN (AADTM5474F)`<br>`Direct State Bank of India Bank Transfer`<br>`MCA CSR-1 CSR00081063` | `ORG.ids.pan`<br>`ORG.bank.bankName`<br>`ORG.ids.csr1` | **MODIFIED & WIRED** |
+| **09. Participation Pathways**<br>`src/components/sections/TailoredParticipationPathwaysSection.tsx` | `verified Trust PAN (AADTM****F)`<br>`Direct State Bank of India Bank Transfer`<br>`MCA CSR-1 CSR00081063` | `ORG.ids.pan`<br>`ORG.bank.bankName`<br>`ORG.ids.csr1` | **MODIFIED & WIRED** |
 
 ### B. Reviewed Components — No Code Changes Required (4 Components)
 | Section Name & File | Review Findings | Status |

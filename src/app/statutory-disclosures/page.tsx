@@ -329,9 +329,9 @@ export default function StatutoryDisclosuresPage() {
               </div>
 
               <div className="space-y-3">
-                <h4 className="font-serif text-lg font-bold text-white">
+                <h3 className="font-serif text-lg font-bold text-white">
                   Payment Acknowledgement vs Statutory Tax Certificate
-                </h4>
+                </h3>
                 <ul className="space-y-2 text-xs text-white/95 font-sans">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-sand shrink-0 mt-0.5" />
@@ -398,9 +398,9 @@ export default function StatutoryDisclosuresPage() {
                 <Badge variant="forest" size="sm">
                   Schedule VII (ii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-terracotta-dark">
+                <h3 className="font-serif text-base font-bold text-terracotta-dark">
                   Promoting Education &amp; Remedial Coaching
-                </h4>
+                </h3>
                 <p className="leading-relaxed">
                   Support free after-school remedial coaching, digital study access, scholarship grants, and academic kit distribution for rural and tribal students in Balangir.
                 </p>
@@ -410,9 +410,9 @@ export default function StatutoryDisclosuresPage() {
                 <Badge variant="forest" size="sm">
                   Schedule VII (iii)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-terracotta-dark">
+                <h3 className="font-serif text-base font-bold text-terracotta-dark">
                   Women Vocational Livelihood &amp; Skilling
-                </h4>
+                </h3>
                 <p className="leading-relaxed">
                   Equip rural women with sewing machines, 6-month certified garment fabrication courses, and market linkage tooling for financial self-reliance.
                 </p>
@@ -422,9 +422,9 @@ export default function StatutoryDisclosuresPage() {
                 <Badge variant="forest" size="sm">
                   Schedule VII (i)
                 </Badge>
-                <h4 className="font-serif text-base font-bold text-terracotta-dark">
+                <h3 className="font-serif text-base font-bold text-terracotta-dark">
                   Safe Drinking Water (Jal Seva)
-                </h4>
+                </h3>
                 <p className="leading-relaxed">
                   Establish seasonal summer hydration booths and safe drinking water kiosks serving thousands of rural commuters and patient attendants in Balangir.
                 </p>
@@ -451,9 +451,9 @@ export default function StatutoryDisclosuresPage() {
         <Container size="default">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-ink font-sans">
             <div>
-              <h4 className="font-serif text-lg font-bold text-forest">
+              <h2 className="font-serif text-lg font-bold text-forest">
                 Right to Inspect Public Trust Records
-              </h4>
+              </h2>
               <p className="mt-1 max-w-2xl leading-relaxed">
                 As a registered public charitable trust under the Indian Trusts Act, 1882, certified copies of our Trust Deed, regulatory registration orders, and annual activity summaries are open for institutional examination at our Balangir Registered Office and Bhubaneswar Liaison Secretariat during working hours.
               </p>

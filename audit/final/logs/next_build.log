@@ -1,6 +1,6 @@
 === COMMAND: npm run build ===
-=== START: 2026-11-24T21:05:55.613Z ===
-=== FINISH: 2026-11-24T21:09:07.200Z (Duration: 191587ms) ===
+=== START: 2026-11-25T09:29:37.725Z ===
+=== FINISH: 2026-11-25T09:30:52.804Z (Duration: 75078ms) ===
 === EXIT CODE: 0 ===
 
 --- STDOUT ---
@@ -11,20 +11,20 @@
 [check-confirm] PASS: 0 unresolved {{CONFIRM: ...}} markers found.
 ▲ Next.js 16.4.6 (webpack)
 - Environments: .env.local
-✓ Running next.config.ts took 576ms
+✓ Running next.config.ts took 225ms
 - Experiments (use with caution):
   · cpus: 1
 
   Creating an optimized production build ...
-✓ Compiled successfully in 48s
+✓ Compiled successfully in 16.8s
   Running TypeScript ...
-  Finished TypeScript in 10.8s ...
+  Finished TypeScript in 5.1s ...
   Collecting page data using 1 worker ...
   Generating static pages using 1 worker (0/58) ...
   Generating static pages using 1 worker (14/58) 
   Generating static pages using 1 worker (28/58) 
   Generating static pages using 1 worker (43/58) 
-✓ Generating static pages using 1 worker (58/58) in 12.4s
+✓ Generating static pages using 1 worker (58/58) in 7.6s
   Finalizing page optimization ...
   Collecting build traces ...
 

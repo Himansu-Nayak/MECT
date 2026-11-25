@@ -22,7 +22,7 @@ All financial checks were executed using read-only inspections, sandboxed unit t
 
 ### 2.1 Approved Production Payment Hierarchy
 1. **Primary Method — State Bank of India (Direct NEFT / RTGS / IMPS):**
-   - Account: `33341302498` | IFSC: `SBIN0001701` | Branch: Rajendra College Square, Bolangir
+   - Account: `****2498` | IFSC: `SBIN0001701` | Branch: Rajendra College Square, Bolangir
    - Zero-commission direct remittance into the registered public trust account.
 2. **UPI QR Code Direct Transfer:**
    - Beneficiary VPA: `86971610172@sbi` (Secondary: `9853608113@sbi`)

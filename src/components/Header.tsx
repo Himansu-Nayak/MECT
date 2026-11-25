@@ -219,7 +219,7 @@ export function Header() {
             <Link
               href="/"
               className="flex items-center gap-1.5 min-[360px]:gap-2 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-terracotta rounded-xs min-w-0"
-              aria-label="Mahaveer Educational & Charitable Trust Homepage"
+              aria-label={`${ORG.name} Homepage`}
             >
               <div
                 className={`rounded-full overflow-hidden border-2 border-terracotta/90 bg-white flex items-center justify-center shadow-xs shrink-0 aspect-square transition-all duration-300 ${
@@ -228,7 +228,7 @@ export function Header() {
               >
                 <Image
                   src={ORG.branding.logoPath}
-                  alt={ORG.branding.logoAlt}
+                  alt=""
                   width={44}
                   height={44}
                   className="w-full h-full object-cover scale-[1.06]"
@@ -239,7 +239,10 @@ export function Header() {
                 <span className="font-serif font-bold text-[11px] min-[360px]:text-xs sm:text-base xl:text-[13.5px] 2xl:text-[16px] text-forest group-hover:text-terracotta-dark leading-tight tracking-tight transition-colors line-clamp-2 sm:line-clamp-none sm:whitespace-nowrap">
                   {ORG.name}
                 </span>
-                <span className="hidden sm:block xl:hidden 2xl:block text-[9px] 2xl:text-[10px] font-mono tracking-widest text-ink-muted uppercase mt-0.5 whitespace-nowrap">
+                <span
+                  aria-hidden="true"
+                  className="hidden sm:block xl:hidden 2xl:block text-[9px] 2xl:text-[10px] font-mono tracking-widest text-ink-muted uppercase mt-0.5 whitespace-nowrap"
+                >
                   Regd. Public Charitable Trust • Estd. 2013
                 </span>
               </div>

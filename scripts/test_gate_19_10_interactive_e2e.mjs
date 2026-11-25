@@ -314,7 +314,7 @@ async function runInteractiveE2EGate19_10() {
       testId: "WF-05",
       name: "Administrative Login Security & Failure Handling",
       preconditions: "Unauthenticated user navigates to /admin/login.",
-      syntheticInput: { username: "invalid_user_probe", password: "WrongPassword123!" },
+      syntheticInput: { username: "invalid_user_probe", password: "test_wrong_password_probe" },
       userInteraction: "Submit invalid administrator credentials; observe defense response.",
       expectedResult: "Invalid credentials rejected; authentication fails cleanly without server exception; protected dashboard remains blocked.",
       actualResult: "Authentication form rejected probe credentials; zero session token issued; administrative perimeter maintained.",

@@ -73,7 +73,7 @@ In `src/lib/content-registry.ts`, careful measurement definitions have been rest
      `"Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility (URN: AADTM5474FF20241)"`.
 3. **Unresolved Owner Decisions Log:**
    All pending items remain registered in `docs/audits/OWNER_DECISIONS.md`:
-   - Physical inspection of SBI passbook (Account `33341302498`, IFSC `SBIN0001701`).
+   - Physical inspection of SBI passbook (Account `****2498`, IFSC `SBIN0001701`).
    - Confirmation of sole public telephone desk (`+91 94371 23616`).
    - Official Secretariat email confirmation (`mect220@gmail.com`).
    - CA review of AY 2026-27 donation receipts under Income-tax Act, 2025.

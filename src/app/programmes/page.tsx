@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/Button";
 import { ORG } from "@content/org";
 import { MECT_CONTENT_REGISTRY } from "@/lib/content-registry";
 import { FreeEducationSection } from "@/components/sections/FreeEducationSection";
-import { StatutoryStrip } from "@/components/layout/StatutoryStrip";
 import {
   GraduationCap,
   Award,
@@ -502,9 +501,6 @@ export default function ProgrammesPage() {
           );
         })}
       </div>
-
-      {/* 4. Statutory Transparency Strip */}
-      <StatutoryStrip />
     </div>
   );
 }

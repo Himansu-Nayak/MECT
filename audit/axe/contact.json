@@ -7,14 +7,14 @@
     "name": "axe"
   },
   "testEnvironment": {
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
     "windowWidth": 1280,
-    "windowHeight": 720,
+    "windowHeight": 800,
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-20T17:35:17.255Z",
-  "url": "http://127.0.0.1:3000/contact",
+  "timestamp": "2026-11-25T08:44:37.340Z",
+  "url": "http://127.0.0.1:3007/contact",
   "toolOptions": {
     "reporter": "v1"
   },
@@ -583,19 +583,6 @@
       "nodes": []
     },
     {
-      "id": "presentation-role-conflict",
-      "impact": null,
-      "tags": [
-        "cat.aria",
-        "best-practice",
-        "ACT"
-      ],
-      "description": "Ensure elements marked as presentational do not have global ARIA or tabindex so that all screen readers ignore them",
-      "help": "Elements marked as presentational should be consistently ignored",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/presentation-role-conflict?application=playwright",
-      "nodes": []
-    },
-    {
       "id": "role-img-alt",
       "impact": null,
       "tags": [
@@ -1061,9 +1048,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -1101,9 +1088,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -1141,9 +1128,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -1181,9 +1168,9 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            ".bg-sand\\/40"
+            "#nav-toggle-governance"
           ]
         },
         {
@@ -1221,9 +1208,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -1264,46 +1251,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-allowed-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attributes are used correctly for the defined role"
-            },
-            {
-              "id": "aria-allowed-attr-elm",
-              "data": null,
-              "relatedNodes": [],
-              "message": "ARIA attributes are allowed for this element",
-              "impact": "critical"
-            },
-            {
-              "id": "aria-no-deprecated-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "No deprecated ARIA attributes are used"
-            }
-          ],
-          "none": [
-            {
-              "id": "aria-unsupported-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute is supported"
-            }
-          ],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -1463,7 +1410,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -1863,7 +1810,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -2063,7 +2010,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -2195,7 +2142,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -2340,9 +2287,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -2358,9 +2305,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -2376,9 +2323,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -2394,9 +2341,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            ".bg-sand\\/40"
+            "#nav-toggle-governance"
           ]
         },
         {
@@ -2412,9 +2359,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -2433,24 +2380,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-conditional-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -2522,7 +2451,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -2702,7 +2631,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -2792,7 +2721,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -2885,7 +2814,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -3346,6 +3275,38 @@
           ],
           "none": [],
           "impact": null,
+          "html": "<span aria-hidden=\"true\" class=\"hidden sm:block xl:hidden 2xl:block text-[9px] 2xl:text-[10px] font-mono tracking-widest text-ink-muted uppercase mt-0.5 whitespace-nowrap\">Regd. Public Charitable Trust • Estd. 2013</span>",
+          "target": [
+            ".sm\\:block"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
             "#nav-toggle-about > .lucide-chevron-down.transition-transform.w-3\\.5"
@@ -3380,7 +3341,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-our-work > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-programmes > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3412,7 +3373,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-impact-accountability > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-impact > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3444,39 +3405,7 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-get-involved > .lucide-chevron-down.transition-transform.w-3\\.5"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<span class=\"absolute inset-x-2 bottom-0 h-0.5 bg-terracotta rounded-full\" aria-hidden=\"true\" style=\"opacity: 1;\"></span>",
-          "target": [
-            ".inset-x-2"
+            "#nav-toggle-campaigns > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3508,7 +3437,39 @@
           "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
           "target": [
-            "#nav-toggle-resources-help > .lucide-chevron-down.transition-transform.w-3\\.5"
+            "#nav-toggle-governance > .lucide-chevron-down.transition-transform.w-3\\.5"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down w-3.5 h-3.5 transition-transform duration-200\" aria-hidden=\"true\">",
+          "target": [
+            "#nav-toggle-reports-disclosures > .lucide-chevron-down.transition-transform.w-3\\.5"
           ]
         },
         {
@@ -3570,73 +3531,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-user-check w-3.5 h-3.5 text-terracotta shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".lucide-user-check"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-user-plus w-3.5 h-3.5 text-terracotta shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".lucide-user-plus"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-compass w-3.5 h-3.5 text-terracotta group-hover:text-sand\" aria-hidden=\"true\">",
           "target": [
-            ".lucide-compass.text-terracotta.group-hover\\:text-sand"
+            ".lucide-compass"
           ]
         },
         {
@@ -4212,7 +4109,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-name\"] > .ml-1.font-bold.text-terracotta-dark"
+            "label[for=\"inquiry-name\"] > .ml-1.text-terracotta-dark.font-bold"
           ]
         },
         {
@@ -4244,7 +4141,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-email\"] > .ml-1.font-bold.text-terracotta-dark"
+            "label[for=\"inquiry-email\"] > .ml-1.text-terracotta-dark.font-bold"
           ]
         },
         {
@@ -4276,7 +4173,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-phone\"] > .ml-1.font-bold.text-terracotta-dark"
+            "label[for=\"inquiry-phone\"] > .ml-1.text-terracotta-dark.font-bold"
           ]
         },
         {
@@ -4308,7 +4205,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-category\"] > .ml-1.font-bold.text-terracotta-dark"
+            "label[for=\"inquiry-category\"] > .ml-1.text-terracotta-dark.font-bold"
           ]
         },
         {
@@ -4372,7 +4269,7 @@
           "impact": null,
           "html": "<span class=\"text-terracotta-dark font-bold ml-1\" aria-hidden=\"true\">*</span>",
           "target": [
-            "label[for=\"inquiry-message\"] > .ml-1.font-bold.text-terracotta-dark"
+            "label[for=\"inquiry-message\"] > .ml-1.text-terracotta-dark.font-bold"
           ]
         },
         {
@@ -4469,38 +4366,6 @@
           "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-shield-alert w-7 h-7\" aria-hidden=\"true\">",
           "target": [
             ".lucide-shield-alert"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "focusable-modal-open",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-compass w-4 h-4 text-terracotta shrink-0\" aria-hidden=\"true\">",
-          "target": [
-            ".lucide-compass.text-terracotta.w-4"
           ]
         },
         {
@@ -5168,9 +5033,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -5186,9 +5051,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -5204,9 +5069,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -5222,9 +5087,9 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            ".bg-sand\\/40"
+            "#nav-toggle-governance"
           ]
         },
         {
@@ -5240,9 +5105,9 @@
             }
           ],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -5261,24 +5126,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "aria-prohibited-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "ARIA attribute is allowed"
-            }
-          ],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -5350,7 +5197,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -5530,7 +5377,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -5620,7 +5467,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -5713,7 +5560,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -5816,7 +5663,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -6059,9 +5906,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -6091,9 +5938,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -6123,9 +5970,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -6155,9 +6002,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            ".bg-sand\\/40"
+            "#nav-toggle-governance"
           ]
         },
         {
@@ -6187,9 +6034,9 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -6222,38 +6069,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [],
-          "all": [
-            {
-              "id": "aria-valid-attr-value",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute values are valid"
-            },
-            {
-              "id": "aria-errormessage",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
-            },
-            {
-              "id": "aria-level",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "aria-level values are valid"
-            }
-          ],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -6349,7 +6164,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -6669,7 +6484,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -6829,7 +6644,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -7020,9 +6835,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -7038,9 +6853,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -7056,9 +6871,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -7074,9 +6889,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            ".bg-sand\\/40"
+            "#nav-toggle-governance"
           ]
         },
         {
@@ -7092,9 +6907,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -7113,24 +6928,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "aria-valid-attr",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "critical",
-              "message": "ARIA attribute name is valid"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -7202,7 +6999,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -7382,7 +7179,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -7472,7 +7269,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -7593,9 +7390,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -7611,9 +7408,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -7629,9 +7426,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -7647,9 +7444,27 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-governance"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute exists and is not empty"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
+          "target": [
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -8160,9 +7975,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>About</span>",
+          "html": "<span>Home</span>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"about\"] > span"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href=\"/\"] > span"
           ]
         },
         {
@@ -8185,7 +8000,32 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Our Work</span>",
+          "html": "<span>About</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"about\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Programmes</span>",
           "target": [
             "a[href$=\"programmes\"] > span"
           ]
@@ -8210,7 +8050,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Impact &amp; Accountability</span>",
+          "html": "<span>Impact</span>",
           "target": [
             "a[href$=\"impact\"] > span"
           ]
@@ -8235,9 +8075,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Get Involved</span>",
+          "html": "<span>Campaigns</span>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"volunteer\"] > span"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"campaigns\"] > span"
           ]
         },
         {
@@ -8245,24 +8085,99 @@
             {
               "id": "color-contrast",
               "data": {
-                "fgColor": "#8e3e24",
-                "bgColor": "#f6f0e8",
-                "contrastRatio": 6.47,
+                "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
                 "fontSize": "8.3pt (11px)",
                 "fontWeight": "normal",
                 "expectedContrastRatio": "4.5:1"
               },
               "relatedNodes": [],
               "impact": "serious",
-              "message": "Element has sufficient color contrast of 6.47"
+              "message": "Element has sufficient color contrast of 15.34"
             }
           ],
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Resources &amp; Help</span>",
+          "html": "<span>Governance</span>",
           "target": [
-            ".bg-sand\\/40 > span:nth-child(1)"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"governance\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>CSR Partnerships</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"csr-partnerships\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Reports &amp; Disclosures</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"reports\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#16221d",
+                "bgColor": "#faf7f2",
+                "contrastRatio": 15.34,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 15.34"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Donate</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"donate\"] > span"
           ]
         },
         {
@@ -8288,31 +8203,6 @@
           "html": "<span class=\"hidden xl:inline\">Search</span>",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55 > .xl\\:inline.hidden"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#16221d",
-                "bgColor": "#faf7f2",
-                "contrastRatio": 15.34,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 15.34"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Sign In</span>",
-          "target": [
-            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -8412,7 +8302,7 @@
           "impact": null,
           "html": "<span>Direct Institutional Channels</span>",
           "target": [
-            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -8662,7 +8552,7 @@
           "impact": null,
           "html": "<span>Philanthropy &amp; CSR</span>",
           "target": [
-            ".mb-1\\.5.border-terracotta\\/40.py-0\\.5 > span"
+            ".mb-1\\.5.border-terracotta\\/40.bg-sand-light > span"
           ]
         },
         {
@@ -8785,7 +8675,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">MCA CSR Reg:</span> CSR00081063 (ROC Delhi)</div>",
+          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">MCA CSR Reg:</span> <!-- -->CSR00081063<!-- --> (ROC Delhi)</div>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(2) > .p-2\\.5.pt-3.border-t"
           ]
@@ -9135,7 +9025,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">Trust Deed:</span> Doc No. 40311302194 (Balangir)</div>",
+          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">Trust Deed:</span> Doc No. <!-- -->40311302194<!-- --> (<!-- -->Balangir<!-- -->)</div>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(4) > .p-2\\.5.pt-3.border-t"
           ]
@@ -9187,7 +9077,7 @@
           "impact": null,
           "html": "<span>Institutional Administration</span>",
           "target": [
-            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -9460,7 +9350,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div><strong class=\"text-forest\">Deed Jurisdiction:</strong> Sub-Registrar Balangir (Doc No. 40311302194)</div>",
+          "html": "<div><strong class=\"text-forest\">Deed Jurisdiction:</strong> <!-- -->Balangir Sub-Registrar<!-- --> (Doc No. <!-- -->40311302194<!-- -->)</div>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .pt-4.bg-cream\\/70.p-3 > div:nth-child(1)"
           ]
@@ -9562,7 +9452,7 @@
           "impact": null,
           "html": "<span>Administrative Office</span>",
           "target": [
-            ".items-start.justify-between.flex > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".items-start.justify-between.flex > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -9862,7 +9752,7 @@
           "impact": null,
           "html": "<span>Official Inquiry Desk</span>",
           "target": [
-            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -10382,7 +10272,7 @@
           "impact": null,
           "html": "<span>Institutional Governance</span>",
           "target": [
-            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -10582,7 +10472,7 @@
           "impact": null,
           "html": "<span>Stage 2</span>",
           "target": [
-            ".justify-between.flex.items-center > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".justify-between.flex.items-center > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -10983,156 +10873,6 @@
           "html": "<code class=\"text-cream font-mono underline\">+91 94371 23616</code>",
           "target": [
             "code:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 8.54,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 8.54"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span><strong>Deed:</strong> Balangir Sub-Registrar Doc No. 40311302194 | <strong>PAN:</strong> AADTM5474F | <strong>MCA CSR:</strong> CSR00081063</span>",
-          "target": [
-            ".mt-8 > .gap-2.flex.items-center > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 8.54,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 8.54"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>Deed:</strong>",
-          "target": [
-            "span > strong:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 8.54,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 8.54"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>PAN:</strong>",
-          "target": [
-            "span > strong:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#3d4843",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 8.54,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 8.54"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>MCA CSR:</strong>",
-          "target": [
-            "strong:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#8e3e24",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 6.57,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 6.57"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/statutory-disclosures\">Statutory Disclosures</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"statutory-disclosures\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#8e3e24",
-                "bgColor": "#f7f2ea",
-                "contrastRatio": 6.57,
-                "fontSize": "9.0pt (12px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 6.57"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/governance\">Governance Charter</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"governance\"]"
           ]
         },
         {
@@ -12393,6 +12133,15 @@
               "relatedNodes": [],
               "impact": "critical",
               "message": "Element has an alt attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": {
+                "role": "presentation"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were overridden with role=\"presentation\""
             }
           ],
           "all": [],
@@ -12406,9 +12155,9 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Mahaveer Educational...\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
-            "img[width=\"44\"]"
+            "img[alt=\"\"]"
           ]
         },
         {
@@ -12463,9 +12212,9 @@
             }
           ],
           "impact": null,
-          "html": "<img alt=\"Mahaveer Educational...\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
-            "img[width=\"44\"]"
+            "img[alt=\"\"]"
           ]
         },
         {
@@ -12538,24 +12287,6 @@
           "html": "<button type=\"button\" aria-label=\"Search site (Press /...\" class=\"inline-flex items-ce...\">",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "label-content-name-mismatch",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element contains visible text as part of its accessible name"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
           ]
         },
         {
@@ -13639,9 +13370,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/about\"><span>About</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/\"><span>Home</span></a>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"about\"]"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href=\"/\"]"
           ]
         },
         {
@@ -13665,7 +13396,33 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/programmes\"><span>Our Work</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/about\"><span>About</span></a>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"about\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/programmes\"><span>Programmes</span></a>",
           "target": [
             "a[href$=\"programmes\"]"
           ]
@@ -13691,7 +13448,7 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/impact\">",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/impact\"><span>Impact</span></a>",
           "target": [
             "a[href$=\"impact\"]"
           ]
@@ -13717,9 +13474,9 @@
             }
           ],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/volunteer\"><span>Get Involved</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/campaigns\"><span>Campaigns</span></a>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"volunteer\"]"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"campaigns\"]"
           ]
         },
         {
@@ -13743,9 +13500,9 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/governance\"><span>Governance</span></a>",
           "target": [
-            ".bg-sand\\/40"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"governance\"]"
           ]
         },
         {
@@ -13756,13 +13513,6 @@
               "relatedNodes": [],
               "impact": "serious",
               "message": "Element has text that is visible to screen readers"
-            },
-            {
-              "id": "aria-label",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "aria-label attribute exists and is not empty"
             }
           ],
           "all": [],
@@ -13776,9 +13526,61 @@
             }
           ],
           "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/csr-partnerships\">",
           "target": [
-            ".border-forest\\/30"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"csr-partnerships\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/reports\">",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"reports\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "focusable-no-name",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element is not in tab order or has accessible text"
+            }
+          ],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/donate\"><span>Donate</span></a>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"donate\"]"
           ]
         },
         {
@@ -14103,58 +13905,6 @@
         {
           "any": [
             {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/statutory-disclosures\">Statutory Disclosures</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"statutory-disclosures\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/governance\">Governance Charter</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"governance\"]"
-          ]
-        },
-        {
-          "any": [
-            {
               "id": "aria-label",
               "data": null,
               "relatedNodes": [],
@@ -14248,7 +13998,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -14496,7 +14246,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/programmes#sports-extracurricular\">Sports &amp; Extracurriculars</a>",
           "target": [
-            ".space-y-3.font-sans:nth-child(2) > ul > li:nth-child(3) > .hover\\:text-white.focus-visible\\:outline-sand.transition-colors"
+            ".space-y-3.font-sans:nth-child(2) > ul > li:nth-child(3) > .hover\\:text-white.focus-visible\\:outline-sand"
           ]
         },
         {
@@ -14678,7 +14428,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/campaigns\">All Institutional Initiatives</a>",
           "target": [
-            "a[href$=\"campaigns\"]"
+            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"campaigns\"]"
           ]
         },
         {
@@ -14808,7 +14558,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/reports\">Annual Reports &amp; Audits</a>",
           "target": [
-            "a[href$=\"reports\"]"
+            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"reports\"]"
           ]
         },
         {
@@ -14887,84 +14637,6 @@
           "html": "<a class=\"hover:text-white font-semibold text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/donate\">Donate to MECT</a>",
           "target": [
             ".text-sand.hover\\:text-white[href$=\"donate\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/login\">Donor Sign In</a>",
-          "target": [
-            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"login\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/register\">Create Supporter Account</a>",
-          "target": [
-            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"register\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/portal/dashboard\">Donor Portal &amp; 80G Receipts</a>",
-          "target": [
-            "a[href$=\"dashboard\"]"
           ]
         },
         {
@@ -15726,7 +15398,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/login\">Donor Sign In</a></li>",
+          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/volunteer\">Volunteer &amp; Mentorship</a></li>",
           "target": [
             ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(2)"
           ]
@@ -15744,63 +15416,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/register\">Create Supporter Account</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/portal/dashboard\">Donor Portal &amp; 80G Receipts</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/volunteer\">Volunteer &amp; Mentorship</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(5)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/contact\">Secretariat Inquiry Desk</a></li>",
           "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(6)"
+            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(3)"
           ]
         }
       ]
@@ -15922,24 +15540,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Mahaveer Educational...\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
-          "target": [
-            "img[width=\"44\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "no-focusable-content",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element does not have focusable descendants"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<button type=\"button\" id=\"nav-toggle-about\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-about\" aria-label=\"About sub-navigation...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
             "#nav-toggle-about"
@@ -15958,9 +15558,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -15976,9 +15576,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -15994,9 +15594,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-campaigns"
           ]
         },
         {
@@ -16012,9 +15612,27 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-governance"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
+          "target": [
+            "#nav-toggle-reports-disclosures"
           ]
         },
         {
@@ -16341,6 +15959,45 @@
           "html": "<html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\">",
           "target": [
             "html"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "presentation-role-conflict",
+      "impact": null,
+      "tags": [
+        "cat.aria",
+        "best-practice",
+        "ACT"
+      ],
+      "description": "Ensure elements marked as presentational do not have global ARIA or tabindex so that all screen readers ignore them",
+      "help": "Elements marked as presentational should be consistently ignored",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/presentation-role-conflict?application=playwright",
+      "nodes": [
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "is-element-focusable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "minor",
+              "message": "Element is focusable."
+            },
+            {
+              "id": "has-global-aria-attribute",
+              "data": [],
+              "relatedNodes": [],
+              "impact": "minor",
+              "message": "Element has global ARIA attributes: "
+            }
+          ],
+          "impact": null,
+          "html": "<img alt=\"\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "target": [
+            "img[alt=\"\"]"
           ]
         }
       ]
@@ -16993,9 +16650,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<img alt=\"Mahaveer Educational...\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
+          "html": "<img alt=\"\" width=\"44\" height=\"44\" decoding=\"async\" data-nimg=\"1\" class=\"w-full h-full object...\" style=\"color:transparent\" srcset=\"/_next/image?url=%2F...\" src=\"/_next/image?url=%2F...\">",
           "target": [
-            "img[width=\"44\"]"
+            "img[alt=\"\"]"
           ]
         },
         {
@@ -17113,9 +16770,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/about\"><span>About</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/\"><span>Home</span></a>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"about\"]"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href=\"/\"]"
           ]
         },
         {
@@ -17133,29 +16790,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>About</span>",
+          "html": "<span>Home</span>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"about\"] > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-about\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-about\" aria-label=\"About sub-navigation...\" class=\"min-w-[24px] min-h-[...\">",
-          "target": [
-            "#nav-toggle-about"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href=\"/\"] > span"
           ]
         },
         {
@@ -17213,9 +16850,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/programmes\"><span>Our Work</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/about\"><span>About</span></a>",
           "target": [
-            "a[href$=\"programmes\"]"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"about\"]"
           ]
         },
         {
@@ -17233,9 +16870,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Our Work</span>",
+          "html": "<span>About</span>",
           "target": [
-            "a[href$=\"programmes\"] > span"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"about\"] > span"
           ]
         },
         {
@@ -17253,9 +16890,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-our-work\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-our-w...\" aria-label=\"Our Work sub-navigat...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-about\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-about\" aria-label=\"About sub-navigation...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-our-work"
+            "#nav-toggle-about"
           ]
         },
         {
@@ -17313,9 +16950,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/impact\">",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/programmes\"><span>Programmes</span></a>",
           "target": [
-            "a[href$=\"impact\"]"
+            "a[href$=\"programmes\"]"
           ]
         },
         {
@@ -17333,9 +16970,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Impact &amp; Accountability</span>",
+          "html": "<span>Programmes</span>",
           "target": [
-            "a[href$=\"impact\"] > span"
+            "a[href$=\"programmes\"] > span"
           ]
         },
         {
@@ -17353,9 +16990,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-impact-ac...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact & Accountabil...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-programme...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-progr...\" aria-label=\"Programmes sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-impact-accountability"
+            "#nav-toggle-programmes"
           ]
         },
         {
@@ -17413,9 +17050,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/volunteer\"><span>Get Involved</span></a>",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/impact\"><span>Impact</span></a>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"volunteer\"]"
+            "a[href$=\"impact\"]"
           ]
         },
         {
@@ -17433,9 +17070,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Get Involved</span>",
+          "html": "<span>Impact</span>",
           "target": [
-            ".hover\\:text-forest-deep.\\32 xl\\:text-\\[13px\\][href$=\"volunteer\"] > span"
+            "a[href$=\"impact\"] > span"
           ]
         },
         {
@@ -17453,9 +17090,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-get-invol...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-get-i...\" aria-label=\"Get Involved sub-nav...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-impact\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-impac...\" aria-label=\"Impact sub-navigatio...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-get-involved"
+            "#nav-toggle-impact"
           ]
         },
         {
@@ -17513,9 +17150,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a aria-current=\"page\" class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-terracotta-dark font-bold bg-sand/40\" href=\"/contact\">",
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/campaigns\"><span>Campaigns</span></a>",
           "target": [
-            ".bg-sand\\/40"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"campaigns\"]"
           ]
         },
         {
@@ -17533,9 +17170,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<span>Resources &amp; Help</span>",
+          "html": "<span>Campaigns</span>",
           "target": [
-            ".bg-sand\\/40 > span:nth-child(1)"
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"campaigns\"] > span"
           ]
         },
         {
@@ -17553,9 +17190,369 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" id=\"nav-toggle-resources...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-resou...\" aria-label=\"Resources & Help sub...\" class=\"min-w-[24px] min-h-[...\">",
+          "html": "<button type=\"button\" id=\"nav-toggle-campaigns\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-campa...\" aria-label=\"Campaigns sub-naviga...\" class=\"min-w-[24px] min-h-[...\">",
           "target": [
-            "#nav-toggle-resources-help"
+            "#nav-toggle-campaigns"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"relative shrink-0\">",
+          "target": [
+            ".relative.shrink-0:nth-child(6)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"flex items-center\">",
+          "target": [
+            ".relative.shrink-0:nth-child(6) > .flex.items-center"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/governance\"><span>Governance</span></a>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"governance\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Governance</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"governance\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" id=\"nav-toggle-governanc...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-gover...\" aria-label=\"Governance sub-navig...\" class=\"min-w-[24px] min-h-[...\">",
+          "target": [
+            "#nav-toggle-governance"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"relative shrink-0\">",
+          "target": [
+            ".relative.shrink-0:nth-child(7)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"flex items-center\">",
+          "target": [
+            ".relative.shrink-0:nth-child(7) > .flex.items-center"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/csr-partnerships\">",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"csr-partnerships\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>CSR Partnerships</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"csr-partnerships\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"relative shrink-0\">",
+          "target": [
+            ".relative.shrink-0:nth-child(8)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"flex items-center\">",
+          "target": [
+            ".relative.shrink-0:nth-child(8) > .flex.items-center"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/reports\">",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"reports\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Reports &amp; Disclosures</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"reports\"] > span"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" id=\"nav-toggle-reports-d...\" aria-expanded=\"false\" aria-controls=\"nav-disclosure-repor...\" aria-label=\"Reports & Disclosure...\" class=\"min-w-[24px] min-h-[...\">",
+          "target": [
+            "#nav-toggle-reports-disclosures"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"relative shrink-0\">",
+          "target": [
+            ".relative.shrink-0:nth-child(9)"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<div class=\"flex items-center\">",
+          "target": [
+            ".relative.shrink-0:nth-child(9) > .flex.items-center"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<a class=\"relative whitespace-nowrap px-1.5 2xl:px-2.5 py-1.5 text-[11px] 2xl:text-[13px] font-semibold rounded-xs transition-colors focus-visible:outline-2 focus-visible:outline-terracotta text-forest hover:text-forest-deep hover:bg-sage/40\" href=\"/donate\"><span>Donate</span></a>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"donate\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "region",
+              "data": {
+                "isIframe": false
+              },
+              "relatedNodes": [],
+              "impact": "moderate",
+              "message": "All page content is contained by landmarks"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span>Donate</span>",
+          "target": [
+            ".\\32 xl\\:px-2\\.5.\\32 xl\\:text-\\[13px\\][href$=\"donate\"] > span"
           ]
         },
         {
@@ -17616,66 +17613,6 @@
           "html": "<span class=\"hidden xl:inline\">Search</span>",
           "target": [
             ".\\32 xl\\:space-x-2 > .text-\\[11\\.5px\\].bg-white\\/80.hover\\:bg-sage\\/55 > .xl\\:inline.hidden"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"flex items-center space-x-1 shrink-0\">",
-          "target": [
-            ".\\32 xl\\:space-x-2 > .space-x-1.shrink-0.flex"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a aria-label=\"Sign in to Donor Portal\" class=\"flex whitespace-nowrap px-2 2xl:px-2.5 py-1.5 text-xs font-semibold text-forest border border-forest/30 hover:bg-sage/40 rounded-xs transition-colors items-center gap-1 focus-visible:outline-2 focus-visible:outline-terracotta shrink-0\" ...>",
-          "target": [
-            ".border-forest\\/30"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span>Sign In</span>",
-          "target": [
-            ".border-forest\\/30 > span"
           ]
         },
         {
@@ -17995,7 +17932,7 @@
           "impact": null,
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ]
         },
         {
@@ -18053,7 +17990,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"type-body-lead text-cream/95 max-w-[65ch]\">Official communications and administrative guidance gateway for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha.</p>",
+          "html": "<p class=\"type-body-lead text-cream/95 max-w-[65ch]\">Official communications and administrative guidance desk for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha.</p>",
           "target": [
             ".type-body-lead"
           ]
@@ -18355,7 +18292,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Direct Institutional Channels</span></span>",
           "target": [
-            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -18375,7 +18312,7 @@
           "impact": null,
           "html": "<span>Direct Institutional Channels</span>",
           "target": [
-            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#direct-desks > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -18795,7 +18732,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 mb-1.5\"><span>Philanthropy &amp; CSR</span></span>",
           "target": [
-            ".mb-1\\.5.border-terracotta\\/40.py-0\\.5"
+            ".mb-1\\.5.border-terracotta\\/40.bg-sand-light"
           ]
         },
         {
@@ -18815,7 +18752,7 @@
           "impact": null,
           "html": "<span>Philanthropy &amp; CSR</span>",
           "target": [
-            ".mb-1\\.5.border-terracotta\\/40.py-0\\.5 > span"
+            ".mb-1\\.5.border-terracotta\\/40.bg-sand-light > span"
           ]
         },
         {
@@ -18933,7 +18870,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">MCA CSR Reg:</span> CSR00081063 (ROC Delhi)</div>",
+          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">MCA CSR Reg:</span> <!-- -->CSR00081063<!-- --> (ROC Delhi)</div>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(2) > .p-2\\.5.pt-3.border-t"
           ]
@@ -19453,7 +19390,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">Trust Deed:</span> Doc No. 40311302194 (Balangir)</div>",
+          "html": "<div class=\"pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs\"><span class=\"font-semibold text-forest\">Trust Deed:</span> Doc No. <!-- -->40311302194<!-- --> (<!-- -->Balangir<!-- -->)</div>",
           "target": [
             ".border-t-4.border-t-terracotta.hover\\:shadow-md:nth-child(4) > .p-2\\.5.pt-3.border-t"
           ]
@@ -19575,7 +19512,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Institutional Administration</span></span>",
           "target": [
-            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -19595,7 +19532,7 @@
           "impact": null,
           "html": "<span>Institutional Administration</span>",
           "target": [
-            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#secretariat-directory > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -20053,7 +19990,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div><strong class=\"text-forest\">Deed Jurisdiction:</strong> Sub-Registrar Balangir (Doc No. 40311302194)</div>",
+          "html": "<div><strong class=\"text-forest\">Deed Jurisdiction:</strong> <!-- -->Balangir Sub-Registrar<!-- --> (Doc No. <!-- -->40311302194<!-- -->)</div>",
           "target": [
             ".p-8.border-t-4.border-t-terracotta:nth-child(1) > .pt-4.bg-cream\\/70.p-3 > div:nth-child(1)"
           ]
@@ -20195,7 +20132,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Administrative Office</span></span>",
           "target": [
-            ".items-start.justify-between.flex > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            ".items-start.justify-between.flex > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -20215,7 +20152,7 @@
           "impact": null,
           "html": "<span>Administrative Office</span>",
           "target": [
-            ".items-start.justify-between.flex > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".items-start.justify-between.flex > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -20675,7 +20612,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Official Inquiry Desk</span></span>",
           "target": [
-            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -20695,7 +20632,7 @@
           "impact": null,
           "html": "<span>Official Inquiry Desk</span>",
           "target": [
-            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".max-w-4xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -21795,7 +21732,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Institutional Governance</span></span>",
           "target": [
-            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -21815,7 +21752,7 @@
           "impact": null,
           "html": "<span>Institutional Governance</span>",
           "target": [
-            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            "#handling-framework > .max-w-7xl.sm\\:px-6.lg\\:px-8 > .space-y-3\\.5.text-left.max-w-3xl > .leading-none > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -22095,7 +22032,7 @@
           "impact": null,
           "html": "<span class=\"inline-flex items-center uppercase tracking-wider rounded-xs select-none bg-sand-light text-ink border border-terracotta/40 font-semibold text-[11px] px-2.5 py-0.5 gap-1.5 \"><span>Stage 2</span></span>",
           "target": [
-            ".justify-between.flex.items-center > .border-terracotta\\/40.py-0\\.5.bg-sand-light"
+            ".justify-between.flex.items-center > .border-terracotta\\/40.bg-sand-light.py-0\\.5"
           ]
         },
         {
@@ -22115,7 +22052,7 @@
           "impact": null,
           "html": "<span>Stage 2</span>",
           "target": [
-            ".justify-between.flex.items-center > .border-terracotta\\/40.py-0\\.5.bg-sand-light > span"
+            ".justify-between.flex.items-center > .border-terracotta\\/40.bg-sand-light.py-0\\.5 > span"
           ]
         },
         {
@@ -22573,186 +22510,6 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<div class=\"mt-8 p-4 bg-sand-light border border-border-warm rounded-xs flex flex-wrap items-center justify-between gap-4 text-xs text-ink-sand\">",
-          "target": [
-            ".mt-8"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"flex items-center gap-2\">",
-          "target": [
-            ".mt-8 > .gap-2.flex.items-center"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<span><strong>Deed:</strong> Balangir Sub-Registrar Doc No. 40311302194 | <strong>PAN:</strong> AADTM5474F | <strong>MCA CSR:</strong> CSR00081063</span>",
-          "target": [
-            ".mt-8 > .gap-2.flex.items-center > span"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>Deed:</strong>",
-          "target": [
-            "span > strong:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>PAN:</strong>",
-          "target": [
-            "span > strong:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>MCA CSR:</strong>",
-          "target": [
-            "strong:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<div class=\"flex items-center gap-4 text-terracotta-dark font-semibold\"><a class=\"hover:text-forest underline\" href=\"/statutory-disclosures\">Statutory Disclosures</a><a class=\"hover:text-forest underline\" href=\"/governance\">Governance Charter</a></div>",
-          "target": [
-            ".gap-4.text-terracotta-dark.font-semibold"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/statutory-disclosures\">Statutory Disclosures</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"statutory-disclosures\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-forest underline\" href=\"/governance\">Governance Charter</a>",
-          "target": [
-            ".hover\\:text-forest.underline[href$=\"governance\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<aside class=\"group/dock fixed rig...\" aria-label=\"Institutional Quick ...\">",
           "target": [
             "aside"
@@ -22855,7 +22612,7 @@
           "impact": null,
           "html": "<a class=\"flex items-center ga...\" title=\"Statutory Vault — 12...\" aria-label=\"Statutory Vault — 12...\" href=\"/statutory-disclosur...\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3)"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"]"
           ]
         },
         {
@@ -22875,7 +22632,7 @@
           "impact": null,
           "html": "<div class=\"w-8 h-8 rounded-xs bg-forest-deep border-sand/30 border flex items-center justify-center text-cream group-hover:scale-105 transition-transform shrink-0\">",
           "target": [
-            ".hover\\:bg-terracotta\\/40.last\\:border-b-0.hover\\:text-cream:nth-child(3) > .border-sand\\/30.group-hover\\:scale-105.w-8"
+            ".hover\\:bg-terracotta\\/40.last\\:border-b-0[href$=\"statutory-disclosures\"] > .border-sand\\/30.group-hover\\:scale-105.w-8"
           ]
         },
         {
@@ -23015,7 +22772,7 @@
           "impact": null,
           "html": "<div class=\"relative flex items-center justify-center\">",
           "target": [
-            ".w-11 > .relative.justify-center.flex"
+            ".w-11 > .justify-center.relative.flex"
           ]
         },
         {
@@ -23355,7 +23112,7 @@
           "impact": null,
           "html": "<div role=\"note\" data-inline-alert=\"tax-status\" aria-label=\"Tax & Registration Status Notice (FY 2026-27)\" class=\"rounded-xs p-4 sm:p-5 text-xs font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-forest-deep border border-sand/35 text-cream shadow-xl\">",
           "target": [
-            ".sm\\:p-5"
+            ".p-4"
           ]
         },
         {
@@ -23375,7 +23132,7 @@
           "impact": null,
           "html": "<div class=\"flex items-start gap-3\">",
           "target": [
-            ".sm\\:p-5 > .gap-3.items-start.flex"
+            ".p-4 > .gap-3.items-start.flex"
           ]
         },
         {
@@ -23915,7 +23672,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/programmes#sports-extracurricular\">Sports &amp; Extracurriculars</a>",
           "target": [
-            ".space-y-3.font-sans:nth-child(2) > ul > li:nth-child(3) > .hover\\:text-white.focus-visible\\:outline-sand.transition-colors"
+            ".space-y-3.font-sans:nth-child(2) > ul > li:nth-child(3) > .hover\\:text-white.focus-visible\\:outline-sand"
           ]
         },
         {
@@ -24255,7 +24012,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/campaigns\">All Institutional Initiatives</a>",
           "target": [
-            "a[href$=\"campaigns\"]"
+            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"campaigns\"]"
           ]
         },
         {
@@ -24515,7 +24272,7 @@
           "impact": null,
           "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/reports\">Annual Reports &amp; Audits</a>",
           "target": [
-            "a[href$=\"reports\"]"
+            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"reports\"]"
           ]
         },
         {
@@ -24713,129 +24470,9 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/login\">Donor Sign In</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/login\">Donor Sign In</a>",
-          "target": [
-            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"login\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/register\">Create Supporter Account</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/register\">Create Supporter Account</a>",
-          "target": [
-            ".hover\\:text-white.focus-visible\\:outline-sand[href$=\"register\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/portal/dashboard\">Donor Portal &amp; 80G Receipts</a></li>",
-          "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(4)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/portal/dashboard\">Donor Portal &amp; 80G Receipts</a>",
-          "target": [
-            "a[href$=\"dashboard\"]"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "region",
-              "data": {
-                "isIframe": false
-              },
-              "relatedNodes": [],
-              "impact": "moderate",
-              "message": "All page content is contained by landmarks"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
           "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/volunteer\">Volunteer &amp; Mentorship</a></li>",
           "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(5)"
+            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(2)"
           ]
         },
         {
@@ -24875,7 +24512,7 @@
           "impact": null,
           "html": "<li><a class=\"hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand\" href=\"/contact\">Secretariat Inquiry Desk</a></li>",
           "target": [
-            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(6)"
+            ".space-y-3.font-sans:nth-child(5) > ul > li:nth-child(3)"
           ]
         },
         {
@@ -25551,7 +25188,7 @@
           "impact": "serious",
           "html": "<span class=\"text-white font-medium\" aria-current=\"page\" itemprop=\"name\">Public Secretariat Inquiry</span>",
           "target": [
-            ".font-medium[aria-current=\"page\"][itemprop=\"name\"]"
+            "span[aria-current=\"page\"]"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
         },
@@ -25613,7 +25250,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<p class=\"type-body-lead text-cream/95 max-w-[65ch]\">Official communications and administrative guidance gateway for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha.</p>",
+          "html": "<p class=\"type-body-lead text-cream/95 max-w-[65ch]\">Official communications and administrative guidance desk for students, educational institutions, donors, CSR partners, and community stakeholders across Odisha.</p>",
           "target": [
             ".type-body-lead"
           ],

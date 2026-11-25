@@ -40,7 +40,7 @@ A full-surface content audit was conducted across all 48 accessible pages of the
 
 ### Authoritative Canonical Field Mappings:
 1. **Trust Deed Registration:** Single-sourced from `ORG.trustDeed` — Executed 27 July 2013, Registered 30 July 2013, District Sub-Registrar Balangir, Book 4, Volume 45, Deed No. 40311302194.
-2. **Statutory Tax Identifiers:** Single-sourced from `ORG.ids` — PAN: `AADTM5474F`, 12A URN: `AADTM5474FE20231`, 80G URN: `AADTM5474FF20241`, MCA CSR-1: `CSR00081063`, NGO Darpan: `OR/2024/0466491`.
+2. **Statutory Tax Identifiers:** Single-sourced from `ORG.ids` — PAN: `AADTM****F`, 12A URN: `AADTM5474FE20231`, 80G URN: `AADTM5474FF20241`, MCA CSR-1: `CSR00081063`, NGO Darpan: `OR/2024/0466491`.
 3. **Banking Credentials:** Single-sourced from `MECT_ORG.bank` — State Bank of India, Balangir Main Branch (SBIN0001663), Account # 44778144670, UPI ID `9437123616@sbi`.
 4. **Secretariat Locations:** Single-sourced from `ORG.addresses` — Registered Office (Balangir) and Administrative Office (Bhubaneswar).
 
