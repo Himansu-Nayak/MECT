@@ -95,7 +95,6 @@ export function ProgressiveDonorAuth({
   const [googleLoading, setGoogleLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
-  const [suggestEmailOtp, setSuggestEmailOtp] = useState(false);
 
   // Cooldown countdown timer
   useEffect(() => {
@@ -206,50 +205,32 @@ export function ProgressiveDonorAuth({
     if (e) e.preventDefault();
     setErrorMsg(null);
     setStatusMsg(null);
-    setSuggestEmailOtp(false);
 
-    let target = "";
-    if (channel === "PHONE") {
-      let cleaned = phone.replace(/\D/g, "");
-      if (cleaned.length === 12 && cleaned.startsWith("91")) {
-        cleaned = cleaned.slice(2);
-      }
-      if (cleaned.length !== 10 || !/^[6-9]/.test(cleaned)) {
-        setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
-        return;
-      }
-      target = `+91${cleaned}`;
-    } else {
-      const trimmed = email.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmed)) {
-        setErrorMsg("Please enter a valid email address (e.g. donor@example.org).");
-        return;
-      }
-      target = trimmed;
+    let cleaned = phone.replace(/\D/g, "");
+    if (cleaned.length === 12 && cleaned.startsWith("91")) {
+      cleaned = cleaned.slice(2);
     }
+    if (cleaned.length !== 10 || !/^[6-9]/.test(cleaned)) {
+      setErrorMsg("Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+    const target = `+91${cleaned}`;
 
     setRequesting(true);
     try {
       const res = await requestPortalOtp({
-        channel,
+        channel: "PHONE",
         target,
         purpose: "LOGIN",
       });
 
-      setStatusMsg(
-        channel === "PHONE"
-          ? `Verification code dispatched to ${target} via SMS.`
-          : `Verification code sent to ${target}. Please check your inbox or spam folder.`
-      );
+      setStatusMsg(`Verification code dispatched to ${target} via SMS.`);
       setCooldown(res.cooldownSeconds || 60);
       setOtpDigits(["", "", "", "", "", ""]);
       setScreen("OTP");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Failed to send verification code.";
       setErrorMsg(msg);
-      if (channel === "PHONE") {
-        setSuggestEmailOtp(true);
-      }
     } finally {
       setRequesting(false);
     }
@@ -426,27 +407,6 @@ export function ProgressiveDonorAuth({
         </div>
       )}
 
-      {/* Suggest Email OTP Fallback Banner */}
-      {suggestEmailOtp && channel === "PHONE" && (
-        <div className="mb-5 p-3 bg-amber-50 border border-amber-200 rounded-xs flex items-center justify-between text-xs text-amber-900">
-          <span className="flex items-center gap-1.5">
-            <Mail className="w-3.5 h-3.5 text-amber-700" />
-            SMS gateway temporarily busy?
-          </span>
-          <button
-            type="button"
-            onClick={() => {
-              setChannel("EMAIL");
-              setScreen("CONTACT");
-              setSuggestEmailOtp(false);
-              setErrorMsg(null);
-            }}
-            className="text-terracotta-dark font-bold underline hover:text-terracotta ml-2"
-          >
-            Use Email OTP instead
-          </button>
-        </div>
-      )}
 
       {/* ========================================================= */}
       {/* SCREEN 1: DONOR IDENTITY                                  */}
@@ -547,25 +507,14 @@ export function ProgressiveDonorAuth({
           </div>
 
           <div className="flex items-center justify-between pt-2 border-t border-border-warm text-xs text-ink-muted">
-            <button
-              type="button"
-              onClick={() => {
-                setChannel("EMAIL");
-                if (fullName.trim().length >= 2) {
-                  setScreen("LOCATION");
-                } else {
-                  setErrorMsg("Please enter your full name first.");
-                }
-              }}
-              className="text-terracotta-dark hover:underline font-semibold flex items-center gap-1"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>Prefer Email OTP?</span>
-            </button>
+            <span className="flex items-center gap-1.5 text-forest text-xs font-semibold">
+              <Lock className="w-3.5 h-3.5 text-forest" />
+              <span>Mandatory Mobile OTP Verification</span>
+            </span>
 
             <span className="flex items-center gap-1 text-forest text-[11px]">
               <ShieldCheck className="w-3.5 h-3.5 text-forest" />
-              <span>12A & 80G Certified</span>
+              <span>12A &amp; 80G Certified</span>
             </span>
           </div>
         </form>
@@ -663,7 +612,7 @@ export function ProgressiveDonorAuth({
       )}
 
       {/* ========================================================= */}
-      {/* SCREEN 3: MOBILE NUMBER / EMAIL                           */}
+      {/* SCREEN 3: MOBILE NUMBER                                   */}
       {/* ========================================================= */}
       {screen === "CONTACT" && (
         <form onSubmit={handleRequestOtp} className="space-y-5 animate-in fade-in duration-200">
@@ -678,70 +627,43 @@ export function ProgressiveDonorAuth({
             </button>
             <div>
               <h2 className="text-lg sm:text-xl font-serif font-bold text-forest">
-                {channel === "PHONE" ? "Enter your mobile number" : "Enter your email address"}
+                Enter your mobile number
               </h2>
               <p className="text-xs text-ink-muted mt-0.5">
-                {channel === "PHONE"
-                  ? "We'll send a 6-digit one-time password (OTP) via SMS."
-                  : "We'll send a 6-digit one-time verification code to your email."}
+                We will send a 6-digit one-time password (OTP) via SMS.
               </p>
             </div>
           </div>
 
-          {channel === "PHONE" ? (
-            <div className="space-y-1">
-              <label
-                htmlFor="auth-phone"
-                className="block text-xs font-bold text-forest uppercase tracking-wider"
-              >
-                Mobile Phone Number <span className="text-terracotta-dark font-bold">*</span>
-              </label>
-              <div className="flex items-center rounded-xs border border-border-warm bg-white focus-within:ring-2 focus-within:ring-terracotta/20 focus-within:border-terracotta overflow-hidden h-11">
-                <span className="px-3 bg-sand-light text-forest text-xs font-bold border-r border-border-warm flex items-center gap-1 shrink-0 select-none">
-                  <span className="text-sm">🇮🇳</span> +91
-                </span>
-                <input
-                  id="auth-phone"
-                  type="tel"
-                  required
-                  autoFocus
-                  maxLength={10}
-                  inputMode="numeric"
-                  value={phone}
-                  onChange={(e) => {
-                    const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
-                    setPhone(cleaned);
-                    if (errorMsg) setErrorMsg(null);
-                  }}
-                  placeholder="98765 43210"
-                  className="w-full px-3 text-sm text-forest placeholder:text-ink-muted focus:outline-none bg-transparent"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-1">
-              <label
-                htmlFor="auth-email"
-                className="block text-xs font-bold text-forest uppercase tracking-wider"
-              >
-                Email Address <span className="text-terracotta-dark font-bold">*</span>
-              </label>
-              <Input
-                id="auth-email"
-                type="email"
+          <div className="space-y-1">
+            <label
+              htmlFor="auth-phone"
+              className="block text-xs font-bold text-forest uppercase tracking-wider"
+            >
+              Mobile Phone Number <span className="text-terracotta-dark font-bold">*</span>
+            </label>
+            <div className="flex items-center rounded-xs border border-border-warm bg-white focus-within:ring-2 focus-within:ring-terracotta/20 focus-within:border-terracotta overflow-hidden h-11">
+              <span className="px-3 bg-sand-light text-forest text-xs font-bold border-r border-border-warm flex items-center gap-1 shrink-0 select-none">
+                <span className="text-sm">🇮🇳</span> +91
+              </span>
+              <input
+                id="auth-phone"
+                type="tel"
                 required
                 autoFocus
-                value={email}
+                maxLength={10}
+                inputMode="numeric"
+                value={phone}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setPhone(cleaned);
                   if (errorMsg) setErrorMsg(null);
                 }}
-                placeholder="donor@example.org"
-                leftIcon={<Mail className="w-4 h-4 text-ink-muted" />}
-                className="h-11"
+                placeholder="98765 43210"
+                className="w-full px-3 text-sm text-forest placeholder:text-ink-muted focus:outline-none bg-transparent"
               />
             </div>
-          )}
+          </div>
 
           {/* WhatsApp Opt-in Checkbox (UNCHECKED by default) */}
           <div className="p-3 bg-sand-light/60 border border-border-warm rounded-xs space-y-2">
@@ -783,25 +705,14 @@ export function ProgressiveDonorAuth({
               variant="primary"
               size="lg"
               isLoading={requesting}
-              disabled={channel === "PHONE" ? phone.length < 10 : !email.includes("@")}
+              disabled={phone.length < 10}
               className="w-full justify-center text-sm font-bold shadow-sm"
             >
               <span>Get Verification Code</span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
 
-            <div className="flex items-center justify-between text-xs pt-1">
-              <button
-                type="button"
-                onClick={() => {
-                  setChannel(channel === "PHONE" ? "EMAIL" : "PHONE");
-                  setErrorMsg(null);
-                }}
-                className="text-terracotta-dark hover:underline font-semibold"
-              >
-                {channel === "PHONE" ? "Use Email address instead" : "Use Mobile Number instead"}
-              </button>
-
+            <div className="flex items-center justify-end text-xs pt-1">
               <span className="text-ink-muted text-[11px] flex items-center gap-1">
                 <Lock className="w-3 h-3 text-forest" />
                 <span>256-Bit SSL Encrypted</span>
@@ -827,12 +738,12 @@ export function ProgressiveDonorAuth({
             </button>
             <div className="flex-1">
               <h2 className="text-lg sm:text-xl font-serif font-bold text-forest">
-                Verify Your {channel === "PHONE" ? "Mobile Number" : "Email"}
+                Verify Your Mobile Number
               </h2>
               <p className="text-xs text-ink-muted mt-0.5">
                 Enter the 6-digit verification code sent to{" "}
                 <span className="font-semibold text-forest">
-                  {channel === "PHONE" ? getFormattedPhone() : email}
+                  {getFormattedPhone()}
                 </span>{" "}
                 <button
                   type="button"
@@ -908,17 +819,10 @@ export function ProgressiveDonorAuth({
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                setChannel(channel === "PHONE" ? "EMAIL" : "PHONE");
-                setScreen("CONTACT");
-                setErrorMsg(null);
-              }}
-              className="text-forest hover:text-terracotta-dark hover:underline"
-            >
-              {channel === "PHONE" ? "Try Email verification" : "Try SMS verification"}
-            </button>
+            <span className="text-ink-muted text-[11px] flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-forest" />
+              <span>SMS Delivery via Certified Gateway</span>
+            </span>
           </div>
         </div>
       )}

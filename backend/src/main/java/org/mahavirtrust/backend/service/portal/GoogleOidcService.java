@@ -8,14 +8,10 @@ import org.mahavirtrust.backend.security.JwtTokenProvider;
 import org.mahavirtrust.backend.service.AuditLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.*;
 
@@ -24,6 +20,7 @@ public class GoogleOidcService {
 
     private static final Logger log = LoggerFactory.getLogger(GoogleOidcService.class);
 
+    private final GoogleTokenVerifier googleTokenVerifier;
     private final PortalUserRepository userRepository;
     private final PortalUserRoleRepository roleRepository;
     private final PortalUserProfileRepository profileRepository;
@@ -32,19 +29,9 @@ public class GoogleOidcService {
     private final NotificationPreferenceRepository preferenceRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuditLogService auditLogService;
-    private final ObjectMapper objectMapper;
-
-    private final String configuredClientId;
-
-    public record GoogleIdTokenClaims(
-            String sub,
-            String email,
-            boolean emailVerified,
-            String name,
-            String picture
-    ) {}
 
     public GoogleOidcService(
+            GoogleTokenVerifier googleTokenVerifier,
             PortalUserRepository userRepository,
             PortalUserRoleRepository roleRepository,
             PortalUserProfileRepository profileRepository,
@@ -52,9 +39,8 @@ public class GoogleOidcService {
             PortalRefreshTokenRepository refreshTokenRepository,
             NotificationPreferenceRepository preferenceRepository,
             JwtTokenProvider jwtTokenProvider,
-            AuditLogService auditLogService,
-            ObjectMapper objectMapper,
-            @Value("${app.google.client-id:}") String configuredClientId) {
+            AuditLogService auditLogService) {
+        this.googleTokenVerifier = googleTokenVerifier;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.profileRepository = profileRepository;
@@ -63,93 +49,41 @@ public class GoogleOidcService {
         this.preferenceRepository = preferenceRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.auditLogService = auditLogService;
-        this.objectMapper = objectMapper;
-        this.configuredClientId = configuredClientId != null ? configuredClientId.trim() : "";
     }
 
-    public GoogleIdTokenClaims parseAndValidateToken(String idToken) {
-        if (idToken == null || idToken.isBlank()) {
-            throw new BadCredentialsException("Google ID token is required.");
-        }
-
-        try {
-            String[] parts = idToken.split("\\.");
-            if (parts.length < 2) {
-                throw new BadCredentialsException("Malformed Google ID token format.");
-            }
-
-            String payloadJson = new String(Base64.getUrlDecoder().decode(parts[1]), StandardCharsets.UTF_8);
-            JsonNode payload = objectMapper.readTree(payloadJson);
-
-            // 1. Verify Issuer
-            String iss = payload.path("iss").asString("");
-            if (!"https://accounts.google.com".equals(iss) && !"accounts.google.com".equals(iss)) {
-                throw new BadCredentialsException("Invalid token issuer: " + iss);
-            }
-
-            // 2. Verify Audience if configured
-            if (!configuredClientId.isBlank()) {
-                String aud = payload.path("aud").asString("");
-                if (!configuredClientId.equals(aud)) {
-                    throw new BadCredentialsException("Audience mismatch for Google ID token.");
-                }
-            }
-
-            // 3. Verify Expiry
-            long expSeconds = payload.path("exp").asLong(0);
-            Instant exp = Instant.ofEpochSecond(expSeconds);
-            if (exp.isBefore(Instant.now().minusSeconds(60))) { // 60s clock skew tolerance
-                throw new BadCredentialsException("Google ID token has expired.");
-            }
-
-            // 4. Verify Email & Email Verified
-            String sub = payload.path("sub").asString(null);
-            String email = payload.path("email").asString(null);
-            boolean emailVerified = payload.path("email_verified").asBoolean(false);
-
-            if (sub == null || sub.isBlank()) {
-                throw new BadCredentialsException("Missing subject claim in Google ID token.");
-            }
-            if (email == null || email.isBlank()) {
-                throw new BadCredentialsException("Missing email claim in Google ID token.");
-            }
-            if (!emailVerified) {
-                throw new BadCredentialsException("Google account email is not verified.");
-            }
-
-            String name = payload.path("name").asString(null);
-            String picture = payload.path("picture").asString(null);
-
-            return new GoogleIdTokenClaims(sub.trim(), email.trim().toLowerCase(Locale.ROOT), emailVerified, name, picture);
-        } catch (BadCredentialsException bce) {
-            throw bce;
-        } catch (Exception ex) {
-            log.warn("Failed to parse Google ID token: {}", ex.getMessage());
-            throw new BadCredentialsException("Invalid Google ID token: " + ex.getMessage());
-        }
-    }
-
+    /**
+     * Authenticates a user via verified Google ID token.
+     * Enforces strict account linking rules:
+     * - Look up solely by stable immutable Google `sub`.
+     * - If Google `sub` not found, never silently overwrite an existing account by email alone.
+     * - Require authenticated in-session linking to prevent unauthorized account takeover.
+     */
     @Transactional
     public PortalAuthResponse authenticateGoogleUser(GoogleAuthPayload payload, String clientIp) {
-        GoogleIdTokenClaims claims = parseAndValidateToken(payload.idToken());
+        GoogleTokenVerifier.GoogleIdTokenClaims claims = googleTokenVerifier.verifyToken(payload.idToken());
 
         boolean isNewUser = false;
-        // 1. Primary lookup by google_sub
+        // 1. Primary lookup by stable immutable Google sub
         PortalUser user = userRepository.findByGoogleSub(claims.sub()).orElse(null);
 
-        // 2. Secondary lookup by primary_email or verified contact (Account Linking)
+        // 2. Strict Account Linking Safety Check
         if (user == null) {
-            user = userRepository.findByPrimaryEmailIgnoreCase(claims.email())
-                    .orElseGet(() -> contactRepository.findByContactTypeAndContactValueIgnoreCase("EMAIL", claims.email())
-                            .map(PortalVerifiedContact::getPortalUser)
-                            .orElse(null));
-
-            if (user != null) {
-                // Link Google identity to existing canonical account
-                user.setGoogleSub(claims.sub());
-                user.setGoogleEmail(claims.email());
-                user = userRepository.save(user);
-                log.info("Linked Google identity sub={} to existing userUuid={}", claims.sub(), user.getUserUuid());
+            Optional<PortalUser> existingByEmail = userRepository.findByPrimaryEmailIgnoreCase(claims.email());
+            if (existingByEmail.isPresent()) {
+                PortalUser existing = existingByEmail.get();
+                if (existing.getGoogleSub() != null) {
+                    throw new BadCredentialsException(
+                            "An existing donor account with this email is already linked to a different Google account."
+                    );
+                }
+                // Unauthenticated linking via email alone is disallowed to prevent account takeover.
+                // The donor must sign in with their existing authentication method (Mobile OTP) first.
+                log.warn("Unauthenticated Google sign-in attempted for existing email userUuid={}. Challenging for verified login.",
+                        existing.getUserUuid());
+                throw new BadCredentialsException(
+                        "An existing donor account was found for " + claims.email() +
+                        ". For your security, please sign in with your Mobile OTP first, then link your Google account in Portal Security Settings."
+                );
             }
         }
 
@@ -173,9 +107,11 @@ public class GoogleOidcService {
 
             contactRepository.save(new PortalVerifiedContact(user, "EMAIL", claims.email(), true));
 
-            String preferredName = (payload.proposedName() != null && !payload.proposedName().isBlank())
+            String preferredName = (claims.name() != null && !claims.name().isBlank())
+                    ? claims.name().trim()
+                    : ((payload.proposedName() != null && !payload.proposedName().isBlank())
                     ? payload.proposedName().trim()
-                    : (claims.name() != null ? claims.name() : "Google Supporter");
+                    : "Google Supporter");
 
             String city = (payload.proposedCity() != null && !payload.proposedCity().isBlank())
                     ? payload.proposedCity().trim()
@@ -196,14 +132,11 @@ public class GoogleOidcService {
             if (!"ACTIVE".equals(user.getStatus())) {
                 throw new BadCredentialsException("This supporter account is currently inactive. Please contact MECT support.");
             }
-            if (user.getGoogleSub() == null) {
-                user.setGoogleSub(claims.sub());
-                user.setGoogleEmail(claims.email());
-                userRepository.save(user);
-            }
         }
 
-        List<String> roles = roleRepository.findByPortalUserId(user.getId()).stream()
+        // 4. Issue standard authenticated JWT and refresh token
+        List<String> roles = roleRepository.findByPortalUserId(user.getId())
+                .stream()
                 .map(r -> r.getRoleName().name())
                 .toList();
         if (roles.isEmpty()) {
@@ -220,30 +153,88 @@ public class GoogleOidcService {
                 Instant.now().plusSeconds(jwtTokenProvider.getRefreshTokenValiditySeconds())
         ));
 
-        String fullName = profileRepository.findByPortalUserId(user.getId())
-                .map(PortalUserProfile::getFullName)
-                .orElse(claims.name());
-
         auditLogService.record(
                 "portal:" + user.getUserUuid(),
                 isNewUser ? "PORTAL_GOOGLE_REGISTERED" : "PORTAL_GOOGLE_LOGIN_SUCCESS",
                 "PORTAL_USER",
                 user.getId().toString(),
                 clientIp,
-                "Email=" + claims.email() + ", Sub=" + claims.sub()
+                "GoogleSub=" + claims.sub() + ", Roles=" + roles
         );
 
-        return new PortalAuthResponse(
+        String fullName = profileRepository.findByPortalUserId(user.getId())
+                .map(PortalUserProfile::getFullName)
+                .orElse(claims.name() != null ? claims.name() : user.getPrimaryEmail());
+
+        boolean profileCompleted = profileRepository.findByPortalUserId(user.getId())
+                .map(p -> p.getAddressLine() != null && !p.getAddressLine().isBlank() && p.getPinCode() != null && !p.getPinCode().isBlank())
+                .orElse(false);
+
+        return PortalAuthResponse.of(
                 accessToken,
                 rawRefreshToken,
-                "Bearer",
-                900L,
+                jwtTokenProvider.getAccessTokenValiditySeconds(),
                 user.getUserUuid(),
                 user.getPrimaryEmail(),
                 user.getPrimaryPhone(),
                 fullName,
-                user.isProfileCompleted(),
+                profileCompleted,
                 roles
         );
+    }
+
+    /**
+     * Secure In-Session Account Linking:
+     * Only permitted for an already-authenticated donor holding an active session.
+     * Prevents account takeover by ensuring the user has already proven control of their donor account.
+     */
+    @Transactional
+    public void linkGoogleToAuthenticatedUser(Long portalUserId, GoogleAuthPayload payload, String clientIp) {
+        if (portalUserId == null) {
+            throw new BadCredentialsException("Authentication required to link a Google account.");
+        }
+
+        GoogleTokenVerifier.GoogleIdTokenClaims claims = googleTokenVerifier.verifyToken(payload.idToken());
+
+        PortalUser currentUser = userRepository.findById(portalUserId)
+                .orElseThrow(() -> new BadCredentialsException("Donor account not found."));
+
+        if (!"ACTIVE".equals(currentUser.getStatus())) {
+            throw new BadCredentialsException("Donor account is inactive.");
+        }
+
+        // Verify that this Google identity is not already linked to another account
+        Optional<PortalUser> conflicting = userRepository.findByGoogleSub(claims.sub());
+        if (conflicting.isPresent() && !conflicting.get().getId().equals(currentUser.getId())) {
+            throw new BadCredentialsException("This Google account is already linked to another donor account.");
+        }
+
+        if (currentUser.getGoogleSub() != null && !currentUser.getGoogleSub().equals(claims.sub())) {
+            throw new BadCredentialsException("Your account is already linked to a different Google account.");
+        }
+
+        currentUser.setGoogleSub(claims.sub());
+        currentUser.setGoogleEmail(claims.email());
+        userRepository.save(currentUser);
+
+        // Also add verified email contact if not already present
+        boolean contactExists = contactRepository.findByPortalUserIdOrderByVerifiedAtAsc(currentUser.getId())
+                .stream()
+                .anyMatch(c -> "EMAIL".equalsIgnoreCase(c.getContactType()) && claims.email().equalsIgnoreCase(c.getContactValue()));
+
+        if (!contactExists) {
+            contactRepository.save(new PortalVerifiedContact(currentUser, "EMAIL", claims.email(), currentUser.getPrimaryEmail() == null));
+        }
+
+        auditLogService.record(
+                "portal:" + currentUser.getUserUuid(),
+                "PORTAL_GOOGLE_LINKED",
+                "PORTAL_USER",
+                currentUser.getId().toString(),
+                clientIp,
+                "GoogleSub=" + claims.sub()
+        );
+
+        log.info("Securely linked Google identity sub={} to authenticated userUuid={}", claims.sub(), currentUser.getUserUuid());
     }
 }

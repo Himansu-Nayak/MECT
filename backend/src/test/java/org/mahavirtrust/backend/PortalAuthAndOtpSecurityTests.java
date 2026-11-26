@@ -1,5 +1,6 @@
 package org.mahavirtrust.backend;
 
+import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mahavirtrust.backend.dto.portal.GoogleAuthPayload;
@@ -15,6 +16,7 @@ import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.notification.EmailProvider;
 import org.mahavirtrust.backend.service.notification.ProviderDispatchResult;
 import org.mahavirtrust.backend.service.notification.SmsProvider;
+import org.mahavirtrust.backend.service.portal.DefaultGoogleTokenVerifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
@@ -27,8 +29,12 @@ import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
 import java.nio.charset.StandardCharsets;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
 import java.time.Instant;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
@@ -58,6 +64,7 @@ public class PortalAuthAndOtpSecurityTests {
     @Autowired private PortalUserRoleRepository portalUserRoleRepository;
     @Autowired private PortalUserRepository portalUserRepository;
     @Autowired private org.mahavirtrust.backend.service.notification.EmailTemplateRenderer emailTemplateRenderer;
+    @Autowired private DefaultGoogleTokenVerifier defaultGoogleTokenVerifier;
 
     @MockitoBean private EmailProvider emailProvider;
     @MockitoBean private SmsProvider smsProvider;
@@ -65,8 +72,12 @@ public class PortalAuthAndOtpSecurityTests {
     private final AtomicReference<String> capturedEmailOtp = new AtomicReference<>();
     private final AtomicReference<String> capturedSmsOtp = new AtomicReference<>();
 
+    private KeyPair validGoogleKeyPair;
+    private KeyPair untrustedKeyPair;
+    private static final String TEST_KID = "test-google-kid-2026";
+
     @BeforeEach
-    void setup() {
+    void setup() throws Exception {
         deliveryLogRepository.deleteAll();
         outboxRepository.deleteAll();
         otpRepository.deleteAll();
@@ -80,6 +91,14 @@ public class PortalAuthAndOtpSecurityTests {
 
         capturedEmailOtp.set(null);
         capturedSmsOtp.set(null);
+
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+        kpg.initialize(2048);
+        validGoogleKeyPair = kpg.generateKeyPair();
+        untrustedKeyPair = kpg.generateKeyPair();
+
+        defaultGoogleTokenVerifier.clearKeyCache();
+        defaultGoogleTokenVerifier.registerTestPublicKey(TEST_KID, validGoogleKeyPair.getPublic());
 
         when(emailProvider.isConfigured()).thenReturn(true);
         when(emailProvider.getProviderName()).thenReturn("RESEND");
@@ -366,20 +385,31 @@ public class PortalAuthAndOtpSecurityTests {
         assertThat(welcomeCountAfterSecondLogin).isEqualTo(1L);
     }
 
-    private String createMockGoogleToken(String sub, String email, boolean emailVerified, String name, String aud, long expEpochSeconds) {
-        String header = Base64.getUrlEncoder().withoutPadding().encodeToString("{\"alg\":\"RS256\",\"typ\":\"JWT\"}".getBytes(StandardCharsets.UTF_8));
-        String payloadJson = String.format(
-                "{\"iss\":\"https://accounts.google.com\",\"aud\":\"%s\",\"sub\":\"%s\",\"email\":\"%s\",\"email_verified\":%b,\"name\":\"%s\",\"exp\":%d}",
-                aud, sub, email, emailVerified, name, expEpochSeconds
-        );
-        String payload = Base64.getUrlEncoder().withoutPadding().encodeToString(payloadJson.getBytes(StandardCharsets.UTF_8));
-        return header + "." + payload + ".dummySignature";
+    private String createSignedGoogleToken(
+            String sub, String email, boolean emailVerified, String name, String aud,
+            long expEpochSeconds, PrivateKey privateKey, String kid, String iss) {
+        return Jwts.builder()
+                .header()
+                .keyId(kid)
+                .and()
+                .issuer(iss)
+                .audience().add(aud).and()
+                .subject(sub)
+                .claim("email", email)
+                .claim("email_verified", emailVerified)
+                .claim("name", name)
+                .expiration(Date.from(Instant.ofEpochSecond(expEpochSeconds)))
+                .signWith(privateKey, Jwts.SIG.RS256)
+                .compact();
     }
 
     @Test
-    void testGoogleSignIdTokenAuthenticationAndUserCreation() throws Exception {
+    void testGoogleSignIdTokenCryptographicAuthenticationAndUserCreation() throws Exception {
         long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
-        String validToken = createMockGoogleToken("google-sub-001", "ananya.mishra@example.org", true, "Ananya Mishra", "test-google-client-id", futureExp);
+        String validToken = createSignedGoogleToken(
+                "google-sub-001", "ananya.mishra@example.org", true, "Ananya Mishra",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
 
         GoogleAuthPayload payload = new GoogleAuthPayload(validToken, "Ananya Mishra", "Bhubaneswar");
 
@@ -409,68 +439,204 @@ public class PortalAuthAndOtpSecurityTests {
     }
 
     @Test
-    void testGoogleSignInLinksToExistingEmailAccountWithoutDuplicates() throws Exception {
-        // First register a user via email OTP
-        String email = "shared.donor@example.org";
-        mockMvc.perform(post("/portal/auth/request-otp")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("EMAIL", email, "LOGIN"))))
-                .andExpect(status().isOk());
-        mockMvc.perform(post("/portal/auth/verify-otp")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(new OtpVerifyPayload("EMAIL", email, capturedEmailOtp.get(), "LOGIN"))))
-                .andExpect(status().isOk());
-
-        assertThat(portalUserRepository.count()).isEqualTo(1L);
-        PortalUser existing = portalUserRepository.findByPrimaryEmailIgnoreCase(email).orElseThrow();
-        assertThat(existing.getGoogleSub()).isNull();
-
-        // Now authenticate with Google with the same email
+    void testGoogleSignInRejectsCryptographicallyInvalidSignature() throws Exception {
         long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
-        String validToken = createMockGoogleToken("google-sub-linked-999", email, true, "Linked Donor", "test-google-client-id", futureExp);
-
-        GoogleAuthPayload payload = new GoogleAuthPayload(validToken, "Linked Donor", "Cuttack");
+        // Token signed with untrusted/rogue private key
+        String forgedToken = createSignedGoogleToken(
+                "google-sub-hacker", "victim@example.org", true, "Hacker",
+                "test-google-client-id", futureExp, untrustedKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
 
         mockMvc.perform(post("/portal/auth/google")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(payload)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.userUuid").value(existing.getUserUuid()))
-                .andExpect(jsonPath("$.primaryEmail").value(email));
-
-        // User count remains 1, google_sub is linked
-        assertThat(portalUserRepository.count()).isEqualTo(1L);
-        PortalUser reloaded = portalUserRepository.findById(existing.getId()).orElseThrow();
-        assertThat(reloaded.getGoogleSub()).isEqualTo("google-sub-linked-999");
-        assertThat(reloaded.getGoogleEmail()).isEqualTo(email);
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(forgedToken))))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("Invalid Google ID token cryptographic signature."));
     }
 
     @Test
     void testGoogleSignInRejectsInvalidOrExpiredToken() throws Exception {
         // Expired token
         long pastExp = Instant.now().minusSeconds(3600).getEpochSecond();
-        String expiredToken = createMockGoogleToken("google-sub-exp", "expired@example.org", true, "Expired User", "test-google-client-id", pastExp);
+        String expiredToken = createSignedGoogleToken(
+                "google-sub-exp", "expired@example.org", true, "Expired User",
+                "test-google-client-id", pastExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
 
         mockMvc.perform(post("/portal/auth/google")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(new GoogleAuthPayload(expiredToken))))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("Google ID token has expired."));
 
         // Audience mismatch
         long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
-        String wrongAudToken = createMockGoogleToken("google-sub-aud", "aud@example.org", true, "Wrong Aud", "unauthorized-aud-client", futureExp);
+        String wrongAudToken = createSignedGoogleToken(
+                "google-sub-aud", "aud@example.org", true, "Wrong Aud",
+                "unauthorized-aud-client", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
 
         mockMvc.perform(post("/portal/auth/google")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(new GoogleAuthPayload(wrongAudToken))))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("Audience mismatch for Google ID token."));
 
-        // Unverified email
-        String unverifiedEmailToken = createMockGoogleToken("google-sub-unver", "unver@example.org", false, "Unverified User", "test-google-client-id", futureExp);
+        // Invalid issuer
+        String wrongIssToken = createSignedGoogleToken(
+                "google-sub-iss", "iss@example.org", true, "Wrong Issuer",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://untrusted-issuer.org"
+        );
 
         mockMvc.perform(post("/portal/auth/google")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(unverifiedEmailToken))))
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(wrongIssToken))))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("Invalid Google ID token issuer: https://untrusted-issuer.org"));
+
+        // Missing subject claim
+        String missingSubToken = createSignedGoogleToken(
+                "", "nosub@example.org", true, "No Sub User",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
+
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(missingSubToken))))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("Missing subject claim in Google ID token."));
+    }
+
+    @Test
+    void testGoogleSignInRejectsUnauthenticatedEmailAccountTakeover() throws Exception {
+        // Register an existing user via Phone OTP
+        when(smsProvider.isConfigured()).thenReturn(true);
+        when(smsProvider.getProviderName()).thenReturn("FAST2SMS");
+        when(smsProvider.sendOtpSms(anyString(), anyString(), anyInt()))
+                .thenAnswer(inv -> {
+                    capturedSmsOtp.set(inv.getArgument(1, String.class));
+                    return ProviderDispatchResult.sent("sms_test_" + System.nanoTime(), "{}");
+                });
+
+        String phone = "+919876543210";
+        mockMvc.perform(post("/portal/auth/request-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("PHONE", phone, "LOGIN"))))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(post("/portal/auth/verify-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpVerifyPayload("PHONE", phone, capturedSmsOtp.get(), "LOGIN", "Preexisting User", "Balangir"))))
+                .andExpect(status().isOk());
+
+        PortalUser preexisting = portalUserRepository.findByPrimaryPhone(phone).orElseThrow();
+        preexisting.setPrimaryEmail("target.victim@example.org");
+        portalUserRepository.save(preexisting);
+
+        // An unauthenticated Google sign-in attempts to claim target.victim@example.org
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String googleToken = createSignedGoogleToken(
+                "google-attacker-sub", "target.victim@example.org", true, "Attacker",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
+
+        // MUST be rejected to prevent silent account takeover
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(googleToken))))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("An existing donor account was found for target.victim@example.org. For your security, please sign in with your Mobile OTP first, then link your Google account in Portal Security Settings."));
+
+        // Ensure preexisting account was NOT modified
+        PortalUser reloaded = portalUserRepository.findById(preexisting.getId()).orElseThrow();
+        assertThat(reloaded.getGoogleSub()).isNull();
+    }
+
+    @Test
+    void testAuthenticatedGoogleAccountLinkingFlow() throws Exception {
+        // 1. Authenticate user via SMS OTP
+        when(smsProvider.isConfigured()).thenReturn(true);
+        when(smsProvider.getProviderName()).thenReturn("FAST2SMS");
+        when(smsProvider.sendOtpSms(anyString(), anyString(), anyInt()))
+                .thenAnswer(inv -> {
+                    capturedSmsOtp.set(inv.getArgument(1, String.class));
+                    return ProviderDispatchResult.sent("sms_test_" + System.nanoTime(), "{}");
+                });
+
+        String phone = "+919876543219";
+        mockMvc.perform(post("/portal/auth/request-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("PHONE", phone, "LOGIN"))))
+                .andExpect(status().isOk());
+
+        MvcResult loginRes = mockMvc.perform(post("/portal/auth/verify-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpVerifyPayload("PHONE", phone, capturedSmsOtp.get(), "LOGIN", "Verified Donor", "Bhubaneswar"))))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String token = objectMapper.readTree(loginRes.getResponse().getContentAsString()).path("accessToken").asString();
+
+        // 2. Perform in-session Google account linking
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String validGoogleToken = createSignedGoogleToken(
+                "google-sub-verified-link-888", "verified.donor@example.org", true, "Verified Donor",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
+
+        mockMvc.perform(post("/portal/me/link-google")
+                        .header("Authorization", "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(validGoogleToken))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+
+        PortalUser linkedUser = portalUserRepository.findByPrimaryPhone(phone).orElseThrow();
+        assertThat(linkedUser.getGoogleSub()).isEqualTo("google-sub-verified-link-888");
+        assertThat(linkedUser.getGoogleEmail()).isEqualTo("verified.donor@example.org");
+
+        // 3. Subsequent login via Google authenticates into the SAME user account
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(validGoogleToken))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.userUuid").value(linkedUser.getUserUuid()))
+                .andExpect(jsonPath("$.primaryPhone").value(phone));
+
+        // 4. Conflicting linking: Another user cannot claim this already-linked Google account
+        String anotherPhone = "+919876543222";
+        mockMvc.perform(post("/portal/auth/request-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("PHONE", anotherPhone, "LOGIN"))))
+                .andExpect(status().isOk());
+
+        MvcResult loginRes2 = mockMvc.perform(post("/portal/auth/verify-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpVerifyPayload("PHONE", anotherPhone, capturedSmsOtp.get(), "LOGIN", "Second Donor", "Balangir"))))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String token2 = objectMapper.readTree(loginRes2.getResponse().getContentAsString()).path("accessToken").asString();
+
+        mockMvc.perform(post("/portal/me/link-google")
+                        .header("Authorization", "Bearer " + token2)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(validGoogleToken))))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.message").value("This Google account is already linked to another donor account."));
+    }
+
+    @Test
+    void testUnauthenticatedGoogleAccountLinkingRejected() throws Exception {
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String validGoogleToken = createSignedGoogleToken(
+                "google-sub-unauth-link", "unauth@example.org", true, "Unauth User",
+                "test-google-client-id", futureExp, validGoogleKeyPair.getPrivate(), TEST_KID, "https://accounts.google.com"
+        );
+
+        mockMvc.perform(post("/portal/me/link-google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(validGoogleToken))))
                 .andExpect(status().isUnauthorized());
     }
 

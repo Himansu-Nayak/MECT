@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import {
@@ -89,22 +89,34 @@ export const VERIFIED_DONATION_PROGRAMMES: DonationProgramme[] = [
 
 export const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000, 25000];
 
+const emptySubscribe = () => () => {};
+
 type JourneyStep = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export function DonationJourney() {
   const searchParams = useSearchParams();
-  const { isAuthenticated, session, setSessionFromOtp } = usePortalAuth();
+  const { isAuthenticated, session } = usePortalAuth();
 
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const [currentStep, setCurrentStep] = useState<JourneyStep>(1);
 
   // Step 1: Selected Programme
-  const [selectedProgrammeCode, setSelectedProgrammeCode] = useState<string>("GENERAL");
+  const paramProg = searchParams.get("programme")?.toUpperCase();
+  const initialProg = paramProg
+    ? VERIFIED_DONATION_PROGRAMMES.find(
+        (p) => p.code === paramProg || p.code.replace(/_/g, "") === paramProg.replace(/_/g, "")
+      )?.code || "GENERAL"
+    : "GENERAL";
+  const [selectedProgrammeCode, setSelectedProgrammeCode] = useState<string>(initialProg);
 
   // Step 3: Donor Information
-  const [donorName, setDonorName] = useState<string>("");
-  const [donorEmail, setDonorEmail] = useState<string>("");
-  const [donorPhone, setDonorPhone] = useState<string>("");
+  const [donorName, setDonorName] = useState<string>(session?.fullName || "");
+  const [donorEmail, setDonorEmail] = useState<string>(session?.primaryEmail || "");
+  const [donorPhone, setDonorPhone] = useState<string>(session?.primaryPhone || "");
   const [donorAddress, setDonorAddress] = useState<string>("");
   const [donorPan, setDonorPan] = useState<string>("");
   const [communicationConsent, setCommunicationConsent] = useState<boolean>(true);
@@ -117,7 +129,7 @@ export function DonationJourney() {
   const [amountError, setAmountError] = useState<string | null>(null);
 
   // Step 6: Payment Method & Gateway State
-  const [gatewayConfig, setGatewayConfig] = useState<{
+  const [gatewayConfig] = useState<{
     himActive: boolean;
     cashfreeActive: boolean;
     sbiManualActive: boolean;
@@ -145,26 +157,6 @@ export function DonationJourney() {
 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  useEffect(() => {
-    setMounted(true);
-    const paramProg = searchParams.get("programme")?.toUpperCase();
-    if (paramProg) {
-      const found = VERIFIED_DONATION_PROGRAMMES.find(
-        (p) => p.code === paramProg || p.code.replace(/_/g, "") === paramProg.replace(/_/g, "")
-      );
-      if (found) setSelectedProgrammeCode(found.code);
-    }
-  }, [searchParams]);
-
-  // Prepopulate from session if authenticated
-  useEffect(() => {
-    if (isAuthenticated && session) {
-      if (session.fullName && !donorName) setDonorName(session.fullName);
-      if (session.primaryEmail && !donorEmail) setDonorEmail(session.primaryEmail);
-      if (session.primaryPhone && !donorPhone) setDonorPhone(session.primaryPhone);
-    }
-  }, [isAuthenticated, session, donorName, donorEmail, donorPhone]);
-
   const activeProgramme =
     VERIFIED_DONATION_PROGRAMMES.find((p) => p.code === selectedProgrammeCode) ||
     VERIFIED_DONATION_PROGRAMMES[0];
@@ -182,11 +174,22 @@ export function DonationJourney() {
 
   // Step Handlers
   const handleProgrammeContinue = () => {
-    if (isAuthenticated) {
-      setCurrentStep(3); // Skip login if already authenticated
-    } else {
-      setCurrentStep(2); // Go to login first
+    setCurrentStep(2); // Go to Amount selection
+  };
+
+  const handleAmountContinue = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAmountError(null);
+    const amt = effectiveAmount;
+    if (isNaN(amt) || amt < 1) {
+      setAmountError("Please specify a voluntary donation of at least ₹1.");
+      return;
     }
+    if (amt > 10000000) {
+      setAmountError("For single contributions exceeding ₹1,00,00,000, please contact our secretariat directly.");
+      return;
+    }
+    setCurrentStep(3); // Continue to Account Verification
   };
 
   const handleDetailsContinue = (e: React.FormEvent) => {
@@ -210,21 +213,6 @@ export function DonationJourney() {
       return;
     }
 
-    setCurrentStep(4); // Continue to Amount
-  };
-
-  const handleAmountContinue = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAmountError(null);
-    const amt = effectiveAmount;
-    if (isNaN(amt) || amt < 1) {
-      setAmountError("Please specify a voluntary donation of at least ₹1.");
-      return;
-    }
-    if (amt > 10000000) {
-      setAmountError("For single contributions exceeding ₹1,00,00,000, please contact our secretariat directly.");
-      return;
-    }
     setCurrentStep(5); // Continue to Review
   };
 
@@ -295,9 +283,9 @@ export function DonationJourney() {
 
   const stepTitles = [
     "Programme",
+    "Amount",
     "Account",
     "Donor Details",
-    "Amount",
     "Review",
     "Payment",
     "Confirmation"
@@ -417,27 +405,144 @@ export function DonationJourney() {
               onClick={handleProgrammeContinue}
               className="gap-2 font-bold px-6"
             >
-              <span>Continue to Donate</span>
+              <span>Continue to Amount</span>
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
         </Card>
       )}
 
-      {/* STEP 2: LOGIN / AUTHENTICATION FIRST */}
+      {/* STEP 2: DONATION AMOUNT */}
       {currentStep === 2 && (
         <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
           <div className="border-b border-sand/30 pb-4">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 2 of 6 • Donor Authentication
+                Step 2 of 6 • Contribution Amount
               </span>
               <Badge variant="forest" size="sm">
-                Selected: {activeProgramme.name}
+                Purpose: {activeProgramme.name}
               </Badge>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mt-1">
-              Verify Your Account
+              Select Donation Amount
+            </h2>
+            <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
+              Every voluntary rupee is dedicated strictly to {activeProgramme.name}.
+            </p>
+          </div>
+
+          {amountError && (
+            <div className="p-4 bg-terracotta/10 border border-terracotta/30 rounded-lg text-xs text-terracotta flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <span>{amountError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleAmountContinue} className="space-y-6">
+            <div className="space-y-3">
+              <label className="text-xs font-bold text-forest uppercase tracking-wider block">
+                Standard Donation Presets (INR)
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {PRESET_AMOUNTS.map((amt) => {
+                  const isSelected = selectedAmount === amt && !customAmount;
+                  return (
+                    <button
+                      key={amt}
+                      type="button"
+                      onClick={() => {
+                        setSelectedAmount(amt);
+                        setCustomAmount("");
+                      }}
+                      className={`p-3.5 rounded-xl border-2 text-center transition-all font-mono text-base sm:text-lg font-bold ${
+                        isSelected
+                          ? "border-forest bg-forest text-sand shadow-xs"
+                          : "border-sand/40 bg-white text-forest hover:border-sand/70 hover:bg-sand/10"
+                      }`}
+                    >
+                      ₹{amt.toLocaleString("en-IN")}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-2 border-t border-sand/30">
+              <label htmlFor="custom-amount" className="text-xs font-bold text-forest uppercase tracking-wider block">
+                Or Specify Custom Amount (INR)
+              </label>
+              <div className="relative max-w-sm">
+                <span className="absolute left-4 top-3 text-forest font-bold text-lg">₹</span>
+                <Input
+                  id="custom-amount"
+                  type="number"
+                  min="1"
+                  max="10000000"
+                  placeholder="Enter custom amount"
+                  value={customAmount}
+                  onChange={(e) => {
+                    setCustomAmount(e.target.value);
+                  }}
+                  className="pl-9 text-lg font-mono font-bold text-forest"
+                />
+              </div>
+              <p className="text-[11px] text-ink-muted">
+                Minimum contribution is ₹1. Tax deduction certificate generated under Section 80G.
+              </p>
+            </div>
+
+            <div className="p-4 bg-sand/20 rounded-xl border border-sand/40 flex items-center justify-between text-xs">
+              <span className="font-semibold text-forest">Total Contribution Summary:</span>
+              <span className="font-mono text-lg font-bold text-forest">
+                ₹{effectiveAmount ? effectiveAmount.toLocaleString("en-IN") : 0}
+              </span>
+            </div>
+
+            <div className="pt-4 flex items-center justify-between border-t border-sand/30">
+              <Button
+                type="button"
+                variant="ghost"
+                size="md"
+                onClick={() => setCurrentStep(1)}
+                className="gap-1.5 text-xs text-ink-muted"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back to Programmes</span>
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                className="gap-2 font-bold px-6"
+              >
+                <span>Continue to Verification</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </form>
+        </Card>
+      )}
+
+      {/* STEP 3: DONOR AUTHENTICATION */}
+      {currentStep === 3 && (
+        <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
+          <div className="border-b border-sand/30 pb-4">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
+                Step 3 of 6 • Donor Authentication
+              </span>
+              <div className="flex items-center gap-2">
+                <Badge variant="forest" size="sm">
+                  {activeProgramme.name}
+                </Badge>
+                <Badge variant="neutral" size="sm">
+                  ₹{effectiveAmount.toLocaleString("en-IN")}
+                </Badge>
+              </div>
+            </div>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mt-1">
+              Verify Your Donor Account
             </h2>
             <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
               Institutional governance requires identity verification to issue computer-signed statutory receipts and link donations to your donor ledger.
@@ -455,7 +560,7 @@ export function DonationJourney() {
                     Signed in as {session.fullName || session.primaryPhone || session.primaryEmail}
                   </h3>
                   <p className="text-xs text-emerald-800 mt-0.5">
-                    Your contribution will be automatically linked to your donor ledger and official 80G tax profile.
+                    Your voluntary contribution of ₹{effectiveAmount.toLocaleString("en-IN")} will be automatically linked to your donor ledger and official 80G tax profile.
                   </p>
                 </div>
               </div>
@@ -465,11 +570,11 @@ export function DonationJourney() {
                   type="button"
                   variant="ghost"
                   size="md"
-                  onClick={() => setCurrentStep(1)}
+                  onClick={() => setCurrentStep(2)}
                   className="gap-1.5 text-xs text-ink-muted"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Change Programme</span>
+                  <span>Modify Amount</span>
                 </Button>
                 <Button
                   type="button"
@@ -479,7 +584,7 @@ export function DonationJourney() {
                     if (session.fullName && !donorName) setDonorName(session.fullName);
                     if (session.primaryPhone && !donorPhone) setDonorPhone(session.primaryPhone);
                     if (session.primaryEmail && !donorEmail) setDonorEmail(session.primaryEmail);
-                    setCurrentStep(3);
+                    setCurrentStep(4);
                   }}
                   className="gap-2 font-bold px-6 shadow-sm"
                 >
@@ -495,30 +600,23 @@ export function DonationJourney() {
                 compact={true}
                 redirectOnSuccess={false}
                 headingOverride="Donor Verification"
-                subheadingOverride="Verify your mobile number to link your donation to your official receipt records."
+                subheadingOverride="Verify your mobile number or Google account to link your contribution to official receipt records."
                 onSuccess={(auth) => {
                   if (auth.fullName) setDonorName(auth.fullName);
                   if (auth.primaryPhone) setDonorPhone(auth.primaryPhone);
                   if (auth.primaryEmail) setDonorEmail(auth.primaryEmail);
-                  setCurrentStep(3);
+                  setCurrentStep(4);
                 }}
               />
 
-              <div className="pt-3 text-center border-t border-sand/30 flex items-center justify-between text-xs">
+              <div className="pt-3 text-center border-t border-sand/30 flex items-center justify-start text-xs">
                 <button
                   type="button"
-                  onClick={() => setCurrentStep(1)}
+                  onClick={() => setCurrentStep(2)}
                   className="text-ink-muted hover:text-forest flex items-center gap-1"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Change Programme</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCurrentStep(3)}
-                  className="font-semibold text-forest hover:text-terracotta underline"
-                >
-                  Skip Verification &amp; Enter Details Directly
+                  <span>Modify Amount</span>
                 </button>
               </div>
             </div>
@@ -526,17 +624,22 @@ export function DonationJourney() {
         </Card>
       )}
 
-      {/* STEP 3: DONOR INFORMATION */}
-      {currentStep === 3 && (
+      {/* STEP 4: DONOR INFORMATION */}
+      {currentStep === 4 && (
         <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
           <div className="border-b border-sand/30 pb-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 3 of 6 • Donor Identification
+                Step 4 of 6 • Donor Identification
               </span>
-              <Badge variant="forest" size="sm">
-                Purpose: {activeProgramme.name}
-              </Badge>
+              <div className="flex items-center gap-2">
+                <Badge variant="forest" size="sm">
+                  Purpose: {activeProgramme.name}
+                </Badge>
+                <Badge variant="neutral" size="sm">
+                  Amount: ₹{effectiveAmount.toLocaleString("en-IN")}
+                </Badge>
+              </div>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mt-1">
               Donor Details for Official Receipt
@@ -675,123 +778,11 @@ export function DonationJourney() {
                 type="button"
                 variant="ghost"
                 size="md"
-                onClick={() => setCurrentStep(1)}
-                className="gap-1.5 text-xs text-ink-muted"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back to Programmes</span>
-              </Button>
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                className="gap-2 font-bold px-6"
-              >
-                <span>Continue to Amount</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </form>
-        </Card>
-      )}
-
-      {/* STEP 4: DONATION AMOUNT */}
-      {currentStep === 4 && (
-        <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
-          <div className="border-b border-sand/30 pb-4">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 4 of 6 • Contribution Amount
-              </span>
-              <Badge variant="forest" size="sm">
-                Donor: {donorName}
-              </Badge>
-            </div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mt-1">
-              Select Donation Amount
-            </h2>
-            <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
-              Every voluntary rupee is dedicated strictly to {activeProgramme.name}.
-            </p>
-          </div>
-
-          {amountError && (
-            <div className="p-4 bg-terracotta/10 border border-terracotta/30 rounded-lg text-xs text-terracotta flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{amountError}</span>
-            </div>
-          )}
-
-          <form onSubmit={handleAmountContinue} className="space-y-6">
-            <div className="space-y-3">
-              <label className="text-xs font-bold text-forest uppercase tracking-wider block">
-                Standard Donation Presets (INR)
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {PRESET_AMOUNTS.map((amt) => {
-                  const isSelected = selectedAmount === amt && !customAmount;
-                  return (
-                    <button
-                      key={amt}
-                      type="button"
-                      onClick={() => {
-                        setSelectedAmount(amt);
-                        setCustomAmount("");
-                      }}
-                      className={`p-3.5 rounded-xl border-2 text-center transition-all font-mono text-base sm:text-lg font-bold ${
-                        isSelected
-                          ? "border-forest bg-forest text-sand shadow-xs"
-                          : "border-sand/40 bg-white text-forest hover:border-sand/70 hover:bg-sand/10"
-                      }`}
-                    >
-                      ₹{amt.toLocaleString("en-IN")}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="space-y-2 pt-2 border-t border-sand/30">
-              <label htmlFor="custom-amount" className="text-xs font-bold text-forest uppercase tracking-wider block">
-                Or Specify Custom Amount (INR)
-              </label>
-              <div className="relative max-w-sm">
-                <span className="absolute left-4 top-3 text-forest font-bold text-lg">₹</span>
-                <Input
-                  id="custom-amount"
-                  type="number"
-                  min="1"
-                  max="10000000"
-                  placeholder="Enter custom amount"
-                  value={customAmount}
-                  onChange={(e) => {
-                    setCustomAmount(e.target.value);
-                  }}
-                  className="pl-9 text-lg font-mono font-bold text-forest"
-                />
-              </div>
-              <p className="text-[11px] text-ink-muted">
-                Minimum contribution is ₹1. Tax deduction certificate generated under Section 80G.
-              </p>
-            </div>
-
-            <div className="p-4 bg-sand/20 rounded-xl border border-sand/40 flex items-center justify-between text-xs">
-              <span className="font-semibold text-forest">Total Contribution Summary:</span>
-              <span className="font-mono text-lg font-bold text-forest">
-                ₹{effectiveAmount ? effectiveAmount.toLocaleString("en-IN") : 0}
-              </span>
-            </div>
-
-            <div className="pt-4 flex items-center justify-between border-t border-sand/30">
-              <Button
-                type="button"
-                variant="ghost"
-                size="md"
                 onClick={() => setCurrentStep(3)}
                 className="gap-1.5 text-xs text-ink-muted"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back to Details</span>
+                <span>Back to Verification</span>
               </Button>
               <Button
                 type="submit"
@@ -881,7 +872,7 @@ export function DonationJourney() {
               className="gap-1.5 text-xs text-ink-muted"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Modify Amount</span>
+              <span>Modify Details</span>
             </Button>
             <Button
               type="button"

@@ -26,14 +26,17 @@ public class PortalAccountController {
     private final PortalAccountService accountService;
     private final OtpAuthService otpAuthService;
     private final DonationLifecycleService donationService;
+    private final org.mahavirtrust.backend.service.portal.GoogleOidcService googleOidcService;
 
     public PortalAccountController(
             PortalAccountService accountService,
             OtpAuthService otpAuthService,
-            DonationLifecycleService donationService) {
+            DonationLifecycleService donationService,
+            org.mahavirtrust.backend.service.portal.GoogleOidcService googleOidcService) {
         this.accountService = accountService;
         this.otpAuthService = otpAuthService;
         this.donationService = donationService;
+        this.googleOidcService = googleOidcService;
     }
 
     @GetMapping("/me/dashboard")
@@ -85,6 +88,19 @@ public class PortalAccountController {
             HttpServletRequest httpRequest) {
         Long userId = requirePortalUserId(authentication);
         return ResponseEntity.ok(accountService.claimGuestDonations(userId, getClientIp(httpRequest)));
+    }
+
+    @PostMapping("/me/link-google")
+    public ResponseEntity<Map<String, Object>> linkGoogle(
+            @Valid @RequestBody GoogleAuthPayload request,
+            Authentication authentication,
+            HttpServletRequest httpRequest) {
+        Long userId = requirePortalUserId(authentication);
+        googleOidcService.linkGoogleToAuthenticatedUser(userId, request, getClientIp(httpRequest));
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "Google account successfully linked to your donor profile."
+        ));
     }
 
     @GetMapping("/receipts/{receiptNumber}/pdf")

@@ -19,10 +19,7 @@ function LoginContent() {
   const emailParam = searchParams.get("email");
   const channelParam = searchParams.get("channel");
 
-  const initialChannel: "PHONE" | "EMAIL" =
-    channelParam?.toUpperCase() === "EMAIL" || (Boolean(emailParam) && !phoneParam)
-      ? "EMAIL"
-      : "PHONE";
+  const initialChannel: "PHONE" | "EMAIL" = "PHONE";
 
   const { isAuthenticated, isLoading } = usePortalAuth();
 
@@ -100,7 +97,7 @@ function LoginContent() {
                 </div>
                 <div className="flex items-center justify-between text-cream/90">
                   <span>CSR-1 Reg Number:</span>
-                  <strong className="text-sand">CSR00067341</strong>
+                  <strong className="text-sand">CSR00081063</strong>
                 </div>
               </div>
             </div>
