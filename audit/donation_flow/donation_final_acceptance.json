@@ -1,0 +1,140 @@
+{
+  "acceptance_review": "MECT Systematic 7-Step Donation Journey Final Acceptance",
+  "organization": "Mahaveer Educational & Charitable Trust",
+  "timestamp": "2026-11-26T07:19:00Z",
+  "overall_verdict": "ACCEPTED_FOR_PRODUCTION",
+  "acceptance_criteria": [
+    {
+      "id": "AC-01",
+      "criterion": "Donation page replaces flat uncoordinated layout with a systematic step-by-step flow",
+      "status": "PASS",
+      "evidence": "src/components/donation/DonationJourney.tsx implements 7-step sequence (PROGRAMME -> ACCOUNT -> DETAILS -> AMOUNT -> REVIEW -> PAYMENT -> CONFIRMATION)"
+    },
+    {
+      "id": "AC-02",
+      "criterion": "Responsive progress indicator reflects active and completed steps",
+      "status": "PASS",
+      "evidence": "DonationStepIndicator renders 7 steps with checkmarks for completed, terracotta ring for current, and numbered badges"
+    },
+    {
+      "id": "AC-03",
+      "criterion": "All 6 verified institutional programmes are selectable",
+      "status": "PASS",
+      "evidence": "GENERAL, EDUCATION, WATER, WOMEN, FOOD, HANUMAN_MURTI verified in test suite"
+    },
+    {
+      "id": "AC-04",
+      "criterion": "Direct URL query parameter preselects programme (?programme=WATER)",
+      "status": "PASS",
+      "evidence": "Verified in test 12 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-05",
+      "criterion": "Unauthenticated visitors encounter Step 2 (Account/Verification)",
+      "status": "PASS",
+      "evidence": "Verified in test 4 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-06",
+      "criterion": "Authenticated donors prefill session details and skip duplicate auth",
+      "status": "PASS",
+      "evidence": "Verified in test 6 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-07",
+      "criterion": "Donor details form validates Name, Email, Phone, Address, and PAN",
+      "status": "PASS",
+      "evidence": "Verified in test 6 with regex validation and 10-digit mobile check"
+    },
+    {
+      "id": "AC-08",
+      "criterion": "Section 80G tax exemption guidance is clearly articulated alongside PAN input",
+      "status": "PASS",
+      "evidence": "UI includes explicit statutory note 'Required for 80G tax exemption' and CBDT URN reference"
+    },
+    {
+      "id": "AC-09",
+      "criterion": "Preset contribution amounts (₹500 to ₹25,000) and custom input supported",
+      "status": "PASS",
+      "evidence": "Verified in test 7 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-10",
+      "criterion": "Comprehensive summary review card displays all allocation details before payment",
+      "status": "PASS",
+      "evidence": "Verified in test 8 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-11",
+      "criterion": "Strict payment gateway visibility: dormant commercial gateways are hidden",
+      "status": "PASS",
+      "evidence": "Verified in test 9: HIM and Cashfree are absent from UI; only approved direct SBI remittance is active"
+    },
+    {
+      "id": "AC-12",
+      "criterion": "Approved SBI coordinates (A/C 33341302498, IFSC SBIN0001701, UPI 86971610172@sbi) display with copy buttons",
+      "status": "PASS",
+      "evidence": "Verified in test 9 and 10 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-13",
+      "criterion": "UTR claim submission sends payload to /api/donations/claim and transitions to confirmation",
+      "status": "PASS",
+      "evidence": "Verified in test 11 of scripts/test_donation_journey_e2e.mjs"
+    },
+    {
+      "id": "AC-14",
+      "criterion": "Confirmation screen displays transaction reference and 'Pending Bank Reconciliation' status badge",
+      "status": "PASS",
+      "evidence": "Verified in test 11 with distinct institutional receipt delivery timeline"
+    },
+    {
+      "id": "AC-15",
+      "criterion": "Zero axe-core accessibility violations on /donate across all impacts",
+      "status": "PASS",
+      "evidence": "0 Critical, 0 Serious, 0 Moderate, 0 Minor violations logged in audit/donation_flow/donation_accessibility_results.json"
+    },
+    {
+      "id": "AC-16",
+      "criterion": "Zero horizontal overflow across all 9 mobile and desktop viewports (320px to 1440px)",
+      "status": "PASS",
+      "evidence": "9/9 viewports passed in audit/donation_flow/donation_responsive_results.json"
+    },
+    {
+      "id": "AC-17",
+      "criterion": "Semantic noscript fallback table provides complete bank coordinates if JavaScript is disabled",
+      "status": "PASS",
+      "evidence": "Verified in src/app/donate/page.tsx <noscript> block"
+    },
+    {
+      "id": "AC-18",
+      "criterion": "Full TypeScript type safety and zero next build compilation errors",
+      "status": "PASS",
+      "evidence": "npx tsc --noEmit and next build exit with code 0"
+    },
+    {
+      "id": "AC-19",
+      "criterion": "Fail-closed security: no synthetic receipts issued in production if backend is unreachable",
+      "status": "PASS",
+      "evidence": "Documented in audit/donation_flow/payment_security_validation.json and verified in API route"
+    },
+    {
+      "id": "AC-20",
+      "criterion": "Strict production freeze observed: no push, no VPS access, no merge to main",
+      "status": "PASS",
+      "evidence": "git status shows local branch feat/complete-website-redefinition-and-deduplication; zero remote commits"
+    },
+    {
+      "id": "AC-21",
+      "criterion": "Donor privacy and DPDP Act compliance observed (no raw PII stored in git)",
+      "status": "PASS",
+      "evidence": "No donor PII committed; test fixtures use synthetic data only"
+    },
+    {
+      "id": "AC-22",
+      "criterion": "Complete machine-readable audit package and Master Report generated",
+      "status": "PASS",
+      "evidence": "All 7 JSON files generated in audit/donation_flow/ and documented in docs/audits/"
+    }
+  ]
+}

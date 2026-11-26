@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:3012/donate",
+  "timestamp": "2026-11-26T07:18:04.210Z",
+  "violationsCount": 0,
+  "violationsByImpact": {
+    "critical": 0,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+  },
+  "violations": []
+}

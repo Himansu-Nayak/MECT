@@ -1,0 +1,63 @@
+{
+  "governance_reference": "MECT Trustee Payment Governance & Activation Matrix",
+  "audit_timestamp": "2026-11-26T07:18:40Z",
+  "organization": "Mahaveer Educational & Charitable Trust",
+  "gateways": [
+    {
+      "identifier": "SBI_DIRECT_TRANSFER",
+      "display_name": "State Bank of India (Direct NEFT/RTGS/IMPS)",
+      "operating_status": "ACTIVE_PRODUCTION",
+      "frontend_visibility": "VISIBLE_CANONICAL",
+      "channel_type": "INSTITUTIONAL_BANKING",
+      "bank_name": "State Bank of India",
+      "account_number": "33341302498",
+      "ifsc": "SBIN0001701",
+      "branch": "Rajendra College Square, Bolangir",
+      "account_type": "Current Account",
+      "verification_method": "MANUAL_RECONCILIATION_AGAINST_LEDGER",
+      "regulatory_status": "Approved by Board of Trustees"
+    },
+    {
+      "identifier": "SBI_UPI_INTENT_AND_QR",
+      "display_name": "Official SBI UPI Remittance (VPA / Static QR)",
+      "operating_status": "ACTIVE_PRODUCTION",
+      "frontend_visibility": "VISIBLE_CANONICAL",
+      "channel_type": "UPI_DIRECT",
+      "upi_vpa": "86971610172@sbi",
+      "deep_link_scheme": "upi://pay?pa=86971610172@sbi",
+      "verification_method": "MANUAL_UTR_INGESTION_AND_LEDGER_AUDIT",
+      "regulatory_status": "Approved by Board of Trustees"
+    },
+    {
+      "identifier": "HIM_GATEWAY",
+      "display_name": "HIM Self-Hosted Payment Engine",
+      "operating_status": "DORMANT",
+      "frontend_visibility": "HIDDEN_BY_POLICY",
+      "backend_flag": "payment.him.enabled=false",
+      "dormant_reason": "Pre-activation freeze under strict production rules; pending formal Trustee Resolution signoff",
+      "security_posture": "Disabled in production configuration to prevent checkout confusion"
+    },
+    {
+      "identifier": "CASHFREE_PAYMENTS",
+      "display_name": "Cashfree Payment Gateway",
+      "operating_status": "DORMANT",
+      "frontend_visibility": "HIDDEN_BY_POLICY",
+      "backend_flag": "payment.cashfree.enabled=false",
+      "dormant_reason": "Pre-activation freeze under strict production rules; pending formal commercial merchant agreement",
+      "security_posture": "Disabled in production configuration to avoid commercial merchant fees"
+    },
+    {
+      "identifier": "RAZORPAY",
+      "display_name": "Razorpay Payment Gateway",
+      "operating_status": "DECOMMISSIONED",
+      "frontend_visibility": "HIDDEN_BY_POLICY",
+      "regulatory_status": "Decommissioned in favor of direct SBI institutional remittance"
+    }
+  ],
+  "visibility_policy_summary": {
+    "policy_enforced": "STRICT_ACTIVE_CHANNELS_ONLY",
+    "rationale": "Donors must never be shown conflicting, inactive, or commercial gateway cards that do not have active production processing capabilities.",
+    "active_channels_count": 2,
+    "dormant_channels_count": 3
+  }
+}

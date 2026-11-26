@@ -1,0 +1,39 @@
+{
+  "audit_name": "MECT Donation Flow Security & Compliance Verification",
+  "organization": "Mahaveer Educational & Charitable Trust",
+  "timestamp": "2026-11-26T07:18:50Z",
+  "security_controls": {
+    "authentication_controls": {
+      "endpoint_level": "POST /api/donations/public/initiate in Java Spring Boot requires non-null portalUserId",
+      "frontend_level": "Step 2 of DonationJourney prompts for OTP authentication or guest donor details entry",
+      "status": "COMPLIANT"
+    },
+    "rate_limiting": {
+      "endpoint": "POST /api/donations/claim",
+      "mechanism": "In-memory sliding window rate limiter",
+      "limit": "5 requests per 60 seconds per IP address",
+      "status": "COMPLIANT"
+    },
+    "input_validation": {
+      "donor_name": "Required, non-empty, sanitized string",
+      "donor_email": "Strict RFC regex validation: /^[^\s@]+@[^\s@]+\.[^\s@]+$/",
+      "donor_phone": "10-digit mobile number validation with numeric stripping",
+      "donor_pan": "Optional for general donors, mandatory for Section 80G tax exemption; regex: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/",
+      "amount": "Minimum INR 1 voluntary contribution; boundary validated against NaN and negative amounts",
+      "utr_reference": "8 to 40 characters alphanumeric format matching Indian banking UTR standards",
+      "status": "COMPLIANT"
+    },
+    "fail_closed_posture": {
+      "policy": "If backend database or verification service is offline, endpoint returns HTTP 503 Service Unavailable",
+      "prohibition": "Under NO circumstances is a synthetic reference number generated or displayed to real donors when backend fails to record the submission",
+      "dev_fallback_guard": "ALLOW_DEV_FALLBACK is honoured strictly during test harnesses and never in production",
+      "status": "COMPLIANT"
+    },
+    "statutory_compliance_and_dpdp": {
+      "80g_receipt_issuance": "Status remains strictly UNVERIFIED (Pending Bank Reconciliation) until verified against official SBI bank ledger",
+      "communication_consent": "Explicit checkbox for institutional annual updates",
+      "whatsapp_consent": "Explicit, unbundled opt-in checkbox per Digital Personal Data Protection (DPDP) Act; default FALSE",
+      "status": "COMPLIANT"
+    }
+  }
+}

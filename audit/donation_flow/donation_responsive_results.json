@@ -1,0 +1,83 @@
+{
+  "suite": "MECT Donation Journey Responsive Audit",
+  "timestamp": "2026-11-26T07:17:50.694Z",
+  "viewports": [
+    {
+      "name": "Mobile Small (iPhone SE)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "scrollWidth": 320,
+      "clientWidth": 320
+    },
+    {
+      "name": "Mobile Android Common",
+      "width": 360,
+      "height": 640,
+      "status": "PASS",
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "name": "Mobile iOS Standard (iPhone 8)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "scrollWidth": 375,
+      "clientWidth": 375
+    },
+    {
+      "name": "Mobile Modern (iPhone 12/13/14)",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "name": "Mobile Large (iPhone 14 Pro Max)",
+      "width": 430,
+      "height": 932,
+      "status": "PASS",
+      "scrollWidth": 430,
+      "clientWidth": 430
+    },
+    {
+      "name": "Tablet Portrait (iPad Mini)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "name": "Tablet Landscape / Small Desktop",
+      "width": 1024,
+      "height": 768,
+      "status": "PASS",
+      "scrollWidth": 1024,
+      "clientWidth": 1024
+    },
+    {
+      "name": "Desktop HD",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "scrollWidth": 1280,
+      "clientWidth": 1280
+    },
+    {
+      "name": "Desktop Full HD",
+      "width": 1440,
+      "height": 900,
+      "status": "PASS",
+      "scrollWidth": 1440,
+      "clientWidth": 1440
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  }
+}

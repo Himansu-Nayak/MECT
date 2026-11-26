@@ -1,0 +1,91 @@
+{
+  "audit_phase": "MECT Donation Flow Forensic Audit & Reorganization",
+  "organization": "Mahaveer Educational & Charitable Trust (MECT)",
+  "timestamp": "2026-11-26T07:18:30Z",
+  "branch": "feat/complete-website-redefinition-and-deduplication",
+  "production_baseline": "99c8b1c4cb400be82c02b724c1bfc87a2b9da439",
+  "inventory": {
+    "frontend_components": [
+      {
+        "file": "src/components/donation/DonationJourney.tsx",
+        "role": "Canonical 7-step systematic donation journey orchestrator",
+        "status": "ACTIVE_PRODUCTION_CANONICAL",
+        "lines": 1281,
+        "features": [
+          "Responsive 7-step visual progress indicator",
+          "Step 1: Programme selection (6 verified programmes)",
+          "Step 2: Account authentication via OTP (phone/email) with guest bypass",
+          "Step 3: Comprehensive donor identification with PAN and DPDP consents",
+          "Step 4: Preset amounts (₹500-₹25,000) and custom input validation",
+          "Step 5: Pre-remittance summary review card",
+          "Step 6: Approved institutional SBI bank transfer and UPI QR with copy buttons",
+          "Step 7: Post-remittance confirmation with reference ID and reconciliation timeline"
+        ]
+      },
+      {
+        "file": "src/app/donate/page.tsx",
+        "role": "Public donation route host",
+        "status": "ACTIVE_PRODUCTION_CANONICAL",
+        "features": [
+          "PageHero with institutional mission branding",
+          "Institutional contribution policy notice",
+          "Suspense-wrapped DonationJourney",
+          "Semantic noscript bank credentials fallback table for non-JS accessibility",
+          "Statutory disclosures and receipt verification guidance"
+        ]
+      },
+      {
+        "file": "src/components/donation/DonationClaimSection.tsx",
+        "role": "Legacy standalone claim form",
+        "status": "CONSOLIDATED_INTO_DONATION_JOURNEY"
+      },
+      {
+        "file": "src/components/donation/UpiQrCard.tsx",
+        "role": "Legacy standalone QR card",
+        "status": "CONSOLIDATED_INTO_DONATION_JOURNEY"
+      }
+    ],
+    "backend_services": [
+      {
+        "class": "com.mahavir.trust.backend.controller.DonationController",
+        "role": "REST endpoints for public donation lifecycle",
+        "routes": [
+          "POST /api/donations/public/initiate (Auth enforced)",
+          "POST /api/donations/sbi/submit-utr (Manual UTR ingestion)"
+        ],
+        "status": "ACTIVE_STABLE"
+      },
+      {
+        "class": "com.mahavir.trust.backend.service.PaymentConfigurationService",
+        "role": "Gateway enablement & activation flags",
+        "status": "ACTIVE_FREEZE",
+        "default_state": {
+          "cashfreeEnabled": false,
+          "himEnabled": false
+        }
+      },
+      {
+        "class": "com.mahavir.trust.backend.service.HimPaymentGatewayService",
+        "role": "Self-hosted UPI transaction gateway",
+        "status": "DORMANT_PENDING_TRUSTEE_RESOLUTION"
+      },
+      {
+        "class": "com.mahavir.trust.backend.service.CashfreePaymentGatewayService",
+        "role": "Commercial third-party payment gateway",
+        "status": "DORMANT_PENDING_TRUSTEE_RESOLUTION"
+      }
+    ],
+    "persistence_models": [
+      {
+        "entity": "SbiDonationClaim",
+        "table": "manual_bank_transfer_claims",
+        "status": "ACTIVE_PRODUCTION"
+      },
+      {
+        "entity": "Donation",
+        "table": "donations",
+        "status": "ACTIVE_PRODUCTION"
+      }
+    ]
+  }
+}

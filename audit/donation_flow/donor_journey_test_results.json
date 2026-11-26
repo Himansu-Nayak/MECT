@@ -1,0 +1,71 @@
+{
+  "suite": "MECT Systematic Donation Journey E2E Suite",
+  "timestamp": "2026-11-26T07:17:50.693Z",
+  "tests": [
+    {
+      "name": "1. Route /donate loads successfully with PageHero and Institutional Notice",
+      "status": "PASS",
+      "durationMs": 2101
+    },
+    {
+      "name": "2. Systematic 7-Step Navigation Indicator renders all 7 steps",
+      "status": "PASS",
+      "durationMs": 30
+    },
+    {
+      "name": "3. Step 1 renders all 6 verified institutional programmes with radio selection",
+      "status": "PASS",
+      "durationMs": 154
+    },
+    {
+      "name": "4. Unauthenticated donor continues to Step 2 (Donor Verification & Account)",
+      "status": "PASS",
+      "durationMs": 445
+    },
+    {
+      "name": "5. Step 2 validates mobile/email format and handles OTP dispatch UI",
+      "status": "PASS",
+      "durationMs": 954
+    },
+    {
+      "name": "6. Step 3 (Donor Details) renders with prefill and input validation",
+      "status": "PASS",
+      "durationMs": 533
+    },
+    {
+      "name": "7. Step 4 (Contribution Amount) offers preset pills and custom input validation",
+      "status": "PASS",
+      "durationMs": 520
+    },
+    {
+      "name": "8. Step 5 (Review Contribution Summary) displays verified donor & allocation details",
+      "status": "PASS",
+      "durationMs": 323
+    },
+    {
+      "name": "9. Step 6 strictly enforces gateway visibility policy (HIM & Cashfree dormant, SBI remittance active)",
+      "status": "PASS",
+      "durationMs": 243
+    },
+    {
+      "name": "10. Copy-to-clipboard buttons function for Account, IFSC, and UPI ID",
+      "status": "PASS",
+      "durationMs": 467
+    },
+    {
+      "name": "11. Step 6 UTR submission transitions to Step 7 (Confirmation) with statutory tracking reference",
+      "status": "PASS",
+      "durationMs": 502
+    },
+    {
+      "name": "12. URL query parameter ?programme=WATER preselects Water programme",
+      "status": "PASS",
+      "durationMs": 1159
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

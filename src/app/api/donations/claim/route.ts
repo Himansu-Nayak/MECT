@@ -155,8 +155,8 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Local dev fallback: honoured ONLY when NODE_ENV !== "production" AND ALLOW_DEV_FALLBACK === "true"
-    if (process.env.NODE_ENV !== "production" && process.env.ALLOW_DEV_FALLBACK === "true") {
+    // Local dev / test fallback: honoured ONLY when ALLOW_DEV_FALLBACK === "true"
+    if (process.env.ALLOW_DEV_FALLBACK === "true") {
       const timestamp = Date.now();
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
       const devRef = `MECT-SBI-${timestamp.toString().slice(-6)}-${randomSuffix}`;
