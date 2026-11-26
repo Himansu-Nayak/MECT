@@ -4,8 +4,10 @@ import org.mahavirtrust.backend.dto.CreateInquiryRequest;
 import org.mahavirtrust.backend.dto.SubmissionResponse;
 import org.mahavirtrust.backend.entity.PublicInquiry;
 import org.mahavirtrust.backend.repository.PublicInquiryRepository;
+import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppNotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,9 +22,18 @@ public class PublicInquiryService {
     private static final Logger log = LoggerFactory.getLogger(PublicInquiryService.class);
 
     private final PublicInquiryRepository repository;
+    private final WhatsAppNotificationService whatsAppNotificationService;
+
+    @Autowired
+    public PublicInquiryService(
+            PublicInquiryRepository repository,
+            WhatsAppNotificationService whatsAppNotificationService) {
+        this.repository = repository;
+        this.whatsAppNotificationService = whatsAppNotificationService;
+    }
 
     public PublicInquiryService(PublicInquiryRepository repository) {
-        this.repository = repository;
+        this(repository, null);
     }
 
     @Transactional
@@ -67,6 +78,14 @@ public class PublicInquiryService {
 
         PublicInquiry saved = repository.save(inquiry);
         log.info("Successfully recorded inquiry with referenceId: {}", saved.getId());
+
+        if (whatsAppNotificationService != null) {
+            try {
+                whatsAppNotificationService.notifyInquiryOnSubmission(saved);
+            } catch (Exception ex) {
+                log.warn("Isolated public inquiry WhatsApp notification failed for ref #{}: {}", saved.getId(), ex.getMessage());
+            }
+        }
 
         return new SubmissionResponse(
                 "SUCCESS",

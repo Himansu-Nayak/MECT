@@ -7,8 +7,10 @@ import org.mahavirtrust.backend.entity.VolunteerRegistration;
 import org.mahavirtrust.backend.entity.VolunteerStatus;
 import org.mahavirtrust.backend.exception.ResourceNotFoundException;
 import org.mahavirtrust.backend.repository.VolunteerRegistrationRepository;
+import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppNotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,14 +26,24 @@ public class VolunteerRegistrationService {
 
     private final VolunteerRegistrationRepository repository;
     private final AuditLogService auditLogService;
+    private final WhatsAppNotificationService whatsAppNotificationService;
 
     public static final String SERVER_CONSENT_VERSION = "v1.0-draft-2026";
     public static final String SERVER_CONSENT_STATEMENT =
             "I declare that all information provided is authentic. I agree to uphold MAHAVIR TRUST draft voluntary service principles and student safeguarding guidelines.";
 
-    public VolunteerRegistrationService(VolunteerRegistrationRepository repository, AuditLogService auditLogService) {
+    @Autowired
+    public VolunteerRegistrationService(
+            VolunteerRegistrationRepository repository,
+            AuditLogService auditLogService,
+            WhatsAppNotificationService whatsAppNotificationService) {
         this.repository = repository;
         this.auditLogService = auditLogService;
+        this.whatsAppNotificationService = whatsAppNotificationService;
+    }
+
+    public VolunteerRegistrationService(VolunteerRegistrationRepository repository, AuditLogService auditLogService) {
+        this(repository, auditLogService, null);
     }
 
     @Transactional
@@ -90,6 +102,14 @@ public class VolunteerRegistrationService {
 
         VolunteerRegistration saved = repository.save(registration);
         log.info("Successfully registered volunteer with referenceId: {}", saved.getId());
+
+        if (whatsAppNotificationService != null) {
+            try {
+                whatsAppNotificationService.notifyVolunteerOnRegistration(saved);
+            } catch (Exception ex) {
+                log.warn("Isolated volunteer WhatsApp notification failed for ref #{}: {}", saved.getId(), ex.getMessage());
+            }
+        }
 
         return new SubmissionResponse(
                 "SUCCESS",

@@ -103,6 +103,8 @@ app:
     verified-template: ${WHATSAPP_VERIFIED_TEMPLATE:mect_donation_verified}
     rejected-template: ${WHATSAPP_REJECTED_TEMPLATE:mect_donation_rejected}
     daily-summary-template: ${WHATSAPP_DAILY_SUMMARY_TEMPLATE:mect_daily_donation_summary}
+    volunteer-template: ${WHATSAPP_VOLUNTEER_TEMPLATE:mect_volunteer_enquiry_received}
+    inquiry-template: ${WHATSAPP_INQUIRY_TEMPLATE:mect_enquiry_received}
     welcome-template: ${WHATSAPP_TEMPLATE_WELCOME:}
     donation-template: ${WHATSAPP_TEMPLATE_DONATION:}
   scheduling:

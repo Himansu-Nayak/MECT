@@ -2,8 +2,10 @@ package org.mahavirtrust.backend;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mahavirtrust.backend.entity.DonorMessagingPreference;
 import org.mahavirtrust.backend.entity.WhatsAppMessageLog;
 import org.mahavirtrust.backend.entity.WhatsAppWebhookEvent;
+import org.mahavirtrust.backend.repository.DonorMessagingPreferenceRepository;
 import org.mahavirtrust.backend.repository.WhatsAppMessageLogRepository;
 import org.mahavirtrust.backend.repository.WhatsAppWebhookEventRepository;
 import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppCloudApiClient;
@@ -34,6 +36,7 @@ public class WhatsAppWebhookSecurityTests {
     @Autowired private MockMvc mockMvc;
     @Autowired private WhatsAppMessageLogRepository messageLogRepository;
     @Autowired private WhatsAppWebhookEventRepository webhookEventRepository;
+    @Autowired private DonorMessagingPreferenceRepository preferenceRepository;
 
     @Value("${app.whatsapp.verify-token:}")
     private String configuredVerifyToken;
@@ -148,5 +151,135 @@ public class WhatsAppWebhookSecurityTests {
                         .header("X-Hub-Signature-256", signature)
                         .content(payload))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("POST /webhooks/whatsapp processes inbound STOP message and revokes donor consent")
+    void testPostWebhookInboundStopRevokesConsent() throws Exception {
+        String secret = configuredAppSecret != null && !configuredAppSecret.isBlank()
+                ? configuredAppSecret : "mect-test-whatsapp-secret-default";
+
+        String testPhone = "919876549999";
+        DonorMessagingPreference pref = new DonorMessagingPreference();
+        pref.setDonorPhone(testPhone);
+        pref.setWhatsappConsent(true);
+        pref.setSmsConsent(true);
+        preferenceRepository.save(pref);
+
+        String inboundWamid = "wamid.HBgLInboundSTOP" + System.currentTimeMillis();
+        String payload = """
+                {
+                  "object": "whatsapp_business_account",
+                  "entry": [
+                    {
+                      "id": "100000001",
+                      "changes": [
+                        {
+                          "value": {
+                            "messaging_product": "whatsapp",
+                            "metadata": {
+                              "display_phone_number": "919876543210",
+                              "phone_number_id": "10987654321"
+                            },
+                            "messages": [
+                              {
+                                "from": "%s",
+                                "id": "%s",
+                                "timestamp": "1732600000",
+                                "text": {
+                                  "body": "STOP"
+                                },
+                                "type": "text"
+                              }
+                            ]
+                          },
+                          "field": "messages"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                """.formatted(testPhone, inboundWamid);
+
+        String signature = "sha256=" + HmacCryptoUtil.hmacSha256Hex(secret, payload);
+
+        mockMvc.perform(post("/webhooks/whatsapp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("X-Hub-Signature-256", signature)
+                        .content(payload))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("RECORDED"));
+
+        DonorMessagingPreference updated = preferenceRepository.findByDonorPhone(testPhone).orElse(null);
+        assertThat(updated).isNotNull();
+        assertThat(updated.isWhatsappConsent()).isFalse();
+        assertThat(updated.getOptOutTimestamp()).isNotNull();
+
+        // Verify webhook event recorded
+        boolean eventExists = webhookEventRepository.existsByEventId(inboundWamid + ":inbound");
+        assertThat(eventExists).isTrue();
+    }
+
+    @Test
+    @DisplayName("POST /webhooks/whatsapp processes inbound START message and restores donor consent")
+    void testPostWebhookInboundStartRestoresConsent() throws Exception {
+        String secret = configuredAppSecret != null && !configuredAppSecret.isBlank()
+                ? configuredAppSecret : "mect-test-whatsapp-secret-default";
+
+        String testPhone = "919876548888";
+        DonorMessagingPreference pref = new DonorMessagingPreference();
+        pref.setDonorPhone(testPhone);
+        pref.setWhatsappConsent(false);
+        pref.setSmsConsent(false);
+        preferenceRepository.save(pref);
+
+        String inboundWamid = "wamid.HBgLInboundSTART" + System.currentTimeMillis();
+        String payload = """
+                {
+                  "object": "whatsapp_business_account",
+                  "entry": [
+                    {
+                      "id": "100000001",
+                      "changes": [
+                        {
+                          "value": {
+                            "messaging_product": "whatsapp",
+                            "metadata": {
+                              "display_phone_number": "919876543210",
+                              "phone_number_id": "10987654321"
+                            },
+                            "messages": [
+                              {
+                                "from": "%s",
+                                "id": "%s",
+                                "timestamp": "1732600000",
+                                "text": {
+                                  "body": "START"
+                                },
+                                "type": "text"
+                              }
+                            ]
+                          },
+                          "field": "messages"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                """.formatted(testPhone, inboundWamid);
+
+        String signature = "sha256=" + HmacCryptoUtil.hmacSha256Hex(secret, payload);
+
+        mockMvc.perform(post("/webhooks/whatsapp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("X-Hub-Signature-256", signature)
+                        .content(payload))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("RECORDED"));
+
+        DonorMessagingPreference updated = preferenceRepository.findByDonorPhone(testPhone).orElse(null);
+        assertThat(updated).isNotNull();
+        assertThat(updated.isWhatsappConsent()).isTrue();
+        assertThat(updated.getConsentTimestamp()).isNotNull();
     }
 }

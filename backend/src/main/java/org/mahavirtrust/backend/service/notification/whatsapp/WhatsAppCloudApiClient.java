@@ -178,6 +178,18 @@ public class WhatsAppCloudApiClient implements WhatsAppProvider {
                     recipientPhone.replaceAll("\\d(?=\\d{4})", "*"), templateName, messageId);
 
             return ProviderDispatchResult.sent(messageId, response);
+        } catch (org.springframework.web.client.RestClientResponseException ex) {
+            String respBody = ex.getResponseBodyAsString();
+            String err = ex.getStatusCode() + ": " + (respBody != null && !respBody.isBlank() ? respBody : ex.getMessage());
+            log.warn("WhatsApp Cloud API HTTP error {} dispatching to {}: {}",
+                    ex.getStatusCode(), recipientPhone.replaceAll("\\d(?=\\d{4})", "*"), err);
+            if (err.length() > 450) {
+                err = err.substring(0, 450);
+            }
+            if (ex.getStatusCode().value() == 400 && respBody != null && respBody.toLowerCase().contains("template")) {
+                return ProviderDispatchResult.templateRequired(err);
+            }
+            return ProviderDispatchResult.failed(err);
         } catch (Exception ex) {
             String err = ex.getMessage() != null ? ex.getMessage() : "WhatsApp dispatch failure";
             log.warn("WhatsApp Cloud API dispatch failed to {}: {}",

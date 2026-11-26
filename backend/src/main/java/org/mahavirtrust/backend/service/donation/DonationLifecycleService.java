@@ -1342,6 +1342,8 @@ public class DonationLifecycleService {
                             + (claim.getBankStatementRef() != null ? " / BankRef=" + claim.getBankStatementRef() : ""));
 
             grantDonorRoleAndIssueReceiptAndNotify(donation, payment, actor);
+            DonationReceipt verifiedReceipt = receiptRepository.findByDonationId(donation.getId()).orElse(null);
+            whatsAppNotificationService.notifyDonorOnClaimVerified(donation, verifiedReceipt);
         } else {
             manualClaimRepository.save(claim);
             String targetDonationStatus = "REJECTED".equals(decision) ? "FAILED" : "PENDING_VERIFICATION";

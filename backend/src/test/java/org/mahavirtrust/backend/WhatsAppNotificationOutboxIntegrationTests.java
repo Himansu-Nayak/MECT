@@ -3,10 +3,14 @@ package org.mahavirtrust.backend;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mahavirtrust.backend.dto.CreateInquiryRequest;
+import org.mahavirtrust.backend.dto.CreateVolunteerRequest;
 import org.mahavirtrust.backend.dto.donation.ReviewManualSbiClaimRequest;
 import org.mahavirtrust.backend.dto.donation.SubmitManualSbiUtrRequest;
 import org.mahavirtrust.backend.entity.*;
 import org.mahavirtrust.backend.repository.*;
+import org.mahavirtrust.backend.service.PublicInquiryService;
+import org.mahavirtrust.backend.service.VolunteerRegistrationService;
 import org.mahavirtrust.backend.service.donation.DonationLifecycleService;
 import org.mahavirtrust.backend.service.notification.whatsapp.DonorMessagingPreferenceService;
 import org.mahavirtrust.backend.service.notification.whatsapp.WhatsAppCloudApiClient;
@@ -34,6 +38,8 @@ public class WhatsAppNotificationOutboxIntegrationTests {
     @Autowired private DonorMessagingPreferenceRepository preferenceRepository;
     @Autowired private DonationRepository donationRepository;
     @Autowired private DonationProgrammeRepository programmeRepository;
+    @Autowired private VolunteerRegistrationService volunteerService;
+    @Autowired private PublicInquiryService inquiryService;
 
     private DonationProgramme testProgramme;
 
@@ -166,6 +172,13 @@ public class WhatsAppNotificationOutboxIntegrationTests {
                 o.getRecipient().equals("919876500002")
         );
         assertThat(hasDonorReceipt).isTrue();
+
+        boolean hasClaimVerified = outboxItems.stream().anyMatch(o ->
+                "WHATSAPP".equals(o.getChannel()) &&
+                o.getEventKey().contains("WA_DONOR_CLAIM_VERIFIED_") &&
+                o.getRecipient().equals("919876500002")
+        );
+        assertThat(hasClaimVerified).isTrue();
     }
 
     @Test
@@ -252,5 +265,57 @@ public class WhatsAppNotificationOutboxIntegrationTests {
                 o.getRecipient().equals("919876500004")
         );
         assertThat(hasDonorMessage).isFalse();
+    }
+
+    @Test
+    @DisplayName("Volunteer registration enqueues volunteer WhatsApp acknowledgement notification")
+    void testVolunteerRegistrationEnqueuesWhatsAppNotification() {
+        CreateVolunteerRequest req = new CreateVolunteerRequest(
+                "Subhashree Sahu",
+                "subhashree@example.org",
+                "9876500005",
+                "Teaching Assistant",
+                "Angul",
+                "WEEKENDS",
+                "B.Ed",
+                "IN_PERSON",
+                "Passion for rural literacy",
+                true,
+                "v1.0-draft-2026"
+        );
+
+        var res = volunteerService.registerVolunteer(req);
+        assertThat(res.status()).isEqualTo("SUCCESS");
+
+        List<NotificationOutbox> outboxItems = outboxRepository.findAll();
+        boolean hasVolunteerNotification = outboxItems.stream().anyMatch(o ->
+                "WHATSAPP".equals(o.getChannel()) &&
+                o.getEventType().equals("VOLUNTEER_REGISTRATION_WHATSAPP") &&
+                o.getRecipient().equals("919876500005")
+        );
+        assertThat(hasVolunteerNotification).isTrue();
+    }
+
+    @Test
+    @DisplayName("Public contact inquiry submission enqueues citizen WhatsApp acknowledgement notification")
+    void testPublicInquirySubmissionEnqueuesWhatsAppNotification() {
+        CreateInquiryRequest req = new CreateInquiryRequest(
+                "Manoj Patnaik",
+                "manoj@example.org",
+                "9876500006",
+                "Programme Information",
+                "Seeking details about the Shiksha Setu programme schedule."
+        );
+
+        var res = inquiryService.createInquiry(req);
+        assertThat(res.status()).isEqualTo("SUCCESS");
+
+        List<NotificationOutbox> outboxItems = outboxRepository.findAll();
+        boolean hasInquiryNotification = outboxItems.stream().anyMatch(o ->
+                "WHATSAPP".equals(o.getChannel()) &&
+                o.getEventType().equals("PUBLIC_INQUIRY_WHATSAPP") &&
+                o.getRecipient().equals("919876500006")
+        );
+        assertThat(hasInquiryNotification).isTrue();
     }
 }

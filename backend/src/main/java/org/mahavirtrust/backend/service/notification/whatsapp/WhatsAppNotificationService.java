@@ -3,6 +3,9 @@ package org.mahavirtrust.backend.service.notification.whatsapp;
 import org.mahavirtrust.backend.entity.Donation;
 import org.mahavirtrust.backend.entity.DonationReceipt;
 import org.mahavirtrust.backend.entity.NotificationOutbox;
+import org.mahavirtrust.backend.entity.PublicInquiry;
+import org.mahavirtrust.backend.entity.VolunteerRegistration;
+import org.mahavirtrust.backend.entity.WhatsAppMessageLog;
 import org.mahavirtrust.backend.entity.WhatsAppRecipient;
 import org.mahavirtrust.backend.repository.NotificationOutboxRepository;
 import org.mahavirtrust.backend.service.notification.NotificationOutboxService;
@@ -38,6 +41,8 @@ public class WhatsAppNotificationService {
     private final String pendingTemplate;
     private final String verifiedTemplate;
     private final String rejectedTemplate;
+    private final String volunteerTemplate;
+    private final String inquiryTemplate;
     private final String publicBaseUrl;
 
     public WhatsAppNotificationService(
@@ -54,6 +59,8 @@ public class WhatsAppNotificationService {
             @Value("${app.whatsapp.pending-template:mect_donation_pending}") String pendingTemplate,
             @Value("${app.whatsapp.verified-template:mect_donation_verified}") String verifiedTemplate,
             @Value("${app.whatsapp.rejected-template:mect_donation_rejected}") String rejectedTemplate,
+            @Value("${app.whatsapp.volunteer-template:mect_volunteer_enquiry_received}") String volunteerTemplate,
+            @Value("${app.whatsapp.inquiry-template:mect_enquiry_received}") String inquiryTemplate,
             @Value("${app.resend.public-base-url:https://mect.org.in}") String publicBaseUrl) {
         this.whatsAppProvider = whatsAppProvider;
         this.recipientService = recipientService;
@@ -68,6 +75,8 @@ public class WhatsAppNotificationService {
         this.pendingTemplate = pendingTemplate;
         this.verifiedTemplate = verifiedTemplate;
         this.rejectedTemplate = rejectedTemplate;
+        this.volunteerTemplate = volunteerTemplate;
+        this.inquiryTemplate = inquiryTemplate;
         this.publicBaseUrl = publicBaseUrl != null ? publicBaseUrl : "https://mect.org.in";
     }
 
@@ -350,6 +359,78 @@ public class WhatsAppNotificationService {
         );
     }
 
+    /**
+     * Notify volunteer when voluntary service application is received.
+     */
+    @Transactional
+    public void notifyVolunteerOnRegistration(VolunteerRegistration volunteer) {
+        if (volunteer == null || volunteer.getPhone() == null || volunteer.getPhone().isBlank()) return;
+
+        String phone = volunteer.getPhone();
+        String name = volunteer.getFullName() != null ? volunteer.getFullName() : "Volunteer";
+        String role = volunteer.getRoleInterest() != null ? volunteer.getRoleInterest() : "Voluntary Service";
+        String refId = volunteer.getId() != null ? String.valueOf(volunteer.getId()) : "PENDING";
+
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("volunteer_name", name);
+        params.put("role_interest", role);
+        params.put("reference_id", refId);
+
+        List<String> bodyParams = templateService.buildParameters("mect_volunteer_enquiry_received", params);
+        if (bodyParams.isEmpty()) {
+            bodyParams = List.of(name, role, refId);
+        }
+
+        String eventKey = "WA_VOLUNTEER_" + refId + "_" + WhatsAppCloudApiClient.sanitizePhoneNumber(phone);
+        enqueueWhatsAppOutbox(
+                eventKey,
+                "VOLUNTEER_REGISTRATION_WHATSAPP",
+                null,
+                null,
+                phone,
+                "VOLUNTEER",
+                volunteerTemplate,
+                bodyParams,
+                null
+        );
+    }
+
+    /**
+     * Notify citizen when public inquiry is received by Trust Secretariat.
+     */
+    @Transactional
+    public void notifyInquiryOnSubmission(PublicInquiry inquiry) {
+        if (inquiry == null || inquiry.getPhone() == null || inquiry.getPhone().isBlank()) return;
+
+        String phone = inquiry.getPhone();
+        String name = inquiry.getFullName() != null ? inquiry.getFullName() : "Citizen";
+        String category = inquiry.getCategory() != null ? inquiry.getCategory() : "General Enquiry";
+        String refId = inquiry.getId() != null ? String.valueOf(inquiry.getId()) : "PENDING";
+
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("contact_name", name);
+        params.put("category", category);
+        params.put("inquiry_id", refId);
+
+        List<String> bodyParams = templateService.buildParameters("mect_enquiry_received", params);
+        if (bodyParams.isEmpty()) {
+            bodyParams = List.of(name, category, refId);
+        }
+
+        String eventKey = "WA_INQUIRY_" + refId + "_" + WhatsAppCloudApiClient.sanitizePhoneNumber(phone);
+        enqueueWhatsAppOutbox(
+                eventKey,
+                "PUBLIC_INQUIRY_WHATSAPP",
+                null,
+                null,
+                phone,
+                "CITIZEN",
+                inquiryTemplate,
+                bodyParams,
+                null
+        );
+    }
+
     private boolean hasDonorOptedIn(Donation donation) {
         if (donation.isWhatsappConsent()) {
             return true;
@@ -399,7 +480,7 @@ public class WhatsAppNotificationService {
             NotificationOutbox saved = outboxRepository.save(outbox);
 
             // Record initial log
-            logService.recordQueued(
+            WhatsAppMessageLog messageLog = logService.recordQueued(
                     saved,
                     cleanPhone,
                     recipientType,
@@ -412,6 +493,10 @@ public class WhatsAppNotificationService {
             // Dispatch immediately in isolated try/catch so transaction never fails
             try {
                 outboxService.dispatchSingleSafe(saved);
+                NotificationOutbox fresh = outboxRepository.findById(saved.getId()).orElse(null);
+                if (fresh != null && "SENT".equals(fresh.getStatus()) && fresh.getProviderMessageId() != null) {
+                    logService.recordDispatched(messageLog.getId(), fresh.getProviderMessageId(), fresh.getPayloadJson());
+                }
             } catch (Exception ex) {
                 log.warn("Isolated instant WhatsApp dispatch failed for eventKey={}: {}", eventKey, ex.getMessage());
             }
