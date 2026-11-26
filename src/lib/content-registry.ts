@@ -309,7 +309,7 @@ export const MECT_CONTENT_REGISTRY = {
     ifsc: "SBIN0001701",
     accountType: "Current Account",
     upiId: "86971610172@sbi",
-    fallbackUpiId: "9853608113@sbi",
+    fallbackUpiId: "9438295223@sbi",
     taxExemptionNotice: "Tax treatment of contributions is subject to applicable law and confirmation of the Trust's current statutory eligibility (URN: AADTM5474FF20241).",
   },
 
@@ -318,14 +318,14 @@ export const MECT_CONTENT_REGISTRY = {
     registeredOffice: {
       label: "Registered Office (Balangir)",
       address: "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha, India",
-      phone: "+91 94371 23616",
-      secondaryPhone: "+91 98536 08113",
+      phone: "+91 94382 95223",
+      secondaryPhone: "+91 94382 95223",
     },
     liaisonOffice: {
       label: "Corporate Liaison Secretariat (Bhubaneswar)",
       address: "A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar - 751014, Odisha, India",
-      phone: "+91 94371 23616",
-      secondaryPhone: "+91 98536 08113",
+      phone: "+91 94382 95223",
+      secondaryPhone: "+91 94382 95223",
     },
     emails: {
       primary: "mect220@gmail.com",

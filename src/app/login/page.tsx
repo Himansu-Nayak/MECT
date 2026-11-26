@@ -39,13 +39,13 @@ function LoginContent() {
     <div className="min-h-screen bg-[#FAF7F2] py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <Container className="max-w-5xl">
         <Card className="bg-white shadow-xl rounded-sm border-[#E6E1D8] overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
-          
+
           {/* =========================================================================
               LEFT COLUMN: INSTITUTIONAL HERITAGE & ASSURANCE
               ========================================================================= */}
           <div className="lg:col-span-5 bg-forest text-cream p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/90 via-forest to-forest-dark pointer-events-none" />
-            
+
             <div className="relative z-10 space-y-6">
               {/* Emblem Header */}
               <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ function LoginContent() {
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy-policy" className="underline hover:text-forest">
+                  <Link href="/privacy" className="underline hover:text-forest">
                     Privacy Policy
                   </Link>
                   .
@@ -151,8 +151,8 @@ function LoginContent() {
             {/* Helpline Assistance */}
             <div className="mt-8 pt-4 border-t border-[#E6E1D8] text-center text-[11px] text-ink-muted">
               Need assistance? Call MECT Secretariat at{" "}
-              <a href="tel:+919437123616" className="font-semibold text-terracotta-dark underline hover:text-forest">
-                +91 94371 23616
+              <a href="tel:+919438295223" className="font-semibold text-terracotta-dark underline hover:text-forest">
+                +91 94382 95223
               </a>{" "}
               or email{" "}
               <a href="mailto:mect220@gmail.com" className="font-semibold text-terracotta-dark underline hover:text-forest">

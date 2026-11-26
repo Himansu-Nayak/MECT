@@ -142,7 +142,7 @@ function RegisterContent() {
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy-policy" className="underline hover:text-forest">
+                  <Link href="/privacy" className="underline hover:text-forest">
                     Privacy Policy
                   </Link>
                   .
@@ -153,8 +153,8 @@ function RegisterContent() {
             {/* Helpline Assistance */}
             <div className="mt-8 pt-4 border-t border-[#E6E1D8] text-center text-[11px] text-ink-muted">
               Need assistance? Call MECT Secretariat at{" "}
-              <a href="tel:+919437123616" className="font-semibold text-terracotta-dark underline hover:text-forest">
-                +91 94371 23616
+              <a href="tel:+919438295223" className="font-semibold text-terracotta-dark underline hover:text-forest">
+                +91 94382 95223
               </a>{" "}
               or email{" "}
               <a href="mailto:mect220@gmail.com" className="font-semibold text-terracotta-dark underline hover:text-forest">

@@ -56,7 +56,7 @@ All items below require documentary verification from the Trustees and/or Charte
 8. **Bhubaneswar liaison phone/email and one named Grievance Officer**
    - **Owner:** Trustees
    - **Blocking markers / areas:** `grievance officer name`, `/contact`, `/privacy`, `/accessibility`
-   - **Details needed:** Confirm dedicated phone number (if any, or confirm helpline `9853608113` covers both) and official email for the Bhubaneswar liaison office (`A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014`), plus full name and designation of the DPDP Act, 2023 Grievance Officer.
+   - **Details needed:** Confirm dedicated phone number (if any, or confirm helpline `+91 94382 95223` covers both) and official email for the Bhubaneswar liaison office (`A1, 3rd Floor, Lewis Plaza, BJB Nagar, Bhubaneswar, Odisha - 751014`), plus full name and designation of the DPDP Act, 2023 Grievance Officer.
    - **Status:** `[ ] Open — Trustee confirmation required`
 
 9. **Preferred spelling of scheme names**

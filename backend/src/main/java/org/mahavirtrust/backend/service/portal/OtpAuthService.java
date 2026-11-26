@@ -15,6 +15,7 @@ import org.mahavirtrust.backend.service.AuditLogService;
 import org.mahavirtrust.backend.service.notification.*;
 import org.mahavirtrust.backend.util.HmacCryptoUtil;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,7 @@ public class OtpAuthService {
     private final NotificationOutboxService outboxService;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuditLogService auditLogService;
+    private final Environment environment;
 
     private final SecureRandom secureRandom = new SecureRandom();
     private final int expirySeconds;
@@ -56,6 +58,23 @@ public class OtpAuthService {
     private final String otpPepper;
     private final String fromNotifications;
     private final boolean schedulingEnabled;
+    private final boolean deterministicTestEnabled;
+    private final String deterministicTestCode;
+    private final String datasourceUrl;
+    private final String dbName;
+
+    private static final Set<String> ALLOWLISTED_SYNTHETIC_TARGETS = Set.of(
+            "+919438200001",
+            "+919438200002",
+            "+919438200003",
+            "+919438200004",
+            "+919438200005",
+            "synthetic.donor@mect.org.in",
+            "synthetic.admin@mect.org.in",
+            "synthetic.reviewer@mect.org.in",
+            "synthetic.volunteer@mect.org.in",
+            "synthetic.inquiry@mect.org.in"
+    );
 
     public OtpAuthService(
             OtpVerificationRepository otpRepository,
@@ -71,12 +90,17 @@ public class OtpAuthService {
             NotificationOutboxService outboxService,
             JwtTokenProvider jwtTokenProvider,
             AuditLogService auditLogService,
+            Environment environment,
             @Value("${app.otp.expiry-seconds:600}") int expirySeconds,
             @Value("${app.otp.resend-cooldown-seconds:60}") int resendCooldownSeconds,
             @Value("${app.otp.max-attempts:5}") int maxAttempts,
             @Value("${app.otp.pepper:mect-otp-default-dev-pepper}") String otpPepper,
             @Value("${app.resend.from-notifications:MECT Notifications <notifications@mect.org.in>}") String fromNotifications,
-            @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled) {
+            @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled,
+            @Value("${app.otp.deterministic-test-enabled:false}") boolean deterministicTestEnabled,
+            @Value("${app.otp.deterministic-test-code:123456}") String deterministicTestCode,
+            @Value("${spring.datasource.url:}") String datasourceUrl,
+            @Value("${DB_NAME:${app.datasource.name:}}") String dbName) {
         this.otpRepository = otpRepository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -90,12 +114,65 @@ public class OtpAuthService {
         this.outboxService = outboxService;
         this.jwtTokenProvider = jwtTokenProvider;
         this.auditLogService = auditLogService;
+        this.environment = environment;
         this.expirySeconds = expirySeconds;
         this.resendCooldownSeconds = resendCooldownSeconds;
         this.maxAttempts = maxAttempts;
         this.otpPepper = otpPepper;
         this.fromNotifications = fromNotifications;
         this.schedulingEnabled = schedulingEnabled;
+        this.deterministicTestEnabled = deterministicTestEnabled;
+        this.deterministicTestCode = deterministicTestCode != null && !deterministicTestCode.isBlank() ? deterministicTestCode.trim() : "123456";
+        this.datasourceUrl = datasourceUrl != null ? datasourceUrl.trim() : "";
+        this.dbName = dbName != null ? dbName.trim() : "";
+    }
+
+    public boolean isDeterministicTestAllowed(String normalizedTarget) {
+        if (!deterministicTestEnabled) {
+            return false;
+        }
+        if (environment == null) {
+            return false;
+        }
+        String[] activeProfiles = environment.getActiveProfiles();
+        // Positive requirement 1: Exactly one profile must be active
+        if (activeProfiles == null || activeProfiles.length != 1) {
+            return false;
+        }
+        String singleProfile = activeProfiles[0].trim().toLowerCase(Locale.ROOT);
+        // Positive requirement 2: That single active profile must be exactly "staging"
+        if (!"staging".equals(singleProfile)) {
+            if ("prod".equals(singleProfile) || "production".equals(singleProfile)) {
+                log.error("SECURITY ALERT: Deterministic test OTP attempted in production profile! Enforcing strict fail-closed rejection.");
+            }
+            return false;
+        }
+        // Positive requirement 3: Must be connected to isolated staging database
+        if (!isStagingDatabase()) {
+            log.error("SECURITY ALERT: Deterministic test OTP attempted against non-staging database! Enforcing strict fail-closed rejection.");
+            return false;
+        }
+        // Positive requirement 4: Target must be in synthetic allowlist
+        if (normalizedTarget == null || normalizedTarget.isBlank()) {
+            return false;
+        }
+        return ALLOWLISTED_SYNTHETIC_TARGETS.contains(normalizedTarget.trim().toLowerCase(Locale.ROOT));
+    }
+
+    private boolean isStagingDatabase() {
+        if (datasourceUrl.contains("prod") || datasourceUrl.contains("production") || datasourceUrl.contains("mect_db")) {
+            return false;
+        }
+        if (dbName.contains("prod") || dbName.contains("production") || dbName.contains("mect_db")) {
+            return false;
+        }
+        if (dbName.toLowerCase(Locale.ROOT).contains("staging")) {
+            return true;
+        }
+        if (datasourceUrl.toLowerCase(Locale.ROOT).contains("staging") || datasourceUrl.toLowerCase(Locale.ROOT).contains("testdb")) {
+            return true;
+        }
+        return false;
     }
 
     @Transactional
@@ -149,7 +226,13 @@ public class OtpAuthService {
             }
         });
 
-        String rawOtp = String.format("%06d", secureRandom.nextInt(1_000_000));
+        String rawOtp;
+        if (isDeterministicTestAllowed(normalizedTarget)) {
+            rawOtp = deterministicTestCode;
+            log.info("DISPATCHED Deterministic Staging Test OTP to synthetic target [{}]", HmacCryptoUtil.sha256Hex(normalizedTarget).substring(0, 12));
+        } else {
+            rawOtp = String.format("%06d", secureRandom.nextInt(1_000_000));
+        }
         String otpHash = hashOtp(channel, purpose, normalizedTarget, rawOtp);
 
         OtpVerification otp = new OtpVerification();

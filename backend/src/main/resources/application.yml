@@ -61,6 +61,8 @@ app:
     resend-cooldown-seconds: ${OTP_RESEND_COOLDOWN_SECONDS:60}
     max-attempts: ${OTP_MAX_ATTEMPTS:5}
     pepper: ${OTP_HASH_PEPPER:mect-otp-default-dev-pepper-override-in-prod}
+    deterministic-test-enabled: ${OTP_DETERMINISTIC_TEST_ENABLED:false}
+    deterministic-test-code: ${OTP_DETERMINISTIC_TEST_CODE:123456}
   resend:
     api-key: ${RESEND_API_KEY:}
     base-url: ${RESEND_BASE_URL:https://api.resend.com}

@@ -6,12 +6,15 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import org.mahavirtrust.backend.entity.Donation;
 import org.mahavirtrust.backend.entity.Payment;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 @Service
 public class ReceiptPdfService {
@@ -25,6 +28,23 @@ public class ReceiptPdfService {
     private static final DateTimeFormatter IST_FORMATTER = DateTimeFormatter
             .ofPattern("dd MMM yyyy, hh:mm a z")
             .withZone(ZoneId.of("Asia/Kolkata"));
+
+    private final Environment environment;
+
+    public ReceiptPdfService(@Autowired(required = false) Environment environment) {
+        this.environment = environment;
+    }
+
+    private boolean isStagingEnvironment() {
+        if (environment == null) return false;
+        String[] profiles = environment.getActiveProfiles();
+        if (profiles != null) {
+            for (String p : profiles) {
+                if ("staging".equalsIgnoreCase(p)) return true;
+            }
+        }
+        return false;
+    }
 
     public byte[] generateReceiptPdf(
             String receiptNumber,
@@ -53,7 +73,7 @@ public class ReceiptPdfService {
 
             Paragraph pTitle = new Paragraph("MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)", orgTitleFont);
             Paragraph pSub = new Paragraph(
-                    "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: 9853608113  |  mect220@gmail.com",
+                    "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: +91 94382 95223  |  mect220@gmail.com",
                     subFont);
             Paragraph pDoc = new Paragraph(
                     "Registered Public Charitable Trust (Balangir Deed No. 40311302194)  |  Trust PAN: AADTM5474F  |  CSR-1: CSR00081063",
@@ -65,6 +85,33 @@ public class ReceiptPdfService {
             headerCell.addElement(pDoc);
             header.addCell(headerCell);
             document.add(header);
+
+            // Staging Environment Test Disclaimer Banner
+            if (isStagingEnvironment()) {
+                PdfPTable stagingBanner = new PdfPTable(1);
+                stagingBanner.setWidthPercentage(100);
+                stagingBanner.setSpacingBefore(8f);
+                PdfPCell bannerCell = new PdfPCell();
+                bannerCell.setBackgroundColor(new Color(254, 242, 242));
+                bannerCell.setBorderColor(new Color(220, 38, 38));
+                bannerCell.setBorderWidth(1.5f);
+                bannerCell.setPadding(8f);
+                bannerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                Font bannerTitleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, new Color(185, 28, 28));
+                Font bannerSubFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, new Color(185, 28, 28));
+
+                Paragraph bTitle = new Paragraph("TEST / STAGING — SIMULATED TRANSACTION", bannerTitleFont);
+                bTitle.setAlignment(Element.ALIGN_CENTER);
+                Paragraph bSub = new Paragraph("NOT VALID FOR TAX DEDUCTION", bannerSubFont);
+                bSub.setAlignment(Element.ALIGN_CENTER);
+                bSub.setSpacingBefore(2f);
+
+                bannerCell.addElement(bTitle);
+                bannerCell.addElement(bSub);
+                stagingBanner.addCell(bannerCell);
+                document.add(stagingBanner);
+            }
 
             Font sectionTitleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, FOREST);
             Paragraph receiptHeading = new Paragraph("OFFICIAL DONATION RECEIPT & PAYMENT ACKNOWLEDGEMENT",

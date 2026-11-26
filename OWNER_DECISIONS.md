@@ -27,9 +27,14 @@ The following items are prioritized in strict order of operational, security and
   - UPI ID (VPA): `86971610172@sbi`
 - **Owner Action:** **MUST physically inspect the official SBI passbook/chequebook** to verify that Account `33341302498`, IFSC `SBIN0001701`, and UPI `86971610172@sbi` match the current operative account before any live release.
 
-### 2. Helpline Phone Number (`+91 94371 23616`)
-- **Status:** Authentic live site helpline present across foundational releases since project inception (commits `287d8a6`, `0daa2bf`, `ea4ab59`).
-- **Owner Action:** Confirm whether `+91 94371 23616` is the sole authorized public telephone contact desk for incoming donor and beneficiary inquiries.
+### 2. Helpline Phone Number (`+91 94382 95223`)
+- **Status:** **OWNER-APPROVED / DOCUMENTARY VERIFICATION PENDING**
+- **Owner Identification:** The owner has formally identified `+91 94382 95223` as the authorized MECT organizational helpline.
+- **Configuration Policy:** Retained in canonical organization configuration (`src/config/org.ts`) as a pending verification value. It is NOT independently document-verified until supporting telecom/SIM documentary proof is furnished.
+- **Historical Audit Evidence:**
+  - `+91 94371 23616`: Authentic live site helpline present across foundational releases since project inception (commits `287d8a6`, `0daa2bf`, `ea4ab59`). Preserved as historical audit baseline.
+  - `+91 98536 08113`: Introduced in commit `b294267` (Phase 24) without accompanying passbook or telecom documentary verification.
+- **Owner Action:** Await supporting physical documentation (e.g. telecom bill, official SIM registration receipt, or Trust letterhead endorsement) before marking documentary verification checklist complete. Checklist status remains open `[ ]`.
 
 ### 3. Ownership of Secondary Number (`+91 98536 08113`)
 - **Status:** Introduced in commit `b294267` (Phase 24) without accompanying passbook or telecom documentary verification. External WhatsApp direct links to this number have been removed from public pages.

@@ -35,6 +35,7 @@ src/*.NEF
 
 .env*.local
 .env
+.env.staging
 
 # Vercel
 .vercel

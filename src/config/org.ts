@@ -163,12 +163,15 @@ export const MECT_ORG: MECTOrgConfig = {
   },
 
   contact: {
-    primaryPhone: "+91 94371 23616",
-    displayPhone: "+91 94371 23616",
-    e164Phone: "+919437123616",
-    phoneHref: "tel:+919437123616",
-    whatsappNumber: "",
-    whatsappHref: "",
+    // Status: OWNER-APPROVED / DOCUMENTARY VERIFICATION PENDING (per OWNER_DECISIONS.md Item 2)
+    // Retained as owner-designated helpline; awaiting supporting physical documentary proof.
+    // Historical audit baseline: +91 94371 23616 (commits 287d8a6, 0daa2bf).
+    primaryPhone: "+91 94382 95223",
+    displayPhone: "+91 94382 95223",
+    e164Phone: "+919438295223",
+    phoneHref: "tel:+919438295223",
+    whatsappNumber: "+919438295223",
+    whatsappHref: "https://wa.me/919438295223",
     generalEmail: "mect220@gmail.com",
     officialEmail: "trust@mect.org.in",
     officeHours: "10:00 – 17:30 IST",
