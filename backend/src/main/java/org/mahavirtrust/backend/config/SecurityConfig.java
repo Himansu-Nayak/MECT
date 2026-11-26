@@ -80,7 +80,7 @@ public class SecurityConfig {
                 .requestMatchers("/webhooks/**").permitAll()
                 .requestMatchers("/payments/cashfree/**").permitAll()
                 .requestMatchers("/auth/login", "/auth/refresh").permitAll()
-                .requestMatchers("/portal/auth/request-otp", "/portal/auth/verify-otp", "/portal/auth/refresh").permitAll()
+                .requestMatchers("/portal/auth/request-otp", "/portal/auth/verify-otp", "/portal/auth/google", "/portal/auth/refresh").permitAll()
                 .requestMatchers("/portal/**").hasAnyRole("GENERAL_USER", "DONOR")
                 .requestMatchers("/auth/logout", "/auth/me").authenticated()
                 .requestMatchers("/admin/**").hasAnyRole(

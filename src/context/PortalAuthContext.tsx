@@ -16,6 +16,7 @@ interface PortalAuthContextType {
   dashboard: PortalDashboardData | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  setSessionAuth: (auth: PortalAuthResponse) => Promise<void>;
   setSessionFromOtp: (auth: PortalAuthResponse) => Promise<void>;
   refreshDashboard: () => Promise<void>;
   logout: () => Promise<void>;
@@ -70,7 +71,7 @@ export function PortalAuthProvider({ children }: { children: React.ReactNode }) 
     return () => { active = false; };
   }, [loadDashboardSafely]);
 
-  const setSessionFromOtp = async (auth: PortalAuthResponse) => {
+  const setSessionAuth = async (auth: PortalAuthResponse) => {
     setSession(auth);
     setToken(auth.accessToken);
     if (typeof window !== "undefined") {
@@ -78,6 +79,8 @@ export function PortalAuthProvider({ children }: { children: React.ReactNode }) 
     }
     await loadDashboardSafely(auth.accessToken);
   };
+
+  const setSessionFromOtp = setSessionAuth;
 
   const refreshDashboard = async () => {
     if (!token) return;
@@ -105,6 +108,7 @@ export function PortalAuthProvider({ children }: { children: React.ReactNode }) 
         dashboard,
         isAuthenticated: !!token && !!session,
         isLoading,
+        setSessionAuth,
         setSessionFromOtp,
         refreshDashboard,
         logout,

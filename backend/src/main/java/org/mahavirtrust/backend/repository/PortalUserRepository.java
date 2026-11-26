@@ -15,6 +15,8 @@ public interface PortalUserRepository extends JpaRepository<PortalUser, Long> {
     Optional<PortalUser> findByUserUuid(String userUuid);
     Optional<PortalUser> findByPrimaryEmailIgnoreCase(String email);
     Optional<PortalUser> findByPrimaryPhone(String phone);
+    Optional<PortalUser> findByGoogleSub(String googleSub);
+    Optional<PortalUser> findByGoogleEmailIgnoreCase(String googleEmail);
 
     @Query("SELECT u FROM PortalUser u WHERE LOWER(COALESCE(u.primaryEmail, '')) LIKE LOWER(CONCAT('%', :q, '%')) " +
            "OR COALESCE(u.primaryPhone, '') LIKE CONCAT('%', :q, '%') " +

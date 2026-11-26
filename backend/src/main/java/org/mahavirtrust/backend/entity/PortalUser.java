@@ -21,6 +21,15 @@ public class PortalUser {
     @Column(name = "primary_phone", unique = true, length = 30)
     private String primaryPhone;
 
+    @Column(name = "google_sub", unique = true, length = 100)
+    private String googleSub;
+
+    @Column(name = "google_email", length = 255)
+    private String googleEmail;
+
+    @Column(name = "auth_provider", nullable = false, length = 30)
+    private String authProvider = "OTP";
+
     @Column(nullable = false, length = 30)
     private String status = "ACTIVE";
 
@@ -58,6 +67,12 @@ public class PortalUser {
     public void setPrimaryEmail(String primaryEmail) { this.primaryEmail = primaryEmail; }
     public String getPrimaryPhone() { return primaryPhone; }
     public void setPrimaryPhone(String primaryPhone) { this.primaryPhone = primaryPhone; }
+    public String getGoogleSub() { return googleSub; }
+    public void setGoogleSub(String googleSub) { this.googleSub = googleSub; }
+    public String getGoogleEmail() { return googleEmail; }
+    public void setGoogleEmail(String googleEmail) { this.googleEmail = googleEmail; }
+    public String getAuthProvider() { return authProvider; }
+    public void setAuthProvider(String authProvider) { this.authProvider = authProvider; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
     public boolean isProfileCompleted() { return profileCompleted; }

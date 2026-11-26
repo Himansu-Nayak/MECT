@@ -2,6 +2,7 @@ package org.mahavirtrust.backend;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mahavirtrust.backend.dto.portal.GoogleAuthPayload;
 import org.mahavirtrust.backend.dto.portal.OtpRequestPayload;
 import org.mahavirtrust.backend.dto.portal.OtpVerifyPayload;
 import org.mahavirtrust.backend.dto.portal.UpdateNotificationPreferencesRequest;
@@ -9,6 +10,7 @@ import org.mahavirtrust.backend.dto.portal.UpdatePortalProfileRequest;
 import org.mahavirtrust.backend.entity.CommunicationConsent;
 import org.mahavirtrust.backend.entity.OtpVerification;
 import org.mahavirtrust.backend.entity.PortalUser;
+import org.mahavirtrust.backend.entity.PortalUserProfile;
 import org.mahavirtrust.backend.repository.*;
 import org.mahavirtrust.backend.service.notification.EmailProvider;
 import org.mahavirtrust.backend.service.notification.ProviderDispatchResult;
@@ -24,7 +26,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
@@ -360,6 +364,155 @@ public class PortalAuthAndOtpSecurityTests {
                 .filter(o -> "WELCOME".equals(o.getEventType()))
                 .count();
         assertThat(welcomeCountAfterSecondLogin).isEqualTo(1L);
+    }
+
+    private String createMockGoogleToken(String sub, String email, boolean emailVerified, String name, String aud, long expEpochSeconds) {
+        String header = Base64.getUrlEncoder().withoutPadding().encodeToString("{\"alg\":\"RS256\",\"typ\":\"JWT\"}".getBytes(StandardCharsets.UTF_8));
+        String payloadJson = String.format(
+                "{\"iss\":\"https://accounts.google.com\",\"aud\":\"%s\",\"sub\":\"%s\",\"email\":\"%s\",\"email_verified\":%b,\"name\":\"%s\",\"exp\":%d}",
+                aud, sub, email, emailVerified, name, expEpochSeconds
+        );
+        String payload = Base64.getUrlEncoder().withoutPadding().encodeToString(payloadJson.getBytes(StandardCharsets.UTF_8));
+        return header + "." + payload + ".dummySignature";
+    }
+
+    @Test
+    void testGoogleSignIdTokenAuthenticationAndUserCreation() throws Exception {
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String validToken = createMockGoogleToken("google-sub-001", "ananya.mishra@example.org", true, "Ananya Mishra", "test-google-client-id", futureExp);
+
+        GoogleAuthPayload payload = new GoogleAuthPayload(validToken, "Ananya Mishra", "Bhubaneswar");
+
+        MvcResult res = mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(payload)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.accessToken").isNotEmpty())
+                .andExpect(jsonPath("$.refreshToken").isNotEmpty())
+                .andExpect(jsonPath("$.primaryEmail").value("ananya.mishra@example.org"))
+                .andExpect(jsonPath("$.fullName").value("Ananya Mishra"))
+                .andReturn();
+
+        JsonNode responseNode = objectMapper.readTree(res.getResponse().getContentAsString());
+        String userUuid = responseNode.path("userUuid").asString();
+
+        PortalUser createdUser = portalUserRepository.findByGoogleSub("google-sub-001").orElseThrow();
+        assertThat(createdUser.getUserUuid()).isEqualTo(userUuid);
+        assertThat(createdUser.getAuthProvider()).isEqualTo("GOOGLE");
+        assertThat(createdUser.getGoogleSub()).isEqualTo("google-sub-001");
+        assertThat(createdUser.getGoogleEmail()).isEqualTo("ananya.mishra@example.org");
+        assertThat(createdUser.getPrimaryEmail()).isEqualTo("ananya.mishra@example.org");
+
+        PortalUserProfile profile = profileRepository.findByPortalUserId(createdUser.getId()).orElseThrow();
+        assertThat(profile.getFullName()).isEqualTo("Ananya Mishra");
+        assertThat(profile.getCity()).isEqualTo("Bhubaneswar");
+    }
+
+    @Test
+    void testGoogleSignInLinksToExistingEmailAccountWithoutDuplicates() throws Exception {
+        // First register a user via email OTP
+        String email = "shared.donor@example.org";
+        mockMvc.perform(post("/portal/auth/request-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("EMAIL", email, "LOGIN"))))
+                .andExpect(status().isOk());
+        mockMvc.perform(post("/portal/auth/verify-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpVerifyPayload("EMAIL", email, capturedEmailOtp.get(), "LOGIN"))))
+                .andExpect(status().isOk());
+
+        assertThat(portalUserRepository.count()).isEqualTo(1L);
+        PortalUser existing = portalUserRepository.findByPrimaryEmailIgnoreCase(email).orElseThrow();
+        assertThat(existing.getGoogleSub()).isNull();
+
+        // Now authenticate with Google with the same email
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String validToken = createMockGoogleToken("google-sub-linked-999", email, true, "Linked Donor", "test-google-client-id", futureExp);
+
+        GoogleAuthPayload payload = new GoogleAuthPayload(validToken, "Linked Donor", "Cuttack");
+
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(payload)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.userUuid").value(existing.getUserUuid()))
+                .andExpect(jsonPath("$.primaryEmail").value(email));
+
+        // User count remains 1, google_sub is linked
+        assertThat(portalUserRepository.count()).isEqualTo(1L);
+        PortalUser reloaded = portalUserRepository.findById(existing.getId()).orElseThrow();
+        assertThat(reloaded.getGoogleSub()).isEqualTo("google-sub-linked-999");
+        assertThat(reloaded.getGoogleEmail()).isEqualTo(email);
+    }
+
+    @Test
+    void testGoogleSignInRejectsInvalidOrExpiredToken() throws Exception {
+        // Expired token
+        long pastExp = Instant.now().minusSeconds(3600).getEpochSecond();
+        String expiredToken = createMockGoogleToken("google-sub-exp", "expired@example.org", true, "Expired User", "test-google-client-id", pastExp);
+
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(expiredToken))))
+                .andExpect(status().isUnauthorized());
+
+        // Audience mismatch
+        long futureExp = Instant.now().plusSeconds(3600).getEpochSecond();
+        String wrongAudToken = createMockGoogleToken("google-sub-aud", "aud@example.org", true, "Wrong Aud", "unauthorized-aud-client", futureExp);
+
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(wrongAudToken))))
+                .andExpect(status().isUnauthorized());
+
+        // Unverified email
+        String unverifiedEmailToken = createMockGoogleToken("google-sub-unver", "unver@example.org", false, "Unverified User", "test-google-client-id", futureExp);
+
+        mockMvc.perform(post("/portal/auth/google")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new GoogleAuthPayload(unverifiedEmailToken))))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void testMobileOtpRegistrationWithProgressiveProfile() throws Exception {
+        when(smsProvider.isConfigured()).thenReturn(true);
+        when(smsProvider.getProviderName()).thenReturn("FAST2SMS");
+        when(smsProvider.sendOtpSms(anyString(), anyString(), anyInt()))
+                .thenAnswer(inv -> {
+                    capturedSmsOtp.set(inv.getArgument(1, String.class));
+                    return ProviderDispatchResult.sent("sms_test_" + System.nanoTime(), "{}");
+                });
+
+        String phone = "+919876543210";
+
+        mockMvc.perform(post("/portal/auth/request-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(new OtpRequestPayload("PHONE", phone, "LOGIN"))))
+                .andExpect(status().isOk());
+
+        assertThat(capturedSmsOtp.get()).isNotNull().hasSize(6);
+
+        OtpVerifyPayload verifyPayload = new OtpVerifyPayload("PHONE", phone, capturedSmsOtp.get(), "LOGIN", "Rohan Das", "Balangir");
+
+        MvcResult res = mockMvc.perform(post("/portal/auth/verify-otp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(verifyPayload)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.accessToken").isNotEmpty())
+                .andExpect(jsonPath("$.primaryPhone").value(phone))
+                .andExpect(jsonPath("$.fullName").value("Rohan Das"))
+                .andReturn();
+
+        JsonNode responseNode = objectMapper.readTree(res.getResponse().getContentAsString());
+        String userUuid = responseNode.path("userUuid").asString();
+
+        PortalUser user = portalUserRepository.findByPrimaryPhone(phone).orElseThrow();
+        assertThat(user.getUserUuid()).isEqualTo(userUuid);
+
+        PortalUserProfile profile = profileRepository.findByPortalUserId(user.getId()).orElseThrow();
+        assertThat(profile.getFullName()).isEqualTo("Rohan Das");
+        assertThat(profile.getCity()).isEqualTo("Balangir");
     }
 }
 

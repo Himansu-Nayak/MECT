@@ -32,6 +32,7 @@ import { MECT_ORG } from "@/config/org";
 import { ORG } from "@content/org";
 import { usePortalAuth } from "@/context/PortalAuthContext";
 import { requestPortalOtp, verifyPortalOtp, PortalAuthResponse } from "@/lib/portal-api";
+import { ProgressiveDonorAuth } from "@/components/auth/ProgressiveDonorAuth";
 
 export interface DonationProgramme {
   code: string;
@@ -99,14 +100,6 @@ export function DonationJourney() {
 
   // Step 1: Selected Programme
   const [selectedProgrammeCode, setSelectedProgrammeCode] = useState<string>("GENERAL");
-
-  // Step 2: Auth State (OTP Login)
-  const [authTarget, setAuthTarget] = useState<string>("");
-  const [authChannel, setAuthChannel] = useState<"PHONE" | "EMAIL">("PHONE");
-  const [otpCode, setOtpCode] = useState<string>("");
-  const [otpDispatched, setOtpDispatched] = useState<boolean>(false);
-  const [otpLoading, setOtpLoading] = useState<boolean>(false);
-  const [authError, setAuthError] = useState<string | null>(null);
 
   // Step 3: Donor Information
   const [donorName, setDonorName] = useState<string>("");
@@ -193,75 +186,6 @@ export function DonationJourney() {
       setCurrentStep(3); // Skip login if already authenticated
     } else {
       setCurrentStep(2); // Go to login first
-    }
-  };
-
-  const handleSendOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setAuthError(null);
-    if (!authTarget.trim()) {
-      setAuthError(`Please enter a valid ${authChannel === "PHONE" ? "10-digit mobile number" : "email address"}.`);
-      return;
-    }
-    setOtpLoading(true);
-    try {
-      await requestPortalOtp({
-        channel: authChannel,
-        target: authTarget.trim(),
-        purpose: "LOGIN"
-      });
-      setOtpDispatched(true);
-    } catch {
-      // In offline/test environments or when gateway is dormant, advance to passcode entry
-      setOtpDispatched(true);
-    } finally {
-      setOtpLoading(false);
-    }
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setAuthError(null);
-    if (!otpCode.trim() || otpCode.trim().length < 4) {
-      setAuthError("Please enter the verification code sent to your device.");
-      return;
-    }
-    setOtpLoading(true);
-    try {
-      let authRes: PortalAuthResponse;
-      try {
-        authRes = await verifyPortalOtp({
-          channel: authChannel,
-          target: authTarget.trim(),
-          otpCode: otpCode.trim(),
-          purpose: "LOGIN"
-        });
-      } catch (err: unknown) {
-        if (otpCode.trim() === "123456" || otpCode.trim() === "000000" || typeof window !== "undefined") {
-          authRes = {
-            accessToken: "dev-test-token",
-            refreshToken: "dev-test-refresh",
-            tokenType: "Bearer",
-            expiresIn: 3600,
-            userUuid: "usr-guest-test-01",
-            fullName: donorName || "Verified Donor",
-            primaryPhone: authChannel === "PHONE" ? authTarget.trim() : null,
-            primaryEmail: authChannel === "EMAIL" ? authTarget.trim() : null,
-            profileCompleted: true,
-            roles: ["DONOR"]
-          };
-        } else {
-          throw err;
-        }
-      }
-      await setSessionFromOtp(authRes);
-      if (authChannel === "PHONE" && !donorPhone) setDonorPhone(authTarget.trim());
-      if (authChannel === "EMAIL" && !donorEmail) setDonorEmail(authTarget.trim());
-      setCurrentStep(3); // Continue to details
-    } catch (err: unknown) {
-      setAuthError(err instanceof Error ? err.message : "Invalid or expired verification code.");
-    } finally {
-      setOtpLoading(false);
     }
   };
 
@@ -520,52 +444,20 @@ export function DonationJourney() {
             </p>
           </div>
 
-          {authError && (
-            <div className="p-4 bg-terracotta/10 border border-terracotta/30 rounded-lg text-xs text-terracotta flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>{authError}</span>
-            </div>
-          )}
-
-          {!otpDispatched ? (
-            <form onSubmit={handleSendOtp} className="space-y-5 max-w-md mx-auto py-4">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="auth-target" className="text-xs font-bold text-forest uppercase tracking-wider">
-                    {authChannel === "PHONE" ? "Mobile Number (10 Digits)" : "Email Address"}
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAuthChannel(authChannel === "PHONE" ? "EMAIL" : "PHONE");
-                      setAuthTarget("");
-                      setAuthError(null);
-                    }}
-                    className="text-[11px] font-semibold text-terracotta hover:underline"
-                  >
-                    Switch to {authChannel === "PHONE" ? "Email" : "Phone"} OTP
-                  </button>
+          {isAuthenticated && session ? (
+            <div className="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-sm space-y-4 max-w-lg mx-auto">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 font-bold shrink-0">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-700" />
                 </div>
-                <div className="relative">
-                  <Input
-                    id="auth-target"
-                    type={authChannel === "PHONE" ? "tel" : "email"}
-                    placeholder={authChannel === "PHONE" ? "e.g. 9437100000" : "donor@example.com"}
-                    value={authTarget}
-                    onChange={(e) => setAuthTarget(e.target.value)}
-                    required
-                    className="pl-10"
-                    disabled={otpLoading}
-                  />
-                  {authChannel === "PHONE" ? (
-                    <Phone className="w-4 h-4 text-ink-muted absolute left-3 top-3" />
-                  ) : (
-                    <Mail className="w-4 h-4 text-ink-muted absolute left-3 top-3" />
-                  )}
+                <div>
+                  <h3 className="text-sm font-bold text-emerald-950">
+                    Signed in as {session.fullName || session.primaryPhone || session.primaryEmail}
+                  </h3>
+                  <p className="text-xs text-emerald-800 mt-0.5">
+                    Your contribution will be automatically linked to your donor ledger and official 80G tax profile.
+                  </p>
                 </div>
-                <p className="text-[11px] text-ink-muted">
-                  We will transmit a 6-digit one-time verification passcode. No password required.
-                </p>
               </div>
 
               <div className="pt-2 flex items-center justify-between">
@@ -580,93 +472,56 @@ export function DonationJourney() {
                   <span>Change Programme</span>
                 </Button>
                 <Button
-                  type="submit"
+                  type="button"
                   variant="primary"
                   size="lg"
-                  disabled={otpLoading}
-                  className="gap-2 font-bold px-6"
+                  onClick={() => {
+                    if (session.fullName && !donorName) setDonorName(session.fullName);
+                    if (session.primaryPhone && !donorPhone) setDonorPhone(session.primaryPhone);
+                    if (session.primaryEmail && !donorEmail) setDonorEmail(session.primaryEmail);
+                    setCurrentStep(3);
+                  }}
+                  className="gap-2 font-bold px-6 shadow-sm"
                 >
-                  {otpLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                  <span>Send Passcode</span>
+                  <span>Continue to Details</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
+            </div>
+          ) : (
+            <div className="max-w-xl mx-auto space-y-4">
+              <ProgressiveDonorAuth
+                initialIntent="DONATE"
+                compact={true}
+                redirectOnSuccess={false}
+                headingOverride="Donor Verification"
+                subheadingOverride="Verify your mobile number to link your donation to your official receipt records."
+                onSuccess={(auth) => {
+                  if (auth.fullName) setDonorName(auth.fullName);
+                  if (auth.primaryPhone) setDonorPhone(auth.primaryPhone);
+                  if (auth.primaryEmail) setDonorEmail(auth.primaryEmail);
+                  setCurrentStep(3);
+                }}
+              />
 
-              <div className="pt-3 text-center border-t border-sand/30">
+              <div className="pt-3 text-center border-t border-sand/30 flex items-center justify-between text-xs">
                 <button
                   type="button"
-                  onClick={() => {
-                    if (authChannel === "PHONE" && authTarget.trim()) setDonorPhone(authTarget.trim());
-                    if (authChannel === "EMAIL" && authTarget.trim()) setDonorEmail(authTarget.trim());
-                    setCurrentStep(3);
-                  }}
-                  className="text-xs font-semibold text-forest hover:text-terracotta underline"
+                  onClick={() => setCurrentStep(1)}
+                  className="text-ink-muted hover:text-forest flex items-center gap-1"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Change Programme</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrentStep(3)}
+                  className="font-semibold text-forest hover:text-terracotta underline"
                 >
                   Skip Verification &amp; Enter Details Directly
                 </button>
               </div>
-            </form>
-          ) : (
-            <form onSubmit={handleVerifyOtp} className="space-y-5 max-w-md mx-auto py-4">
-              <div className="p-3 bg-sand/20 rounded-lg text-xs text-forest flex items-center justify-between">
-                <span>Passcode transmitted to: <strong>{authTarget}</strong></span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOtpDispatched(false);
-                    setOtpCode("");
-                    setAuthError(null);
-                  }}
-                  className="text-terracotta font-semibold hover:underline"
-                >
-                  Edit
-                </button>
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="auth-otp" className="text-xs font-bold text-forest uppercase tracking-wider block">
-                  Enter 6-Digit Passcode
-                </label>
-                <div className="relative">
-                  <Input
-                    id="auth-otp"
-                    type="text"
-                    maxLength={6}
-                    placeholder="123456"
-                    value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
-                    required
-                    className="font-mono text-center tracking-widest text-lg font-bold pl-10"
-                    disabled={otpLoading}
-                  />
-                  <Lock className="w-4 h-4 text-ink-muted absolute left-3 top-3" />
-                </div>
-              </div>
-
-              <div className="pt-2 flex items-center justify-between">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="md"
-                  onClick={() => setOtpDispatched(false)}
-                  className="gap-1.5 text-xs text-ink-muted"
-                >
-                  <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Back</span>
-                </Button>
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  disabled={otpLoading}
-                  className="gap-2 font-bold px-6"
-                >
-                  {otpLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                  <span>Verify &amp; Continue</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </form>
+            </div>
           )}
         </Card>
       )}

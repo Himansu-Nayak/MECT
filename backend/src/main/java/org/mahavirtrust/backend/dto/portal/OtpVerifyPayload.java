@@ -18,6 +18,13 @@ public record OtpVerifyPayload(
         String otpCode,
 
         @Pattern(regexp = "LOGIN|CONTACT_CHANGE", message = "Invalid OTP purpose")
-        String purpose
-) {}
+        String purpose,
+
+        String fullName,
+        String city
+) {
+    public OtpVerifyPayload(String channel, String target, String otpCode, String purpose) {
+        this(channel, target, otpCode, purpose, null, null);
+    }
+}
 

@@ -3,10 +3,12 @@ package org.mahavirtrust.backend.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.mahavirtrust.backend.dto.auth.TokenRefreshRequest;
+import org.mahavirtrust.backend.dto.portal.GoogleAuthPayload;
 import org.mahavirtrust.backend.dto.portal.OtpRequestPayload;
 import org.mahavirtrust.backend.dto.portal.OtpVerifyPayload;
 import org.mahavirtrust.backend.dto.portal.PortalAuthResponse;
 import org.mahavirtrust.backend.security.PortalUserDetailsService.PortalPrincipal;
+import org.mahavirtrust.backend.service.portal.GoogleOidcService;
 import org.mahavirtrust.backend.service.portal.OtpAuthService;
 import org.mahavirtrust.backend.service.portal.PortalAccountService;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,23 @@ public class PortalAuthController {
 
     private final OtpAuthService otpAuthService;
     private final PortalAccountService portalAccountService;
+    private final GoogleOidcService googleOidcService;
 
-    public PortalAuthController(OtpAuthService otpAuthService, PortalAccountService portalAccountService) {
+    public PortalAuthController(
+            OtpAuthService otpAuthService,
+            PortalAccountService portalAccountService,
+            GoogleOidcService googleOidcService) {
         this.otpAuthService = otpAuthService;
         this.portalAccountService = portalAccountService;
+        this.googleOidcService = googleOidcService;
+    }
+
+    @PostMapping("/google")
+    public ResponseEntity<PortalAuthResponse> googleLogin(
+            @Valid @RequestBody GoogleAuthPayload request,
+            HttpServletRequest httpRequest) {
+        PortalAuthResponse response = googleOidcService.authenticateGoogleUser(request, getClientIp(httpRequest));
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/request-otp")

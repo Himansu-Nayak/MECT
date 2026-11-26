@@ -23,6 +23,8 @@ spring:
 app:
   rate-limiting:
     enabled: false
+  google:
+    client-id: test-google-client-id
   cors:
     allowed-origins: http://localhost:3000
   jwt:

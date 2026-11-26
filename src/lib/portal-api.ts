@@ -292,6 +292,8 @@ export async function verifyPortalOtp(payload: {
   target: string;
   otpCode: string;
   purpose: "LOGIN" | "CONTACT_CHANGE";
+  fullName?: string;
+  city?: string;
 }): Promise<PortalAuthResponse> {
   const res = await fetch(`${API_BASE_URL}/portal/auth/verify-otp`, {
     method: "POST",
@@ -299,6 +301,23 @@ export async function verifyPortalOtp(payload: {
     body: JSON.stringify(payload),
   });
   if (!res.ok) throw new Error(await parseErrorMessage(res, "Invalid or expired verification code."));
+  return res.json();
+}
+
+export interface GoogleAuthRequest {
+  idToken: string;
+  clientIntent?: "LOGIN" | "REGISTER" | "DONATE";
+  proposedName?: string;
+  proposedCity?: string;
+}
+
+export async function loginWithGoogle(payload: GoogleAuthRequest): Promise<PortalAuthResponse> {
+  const res = await fetch(`${API_BASE_URL}/portal/auth/google`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Google Sign-In failed. Please try again."));
   return res.json();
 }
 

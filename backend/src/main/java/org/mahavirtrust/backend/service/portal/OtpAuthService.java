@@ -260,12 +260,37 @@ public class OtpAuthService {
             pref.setPortalUser(user);
             preferenceRepository.save(pref);
             contactRepository.save(new PortalVerifiedContact(user, channel, normalizedTarget, true));
+
+            if (request.fullName() != null && !request.fullName().isBlank()) {
+                PortalUserProfile profile = new PortalUserProfile();
+                profile.setPortalUser(user);
+                profile.setFullName(request.fullName().trim());
+                profile.setCity(request.city() != null && !request.city().isBlank() ? request.city().trim() : "Balangir");
+                profile.setState("Odisha");
+                profile.setCountry("India");
+                profile.setPinCode("767001");
+                profile.setAddressLine("Contact Verified via Mobile OTP");
+                profile.setPreferredLanguage("en");
+                profileRepository.save(profile);
+            }
         } else {
             if (!"ACTIVE".equals(user.getStatus())) {
                 throw new BadCredentialsException("This portal account is currently inactive. Please contact MECT support.");
             }
             if (!contactRepository.existsByContactTypeAndContactValueIgnoreCase(channel, normalizedTarget)) {
                 contactRepository.save(new PortalVerifiedContact(user, channel, normalizedTarget, false));
+            }
+            if (request.fullName() != null && !request.fullName().isBlank() && profileRepository.findByPortalUserId(user.getId()).isEmpty()) {
+                PortalUserProfile profile = new PortalUserProfile();
+                profile.setPortalUser(user);
+                profile.setFullName(request.fullName().trim());
+                profile.setCity(request.city() != null && !request.city().isBlank() ? request.city().trim() : "Balangir");
+                profile.setState("Odisha");
+                profile.setCountry("India");
+                profile.setPinCode("767001");
+                profile.setAddressLine("Contact Verified via Mobile OTP");
+                profile.setPreferredLanguage("en");
+                profileRepository.save(profile);
             }
         }
 
