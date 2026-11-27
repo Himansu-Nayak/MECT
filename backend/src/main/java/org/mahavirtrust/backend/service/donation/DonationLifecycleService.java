@@ -183,6 +183,12 @@ public class DonationLifecycleService {
         PortalUser portalUser = optionalPortalUserId != null
                 ? portalUserRepository.findById(optionalPortalUserId).orElse(null)
                 : null;
+        if (portalUser == null && req.donorPhone() != null && !req.donorPhone().isBlank()) {
+            portalUser = portalUserRepository.findByPrimaryPhone(req.donorPhone().trim()).orElse(null);
+        }
+        if (portalUser == null && req.donorEmail() != null && !req.donorEmail().isBlank()) {
+            portalUser = portalUserRepository.findByPrimaryEmailIgnoreCase(req.donorEmail().trim()).orElse(null);
+        }
 
         Donation donation = new Donation();
         donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
@@ -773,6 +779,24 @@ public class DonationLifecycleService {
         String portalDashboardUrl = outboxService.getPublicBaseUrl() + "/portal/dashboard";
 
         if (donation.getDonorEmail() != null) {
+            EmailTemplateRenderer.RenderedEmail renderedEmail = "SBI_DIRECT".equals(payment.getProvider())
+                    ? emailRenderer.renderDirectBankTransferVerifiedEmail(
+                            donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
+                            amountText,
+                            donation.getProgramme().getName(),
+                            donation.getDonationReference(),
+                            receipt.getReceiptNumber(),
+                            portalDashboardUrl
+                    )
+                    : emailRenderer.renderDonationConfirmedReceiptEmail(
+                            donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
+                            amountText,
+                            donation.getProgramme().getName(),
+                            donation.getDonationReference(),
+                            receipt.getReceiptNumber(),
+                            portalDashboardUrl
+                    );
+
             outboxService.enqueueEmail(
                     "DONATION_CONFIRMED_EMAIL:" + donation.getId(),
                     "DONATION_CONFIRMED_RECEIPT",
@@ -780,14 +804,7 @@ public class DonationLifecycleService {
                     donation.getId(),
                     donation.getDonorEmail(),
                     true,
-                    emailRenderer.renderDonationConfirmedReceiptEmail(
-                            donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
-                            amountText,
-                            donation.getProgramme().getName(),
-                            donation.getDonationReference(),
-                            receipt.getReceiptNumber(),
-                            portalDashboardUrl
-                    ),
+                    renderedEmail,
                     receipt.getId(),
                     Map.of("receiptNumber", receipt.getReceiptNumber())
             );
@@ -1155,6 +1172,12 @@ public class DonationLifecycleService {
         PortalUser portalUser = optionalPortalUserId != null
                 ? portalUserRepository.findById(optionalPortalUserId).orElse(null)
                 : null;
+        if (portalUser == null && req.donorPhone() != null && !req.donorPhone().isBlank()) {
+            portalUser = portalUserRepository.findByPrimaryPhone(req.donorPhone().trim()).orElse(null);
+        }
+        if (portalUser == null && req.donorEmail() != null && !req.donorEmail().isBlank()) {
+            portalUser = portalUserRepository.findByPrimaryEmailIgnoreCase(req.donorEmail().trim()).orElse(null);
+        }
 
         Donation donation = null;
         if (req.existingDonationReference() != null && !req.existingDonationReference().isBlank()) {
@@ -1237,18 +1260,22 @@ public class DonationLifecycleService {
                 "Submitted UTR " + utrNormalized + " (" + claim.getClaimReference() + ") for verification");
 
         if (donation.getDonorEmail() != null) {
+            String maskedUtr = utrNormalized.length() > 4
+                    ? "••••" + utrNormalized.substring(utrNormalized.length() - 4)
+                    : utrNormalized;
             outboxService.enqueueEmail(
                     "SBI_CLAIM_SUBMITTED:" + claim.getId(),
-                    "DONATION_INITIATED",
+                    "DIRECT_TRANSFER_SUBMITTED",
                     portalUser != null ? portalUser.getId() : null,
                     donation.getId(),
                     donation.getDonorEmail(),
                     true,
-                    emailRenderer.renderDonationInitiatedEmail(
+                    emailRenderer.renderDirectBankTransferSubmittedEmail(
                             donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
                             "INR " + donation.getAmount().toPlainString(),
                             programme.getName(),
-                            donation.getDonationReference() + " (Pending Verification — UTR " + utrNormalized + ")"
+                            donation.getDonationReference(),
+                            maskedUtr
                     ),
                     null,
                     Map.of("claimReference", claim.getClaimReference(), "utr", utrNormalized)

@@ -204,6 +204,33 @@ public class PortalAccountService {
         );
     }
 
+    @Transactional(readOnly = true)
+    public Map<String, Object> getProfile(Long portalUserId) {
+        PortalUser user = userRepository.findById(portalUserId)
+                .orElseThrow(() -> new ResourceNotFoundException("Portal user not found"));
+        PortalUserProfile profile = profileRepository.findByPortalUserId(portalUserId).orElse(null);
+
+        Map<String, Object> res = new LinkedHashMap<>();
+        res.put("userUuid", user.getUserUuid());
+        res.put("primaryEmail", user.getPrimaryEmail());
+        res.put("primaryPhone", user.getPrimaryPhone());
+        res.put("status", user.getStatus());
+        res.put("profileCompleted", user.isProfileCompleted());
+        res.put("fullName", profile != null ? profile.getFullName() : null);
+        res.put("addressLine", profile != null ? profile.getAddressLine() : null);
+        res.put("city", profile != null ? profile.getCity() : null);
+        res.put("district", profile != null ? profile.getDistrict() : null);
+        res.put("state", profile != null ? profile.getState() : null);
+        res.put("pinCode", profile != null ? profile.getPinCode() : null);
+        res.put("country", profile != null ? profile.getCountry() : null);
+        res.put("dateOfBirth", profile != null ? profile.getDateOfBirth() : null);
+        res.put("preferredLanguage", profile != null ? profile.getPreferredLanguage() : null);
+        res.put("panProvided", profile != null && profile.getPanOptional() != null && !profile.getPanOptional().isBlank());
+        res.put("panMasked", profile != null ? maskPan(profile.getPanOptional()) : null);
+        res.put("updatedAt", profile != null ? profile.getUpdatedAt() : null);
+        return res;
+    }
+
     @Transactional
     public Map<String, Object> claimGuestDonations(Long portalUserId, String clientIp) {
         PortalUser user = userRepository.findById(portalUserId)

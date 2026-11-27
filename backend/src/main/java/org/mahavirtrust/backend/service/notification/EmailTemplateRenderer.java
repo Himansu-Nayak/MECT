@@ -161,7 +161,7 @@ public class EmailTemplateRenderer {
 
   public RenderedEmail renderDonationInitiatedEmail(String firstName, String amountText, String programme,
       String reference) {
-    String subject = "MECT Donation Initiated — Ref " + HtmlUtils.htmlEscape(reference);
+    String subject = "Your MECT Donation Request";
     String content = """
         <p style="margin:0 0 14px 0;color:#26332E;font-size:15px;line-height:1.65;">
           Hello %s,
@@ -204,7 +204,7 @@ public class EmailTemplateRenderer {
       String donationRef,
       String receiptNumber,
       String portalUrl) {
-    String subject = "MECT Donation Confirmed & Official Receipt " + HtmlUtils.htmlEscape(receiptNumber);
+    String subject = "Thank You for Your Donation to MECT";
     String safePortal = (portalUrl == null || portalUrl.isBlank()) ? (publicBaseUrl + "/portal/dashboard") : portalUrl;
 
     String content = """
@@ -340,6 +340,172 @@ public class EmailTemplateRenderer {
         subject,
         wrapLayout("Account Security Notice", "Contact & Access Update", content, true),
         "sec-v2.0");
+  }
+
+  public RenderedEmail renderLoginNotificationEmail(String firstName, String clientIp, String loginTime) {
+    String subject = "New Sign-In to Your MECT Account";
+    String content = """
+        <p style="margin:0 0 14px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          Hello %s,
+        </p>
+        <p style="margin:0 0 16px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          A new sign-in to your Mahaveer Educational &amp; Charitable Trust donor account was detected.
+        </p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="margin:0 0 18px 0;background-color:#F3E4D2;border-left:4px solid #283730;">
+          <tr>
+            <td style="padding:14px 16px;font-size:13px;color:#26332E;line-height:1.6;">
+              <div><strong>Time:</strong> %s</div>
+              <div><strong>IP Address:</strong> %s</div>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:0;color:#66736C;font-size:13px;line-height:1.6;">
+          If this was you, no action is required. If you did not sign in, please contact our secretariat immediately at mect220@gmail.com or +91 94382 95223.
+        </p>
+        """
+        .formatted(safeFirstName(firstName), HtmlUtils.htmlEscape(loginTime), HtmlUtils.htmlEscape(clientIp));
+
+    return new RenderedEmail(
+        subject,
+        wrapLayout("New Sign-In Detected", "Account Security Notification", content, true),
+        "login-notice-v1.0");
+  }
+
+  public RenderedEmail renderDirectBankTransferSubmittedEmail(
+      String firstName,
+      String amountText,
+      String programme,
+      String donationRef,
+      String maskedUtr) {
+    String subject = "Your MECT Bank / UPI Transfer Has Been Submitted";
+    String content = """
+        <p style="margin:0 0 14px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          Hello %s,
+        </p>
+        <p style="margin:0 0 16px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          Thank you for submitting your direct bank / UPI transfer details. Your transfer reference has been recorded and is currently in the status <strong>PENDING_VERIFICATION</strong>.
+        </p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="margin:0 0 18px 0;background-color:#F3E4D2;border-left:4px solid #A45E44;">
+          <tr>
+            <td style="padding:14px 16px;font-size:13px;color:#26332E;line-height:1.6;">
+              <div><strong>Donation Reference:</strong> %s</div>
+              <div><strong>Programme:</strong> %s</div>
+              <div><strong>Claimed Amount:</strong> %s</div>
+              <div><strong>Transfer Reference (UTR):</strong> %s</div>
+              <div><strong>Status:</strong> PENDING_VERIFICATION</div>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:0 0 14px 0;color:#66736C;font-size:13px;line-height:1.6;">
+          <strong>Notice:</strong> This is an acknowledgement of your submission. Verification is currently pending manual ledger reconciliation against the official State Bank of India bank statement. Your official numbered PDF receipt will be issued upon approval.
+        </p>
+        """
+        .formatted(
+            safeFirstName(firstName),
+            HtmlUtils.htmlEscape(donationRef),
+            HtmlUtils.htmlEscape(programme),
+            HtmlUtils.htmlEscape(amountText),
+            HtmlUtils.htmlEscape(maskedUtr));
+
+    return new RenderedEmail(
+        subject,
+        wrapLayout("Transfer Claim Received", "Pending Bank Reconciliation", content, true),
+        "bank-submitted-v1.0");
+  }
+
+  public RenderedEmail renderDirectBankTransferVerifiedEmail(
+      String firstName,
+      String amountText,
+      String programme,
+      String donationRef,
+      String receiptNumber,
+      String portalUrl) {
+    String subject = "Your MECT Donation Has Been Verified";
+    String safePortal = (portalUrl == null || portalUrl.isBlank()) ? (publicBaseUrl + "/portal/dashboard") : portalUrl;
+
+    String content = """
+        <p style="margin:0 0 14px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          Hello %s,
+        </p>
+        <p style="margin:0 0 18px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          We are pleased to inform you that your direct bank / UPI transfer of <strong>%s</strong> towards <strong>%s</strong> has been verified by the Trust secretariat. Your official donation receipt (<strong>%s</strong>) is attached.
+        </p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="margin:0 0 20px 0;background-color:#F3E4D2;border-left:4px solid #283730;">
+          <tr>
+            <td style="padding:14px 16px;font-size:13px;color:#26332E;line-height:1.65;">
+              <div><strong>Receipt Number:</strong> %s</div>
+              <div><strong>Donation Reference:</strong> %s</div>
+              <div><strong>Programme:</strong> %s</div>
+              <div><strong>Verified Amount:</strong> %s</div>
+              <div><strong>Status:</strong> VERIFIED &amp; CONFIRMED</div>
+            </td>
+          </tr>
+        </table>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px 0;">
+          <tr>
+            <td align="center" bgcolor="#283730" style="border-radius:3px;">
+              <a href="%s" style="display:inline-block;padding:12px 22px;font-size:13px;font-weight:700;color:#FFFFFF;text-decoration:none;font-family:Arial,sans-serif;">
+                Access Donor Portal
+              </a>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:0;color:#66736C;font-size:12px;line-height:1.55;">
+          Thank you for supporting Mahaveer Educational &amp; Charitable Trust's charitable work across Odisha.
+        </p>
+        """
+        .formatted(
+            safeFirstName(firstName),
+            HtmlUtils.htmlEscape(amountText),
+            HtmlUtils.htmlEscape(programme),
+            HtmlUtils.htmlEscape(receiptNumber),
+            HtmlUtils.htmlEscape(receiptNumber),
+            HtmlUtils.htmlEscape(donationRef),
+            HtmlUtils.htmlEscape(programme),
+            HtmlUtils.htmlEscape(amountText),
+            HtmlUtils.htmlEscape(safePortal));
+
+    return new RenderedEmail(
+        subject,
+        wrapLayout("Transfer Verified", "Official Receipt Issued", content, true),
+        "bank-verified-v1.0");
+  }
+
+  public RenderedEmail renderClaimRejectedEmail(
+      String firstName,
+      String donationRef,
+      String utrNumber,
+      String reason) {
+    String subject = "Update on Your MECT Transfer Claim";
+    String content = """
+        <p style="margin:0 0 14px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          Hello %s,
+        </p>
+        <p style="margin:0 0 16px 0;color:#26332E;font-size:15px;line-height:1.65;">
+          We are writing to provide an update regarding your transfer verification claim for donation reference <strong>%s</strong> (UTR: %s).
+        </p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="margin:0 0 18px 0;background-color:#F3E4D2;border-left:4px solid #A45E44;">
+          <tr>
+            <td style="padding:14px 16px;font-size:13px;color:#26332E;line-height:1.6;">
+              <div><strong>Status:</strong> Verification Unsuccessful / Rejected</div>
+              <div><strong>Feedback / Next Steps:</strong> %s</div>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:0;color:#66736C;font-size:13px;line-height:1.6;">
+          If you believe this decision was made in error or have updated bank proof, please contact the Trust Secretariat at mect220@gmail.com or +91 94382 95223.
+        </p>
+        """
+        .formatted(
+            safeFirstName(firstName),
+            HtmlUtils.htmlEscape(donationRef),
+            HtmlUtils.htmlEscape(utrNumber),
+            HtmlUtils.htmlEscape(reason != null && !reason.isBlank() ? reason : "Transaction could not be matched against current bank credit records."));
+
+    return new RenderedEmail(
+        subject,
+        wrapLayout("Transfer Claim Update", "Reconciliation Notice", content, true),
+        "claim-rejected-v1.0");
   }
 
   private String safeFirstName(String fullName) {

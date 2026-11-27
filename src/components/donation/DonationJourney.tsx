@@ -31,7 +31,14 @@ import { Card } from "@/components/ui/Card";
 import { MECT_ORG } from "@/config/org";
 import { ORG } from "@content/org";
 import { usePortalAuth } from "@/context/PortalAuthContext";
-import { requestPortalOtp, verifyPortalOtp, PortalAuthResponse } from "@/lib/portal-api";
+import {
+  requestPortalOtp,
+  verifyPortalOtp,
+  PortalAuthResponse,
+  initiateCashfreeOrder,
+  verifyCashfreePayment,
+  fetchCashfreeOrderStatus
+} from "@/lib/portal-api";
 import { ProgressiveDonorAuth } from "@/components/auth/ProgressiveDonorAuth";
 
 export interface DonationProgramme {
@@ -95,7 +102,7 @@ type JourneyStep = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export function DonationJourney() {
   const searchParams = useSearchParams();
-  const { isAuthenticated, session } = usePortalAuth();
+  const { isAuthenticated, session, token } = usePortalAuth();
 
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -129,16 +136,9 @@ export function DonationJourney() {
   const [amountError, setAmountError] = useState<string | null>(null);
 
   // Step 6: Payment Method & Gateway State
-  const [gatewayConfig] = useState<{
-    himActive: boolean;
-    cashfreeActive: boolean;
-    sbiManualActive: boolean;
-  }>({
-    himActive: false,
-    cashfreeActive: false,
-    sbiManualActive: true
-  });
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"HIM" | "CASHFREE" | "SBI_MANUAL" | null>(null);
+  const [paymentOption, setPaymentOption] = useState<"CASHFREE" | "DIRECT_BANK_UPI">("DIRECT_BANK_UPI");
+  const [directTransferTab, setDirectTransferTab] = useState<"BANK" | "UPI">("BANK");
+  const [cashfreeLoading, setCashfreeLoading] = useState<boolean>(false);
   const [utrReference, setUtrReference] = useState<string>("");
   const [transferDate, setTransferDate] = useState<string>(new Date().toISOString().split("T")[0]);
   const [paymentSubmitting, setPaymentSubmitting] = useState<boolean>(false);
@@ -153,9 +153,35 @@ export function DonationJourney() {
     programmeName: string;
     donorName: string;
     donorEmail: string;
+    receiptNumber?: string | null;
   } | null>(null);
 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  // Handle return redirect from Cashfree (order_id query param)
+  const returnOrderId = searchParams.get("order_id");
+  React.useEffect(() => {
+    if (!returnOrderId) return;
+    verifyCashfreePayment(returnOrderId)
+      .then((res) => {
+        setConfirmationData({
+          reference: res.donationReference || returnOrderId,
+          status: res.status === "SUCCESSFUL" ? "SUCCESS" : "PENDING_VERIFICATION",
+          message: res.status === "SUCCESSFUL"
+            ? "Your contribution has been settled and verified successfully. Your official computer-signed 80G receipt has been dispatched to your email."
+            : "Your transaction has been recorded and is currently in verification.",
+          amount: res.amount || 0,
+          programmeName: res.programmeName || "General Fund",
+          donorName: res.donorName || donorName || "Supporter",
+          donorEmail: res.donorEmail || donorEmail || "",
+          receiptNumber: res.receiptNumber,
+        });
+        setCurrentStep(7);
+      })
+      .catch((err) => {
+        setPaymentError(err instanceof Error ? err.message : "Unable to verify return payment order.");
+      });
+  }, [returnOrderId, donorName, donorEmail]);
 
   const activeProgramme =
     VERIFIED_DONATION_PROGRAMMES.find((p) => p.code === selectedProgrammeCode) ||
@@ -217,40 +243,93 @@ export function DonationJourney() {
   };
 
   const handleReviewContinue = () => {
-    // Select default active method
-    if (gatewayConfig.himActive) {
-      setSelectedPaymentMethod("HIM");
-    } else if (gatewayConfig.cashfreeActive) {
-      setSelectedPaymentMethod("CASHFREE");
-    } else {
-      setSelectedPaymentMethod("SBI_MANUAL");
-    }
     setCurrentStep(6); // Continue to Payment
+  };
+
+  const handleCashfreeCheckout = async () => {
+    setPaymentError(null);
+    setCashfreeLoading(true);
+    try {
+      const order = await initiateCashfreeOrder(
+        {
+          programmeCode: activeProgramme.code,
+          amount: effectiveAmount,
+          donorName: donorName.trim(),
+          donorEmail: donorEmail.trim(),
+          donorPhone: donorPhone.trim(),
+          donorAddress: donorAddress.trim() || undefined,
+          donorPan: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
+          paymentMethod: "GATEWAY_CHECKOUT",
+          anonymous: false,
+          communicationConsent,
+          whatsappConsent,
+        },
+        token
+      );
+
+      // Dynamically load Cashfree JS SDK v3 if not already present
+      const loadCashfreeSdk = (): Promise<any> => {
+        return new Promise((resolve, reject) => {
+          if ((window as any).Cashfree) {
+            resolve((window as any).Cashfree);
+            return;
+          }
+          const existingScript = document.getElementById("cashfree-js-sdk");
+          if (existingScript) {
+            existingScript.addEventListener("load", () => resolve((window as any).Cashfree));
+            existingScript.addEventListener("error", () => reject(new Error("Failed to load Cashfree SDK")));
+            return;
+          }
+          const script = document.createElement("script");
+          script.id = "cashfree-js-sdk";
+          script.src = "https://sdk.cashfree.com/js/v3/cashfree.js";
+          script.async = true;
+          script.onload = () => resolve((window as any).Cashfree);
+          script.onerror = () => reject(new Error("Unable to connect to Cashfree payment gateway servers."));
+          document.body.appendChild(script);
+        });
+      };
+
+      const CashfreeSdk = await loadCashfreeSdk();
+      const mode = order.checkoutEnvironment === "production" ? "production" : "sandbox";
+      const cashfreeInstance = CashfreeSdk({ mode });
+      await cashfreeInstance.checkout({
+        paymentSessionId: order.paymentSessionId,
+        redirectTarget: "_self",
+      });
+    } catch (err: unknown) {
+      setPaymentError(err instanceof Error ? err.message : "Unable to initiate online payment session.");
+    } finally {
+      setCashfreeLoading(false);
+    }
   };
 
   const handlePaymentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setPaymentError(null);
 
-    if (selectedPaymentMethod === "SBI_MANUAL") {
-      if (!utrReference.trim() || utrReference.trim().length < 8) {
-        setPaymentError("Please enter your 8–40 character transaction UTR reference number.");
-        return;
-      }
+    if (!utrReference.trim() || utrReference.trim().length < 8) {
+      setPaymentError("Please enter your 8–40 character transaction UTR reference number.");
+      return;
     }
 
     setPaymentSubmitting(true);
     try {
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch("/api/donations/claim", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           donorPhone: donorPhone.trim(),
           donorPan: donorPan.trim() ? donorPan.trim().toUpperCase() : undefined,
           amount: effectiveAmount,
-          utrReference: utrReference.trim().toUpperCase() || "GATEWAY-INITIATED",
+          utrReference: utrReference.trim().toUpperCase(),
           programmeCode: activeProgramme.code,
           transferDate,
           notes: donorAddress.trim(),
@@ -888,23 +967,23 @@ export function DonationJourney() {
         </Card>
       )}
 
-      {/* STEP 6: PAYMENT METHODS (STRICT VISIBILITY POLICY) */}
+      {/* STEP 6: PAYMENT METHOD SELECTION */}
       {currentStep === 6 && (
         <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
           <div className="border-b border-sand/30 pb-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 6 of 6 • Payment Execution
+                Step 6 of 6 • Payment Method
               </span>
-              <span className="font-mono font-bold text-forest text-sm">
+              <span className="font-mono font-bold text-forest text-base">
                 ₹{effectiveAmount.toLocaleString("en-IN")}
               </span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest mt-1">
-              Select Active Payment Channel
+              Choose Payment Method
             </h2>
             <p className="text-xs sm:text-sm text-ink-muted mt-1 leading-relaxed">
-              Only authorized and verified active payment remittance methods are displayed per Trust policy.
+              Select your preferred method to complete your voluntary contribution of ₹{effectiveAmount.toLocaleString("en-IN")} to {activeProgramme.name}.
             </p>
           </div>
 
@@ -915,30 +994,204 @@ export function DonationJourney() {
             </div>
           )}
 
-          {/* ACTIVE METHOD SELECTION */}
-          <div className="space-y-4">
-            {/* If neither HIM nor Cashfree is active, display professional institutional remittance */}
-            {!gatewayConfig.himActive && !gatewayConfig.cashfreeActive && (
-              <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 space-y-4">
+          {/* TWO PRIMARY PAYMENT OPTIONS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* OPTION 1: ONLINE CASHFREE PAYMENT */}
+            <div
+              onClick={() => setPaymentOption("CASHFREE")}
+              className={`p-5 rounded-xl border-2 transition-all cursor-pointer flex flex-col justify-between space-y-3 ${
+                paymentOption === "CASHFREE"
+                  ? "border-forest bg-forest/5 shadow-xs"
+                  : "border-sand/40 bg-white hover:border-sand/70 hover:bg-sand/5"
+              }`}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Badge variant={paymentOption === "CASHFREE" ? "forest" : "neutral"} size="sm">
+                      Instant 80G Receipt
+                    </Badge>
+                  </div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-forest flex items-center gap-2">
+                    <CreditCard className="w-4 h-4 text-forest" />
+                    <span>Pay Online (Cashfree)</span>
+                  </h3>
+                </div>
+                <input
+                  type="radio"
+                  name="paymentOption"
+                  value="CASHFREE"
+                  checked={paymentOption === "CASHFREE"}
+                  onChange={() => setPaymentOption("CASHFREE")}
+                  className="w-4 h-4 text-forest focus:ring-forest mt-1"
+                />
+              </div>
+              <p className="text-xs text-ink-muted leading-relaxed">
+                Cards (Credit/Debit), Net Banking across all Indian banks, and instant Gateway UPI. Instant automated reconciliation.
+              </p>
+              <div className="pt-2 border-t border-sand/30 flex items-center gap-3 text-[11px] text-ink-muted">
+                <span className="flex items-center gap-1 font-semibold text-forest">
+                  <Lock className="w-3 h-3 text-forest" />
+                  PCI-DSS Level 1
+                </span>
+                <span>•</span>
+                <span>RBI Regulated</span>
+              </div>
+            </div>
+
+            {/* OPTION 2: DIRECT BANK / UPI TRANSFER */}
+            <div
+              onClick={() => setPaymentOption("DIRECT_BANK_UPI")}
+              className={`p-5 rounded-xl border-2 transition-all cursor-pointer flex flex-col justify-between space-y-3 ${
+                paymentOption === "DIRECT_BANK_UPI"
+                  ? "border-forest bg-forest/5 shadow-xs"
+                  : "border-sand/40 bg-white hover:border-sand/70 hover:bg-sand/5"
+              }`}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Badge variant={paymentOption === "DIRECT_BANK_UPI" ? "forest" : "neutral"} size="sm">
+                      Zero Surcharge
+                    </Badge>
+                  </div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-forest flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-forest" />
+                    <span>Direct Bank &amp; UPI Transfer</span>
+                  </h3>
+                </div>
+                <input
+                  type="radio"
+                  name="paymentOption"
+                  value="DIRECT_BANK_UPI"
+                  checked={paymentOption === "DIRECT_BANK_UPI"}
+                  onChange={() => setPaymentOption("DIRECT_BANK_UPI")}
+                  className="w-4 h-4 text-forest focus:ring-forest mt-1"
+                />
+              </div>
+              <p className="text-xs text-ink-muted leading-relaxed">
+                Direct State Bank of India account transfer (NEFT/IMPS/RTGS) or direct UPI transfer to 86971610172@sbi.
+              </p>
+              <div className="pt-2 border-t border-sand/30 flex items-center gap-3 text-[11px] text-ink-muted">
+                <span className="flex items-center gap-1 font-semibold text-forest">
+                  <ShieldCheck className="w-3 h-3 text-forest" />
+                  Direct Trust Account
+                </span>
+                <span>•</span>
+                <span>Manual Verification</span>
+              </div>
+            </div>
+          </div>
+
+          {/* ACTIVE METHOD DETAILS */}
+          {paymentOption === "CASHFREE" && (
+            <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 space-y-4">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2 text-forest">
+                  <CreditCard className="w-5 h-5 text-forest" />
+                  <h3 className="font-serif font-bold text-base sm:text-lg">
+                    Cashfree Gateway Checkout
+                  </h3>
+                </div>
+                <span className="text-xs text-ink-muted">
+                  Secured by 256-bit encryption
+                </span>
+              </div>
+              <p className="text-xs text-ink leading-relaxed">
+                You will be guided through Cashfree&apos;s secure checkout window to complete your voluntary contribution of <strong>₹{effectiveAmount.toLocaleString("en-IN")}</strong>. Supports all major debit/credit cards, net banking, and UPI apps.
+              </p>
+
+              <div className="p-4 bg-white rounded-lg border border-sand/30 space-y-2 text-xs">
+                <div className="flex items-center justify-between pb-2 border-b border-sand/20">
+                  <span className="text-ink-muted font-semibold">Payable Amount:</span>
+                  <span className="font-mono font-bold text-forest text-base">₹{effectiveAmount.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex items-center justify-between pb-2 border-b border-sand/20">
+                  <span className="text-ink-muted font-semibold">Allocated Programme:</span>
+                  <span className="font-bold text-forest">{activeProgramme.name}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-ink-muted font-semibold">Official Receipt:</span>
+                  <span className="text-forest font-semibold">Instant 80G PDF via Email</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-2">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="md"
+                  onClick={() => setCurrentStep(5)}
+                  className="gap-1.5 text-xs text-ink-muted"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Back to Review</span>
+                </Button>
+                <Button
+                  type="button"
+                  variant="primary"
+                  size="lg"
+                  disabled={cashfreeLoading}
+                  onClick={handleCashfreeCheckout}
+                  className="gap-2 font-bold px-6 shadow-sm"
+                >
+                  {cashfreeLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
+                  <span>Proceed to Cashfree Checkout</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {paymentOption === "DIRECT_BANK_UPI" && (
+            <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 space-y-4">
+              <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2 text-forest">
                   <Building2 className="w-5 h-5 text-forest" />
                   <h3 className="font-serif font-bold text-base sm:text-lg">
-                    Approved Institutional Direct Bank &amp; UPI Remittance
+                    Direct State Bank of India &amp; UPI Transfer
                   </h3>
                 </div>
-                <p className="text-xs text-ink leading-relaxed">
-                  Per the Trust&apos;s current governance policy, contributions are received directly into our primary <strong>State Bank of India</strong> operating account without commercial gateway deductions.
-                </p>
+                {/* SUB-TABS: Bank Transfer vs UPI */}
+                <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-sand/40">
+                  <button
+                    type="button"
+                    onClick={() => setDirectTransferTab("BANK")}
+                    className={`px-3 py-1 rounded-md text-xs font-bold transition-colors ${
+                      directTransferTab === "BANK"
+                        ? "bg-forest text-sand"
+                        : "text-ink-muted hover:text-forest"
+                    }`}
+                  >
+                    Bank Transfer (NEFT/RTGS)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDirectTransferTab("UPI")}
+                    className={`px-3 py-1 rounded-md text-xs font-bold transition-colors ${
+                      directTransferTab === "UPI"
+                        ? "bg-forest text-sand"
+                        : "text-ink-muted hover:text-forest"
+                    }`}
+                  >
+                    UPI Transfer &amp; QR
+                  </button>
+                </div>
+              </div>
 
-                {/* Bank Coordinates Table */}
+              {/* TAB A: BANK TRANSFER COORDINATES */}
+              {directTransferTab === "BANK" && (
                 <div className="bg-white rounded-lg border border-sand/30 p-4 space-y-3">
+                  <p className="text-xs text-ink-muted leading-relaxed">
+                    Transfer from your net-banking portal or bank branch using NEFT, IMPS, or RTGS directly to the Trust&apos;s verified State Bank of India operating account:
+                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-sans">
                     <div>
                       <span className="text-ink-muted block text-[10px] uppercase font-bold">Bank Name:</span>
                       <span className="font-bold text-forest">{MECT_ORG.bank.bankName}</span>
                     </div>
                     <div>
-                      <span className="text-ink-muted block text-[10px] uppercase font-bold">Account Name:</span>
+                      <span className="text-ink-muted block text-[10px] uppercase font-bold">Beneficiary / Account Name:</span>
                       <span className="font-bold text-forest">{MECT_ORG.bank.accountHolder}</span>
                     </div>
                     <div>
@@ -974,39 +1227,65 @@ export function DonationJourney() {
                       <span className="text-ink">{MECT_ORG.bank.branch}</span>
                     </div>
                     <div>
-                      <span className="text-ink-muted block text-[10px] uppercase font-bold">UPI ID (VPA):</span>
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-forest text-sm">{MECT_ORG.bank.upiId}</span>
-                        <button
-                          type="button"
-                          onClick={() => copyToClipboard("upi", MECT_ORG.bank.upiId)}
-                          className="text-[10px] text-terracotta font-semibold hover:underline flex items-center gap-1"
+                      <span className="text-ink-muted block text-[10px] uppercase font-bold">Account Type:</span>
+                      <span className="text-ink font-semibold">Current Account</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB B: DIRECT UPI & QR */}
+              {directTransferTab === "UPI" && (
+                <div className="bg-white rounded-lg border border-sand/30 p-4 space-y-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-5">
+                    {/* QR Code Container */}
+                    <div className="relative w-36 h-36 border-2 border-sand/40 rounded-xl overflow-hidden p-2 bg-white flex items-center justify-center shrink-0 shadow-xs">
+                      <Image
+                        src="/images/mect-sbi-upi-qr.png"
+                        alt="MECT State Bank of India Verified UPI QR Code"
+                        width={130}
+                        height={130}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="space-y-2 text-xs flex-1">
+                      <div>
+                        <span className="text-ink-muted block text-[10px] uppercase font-bold">Verified UPI VPA:</span>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="font-mono font-bold text-forest text-base">{MECT_ORG.bank.upiId}</span>
+                          <button
+                            type="button"
+                            onClick={() => copyToClipboard("upi", MECT_ORG.bank.upiId)}
+                            className="text-[10px] text-terracotta font-semibold hover:underline flex items-center gap-1"
+                          >
+                            {copiedKey === "upi" ? <Check className="w-3 h-3 text-forest" /> : <Copy className="w-3 h-3" />}
+                            <span>{copiedKey === "upi" ? "Copied" : "Copy"}</span>
+                          </button>
+                        </div>
+                      </div>
+                      <p className="text-ink-muted leading-relaxed text-[11px]">
+                        Scan this QR with any UPI app (Google Pay, PhonePe, Paytm, BHIM, Cred, Navi) or pay directly to the VPA above.
+                      </p>
+                      <div className="pt-1">
+                        <a
+                          href={`upi://pay?pa=${MECT_ORG.bank.upiId}&pn=${encodeURIComponent(MECT_ORG.bank.accountHolder)}&am=${effectiveAmount}&cu=INR&tn=${encodeURIComponent('MECT Contribution')}`}
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-forest text-sand text-xs font-semibold hover:bg-forest-deep transition-colors shadow-xs"
                         >
-                          {copiedKey === "upi" ? <Check className="w-3 h-3 text-forest" /> : <Copy className="w-3 h-3" />}
-                          <span>{copiedKey === "upi" ? "Copied" : "Copy"}</span>
-                        </button>
+                          <QrCode className="w-3.5 h-3.5" />
+                          <span>Open UPI App (₹{effectiveAmount.toLocaleString("en-IN")})</span>
+                        </a>
                       </div>
                     </div>
                   </div>
-
-                  <div className="pt-2 border-t border-sand/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-                    <span className="text-ink-muted">Transfer using any UPI app (GPay, PhonePe, Paytm, BHIM):</span>
-                    <a
-                      href={`upi://pay?pa=${MECT_ORG.bank.upiId}&pn=${encodeURIComponent(MECT_ORG.bank.accountHolder)}&am=${effectiveAmount}&cu=INR`}
-                      className="px-4 py-1.5 rounded-md bg-forest text-sand font-semibold hover:bg-forest-deep transition-colors whitespace-nowrap shadow-xs flex items-center gap-1.5"
-                    >
-                      <QrCode className="w-3.5 h-3.5" />
-                      <span>Open UPI App (₹{effectiveAmount})</span>
-                    </a>
-                  </div>
                 </div>
+              )}
 
-                {/* Form to Record the Completed Transfer UTR */}
-                <form onSubmit={handlePaymentSubmit} className="pt-3 border-t border-sand/30 space-y-4">
+              {/* SHARED UTR SUBMISSION FORM */}
+              <form onSubmit={handlePaymentSubmit} className="pt-3 border-t border-sand/30 space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label htmlFor="utr-reference" className="text-xs font-bold text-forest flex items-center justify-between">
-                      <span>Enter Transfer UTR / Transaction Reference Number <span className="text-terracotta">*</span></span>
-                      <span className="text-[10px] text-ink-muted font-normal">8 to 40 characters</span>
+                      <span>Enter Transfer UTR / Transaction Reference <span className="text-terracotta">*</span></span>
                     </label>
                     <Input
                       id="utr-reference"
@@ -1018,37 +1297,51 @@ export function DonationJourney() {
                       className="font-mono tracking-wider uppercase text-sm font-bold"
                     />
                     <p className="text-[11px] text-ink-muted">
-                      Located in your banking receipt or UPI app transaction confirmation.
+                      8 to 40 characters from your bank receipt or UPI confirmation screen.
                     </p>
                   </div>
-
-                  <div className="flex items-center justify-between pt-2">
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="md"
-                      onClick={() => setCurrentStep(5)}
-                      className="gap-1.5 text-xs text-ink-muted"
-                    >
-                      <ArrowLeft className="w-3.5 h-3.5" />
-                      <span>Back to Review</span>
-                    </Button>
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      disabled={paymentSubmitting}
-                      className="gap-2 font-bold px-6"
-                    >
-                      {paymentSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                      <span>Submit Remittance Claim</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
+                  <div className="space-y-1.5">
+                    <label htmlFor="transfer-date" className="text-xs font-bold text-forest">
+                      Date of Transfer <span className="text-terracotta">*</span>
+                    </label>
+                    <Input
+                      id="transfer-date"
+                      type="date"
+                      value={transferDate}
+                      max={new Date().toISOString().split("T")[0]}
+                      onChange={(e) => setTransferDate(e.target.value)}
+                      required
+                      className="text-xs font-mono"
+                    />
                   </div>
-                </form>
-              </div>
-            )}
-          </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="md"
+                    onClick={() => setCurrentStep(5)}
+                    className="gap-1.5 text-xs text-ink-muted"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Back to Review</span>
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    disabled={paymentSubmitting}
+                    className="gap-2 font-bold px-6 shadow-sm"
+                  >
+                    {paymentSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                    <span>Submit Remittance Claim</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </form>
+            </div>
+          )}
         </Card>
       )}
 
@@ -1061,13 +1354,15 @@ export function DonationJourney() {
 
           <div className="space-y-2 max-w-lg mx-auto">
             <span className="text-xs font-mono uppercase tracking-wider text-forest font-bold block">
-              Contribution Recorded Successfully
+              {confirmationData.status === "SUCCESS"
+                ? "Payment Settled & Verified"
+                : "Contribution Recorded Successfully"}
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
               Thank You for Your Generosity
             </h2>
             <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              Your voluntary contribution has been registered in the institutional ledger. Our accounts team will reconcile the transaction against the official State Bank of India ledger.
+              {confirmationData.message}
             </p>
           </div>
 
@@ -1076,6 +1371,12 @@ export function DonationJourney() {
               <span className="text-xs text-ink-muted font-bold">Transaction Reference:</span>
               <span className="font-mono font-bold text-forest text-sm">{confirmationData.reference}</span>
             </div>
+            {confirmationData.receiptNumber && (
+              <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                <span className="text-xs text-ink-muted font-bold">Official 80G Receipt:</span>
+                <span className="font-mono font-bold text-terracotta-dark text-sm">{confirmationData.receiptNumber}</span>
+              </div>
+            )}
             <div className="flex items-center justify-between pb-2 border-b border-sand/30">
               <span className="text-xs text-ink-muted font-bold">Allocated Programme:</span>
               <span className="text-xs font-bold text-forest">{confirmationData.programmeName}</span>
@@ -1086,7 +1387,9 @@ export function DonationJourney() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-ink-muted font-bold">Statutory Status:</span>
-              <Badge variant="forest" size="sm">Pending Bank Reconciliation</Badge>
+              <Badge variant={confirmationData.status === "SUCCESS" ? "forest" : "gold"} size="sm">
+                {confirmationData.status === "SUCCESS" ? "Verified & Settled" : "Pending Bank Reconciliation"}
+              </Badge>
             </div>
           </div>
 
@@ -1096,7 +1399,9 @@ export function DonationJourney() {
               <span>Next Steps for Statutory Receipt:</span>
             </div>
             <p className="leading-relaxed">
-              Upon physical ledger reconciliation, a computer-signed 80G tax exemption receipt will be delivered to <strong>{confirmationData.donorEmail}</strong>.
+              {confirmationData.status === "SUCCESS"
+                ? `An official computer-signed 80G tax exemption receipt has been generated and dispatched to ${confirmationData.donorEmail}. You can also access your receipts from your supporter portal dashboard.`
+                : `Upon physical ledger reconciliation against official State Bank of India records, a computer-signed 80G tax exemption receipt will be delivered to ${confirmationData.donorEmail}.`}
             </p>
           </div>
 
@@ -1113,6 +1418,14 @@ export function DonationJourney() {
             >
               Make Another Donation
             </Button>
+            {isAuthenticated && (
+              <a
+                href="/portal/donations"
+                className="px-4 py-2 rounded-md bg-forest text-sand text-xs font-bold hover:bg-forest-deep transition-colors"
+              >
+                View in Donor Portal
+              </a>
+            )}
             <a
               href="/statutory-disclosures"
               className="text-xs font-bold text-forest underline hover:text-terracotta transition-colors"

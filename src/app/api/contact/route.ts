@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      const backendRes = await fetch(`${backendUrl}/public/inquiries`, {
+      const backendRes = await fetch(`${backendUrl}/api/v1/public/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         signal: controller.signal,

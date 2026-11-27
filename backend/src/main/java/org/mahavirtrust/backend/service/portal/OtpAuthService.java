@@ -419,6 +419,22 @@ public class OtpAuthService {
                     null,
                     Map.of("userUuid", user.getUserUuid())
             );
+        } else if (!isNewUser && user.getPrimaryEmail() != null) {
+            outboxService.enqueueEmail(
+                    "LOGIN_NOTICE:" + user.getId() + ":" + System.currentTimeMillis(),
+                    "LOGIN_NOTICE",
+                    user.getId(),
+                    null,
+                    user.getPrimaryEmail(),
+                    false,
+                    emailRenderer.renderLoginNotificationEmail(
+                            fullName != null ? fullName : "Supporter",
+                            clientIp,
+                            java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(java.time.ZonedDateTime.now())
+                    ),
+                    null,
+                    Map.of("userUuid", user.getUserUuid())
+            );
         }
 
         return PortalAuthResponse.of(

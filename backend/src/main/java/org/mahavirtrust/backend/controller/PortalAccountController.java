@@ -45,6 +45,12 @@ public class PortalAccountController {
         return ResponseEntity.ok(accountService.getDashboardAndAccount(userId));
     }
 
+    @GetMapping("/me/profile")
+    public ResponseEntity<Map<String, Object>> getProfile(Authentication authentication) {
+        Long userId = requirePortalUserId(authentication);
+        return ResponseEntity.ok(accountService.getProfile(userId));
+    }
+
     @PutMapping("/me/profile")
     public ResponseEntity<Map<String, Object>> updateProfile(
             @Valid @RequestBody UpdatePortalProfileRequest request,

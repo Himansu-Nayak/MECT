@@ -110,14 +110,22 @@ export async function POST(request: NextRequest) {
     const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8081";
     let finalClaimRef: string | null = null;
     let backendSuccess = false;
+    let backendErrorMessage: string | null = null;
+    let backendStatus: number = 503;
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-      const backendRes = await fetch(`${backendUrl}/api/donations/sbi/submit-utr`, {
+      const authHeader = request.headers.get("authorization");
+      const backendHeaders: Record<string, string> = { "Content-Type": "application/json" };
+      if (authHeader) {
+        backendHeaders["Authorization"] = authHeader;
+      }
+
+      const backendRes = await fetch(`${backendUrl}/api/v1/public/donations/sbi/submit-utr`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: backendHeaders,
         signal: controller.signal,
         body: JSON.stringify({
           programmeCode: programmeCode || "GENERAL",
@@ -128,19 +136,20 @@ export async function POST(request: NextRequest) {
           donorPan: donorPan ? donorPan.trim().toUpperCase() : undefined,
           utrReference: utrReference.trim().toUpperCase(),
           transferDate: transferDate || new Date().toISOString().split("T")[0],
-          paymentModeNote: "SBI Transfer / UPI Manual Claim",
+          paymentModeNote: "Direct Bank Transfer / UPI Manual Claim",
           proofSummary: notes ? notes.trim() : "Submitted via mect.org.in/donate claim desk",
           whatsappConsent: Boolean(whatsappConsent),
         }),
       });
       clearTimeout(timeoutId);
 
-      if (backendRes.ok) {
-        const backendData = await backendRes.json();
-        if (backendData?.claimReference) {
-          finalClaimRef = backendData.claimReference;
-          backendSuccess = true;
-        }
+      const backendData = await backendRes.json().catch(() => null);
+      if (backendRes.ok && backendData?.claimReference) {
+        finalClaimRef = backendData.claimReference;
+        backendSuccess = true;
+      } else if (backendData && (backendData.message || backendData.error)) {
+        backendErrorMessage = backendData.message || backendData.error;
+        backendStatus = backendRes.status;
       }
     } catch {
       // Backend offline, timed out, or connection refused
@@ -153,6 +162,13 @@ export async function POST(request: NextRequest) {
         status: "UNVERIFIED",
         message: `Claim received. Reference: ${finalClaimRef}. The Trust will check your transfer against its bank records before issuing a receipt.`,
       });
+    }
+
+    if (backendErrorMessage) {
+      return NextResponse.json(
+        { error: backendErrorMessage },
+        { status: backendStatus }
+      );
     }
 
     // Local dev / test fallback: honoured ONLY when ALLOW_DEV_FALLBACK === "true"

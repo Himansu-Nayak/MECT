@@ -61,6 +61,8 @@ export interface PortalDonationHistoryItem {
   providerPaymentId?: string | null;
   receiptNumber?: string | null;
   receiptAvailable: boolean;
+  donorName?: string | null;
+  donorEmail?: string | null;
 }
 
 export interface PortalDashboardData {
@@ -168,6 +170,8 @@ export interface DonationStatusResponse {
   confirmedAt?: string | null;
   receiptNumber?: string | null;
   receiptAvailable: boolean;
+  donorName?: string | null;
+  donorEmail?: string | null;
 }
 
 export interface UpdatePortalProfilePayload {
@@ -474,6 +478,60 @@ export async function initiateDonation(
 export async function fetchDonationStatus(donationReference: string): Promise<DonationStatusResponse> {
   const res = await fetch(`${API_BASE_URL}/public/donations/${encodeURIComponent(donationReference)}/status`);
   if (!res.ok) throw new Error("Unable to fetch donation status.");
+  return res.json();
+}
+
+export interface InitiateCashfreeOrderPayload {
+  programmeCode: string;
+  amount: number;
+  donorName: string;
+  donorEmail: string;
+  donorPhone: string;
+  donorAddress?: string;
+  donorPan?: string;
+  paymentMethod?: "GATEWAY_CHECKOUT" | "UPI_QR";
+  anonymous?: boolean;
+  communicationConsent?: boolean;
+  whatsappConsent?: boolean;
+}
+
+export interface InitiateCashfreeOrderResponse {
+  donationReference: string;
+  orderId: string;
+  paymentSessionId: string;
+  cfOrderId?: string;
+  checkoutEnvironment: string;
+  amount: number;
+  currency: string;
+  status: string;
+}
+
+export async function initiateCashfreeOrder(
+  payload: InitiateCashfreeOrderPayload,
+  token?: string | null
+): Promise<InitiateCashfreeOrderResponse> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  const res = await fetch(`${API_BASE_URL}/payments/cashfree/create-order`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      programmeCode: payload.programmeCode,
+      amount: payload.amount,
+      donorName: payload.donorName,
+      donorEmail: payload.donorEmail,
+      donorPhone: payload.donorPhone,
+      donorAddress: payload.donorAddress || undefined,
+      donorPan: payload.donorPan || undefined,
+      paymentMethod: payload.paymentMethod || "GATEWAY_CHECKOUT",
+      anonymous: Boolean(payload.anonymous),
+      communicationConsent: payload.communicationConsent ?? true,
+      whatsappConsent: Boolean(payload.whatsappConsent),
+    }),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res, "Unable to initiate online Cashfree payment."));
   return res.json();
 }
 

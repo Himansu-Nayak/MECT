@@ -160,7 +160,7 @@ export default function AdminDonorsManagementPage() {
       );
       await loadTabData();
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Failed to review SBI claim.");
+      setErrorMsg(err instanceof Error ? err.message : "Failed to review Bank / UPI claim.");
     } finally {
       setReviewingClaimRef(null);
     }
@@ -289,7 +289,7 @@ export default function AdminDonorsManagementPage() {
         {[
           { id: "DONORS" as const, label: "Donors & Supporters", icon: Users },
           { id: "DONATIONS" as const, label: "Donations & Reconciliation", icon: IndianRupee },
-          { id: "SBI_QUEUE" as const, label: "SBI UTR Verification Queue", icon: Landmark },
+          { id: "SBI_QUEUE" as const, label: "Bank & UPI Transfer Verification", icon: Landmark },
           { id: "OUTBOX" as const, label: "Notification Outbox", icon: MailCheck },
           { id: "PROGRAMMES" as const, label: "Programmes & Campaigns", icon: Layers },
         ].map((tab) => {
@@ -694,7 +694,7 @@ export default function AdminDonorsManagementPage() {
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-border-warm rounded-xs p-3">
             <div className="text-xs text-ink-sand">
-              Reconcile donor-submitted SBI UTRs against bank statement credits before issuing official receipts.
+              Reconcile donor-submitted Bank and UPI transfer UTRs against bank statement credits before issuing official receipts.
             </div>
             <select
               value={claimStatusFilter}
@@ -712,7 +712,7 @@ export default function AdminDonorsManagementPage() {
 
           {manualClaims.length === 0 ? (
             <Card padding="lg" className="bg-white border-border-warm text-center text-xs text-ink-sand py-10">
-              No manual SBI transfer claims match the selected filter.
+              No manual Bank or UPI transfer claims match the selected filter.
             </Card>
           ) : (
             <div className="space-y-3">
