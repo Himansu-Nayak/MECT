@@ -275,7 +275,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="pt-3 border-t border-border-warm text-[11px] text-ink bg-sand-light p-2.5 rounded-xs">
-                <span className="font-semibold text-forest">Trust Deed:</span> Doc No. {ORG.trustDeed.deedNumber} ({ORG.addresses.registered.city})
+                <span className="font-semibold text-forest">Institutional Status:</span> Registered Public Charitable Trust (Govt. of Odisha)
               </div>
             </Card>
           </div>
@@ -287,107 +287,69 @@ export default function ContactPage() {
         <Container size="default">
           <SectionHeader
             badge="Institutional Administration"
-            title="Institutional Governance & Operational Offices"
-            subtitle="Mahaveer Educational & Charitable Trust (MECT) conducts its registered charitable activities from Balangir with administrative liaison coordination in Bhubaneswar."
+            title="Institutional Headquarters & Secretariat"
+            subtitle="Mahaveer Educational & Charitable Trust (MECT) operates its primary office and administrative secretariat in Bhubaneswar, Odisha."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Office 1: Registered Office Balangir */}
-            <Card variant="elevated" className="p-8 space-y-4 border-t-4 border-t-terracotta">
-              <div className="flex items-start justify-between">
-                <div className="w-12 h-12 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark">
-                  <Building2 className="w-6 h-6 text-terracotta-dark" />
+          <div className="max-w-3xl mx-auto">
+            {/* Primary Office: Bhubaneswar Headquarters */}
+            <Card variant="elevated" className="p-8 sm:p-10 space-y-6 border-t-4 border-t-terracotta">
+              <div className="flex items-start justify-between flex-wrap gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xs bg-cream flex items-center justify-center text-terracotta-dark">
+                    <Building2 className="w-6 h-6 text-terracotta-dark" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-terracotta-dark">
+                      MECT Headquarters &amp; Secretariat
+                    </h3>
+                    <span className="text-xs text-ink-sand block mt-0.5">
+                      Official Public Charitable Trust Headquarters &amp; State Coordination
+                    </span>
+                  </div>
                 </div>
-                <Badge variant="forest">Registered Office</Badge>
+                <Badge variant="forest">Official Office</Badge>
               </div>
 
-              <div>
-                <h3 className="font-serif text-xl font-bold text-terracotta-dark">
-                  Balangir Operational Headquarters
-                </h3>
-                <span className="text-xs text-ink-sand block mt-0.5">
-                  Registered Public Charitable Trust Secretariat &amp; Field Coordination
-                </span>
-              </div>
-
-              <div className="text-xs text-ink-sand space-y-3 pt-2">
-                <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-forest">Jurisdiction:</span>
-                  <span>Balangir, Western Odisha, India</span>
+              <div className="text-xs sm:text-sm text-ink-sand space-y-3 pt-2">
+                <div className="flex items-start gap-2.5">
+                  <span className="font-semibold text-forest shrink-0">Official Address:</span>
+                  <span className="text-forest font-medium">
+                    A1, 3rd Floor, Plot No. 387, Lewis Plaza, Lewis Road, BJB Nagar, Bhubaneswar, Odisha – 751014, India
+                  </span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-forest">Primary Channel:</span>
-                  <span>Official Inquiry Desk or Scheduled Appointment</span>
-                </div>
-                <div className="pt-1">
+                  <span className="font-semibold text-forest shrink-0">Primary Email:</span>
                   <a
-                    href={MECT_ORG.addresses.registered.googleMapsUrl}
+                    href="mailto:mectbbsr13@gmail.com"
+                    className="text-terracotta-dark font-mono font-semibold underline hover:text-forest"
+                  >
+                    mectbbsr13@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="font-semibold text-forest shrink-0">Working Hours:</span>
+                  <span>Monday – Saturday, 10:00 – 17:30 IST</span>
+                </div>
+                <div className="pt-2">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Plot+No.+387,+Lewis+Plaza,+Lewis+Road,+BJB+Nagar,+Bhubaneswar,+Odisha+751014"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-cream border border-border-warm rounded-xs text-xs font-semibold text-terracotta-dark hover:bg-sand/40 transition-colors shadow-xs"
                   >
-                    <span>View Balangir Location on Google Maps</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <span>View Location on Google Maps (Lewis Plaza, Bhubaneswar)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-3 rounded-xs space-y-1">
+              <div className="pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-4 rounded-xs space-y-1.5">
                 <div>
-                  <strong className="text-forest">Deed Jurisdiction:</strong> {ORG.trustDeed.subRegistrar} (Doc No. {ORG.trustDeed.deedNumber})
-                </div>
-                <div>
-                  <strong className="text-forest">Field Coverage:</strong> Remedial study centers, free education initiatives, and community relief across Balangir district.
-                </div>
-              </div>
-            </Card>
-
-            {/* Office 2: Administrative Office Bhubaneswar */}
-            <Card variant="elevated" className="p-8 space-y-4 border-t-4 border-t-terracotta">
-              <div className="flex items-start justify-between">
-                <div className="w-12 h-12 rounded-xs bg-sand-light flex items-center justify-center text-terracotta-dark">
-                  <Building2 className="w-6 h-6 text-terracotta-dark" />
-                </div>
-                <Badge variant="gold">Administrative Office</Badge>
-              </div>
-
-              <div>
-                <h3 className="font-serif text-xl font-bold text-terracotta-dark">
-                  Bhubaneswar Administrative Office
-                </h3>
-                <span className="text-xs text-ink-sand block mt-0.5">
-                  State Coordination &amp; Institutional Liaison Desk
-                </span>
-              </div>
-
-              <div className="text-xs text-ink-sand space-y-3 pt-2">
-                <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-forest">Location:</span>
-                  <span>Bhubaneswar, Khordha, Odisha, India</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-forest">In-Person Coordination:</span>
-                  <span>Available strictly by advance appointment for CSR &amp; academic partners</span>
-                </div>
-                <div className="pt-1">
-                  <a
-                    href={MECT_ORG.addresses.administrative.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-terracotta-dark hover:underline"
-                  >
-                    <span>View Bhubaneswar Office on Google Maps</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-border-warm text-xs text-ink bg-cream/70 p-3 rounded-xs space-y-1">
-                <div>
-                  <strong className="text-forest">Purpose:</strong> Corporate CSR partnerships, higher education institution liaison &amp; statutory compliance.
+                  <strong className="text-forest">Field Operations &amp; Outreach:</strong> Education study centers, women&apos;s vocational cohorts, safe water kiosks, and rural welfare initiatives across Odisha.
                 </div>
                 <div>
-                  <strong className="text-forest">Public Appointments:</strong> Scheduled through the official Secretariat Inquiry Form below.
+                  <strong className="text-forest">Public Appointments:</strong> Institutional, academic, and CSR partner meetings may be scheduled through the Secretariat Inquiry Desk below.
                 </div>
               </div>
             </Card>

@@ -231,7 +231,7 @@ export default function GovernancePage() {
             />
           </Reveal>
 
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <StaggerGroup className="max-w-3xl mx-auto">
             {/* Managing Trustee Card */}
             <StaggerItem>
               <Card
@@ -283,60 +283,6 @@ export default function GovernancePage() {
                     <span>Founder Custodian</span>
                   </span>
                   <span className="text-forest font-semibold">Honorary Service</span>
-                </div>
-              </Card>
-            </StaggerItem>
-
-            {/* Board Composition & Additional Trustees Card */}
-            <StaggerItem>
-              <Card
-                variant="elevated"
-                className="h-full p-7 sm:p-9 bg-white border-border-warm shadow-xs hover:border-terracotta/40 hover:shadow-md transition-all duration-300 space-y-6 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-border-warm">
-                    <Badge variant="neutral" size="sm">
-                      Board Composition
-                    </Badge>
-                    <span className="text-[11px] font-mono text-ink-secondary bg-sand/40 px-2.5 py-0.5 rounded-2xs font-semibold">
-                      Deed Clause 8(1)
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                    <div className="relative w-24 h-32 sm:w-28 sm:h-36 rounded-xs overflow-hidden border border-border-warm bg-forest shrink-0 shadow-xs group">
-                      <Image
-                        src="/images/hero/mect-trustees-campus-walk.webp"
-                        alt="MECT Trustees and community elders conducting field review at Puīntalā campus"
-                        fill
-                        sizes="(max-width: 640px) 96px, 112px"
-                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-                        Board of Trustees
-                      </h3>
-                      <p className="text-xs sm:text-sm text-terracotta-dark font-semibold font-sans">
-                        3 to 9 Honorary Trustees per Deed
-                      </p>
-                      <p className="text-[11px] font-mono text-ink-secondary">
-                        Collective Board Authority
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-ink-sand leading-relaxed font-sans pt-1">
-                    Under Clause 8(1) of the registered Trust Deed, the Board comprises not less than 3 and not more than 9 honorary trustees at any point of time. Trustees exercise collective oversight over charitable budgets, audit approvals, and statutory compliance. Formal updated biographical records and consented profiles for the full current roster are tracked under secretariat confirmation.
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-border-warm flex items-center justify-between text-xs text-ink-secondary font-mono">
-                  <span className="flex items-center gap-1.5">
-                    <Landmark className="w-3.5 h-3.5 text-forest" aria-hidden="true" />
-                    <span>Quorum: ≥ 2 or 1/3 of Board (Cl. 12)</span>
-                  </span>
-                  <span className="text-terracotta-dark font-semibold">Non-Remunerated</span>
                 </div>
               </Card>
             </StaggerItem>

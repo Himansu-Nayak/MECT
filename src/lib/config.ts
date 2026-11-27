@@ -279,11 +279,6 @@ export const TRUST_CONFIG = {
         },
       ],
     },
-    {
-      label: "Donate",
-      href: "/donate",
-      description: "Voluntary contributions via SBI bank transfer, UPI QR, and statutory 80G receipting.",
-    },
   ] as NavItem[],
 
   // Core Mission Pillars (Verified from 2021-2024 Audit Records)

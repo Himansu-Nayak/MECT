@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { m, useReducedMotion } from "motion/react";
+import { m, AnimatePresence, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ORG } from "@content/org";
@@ -20,20 +20,94 @@ import {
   MapPin,
   Sparkles,
   ArrowUpRight,
+  ChevronLeft,
+  Pause,
+  Play,
 } from "lucide-react";
 
+interface HeroGallerySlide {
+  src: string;
+  alt: string;
+  caption: string;
+  location: string;
+  catalogCode: string;
+}
+
+const HERO_GALLERY_SLIDES: HeroGallerySlide[] = [
+  {
+    src: "/images/hero/mect-classroom-study-circle.webp",
+    alt: "Rural secondary students participating in remedial education study circle",
+    caption: "Remedial Education Study Circle",
+    location: "Puīntalā, Odisha",
+    catalogCode: "EDU-2024-SC",
+  },
+  {
+    src: "/images/hero/mect-civic-pledge-classroom.webp",
+    alt: "Students taking civic pledge during rural education session",
+    caption: "Rural Student Leadership & Civic Pledge",
+    location: "Western Odisha",
+    catalogCode: "STU-2024-CP",
+  },
+  {
+    src: "/images/hero/mect-women-empowerment-seminar.webp",
+    alt: "Rural women participating in vocational tailoring and self-reliance seminar",
+    caption: "Women's Vocational Tailoring Cohort",
+    location: "Swavalamban Centre, Odisha",
+    catalogCode: "WMN-2024-TC",
+  },
+  {
+    src: "/images/hero/mect-clean-water-hygiene-demo.webp",
+    alt: "Jal Seva safe drinking water and hygiene demonstration",
+    caption: "Jal Seva Safe Drinking Water Outreach",
+    location: "Transit Shelters, Odisha",
+    catalogCode: "WTR-2024-JS",
+  },
+  {
+    src: "/images/hero/mect-community-field-outreach.webp",
+    alt: "Community elders and volunteers conducting village outreach and relief assessment",
+    caption: "Community Relief & Village Outreach",
+    location: "Rural Clusters, Odisha",
+    catalogCode: "COM-2024-FO",
+  },
+  {
+    src: "/images/hero/mect-public-health-awareness.webp",
+    alt: "Public health awareness and community wellness initiative",
+    caption: "Public Health Awareness & Relief",
+    location: "Community Centres, Odisha",
+    catalogCode: "HLT-2024-PH",
+  },
+];
+
 /**
- * MECT Phase 27 — Immersive Documentary Editorial Split Hero
+ * MECT Phase 27 & 18 — Immersive Documentary Editorial Split Hero
  *
  * Upgraded with:
+ * - Multi-photograph authentic MECT field documentary gallery with smooth crossfade
+ * - Accessible next/previous and dot navigation controls
  * - Breathing ambient radial lighting with subtle drift
- * - Masked documentary image reveal with gentle scale settling
  * - Dynamic telemetry count-up counters with tabular lining figures
- * - Tactile hover states with zero cumulative layout shift (CLS)
  * - Strict prefers-reduced-motion compatibility
  */
 export function CinematicHero() {
   const shouldReduceMotion = useReducedMotion();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % HERO_GALLERY_SLIDES.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + HERO_GALLERY_SLIDES.length) % HERO_GALLERY_SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    if (!isPlaying || shouldReduceMotion) return;
+    const interval = setInterval(nextSlide, 5500);
+    return () => clearInterval(interval);
+  }, [isPlaying, shouldReduceMotion, nextSlide]);
+
+  const activeSlide = HERO_GALLERY_SLIDES[currentIndex];
 
   return (
     <section
@@ -160,23 +234,44 @@ export function CinematicHero() {
           </div>
 
           {/* =========================================================================
-              RIGHT COLUMN: DOCUMENTARY FIELD PHOTOGRAPHY WITH CINEMATIC REVEAL (Col 8-12)
+              RIGHT COLUMN: DOCUMENTARY FIELD PHOTOGRAPHY GALLERY (Col 8-12)
               ========================================================================= */}
           <div className="order-2 lg:col-span-5 relative w-full">
-            <div className="relative group">
-              {/* Primary Documentary Frame with Overflow Mask and Soft Zoom Settle */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsPlaying(false)}
+              onMouseLeave={() => setIsPlaying(true)}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="MECT Field Activity Documentary Gallery"
+            >
+              {/* Primary Documentary Frame with Crossfade Transition */}
               <div
                 className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-[2px] overflow-hidden border border-white/20 shadow-2xl bg-[#16221D]"
               >
-                <Image
-                  src="/images/hero/mect-trustees-campus-walk.webp"
-                  alt="MECT trustees and community elders conducting field review at Puīntalā campus, Balangir"
-                  fill
-                  priority
-                  fetchPriority="high"
-                  sizes="(max-width: 640px) 360px, (max-width: 1024px) 500px, 600px"
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                />
+                <AnimatePresence mode="wait">
+                  <m.div
+                    key={activeSlide.src}
+                    initial={shouldReduceMotion ? false : { opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.99 }}
+                    transition={{
+                      duration: shouldReduceMotion ? 0 : 0.45,
+                      ease: MOTION_EASING.institutional,
+                    }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={activeSlide.src}
+                      alt={activeSlide.alt}
+                      fill
+                      priority={currentIndex === 0}
+                      sizes="(max-width: 640px) 360px, (max-width: 1024px) 500px, 600px"
+                      className="object-cover object-center"
+                    />
+                  </m.div>
+                </AnimatePresence>
+
                 {/* Subtle vignette gradient */}
                 <div
                   aria-hidden="true"
@@ -184,14 +279,60 @@ export function CinematicHero() {
                 />
 
                 {/* Archival Catalog Metadata Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
                   <div className="inline-flex items-center gap-1.5 rounded-[2px] bg-[#0D1512]/92 border border-white/15 px-2.5 py-1 text-[11px] text-cream font-sans backdrop-blur-sm">
                     <MapPin className="w-3.5 h-3.5 text-[#C4924A] shrink-0" aria-hidden="true" />
-                    <span>Puīntalā Campus • Balangir, Odisha</span>
+                    <span>{activeSlide.caption} • {activeSlide.location}</span>
                   </div>
-                  <span className="text-[10px] text-[#C4924A] uppercase tracking-wider font-mono">
-                    DOC-2024-FL
+                  <span className="text-[10px] text-[#C4924A] uppercase tracking-wider font-mono bg-[#0D1512]/90 px-1.5 py-0.5 rounded-2xs border border-white/10">
+                    {activeSlide.catalogCode}
                   </span>
+                </div>
+
+                {/* Manual Navigation Controls (Left/Right Chevrons & Play/Pause) */}
+                <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20">
+                  <button
+                    type="button"
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                  >
+                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    aria-label="Previous photograph"
+                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    aria-label="Next photograph"
+                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Dot Pagination Bar */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 z-20">
+                  {HERO_GALLERY_SLIDES.map((slide, idx) => (
+                    <button
+                      key={slide.catalogCode}
+                      type="button"
+                      onClick={() => setCurrentIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}: ${slide.caption}`}
+                      aria-current={currentIndex === idx ? "true" : undefined}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        currentIndex === idx
+                          ? "w-6 bg-[#C4924A]"
+                          : "w-2 bg-white/40 hover:bg-white/70"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 

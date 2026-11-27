@@ -89,8 +89,25 @@ export function Footer() {
             </Link>
 
             <p className="text-xs text-cream/90 leading-relaxed font-sans">
-              An irrevocable public charitable trust established under registered deed in Odisha. Dedicated to grassroots education, women&apos;s livelihoods, community healthcare, and cultural preservation.
+              An irrevocable public charitable trust established in Odisha. Dedicated to grassroots education, women&apos;s livelihoods, community healthcare, and cultural preservation.
             </p>
+
+            <div className="text-xs text-cream/85 space-y-1 font-sans pt-1">
+              <span className="font-semibold text-sand block text-[11px] uppercase tracking-wider">Headquarters &amp; Secretariat:</span>
+              <p className="leading-relaxed text-[11.5px] text-cream/90">
+                A1, 3rd Floor, Plot No. 387, Lewis Plaza<br />
+                Lewis Road, BJB Nagar, Bhubaneswar, Odisha – 751014
+              </p>
+              <p className="pt-1">
+                <span className="text-sand/80">Email: </span>
+                <a
+                  href="mailto:mectbbsr13@gmail.com"
+                  className="text-sand hover:text-white underline font-mono text-[11px] transition-colors"
+                >
+                  mectbbsr13@gmail.com
+                </a>
+              </p>
+            </div>
 
             <div className="pt-1">
               <Link
@@ -340,17 +357,18 @@ export function Footer() {
         {/* Tier 3: Bottom Legal & Developer Acknowledgement Bar */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-cream/90 font-sans">
           <div>
-            &copy; {ORG.foundedYear}&ndash;{currentYear} {ORG.legalName}. All rights reserved.{" "}
-            {ORG.trustDeed.shortDeedRef}
+            &copy; {ORG.foundedYear}&ndash;{currentYear} {ORG.legalName}. All rights reserved.
           </div>
 
           <div className="flex items-center gap-x-4 gap-y-1 flex-wrap">
-            <Link
-              href="/about#developer-credit"
+            <a
+              href="https://ohotechn.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center min-h-[24px] py-1 text-sand hover:text-white transition-colors font-medium focus-visible:outline-2 focus-visible:outline-sand"
             >
-              Website developed by Himansu Nayak
-            </Link>
+              Website Developed by Cognisoftoho Technologies Private Limited
+            </a>
             <span className="text-white/25" aria-hidden="true">|</span>
             <Link
               href="/privacy"
@@ -383,26 +401,8 @@ export function Footer() {
         </div>
 
         {/* Photographic Attribution Notice */}
-        <div className="pt-3 mt-3 border-t border-white/10 text-[10.5px] text-cream/80 font-sans leading-relaxed">
-          Hero backdrop photography combines MECT Balangir archive &amp; field photography with illustrative stock photography via Wikimedia Commons: &ldquo;Self Help Group&rdquo; by Ganesh Dhamodkar (
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline decoration-sand/60 hover:text-sand"
-          >
-            CC BY 4.0
-          </a>
-          , cropped &amp; exposure-balanced) and &ldquo;Rammohun Library Main Reading Room&rdquo; by Sumitsurai (
-          <a
-            href="https://creativecommons.org/licenses/by-sa/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline decoration-sand/60 hover:text-sand"
-          >
-            CC BY-SA 4.0
-          </a>
-          , cropped &amp; exposure-balanced), plus a user-supplied outreach reference image. See full asset register in repository documentation.
+        <div className="pt-3 mt-3 border-t border-white/10 text-[10.5px] text-cream/70 font-sans leading-relaxed">
+          Documentary and field photography &copy; Mahaveer Educational &amp; Charitable Trust archive. Illustrative creative commons imagery licensed under CC BY 4.0 / CC BY-SA 4.0. Complete photographic asset register retained in institutional documentation.
         </div>
       </Container>
       </Reveal>

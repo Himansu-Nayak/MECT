@@ -44,8 +44,8 @@ public class DonationLifecycleService {
 
     private static final Logger log = LoggerFactory.getLogger(DonationLifecycleService.class);
 
-    private static final String FACTUAL_STATUTORY_NOTE =
-            "Acknowledges voluntary contribution received into Mahaveer Educational & Charitable Trust's verified ledger (Registered Trust Deed Balangir Doc No. 40311302194; Trust PAN: AADTM5474F; MCA CSR-1: CSR00081063). " +
+    private static final String FACTUAL_STATUTORY_NOTE = "Acknowledges voluntary contribution received into Mahaveer Educational & Charitable Trust's verified ledger (Registered Trust Deed Balangir Doc No. 40311302194; Trust PAN: AADTM5474F; MCA CSR-1: CSR00081063). "
+            +
             "This receipt is an Institutional Payment Acknowledgement and does NOT itself constitute a Section 80G tax-exemption certificate for FY 2026-27 unless issued alongside an active verified 80G approval order.";
 
     private final DonationProgrammeRepository programmeRepository;
@@ -114,7 +114,8 @@ public class DonationLifecycleService {
         this.manualClaimRepository = manualClaimRepository;
         this.whatsAppNotificationService = whatsAppNotificationService;
         this.donorMessagingPreferenceService = donorMessagingPreferenceService;
-        this.activeProviderName = activeProviderName != null ? activeProviderName.trim().toUpperCase(Locale.ROOT) : "CASHFREE";
+        this.activeProviderName = activeProviderName != null ? activeProviderName.trim().toUpperCase(Locale.ROOT)
+                : "CASHFREE";
         this.qrExpiryMinutes = qrExpiryMinutes;
         this.schedulingEnabled = schedulingEnabled;
     }
@@ -151,13 +152,37 @@ public class DonationLifecycleService {
     }
 
     @Transactional
-    public Map<String, Object> initiateDonation(Long optionalPortalUserId, InitiateDonationRequest req, String clientIp) {
+    public Map<String, Object> initiateDonation(Long optionalPortalUserId, InitiateDonationRequest req,
+            String clientIp) {
         return initiateWithGateway(optionalPortalUserId, req, resolveActiveGateway(), clientIp);
     }
 
     @Transactional
-    public Map<String, Object> initiateCashfreeDonation(Long optionalPortalUserId, InitiateDonationRequest req, String clientIp) {
+    public Map<String, Object> initiateCashfreeDonation(Long optionalPortalUserId, InitiateDonationRequest req,
+            String clientIp) {
         return initiateWithGateway(optionalPortalUserId, req, cashfreeGatewayService, clientIp);
+    }
+
+    public DonationProgramme resolveActiveProgramme(String rawCode) {
+        if (rawCode == null || rawCode.isBlank()) {
+            rawCode = "GENERAL_FUND";
+        }
+        String code = rawCode.trim().toUpperCase(Locale.ROOT);
+        String normalized = switch (code) {
+            case "GENERAL", "GENERAL_FUND", "CORPUS" -> "GENERAL_FUND";
+            case "EDUCATION", "EDUCATION_LEARNING", "SCHOLARSHIP", "SHIKSHA" -> "EDUCATION_LEARNING";
+            case "WATER", "SAFE_WATER_SANITATION", "JAL_SEVA" -> "SAFE_WATER_SANITATION";
+            case "WOMEN", "WOMEN_EMPOWERMENT", "SWAVALAMBAN" -> "WOMEN_EMPOWERMENT";
+            case "FOOD", "FOOD_SECURITY_RELIEF", "JAN_AHAR", "NUTRITION" -> "FOOD_SECURITY_RELIEF";
+            case "COMMUNITY", "COMMUNITY_WELFARE" -> "COMMUNITY_WELFARE";
+            case "HANUMAN_MURTI", "HANUMAN", "MURTI" -> "HANUMAN_MURTI";
+            default -> code;
+        };
+
+        return programmeRepository.findByCode(normalized)
+                .or(() -> programmeRepository.findByCode(code))
+                .filter(DonationProgramme::isActive)
+                .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
     }
 
     private Map<String, Object> initiateWithGateway(
@@ -168,16 +193,16 @@ public class DonationLifecycleService {
         paymentConfigurationService.validateDonationAmount(req.amount());
         Map<String, Object> publicConfig = paymentConfigurationService.getPublicConfigMap();
 
-        DonationProgramme programme = programmeRepository.findByCode(req.programmeCode().trim())
-                .filter(DonationProgramme::isActive)
-                .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
+        DonationProgramme programme = resolveActiveProgramme(req.programmeCode());
 
         if (programme.isGeneralFund() && !Boolean.TRUE.equals(publicConfig.get("generalFundEnabled"))) {
-            throw new IllegalArgumentException("General Fund contributions are currently disabled by MECT administration.");
+            throw new IllegalArgumentException(
+                    "General Fund contributions are currently disabled by MECT administration.");
         }
         if ("CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider())
                 && !Boolean.TRUE.equals(publicConfig.get("cashfreeEnabled"))) {
-            throw new IllegalArgumentException("Online Cashfree checkout is currently paused. Please use the verified SBI direct transfer option.");
+            throw new IllegalArgumentException(
+                    "Online Cashfree checkout is currently paused. Please use the verified SBI direct transfer option.");
         }
 
         PortalUser portalUser = optionalPortalUserId != null
@@ -191,7 +216,8 @@ public class DonationLifecycleService {
         }
 
         Donation donation = new Donation();
-        donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
+        donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-"
+                + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
         donation.setPortalUser(portalUser);
         donation.setProgramme(programme);
         donation.setAmount(req.amount().setScale(2, RoundingMode.HALF_UP));
@@ -204,9 +230,14 @@ public class DonationLifecycleService {
         donation.setDonorPhone(req.donorPhone() != null && !req.donorPhone().isBlank()
                 ? req.donorPhone().trim()
                 : (portalUser != null ? portalUser.getPrimaryPhone() : null));
-        donation.setDonorAddress(req.donorAddress() != null && !req.donorAddress().isBlank() ? req.donorAddress().trim() : null);
-        donation.setDonorPan(req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT) : null);
-        donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
+        donation.setDonorAddress(
+                req.donorAddress() != null && !req.donorAddress().isBlank() ? req.donorAddress().trim() : null);
+        donation.setDonorPan(
+                req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT)
+                        : null);
+        donation.setDedicationMessage(
+                req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim()
+                        : null);
         donation.setAnonymous(req.anonymous());
         donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
         boolean waConsent = (req.whatsappConsent() != null && req.whatsappConsent())
@@ -220,11 +251,12 @@ public class DonationLifecycleService {
                     true,
                     false,
                     clientIp,
-                    "DONATION_CHECKOUT"
-            );
+                    "DONATION_CHECKOUT");
         }
-        String defaultMethod = "CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider()) ? "GATEWAY_CHECKOUT" : "UPI_QR";
-        donation.setPaymentMethod(req.paymentMethod() != null && !req.paymentMethod().isBlank() ? req.paymentMethod() : defaultMethod);
+        String defaultMethod = "CASHFREE".equalsIgnoreCase(gateway.getGatewayStatus().provider()) ? "GATEWAY_CHECKOUT"
+                : "UPI_QR";
+        donation.setPaymentMethod(
+                req.paymentMethod() != null && !req.paymentMethod().isBlank() ? req.paymentMethod() : defaultMethod);
         donation.setStatus("CREATED");
         donation = donationRepository.save(donation);
 
@@ -266,11 +298,9 @@ public class DonationLifecycleService {
                             donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
                             "INR " + donation.getAmount().toPlainString(),
                             programme.getName(),
-                            donation.getDonationReference()
-                    ),
+                            donation.getDonationReference()),
                     null,
-                    Map.of("donationReference", donation.getDonationReference())
-            );
+                    Map.of("donationReference", donation.getDonationReference()));
         }
 
         auditLogService.record(
@@ -279,8 +309,8 @@ public class DonationLifecycleService {
                 "DONATION",
                 donation.getDonationReference(),
                 clientIp,
-                "Programme=" + programme.getCode() + ", Amount=" + donation.getAmount() + ", Provider=" + gw.provider()
-        );
+                "Programme=" + programme.getCode() + ", Amount=" + donation.getAmount() + ", Provider="
+                        + gw.provider());
 
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("donationReference", donation.getDonationReference());
@@ -339,7 +369,8 @@ public class DonationLifecycleService {
     }
 
     @Transactional
-    public Map<String, Object> verifyCashfreeOrderStatus(String orderIdOrRef, boolean refreshFromGateway, String source, String actor) {
+    public Map<String, Object> verifyCashfreeOrderStatus(String orderIdOrRef, boolean refreshFromGateway, String source,
+            String actor) {
         Payment payment = paymentRepository.findByProviderOrderIdForUpdate(orderIdOrRef)
                 .orElseGet(() -> donationRepository.findByDonationReference(orderIdOrRef)
                         .flatMap(d -> paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(d.getId()))
@@ -350,43 +381,52 @@ public class DonationLifecycleService {
             return buildPublicStatusMap(donation);
         }
 
-        if (refreshFromGateway && "CASHFREE".equalsIgnoreCase(payment.getProvider()) && cashfreeGatewayService.isConfigured()) {
-            CashfreePaymentGatewayService.CashfreeVerifiedOrder verified = cashfreeGatewayService.fetchAndNormalizeOrderStatus(
-                    payment.getProviderOrderId(),
-                    payment.getAmount(),
-                    payment.getCurrency()
-            );
-            if (verified.cfOrderId() != null) payment.setCfOrderId(verified.cfOrderId());
-            if (verified.orderStatus() != null) payment.setGatewayRawStatus(verified.orderStatus());
-            if (verified.paymentGroup() != null) payment.setPaymentGroup(verified.paymentGroup());
-            if (verified.bankReference() != null) payment.setBankReference(verified.bankReference());
+        if (refreshFromGateway && "CASHFREE".equalsIgnoreCase(payment.getProvider())
+                && cashfreeGatewayService.isConfigured()) {
+            CashfreePaymentGatewayService.CashfreeVerifiedOrder verified = cashfreeGatewayService
+                    .fetchAndNormalizeOrderStatus(
+                            payment.getProviderOrderId(),
+                            payment.getAmount(),
+                            payment.getCurrency());
+            if (verified.cfOrderId() != null)
+                payment.setCfOrderId(verified.cfOrderId());
+            if (verified.orderStatus() != null)
+                payment.setGatewayRawStatus(verified.orderStatus());
+            if (verified.paymentGroup() != null)
+                payment.setPaymentGroup(verified.paymentGroup());
+            if (verified.bankReference() != null)
+                payment.setBankReference(verified.bankReference());
             paymentRepository.save(payment);
 
             String normalized = verified.normalizedStatus();
             if ("SUCCESSFUL".equals(normalized)) {
-                String eventId = "cf_verify:" + (verified.cfPaymentId() != null ? verified.cfPaymentId() : payment.getProviderOrderId());
+                String eventId = "cf_verify:"
+                        + (verified.cfPaymentId() != null ? verified.cfPaymentId() : payment.getProviderOrderId());
                 confirmSuccessfulPaymentInternal(
                         "CASHFREE",
                         eventId,
                         payment.getProviderOrderId(),
                         null,
                         verified.cfPaymentId(),
-                        "Verified via Cashfree order lookup order_status=" + verified.orderStatus() + ", payment_status=" + verified.paymentStatus(),
+                        "Verified via Cashfree order lookup order_status=" + verified.orderStatus()
+                                + ", payment_status=" + verified.paymentStatus(),
                         true,
                         source,
-                        actor
-                );
-            } else if ("USER_DROPPED".equals(normalized) || "FAILED".equals(normalized) || "EXPIRED".equals(normalized)) {
+                        actor);
+            } else if ("USER_DROPPED".equals(normalized) || "FAILED".equals(normalized)
+                    || "EXPIRED".equals(normalized)) {
                 String prev = payment.getStatus();
                 if (!prev.equals(normalized)) {
                     payment.setStatus(normalized);
                     payment.setFailureReason(verified.failureReason());
-                    if (verified.cfPaymentId() != null) payment.setProviderPaymentId(verified.cfPaymentId());
+                    if (verified.cfPaymentId() != null)
+                        payment.setProviderPaymentId(verified.cfPaymentId());
                     paymentRepository.save(payment);
                     donation.setStatus(normalized);
                     donationRepository.save(donation);
                     recordReconciliation(donation, payment, prev, normalized, source, actor,
-                            verified.failureReason() != null ? verified.failureReason() : "Gateway status=" + verified.orderStatus());
+                            verified.failureReason() != null ? verified.failureReason()
+                                    : "Gateway status=" + verified.orderStatus());
                 }
             }
         }
@@ -398,7 +438,8 @@ public class DonationLifecycleService {
         Donation donation = donationRepository.findByDonationReference(donationReference)
                 .orElseThrow(() -> new ResourceNotFoundException("Donation reference not found: " + donationReference));
         Payment payment = paymentRepository.findTopByDonationIdOrderByCreatedAtDesc(donation.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("No payment record associated with donation: " + donationReference));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "No payment record associated with donation: " + donationReference));
 
         Map<String, Object> result;
         if ("CASHFREE".equalsIgnoreCase(payment.getProvider())) {
@@ -412,13 +453,13 @@ public class DonationLifecycleService {
                 "DONATION",
                 donationReference,
                 clientIp,
-                "Provider=" + payment.getProvider() + ", Status=" + result.get("status")
-        );
+                "Provider=" + payment.getProvider() + ", Status=" + result.get("status"));
         return result;
     }
 
     @Transactional
-    public Map<String, Object> verifyGatewayCheckoutCallback(Long optionalPortalUserId, VerifyGatewayPaymentRequest req, String clientIp) {
+    public Map<String, Object> verifyGatewayCheckoutCallback(Long optionalPortalUserId, VerifyGatewayPaymentRequest req,
+            String clientIp) {
         Donation donation = donationRepository.findByDonationReference(req.donationReference())
                 .orElseThrow(() -> new ResourceNotFoundException("Donation reference not found"));
 
@@ -447,14 +488,14 @@ public class DonationLifecycleService {
                 "CHECKOUT_SIGNATURE_VERIFIED",
                 true,
                 "GATEWAY_VERIFY",
-                clientIp
-        );
+                clientIp);
 
         return getPublicStatus(donation.getDonationReference());
     }
 
     @Transactional
-    public Map<String, Object> processCashfreeWebhook(String timestampHeader, String rawPayload, String signatureHeader, String clientIp) {
+    public Map<String, Object> processCashfreeWebhook(String timestampHeader, String rawPayload, String signatureHeader,
+            String clientIp) {
         boolean sigValid = cashfreeGatewayService.verifyWebhookSignature(timestampHeader, rawPayload, signatureHeader);
         String safePayload = rawPayload != null ? rawPayload : "";
         String payloadSha = HmacCryptoUtil.sha256Hex(safePayload);
@@ -462,7 +503,8 @@ public class DonationLifecycleService {
         if (!sigValid) {
             PaymentEvent rejected = new PaymentEvent();
             rejected.setProvider("CASHFREE");
-            rejected.setProviderEventId("REJECTED_CF:" + payloadSha.substring(0, 16) + ":" + UUID.randomUUID().toString().substring(0, 6));
+            rejected.setProviderEventId(
+                    "REJECTED_CF:" + payloadSha.substring(0, 16) + ":" + UUID.randomUUID().toString().substring(0, 6));
             rejected.setEventType("INVALID_SIGNATURE");
             rejected.setSignatureVerified(false);
             rejected.setPayloadSha256(payloadSha);
@@ -470,7 +512,8 @@ public class DonationLifecycleService {
             rejected.setProcessingStatus("REJECTED");
             rejected.setErrorMessage("Cashfree x-webhook-signature / x-webhook-timestamp verification failed");
             paymentEventRepository.save(rejected);
-            auditLogService.record("WEBHOOK_CASHFREE", "WEBHOOK_SIGNATURE_INVALID", "PAYMENT_EVENT", payloadSha.substring(0, 16), clientIp, "Rejected spoofed/stale Cashfree webhook");
+            auditLogService.record("WEBHOOK_CASHFREE", "WEBHOOK_SIGNATURE_INVALID", "PAYMENT_EVENT",
+                    payloadSha.substring(0, 16), clientIp, "Rejected spoofed/stale Cashfree webhook");
             throw new BadCredentialsException("Invalid or expired Cashfree webhook signature.");
         }
 
@@ -499,11 +542,13 @@ public class DonationLifecycleService {
             }
 
             String refundId = scalarTextOrNull(refundNode, "cf_refund_id");
-            if (refundId == null) refundId = scalarTextOrNull(refundNode, "refund_id");
+            if (refundId == null)
+                refundId = scalarTextOrNull(refundNode, "refund_id");
 
             String providerEventId = cfPaymentId != null
                     ? "cf:" + eventType + ":" + cfPaymentId
-                    : (refundId != null ? "cf:" + eventType + ":" + refundId : "cf_hash_" + payloadSha.substring(0, 24));
+                    : (refundId != null ? "cf:" + eventType + ":" + refundId
+                            : "cf_hash_" + payloadSha.substring(0, 24));
 
             if (paymentEventRepository.existsByProviderEventId(providerEventId)) {
                 return Map.of("status", "IGNORED_DUPLICATE", "providerEventId", providerEventId);
@@ -511,13 +556,17 @@ public class DonationLifecycleService {
 
             Payment payment = orderId != null
                     ? paymentRepository.findByProviderOrderIdForUpdate(orderId)
-                            .orElseThrow(() -> new ResourceNotFoundException("Matching payment order not found for Cashfree webhook: " + orderId))
+                            .orElseThrow(() -> new ResourceNotFoundException(
+                                    "Matching payment order not found for Cashfree webhook: " + orderId))
                     : null;
 
             if (payment != null) {
-                if (cfOrderId != null) payment.setCfOrderId(cfOrderId);
-                if (paymentGroup != null) payment.setPaymentGroup(paymentGroup);
-                if (bankReference != null) payment.setBankReference(bankReference);
+                if (cfOrderId != null)
+                    payment.setCfOrderId(cfOrderId);
+                if (paymentGroup != null)
+                    payment.setPaymentGroup(paymentGroup);
+                if (bankReference != null)
+                    payment.setBankReference(bankReference);
                 paymentRepository.save(payment);
             }
 
@@ -530,11 +579,11 @@ public class DonationLifecycleService {
                             providerEventId,
                             eventType,
                             refundId,
-                            cfPaymentId != null ? cfPaymentId : (payment != null ? payment.getProviderPaymentId() : null),
+                            cfPaymentId != null ? cfPaymentId
+                                    : (payment != null ? payment.getProviderPaymentId() : null),
                             refundAmount,
                             safePayload,
-                            clientIp
-                    );
+                            clientIp);
                 }
             }
 
@@ -543,25 +592,34 @@ public class DonationLifecycleService {
                     throw new ResourceNotFoundException("Order ID missing in Cashfree PAYMENT_SUCCESS_WEBHOOK.");
                 }
                 if (paymentStatus != null && !"SUCCESS".equalsIgnoreCase(paymentStatus)) {
-                    throw new IllegalArgumentException("Unexpected payment_status in PAYMENT_SUCCESS_WEBHOOK: " + paymentStatus);
+                    throw new IllegalArgumentException(
+                            "Unexpected payment_status in PAYMENT_SUCCESS_WEBHOOK: " + paymentStatus);
                 }
                 if (!amountsAndCurrencyMatch(payment, orderAmount, orderCurrency, paymentAmount, paymentCurrency)) {
                     recordTamperMismatch("CASHFREE", providerEventId, eventType, payment, safePayload,
-                            "Webhook amount/currency mismatch detected (expected " + payment.getAmount() + " " + payment.getCurrency() + ")", clientIp);
+                            "Webhook amount/currency mismatch detected (expected " + payment.getAmount() + " "
+                                    + payment.getCurrency() + ")",
+                            clientIp);
                     throw new IllegalArgumentException("Cashfree webhook payment amount or currency mismatch.");
                 }
                 payment.setGatewayRawStatus("PAID");
                 paymentRepository.save(payment);
-                confirmSuccessfulPaymentInternal("CASHFREE", providerEventId, orderId, null, cfPaymentId, safePayload, true, "WEBHOOK", clientIp);
+                confirmSuccessfulPaymentInternal("CASHFREE", providerEventId, orderId, null, cfPaymentId, safePayload,
+                        true, "WEBHOOK", clientIp);
                 return Map.of("status", "PROCESSED", "eventType", eventType, "providerEventId", providerEventId);
             }
 
-            if ("PAYMENT_FAILED_WEBHOOK".equalsIgnoreCase(eventType) || "PAYMENT_USER_DROPPED_WEBHOOK".equalsIgnoreCase(eventType)) {
-                String targetStatus = "PAYMENT_USER_DROPPED_WEBHOOK".equalsIgnoreCase(eventType) ? "USER_DROPPED" : "FAILED";
+            if ("PAYMENT_FAILED_WEBHOOK".equalsIgnoreCase(eventType)
+                    || "PAYMENT_USER_DROPPED_WEBHOOK".equalsIgnoreCase(eventType)) {
+                String targetStatus = "PAYMENT_USER_DROPPED_WEBHOOK".equalsIgnoreCase(eventType) ? "USER_DROPPED"
+                        : "FAILED";
                 String reason = paymentMessage != null ? paymentMessage
-                        : ("USER_DROPPED".equals(targetStatus) ? "Donor dropped or cancelled checkout session" : "Payment failed at Cashfree gateway");
-                markNonSuccessPaymentInternal("CASHFREE", targetStatus, providerEventId, eventType, orderId, null, cfPaymentId, reason, safePayload, clientIp);
-                return Map.of("status", "PROCESSED_" + targetStatus, "eventType", eventType, "providerEventId", providerEventId);
+                        : ("USER_DROPPED".equals(targetStatus) ? "Donor dropped or cancelled checkout session"
+                                : "Payment failed at Cashfree gateway");
+                markNonSuccessPaymentInternal("CASHFREE", targetStatus, providerEventId, eventType, orderId, null,
+                        cfPaymentId, reason, safePayload, clientIp);
+                return Map.of("status", "PROCESSED_" + targetStatus, "eventType", eventType, "providerEventId",
+                        providerEventId);
             }
 
             PaymentEvent ignored = new PaymentEvent();
@@ -584,7 +642,8 @@ public class DonationLifecycleService {
     }
 
     @Transactional
-    public Map<String, Object> processRazorpayWebhook(String rawPayload, String signatureHeader, String eventIdHeader, String clientIp) {
+    public Map<String, Object> processRazorpayWebhook(String rawPayload, String signatureHeader, String eventIdHeader,
+            String clientIp) {
         PaymentGatewayProvider razorpayGateway = resolveGateway("RAZORPAY");
         boolean sigValid = razorpayGateway.verifyWebhookSignature(rawPayload, signatureHeader);
         String payloadSha = HmacCryptoUtil.sha256Hex(rawPayload != null ? rawPayload : "");
@@ -595,7 +654,8 @@ public class DonationLifecycleService {
         if (!sigValid) {
             PaymentEvent rejected = new PaymentEvent();
             rejected.setProvider("RAZORPAY");
-            rejected.setProviderEventId("REJECTED:" + providerEventId + ":" + UUID.randomUUID().toString().substring(0, 6));
+            rejected.setProviderEventId(
+                    "REJECTED:" + providerEventId + ":" + UUID.randomUUID().toString().substring(0, 6));
             rejected.setEventType("INVALID_SIGNATURE");
             rejected.setSignatureVerified(false);
             rejected.setPayloadSha256(payloadSha);
@@ -603,7 +663,8 @@ public class DonationLifecycleService {
             rejected.setProcessingStatus("REJECTED");
             rejected.setErrorMessage("HMAC-SHA256 webhook signature mismatch");
             paymentEventRepository.save(rejected);
-            auditLogService.record("WEBHOOK_RAZORPAY", "WEBHOOK_SIGNATURE_INVALID", "PAYMENT_EVENT", providerEventId, clientIp, "Rejected spoofed/invalid webhook");
+            auditLogService.record("WEBHOOK_RAZORPAY", "WEBHOOK_SIGNATURE_INVALID", "PAYMENT_EVENT", providerEventId,
+                    clientIp, "Rejected spoofed/invalid webhook");
             throw new BadCredentialsException("Invalid webhook signature.");
         }
 
@@ -638,18 +699,20 @@ public class DonationLifecycleService {
                         refundPaymentId != null ? refundPaymentId : paymentId,
                         BigDecimal.valueOf(refundAmountPaise).divide(BigDecimal.valueOf(100)),
                         rawPayload,
-                        clientIp
-                );
+                        clientIp);
             }
 
-            if ("payment.captured".equals(eventType) || "order.paid".equals(eventType) || "qr_code.credited".equals(eventType)) {
-                confirmSuccessfulPaymentInternal("RAZORPAY", providerEventId, orderId, qrId, paymentId, rawPayload, true, "WEBHOOK", clientIp);
+            if ("payment.captured".equals(eventType) || "order.paid".equals(eventType)
+                    || "qr_code.credited".equals(eventType)) {
+                confirmSuccessfulPaymentInternal("RAZORPAY", providerEventId, orderId, qrId, paymentId, rawPayload,
+                        true, "WEBHOOK", clientIp);
                 return Map.of("status", "PROCESSED", "eventType", eventType, "providerEventId", providerEventId);
             }
 
             if ("payment.failed".equals(eventType)) {
                 String reason = paymentEntity.path("error_description").asString("Payment failed at gateway");
-                markNonSuccessPaymentInternal("RAZORPAY", "FAILED", providerEventId, "payment.failed", orderId, qrId, paymentId, reason, rawPayload, clientIp);
+                markNonSuccessPaymentInternal("RAZORPAY", "FAILED", providerEventId, "payment.failed", orderId, qrId,
+                        paymentId, reason, rawPayload, clientIp);
                 return Map.of("status", "PROCESSED_FAILURE", "eventType", eventType);
             }
 
@@ -695,7 +758,8 @@ public class DonationLifecycleService {
         }
 
         Payment payment = locatePaymentForUpdate(orderId, qrId, providerPaymentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Matching payment record not found for webhook event."));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Matching payment record not found for webhook event."));
 
         PaymentEvent event = new PaymentEvent();
         event.setPayment(payment);
@@ -712,8 +776,10 @@ public class DonationLifecycleService {
         Donation donation = payment.getDonation();
         String prevStatus = payment.getStatus();
 
-        // Idempotent guard: never generate duplicate receipts on repeated capture events
-        if ("SUCCESSFUL".equals(payment.getStatus()) && receiptRepository.findByDonationId(donation.getId()).isPresent()) {
+        // Idempotent guard: never generate duplicate receipts on repeated capture
+        // events
+        if ("SUCCESSFUL".equals(payment.getStatus())
+                && receiptRepository.findByDonationId(donation.getId()).isPresent()) {
             return;
         }
 
@@ -733,31 +799,34 @@ public class DonationLifecycleService {
         recordReconciliation(donation, payment, prevStatus, "SUCCESSFUL", source, actor,
                 "Payment verified (" + source + "), providerPaymentId=" + payment.getProviderPaymentId());
 
-        // Promote linked General User -> Donor safely without creating a separate account
+        // Promote linked General User -> Donor safely without creating a separate
+        // account
         grantDonorRoleAndIssueReceiptAndNotify(donation, payment, actor);
     }
 
     private void grantDonorRoleAndIssueReceiptAndNotify(Donation donation, Payment payment, String actor) {
         PortalUser portalUser = donation.getPortalUser();
-        if (portalUser != null && !portalUserRoleRepository.existsByPortalUserIdAndRoleName(portalUser.getId(), PortalRoleName.ROLE_DONOR)) {
+        if (portalUser != null && !portalUserRoleRepository.existsByPortalUserIdAndRoleName(portalUser.getId(),
+                PortalRoleName.ROLE_DONOR)) {
             portalUserRoleRepository.save(new PortalUserRole(portalUser, PortalRoleName.ROLE_DONOR));
             auditLogService.record("portal:" + portalUser.getUserUuid(), "ROLE_DONOR_GRANTED", "PORTAL_USER_ROLE",
-                    portalUser.getId().toString(), actor, "Granted upon verified donation " + donation.getDonationReference());
+                    portalUser.getId().toString(), actor,
+                    "Granted upon verified donation " + donation.getDonationReference());
         }
 
         String statutoryNote = paymentConfigurationService.getStatutoryReceiptNote();
 
         // Deterministic PDF Receipt Generation
         DonationReceipt receipt = receiptRepository.findByDonationId(donation.getId()).orElseGet(() -> {
-            String rcptNum = "MECT-RCPT-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase(Locale.ROOT);
+            String rcptNum = "MECT-RCPT-" + Year.now().getValue() + "-"
+                    + UUID.randomUUID().toString().substring(0, 8).toUpperCase(Locale.ROOT);
             String donorDisplay = donation.isAnonymous() ? "Anonymous Donor" : donation.getDonorName();
             byte[] pdfBytes = receiptPdfService.generateReceiptPdf(
                     rcptNum,
                     donation,
                     payment,
                     donorDisplay,
-                    statutoryNote
-            );
+                    statutoryNote);
 
             DonationReceipt dr = new DonationReceipt();
             dr.setDonation(donation);
@@ -774,7 +843,8 @@ public class DonationLifecycleService {
             return receiptRepository.save(dr);
         });
 
-        // Enqueue Idempotent Outbox Notifications (Email with PDF + Optional Consented WhatsApp)
+        // Enqueue Idempotent Outbox Notifications (Email with PDF + Optional Consented
+        // WhatsApp)
         String amountText = "INR " + donation.getAmount().toPlainString();
         String portalDashboardUrl = outboxService.getPublicBaseUrl() + "/portal/dashboard";
 
@@ -786,16 +856,14 @@ public class DonationLifecycleService {
                             donation.getProgramme().getName(),
                             donation.getDonationReference(),
                             receipt.getReceiptNumber(),
-                            portalDashboardUrl
-                    )
+                            portalDashboardUrl)
                     : emailRenderer.renderDonationConfirmedReceiptEmail(
                             donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
                             amountText,
                             donation.getProgramme().getName(),
                             donation.getDonationReference(),
                             receipt.getReceiptNumber(),
-                            portalDashboardUrl
-                    );
+                            portalDashboardUrl);
 
             outboxService.enqueueEmail(
                     "DONATION_CONFIRMED_EMAIL:" + donation.getId(),
@@ -806,8 +874,7 @@ public class DonationLifecycleService {
                     true,
                     renderedEmail,
                     receipt.getId(),
-                    Map.of("receiptNumber", receipt.getReceiptNumber())
-            );
+                    Map.of("receiptNumber", receipt.getReceiptNumber()));
         }
 
         if (portalUser != null) {
@@ -820,16 +887,16 @@ public class DonationLifecycleService {
                             donation.isAnonymous() ? "Supporter" : donation.getDonorName().split("\\s+")[0],
                             amountText,
                             receipt.getReceiptNumber(),
-                            portalDashboardUrl
-                    )
-            );
+                            portalDashboardUrl));
         }
 
-        // Enterprise WhatsApp Subsystem: Instant alert to administrators and verified receipt to opted-in donors
+        // Enterprise WhatsApp Subsystem: Instant alert to administrators and verified
+        // receipt to opted-in donors
         String paymentMode = payment != null && payment.getProvider() != null ? payment.getProvider() : "DIRECT";
         String paymentRef = payment != null && payment.getProviderPaymentId() != null
                 ? payment.getProviderPaymentId()
-                : (payment != null && payment.getBankReference() != null ? payment.getBankReference() : donation.getDonationReference());
+                : (payment != null && payment.getBankReference() != null ? payment.getBankReference()
+                        : donation.getDonationReference());
         whatsAppNotificationService.notifyAdminsOnDonation(donation, paymentMode, paymentRef);
         whatsAppNotificationService.notifyDonorOnDonation(donation, receipt);
     }
@@ -858,14 +925,16 @@ public class DonationLifecycleService {
         event.setProcessedAt(Instant.now());
         paymentEventRepository.save(event);
 
-        // Strict non-downgrade invariant: settled payments cannot be overwritten by late failure/drop webhooks
+        // Strict non-downgrade invariant: settled payments cannot be overwritten by
+        // late failure/drop webhooks
         if (payment == null || "SUCCESSFUL".equals(payment.getStatus()) || "REFUNDED".equals(payment.getStatus())) {
             return;
         }
         String prev = payment.getStatus();
         payment.setStatus(targetStatus);
         payment.setFailureReason(reason);
-        if (paymentId != null && !paymentId.isBlank()) payment.setProviderPaymentId(paymentId);
+        if (paymentId != null && !paymentId.isBlank())
+            payment.setProviderPaymentId(paymentId);
         paymentRepository.save(payment);
 
         Donation donation = payment.getDonation();
@@ -887,11 +956,9 @@ public class DonationLifecycleService {
                             "INR " + donation.getAmount().toPlainString(),
                             donation.getProgramme().getName(),
                             donation.getDonationReference(),
-                            reason
-                    ),
+                            reason),
                     null,
-                    Map.of()
-            );
+                    Map.of());
         }
     }
 
@@ -915,16 +982,19 @@ public class DonationLifecycleService {
             Donation d = payment.getDonation();
             d.setStatus("EXPIRED");
             donationRepository.save(d);
-            recordReconciliation(d, payment, "PENDING", "EXPIRED", "WEBHOOK", payment.getProvider(), "Dynamic QR expired/closed before payment");
+            recordReconciliation(d, payment, "PENDING", "EXPIRED", "WEBHOOK", payment.getProvider(),
+                    "Dynamic QR expired/closed before payment");
         }
     }
 
-    private Map<String, Object> processRefundEventInternal(String provider, String providerEventId, String eventType, String refundId, String providerPaymentId, BigDecimal refundedAmount, String rawPayload, String actor) {
+    private Map<String, Object> processRefundEventInternal(String provider, String providerEventId, String eventType,
+            String refundId, String providerPaymentId, BigDecimal refundedAmount, String rawPayload, String actor) {
         if (refundId != null && paymentEventRepository.existsByProviderEventId("REFUND_REF:" + refundId)) {
             return Map.of("status", "IGNORED_DUPLICATE_REFUND", "refundId", refundId);
         }
         Payment payment = providerPaymentId != null
-                ? paymentRepository.findByProviderPaymentId(providerPaymentId).orElseThrow(() -> new ResourceNotFoundException("Payment not found for refund"))
+                ? paymentRepository.findByProviderPaymentId(providerPaymentId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Payment not found for refund"))
                 : null;
         if (payment == null) {
             throw new ResourceNotFoundException("Payment reference missing in refund webhook.");
@@ -981,19 +1051,16 @@ public class DonationLifecycleService {
                     emailRenderer.renderRefundEmail(
                             donation.isAnonymous() ? "Supporter" : donation.getDonorName(),
                             "INR " + refundedAmount.toPlainString(),
-                            donation.getDonationReference()
-                    ),
+                            donation.getDonationReference()),
                     null,
-                    Map.of()
-            );
+                    Map.of());
         }
 
         // Enterprise WhatsApp Subsystem: Instant refund alert to administrators
         whatsAppNotificationService.notifyAdminsOnRefund(
                 donation,
                 refundId != null ? refundId : providerEventId,
-                refundedAmount
-        );
+                refundedAmount);
 
         return Map.of("status", "PROCESSED_REFUND", "donationStatus", targetStatus);
     }
@@ -1001,9 +1068,11 @@ public class DonationLifecycleService {
     @Scheduled(fixedDelay = 120000)
     @Transactional
     public void expireStalePendingQrPayments() {
-        if (!schedulingEnabled) return;
+        if (!schedulingEnabled)
+            return;
 
-        // First reconcile pending Cashfree orders older than 90 seconds via server-to-server API
+        // First reconcile pending Cashfree orders older than 90 seconds via
+        // server-to-server API
         if (cashfreeGatewayService.isConfigured()) {
             Instant pendingCutoff = Instant.now().minus(90, ChronoUnit.SECONDS);
             List<Payment> pendingCashfree = paymentRepository.findByProviderAndStatusInAndCreatedAtBefore(
@@ -1012,12 +1081,14 @@ public class DonationLifecycleService {
                 try {
                     verifyCashfreeOrderStatus(p.getProviderOrderId(), true, "SCHEDULED_RECONCILE", "SYSTEM");
                 } catch (Exception ex) {
-                    log.debug("Scheduled Cashfree reconciliation deferred for orderId={}: {}", p.getProviderOrderId(), ex.getMessage());
+                    log.debug("Scheduled Cashfree reconciliation deferred for orderId={}: {}", p.getProviderOrderId(),
+                            ex.getMessage());
                 }
             }
         }
 
-        List<Payment> stale = paymentRepository.findByStatusInAndExpiresAtBefore(List.of("CREATED", "PENDING"), Instant.now());
+        List<Payment> stale = paymentRepository.findByStatusInAndExpiresAtBefore(List.of("CREATED", "PENDING"),
+                Instant.now());
         for (Payment p : stale) {
             String prev = p.getStatus();
             p.setStatus("EXPIRED");
@@ -1051,11 +1122,13 @@ public class DonationLifecycleService {
     private Optional<Payment> locatePaymentForUpdate(String orderId, String qrId, String paymentId) {
         if (orderId != null && !orderId.isBlank()) {
             Optional<Payment> byOrder = paymentRepository.findByProviderOrderIdForUpdate(orderId);
-            if (byOrder.isPresent()) return byOrder;
+            if (byOrder.isPresent())
+                return byOrder;
         }
         if (qrId != null && !qrId.isBlank()) {
             Optional<Payment> byQr = paymentRepository.findByProviderQrId(qrId);
-            if (byQr.isPresent()) return byQr;
+            if (byQr.isPresent())
+                return byQr;
         }
         if (paymentId != null && !paymentId.isBlank()) {
             return paymentRepository.findByProviderPaymentId(paymentId);
@@ -1069,7 +1142,8 @@ public class DonationLifecycleService {
             String orderCurrency,
             BigDecimal paymentAmount,
             String paymentCurrency) {
-        if (payment == null || payment.getAmount() == null) return false;
+        if (payment == null || payment.getAmount() == null)
+            return false;
         BigDecimal expected = payment.getAmount().setScale(2, RoundingMode.HALF_UP);
         String expectedCurrency = payment.getCurrency();
         if (orderAmount != null && orderAmount.setScale(2, RoundingMode.HALF_UP).compareTo(expected) != 0) {
@@ -1105,13 +1179,16 @@ public class DonationLifecycleService {
         ev.setProcessedAt(Instant.now());
         paymentEventRepository.save(ev);
         if (payment != null) {
-            recordReconciliation(payment.getDonation(), payment, payment.getStatus(), payment.getStatus(), "WEBHOOK_SECURITY", actor, reason);
+            recordReconciliation(payment.getDonation(), payment, payment.getStatus(), payment.getStatus(),
+                    "WEBHOOK_SECURITY", actor, reason);
         }
-        auditLogService.record("WEBHOOK_" + provider, "PAYMENT_AMOUNT_MISMATCH", "PAYMENT_EVENT", providerEventId, actor, reason);
+        auditLogService.record("WEBHOOK_" + provider, "PAYMENT_AMOUNT_MISMATCH", "PAYMENT_EVENT", providerEventId,
+                actor, reason);
     }
 
     private String scalarTextOrNull(JsonNode node, String field) {
-        if (node == null || node.isMissingNode() || !node.has(field) || node.get(field).isNull()) return null;
+        if (node == null || node.isMissingNode() || !node.has(field) || node.get(field).isNull())
+            return null;
         JsonNode val = node.get(field);
         String s = val.isString() ? val.asString() : val.toString();
         return s != null && !s.isBlank() ? s : null;
@@ -1130,18 +1207,18 @@ public class DonationLifecycleService {
     }
 
     @Transactional
-    public Map<String, Object> submitManualSbiUtrClaim(Long optionalPortalUserId, SubmitManualSbiUtrRequest req, String clientIp) {
+    public Map<String, Object> submitManualSbiUtrClaim(Long optionalPortalUserId, SubmitManualSbiUtrRequest req,
+            String clientIp) {
         PaymentConfiguration paymentConfig = paymentConfigurationService.getOrCreateConfig();
         if (!paymentConfig.isSbiQrEnabled()) {
             throw new IllegalArgumentException("Manual SBI bank/UPI transfer claims are currently disabled.");
         }
         paymentConfigurationService.validateDonationAmount(req.amount());
 
-        DonationProgramme programme = programmeRepository.findByCode(req.programmeCode().trim())
-                .filter(DonationProgramme::isActive)
-                .orElseThrow(() -> new IllegalArgumentException("Selected donation programme is unavailable or inactive."));
+        DonationProgramme programme = resolveActiveProgramme(req.programmeCode());
         if (programme.isGeneralFund() && !paymentConfig.isGeneralFundEnabled()) {
-            throw new IllegalArgumentException("General Fund contributions are currently disabled by MECT administration.");
+            throw new IllegalArgumentException(
+                    "General Fund contributions are currently disabled by MECT administration.");
         }
 
         if (req.transferDate().isAfter(LocalDate.now())) {
@@ -1161,12 +1238,11 @@ public class DonationLifecycleService {
                     "MANUAL_BANK_TRANSFER_CLAIM",
                     utrNormalized,
                     clientIp,
-                    "Duplicate UTR rejected; existing claim=" + existingUtr.get().getClaimReference()
-            );
+                    "Duplicate UTR rejected; existing claim=" + existingUtr.get().getClaimReference());
             throw new DuplicateResourceException(
                     "This UTR / bank reference (" + utrNormalized + ") has already been submitted under claim "
-                            + existingUtr.get().getClaimReference() + ". Please contact MECT support if you need assistance."
-            );
+                            + existingUtr.get().getClaimReference()
+                            + ". Please contact MECT support if you need assistance.");
         }
 
         PortalUser portalUser = optionalPortalUserId != null
@@ -1183,13 +1259,15 @@ public class DonationLifecycleService {
         if (req.existingDonationReference() != null && !req.existingDonationReference().isBlank()) {
             donation = donationRepository.findByDonationReference(req.existingDonationReference().trim()).orElse(null);
             if (donation != null && "SUCCESSFUL".equals(donation.getStatus())) {
-                throw new IllegalArgumentException("Donation " + donation.getDonationReference() + " is already verified and settled.");
+                throw new IllegalArgumentException(
+                        "Donation " + donation.getDonationReference() + " is already verified and settled.");
             }
         }
 
         if (donation == null) {
             donation = new Donation();
-            donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
+            donation.setDonationReference("MECT-DON-" + Year.now().getValue() + "-"
+                    + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
             donation.setPortalUser(portalUser);
             donation.setProgramme(programme);
             donation.setAmount(req.amount().setScale(2, RoundingMode.HALF_UP));
@@ -1202,9 +1280,14 @@ public class DonationLifecycleService {
             donation.setDonorPhone(req.donorPhone() != null && !req.donorPhone().isBlank()
                     ? req.donorPhone().trim()
                     : (portalUser != null ? portalUser.getPrimaryPhone() : null));
-            donation.setDonorAddress(req.donorAddress() != null && !req.donorAddress().isBlank() ? req.donorAddress().trim() : null);
-            donation.setDonorPan(req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT) : null);
-            donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank() ? req.dedicationMessage().trim() : null);
+            donation.setDonorAddress(
+                    req.donorAddress() != null && !req.donorAddress().isBlank() ? req.donorAddress().trim() : null);
+            donation.setDonorPan(
+                    req.donorPan() != null && !req.donorPan().isBlank() ? req.donorPan().trim().toUpperCase(Locale.ROOT)
+                            : null);
+            donation.setDedicationMessage(req.dedicationMessage() != null && !req.dedicationMessage().isBlank()
+                    ? req.dedicationMessage().trim()
+                    : null);
             donation.setAnonymous(req.anonymous());
             donation.setCommunicationConsent(req.communicationConsent() == null || req.communicationConsent());
             boolean waConsent = (req.whatsappConsent() != null && req.whatsappConsent())
@@ -1218,8 +1301,7 @@ public class DonationLifecycleService {
                         true,
                         false,
                         clientIp,
-                        "MANUAL_CLAIM"
-                );
+                        "MANUAL_CLAIM");
             }
         } else if (donation.getPortalUser() == null && portalUser != null) {
             donation.setPortalUser(portalUser);
@@ -1231,14 +1313,18 @@ public class DonationLifecycleService {
         donation = donationRepository.save(donation);
 
         ManualBankTransferClaim claim = new ManualBankTransferClaim();
-        claim.setClaimReference("MECT-UTR-" + Year.now().getValue() + "-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
+        claim.setClaimReference("MECT-UTR-" + Year.now().getValue() + "-"
+                + UUID.randomUUID().toString().substring(0, 6).toUpperCase(Locale.ROOT));
         claim.setDonation(donation);
         claim.setUtrNumber(req.utrReference().trim());
         claim.setUtrNormalized(utrNormalized);
         claim.setClaimedAmount(req.amount().setScale(2, RoundingMode.HALF_UP));
         claim.setTransferDate(req.transferDate());
-        claim.setRemitterName(req.paymentModeNote() != null && !req.paymentModeNote().isBlank() ? req.paymentModeNote().trim() : donation.getDonorName());
-        claim.setProofReference(req.proofSummary() != null && !req.proofSummary().isBlank() ? req.proofSummary().trim() : null);
+        claim.setRemitterName(
+                req.paymentModeNote() != null && !req.paymentModeNote().isBlank() ? req.paymentModeNote().trim()
+                        : donation.getDonorName());
+        claim.setProofReference(
+                req.proofSummary() != null && !req.proofSummary().isBlank() ? req.proofSummary().trim() : null);
         claim.setStatus("UTR_SUBMITTED");
         claim = manualClaimRepository.save(claim);
 
@@ -1275,14 +1361,13 @@ public class DonationLifecycleService {
                             "INR " + donation.getAmount().toPlainString(),
                             programme.getName(),
                             donation.getDonationReference(),
-                            maskedUtr
-                    ),
+                            maskedUtr),
                     null,
-                    Map.of("claimReference", claim.getClaimReference(), "utr", utrNormalized)
-            );
+                    Map.of("claimReference", claim.getClaimReference(), "utr", utrNormalized));
         }
 
-        // Enterprise WhatsApp Subsystem: Instant alert to administrators and pending status template to opted-in donor
+        // Enterprise WhatsApp Subsystem: Instant alert to administrators and pending
+        // status template to opted-in donor
         whatsAppNotificationService.notifyAdminsOnClaim(donation, utrNormalized);
         whatsAppNotificationService.notifyDonorOnClaimSubmitted(donation, utrNormalized);
 
@@ -1292,8 +1377,8 @@ public class DonationLifecycleService {
                 "MANUAL_BANK_TRANSFER_CLAIM",
                 claim.getClaimReference(),
                 clientIp,
-                "Donation=" + donation.getDonationReference() + ", UTR=" + utrNormalized + ", Amount=" + claim.getClaimedAmount()
-        );
+                "Donation=" + donation.getDonationReference() + ", UTR=" + utrNormalized + ", Amount="
+                        + claim.getClaimedAmount());
 
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("claimReference", claim.getClaimReference());
@@ -1305,7 +1390,8 @@ public class DonationLifecycleService {
         res.put("transferDate", claim.getTransferDate());
         res.put("programmeName", programme.getName());
         res.put("receiptIssued", false);
-        res.put("message", "Your SBI transfer reference has been submitted for verification. Your final institutional receipt will be issued once MECT Finance reconciles the credit.");
+        res.put("message",
+                "Your SBI transfer reference has been submitted for verification. Your final institutional receipt will be issued once MECT Finance reconciles the credit.");
         return res;
     }
 
@@ -1329,9 +1415,11 @@ public class DonationLifecycleService {
 
         claim.setStatus(decision);
         claim.setBankStatementRef(req.bankStatementReference() != null && !req.bankStatementReference().isBlank()
-                ? req.bankStatementReference().trim() : claim.getBankStatementRef());
+                ? req.bankStatementReference().trim()
+                : claim.getBankStatementRef());
         claim.setVerificationNotes(req.verificationNotes() != null && !req.verificationNotes().isBlank()
-                ? req.verificationNotes().trim() : claim.getVerificationNotes());
+                ? req.verificationNotes().trim()
+                : claim.getVerificationNotes());
         claim.setReviewedBy(actor);
         claim.setReviewedAt(Instant.now());
 
@@ -1386,14 +1474,16 @@ public class DonationLifecycleService {
                 payment.setStatus(targetDonationStatus);
                 payment.setGatewayRawStatus(decision);
                 paymentRepository.save(payment);
-                recordReconciliation(donation, payment, prevDonationStatus, targetDonationStatus, "ADMIN_SBI_REVIEW", actor,
+                recordReconciliation(donation, payment, prevDonationStatus, targetDonationStatus, "ADMIN_SBI_REVIEW",
+                        actor,
                         "Claim " + prevClaimStatus + " -> " + decision
                                 + (req.verificationNotes() != null ? ": " + req.verificationNotes() : ""));
             }
         }
 
         auditLogService.record(actor, "MANUAL_SBI_CLAIM_" + decision, "MANUAL_BANK_TRANSFER_CLAIM",
-                claimReference, clientIp, "UTR=" + claim.getUtrNormalized() + ", Donation=" + donation.getDonationReference());
+                claimReference, clientIp,
+                "UTR=" + claim.getUtrNormalized() + ", Donation=" + donation.getDonationReference());
 
         return mapManualClaim(claim);
     }
@@ -1401,9 +1491,12 @@ public class DonationLifecycleService {
     @Transactional(readOnly = true)
     public List<Map<String, Object>> listManualSbiClaims(String statusFilter) {
         var pageReq = PageRequest.of(0, 200);
-        List<ManualBankTransferClaim> claims = (statusFilter == null || statusFilter.isBlank() || "ALL".equalsIgnoreCase(statusFilter))
-                ? manualClaimRepository.findAllByOrderByCreatedAtDesc(pageReq).getContent()
-                : manualClaimRepository.findByStatusOrderByCreatedAtDesc(statusFilter.trim().toUpperCase(Locale.ROOT), pageReq).getContent();
+        List<ManualBankTransferClaim> claims = (statusFilter == null || statusFilter.isBlank()
+                || "ALL".equalsIgnoreCase(statusFilter))
+                        ? manualClaimRepository.findAllByOrderByCreatedAtDesc(pageReq).getContent()
+                        : manualClaimRepository
+                                .findByStatusOrderByCreatedAtDesc(statusFilter.trim().toUpperCase(Locale.ROOT), pageReq)
+                                .getContent();
         return claims.stream().map(this::mapManualClaim).toList();
     }
 
@@ -1483,7 +1576,8 @@ public class DonationLifecycleService {
         return m;
     }
 
-    private void recordReconciliation(Donation d, Payment p, String prev, String next, String source, String actor, String note) {
+    private void recordReconciliation(Donation d, Payment p, String prev, String next, String source, String actor,
+            String note) {
         PaymentReconciliationLog log = new PaymentReconciliationLog();
         log.setDonation(d);
         log.setPayment(p);
@@ -1509,14 +1603,15 @@ public class DonationLifecycleService {
     }
 
     private String textOrNull(tools.jackson.databind.JsonNode node, String field) {
-        if (node == null || node.isMissingNode() || !node.has(field)) return null;
+        if (node == null || node.isMissingNode() || !node.has(field))
+            return null;
         String val = node.get(field).asString(null);
         return (val != null && !val.isBlank()) ? val : null;
     }
 
     private String textOrNull(tools.jackson.databind.JsonNode node, String f1, String f2) {
-        if (node == null || node.isMissingNode()) return null;
+        if (node == null || node.isMissingNode())
+            return null;
         return textOrNull(node.path(f1), f2);
     }
 }
-

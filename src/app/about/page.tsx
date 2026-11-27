@@ -492,7 +492,16 @@ export default function AboutPage() {
         <section id="developer-credit" className="py-8 bg-cream border-t border-border-warm text-center scroll-mt-20">
           <Container size="narrow">
             <p className="text-xs text-ink-muted">
-              Website developed by <strong>Himansu Nayak</strong> (non-trustee technical contributor). Built for public charitable transparency, high-performance static rendering, and strict data dignity under the MECT Honorary Charter.
+              Website Developed by{" "}
+              <a
+                href="https://ohotechn.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-forest underline hover:text-terracotta transition-colors"
+              >
+                Cognisoftoho Technologies Private Limited
+              </a>
+              . Built for public charitable transparency, high-performance static rendering, and strict data dignity under the MECT Honorary Charter.
             </p>
           </Container>
         </section>

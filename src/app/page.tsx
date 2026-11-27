@@ -16,9 +16,6 @@ const DocumentaryFieldExhibitionSection = dynamic(() =>
 const DifferentiatedCampaignsSection = dynamic(() =>
   import("@/components/sections/DifferentiatedCampaignsSection").then((m) => m.DifferentiatedCampaignsSection)
 );
-const StatutoryGovernanceSection = dynamic(() =>
-  import("@/components/sections/StatutoryGovernanceSection").then((m) => m.StatutoryGovernanceSection)
-);
 const TailoredParticipationPathwaysSection = dynamic(() =>
   import("@/components/sections/TailoredParticipationPathwaysSection").then((m) => m.TailoredParticipationPathwaysSection)
 );
@@ -68,13 +65,10 @@ export default function HomePage() {
       {/* SECTION 07: Campaigns & Cultural Heritage (Educational Grants vs. Hanuman Murti 3D) */}
       <DifferentiatedCampaignsSection />
 
-      {/* SECTION 08: Transparency, Governance & Statutory Accountability */}
-      <StatutoryGovernanceSection />
-
-      {/* SECTION 09: Participate in the Mission (Six Tailored Participation Pathways) */}
+      {/* SECTION 08: Participate in the Mission (Six Tailored Participation Pathways) */}
       <TailoredParticipationPathwaysSection />
 
-      {/* SECTION 10: The Closing Message (Earned Institutional Statement & Canonical Contact) */}
+      {/* SECTION 09: The Closing Message (Earned Institutional Statement & Canonical Contact) */}
       <ClosingTrustPledgeSection />
     </div>
   );

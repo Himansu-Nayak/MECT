@@ -105,9 +105,23 @@ export function Header() {
   const previousActiveElement = useRef<HTMLElement | null>(null);
   const previousOverflow = useRef<string>("");
 
-  // Monitor scroll for header backdrop elevation and compression
+  // Monitor scroll for directional hide/show, elevation, and compression
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
+
   useMotionValueEvent(scrollY, "change", (latest) => {
+    const diff = latest - lastScrollY.current;
+    if (overlayOpen) {
+      setHidden(false);
+    } else if (latest > 100 && diff > 6) {
+      // Scrolling down past threshold: naturally leave the viewport
+      setHidden(true);
+    } else if (diff < -6 || latest <= 40) {
+      // Scrolling back up or returning near top: reveal smoothly
+      setHidden(false);
+    }
+    lastScrollY.current = latest;
     setIsScrolled(latest > 20);
   });
 
@@ -199,7 +213,11 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full transition-all duration-300">
+    <header
+      className={`sticky top-0 z-40 w-full transition-transform duration-300 ease-in-out ${
+        hidden && !overlayOpen ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       {/* Top Statutory Ticker Bar */}
       <StatutoryTicker />
 

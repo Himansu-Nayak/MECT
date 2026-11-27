@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
         headers: backendHeaders,
         signal: controller.signal,
         body: JSON.stringify({
-          programmeCode: programmeCode || "GENERAL",
+          programmeCode: programmeCode || "GENERAL_FUND",
           amount: numAmount,
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim().toLowerCase(),

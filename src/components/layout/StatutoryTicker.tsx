@@ -147,7 +147,7 @@ export function StatutoryTicker() {
             </Link>
           </div>
 
-          {/* Right: Direct Campaign & Donation Shortcuts */}
+          {/* Right: Direct Campaign & Statutory Shortcuts */}
           <div className="hidden lg:flex items-center space-x-3.5 shrink-0 text-[11px] font-sans">
             <Link
               href="/campaigns/hanuman-murti"
@@ -155,14 +155,6 @@ export function StatutoryTicker() {
             >
               <Sparkles className="w-3 h-3 text-sand" aria-hidden="true" />
               <span>Hanuman Murti (80–100 Ft)</span>
-            </Link>
-            <span className="text-white/30" aria-hidden="true">|</span>
-            <Link
-              href="/donate"
-              className="text-white font-semibold hover:text-sand transition-colors flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-sand"
-            >
-              <Heart className="w-3 h-3 text-sand fill-current" aria-hidden="true" />
-              <span>Donate Now</span>
             </Link>
             <span className="text-white/30" aria-hidden="true">|</span>
             <Link

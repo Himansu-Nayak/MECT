@@ -58,13 +58,6 @@ public class DonationController {
         Long portalUserId = (authentication != null && authentication.getPrincipal() instanceof PortalPrincipal p)
                 ? p.getId()
                 : null;
-        if (portalUserId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
-                    "status", 401,
-                    "error", "Unauthorized",
-                    "message", "Donor authentication required: You must verify your mobile number via OTP before initiating a donation."
-            ));
-        }
         Map<String, Object> initiated = donationService.initiateDonation(portalUserId, request, getClientIp(httpRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(initiated);
     }
@@ -82,13 +75,6 @@ public class DonationController {
         Long portalUserId = (authentication != null && authentication.getPrincipal() instanceof PortalPrincipal p)
                 ? p.getId()
                 : null;
-        if (portalUserId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
-                    "status", 401,
-                    "error", "Unauthorized",
-                    "message", "Donor authentication required: You must verify your mobile number via OTP before completing payment verification."
-            ));
-        }
         return ResponseEntity.ok(donationService.verifyGatewayCheckoutCallback(portalUserId, request, getClientIp(httpRequest)));
     }
 
@@ -100,13 +86,6 @@ public class DonationController {
         Long portalUserId = (authentication != null && authentication.getPrincipal() instanceof PortalPrincipal p)
                 ? p.getId()
                 : null;
-        if (portalUserId == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
-                    "status", 401,
-                    "error", "Unauthorized",
-                    "message", "Donor authentication required: You must verify your mobile number via OTP before submitting a manual bank transfer claim."
-            ));
-        }
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(donationService.submitManualSbiUtrClaim(portalUserId, request, getClientIp(httpRequest)));
     }

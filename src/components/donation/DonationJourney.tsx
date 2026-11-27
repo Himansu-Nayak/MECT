@@ -51,35 +51,35 @@ export interface DonationProgramme {
 
 export const VERIFIED_DONATION_PROGRAMMES: DonationProgramme[] = [
   {
-    code: "GENERAL",
+    code: "GENERAL_FUND",
     name: "General Charitable Fund",
     description: "Allocated where the community need is greatest across all trust initiatives in Odisha.",
     badge: "Core Mission",
     iconName: "Heart"
   },
   {
-    code: "EDUCATION",
+    code: "EDUCATION_LEARNING",
     name: "Education & Learning Support",
     description: "Remedial coaching, learning kits, school uniforms, and higher education tuition grants.",
     badge: "Youth Literacy",
     iconName: "GraduationCap"
   },
   {
-    code: "WATER",
+    code: "SAFE_WATER_SANITATION",
     name: "Safe Water & Sanitation (Jal Seva)",
     description: "Summer community drinking water kiosks, clean water handling, and heatstroke relief.",
     badge: "Public Health",
     iconName: "Droplets"
   },
   {
-    code: "WOMEN",
+    code: "WOMEN_EMPOWERMENT",
     name: "Women Empowerment & Livelihoods",
     description: "Tailoring courses, sewing machine toolkits, and financial self-reliance training for rural women.",
     badge: "Livelihoods",
     iconName: "Scissors"
   },
   {
-    code: "FOOD",
+    code: "FOOD_SECURITY_RELIEF",
     name: "Food Relief & Nutrition (Jan Ahar)",
     description: "Hygienic cooked meals and food provisions for hospital attendants, daily-wage families, and destitute elders.",
     badge: "Nutrition",
@@ -116,8 +116,8 @@ export function DonationJourney() {
   const initialProg = paramProg
     ? VERIFIED_DONATION_PROGRAMMES.find(
         (p) => p.code === paramProg || p.code.replace(/_/g, "") === paramProg.replace(/_/g, "")
-      )?.code || "GENERAL"
-    : "GENERAL";
+      )?.code || "GENERAL_FUND"
+    : "GENERAL_FUND";
   const [selectedProgrammeCode, setSelectedProgrammeCode] = useState<string>(initialProg);
 
   // Step 3: Donor Information
