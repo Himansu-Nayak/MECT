@@ -6,7 +6,8 @@
 **Proposed Staging Backend API:** [https://staging-api.mect.org.in](https://staging-api.mect.org.in)  
 **GitHub Repository:** [https://github.com/Himansu-Nayak/MECT](https://github.com/Himansu-Nayak/MECT)  
 **Target Feature Branch:** `feat/complete-website-redefinition-and-deduplication`  
-**Prior Verified Commit:** `393377dde11910a1d365436e51d924259fe5a5b9`  
+**Prior Audited Commit:** `393377dde11910a1d365436e51d924259fe5a5b9`  
+**Follow-Up Remediation Commit:** `e7cb94df8a076c108209132636f24bfd4acab509`  
 **Cumulative Release Candidate SHA-256 Digest:** `767240f392e0d41274ad8be484ff15cd6a091f617c4f06335f08378437d705b1`  
 **Audit Protocol:** Phase 2.7G.3 Post-Push Authentication Audit & Deployment Safety Gate  
 **Audit Date:** 2026-11-27  
