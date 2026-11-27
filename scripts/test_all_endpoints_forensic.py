@@ -190,7 +190,7 @@ probe("Next.js Contact Route Handler", "POST", f"{BASE_URL}/api/contact",
 probe("Next.js Donation Claim Route Handler", "POST", f"{BASE_URL}/api/donations/claim",
       data={
           "donorName": "Claim Tester", "donorEmail": "synthetic.donor@mect.org.in", "donorPhone": "+919438200001",
-          "amount": 1000, "utrReference": f"SBIN{int(time.time())}X", "programmeCode": "GENERAL",
+          "amount": 1000, "utrReference": f"SBIN{int(time.time())}X", "programmeCode": "WOMEN_EMPOWERMENT",
           "transferDate": "2026-11-27", "notes": "Testing claim route",
           "anonymous": False, "communicationConsent": True, "whatsappConsent": False
       },

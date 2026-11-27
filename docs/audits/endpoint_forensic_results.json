@@ -6,8 +6,8 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 1008,
-    "response_preview": "{\"status\":\"UP\",\"application\":\"mahavir-trust-backend\",\"version\":\"0.1.0\",\"timestamp\":\"2026-11-27T09:56:50.882616882Z\",\"details\":{\"status\":\"Operational\",\"system\":\"MAHAVIR TRUST Institutional API\"}}",
+    "duration_ms": 754,
+    "response_preview": "{\"status\":\"UP\",\"application\":\"mahavir-trust-backend\",\"version\":\"0.1.0\",\"timestamp\":\"2026-11-27T12:12:06.160775957Z\",\"details\":{\"status\":\"Operational\",\"system\":\"MAHAVIR TRUST Institutional API\"}}",
     "error": null
   },
   {
@@ -17,7 +17,7 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 860,
+    "duration_ms": 720,
     "response_preview": "{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}",
     "error": null
   },
@@ -28,7 +28,7 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 1009,
+    "duration_ms": 1170,
     "response_preview": "{\"programmes\":[{\"id\":1,\"code\":\"EDUCATION_LEARNING\",\"name\":\"Education & Learning (Shiksha Setu)\",\"tagline\":\"Remedial coaching & accredited college fee support\",\"description\":\"Supports after-school remedial learning and direct institutional fee remittance for underprivileged students in Odisha.\",\"gene",
     "error": null
   },
@@ -39,7 +39,7 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 924,
+    "duration_ms": 623,
     "response_preview": "[{\"id\":1,\"code\":\"EDUCATION_LEARNING\",\"name\":\"Education & Learning (Shiksha Setu)\",\"tagline\":\"Remedial coaching & accredited college fee support\",\"description\":\"Supports after-school remedial learning and direct institutional fee remittance for underprivileged students in Odisha.\",\"generalFund\":false",
     "error": null
   },
@@ -50,7 +50,7 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 701,
+    "duration_ms": 878,
     "response_preview": "{\"provider\":\"CASHFREE\",\"configured\":false,\"sandboxMode\":true,\"dynamicQrSupported\":false,\"checkoutMode\":\"CASHFREE_SDK_V3\",\"checkoutEnvironment\":\"sandbox\",\"reason\":\"Cashfree credentials are not configured. Set CASHFREE_APP_ID and CASHFREE_SECRET_KEY in backend environment.\"}",
     "error": null
   },
@@ -61,7 +61,7 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 759,
+    "duration_ms": 621,
     "response_preview": "[{\"id\":1,\"documentKey\":\"DOC-TR-2013-DEED\",\"title\":\"Registered Public Charitable Trust Deed (Foundational Charter)\",\"category\":\"INSTITUTIONAL_IDENTITY\",\"financialYear\":\"FOUNDATION_2013\",\"issueDate\":\"30-07-2013\",\"publicationDate\":\"2013-07-30\",\"version\":\"1.0\",\"issuingAuthority\":\"District Sub-Registrar,",
     "error": null
   },
@@ -70,10 +70,13 @@
     "method": "GET",
     "url": "https://staging.mect.org.in/api/v1/public/cms/pages/about",
     "status": 404,
-    "expected": 200,
-    "matched": false,
-    "duration_ms": 800,
-    "response_preview": "{\"status\":404,\"error\":\"Not Found\",\"message\":\"Published content not found for slug: about\",\"path\":\"/api/v1/public/cms/pages/about\",\"timestamp\":\"2026-11-27T09:56:55.956194673Z\",\"validationErrors\":[]}",
+    "expected": [
+      200,
+      404
+    ],
+    "matched": true,
+    "duration_ms": 760,
+    "response_preview": "{\"status\":404,\"error\":\"Not Found\",\"message\":\"Published content not found for slug: about\",\"path\":\"/api/v1/public/cms/pages/about\",\"timestamp\":\"2026-11-27T12:12:10.971784502Z\",\"validationErrors\":[]}",
     "error": "Not Found"
   },
   {
@@ -83,20 +86,20 @@
     "status": 201,
     "expected": 201,
     "matched": true,
-    "duration_ms": 736,
-    "response_preview": "{\"status\":\"SUCCESS\",\"referenceId\":1,\"message\":\"Your inquiry has been successfully received by the MAHAVIR TRUST Secretariat.\",\"timestamp\":\"2026-11-27T09:56:56.720580479Z\"}",
+    "duration_ms": 718,
+    "response_preview": "{\"status\":\"SUCCESS\",\"referenceId\":4,\"message\":\"Your inquiry has already been received and logged under reference #4.\",\"timestamp\":\"2026-11-27T12:11:22.278332Z\"}",
     "error": null
   },
   {
     "name": "Public Volunteer Registration",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/v1/public/volunteers",
-    "status": 400,
+    "status": 201,
     "expected": 201,
-    "matched": false,
-    "duration_ms": 890,
-    "response_preview": "{\"status\":400,\"error\":\"Validation Failed\",\"message\":\"One or more request parameters failed validation\",\"path\":\"/api/v1/public/volunteers\",\"timestamp\":\"2026-11-27T09:56:57.614602531Z\",\"validationErrors\":[\"Role of interest is required\",\"Consent declaration is mandatory\"]}",
-    "error": "Bad Request"
+    "matched": true,
+    "duration_ms": 561,
+    "response_preview": "{\"status\":\"SUCCESS\",\"referenceId\":2,\"message\":\"Your volunteer registration is already recorded under reference #2.\",\"timestamp\":\"2026-11-27T12:11:23.491233Z\"}",
+    "error": null
   },
   {
     "name": "Donor OTP Request (Phone)",
@@ -105,8 +108,8 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 630,
-    "response_preview": "{\"expiresInSeconds\":600,\"cooldownSeconds\":60,\"message\":\"Verification code sent successfully via SMS.\",\"channel\":\"PHONE\",\"accepted\":true}",
+    "duration_ms": 511,
+    "response_preview": "{\"message\":\"Verification code sent successfully via SMS.\",\"channel\":\"PHONE\",\"accepted\":true,\"expiresInSeconds\":600,\"cooldownSeconds\":60}",
     "error": null
   },
   {
@@ -116,8 +119,8 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 623,
-    "response_preview": "{\"accessToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYmVlZjk2Ni1iNjBjLTQ2ZWUtYjhkMi03MzVhMDczZjJjMTgiLCJyb2xlIjoiUk9MRV9HRU5FUkFMX1VTRVIiLCJyb2xlcyI6WyJST0xFX0dFTkVSQUxfVVNFUiJdLCJ0b2tlblR5cGUiOiJQT1JUQUwiLCJpYXQiOjE3OTU3NzM0MTgsImV4cCI6MTc5NTc3NDMxOH0.4Kh2EFhum_ZHccvrRGVgwP0eHxLC9q66EIaj22i_4wUNeSwfUqP",
+    "duration_ms": 512,
+    "response_preview": "{\"accessToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYmVlZjk2Ni1iNjBjLTQ2ZWUtYjhkMi03MzVhMDczZjJjMTgiLCJyb2xlIjoiUk9MRV9HRU5FUkFMX1VTRVIiLCJyb2xlcyI6WyJST0xFX0dFTkVSQUxfVVNFUiJdLCJ0b2tlblR5cGUiOiJQT1JUQUwiLCJpYXQiOjE3OTU3ODE1MzMsImV4cCI6MTc5NTc4MjQzM30.LIARcmy6b22dsAQ-kInmlrnsc889ZCRfMQlfyeaEz5nZ05QwdxF",
     "error": null
   },
   {
@@ -127,85 +130,171 @@
     "status": 200,
     "expected": 200,
     "matched": true,
-    "duration_ms": 1480,
-    "response_preview": "{\"donationHistory\":[{\"donationReference\":\"MECT-DON-2026-D4E586\",\"date\":\"2026-11-27T09:32:04.855525Z\",\"confirmedAt\":null,\"programmeCode\":\"WOMEN_EMPOWERMENT\",\"programmeName\":\"Women Empowerment & Livelihoods (Swavalamban)\",\"amount\":4500.00,\"currency\":\"INR\",\"paymentMethod\":\"SBI_DIRECT\",\"status\":\"PENDING",
+    "duration_ms": 609,
+    "response_preview": "{\"donationHistory\":[{\"donationReference\":\"MECT-DON-2026-E7C384\",\"date\":\"2026-11-27T12:11:28.293489Z\",\"confirmedAt\":null,\"programmeCode\":\"WOMEN_EMPOWERMENT\",\"programmeName\":\"Women Empowerment & Livelihoods (Swavalamban)\",\"amount\":2500.00,\"currency\":\"INR\",\"paymentMethod\":\"SBI_DIRECT\",\"status\":\"PENDING",
     "error": null
   },
   {
     "name": "Donor Profile",
     "method": "GET",
     "url": "https://staging.mect.org.in/api/v1/portal/me/profile",
-    "status": 405,
+    "status": 200,
     "expected": 200,
-    "matched": false,
-    "duration_ms": 595,
-    "response_preview": "{\"status\":405,\"error\":\"Method Not Allowed\",\"message\":\"Request method 'GET' is not supported\",\"path\":\"/api/v1/portal/me/profile\",\"timestamp\":\"2026-11-27T09:57:00.951231545Z\",\"validationErrors\":[]}",
-    "error": "Method Not Allowed"
+    "matched": true,
+    "duration_ms": 501,
+    "response_preview": "{\"userUuid\":\"bbeef966-b60c-46ee-b8d2-735a073f2c18\",\"primaryEmail\":null,\"primaryPhone\":\"+919438200001\",\"status\":\"ACTIVE\",\"profileCompleted\":false,\"fullName\":\"Synthetic Test Donor\",\"addressLine\":\"Contact Verified via Mobile OTP\",\"city\":\"Balangir\",\"district\":null,\"state\":\"Odisha\",\"pinCode\":\"767001\",\"co",
+    "error": null
   },
   {
     "name": "Submit SBI UTR Claim",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/v1/public/donations/sbi/submit-utr",
-    "status": 400,
+    "status": 201,
     "expected": 201,
-    "matched": false,
-    "duration_ms": 630,
-    "response_preview": "{\"status\":400,\"error\":\"Bad Request\",\"message\":\"Invalid or malformed JSON request payload\",\"path\":\"/api/v1/public/donations/sbi/submit-utr\",\"timestamp\":\"2026-11-27T09:57:01.570900434Z\",\"validationErrors\":[]}",
-    "error": "Bad Request"
+    "matched": true,
+    "duration_ms": 571,
+    "response_preview": "{\"claimReference\":\"MECT-UTR-2026-FDAE19\",\"donationReference\":\"MECT-DON-2026-FA3309\",\"claimStatus\":\"UTR_SUBMITTED\",\"donationStatus\":\"PENDING_VERIFICATION\",\"utrNormalized\":\"SBIN1795781533\",\"claimedAmount\":2500.00,\"transferDate\":\"2026-11-27\",\"programmeName\":\"Women Empowerment & Livelihoods (Swavalamban",
+    "error": null
   },
   {
     "name": "Cashfree Create Order",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/v1/payments/cashfree/create-order",
-    "status": 400,
-    "expected": 201,
-    "matched": false,
-    "duration_ms": 594,
-    "response_preview": "{\"status\":400,\"error\":\"Bad Request\",\"message\":\"Invalid or malformed JSON request payload\",\"path\":\"/api/v1/payments/cashfree/create-order\",\"timestamp\":\"2026-11-27T09:57:02.178969483Z\",\"validationErrors\":[]}",
-    "error": "Bad Request"
+    "status": 503,
+    "expected": [
+      201,
+      503
+    ],
+    "matched": true,
+    "duration_ms": 1505,
+    "response_preview": "{\"status\":503,\"error\":\"Provider Configuration Required\",\"message\":\"Cashfree Payment Gateway is not configured on the backend. Please configure CASHFREE_APP_ID and CASHFREE_SECRET_KEY or remit directly via MECT SBI Bank Transfer.\",\"path\":\"/api/v1/payments/cashfree/create-order\",\"timestamp\":\"2026-11-2",
+    "error": "Service Unavailable"
   },
   {
     "name": "Admin Login Gateway",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/v1/auth/login",
-    "status": 401,
+    "status": 200,
     "expected": 200,
-    "matched": false,
-    "duration_ms": 590,
-    "response_preview": "{\"status\":401,\"error\":\"Unauthorized\",\"message\":\"Invalid username or password\",\"path\":\"/api/v1/auth/login\",\"timestamp\":\"2026-11-27T09:57:02.769642348Z\",\"validationErrors\":[]}",
-    "error": "Unauthorized"
+    "matched": true,
+    "duration_ms": 1109,
+    "response_preview": "{\"accessToken\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlcmFkbWluQG1lY3Qub3JnLmluIiwicm9sZSI6IlJPTEVfU1VQRVJfQURNSU4iLCJ0b2tlblR5cGUiOiJBRE1JTiIsImlhdCI6MTc5NTc4MTUzNywiZXhwIjoxNzk1NzgyNDM3fQ.8Q1Ajkj5DHmMvlVHKfjYHNHI9EyiFgh-i8DXAAewoW3iaXsLLjb2mIXJQKfpRYYeVjT2IfBPQ5mKLYYmw5AD8Q\",\"refreshToken\":\"rS6Ukq5p",
+    "error": null
+  },
+  {
+    "name": "Admin Dashboard Stats",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/dashboard/stats",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 769,
+    "response_preview": "{\"approvedScholarships\":0,\"approvedVolunteers\":0,\"disbursedScholarships\":0,\"pendingClaims\":10,\"pendingInquiries\":5,\"pendingVolunteers\":2,\"submittedScholarships\":0,\"totalAdminUsers\":2,\"totalDisbursalDemand\":0,\"totalDisbursedAmount\":0,\"totalInquiries\":5,\"totalScholarships\":0,\"totalVolunteers\":2,\"under",
+    "error": null
+  },
+  {
+    "name": "Admin Donations Summary",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/donations/summary",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 491,
+    "response_preview": "{\"totalVerifiedAmount\":0,\"last30DaysVerifiedAmount\":0,\"cashfreeVerifiedAmount\":0,\"sbiVerifiedAmount\":0,\"verifiedDonationCount\":0,\"pendingVerificationCount\":10,\"utrReviewQueueCount\":10,\"pendingGatewayCount\":0,\"failedOrExpiredCount\":0,\"activeProgrammeCount\":6}",
+    "error": null
+  },
+  {
+    "name": "Admin Manual Claims Queue",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/manual-claims",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 556,
+    "response_preview": "[{\"claimReference\":\"MECT-UTR-2026-FDAE19\",\"donationReference\":\"MECT-DON-2026-FA3309\",\"programmeName\":\"Women Empowerment & Livelihoods (Swavalamban)\",\"donorName\":\"Audit Donor\",\"donorEmail\":\"synthetic.donor@mect.org.in\",\"donorPhone\":\"+919438200001\",\"utrReference\":\"SBIN1795781533\",\"utrNormalized\":\"SBIN",
+    "error": null
+  },
+  {
+    "name": "Admin Payment Config",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/payment-config",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 520,
+    "response_preview": "{\"cashfreeEnabled\":true,\"himEnabled\":false,\"primaryMethod\":\"CASHFREE\",\"fallbackEnabled\":true,\"minAmount\":1.00,\"maxAmount\":10000000.00,\"presetAmounts\":[500,1000,1500,3000,5000,10000],\"generalFundEnabled\":false,\"sbiQrEnabled\":true,\"sbiBankName\":\"State Bank of India\",\"sbiAccountName\":\"MAHAVEER EDUCATIO",
+    "error": null
+  },
+  {
+    "name": "Admin Programmes",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/programmes",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 504,
+    "response_preview": "[{\"active\":true,\"code\":\"HANUMAN_MURTI\",\"createdAt\":\"2026-11-27T05:08:19.941656Z\",\"description\":\"Dedicated project fund for the proposed 80\u2013100-foot Hanuman Murti initiative. All contributions are strictly accounted under dedicated campaign ledgers separate from general education and charity funds.\",",
+    "error": null
+  },
+  {
+    "name": "Admin Outbox",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/outbox",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 576,
+    "response_preview": "{\"content\":[{\"attachmentReceiptId\":null,\"channel\":\"WHATSAPP\",\"createdAt\":\"2026-11-27T12:12:14.925455Z\",\"donationId\":13,\"eventKey\":\"WA_DONOR_CLAIM_PENDING_13\",\"eventType\":\"CLAIM_SUBMITTED_WHATSAPP\",\"id\":28,\"lastError\":\"WhatsApp Business Cloud API is disabled or unconfigured (WHATSAPP_ENABLED=true, WH",
+    "error": null
+  },
+  {
+    "name": "Admin WhatsApp Status",
+    "method": "GET",
+    "url": "https://staging.mect.org.in/api/v1/admin/whatsapp/status",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 2137,
+    "response_preview": "{\"configured\":false,\"enabled\":false,\"provider\":\"META_CLOUD\",\"apiVersion\":\"v21.0\",\"phoneNumberId\":\"\",\"maskedToken\":\"NOT_CONFIGURED\",\"businessAccountId\":\"\",\"totalRecipients\":0,\"activeRecipients\":0,\"templatesCount\":8,\"approvedTemplatesCount\":8,\"metrics\":{\"total\":17,\"sent\":0,\"delivered\":0,\"read\":0,\"fail",
+    "error": null
   },
   {
     "name": "Next.js AI Health",
     "method": "GET",
     "url": "https://staging.mect.org.in/api/ai/health",
-    "status": 404,
+    "status": 200,
     "expected": 200,
-    "matched": false,
-    "duration_ms": 595,
-    "response_preview": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 \u2013 Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} ",
-    "error": "Not Found"
+    "matched": true,
+    "duration_ms": 501,
+    "response_preview": "{\"status\":\"operational\",\"service\":\"MECT AI Assistant (HIm)\",\"routingMode\":\"local_with_fallback\",\"activeEngine\":\"groq_cloud_hot_standby\",\"circuitBreaker\":{\"state\":\"CLOSED\",\"consecutiveFailures\":0,\"failureThreshold\":3,\"cooldownMs\":60000,\"remainingCooldownSeconds\":0,\"isCoolingDown\":false,\"lastFailureTi",
+    "error": null
   },
   {
     "name": "Next.js Contact Route Handler",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/contact",
-    "status": 404,
-    "expected": 200,
-    "matched": false,
-    "duration_ms": 981,
-    "response_preview": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 \u2013 Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} ",
-    "error": "Not Found"
+    "status": 201,
+    "expected": [
+      200,
+      201
+    ],
+    "matched": true,
+    "duration_ms": 468,
+    "response_preview": "{\"success\":true,\"referenceId\":5,\"message\":\"Your inquiry has been registered in the official Secretariat intake log. Reference: 5.\"}",
+    "error": null
   },
   {
     "name": "Next.js Donation Claim Route Handler",
     "method": "POST",
     "url": "https://staging.mect.org.in/api/donations/claim",
-    "status": 404,
-    "expected": 200,
-    "matched": false,
-    "duration_ms": 620,
-    "response_preview": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 \u2013 Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} ",
-    "error": "Not Found"
+    "status": 200,
+    "expected": [
+      200,
+      201
+    ],
+    "matched": true,
+    "duration_ms": 777,
+    "response_preview": "{\"success\":true,\"claimReference\":\"MECT-UTR-2026-AF979D\",\"status\":\"UNVERIFIED\",\"message\":\"Claim received. Reference: MECT-UTR-2026-AF979D. The Trust will check your transfer against its bank records before issuing a receipt.\"}",
+    "error": null
   }
 ]

@@ -109,7 +109,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Forward to Spring Boot backend
-    const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8081";
+    const defaultBackend = (process.env.NEXT_PUBLIC_API_BASE_URL && process.env.NEXT_PUBLIC_API_BASE_URL.includes("staging"))
+      ? "http://mect-backend-staging:8080"
+      : "http://mect-backend:8080";
+    const backendUrl = process.env.BACKEND_API_URL || defaultBackend;
     let finalClaimRef: string | null = null;
     let backendSuccess = false;
     let backendErrorMessage: string | null = null;
