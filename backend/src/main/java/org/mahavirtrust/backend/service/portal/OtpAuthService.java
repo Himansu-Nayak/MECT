@@ -352,7 +352,7 @@ public class OtpAuthService {
                 profile.setState("Odisha");
                 profile.setCountry("India");
                 profile.setPinCode("767001");
-                profile.setAddressLine("Contact Verified via Mobile OTP");
+                profile.setAddressLine("Contact Verified via " + ("EMAIL".equals(channel) ? "Email OTP" : "Mobile OTP"));
                 profile.setPreferredLanguage("en");
                 profileRepository.save(profile);
             }
@@ -371,7 +371,7 @@ public class OtpAuthService {
                 profile.setState("Odisha");
                 profile.setCountry("India");
                 profile.setPinCode("767001");
-                profile.setAddressLine("Contact Verified via Mobile OTP");
+                profile.setAddressLine("Contact Verified via " + ("EMAIL".equals(channel) ? "Email OTP" : "Mobile OTP"));
                 profile.setPreferredLanguage("en");
                 profileRepository.save(profile);
             }

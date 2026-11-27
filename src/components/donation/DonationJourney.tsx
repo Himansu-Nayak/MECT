@@ -600,7 +600,7 @@ export function DonationJourney() {
                 compact={true}
                 redirectOnSuccess={false}
                 headingOverride="Donor Verification"
-                subheadingOverride="Verify your mobile number or Google account to link your contribution to official receipt records."
+                subheadingOverride="Verify your mobile number or email address to link your contribution to official receipt records."
                 onSuccess={(auth) => {
                   if (auth.fullName) setDonorName(auth.fullName);
                   if (auth.primaryPhone) setDonorPhone(auth.primaryPhone);

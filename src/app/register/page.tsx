@@ -19,7 +19,7 @@ function RegisterContent() {
   const emailParam = searchParams.get("email");
   const channelParam = searchParams.get("channel");
 
-  const initialChannel: "PHONE" | "EMAIL" = "PHONE";
+  const initialChannel: "PHONE" | "EMAIL" = channelParam?.toUpperCase() === "EMAIL" ? "EMAIL" : "PHONE";
 
   const { isAuthenticated, isLoading } = usePortalAuth();
 
