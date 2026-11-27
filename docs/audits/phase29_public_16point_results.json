@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "test": "Public Frontend Health (Cloudflare)",
+    "status": "PASS",
+    "details": "HTTP 200 OK via Server: cloudflare, rendered 229,758 bytes HTML"
+  },
+  {
+    "id": 2,
+    "test": "Public Backend Health (Same-Origin)",
+    "status": "PASS",
+    "details": "HTTP 200 Status UP via Server: cloudflare, groups: ['liveness', 'readiness']"
+  },
+  {
+    "id": 4,
+    "test": "Public Frontend-to-Backend API Ingress",
+    "status": "PASS",
+    "details": "Config reachable, programmes: 6"
+  },
+  {
+    "id": 5,
+    "test": "Public Donor Mobile OTP Flow",
+    "status": "PASS",
+    "details": "Mobile OTP dispatched and verified over Cloudflare HTTPS, JWT length: 319"
+  },
+  {
+    "id": 6,
+    "test": "Public Donor Email OTP Flow",
+    "status": "PASS",
+    "details": "Email OTP dispatched and verified over Cloudflare HTTPS, JWT length: 319"
+  },
+  {
+    "id": 7,
+    "test": "Public Google Sign-In Validation",
+    "status": "PASS",
+    "details": "Endpoint active and enforcing signature verification over Cloudflare (HTTP 401)"
+  },
+  {
+    "id": 8,
+    "test": "Public Donation Programme Selection",
+    "status": "PASS",
+    "details": "All 6 institutional programmes retrieved via Cloudflare: ['EDUCATION_LEARNING', 'HANUMAN_MURTI', 'WOMEN_EMPOWERMENT', 'SAFE_WATER_SANITATION', 'FOOD_SECURITY_RELIEF', 'COMMUNITY_WELFARE']"
+  },
+  {
+    "id": 9,
+    "test": "Public Donation Amount Persistence",
+    "status": "PASS",
+    "details": "Amount \u20b94500.00 persisted exactly over Cloudflare, Claim: MECT-UTR-2026-C8C85A"
+  },
+  {
+    "id": 10,
+    "test": "Manual SBI UTR Submission",
+    "status": "PASS",
+    "details": "Claim Reference: MECT-UTR-2026-C8C85A, UTR: SBIN1795771923"
+  },
+  {
+    "id": 12,
+    "test": "Admin Authentication Gateway",
+    "status": "PASS",
+    "details": "Administrative auth gateway active and secured over Cloudflare (HTTP 401 response)"
+  },
+  {
+    "id": 3,
+    "test": "PostgreSQL Health (Isolated Container)",
+    "status": "PASS",
+    "details": "/var/run/postgresql:5432 - accepting connections"
+  },
+  {
+    "id": 11,
+    "test": "PostgreSQL Database Persistence",
+    "status": "PASS",
+    "details": "Record verified in mect_staging_db: MECT-UTR-2026-C8C85A | SBIN1795771923 |        4500.00"
+  },
+  {
+    "id": 13,
+    "test": "Receipt Generation Subsystem",
+    "status": "PASS",
+    "details": "Receipt subsystem operational, active receipt table verified in DB (count: )"
+  },
+  {
+    "id": 14,
+    "test": "Mock SMS and Email Dispatch",
+    "status": "PASS",
+    "details": "Verified [MOCK] dispatch in backend logs (SMS=True, Email=True), zero real credits spent"
+  },
+  {
+    "id": 15,
+    "test": "Production MECT Health & Zero Downtime",
+    "status": "PASS",
+    "details": "MECT Production Web (3001): HTTP 200, API (8081): HTTP 200 OK"
+  },
+  {
+    "id": 16,
+    "test": "OHO Tech Health & Zero Downtime",
+    "status": "PASS",
+    "details": "OHO Tech Web (3000): HTTP 200 OK"
+  }
+]
