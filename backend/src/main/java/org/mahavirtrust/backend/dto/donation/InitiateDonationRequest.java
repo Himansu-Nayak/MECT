@@ -32,7 +32,7 @@ public record InitiateDonationRequest(
         @Size(max = 300)
         String dedicationMessage,
 
-        boolean anonymous,
+        Boolean anonymous,
 
         @Pattern(regexp = "UPI_QR|GATEWAY_CHECKOUT", message = "Payment method must be UPI_QR or GATEWAY_CHECKOUT")
         String paymentMethod,
@@ -41,6 +41,24 @@ public record InitiateDonationRequest(
 
         Boolean whatsappConsent
 ) {
+    public InitiateDonationRequest {
+        if (anonymous == null) {
+            anonymous = Boolean.FALSE;
+        }
+        if (paymentMethod == null || paymentMethod.isBlank()) {
+            paymentMethod = "GATEWAY_CHECKOUT";
+        }
+        if (communicationConsent == null) {
+            communicationConsent = Boolean.TRUE;
+        }
+        if (whatsappConsent == null) {
+            whatsappConsent = Boolean.FALSE;
+        }
+    }
+
+    public boolean isAnonymous() {
+        return Boolean.TRUE.equals(this.anonymous);
+    }
     public InitiateDonationRequest(
             String programmeCode,
             BigDecimal amount,

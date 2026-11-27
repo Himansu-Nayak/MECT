@@ -193,10 +193,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiErrorResponse> handleUnreadableMessage(
             HttpMessageNotReadableException ex, HttpServletRequest request) {
+        log.warn("Invalid or unreadable JSON payload on {}: {}", request.getRequestURI(), ex.getMessage());
         ApiErrorResponse response = new ApiErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 "Bad Request",
-                "Invalid or malformed JSON request payload",
+                "Invalid or malformed JSON request payload: " + (ex.getRootCause() != null ? ex.getRootCause().getMessage() : ex.getMessage()),
                 request.getRequestURI(),
                 Instant.now(),
                 List.of()

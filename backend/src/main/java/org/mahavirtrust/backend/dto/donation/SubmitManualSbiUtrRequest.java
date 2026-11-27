@@ -33,7 +33,7 @@ public record SubmitManualSbiUtrRequest(
         @Size(max = 300)
         String dedicationMessage,
 
-        boolean anonymous,
+        Boolean anonymous,
 
         Boolean communicationConsent,
 
@@ -55,6 +55,21 @@ public record SubmitManualSbiUtrRequest(
         @Size(max = 64)
         String existingDonationReference
 ) {
+    public SubmitManualSbiUtrRequest {
+        if (anonymous == null) {
+            anonymous = Boolean.FALSE;
+        }
+        if (communicationConsent == null) {
+            communicationConsent = Boolean.TRUE;
+        }
+        if (whatsappConsent == null) {
+            whatsappConsent = Boolean.FALSE;
+        }
+    }
+
+    public boolean isAnonymous() {
+        return Boolean.TRUE.equals(this.anonymous);
+    }
     public SubmitManualSbiUtrRequest(
             String programmeCode,
             BigDecimal amount,

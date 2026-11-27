@@ -66,6 +66,8 @@ export async function POST(request: NextRequest) {
       programmeCode,
       transferDate,
       notes,
+      anonymous,
+      communicationConsent,
       whatsappConsent,
     } = body;
 
@@ -138,6 +140,8 @@ export async function POST(request: NextRequest) {
           transferDate: transferDate || new Date().toISOString().split("T")[0],
           paymentModeNote: "Direct Bank Transfer / UPI Manual Claim",
           proofSummary: notes ? notes.trim() : "Submitted via mect.org.in/donate claim desk",
+          anonymous: Boolean(anonymous),
+          communicationConsent: communicationConsent ?? true,
           whatsappConsent: Boolean(whatsappConsent),
         }),
       });
