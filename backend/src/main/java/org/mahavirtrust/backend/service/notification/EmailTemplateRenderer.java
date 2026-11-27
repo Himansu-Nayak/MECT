@@ -94,7 +94,7 @@ public class EmailTemplateRenderer {
                 Your MECT Portal Access
               </div>
               <p style="margin:0 0 14px 0;font-size:13px;color:#26332E;line-height:1.55;">
-                Complete your personal details or explore our five verified social-sector pillars across Balangir and Odisha.
+                Complete your personal details or explore our five verified social-sector pillars across Odisha.
               </p>
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
@@ -234,7 +234,7 @@ public class EmailTemplateRenderer {
           </tr>
         </table>
         <p style="margin:0;color:#66736C;font-size:12px;line-height:1.55;">
-          Factual Notice: This acknowledgement confirms verified receipt of funds by Mahaveer Educational &amp; Charitable Trust (Balangir Trust Deed No. 40311302194; PAN AADTM5474F). Please refer to your attached receipt for full accounting disclosures.
+          Factual Notice: This acknowledgement confirms verified receipt of funds by Mahaveer Educational &amp; Charitable Trust (Registered under Indian Trusts Act; PAN AADTM5474F). Please refer to your attached receipt for full accounting disclosures.
         </p>
         """
         .formatted(
@@ -329,7 +329,7 @@ public class EmailTemplateRenderer {
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%%" style="background-color:#F0DEC5;border-left:3px solid #A45E44;">
           <tr>
             <td style="padding:12px 14px;font-size:13px;line-height:1.55;color:#26332E;">
-              If you did not authorise this change, please contact Mahaveer Educational &amp; Charitable Trust immediately at mect220@gmail.com or +91 94382 95223.
+              If you did not authorise this change, please contact Mahaveer Educational &amp; Charitable Trust immediately at mectbbsr13@gmail.com or +91 94382 95223.
             </td>
           </tr>
         </table>
@@ -360,7 +360,7 @@ public class EmailTemplateRenderer {
           </tr>
         </table>
         <p style="margin:0;color:#66736C;font-size:13px;line-height:1.6;">
-          If this was you, no action is required. If you did not sign in, please contact our secretariat immediately at mect220@gmail.com or +91 94382 95223.
+          If this was you, no action is required. If you did not sign in, please contact our secretariat immediately at mectbbsr13@gmail.com or +91 94382 95223.
         </p>
         """
         .formatted(safeFirstName(firstName), HtmlUtils.htmlEscape(loginTime), HtmlUtils.htmlEscape(clientIp));
@@ -493,7 +493,7 @@ public class EmailTemplateRenderer {
           </tr>
         </table>
         <p style="margin:0;color:#66736C;font-size:13px;line-height:1.6;">
-          If you believe this decision was made in error or have updated bank proof, please contact the Trust Secretariat at mect220@gmail.com or +91 94382 95223.
+          If you believe this decision was made in error or have updated bank proof, please contact the Trust Secretariat at mectbbsr13@gmail.com or +91 94382 95223.
         </p>
         """
         .formatted(
@@ -565,10 +565,10 @@ public class EmailTemplateRenderer {
                   <tr>
                     <td style="padding:18px 24px;background-color:#F0DEC5;border-top:1px solid #E5C499;font-size:12px;line-height:1.6;color:#26332E;">
                       <div style="font-weight:700;color:#1D2924;">Mahaveer Educational &amp; Charitable Trust (MECT)</div>
-                      <div style="color:#66736C;">Near Sai Mandir, Rugudipara, Balangir &ndash; 767001, Odisha, India</div>
+                      <div style="color:#66736C;">A1, 3rd Floor, Plot No. 387, Lewis Plaza, Lewis Road, BJB Nagar, Bhubaneswar &ndash; 751014, Odisha, India</div>
                       <div style="color:#66736C;margin-top:4px;">
                         Website: <a href="%s" style="color:#874A35;text-decoration:underline;">%s</a>
-                        &bull; Email: <a href="mailto:mect220@gmail.com" style="color:#874A35;text-decoration:underline;">mect220@gmail.com</a>
+                        &bull; Email: <a href="mailto:mectbbsr13@gmail.com" style="color:#874A35;text-decoration:underline;">mectbbsr13@gmail.com</a>
                         &bull; Phone: +91 94382 95223
                       </div>
                       %s

@@ -73,10 +73,10 @@ public class ReceiptPdfService {
 
             Paragraph pTitle = new Paragraph("MAHAVEER EDUCATIONAL & CHARITABLE TRUST (MECT)", orgTitleFont);
             Paragraph pSub = new Paragraph(
-                    "Near Sai Mandir, Rugudipara, Balangir - 767001, Odisha  |  Contact: +91 94382 95223  |  mect220@gmail.com",
+                    "A1, 3rd Floor, Plot No. 387, Lewis Plaza, Lewis Road, BJB Nagar, Bhubaneswar, Odisha – 751014  |  Contact: +91 94382 95223  |  mectbbsr13@gmail.com",
                     subFont);
             Paragraph pDoc = new Paragraph(
-                    "Registered Public Charitable Trust (Balangir Deed No. 40311302194)  |  Trust PAN: AADTM5474F  |  CSR-1: CSR00081063",
+                    "Registered Public Charitable Trust (Indian Trusts Act)  |  Trust PAN: AADTM5474F  |  MCA CSR-1: CSR00081063  |  NGO Darpan: OR/2024/0466491",
                     badgeFont);
             pDoc.setSpacingBefore(6f);
 
