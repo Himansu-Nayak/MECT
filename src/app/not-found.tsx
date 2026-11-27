@@ -119,7 +119,7 @@ export default function NotFound() {
                     </div>
                     <h3 className="font-serif text-lg font-bold text-forest">Contact Secretariat</h3>
                     <p className="text-xs text-ink-sand leading-relaxed">
-                      Public inquiry desks in Balangir and Bhubaneswar, helpline, and email contacts.
+                      Public inquiry desk in Bhubaneswar, helpline, and email contacts.
                     </p>
                   </div>
                   <div className="pt-3 flex items-center text-xs font-semibold text-forest">

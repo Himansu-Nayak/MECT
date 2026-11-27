@@ -15,7 +15,7 @@ export const COMPLIANCE = {
   showTaxEstimator: ELIGIBILITY_FY2026_27 === "confirmed",
 
   trustDeedWording:
-    "Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar",
+    "Trust Deed executed 27 July 2013; registered under the Indian Trusts Act",
   panAllotmentConfirmation: "Allotment Date: 09-08-2023",
 
   historicalOrderSummary: `Order dated ${ORG.ids.taxOrderDate}, covering ${ORG.ids.taxOrderValidityPeriod}`,

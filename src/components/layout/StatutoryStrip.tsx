@@ -23,7 +23,7 @@ export function StatutoryStrip({ className = "" }: StatutoryStripProps) {
               <span>Institutional Statutory Transparency</span>
             </div>
             <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              <strong className="text-forest font-semibold">{MECT_ORG.legalName}</strong> is a registered public charitable trust (Deed Doc No. {MECT_ORG.statutory.trustDeedNumber}, Balangir Sub-Registrar | PAN: {MECT_ORG.statutory.pan} | MCA CSR-1: {MECT_ORG.statutory.mcaCsrNumber} | NGO Darpan: {MECT_ORG.statutory.ngoDarpanId}). {MECT_ORG.taxNotice}
+              <strong className="text-forest font-semibold">{MECT_ORG.legalName}</strong> is an irrevocable public charitable trust registered under the Indian Trusts Act (PAN: {MECT_ORG.statutory.pan} | MCA CSR-1: {MECT_ORG.statutory.mcaCsrNumber} | NGO Darpan: {MECT_ORG.statutory.ngoDarpanId}). {MECT_ORG.taxNotice}
             </p>
           </div>
           <Link

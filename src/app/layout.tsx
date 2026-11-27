@@ -86,7 +86,7 @@ const organizationJsonLd = {
   url: ORG.branding.canonicalOrigin,
   logo: `${ORG.branding.canonicalOrigin}${ORG.branding.logoPath}`,
   description:
-    "A registered public charitable trust (Trust Deed executed 27 July 2013; registered 30 July 2013, Balangir Sub-Registrar), working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
+    "A registered public charitable trust (established 2013 under the Indian Trusts Act), working across education, women's livelihoods, safe-water access, nutrition and community welfare in Odisha.",
   foundingDate: "2013-07-27",
   taxID: ORG.ids.pan,
   identifier: [

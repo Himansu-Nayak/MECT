@@ -19,7 +19,7 @@ export interface TickerAnnouncement {
 export const APPROVED_ANNOUNCEMENTS: TickerAnnouncement[] = [
   {
     id: "ann-edu",
-    text: "Education & Learning — Remedial tuition hubs and study materials for rural Balangir students.",
+    text: "Education & Learning — Remedial tuition hubs and study materials for rural Odisha students.",
     href: "/programmes#education",
   },
   {
