@@ -97,8 +97,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_BASE_URL: "https://staging-api.mect.org.in/api/v1"
-        NEXT_PUBLIC_API_URL: "https://staging-api.mect.org.in/api/v1"
+        NEXT_PUBLIC_API_BASE_URL: "https://staging.mect.org.in/api/v1"
+        NEXT_PUBLIC_API_URL: "https://staging.mect.org.in/api/v1"
         ENABLE_DONOR_PORTAL: "true"
         NEXT_PUBLIC_ENABLE_DONOR_PORTAL: "true"
     image: mect-frontend:staging
@@ -114,8 +114,8 @@ services:
       NODE_ENV: "production"
       PORT: "3000"
       HOSTNAME: "0.0.0.0"
-      NEXT_PUBLIC_API_BASE_URL: "https://staging-api.mect.org.in/api/v1"
-      NEXT_PUBLIC_API_URL: "https://staging-api.mect.org.in/api/v1"
+      NEXT_PUBLIC_API_BASE_URL: "https://staging.mect.org.in/api/v1"
+      NEXT_PUBLIC_API_URL: "https://staging.mect.org.in/api/v1"
       ENABLE_DONOR_PORTAL: "true"
       NEXT_PUBLIC_ENABLE_DONOR_PORTAL: "true"
       BACKEND_API_URL: "http://mect-backend-staging:8080"

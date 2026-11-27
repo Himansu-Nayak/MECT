@@ -41,15 +41,17 @@ public class PublicInquiryService {
         String cleanEmail = request.email().trim().toLowerCase();
         String cleanMessage = sanitizeInput(request.message().trim());
 
-        // Duplicate Submission Defense: Check if identical submission occurred in last 3 minutes
+        // Duplicate Submission Defense: Check if identical submission occurred in last
+        // 3 minutes
         List<PublicInquiry> recent = repository.findByEmailOrderByIdDesc(cleanEmail);
         if (!recent.isEmpty()) {
             PublicInquiry latest = recent.get(0);
             long rawSeconds = latest.getCreatedAt() != null
                     ? Math.abs(Duration.between(latest.getCreatedAt(), Instant.now()).toSeconds())
                     : 0;
-            
-            // Normalize against system timezone offset to ensure robustness across JDBC driver environments
+
+            // Normalize against system timezone offset to ensure robustness across JDBC
+            // driver environments
             int tzOffsetSeconds = ZoneId.systemDefault().getRules().getOffset(Instant.now()).getTotalSeconds();
             long normalizedSeconds = Math.min(rawSeconds, Math.abs(rawSeconds - tzOffsetSeconds));
 
@@ -61,8 +63,7 @@ public class PublicInquiryService {
                         "SUCCESS",
                         latest.getId(),
                         "Your inquiry has already been received and logged under reference #" + latest.getId() + ".",
-                        latest.getCreatedAt()
-                );
+                        latest.getCreatedAt());
             }
         }
 
@@ -73,8 +74,7 @@ public class PublicInquiryService {
                 cleanEmail,
                 sanitizeInput(request.phone().trim()),
                 sanitizeInput(request.category().trim()),
-                cleanMessage
-        );
+                cleanMessage);
 
         PublicInquiry saved = repository.save(inquiry);
         log.info("Successfully recorded inquiry with referenceId: {}", saved.getId());
@@ -83,7 +83,8 @@ public class PublicInquiryService {
             try {
                 whatsAppNotificationService.notifyInquiryOnSubmission(saved);
             } catch (Exception ex) {
-                log.warn("Isolated public inquiry WhatsApp notification failed for ref #{}: {}", saved.getId(), ex.getMessage());
+                log.warn("Isolated public inquiry WhatsApp notification failed for ref #{}: {}", saved.getId(),
+                        ex.getMessage());
             }
         }
 
@@ -91,8 +92,7 @@ public class PublicInquiryService {
                 "SUCCESS",
                 saved.getId(),
                 "Your inquiry has been successfully received by the MAHAVIR TRUST Secretariat.",
-                Instant.now()
-        );
+                Instant.now());
     }
 
     @Transactional
@@ -108,8 +108,9 @@ public class PublicInquiryService {
     }
 
     private String sanitizeInput(String input) {
-        if (input == null) return null;
+        if (input == null)
+            return null;
         return input.replaceAll("(?i)<script.*?>.*?</script>", "")
-                    .replaceAll("<[^>]*>", "");
+                .replaceAll("<[^>]*>", "");
     }
 }

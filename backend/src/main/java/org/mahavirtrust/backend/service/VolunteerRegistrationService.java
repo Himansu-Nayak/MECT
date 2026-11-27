@@ -29,8 +29,7 @@ public class VolunteerRegistrationService {
     private final WhatsAppNotificationService whatsAppNotificationService;
 
     public static final String SERVER_CONSENT_VERSION = "v1.0-draft-2026";
-    public static final String SERVER_CONSENT_STATEMENT =
-            "I declare that all information provided is authentic. I agree to uphold MAHAVIR TRUST draft voluntary service principles and student safeguarding guidelines.";
+    public static final String SERVER_CONSENT_STATEMENT = "I declare that all information provided is authentic. I agree to uphold MAHAVIR TRUST draft voluntary service principles and student safeguarding guidelines.";
 
     @Autowired
     public VolunteerRegistrationService(
@@ -49,7 +48,8 @@ public class VolunteerRegistrationService {
     @Transactional
     public SubmissionResponse registerVolunteer(CreateVolunteerRequest request) {
         if (request.consentDeclared() == null || !request.consentDeclared()) {
-            throw new IllegalArgumentException("Affirmative consent to the voluntary service declaration is mandatory.");
+            throw new IllegalArgumentException(
+                    "Affirmative consent to the voluntary service declaration is mandatory.");
         }
 
         String cleanEmail = request.email().trim().toLowerCase();
@@ -67,13 +67,13 @@ public class VolunteerRegistrationService {
             long normalizedSeconds = Math.min(rawSeconds, Math.abs(rawSeconds - tzOffsetSeconds));
 
             if (latest.getRoleInterest().equalsIgnoreCase(cleanRole) && normalizedSeconds < 180) {
-                log.warn("Duplicate volunteer registration detected for email: {}. Returning existing ref.", cleanEmail);
+                log.warn("Duplicate volunteer registration detected for email: {}. Returning existing ref.",
+                        cleanEmail);
                 return new SubmissionResponse(
                         "SUCCESS",
                         latest.getId(),
                         "Your volunteer registration is already recorded under reference #" + latest.getId() + ".",
-                        latest.getCreatedAt()
-                );
+                        latest.getCreatedAt());
             }
         }
 
@@ -97,8 +97,7 @@ public class VolunteerRegistrationService {
                 consent,
                 consentStatement,
                 consentVersion,
-                consentTimestamp
-        );
+                consentTimestamp);
 
         VolunteerRegistration saved = repository.save(registration);
         log.info("Successfully registered volunteer with referenceId: {}", saved.getId());
@@ -107,7 +106,8 @@ public class VolunteerRegistrationService {
             try {
                 whatsAppNotificationService.notifyVolunteerOnRegistration(saved);
             } catch (Exception ex) {
-                log.warn("Isolated volunteer WhatsApp notification failed for ref #{}: {}", saved.getId(), ex.getMessage());
+                log.warn("Isolated volunteer WhatsApp notification failed for ref #{}: {}", saved.getId(),
+                        ex.getMessage());
             }
         }
 
@@ -115,12 +115,12 @@ public class VolunteerRegistrationService {
                 "SUCCESS",
                 saved.getId(),
                 "Your volunteer registration has been logged for orientation review.",
-                Instant.now()
-        );
+                Instant.now());
     }
 
     @Transactional
-    public VolunteerStatusUpdateResponse updateVolunteerStatus(Long id, String newStatusStr, String actor, String clientIp) {
+    public VolunteerStatusUpdateResponse updateVolunteerStatus(Long id, String newStatusStr, String actor,
+            String clientIp) {
         if (newStatusStr == null || newStatusStr.isBlank()) {
             throw new IllegalArgumentException("Status value is required");
         }
@@ -156,8 +156,7 @@ public class VolunteerRegistrationService {
                 "VOLUNTEER",
                 String.valueOf(id),
                 clientIp,
-                "Transitioned status from " + currentStatus + " to " + targetStatus
-        );
+                "Transitioned status from " + currentStatus + " to " + targetStatus);
 
         return new VolunteerStatusUpdateResponse(
                 id,
@@ -165,13 +164,13 @@ public class VolunteerRegistrationService {
                 targetStatus.name(),
                 actor,
                 Instant.now(),
-                "Volunteer status successfully updated to " + targetStatus.name()
-        );
+                "Volunteer status successfully updated to " + targetStatus.name());
     }
 
     private String sanitizeInput(String input) {
-        if (input == null) return null;
+        if (input == null)
+            return null;
         return input.replaceAll("(?i)<script.*?>.*?</script>", "")
-                    .replaceAll("<[^>]*>", "");
+                .replaceAll("<[^>]*>", "");
     }
 }
