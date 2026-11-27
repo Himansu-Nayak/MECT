@@ -36,14 +36,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("staging")
 @TestPropertySource(properties = {
-        "spring.datasource.url=jdbc:h2:mem:staging_testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL",
-        "spring.datasource.driver-class-name=org.h2.Driver",
-        "spring.datasource.username=sa",
-        "spring.datasource.password=",
-        "app.otp.deterministic-test-enabled=true",
-        "app.otp.deterministic-test-code=123456",
-        "app.sms.provider=MOCK",
-        "DB_NAME=mect_staging_db"
+                "spring.datasource.url=jdbc:h2:mem:staging_testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL",
+                "spring.datasource.driver-class-name=org.h2.Driver",
+                "spring.datasource.username=sa",
+                "spring.datasource.password=",
+                "app.otp.deterministic-test-enabled=true",
+                "app.otp.deterministic-test-code=123456",
+                "app.sms.provider=MOCK",
+                "DB_NAME=mect_staging_db"
 })
 public class StagingOtpHardeningAndSafetyTests {
 
@@ -73,7 +73,8 @@ public class StagingOtpHardeningAndSafetyTests {
         private NotificationDeliveryLogRepository deliveryLogRepository;
         @Autowired
         private Environment environment;
-    @Autowired private org.mahavirtrust.backend.service.receipt.ReceiptPdfService receiptPdfService;
+        @Autowired
+        private org.mahavirtrust.backend.service.receipt.ReceiptPdfService receiptPdfService;
 
         @MockitoBean
         private EmailProvider emailProvider;
@@ -364,38 +365,59 @@ public class StagingOtpHardeningAndSafetyTests {
                 assertThat(result.providerMessageId()).startsWith("dev_dispatch_");
         }
 
+        @Test
+        @DisplayName("STAGING-RECEIPT-17: Simulated receipt in staging profile includes mandatory test/tax-deduction disclaimer")
+        void test17_simulatedReceiptDisplaysStagingDisclaimerBanner() {
+                org.mahavirtrust.backend.entity.Donation donation = new org.mahavirtrust.backend.entity.Donation();
+                donation.setDonationReference("MECT-STAGING-DON-001");
+                donation.setAmount(new java.math.BigDecimal("5000.00"));
+                donation.setCurrency("INR");
+                donation.setPaymentMethod("UPI");
+                donation.setDonorEmail("synthetic.donor@mect.org.in");
+                donation.setConfirmedAt(java.time.Instant.now());
+
+                org.mahavirtrust.backend.entity.DonationProgramme prog = new org.mahavirtrust.backend.entity.DonationProgramme();
+                prog.setName("Tribal Youth Education");
+                donation.setProgramme(prog);
+
+                org.mahavirtrust.backend.entity.Payment payment = new org.mahavirtrust.backend.entity.Payment();
+                payment.setProvider("CASHFREE");
+                payment.setStatus("SUCCESS");
+                payment.setProviderPaymentId("cf_staging_pay_12345");
+                payment.setProviderOrderId("cf_staging_order_12345");
+
+                byte[] pdfBytes = receiptPdfService.generateReceiptPdf(
+                                "MECT-STAGING-RCP-001",
+                                donation,
+                                payment,
+                                "Synthetic Donor Test Account",
+                                "Staging simulation transaction test.");
+
+                assertThat(pdfBytes).isNotEmpty();
+                assertThat(new String(pdfBytes, 0, 5, java.nio.charset.StandardCharsets.ISO_8859_1)).isEqualTo("%PDF-");
+                assertThat(pdfBytes.length).isGreaterThan(1000);
+        }
+
     @Test
-    @DisplayName("STAGING-RECEIPT-17: Simulated receipt in staging profile includes mandatory test/tax-deduction disclaimer")
-    void test17_simulatedReceiptDisplaysStagingDisclaimerBanner() {
-        org.mahavirtrust.backend.entity.Donation donation = new org.mahavirtrust.backend.entity.Donation();
-        donation.setDonationReference("MECT-STAGING-DON-001");
-        donation.setAmount(new java.math.BigDecimal("5000.00"));
-        donation.setCurrency("INR");
-        donation.setPaymentMethod("UPI");
-        donation.setDonorEmail("synthetic.donor@mect.org.in");
-        donation.setConfirmedAt(java.time.Instant.now());
+    @DisplayName("STAGING-SAFEGUARD-18: ResendEmailService with MOCK apiKey performs safe local dispatch without external API calls")
+    void test18_resendEmailService_mockApiKey_performsSafeLocalDispatch() {
+        org.mahavirtrust.backend.service.notification.ResendEmailService mockService =
+                new org.mahavirtrust.backend.service.notification.ResendEmailService("MOCK", "https://api.resend.com", "", objectMapper);
 
-        org.mahavirtrust.backend.entity.DonationProgramme prog = new org.mahavirtrust.backend.entity.DonationProgramme();
-        prog.setCode("TRIBAL_EDU");
-        prog.setName("Tribal Youth Education");
-        donation.setProgramme(prog);
+        assertThat(mockService.isConfigured()).isTrue();
+        assertThat(mockService.getProviderName()).isEqualTo("RESEND");
 
-        org.mahavirtrust.backend.entity.Payment payment = new org.mahavirtrust.backend.entity.Payment();
-        payment.setProvider("CASHFREE");
-        payment.setStatus("SUCCESS");
-        payment.setProviderPaymentId("cf_staging_pay_12345");
-        payment.setProviderOrderId("cf_staging_order_12345");
-
-        byte[] pdfBytes = receiptPdfService.generateReceiptPdf(
-                "MECT-STAGING-RCP-001",
-                donation,
-                payment,
-                "Synthetic Donor Test Account",
-                "Staging simulation transaction test."
+        org.mahavirtrust.backend.service.notification.ProviderDispatchResult result = mockService.sendEmail(
+                "notifications@mect.org.in",
+                "synthetic.donor@mect.org.in",
+                "Test Staging Notification",
+                "<p>Test Safe Body</p>",
+                null,
+                null,
+                java.util.Map.of()
         );
 
-        assertThat(pdfBytes).isNotEmpty();
-        assertThat(new String(pdfBytes, 0, 5, java.nio.charset.StandardCharsets.ISO_8859_1)).isEqualTo("%PDF-");
-        assertThat(pdfBytes.length).isGreaterThan(1000);
+        assertThat(result.status()).isEqualTo("SENT");
+        assertThat(result.providerMessageId()).startsWith("mock_email_dispatch_");
     }
 }

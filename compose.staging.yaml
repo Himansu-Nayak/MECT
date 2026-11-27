@@ -61,7 +61,7 @@ services:
       OTP_DETERMINISTIC_TEST_ENABLED: "true"
       APP_PUBLIC_BASE_URL: "https://staging.mect.org.in"
       GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
-      RESEND_API_KEY: "${RESEND_API_KEY:-}"
+      RESEND_API_KEY: "${RESEND_API_KEY:-MOCK}"
       RESEND_FROM_NOTIFICATIONS: "MECT Staging Notifications <notifications@mect.org.in>"
       RESEND_FROM_DONATIONS: "MECT Staging Donations <donations@mect.org.in>"
       SMS_PROVIDER: "MOCK"

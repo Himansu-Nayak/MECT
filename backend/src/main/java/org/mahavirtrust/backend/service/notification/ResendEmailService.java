@@ -70,6 +70,11 @@ public class ResendEmailService implements EmailProvider {
             return ProviderDispatchResult.unconfigured("RESEND_API_KEY is not configured.");
         }
 
+        if ("MOCK".equalsIgnoreCase(apiKey) || "CONSOLE".equalsIgnoreCase(apiKey) || "DEV_LOG".equalsIgnoreCase(apiKey)) {
+            log.info("DISPATCHED Email to {} subject='{}' via [MOCK]: [SECURE CRYPTOGRAPHIC DISPATCH]", toAddress, subject);
+            return ProviderDispatchResult.sent("mock_email_dispatch_" + System.currentTimeMillis(), "{\"provider\":\"MOCK\",\"status\":\"delivered\"}");
+        }
+
         try {
             Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("from", fromAddress);
