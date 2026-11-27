@@ -55,7 +55,7 @@ const PRIVACY_SECTIONS = [
       "Operational Purpose: Donation claim details are utilized exclusively by Trust administration to verify incoming credits against State Bank of India bank ledger statements and issue serialized donation payment acknowledgements. Inquiry details are used solely to review and respond to correspondence.",
       "Access Controls: Access to intake records is restricted strictly to authorized Secretariat administrators and designated verification officers via password-authenticated administrative tools. Information is never monetized, rented, sold, or shared with commercial marketing entities.",
       "Retention & Statutory Archiving: Records are retained for the duration required to complete inquiry follow-up, administer charitable programmes, and maintain mandatory financial accounting and statutory audit documentation under Indian trust laws.",
-      "Deletion & Rectification Requests: Anyone who has submitted information through our forms may request review, correction, or deletion of their contact records by emailing mect220@gmail.com with the subject tag [DATA_DELETION_REQUEST]. Statutory accounting records required for trust audit cannot be expunged prior to the expiration of mandatory statutory retention periods.",
+      "Deletion & Rectification Requests: Anyone who has submitted information through our forms may request review, correction, or deletion of their contact records by emailing mectbbsr13@gmail.com with the subject tag [DATA_DELETION_REQUEST]. Statutory accounting records required for trust audit cannot be expunged prior to the expiration of mandatory statutory retention periods.",
     ],
   },
   {
@@ -86,7 +86,7 @@ const PRIVACY_SECTIONS = [
     number: "07",
     title: "Grievance Redressal & Secretariat Contact Desk",
     content:
-      "Mahaveer Educational & Charitable Trust (MECT) maintains an administrative desk to handle data questions, correction requests, and privacy inquiries. Formal communications can be addressed to the Secretariat at mect220@gmail.com with the subject tag [DATA_PRIVACY_QUERY].",
+      "Mahaveer Educational & Charitable Trust (MECT) maintains an administrative desk to handle data questions, correction requests, and privacy inquiries. Formal communications can be addressed to the Secretariat at mectbbsr13@gmail.com with the subject tag [DATA_PRIVACY_QUERY].",
   },
 ];
 

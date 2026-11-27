@@ -328,9 +328,9 @@ export const MECT_CONTENT_REGISTRY = {
       secondaryPhone: "+91 94382 95223",
     },
     emails: {
-      primary: "mect220@gmail.com",
-      general: "mect220@gmail.com",
-      scholarships: "mect220@gmail.com",
+      primary: "mectbbsr13@gmail.com",
+      general: "mectbbsr13@gmail.com",
+      scholarships: "mectbbsr13@gmail.com",
     },
     website: "https://mect.org.in",
   },

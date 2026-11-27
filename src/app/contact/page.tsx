@@ -171,10 +171,10 @@ export default function ContactPage() {
                     Direct Email
                   </span>
                   <a
-                    href="mailto:mect220@gmail.com"
+                    href="mailto:mectbbsr13@gmail.com"
                     className="text-terracotta-dark font-medium underline hover:text-forest break-all block"
                   >
-                    mect220@gmail.com
+                    mectbbsr13@gmail.com
                   </a>
                 </div>
               </div>
@@ -203,10 +203,10 @@ export default function ContactPage() {
                     Direct Email
                   </span>
                   <a
-                    href="mailto:mect220@gmail.com"
+                    href="mailto:mectbbsr13@gmail.com"
                     className="text-terracotta-dark font-medium underline hover:text-forest break-all block"
                   >
-                    mect220@gmail.com
+                    mectbbsr13@gmail.com
                   </a>
                 </div>
               </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                   </h3>
                 </div>
                 <p className="text-xs text-ink-sand leading-relaxed">
-                  Remedial learning study centers in rural Balangir, women&apos;s vocational tailoring cohorts, seasonal Jal Seva kiosks, and volunteer participation.
+                  Remedial learning study centers in rural Odisha, women&apos;s vocational tailoring cohorts, seasonal Jal Seva kiosks, and volunteer participation.
                 </p>
                 <div className="pt-2 border-t border-border-warm text-xs space-y-1.5">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-forest block">
@@ -605,7 +605,7 @@ export default function ContactPage() {
                 Secretariat &amp; Functional Routing
               </h3>
               <p className="text-xs text-ink-sand leading-relaxed">
-                Inquiries are reviewed by the Secretariat and routed to the designated desk: Scholarship Committee, Donation Accounts, Balangir Field Team, or Governance Administration.
+                Inquiries are reviewed by the Secretariat and routed to the designated desk: Scholarship Committee, Donation Accounts, Community Field Team, or Governance Administration.
               </p>
               <div className="text-[11px] text-forest pt-2 border-t border-border-warm font-medium">
                 Standard: Directly examined by responsible programme coordinators.

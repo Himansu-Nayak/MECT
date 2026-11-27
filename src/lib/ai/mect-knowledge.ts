@@ -102,8 +102,8 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
     country: "India",
     pin: "767001 / 751014",
     phone: "+91 94382 95223",
-    generalEmail: "mect220@gmail.com",
-    scholarshipEmail: "mect220@gmail.com",
+    generalEmail: "mectbbsr13@gmail.com",
+    scholarshipEmail: "mectbbsr13@gmail.com",
   },
   assistant: {
     name: "HIm",
@@ -187,8 +187,8 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
       "District Field Volunteer (student outreach, document verification assistance)"
     ],
     eligibility: "Educators, working professionals, college faculty, and alumni passionate about educational equity in Odisha. Subject-matter proficiency and commitment to child safety standards required.",
-    applicationProcess: "Email your CV/profile and areas of mentoring interest to mect220@gmail.com with subject line 'Volunteer/Mentor Application'. The Secretariat reviews applications and conducts an orientation session.",
-    contactEmail: "mect220@gmail.com",
+    applicationProcess: "Email your CV/profile and areas of mentoring interest to mectbbsr13@gmail.com with subject line 'Volunteer/Mentor Application'. The Secretariat reviews applications and conducts an orientation session.",
+    contactEmail: "mectbbsr13@gmail.com",
   },
   eligibilityGuidelines: {
     domicile: "Must be a bona fide resident of Odisha (permanent domicile certificate or Odisha schooling).",
@@ -223,7 +223,7 @@ export const MECT_KNOWLEDGE: MECTKnowledge = {
       "Never repeat the user's question back to them.",
       "Never generate generic motivational filler or redundant summaries.",
       "If follow-up questions are asked ('What should I do?', 'What documents?'), directly continue the existing conversation context.",
-      "Always provide authentic contact details (mect220@gmail.com, phone: +91 94382 95223, https://mect.org.in/) when official steps are needed."
+      "Always provide authentic contact details (mectbbsr13@gmail.com, phone: +91 94382 95223, https://mect.org.in/) when official steps are needed."
     ],
     lengthTargets: {
       simple: "1-3 sentences (20-50 words)",

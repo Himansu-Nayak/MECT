@@ -298,8 +298,8 @@ function ScholarshipTrackContent() {
           <div className="pt-6 border-t flex flex-wrap items-center justify-between gap-4 text-xs">
             <span className="text-ink-sand">
               Need assistance? Email secretariat at{" "}
-              <a href="mailto:mect220@gmail.com" className="text-terracotta-dark font-semibold underline">
-                mect220@gmail.com
+              <a href="mailto:mectbbsr13@gmail.com" className="text-terracotta-dark font-semibold underline">
+                mectbbsr13@gmail.com
               </a>
             </span>
             <button

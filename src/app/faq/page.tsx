@@ -494,7 +494,7 @@ export default function FAQPage() {
 
             <div className="pt-4 border-t border-white/10 text-[11px] text-white/60">
               <ShieldCheck className="w-3.5 h-3.5 text-cream inline mr-1 -mt-0.5" />
-              Direct Secretariat Desk: <strong>mect220@gmail.com</strong> | Phone: <strong>+91 94382 95223</strong> (Mon–Sat, 10:00 AM – 5:30 PM IST)
+              Direct Secretariat Desk: <strong>mectbbsr13@gmail.com</strong> | Phone: <strong>+91 94382 95223</strong> (Mon–Sat, 10:00 AM – 5:30 PM IST)
             </div>
           </Card>
         </Container>

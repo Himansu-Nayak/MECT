@@ -157,8 +157,8 @@ function RegisterContent() {
                 +91 94382 95223
               </a>{" "}
               or email{" "}
-              <a href="mailto:mect220@gmail.com" className="font-semibold text-terracotta-dark underline hover:text-forest">
-                mect220@gmail.com
+              <a href="mailto:mectbbsr13@gmail.com" className="font-semibold text-terracotta-dark underline hover:text-forest">
+                mectbbsr13@gmail.com
               </a>.
             </div>
           </div>

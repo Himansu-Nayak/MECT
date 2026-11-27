@@ -405,7 +405,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "HIm assistant is temporarily experiencing technical difficulties. Please try again shortly or contact mect220@gmail.com directly.",
+          "HIm assistant is temporarily experiencing technical difficulties. Please try again shortly or contact mectbbsr13@gmail.com directly.",
         correlationId,
       },
       {
