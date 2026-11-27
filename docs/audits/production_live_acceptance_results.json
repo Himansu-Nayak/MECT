@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Production Homepage",
+    "method": "GET",
+    "url": "https://mect.org.in/",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 934,
+    "response_preview": "<!DOCTYPE html><html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/558ca1a6aa3cb"
+  },
+  {
+    "name": "Production Donate Page",
+    "method": "GET",
+    "url": "https://mect.org.in/donate",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 861,
+    "response_preview": "<!DOCTYPE html><html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/558ca1a6aa3cb"
+  },
+  {
+    "name": "Production Contact Page",
+    "method": "GET",
+    "url": "https://mect.org.in/contact",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 955,
+    "response_preview": "<!DOCTYPE html><html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/558ca1a6aa3cb"
+  },
+  {
+    "name": "Production Governance Page",
+    "method": "GET",
+    "url": "https://mect.org.in/governance",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 887,
+    "response_preview": "<!DOCTYPE html><html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/558ca1a6aa3cb"
+  },
+  {
+    "name": "Production Programmes Page",
+    "method": "GET",
+    "url": "https://mect.org.in/programmes",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 931,
+    "response_preview": "<!DOCTYPE html><html lang=\"en\" class=\"__variable_014e29 __variable_ac0edc __variable_5f34dc\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"/_next/static/media/558ca1a6aa3cb"
+  },
+  {
+    "name": "Next.js AI Health",
+    "method": "GET",
+    "url": "https://mect.org.in/api/ai/health",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 719,
+    "response_preview": "{\"status\":\"operational\",\"service\":\"MECT AI Assistant (HIm)\",\"routingMode\":\"fallback_only\",\"activeEngine\":\"groq_cloud_hot_standby\",\"circuitBreaker\":{\"state\":\"CLOSED\",\"consecutiveFailures\":0,\"failureThreshold\":3,\"cooldownMs\":60000,\"remainingCooldownSec"
+  },
+  {
+    "name": "Production API Health",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/health",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 620,
+    "response_preview": "{\"status\":\"UP\",\"application\":\"mahavir-trust-backend\",\"version\":\"0.1.0\",\"timestamp\":\"2026-11-27T12:40:47.672539469Z\",\"details\":{\"system\":\"MAHAVIR TRUST Institutional API\",\"status\":\"Operational\"}}"
+  },
+  {
+    "name": "Production Actuator Health",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/actuator/health",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 987,
+    "response_preview": "{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}"
+  },
+  {
+    "name": "Donations Config",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/public/donations/config",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 519,
+    "response_preview": "{\"programmes\":[{\"id\":7,\"code\":\"HANUMAN_MURTI\",\"name\":\"The Grand Hanuman Murti Project\",\"tagline\":\"Proposed 80\u2013100-Foot Monument of Faith, Devotion & Community Participation\",\"description\":\"Dedicated project fund for the proposed 80\u2013100-foot Hanuman M"
+  },
+  {
+    "name": "Donations Programmes",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/public/donations/programmes",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 765,
+    "response_preview": "[{\"id\":7,\"code\":\"HANUMAN_MURTI\",\"name\":\"The Grand Hanuman Murti Project\",\"tagline\":\"Proposed 80\u2013100-Foot Monument of Faith, Devotion & Community Participation\",\"description\":\"Dedicated project fund for the proposed 80\u2013100-foot Hanuman Murti initiativ"
+  },
+  {
+    "name": "Gateway Status",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/public/donations/gateway-status",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 704,
+    "response_preview": "{\"provider\":\"CASHFREE\",\"configured\":true,\"sandboxMode\":false,\"dynamicQrSupported\":false,\"checkoutMode\":\"CASHFREE_SDK_V3\",\"checkoutEnvironment\":\"production\",\"reason\":\"Cashfree Payment Gateway active (production)\"}"
+  },
+  {
+    "name": "Public Documents",
+    "method": "GET",
+    "url": "https://mect.org.in/api/v1/public/documents",
+    "status": 200,
+    "expected": 200,
+    "matched": true,
+    "duration_ms": 491,
+    "response_preview": "[{\"id\":1,\"documentKey\":\"DOC-TR-2013-DEED\",\"title\":\"Registered Public Charitable Trust Deed (Foundational Charter)\",\"category\":\"INSTITUTIONAL_IDENTITY\",\"financialYear\":\"FOUNDATION_2013\",\"issueDate\":\"30-07-2013\",\"publicationDate\":\"2013-07-30\",\"version\""
+  },
+  {
+    "name": "Next.js Contact Route Forwarding",
+    "method": "POST",
+    "url": "https://mect.org.in/api/contact",
+    "status": 201,
+    "expected": [
+      200,
+      201
+    ],
+    "matched": true,
+    "duration_ms": 788,
+    "response_preview": "{\"success\":true,\"referenceId\":2,\"message\":\"Your inquiry has been registered in the official Secretariat intake log. Reference: 2.\"}"
+  }
+]
