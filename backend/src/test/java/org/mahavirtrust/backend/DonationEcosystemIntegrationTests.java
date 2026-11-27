@@ -382,4 +382,19 @@ public class DonationEcosystemIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.IMAGE_PNG));
     }
+
+    @Test
+    void testPublicProgrammes_dualEndpointResolution() throws Exception {
+        // Verify canonical endpoint /public/donations/programmes
+        mockMvc.perform(get("/public/donations/programmes"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(org.hamcrest.Matchers.greaterThan(0)));
+
+        // Verify alias endpoint /public/programmes
+        mockMvc.perform(get("/public/programmes"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(org.hamcrest.Matchers.greaterThan(0)));
+    }
 }

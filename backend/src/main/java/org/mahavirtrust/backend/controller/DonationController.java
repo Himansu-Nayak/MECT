@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/public/donations")
+@RequestMapping({"/public/donations", "/public"})
 public class DonationController {
 
     private final DonationLifecycleService donationService;
