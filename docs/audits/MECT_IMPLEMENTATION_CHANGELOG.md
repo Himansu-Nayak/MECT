@@ -49,3 +49,22 @@
   - Replaced single static image with a 6-photo authentic MECT documentary gallery/carousel.
   - Included interactive dot navigation, pause/play, captions, and smooth crossfade transitions.
   - Prioritized authentic education, women empowerment, clean water, and community relief photos.
+
+---
+
+## 2. PRODUCTION DEPLOYMENT & VERIFICATION SUMMARY
+
+- **Production Commit:** `905ffa1`
+- **Target VPS:** Hostinger KVM 4 (`200.97.161.128`)
+- **Primary Domain:** `https://mect.org.in/`
+- **Containers Running:**
+  - `mect-frontend` (Port 3001 -> internal 3000): Next.js 16 Standalone (Healthy)
+  - `mect-backend` (Port 8081 -> internal 8080): Spring Boot 3.4.3 / Java 21 (Healthy)
+  - `mect-postgres` (Port 5433 -> internal 5432): PostgreSQL 16 (Healthy, Flyway V21 applied)
+- **Co-existing Services:**
+  - OHO Tech Web (Port 3000), API (Port 8080), Database (Port 5432): 100% operational and isolated
+- **Acceptance Results:**
+  - 13/13 Live Probes Passed (100% Green)
+  - Cashfree Live Checkout Session Generation: 201 Created
+  - Direct Remittance Claim Submission: 200 OK (Row normalized and stored in `manual_bank_transfer_claims`)
+  - All HTML content audits (Address, Email, Developer attribution, Hero gallery, Content deduplication): 100% PASS
