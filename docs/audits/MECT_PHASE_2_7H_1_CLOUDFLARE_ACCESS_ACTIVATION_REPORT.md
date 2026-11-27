@@ -10,7 +10,7 @@
 **Deployed Commit SHA:** `50992b96da0900edcde7ad8464be9b8b2ae22b47`  
 **Protocol Phase:** Phase 2.7H.1 — Cloudflare DNS and Access Activation  
 **Report Date:** 2026-11-27  
-**Current Phase Status:** **`STEP 1 (DNS GUIDANCE) ISSUED — AWAITING OWNER CONFIRMATION`**
+**Current Phase Status:** **`DNS SUBDOMAIN NAME DISCREPANCY IDENTIFIED & GUIDED FOR CORRECTION`**
 
 ---
 
@@ -24,17 +24,21 @@
    - Production MECT (`127.0.0.1:3001`, `127.0.0.1:8081`, `127.0.0.1:5433`) is 100% operational.
    - OHO Tech (`127.0.0.1:3000`, `127.0.0.1:8080`, `127.0.0.1:5432`) is 100% operational.
    - Zero production DNS, Docker, database, or Nginx changes have been executed.
-3. **Current DNS Preflight Baseline:**
-   - `staging.mect.org.in` resolves to `200.97.161.128` with TTL 300 (DNS only / Grey Cloud).
-   - `staging-api.mect.org.in` resolves to `200.97.161.128` with TTL 300 (DNS only / Grey Cloud).
-   - Both records exist in Cloudflare, but are unproxied.
 
 ---
 
-## 2. STEP 1 — CLOUDFLARE DNS ACTIVATION (IN PROGRESS)
+## 2. STEP 1 — DNS VERIFICATION & ROOT CAUSE DISCOVERY
 
-Owner action required in Cloudflare Dashboard:
-- Locate `staging` and `staging-api` A records pointing to `200.97.161.128`.
-- Change Proxy Status from **DNS Only (Grey Cloud)** to **Proxied (Orange Cloud)**.
-- Do NOT touch `@`, `www`, `api`, or any production records.
-- Wait for owner confirmation before probing and proceeding to Step 2.
+During authoritative DNS verification against Cloudflare nameserver `barbara.ns.cloudflare.com`, the following resolution behavior was detected:
+
+| Queried FQDN | Resolved IP | Record Type | Analysis & Root Cause |
+| :--- | :---: | :---: | :--- |
+| `staging.mect.org.in.mect.org.in` | `200.97.161.128` | `A` | **DISCREPANCY:** In Cloudflare DNS, entering `staging.mect.org.in` in the Name field resulted in appending the root domain twice (`.mect.org.in.mect.org.in`). |
+| `staging-api.mect.org.in.mect.org.in` | `200.97.161.128` | `A` | **DISCREPANCY:** Same double suffix occurred (`staging-api.mect.org.in.mect.org.in`). |
+| `staging.mect.org.in` | `200.97.161.128` | `A` (Wildcard) | Because no explicit `staging` record exists, requests fell back to the unproxied wildcard record `*.mect.org.in`. |
+
+### Required Correction in Cloudflare DNS:
+- In Cloudflare DNS records, the Name field only accepts the subdomain prefix:
+  - Change Name from `staging.mect.org.in` → **`staging`**
+  - Change Name from `staging-api.mect.org.in` → **`staging-api`**
+  - Ensure Proxy Status is **Proxied (Orange Cloud)**.
