@@ -27,12 +27,12 @@
   {
     "probe": "6. Cashfree Order Creation (/api/v1/public/donations/initiate)",
     "passed": true,
-    "details": "HTTP 201, ref: MECT-DON-2026-AF5853"
+    "details": "HTTP 201, ref: MECT-DON-2026-CF617F"
   },
   {
     "probe": "7. Manual UTR Remittance Claim (/api/donations/claim)",
     "passed": true,
-    "details": "HTTP 200, ref: MECT-UTR-2026-7A85E6"
+    "details": "HTTP 200, ref: MECT-UTR-2026-124F0B"
   },
   {
     "probe": "8. Field Photo 1 WebP (Remedial Education)",
@@ -57,11 +57,11 @@
   {
     "probe": "12. OHO Tech Coexistence (Ports 3000 & 8080)",
     "passed": true,
-    "details": "HTTP/1.1 200 OK\r {\"success\":false,\"message\":\"Unauthorized: Full authentication is required to access this resource\",\"data\":null,\"timestamp\":[2026,11,28,5,48,8,573085591],\"path\":\"/actuator/health\"}"
+    "details": "HTTP/1.1 200 OK\r {\"success\":false,\"message\":\"Unauthorized: Full authentication is required to access this resource\",\"data\":null,\"timestamp\":[2026,11,28,7,39,24,751517124],\"path\":\"/actuator/health\"}"
   },
   {
     "probe": "13. Production PostgreSQL Integrity (mect_db row counts)",
     "passed": true,
-    "details": "Donations: 31, Claims: 6, Outbox: 51"
+    "details": "Donations: 35, Claims: 8, Outbox: 56"
   }
 ]
