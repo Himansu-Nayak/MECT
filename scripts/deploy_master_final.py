@@ -171,18 +171,25 @@ def main():
         print("✅ RESTORE REHEARSAL PASSED: Backup dump verified 100% restorable without errors.\n", flush=True)
 
         # Step 5: Build Candidate Images from Verified Release Source
-        print("Building Candidate Backend Image...", flush=True)
+        print("Packaging Candidate Backend JAR...", flush=True)
+        run_ssh_command(
+            ssh,
+            "cd /opt/mect-staging/backend && mvn clean package -DskipTests",
+            "5a. Package Fresh Backend JAR from Release Source"
+        )
+
+        print("Building Candidate Backend Docker Image...", flush=True)
         run_ssh_command(
             ssh,
             f"cd /opt/mect-staging && docker build -t mect-backend:candidate_{ts} -f backend/Dockerfile backend",
-            "5a. Build Candidate Backend Image"
+            "5b. Build Candidate Backend Image"
         )
 
         print("Building Candidate Frontend Image...", flush=True)
         run_ssh_command(
             ssh,
             f"cd /opt/mect-staging && docker build -t mect-frontend:candidate_{ts} -f Dockerfile .",
-            "5b. Build Candidate Frontend Image"
+            "5c. Build Candidate Frontend Image"
         )
 
         # Step 6: Tag Candidates as Production
