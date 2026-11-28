@@ -451,6 +451,12 @@ public class CashfreePaymentGatewayService implements PaymentGatewayProvider {
         if (returnUrlTemplate.contains("{order_id}")) {
             return returnUrlTemplate.replace("{order_id}", orderId);
         }
+        if (returnUrlTemplate.endsWith("?order_id=") || returnUrlTemplate.endsWith("&order_id=")) {
+            return returnUrlTemplate + orderId;
+        }
+        if (returnUrlTemplate.endsWith("?order_id") || returnUrlTemplate.endsWith("&order_id")) {
+            return returnUrlTemplate + "=" + orderId;
+        }
         String sep = returnUrlTemplate.contains("?") ? "&" : "?";
         return returnUrlTemplate + sep + "order_id=" + orderId;
     }

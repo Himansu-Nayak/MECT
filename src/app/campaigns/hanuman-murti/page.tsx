@@ -160,7 +160,7 @@ export default function HanumanMurtiCampaignPage() {
                 </h2>
 
                 <p className="text-sm text-ink-sand leading-relaxed">
-                  {ORG.legalName} was established under its {ORG.foundedYear} registered charter (Deed No. {ORG.trustDeed.deedNumber}) to serve society through education, health, and moral upliftment. In alignment with this mission, the Trust is championing the <strong>Grand Hanuman Murti Project</strong>: a proposed 80 to 100-foot monumental manifestation of Lord Hanuman, the supreme emblem of selfless service (<em>Seva</em>), moral strength, and boundless compassion.
+                  {ORG.legalName} was established under its {ORG.foundedYear} registered charitable charter to serve society through grassroots education, community welfare, and moral upliftment. In alignment with this mission, the Trust is championing the <strong>Grand Hanuman Murti Project</strong>: a proposed 80 to 100-foot monumental manifestation of Lord Hanuman, the supreme emblem of selfless service (<em>Seva</em>), moral strength, and boundless compassion.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

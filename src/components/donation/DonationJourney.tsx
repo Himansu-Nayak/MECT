@@ -159,16 +159,24 @@ export function DonationJourney() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   // Handle return redirect from Cashfree (order_id query param)
-  const returnOrderId = searchParams.get("order_id");
+  const returnOrderId =
+    searchParams.getAll("order_id").find((val) => val && val.trim().length > 0) ||
+    searchParams.get("order_id") ||
+    searchParams.get("orderId");
+
   React.useEffect(() => {
     if (!returnOrderId) return;
     verifyCashfreePayment(returnOrderId)
       .then((res) => {
+        const isSuccess = res.status === "SUCCESSFUL";
+        const isFailed = res.status === "FAILED" || res.status === "USER_DROPPED" || res.status === "CANCELLED";
         setConfirmationData({
           reference: res.donationReference || returnOrderId,
-          status: res.status === "SUCCESSFUL" ? "SUCCESS" : "PENDING_VERIFICATION",
-          message: res.status === "SUCCESSFUL"
+          status: isSuccess ? "SUCCESS" : isFailed ? "FAILED" : "PENDING_VERIFICATION",
+          message: isSuccess
             ? "Your contribution has been settled and verified successfully. Your official computer-signed 80G receipt has been dispatched to your email."
+            : isFailed
+            ? (res.failureReason || "Your payment transaction was cancelled or could not be settled by your bank. No funds were debited.")
             : "Your transaction has been recorded and is currently in verification.",
           amount: res.amount || 0,
           programmeName: res.programmeName || "General Fund",
@@ -293,10 +301,13 @@ export function DonationJourney() {
       const CashfreeSdk = await loadCashfreeSdk();
       const mode = order.checkoutEnvironment === "production" ? "production" : "sandbox";
       const cashfreeInstance = CashfreeSdk({ mode });
-      await cashfreeInstance.checkout({
+      const checkoutResult = await cashfreeInstance.checkout({
         paymentSessionId: order.paymentSessionId,
         redirectTarget: "_self",
       });
+      if (checkoutResult?.error) {
+        throw new Error(checkoutResult.error.message || "Unable to open Cashfree checkout.");
+      }
     } catch (err: unknown) {
       setPaymentError(err instanceof Error ? err.message : "Unable to initiate online payment session.");
     } finally {
@@ -1356,91 +1367,171 @@ export function DonationJourney() {
       {/* STEP 7: CONFIRMATION & RECEIPT LIFECYCLE */}
       {currentStep === 7 && confirmationData && (
         <Card className="p-6 sm:p-10 bg-white border-forest/30 shadow-md space-y-6 text-center">
-          <div className="w-16 h-16 rounded-full bg-forest text-sand flex items-center justify-center mx-auto shadow-sm">
-            <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
-          </div>
-
-          <div className="space-y-2 max-w-lg mx-auto">
-            <span className="text-xs font-mono uppercase tracking-wider text-forest font-bold block">
-              {confirmationData.status === "SUCCESS"
-                ? "Payment Settled & Verified"
-                : "Contribution Recorded Successfully"}
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
-              Thank You for Your Generosity
-            </h2>
-            <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-              {confirmationData.message}
-            </p>
-          </div>
-
-          <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 max-w-md mx-auto text-left space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-sand/30">
-              <span className="text-xs text-ink-muted font-bold">Transaction Reference:</span>
-              <span className="font-mono font-bold text-forest text-sm">{confirmationData.reference}</span>
-            </div>
-            {confirmationData.receiptNumber && (
-              <div className="flex items-center justify-between pb-2 border-b border-sand/30">
-                <span className="text-xs text-ink-muted font-bold">Official 80G Receipt:</span>
-                <span className="font-mono font-bold text-terracotta-dark text-sm">{confirmationData.receiptNumber}</span>
+          {confirmationData.status === "FAILED" ? (
+            <>
+              <div className="w-16 h-16 rounded-full bg-terracotta/10 text-terracotta border border-terracotta/30 flex items-center justify-center mx-auto shadow-sm">
+                <AlertCircle className="w-10 h-10 stroke-[2.5]" />
               </div>
-            )}
-            <div className="flex items-center justify-between pb-2 border-b border-sand/30">
-              <span className="text-xs text-ink-muted font-bold">Allocated Programme:</span>
-              <span className="text-xs font-bold text-forest">{confirmationData.programmeName}</span>
-            </div>
-            <div className="flex items-center justify-between pb-2 border-b border-sand/30">
-              <span className="text-xs text-ink-muted font-bold">Contribution Amount:</span>
-              <span className="font-mono font-bold text-forest text-base">₹{confirmationData.amount.toLocaleString("en-IN")}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-ink-muted font-bold">Statutory Status:</span>
-              <Badge variant={confirmationData.status === "SUCCESS" ? "forest" : "gold"} size="sm">
-                {confirmationData.status === "SUCCESS" ? "Verified & Settled" : "Pending Bank Reconciliation"}
-              </Badge>
-            </div>
-          </div>
 
-          <div className="p-4 bg-sand/15 rounded-lg border border-sand/30 max-w-md mx-auto text-xs text-ink-muted text-left space-y-1">
-            <div className="font-bold text-forest flex items-center gap-1.5">
-              <Info className="w-4 h-4 text-forest" />
-              <span>Next Steps for Statutory Receipt:</span>
-            </div>
-            <p className="leading-relaxed">
-              {confirmationData.status === "SUCCESS"
-                ? `An official computer-signed 80G tax exemption receipt has been generated and dispatched to ${confirmationData.donorEmail}. You can also access your receipts from your supporter portal dashboard.`
-                : `Upon physical ledger reconciliation against official State Bank of India records, a computer-signed 80G tax exemption receipt will be delivered to ${confirmationData.donorEmail}.`}
-            </p>
-          </div>
+              <div className="space-y-2 max-w-lg mx-auto">
+                <span className="text-xs font-mono uppercase tracking-wider text-terracotta font-bold block">
+                  Payment Incomplete
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
+                  Transaction Could Not Be Settled
+                </h2>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                  {confirmationData.message}
+                </p>
+              </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              variant="outline"
-              size="md"
-              onClick={() => {
-                setCurrentStep(1);
-                setUtrReference("");
-                setConfirmationData(null);
-              }}
-              className="w-full sm:w-auto"
-            >
-              Make Another Donation
-            </Button>
-            {isAuthenticated && (
-              <a
-                href="/portal/donations"
-                className="px-4 py-2 rounded-md bg-forest text-sand text-xs font-bold hover:bg-forest-deep transition-colors"
-              >
-                View in Donor Portal
-              </a>
-            )}
-            <a
-              href="/statutory-disclosures"
-              className="text-xs font-bold text-forest underline hover:text-terracotta transition-colors"
-            >
-              View Statutory Disclosures Vault
-            </a>
-          </div>
+              <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 max-w-md mx-auto text-left space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Transaction Reference:</span>
+                  <span className="font-mono font-bold text-forest text-sm">{confirmationData.reference}</span>
+                </div>
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Allocated Programme:</span>
+                  <span className="text-xs font-bold text-forest">{confirmationData.programmeName}</span>
+                </div>
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Contribution Amount:</span>
+                  <span className="font-mono font-bold text-forest text-base">₹{confirmationData.amount.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-ink-muted font-bold">Transaction Status:</span>
+                  <Badge variant="terracotta" size="sm">
+                    Incomplete / Failed
+                  </Badge>
+                </div>
+              </div>
+
+              <div className="p-4 bg-sand/15 rounded-lg border border-sand/30 max-w-md mx-auto text-xs text-ink-muted text-left space-y-1">
+                <div className="font-bold text-forest flex items-center gap-1.5">
+                  <Info className="w-4 h-4 text-forest" />
+                  <span>Next Options:</span>
+                </div>
+                <p className="leading-relaxed">
+                  No funds were deducted from your account. You can retry paying online or choose our direct SBI Bank Transfer / UPI option.
+                </p>
+              </div>
+
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => {
+                    setCurrentStep(6);
+                    setPaymentOption("CASHFREE");
+                    setConfirmationData(null);
+                  }}
+                  className="w-full sm:w-auto"
+                >
+                  Retry Online Payment
+                </Button>
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={() => {
+                    setCurrentStep(6);
+                    setPaymentOption("DIRECT_BANK_UPI");
+                    setConfirmationData(null);
+                  }}
+                  className="w-full sm:w-auto"
+                >
+                  Pay via Direct SBI / UPI
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-16 h-16 rounded-full bg-forest text-sand flex items-center justify-center mx-auto shadow-sm">
+                <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
+              </div>
+
+              <div className="space-y-2 max-w-lg mx-auto">
+                <span className="text-xs font-mono uppercase tracking-wider text-forest font-bold block">
+                  {confirmationData.status === "SUCCESS"
+                    ? "Payment Settled & Verified"
+                    : "Contribution Recorded Successfully"}
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
+                  Thank You for Your Generosity
+                </h2>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                  {confirmationData.message}
+                </p>
+              </div>
+
+              <div className="p-5 bg-sand/20 rounded-xl border border-sand/40 max-w-md mx-auto text-left space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Transaction Reference:</span>
+                  <span className="font-mono font-bold text-forest text-sm">{confirmationData.reference}</span>
+                </div>
+                {confirmationData.receiptNumber && (
+                  <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                    <span className="text-xs text-ink-muted font-bold">Official 80G Receipt:</span>
+                    <span className="font-mono font-bold text-terracotta-dark text-sm">{confirmationData.receiptNumber}</span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Allocated Programme:</span>
+                  <span className="text-xs font-bold text-forest">{confirmationData.programmeName}</span>
+                </div>
+                <div className="flex items-center justify-between pb-2 border-b border-sand/30">
+                  <span className="text-xs text-ink-muted font-bold">Contribution Amount:</span>
+                  <span className="font-mono font-bold text-forest text-base">₹{confirmationData.amount.toLocaleString("en-IN")}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-ink-muted font-bold">Statutory Status:</span>
+                  <Badge variant={confirmationData.status === "SUCCESS" ? "forest" : "gold"} size="sm">
+                    {confirmationData.status === "SUCCESS" ? "Verified & Settled" : "Pending Bank Reconciliation"}
+                  </Badge>
+                </div>
+              </div>
+
+              <div className="p-4 bg-sand/15 rounded-lg border border-sand/30 max-w-md mx-auto text-xs text-ink-muted text-left space-y-1">
+                <div className="font-bold text-forest flex items-center gap-1.5">
+                  <Info className="w-4 h-4 text-forest" />
+                  <span>Next Steps for Statutory Receipt:</span>
+                </div>
+                <p className="leading-relaxed">
+                  {confirmationData.status === "SUCCESS"
+                    ? `An official computer-signed 80G tax exemption receipt has been generated and dispatched to ${confirmationData.donorEmail}. You can also access your receipts from your supporter portal dashboard.`
+                    : `Upon physical ledger reconciliation against official State Bank of India records, a computer-signed 80G tax exemption receipt will be delivered to ${confirmationData.donorEmail}.`}
+                </p>
+              </div>
+
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={() => {
+                    setCurrentStep(1);
+                    setUtrReference("");
+                    setConfirmationData(null);
+                  }}
+                  className="w-full sm:w-auto"
+                >
+                  Make Another Donation
+                </Button>
+                {isAuthenticated && (
+                  <a
+                    href="/portal/donations"
+                    className="px-4 py-2 rounded-md bg-forest text-sand text-xs font-bold hover:bg-forest-deep transition-colors"
+                  >
+                    View in Donor Portal
+                  </a>
+                )}
+                <a
+                  href="/governance"
+                  className="text-xs font-bold text-forest underline hover:text-terracotta transition-colors"
+                >
+                  View Governance &amp; Official Documents
+                </a>
+              </div>
+            </>
+          )}
         </Card>
       )}
     </div>

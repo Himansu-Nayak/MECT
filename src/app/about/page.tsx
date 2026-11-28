@@ -355,11 +355,11 @@ export default function AboutPage() {
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-6 h-6 text-forest shrink-0" aria-hidden="true" />
                 <p className="text-ink font-sans">
-                  <strong className="text-forest">Statutory Notice:</strong> Registered Trust Deed No. {ORG.trustDeed.deedNumber}, Form 10AC historical 12A/80G orders ({ORG.ids.taxOrderValidityPeriod}), CSR Registration {ORG.ids.csr1}, and NITI Aayog Darpan records are published in the{" "}
-                  <Link href="/statutory-disclosures" className="font-semibold underline text-forest">
-                    Statutory Disclosures Vault
-                  </Link>
-                  . Current approval for Tax Year 2026–27 has not yet been established from reviewed records.
+                  <strong className="text-forest">Statutory Notice:</strong> Institutional governance charters, registered trust deed filings, and certified statutory compliance credentials are officially catalogued in our{" "}
+                  <Link href="/governance" className="font-semibold underline text-forest">
+                    Governance &amp; Official Documents
+                  </Link>{" "}
+                  repository. Current approval for Tax Year 2026–27 has not yet been established from reviewed records.
                 </p>
               </div>
               <Link href="/governance" className="shrink-0">

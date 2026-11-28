@@ -44,15 +44,15 @@ export function Footer() {
                   </Badge>
                 </div>
                 <p className="text-cream/95 text-[12px] mt-1.5 leading-relaxed max-w-4xl">
-                  {ORG.trustDeed.summaryLine} ({ORG.trustDeed.bookVolume}). PAN: {ORG.ids.pan}. CSR-1: {ORG.ids.csr1}. NITI Aayog Darpan: {ORG.ids.darpan}. e-Anudaan: {ORG.ids.eAnudaan}. {COMPLIANCE.historical12ASummary} and {COMPLIANCE.historical80GSummary}. {ORG.chairman.honoraryClause}
+                  Mahaveer Educational &amp; Charitable Trust is an irrevocable public charitable trust registered in Odisha (Estd. 2013). All statutory registrations, tax exemption records, trustee governance charters, and certified annual audit reports are maintained in our canonical Governance &amp; Official Documents repository.
                 </p>
               </div>
             </div>
             <Link
-              href="/statutory-disclosures"
+              href="/governance"
               className="inline-flex items-center gap-1.5 text-xs text-white font-bold px-4 py-2.5 bg-terracotta hover:bg-terracotta-dark border border-terracotta-dark rounded-xs transition-colors shrink-0 shadow-xs focus-visible:outline-2 focus-visible:outline-sand"
             >
-              <span>Verify Certificates</span>
+              <span>Governance &amp; Official Documents</span>
               <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </Link>
           </div>
@@ -254,6 +254,14 @@ export function Footer() {
                   className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-sand"
                 >
                   Public Records Library
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/governance"
+                  className="hover:text-white font-semibold text-sand transition-colors focus-visible:outline-2 focus-visible:outline-sand"
+                >
+                  Governance &amp; Official Documents
                 </Link>
               </li>
               <li>

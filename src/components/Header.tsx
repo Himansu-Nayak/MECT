@@ -17,7 +17,6 @@ import { TRUST_CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StatutoryTicker } from "@/components/layout/StatutoryTicker";
-import { SiteSearchTrigger } from "@/components/layout/SiteSearch";
 import { isDonorPortalEnabled } from "@/config/portal";
 import {
   MOTION_EASING,
@@ -54,6 +53,7 @@ const NAV_ODIA: Record<string, string> = {
   "Impact & Accountability": "ସାମାଜିକ ପ୍ରଭାବ",
   "Campaigns": "ଅଭିଯାନ",
   "Governance": "ଟ୍ରଷ୍ଟ ଶାସନ",
+  "Governance & Official Documents": "ଶାସନ ଓ ସରକାରୀ ନଥିପତ୍ର",
   "CSR Partnerships": "ସିଏସଆର ସହଭାଗୀତା",
   "Reports & Disclosures": "ରିପୋର୍ଟ ଓ ତଥ୍ୟ",
   "Donate": "ଦାନ କରନ୍ତୁ",
@@ -411,7 +411,6 @@ export function Header() {
             {/* Desktop Direct Action Buttons & Editorial Menu Trigger */}
             <div className="hidden xl:flex items-center space-x-1 2xl:space-x-2 shrink-0">
               <LanguageToggle />
-              <SiteSearchTrigger />
 
               {isDonorPortalEnabled() && (
                 isAuthenticated ? (
@@ -539,7 +538,6 @@ export function Header() {
             {/* Mobile / Tablet Header Controls */}
             <div className="flex xl:hidden items-center space-x-1 sm:space-x-2 shrink-0">
               <LanguageToggle />
-              <SiteSearchTrigger />
 
               <Link
                 href="/donate"

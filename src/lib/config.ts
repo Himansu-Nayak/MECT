@@ -235,42 +235,25 @@ export const TRUST_CONFIG = {
       ],
     },
     {
-      label: "Governance",
+      label: "Governance & Official Documents",
       href: "/governance",
-      description: "Registered Trust Deed, honorary managing trustee, and fiduciary governance code.",
+      description: "Registered Trust Deed, statutory filings, honorary board governance, and audited accounts.",
       children: [
         {
-          label: "Board of Trustees",
+          label: "Governance Charter & Board",
           href: "/governance",
-          description: "Board composition, Er. Japabandhu Kampa leadership, and honorary status.",
+          description: "Board composition, Er. Japabandhu Kampa leadership, and honorary service charter.",
         },
         {
-          label: "Fiduciary Charter (Clause XVI)",
-          href: "/governance#charter",
-          description: "100% honorary service code — zero trustee remuneration or personal fees.",
-        },
-      ],
-    },
-    {
-      label: "CSR Partnerships",
-      href: "/csr-partnerships",
-      description: "Schedule VII corporate collaborations under MCA CSR-1 Registration No. CSR00081063.",
-    },
-    {
-      label: "Reports & Disclosures",
-      href: "/reports",
-      description: "Audited financial statements, activity summaries, and statutory filings.",
-      children: [
-        {
-          label: "Annual Reports & Audits",
-          href: "/reports",
-          description: "Multi-year audited summaries and trustee activity statements.",
-        },
-        {
-          label: "Statutory Disclosures",
+          label: "Statutory Disclosures & Orders",
           href: "/statutory-disclosures",
-          description: "12A, 80G, CSR-1, NGO Darpan, and MoSJE verified credentials.",
+          description: "Registered Trust Deed, PAN, CSR-1, NGO Darpan, and historical 12A/80G filings.",
           badge: "Verified",
+        },
+        {
+          label: "Annual Reports & Financial Audits",
+          href: "/reports",
+          description: "Multi-year audited balance sheets and annual programmatic disclosures.",
         },
         {
           label: "Public Documents Library",
@@ -278,6 +261,11 @@ export const TRUST_CONFIG = {
           description: "Downloadable institutional documents and disclosures archive.",
         },
       ],
+    },
+    {
+      label: "CSR Partnerships",
+      href: "/csr-partnerships",
+      description: "Schedule VII corporate collaborations under MCA CSR-1 Registration No. CSR00081063.",
     },
   ] as NavItem[],
 

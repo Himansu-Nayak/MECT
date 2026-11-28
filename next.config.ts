@@ -111,7 +111,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://sdk.cashfree.com https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.cashfree.com https://images.unsplash.com https://accounts.google.com; font-src 'self' data:; connect-src 'self' https://api.cashfree.com https://sandbox.cashfree.com https://payments.cashfree.com https://*.cashfree.com https://accounts.google.com; frame-src 'self' https://sdk.cashfree.com https://payments.cashfree.com https://sandbox.cashfree.com https://*.cashfree.com https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://payments.cashfree.com https://sandbox.cashfree.com https://*.cashfree.com; frame-ancestors 'none';",
           },
         ],
       },
