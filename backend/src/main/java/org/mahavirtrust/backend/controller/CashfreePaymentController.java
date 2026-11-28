@@ -35,6 +35,11 @@ public class CashfreePaymentController {
                 .body(donationService.initiateCashfreeDonation(portalUserId, req, getClientIp(request)));
     }
 
+    @GetMapping("/status")
+    public ResponseEntity<Map<String, Object>> getGatewayStatus() {
+        return ResponseEntity.ok(donationService.getGatewayStatus());
+    }
+
     @GetMapping("/status/{orderId}")
     public ResponseEntity<Map<String, Object>> getOrderStatus(
             @PathVariable String orderId,

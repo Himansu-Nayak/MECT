@@ -136,7 +136,7 @@ export function DonationJourney() {
   const [amountError, setAmountError] = useState<string | null>(null);
 
   // Step 6: Payment Method & Gateway State
-  const [paymentOption, setPaymentOption] = useState<"CASHFREE" | "DIRECT_BANK_UPI">("DIRECT_BANK_UPI");
+  const [paymentOption, setPaymentOption] = useState<"CASHFREE" | "DIRECT_BANK_UPI">("CASHFREE");
   const [directTransferTab, setDirectTransferTab] = useState<"BANK" | "UPI">("BANK");
   const [cashfreeLoading, setCashfreeLoading] = useState<boolean>(false);
   const [utrReference, setUtrReference] = useState<string>("");
@@ -707,14 +707,22 @@ export function DonationJourney() {
                 }}
               />
 
-              <div className="pt-3 text-center border-t border-sand/30 flex items-center justify-start text-xs">
+              <div className="pt-3 border-t border-sand/30 flex items-center justify-between text-xs">
                 <button
                   type="button"
                   onClick={() => setCurrentStep(2)}
-                  className="text-ink-muted hover:text-forest flex items-center gap-1"
+                  className="text-ink-muted hover:text-forest flex items-center gap-1 font-medium"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Modify Amount</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrentStep(4)}
+                  className="text-forest hover:text-terracotta font-semibold flex items-center gap-1 underline underline-offset-2"
+                >
+                  <span>Continue as Guest (Direct Details)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>

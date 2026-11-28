@@ -10,7 +10,7 @@ import { Building2, ShieldCheck, Loader2 } from "lucide-react";
 
 export const metadata = createPageMetadata({
   title: "Donate & Support Our Mission",
-  description: `Support ${ORG.legalName}'s charitable initiatives across education, women's livelihoods, drinking water, and food relief in Odisha via direct bank transfer or UPI.`,
+  description: `Support ${ORG.legalName}'s charitable initiatives across education, women's livelihoods, drinking water, and food relief in Odisha via secure online payment or direct bank transfer/UPI.`,
   path: "/donate",
   ogImage: "/images/og-donate.png",
 });
@@ -27,26 +27,27 @@ export default function DonatePage() {
 
       <section className="py-10 sm:py-16 flex-1" aria-label="Official Banking Details and Remittance Channels">
         <Container size="default" className="max-w-4xl space-y-10">
-          {/* Plain Language Donation Policy Notice */}
+          {/* Institutional Contribution Policy Notice */}
           <div className="p-5 sm:p-6 bg-sand/20 rounded-xl border border-sand/40 space-y-2">
             <div className="flex items-center gap-2 text-forest font-bold text-xs uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-forest" />
               <span>Institutional Contribution Policy</span>
             </div>
             <p className="text-sm sm:text-base font-semibold text-forest leading-relaxed">
-              Donations are accepted by bank transfer / UPI. A receipt is issued after the Trust verifies the transfer.
+              Contributions are accepted online via secure payment gateway (Cards, Net Banking, UPI) or directly via State Bank of India bank transfer (NEFT/RTGS/UPI).
             </p>
             <p className="text-xs text-ink-muted leading-relaxed">
-              Contributions are received directly into the Trust&apos;s verified State Bank of India account without third-party processors or commercial intermediaries.
+              Every voluntary donation directly finances verified grassroots initiatives in Western Odisha. Official computer-signed 80G tax receipts are issued upon verified settlement.
             </p>
           </div>
 
           {/* Systematic 7-Step Donation Journey */}
           <Suspense
             fallback={
-              <div className="p-12 text-center text-forest bg-white rounded-xl border border-sand/40">
-                <Loader2 className="w-8 h-8 animate-spin mx-auto text-forest mb-3" />
-                <p className="text-sm font-semibold">Loading donation journey...</p>
+              <div className="p-8 sm:p-12 text-center text-forest bg-white rounded-xl border border-sand/40 shadow-xs space-y-3">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto text-forest mb-2" />
+                <p className="text-sm font-semibold text-forest">Preparing Secure Donation Portal...</p>
+                <p className="text-xs text-ink-muted">Loading verified charitable programmes and payment channels.</p>
               </div>
             }
           >
