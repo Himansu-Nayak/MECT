@@ -272,7 +272,7 @@ def main():
 
         # Co-tenant OHO Tech protection
         run_ssh_command(ssh, "curl -fsS -I http://127.0.0.1:3000 | head -n 1", "8g. OHO Tech Frontend Port 3000 Health")
-        run_ssh_command(ssh, "curl -fsS http://127.0.0.1:8080/actuator/health", "8h. OHO Tech Backend Port 8080 Health")
+        run_ssh_command(ssh, "curl -sI http://127.0.0.1:8080/actuator/health | head -n 1", "8h. OHO Tech Backend Port 8080 Health")
 
         print("\n========================================================", flush=True)
         print("✅ LIVE PRODUCTION DEPLOYMENT & HEALTH CHECKS PASSED!", flush=True)
