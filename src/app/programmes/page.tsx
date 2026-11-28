@@ -85,12 +85,12 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-civic-pledge-classroom.webp",
-        alt: "MECT community classroom students participating in remedial study session",
-        caption: "Community remedial classroom in Balangir district.",
+        src: "/images/programmes/field_photo_1.webp",
+        alt: "MECT community remedial education learning center in Balangir district",
+        caption: "Community remedial classroom and student learning in Balangir district.",
       },
       {
-        src: "/images/hero/mect-classroom-study-circle.webp",
+        src: "/images/hero/illustrative-community-library-reading.webp",
         alt: "MECT rural students participating in quiet peer-learning study circle in Balangir",
         caption: "Rural peer-learning study circle and textbook distribution.",
       },
@@ -120,14 +120,14 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-women-empowerment-seminar.webp",
-        alt: "MECT women vocational training session in Balangir",
+        src: "/images/programmes/field_photo_8.webp",
+        alt: "MECT rural women participating in vocational tailoring and garment craftsmanship cohort in Balangir",
         caption: "Vocational skills workshop in Rugudipara, Balangir.",
       },
       {
-        src: "/images/hero/mect-community-field-outreach.webp",
-        alt: "MECT community women gathered for field livelihood orientation in Balangir",
-        caption: "Community outreach and livelihood orientation in Balangir.",
+        src: "/images/hero/illustrative-women-self-help-group.webp",
+        alt: "MECT community women self-help group livelihood collective in Balangir",
+        caption: "Community self-help livelihood orientation in Balangir.",
       },
     ],
     icon: Scissors,
@@ -155,8 +155,8 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-faculty-puintala-campus.webp",
-        alt: "MECT youth engagement and campus sports activities",
+        src: "/images/programmes/field_photo_2.webp",
+        alt: "MECT rural youth athletic and community sports engagement in Western Odisha",
         caption: "Youth community sports and athletic meet in Western Odisha.",
       },
     ],
@@ -185,8 +185,8 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     },
     photos: [
       {
-        src: "/images/hero/mect-clean-water-hygiene-demo.webp",
-        alt: "Clean drinking water distribution point during summer in Balangir",
+        src: "/images/programmes/field_photo_3.webp",
+        alt: "Jal Seva community drinking water station and hydration relief point in Balangir",
         caption: "Jal Seva community drinking water station in Balangir.",
       },
     ],
@@ -216,7 +216,7 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
     photos: [
       {
         src: "/images/hero/mect-public-health-awareness.webp",
-        alt: "MECT community food relief and meal drive in Balangir",
+        alt: "MECT community food relief and nutrition drive outside hospital in Balangir",
         caption: "Community meal distribution for hospital patient attendants.",
       },
     ],
@@ -248,6 +248,11 @@ const PROGRAMMES_DATA: ProgrammeSectionData[] = [
         src: "/images/hero/mect-legal-literacy-session.webp",
         alt: "MECT community welfare and citizen awareness camp in village",
         caption: "Community welfare and rural entitlement camp in Western Odisha.",
+      },
+      {
+        src: "/images/programmes/field_photo_9.webp",
+        alt: "MECT emergency relief and winter blanket distribution in rural Odisha",
+        caption: "Direct community relief distribution across remote village settlements.",
       },
     ],
     icon: HeartHandshake,

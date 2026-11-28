@@ -413,6 +413,14 @@ export function DonationJourney() {
             );
           })}
         </ol>
+        <div className="md:hidden mt-2.5 pt-2 border-t border-sand/30 text-center">
+          <span className="text-[10px] font-mono text-terracotta font-bold uppercase tracking-wider">
+            Step {currentStep} of 7:
+          </span>
+          <span className="ml-1.5 text-xs font-bold text-forest">
+            {stepTitles[currentStep - 1]}
+          </span>
+        </div>
       </nav>
 
       {/* STEP 1: PROGRAMME SELECTION */}
@@ -420,7 +428,7 @@ export function DonationJourney() {
         <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
           <div className="border-b border-sand/30 pb-4">
             <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold block mb-1">
-              Step 1 of 6 • Purpose of Contribution
+              Step 1 of 7 • Purpose of Contribution
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
               Select Charitable Programme
@@ -497,7 +505,7 @@ export function DonationJourney() {
           <div className="border-b border-sand/30 pb-4">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 2 of 6 • Contribution Amount
+                Step 2 of 7 • Contribution Amount
               </span>
               <Badge variant="forest" size="sm">
                 Purpose: {activeProgramme.name}
@@ -609,7 +617,7 @@ export function DonationJourney() {
           <div className="border-b border-sand/30 pb-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 3 of 6 • Donor Authentication
+                Step 3 of 7 • Donor Authentication
               </span>
               <div className="flex items-center gap-2">
                 <Badge variant="forest" size="sm">
@@ -709,7 +717,7 @@ export function DonationJourney() {
           <div className="border-b border-sand/30 pb-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 4 of 6 • Donor Identification
+                Step 4 of 7 • Donor Identification
               </span>
               <div className="flex items-center gap-2">
                 <Badge variant="forest" size="sm">
@@ -882,7 +890,7 @@ export function DonationJourney() {
         <Card className="p-6 sm:p-8 bg-white border-sand/40 shadow-xs space-y-6">
           <div className="border-b border-sand/30 pb-4">
             <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold block mb-1">
-              Step 5 of 6 • Summary &amp; Verification
+              Step 5 of 7 • Summary &amp; Verification
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-forest">
               Review Contribution Summary
@@ -973,7 +981,7 @@ export function DonationJourney() {
           <div className="border-b border-sand/30 pb-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-terracotta font-bold">
-                Step 6 of 6 • Payment Method
+                Step 6 of 7 • Payment Method
               </span>
               <span className="font-mono font-bold text-forest text-base">
                 ₹{effectiveAmount.toLocaleString("en-IN")}

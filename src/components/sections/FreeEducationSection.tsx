@@ -314,8 +314,8 @@ export function FreeEducationSection() {
               <div className="relative group">
                 <div className="relative w-full aspect-[16/10] rounded-sm overflow-hidden border border-border-warm shadow-xl bg-forest-deep">
                   <Image
-                    src="/images/hero/mect-classroom-study-circle.webp"
-                    alt="MECT rural secondary students participating in quiet peer-learning study circle in Balangir"
+                    src="/images/hero/illustrative-community-library-reading.webp"
+                    alt="MECT community library reading room and peer-learning study circle in Balangir"
                     fill
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"

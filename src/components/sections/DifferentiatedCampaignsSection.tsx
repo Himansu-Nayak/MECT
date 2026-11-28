@@ -112,8 +112,8 @@ export function DifferentiatedCampaignsSection() {
                 {/* Authentic Educational Cohort Visual */}
                 <div className="relative h-[210px] w-full rounded-[2px] overflow-hidden border border-[#E7E0D5] bg-[#16221D] shadow-xs">
                   <Image
-                    src="/images/hero/mect-civic-pledge-classroom.webp"
-                    alt="MECT secondary and higher secondary scholarship candidates in Balangir"
+                    src="/images/programmes/field_photo_1.webp"
+                    alt="MECT remedial rural education learning center and scholarship cohort in Balangir district"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-center"

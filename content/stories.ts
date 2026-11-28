@@ -151,7 +151,7 @@ export const FIELD_DISPATCHES: readonly FieldDispatch[] = [
       "Focus on regional school uniforms and self-directed domestic tailoring.",
     ],
     image: {
-      src: "/images/hero/mect-women-empowerment-seminar.webp",
+      src: "/images/programmes/field_photo_8.webp",
       alt: "Rural women participating in practical garment-cutting and tailoring skills training at the Balangir centre",
       caption:
         "Community vocational training seminar and practical tailoring instruction at the Balangir centre.",
@@ -159,7 +159,7 @@ export const FIELD_DISPATCHES: readonly FieldDispatch[] = [
     },
     gallery: [
       {
-        src: "/images/hero/mect-women-empowerment-seminar.webp",
+        src: "/images/programmes/field_photo_8.webp",
         alt: "Tailoring cohort in session at Balangir vocational training centre",
         caption: "Vocational garment instruction at Balangir centre.",
         credit: "MECT Field Archive",

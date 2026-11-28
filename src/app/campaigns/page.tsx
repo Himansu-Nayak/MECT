@@ -95,8 +95,8 @@ export default function CampaignsDirectoryPage() {
                 </div>
                 <div className="relative h-64 w-full rounded-xs overflow-hidden border border-border-soft group bg-forest shadow-xs">
                   <Image
-                    src="/images/hero/mect-civic-pledge-classroom.webp"
-                    alt="Rural secondary students participating in remedial education and civic pledge in Balangir"
+                    src="/images/programmes/field_photo_5.webp"
+                    alt="Secondary school students supported with scholastic learning materials in Odisha"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

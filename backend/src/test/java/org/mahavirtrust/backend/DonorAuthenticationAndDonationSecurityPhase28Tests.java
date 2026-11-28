@@ -121,7 +121,7 @@ public class DonorAuthenticationAndDonationSecurityPhase28Tests {
     }
 
     @Test
-    void test1_unauthenticatedRequestsToInitiateDonationReturn401Unauthorized() throws Exception {
+    void test1_guestRequestsToInitiateDonationSucceedWith201Created() throws Exception {
         InitiateDonationRequest req = new InitiateDonationRequest(
                 "EDUCATION_LEARNING",
                 new BigDecimal("1000.00"),
@@ -138,16 +138,15 @@ public class DonorAuthenticationAndDonationSecurityPhase28Tests {
         mockMvc.perform(post("/public/donations/initiate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
-                .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.status").value(401))
-                .andExpect(jsonPath("$.error").value("Unauthorized"))
-                .andExpect(jsonPath("$.message").value(org.hamcrest.Matchers.containsString("Donor authentication required")));
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.donationReference").isNotEmpty())
+                .andExpect(jsonPath("$.status").value("PENDING"));
     }
 
     @Test
-    void test2_unauthenticatedRequestsToVerifyCheckoutReturn401Unauthorized() throws Exception {
+    void test2_unregisteredOrderVerificationReturns404NotFound() throws Exception {
         VerifyGatewayPaymentRequest req = new VerifyGatewayPaymentRequest(
-                "MECT-DON-TEST-001",
+                "MECT-DON-NONEXISTENT",
                 "cf_order_test_101",
                 "GATEWAY_CHECKOUT",
                 "CF_ORDER_101"
@@ -156,13 +155,11 @@ public class DonorAuthenticationAndDonationSecurityPhase28Tests {
         mockMvc.perform(post("/public/donations/verify-checkout")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
-                .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.status").value(401))
-                .andExpect(jsonPath("$.message").value(org.hamcrest.Matchers.containsString("Donor authentication required")));
+                .andExpect(status().isNotFound());
     }
 
     @Test
-    void test3_unauthenticatedRequestsToSubmitSbiUtrReturn401Unauthorized() throws Exception {
+    void test3_guestRequestsToSubmitSbiUtrSucceedWith201Created() throws Exception {
         SubmitManualSbiUtrRequest req = new SubmitManualSbiUtrRequest(
                 "EDUCATION_LEARNING",
                 new BigDecimal("2000.00"),
@@ -184,9 +181,9 @@ public class DonorAuthenticationAndDonationSecurityPhase28Tests {
         mockMvc.perform(post("/public/donations/sbi/submit-utr")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(req)))
-                .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.status").value(401))
-                .andExpect(jsonPath("$.message").value(org.hamcrest.Matchers.containsString("Donor authentication required")));
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.claimReference").isNotEmpty())
+                .andExpect(jsonPath("$.receiptIssued").value(false));
     }
 
     @Test

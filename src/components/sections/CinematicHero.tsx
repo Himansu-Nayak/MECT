@@ -146,17 +146,17 @@ export function CinematicHero() {
             <div className="w-full space-y-5 sm:space-y-6 md:space-y-7">
               {/* Archival Classification Tag with Pulse Indicator */}
               <div
-                className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D]/90 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.14em] text-[#E5C499] shadow-xs"
+                className="inline-flex items-center gap-2 rounded-xs border border-[#C4924A]/40 bg-[#16221D]/90 backdrop-blur-md px-3 sm:px-3.5 py-1.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.08em] sm:tracking-[0.14em] text-[#E5C499] shadow-xs max-w-full"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-terracotta shrink-0 animate-pulse" aria-hidden="true" />
-                <span>
-                  {ORG.shortName} ARCHIVAL REGISTER • ESTD. {ORG.foundedYear} • {ORG.addresses.registered.city.toUpperCase()}, {ORG.addresses.registered.state.toUpperCase()}
+                <span className="truncate">
+                  {ORG.shortName} ARCHIVAL REGISTER • ESTD. {ORG.foundedYear} • {ORG.addresses.registered.city.toUpperCase()}
                 </span>
               </div>
 
               {/* Commanding Editorial Headline with Masked Entrance */}
               <div className="overflow-hidden">
-                <h1 className="font-serif text-[clamp(2.4rem,4.5vw,4.1rem)] font-bold text-white tracking-tight leading-[1.08]">
+                <h1 className="font-serif text-[clamp(1.9rem,5vw,4.1rem)] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08]">
                   Dignity Through Education.{" "}
                   <span className="italic font-normal text-[#E5C499] block sm:inline font-serif">
                     Resilience Through Community.
@@ -295,7 +295,7 @@ export function CinematicHero() {
                     type="button"
                     onClick={() => setIsPlaying(!isPlaying)}
                     aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                    className="min-h-[36px] min-w-[36px] sm:min-h-[40px] sm:min-w-[40px] p-2 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs flex items-center justify-center"
                   >
                     {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                   </button>
@@ -303,7 +303,7 @@ export function CinematicHero() {
                     type="button"
                     onClick={prevSlide}
                     aria-label="Previous photograph"
-                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                    className="min-h-[36px] min-w-[36px] sm:min-h-[40px] sm:min-w-[40px] p-2 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs flex items-center justify-center"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                   </button>
@@ -311,7 +311,7 @@ export function CinematicHero() {
                     type="button"
                     onClick={nextSlide}
                     aria-label="Next photograph"
-                    className="p-1.5 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs"
+                    className="min-h-[36px] min-w-[36px] sm:min-h-[40px] sm:min-w-[40px] p-2 rounded-xs bg-[#0D1512]/80 hover:bg-[#0D1512] text-cream/80 hover:text-white border border-white/15 backdrop-blur-sm transition-colors text-xs flex items-center justify-center"
                   >
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>

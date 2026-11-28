@@ -838,7 +838,7 @@ export function ProgressiveDonorAuth({
             <label className="block text-xs font-bold text-forest uppercase tracking-wider text-center">
               6-Digit Security Code
             </label>
-            <div className="flex justify-center gap-2 sm:gap-3">
+            <div className="flex justify-center gap-1.5 min-[360px]:gap-2 sm:gap-3">
               {otpDigits.map((digit, idx) => (
                 <input
                   key={idx}
@@ -849,11 +849,12 @@ export function ProgressiveDonorAuth({
                   inputMode="numeric"
                   pattern="[0-9]*"
                   maxLength={1}
+                  autoComplete={idx === 0 ? "one-time-code" : "off"}
                   value={digit}
                   onChange={(e) => handleOtpDigitChange(idx, e.target.value)}
                   onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                   aria-label={`Digit ${idx + 1} of verification code`}
-                  className={`w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-mono font-bold rounded-xs border transition-all duration-150 focus:outline-none ${digit
+                  className={`w-8 h-11 min-[340px]:w-9 min-[340px]:h-12 min-[380px]:w-11 min-[380px]:h-13 sm:w-12 sm:h-14 text-center text-lg min-[360px]:text-xl sm:text-2xl font-mono font-bold rounded-xs border transition-all duration-150 focus:outline-none ${digit
                     ? "border-terracotta bg-sand-light/50 text-forest ring-2 ring-terracotta/20"
                     : "border-border-warm bg-white text-forest focus:border-terracotta focus:ring-2 focus:ring-terracotta/20"
                     }`}

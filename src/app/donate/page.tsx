@@ -70,40 +70,42 @@ export default function DonatePage() {
                 </div>
               </div>
 
-              <table className="w-full text-left text-xs sm:text-sm font-sans">
-                <tbody className="divide-y divide-sand/20">
-                  <tr>
-                    <th scope="row" className="py-3 pr-4 font-bold text-forest w-1/3">
-                      Account Name:
-                    </th>
-                    <td className="py-3 text-ink font-semibold">{ORG.bank.accountName}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
-                      Account Number:
-                    </th>
-                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
-                      {ORG.bank.accountNumber}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
-                      IFSC Code:
-                    </th>
-                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
-                      {ORG.bank.ifsc}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" className="py-3 pr-4 font-bold text-forest">
-                      UPI ID (VPA):
-                    </th>
-                    <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base">
-                      {ORG.bank.upiId}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="overflow-x-auto -mx-1 sm:mx-0 px-1 sm:px-0">
+                <table className="w-full min-w-[260px] text-left text-xs sm:text-sm font-sans">
+                  <tbody className="divide-y divide-sand/20">
+                    <tr>
+                      <th scope="row" className="py-3 pr-4 font-bold text-forest w-1/3">
+                        Account Name:
+                      </th>
+                      <td className="py-3 text-ink font-semibold">{ORG.bank.accountName}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                        Account Number:
+                      </th>
+                      <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
+                        {ORG.bank.accountNumber}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                        IFSC Code:
+                      </th>
+                      <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base tracking-wide">
+                        {ORG.bank.ifsc}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="py-3 pr-4 font-bold text-forest">
+                        UPI ID (VPA):
+                      </th>
+                      <td className="py-3 text-forest font-mono font-bold text-sm sm:text-base">
+                        {ORG.bank.upiId}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </noscript>
 
